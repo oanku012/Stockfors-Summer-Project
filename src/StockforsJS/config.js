@@ -1,5 +1,3 @@
-/** @type {import("../../types/phaser")} */
-
 var config = {
         type: Phaser.AUTO,
         width: 3000,
@@ -15,8 +13,6 @@ var config = {
             create: create
         }
     };
-
-    //var game = new Phaser.Game(config);
 
  /*function preload ()
     {
