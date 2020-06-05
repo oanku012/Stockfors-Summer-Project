@@ -2,8 +2,8 @@ function create ()
     {
         this.add.image(400, 300, 'ground');
         this.add.image(532, 300, 'ground');
-        this.add.image(268, 300, 'ground');
-        this.add.image(334, 334, 'ground');
+        this.add.image(268.5, 300, 'ground');
+        this.add.image(334.5, 332.5, 'ground');
         
         player = this.add.sprite(400, 300, 'player');
 
