@@ -1,5 +1,8 @@
+/** @type {import("../../types/phaser")} */
+
 function create ()
     {
+
         this.add.image(400, 300, 'ground');
         this.add.image(532, 300, 'ground');
         this.add.image(268.5, 300, 'ground');

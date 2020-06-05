@@ -1,3 +1,4 @@
-function movement{
+/** @type {import("../../types/phaser")} */
+function movement(){
     
 }
