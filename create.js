@@ -7,6 +7,8 @@ function create ()
         
         player = this.add.sprite(400, 300, 'player');
 
+        this.add.text(300, 40, "Stockfors", {font: "40px Arial", fill: "yellow"});
+
         
         player.setCollideWorldBounds(true);
 
