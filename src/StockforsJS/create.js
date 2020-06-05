@@ -3,10 +3,9 @@
 function create ()
     {
 
-        this.add.image(400, 300, 'ground');
-        this.add.image(532, 300, 'ground');
-        this.add.image(268.5, 300, 'ground');
-        this.add.image(334.5, 332.5, 'ground');
+        
+
+        this.add.image(400, 300, 'map');
         
         player = this.add.sprite(400, 300, 'player');
 
