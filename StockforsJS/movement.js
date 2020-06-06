@@ -1,19 +1,28 @@
-var path;
+var currentPath;
 
 var destinationX = 0;
 var destinationY = 0;
 
-var follower;
+//var pathFollower;
+
+var speed = 400;
+
 
 function MovementInitialize(){
     
-    
+    /*this.input.on('pointerup', function (pointer)
+    {
+        //cursor.setVisible(true).setPosition(pointer.x, pointer.y);
 
-    this.input.mouse.disableContextMenu();
+        this.physics.moveToObject(player, pointer, speed);
 
-    path = new Phaser.Curves.Path(player.worldX, player.worldY).lineTo(destinationX, destinationY);
+        
+    }, this);*/
 
-    follower = this.add.follower(path, player.worldX, player.worldY, 'player');
+
+    /*currentPath = new Phaser.Curves.Path(player.worldX, player.worldY).lineTo(destinationX, destinationY);
+
+    //pathFollower = this.add.follower(currentPath, player.worldX, player.worldY, 'player');
 
     
 
@@ -49,14 +58,41 @@ function MovementInitialize(){
         {
             //text2.setText('Forward Button was released');
         }
-    });
+    });*/
 }
 
 function MovementUpdate(){
-    pointer = this.input.activePointer;
+    
+    if (arrowKeys.left.isDown || wasdKeys.A.isDown)
+    {
+        player.setVelocityX(-speed);
+    }
+    else if (arrowKeys.right.isDown || wasdKeys.D.isDown)
+    {
+        player.setVelocityX(speed);
+    }
+    else
+    {
+        player.setVelocityX(0);
+    }
+
+    if (arrowKeys.up.isDown || wasdKeys.W.isDown)
+    {
+        player.setVelocityY(-speed);
+    }
+    else if (arrowKeys.down.isDown || wasdKeys.S.isDown)
+    {
+        player.setVelocityY(speed);
+    }
+    else
+    {
+        player.setVelocityY(0);
+    }
+    
+    /*var pointer = this.input.activePointer;
 
     destinationX = pointer.worldX;
-    destinationY = pointer.worldY;
+    destinationY = pointer.worldY;*/
 
     
 }

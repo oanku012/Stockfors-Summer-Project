@@ -1,3 +1,14 @@
+var player;
+
+var arrowKeys;
+
+var wasdKeys;
+
+var pointer;
+
+var currentScene = this;
+
+
 function create ()
     {
 
@@ -5,19 +16,17 @@ function create ()
 
         this.add.image(400, 300, 'map');
         
-        player = this.add.sprite(400, 300, 'player');
+        player = this.physics.add.sprite(400, 300, 'player');
 
         this.add.text(300, 40, "Stockfors", {font: "40px Arial", fill: "yellow"});
 
+        arrowKeys = this.input.keyboard.createCursorKeys();
+        wasdKeys = this.input.keyboard.addKeys('W,S,A,D');
+        
         
         player.setCollideWorldBounds(true);
 
-        this.anims.create({
-            key: 'left',
-            frames: this.anims.generateFrameNumbers('player', { start: 0, end: 3 }),
-            frameRate: 10,
-            repeat: -1
-        });
-
-        MovementInitialize();
+        //InitializeCamera();
+        //MovementInitialize();
     }
+
