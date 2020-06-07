@@ -18,7 +18,8 @@ var config = {
             update: update,
 
             extend: {
-                createContainer: createContainer
+                createButton: createButton,
+                createPopup: createPopup
             }
         }
     };
