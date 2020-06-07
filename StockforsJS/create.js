@@ -28,5 +28,7 @@ function create ()
 
         //InitializeCamera();
         //MovementInitialize();
+
+        this.createContainer();
     }
 

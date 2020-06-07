@@ -15,7 +15,11 @@ var config = {
         scene: {
             preload: preload,
             create: create,
-            update: update
+            update: update,
+
+            extend: {
+                createContainer: createContainer
+            }
         }
     };
 
