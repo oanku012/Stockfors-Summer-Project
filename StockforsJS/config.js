@@ -19,7 +19,6 @@ var config = {
 
             extend: {
                 createButton: createButton,
-                createPopup: createPopup
             }
         }
     };

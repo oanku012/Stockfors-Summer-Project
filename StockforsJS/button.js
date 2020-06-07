@@ -11,6 +11,10 @@ function createButton (posX, posY)
 
     button.setInteractive();
 
+    var popupBG = this.add.image(0, 0, 'menuBG');
+    var popup = this.add.container(800, 600, [ popupBG ]);
+    popup.setVisible(false);
+
 
     button.on('pointerover', function () {
 
@@ -26,8 +30,16 @@ function createButton (posX, posY)
 
     button.on('pointerdown', function () {
 
-        createPopup(300, 300);
+        if (popup.visible == true)
+        {
+            popup.setVisible(false);
+        }
+        else 
+        {
+            popup.setVisible(true);
+        }
         
     });
+
     
 }

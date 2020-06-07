@@ -6,5 +6,15 @@ function createPopup (posX, posY)
 
     popup.setSize(bg.width, bg.height);
 
-    
+
+}
+
+function showPopup(popup) 
+{
+    popup.setVisible(true);
+}
+
+function hidePopup(popup) 
+{
+    popup.setVisible(false);
 }

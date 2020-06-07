@@ -30,10 +30,7 @@ function create ()
         //MovementInitialize();
 
         this.createButton(200, 200);
-        this.createButton(400, 500);
-        this.createButton(900, 300);
-
-        this.createPopup(600, 600);
+        
         
     }
 
