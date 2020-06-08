@@ -57,23 +57,31 @@ function MovementUpdate(){
     if (arrowKeys.left.isDown || wasdKeys.A.isDown)
     {
         player.setVelocityX(-speed);
+        movingOnPath = false;
     }
     else if (arrowKeys.right.isDown || wasdKeys.D.isDown)
     {
         player.setVelocityX(speed);
+        movingOnPath = false;
+
     }
     else if(movingOnPath == false)
     {
         player.setVelocityX(0);
+
     }
 
     if (arrowKeys.up.isDown || wasdKeys.W.isDown)
     {
         player.setVelocityY(-speed);
+        movingOnPath = false;
+
     }
     else if (arrowKeys.down.isDown || wasdKeys.S.isDown)
     {
         player.setVelocityY(speed);
+        movingOnPath = false;
+
     }
     else if(movingOnPath == false)
     {

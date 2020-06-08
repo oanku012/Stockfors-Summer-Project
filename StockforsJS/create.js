@@ -21,11 +21,13 @@ function create ()
 
         debugText = this.add.text(1600, 10, "Debug stuff here.", {font: "40px Arial", fill: "white"});
         
-        debugText.setScrollFactor(0);
+        debugText.setScrollFactor(0, 0);
 
         arrowKeys = this.input.keyboard.createCursorKeys();
         wasdKeys = this.input.keyboard.addKeys('W,S,A,D');
         pointer = this.input.activePointer;
+
+        this.input.mouse.disableContextMenu();
         
         player.body.setCollideWorldBounds(true);
 
