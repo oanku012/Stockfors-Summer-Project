@@ -1,23 +1,37 @@
 var currentPath;
 
-var destinationX = 0;
-var destinationY = 0;
+var destination = new Phaser.Math.Vector2();
+
+var movingOnPath;
 
 //var pathFollower;
 
 var speed = 400;
 
+var debug;
+
+var circle;
 
 function MovementInitialize(){
     
-    /*this.input.on('pointerup', function (pointer)
+    this.input.on('pointerup', function (pointer)
     {
         //cursor.setVisible(true).setPosition(pointer.x, pointer.y);
+        destination.x = pointer.worldX;
+        destination.y = pointer.worldY;
 
-        this.physics.moveToObject(player, pointer, speed);
+        /*debug = this.add.graphics();
+
+        debug.clear().lineStyle(1, 0x00ff00);
+        debug.lineBetween(0, destination.y, 800, destination.y);
+        debug.lineBetween(destination.x, 0, destination.x, 600);*/
+
+        this.physics.moveToObject(player, destination, speed);
+
+        movingOnPath = true;
 
         
-    }, this);*/
+    }, this);
 
 
     /*currentPath = new Phaser.Curves.Path(player.worldX, player.worldY).lineTo(destinationX, destinationY);
@@ -63,6 +77,7 @@ function MovementInitialize(){
 
 function MovementUpdate(){
     
+    //Movement with WASD and arrow keys
     if (arrowKeys.left.isDown || wasdKeys.A.isDown)
     {
         player.setVelocityX(-speed);
@@ -71,7 +86,7 @@ function MovementUpdate(){
     {
         player.setVelocityX(speed);
     }
-    else
+    else if(movingOnPath == false)
     {
         player.setVelocityX(0);
     }
@@ -84,15 +99,25 @@ function MovementUpdate(){
     {
         player.setVelocityY(speed);
     }
-    else
+    else if(movingOnPath == false)
     {
         player.setVelocityY(0);
     }
     
-    /*var pointer = this.input.activePointer;
+    //Check the distance between the player and the destination
+    var distance = Phaser.Math.Distance.Between(player.x, player.y, destination.x, destination.y);
 
-    destinationX = pointer.worldX;
-    destinationY = pointer.worldY;*/
+    if (player.body.speed > 0)
+    {
+        //distanceText.setText('Distance: ' + distance);
+
+        //  4 is our distance tolerance, i.e. how close the source can get to the target
+        //  before it is considered as being there. The faster it moves, the more tolerance is required.
+        if (distance < 4)
+        {
+            player.body.reset(destination.x, destination.y);
+        }
+    }
 
     
 }

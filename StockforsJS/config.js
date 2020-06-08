@@ -1,7 +1,7 @@
 var config = {
         type: Phaser.AUTO,
-        width: 3000,
-        height: 3000,
+        width: 1920,
+        height: 1080,
         parent: 'phaser-example',
         
         physics: {
@@ -18,7 +18,10 @@ var config = {
             update: update,
 
             extend: {
-                createContainer: createContainer
+                createContainer: createContainer,
+                InitializeCamera: InitializeCamera,  
+                MovementInitialize: MovementInitialize,
+                MovementUpdate: MovementUpdate
             }
         }
     };

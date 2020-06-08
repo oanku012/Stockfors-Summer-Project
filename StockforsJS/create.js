@@ -22,12 +22,12 @@ function create ()
 
         arrowKeys = this.input.keyboard.createCursorKeys();
         wasdKeys = this.input.keyboard.addKeys('W,S,A,D');
-        
+        pointer = this.input.activePointer;
         
         player.setCollideWorldBounds(true);
 
-        //InitializeCamera();
-        //MovementInitialize();
+        this.InitializeCamera();
+        this.MovementInitialize();
 
         this.createContainer();
     }
