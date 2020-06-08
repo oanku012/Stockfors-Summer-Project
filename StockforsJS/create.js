@@ -29,6 +29,8 @@ function create ()
         this.InitializeCamera();
         this.MovementInitialize();
 
-        this.createContainer();
+        this.createButton(200, 200);
+        
+        
     }
 
