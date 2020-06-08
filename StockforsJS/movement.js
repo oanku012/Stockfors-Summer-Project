@@ -2,7 +2,7 @@ var currentPath;
 
 var destination = new Phaser.Math.Vector2();
 
-var movingOnPath;
+var movingOnPath = false;
 
 //var pathFollower;
 
@@ -33,46 +33,22 @@ function MovementInitialize(){
         
     }, this);
 
+    //Stop player from moving when hitting the edges of the map
+    player.body.onWorldBounds = true;
+    this.physics.world.on('worldbounds', onWorldBounds);
+    
+}
 
-    /*currentPath = new Phaser.Curves.Path(player.worldX, player.worldY).lineTo(destinationX, destinationY);
+//Called when a physics object hits the edges of the map
+function onWorldBounds(body)
+{
 
-    //pathFollower = this.add.follower(currentPath, player.worldX, player.worldY, 'player');
+    //Stops object from moving
+    body.speed = 0;
+
+    movingOnPath = false;
 
     
-
-    this.input.on('pointerup', function(pointer){
-        if (pointer.leftButtonReleased())
-        {
-            //text2.setText('Left Button was released');
-            
-
-            
-            follower.startFollow({
-                positionOnPath: true,
-                duration: 3000,
-                yoyo: true,
-                repeat: -1,
-                rotateToPath: true,
-                verticalAdjust: true
-            });
-        }
-        else if (pointer.rightButtonReleased())
-        {
-            //text2.setText('Right Button was released');
-        }
-        else if (pointer.middleButtonReleased())
-        {
-            //text2.setText('Middle Button was released');
-        }
-        else if (pointer.backButtonReleased())
-        {
-            //text2.setText('Back Button was released');
-        }
-        else if (pointer.forwardButtonReleased())
-        {
-            //text2.setText('Forward Button was released');
-        }
-    });*/
 }
 
 function MovementUpdate(){
@@ -118,6 +94,10 @@ function MovementUpdate(){
             player.body.reset(destination.x, destination.y);
 
             movingOnPath = false;
+
+            //This is just to let the player move using keys after moving to a position with the mouse
+            destination.x = -1000;
+            destination.y = -1000;
         }
 
         
