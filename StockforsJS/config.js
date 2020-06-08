@@ -18,14 +18,11 @@ var config = {
             update: update,
 
             extend: {
-<<<<<<< HEAD
                 createContainer: createContainer,
                 InitializeCamera: InitializeCamera,  
                 MovementInitialize: MovementInitialize,
-                MovementUpdate: MovementUpdate
-=======
-                createButton: createButton,
->>>>>>> 094798a98394f66fd38919d6f7e92214fab5d62a
+                MovementUpdate: MovementUpdate,
+                createButton: createButton
             }
         }
     };
