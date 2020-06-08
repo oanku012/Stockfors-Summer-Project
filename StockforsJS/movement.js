@@ -116,7 +116,11 @@ function MovementUpdate(){
         if (distance < 4)
         {
             player.body.reset(destination.x, destination.y);
+
+            movingOnPath = false;
         }
+
+        
     }
 
     

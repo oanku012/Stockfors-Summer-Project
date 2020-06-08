@@ -18,7 +18,7 @@ var config = {
             update: update,
 
             extend: {
-                createContainer: createContainer,
+                
                 InitializeCamera: InitializeCamera,  
                 MovementInitialize: MovementInitialize,
                 MovementUpdate: MovementUpdate,
