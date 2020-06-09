@@ -78,9 +78,11 @@ class MainScene extends Phaser.Scene
     }
 
     //Stops player when colliding with a building
-    playerHitBuilding(player)
+    playerHitBuilding(player, building)
     {
         player.body.stop();
+
+        this.scene.start('MenuScene');
     }
 
     MovementInitialize(){
@@ -153,12 +155,12 @@ class MainScene extends Phaser.Scene
             this.player.setVelocityY(0);
         }
         
-        //Check the distance between the player and the destination player clicked
-        let distanceToDestination = this.CheckDistance(this.player, this.destination);
+        let distanceToDestination;
 
         if (this.player.body.speed > 0)
         {
-            //distanceText.setText('Distance: ' + distance);
+        //Check the distance between the player and the destination player clicked
+        distanceToDestination = this.CheckDistance(this.player, this.destination);
     
             //  4 is our distance tolerance, i.e. how close the source can get to the target
             //  before it is considered as being there. The faster it moves, the more tolerance is required.
@@ -177,7 +179,12 @@ class MainScene extends Phaser.Scene
         }
 
         //Check if player is near a building
-        //distanceToDestination = 
+        /*distanceToDestination = this.CheckDistance(this.player, this.buildings);
+
+        if(distanceToDestination < 100)
+        {
+            this.scene.start('MenuScene');
+        }*/
 
     }
 
