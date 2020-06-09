@@ -19,6 +19,7 @@ class MainScene extends Phaser.Scene
         this.debug;
 
         this.buildings;
+        
     }
 
     preload ()
@@ -30,13 +31,12 @@ class MainScene extends Phaser.Scene
         this.load.image('menuBG', 'Assets/images/menu/menu-bg.png');
 
         this.load.image('Building2', 'Assets/images/map/Buildings/rem_0002');
+        this.load.image('exitButton', 'Assets/images/menu/exit-button.png');
     }
 
     create ()
     {
-
                 
-
         this.add.image(400, 300, 'map');
         
         this.player = this.physics.add.sprite(400, 300, 'player');
@@ -63,7 +63,8 @@ class MainScene extends Phaser.Scene
         this.InitializeCamera();
         this.MovementInitialize();
 
-        this.createContainer(200, 200);
+        this.createButton(200, 200);
+
         
         
     }
@@ -216,7 +217,7 @@ class MainScene extends Phaser.Scene
     });
     }
 
-    createContainer (posX, posY) 
+    createButton (posX, posY) 
     {
         // Button
         let buttonBG = this.add.image(0, 0, 'buttonBG');
@@ -225,19 +226,7 @@ class MainScene extends Phaser.Scene
         let button = this.add.container(posX, posY, [ buttonBG, buttonText ]);
         button.setSize(buttonBG.width, buttonBG.height);
         button.setInteractive();
-    
-        // Popup menu
-        let screenCenterX = this.cameras.main.worldView.x + this.cameras.main.width / 2;
-        let screenCenterY = this.cameras.main.worldView.y + this.cameras.main.height / 2;
-        let popupBG = this.add.image(0, 0, 'menuBG');
-        let popup = this.add.container(screenCenterX * .5, screenCenterY * .5, [ popupBG ]);
-        popup.setVisible(false);
-    
-        // Exit button
-        let exitButtonBG = this.add.image(0,0, 'exitButton');
-        let exitButton = this.add.container(screenCenterX - popupBG.width * .66, screenCenterY - popupBG.height * 1.025, [ exitButtonBG ]);
-        exitButton.setVisible(false);
-    
+        
         button.on('pointerover', function () {
     
             buttonBG.setTint(0x44ff44);
@@ -250,20 +239,10 @@ class MainScene extends Phaser.Scene
     
         });
     
-        button.on('pointerdown', function () {
-    
-            if (popup.visible == true)
-            {
-                popup.setVisible(false);
-                exitButton.setVisible(false);
-            }
-            else 
-            {
-                popup.setVisible(true);
-                exitButton.setVisible(true);
-            }
-            
-        });
+        button.on('pointerdown', function (event) {
+            // ...
+            this.scene.start('MenuScene');
+          }, this);
     
         
     }
