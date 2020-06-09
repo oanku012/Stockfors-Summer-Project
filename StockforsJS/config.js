@@ -26,7 +26,7 @@ var config = {
                 InitializeCamera: InitializeCamera,  
                 MovementInitialize: MovementInitialize,
                 MovementUpdate: MovementUpdate,
-                createButton: createButton
+                createContainer: createContainer
             }
         }
     };

@@ -6,5 +6,6 @@ function update ()
     this.MovementUpdate();
 
     debugText.text = this.cameras.main.zoom;
+
 }
 
