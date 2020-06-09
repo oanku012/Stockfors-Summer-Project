@@ -16,7 +16,9 @@ var config = {
             }
         },
 
-        scene: {
+        scene: MainScene
+        
+        /*{
             preload: preload,
             create: create,
             update: update,
@@ -28,13 +30,9 @@ var config = {
                 MovementUpdate: MovementUpdate,
                 createButton: createButton
             }
-        }
+        }*/
     };
 
 //var game = new Phaser.game(config);
 
 
-
-
-
-    
