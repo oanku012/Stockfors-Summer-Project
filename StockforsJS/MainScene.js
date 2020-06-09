@@ -19,6 +19,9 @@ class MainScene extends Phaser.Scene
         this.debug;
 
         this.buildings;
+
+        this.PatruunanTalo;
+        this.PakkausMuseo;
         
     }
 
@@ -30,8 +33,8 @@ class MainScene extends Phaser.Scene
         this.load.image('buttonText', 'Assets/images/menu/button-text.png');
         this.load.image('menuBG', 'Assets/images/menu/menu-bg.png');
 
-        this.load.image('Building2', 'Assets/images/map/Buildings/rem_0002');
-        this.load.image('Building5','Assets/images/map/Buildings/rem_0005');
+        this.load.image('PatruunanTalo', 'Assets/images/map/Buildings/rem_0002');
+        this.load.image('PakkausMuseo','Assets/images/map/Buildings/rem_0005');
         this.load.image('exitButton', 'Assets/images/menu/exit-button.png');
     }
 
@@ -56,12 +59,8 @@ class MainScene extends Phaser.Scene
         
         this.player.body.setCollideWorldBounds(true);
 
-        this.buildings = this.physics.add.staticGroup()
-        this.buildings.create(600, 400, 'Building2').setScale(0.3).refreshBody();
-        this.buildings.create(800, 200, 'Building5').setScale(0.3).refreshBody();
-
-        this.physics.add.collider(this.player, this.buildings, this.playerHitBuilding, null, this);
-
+        
+        this.BuildingsInitialize();
         this.InitializeCamera();
         this.MovementInitialize();
 
@@ -77,27 +76,41 @@ class MainScene extends Phaser.Scene
         this.MovementUpdate();
     }
 
-    //Stops player when colliding with a building
+    /*//Used to find the right buildings from the physics group
+    findBuilding(thisName)
+    {
+        return thisName === thisName;
+    }*/
+
+    //When player collides with a building, stop player and load scene associated with the building
     playerHitBuilding(player, building)
     {
         player.body.stop();
 
-        this.scene.start('MenuScene');
+        this.scene.start(building.scene);
+    }
+
+    BuildingsInitialize()
+    {
+        this.buildings = this.physics.add.staticGroup();
+        
+        this.PatruunanTalo = this.buildings.create(600, 400, 'PatruunanTalo').setScale(0.3).refreshBody();
+
+        this.PatruunanTalo.scene = 'MenuScene';
+
+        this.PakkausMuseo = this.buildings.create(800, 200, 'PakkausMuseo').setScale(0.3).refreshBody();
+
+        this.PakkausMuseo.scene = 'MenuScene';
+
+        this.physics.add.collider(this.player, this.buildings, this.playerHitBuilding, null, this);
     }
 
     MovementInitialize(){
     
         this.input.on('pointerup', function (pointer)
         {
-            //cursor.setVisible(true).setPosition(pointer.x, pointer.y);
             this.destination.x = this.pointer.worldX;
             this.destination.y = this.pointer.worldY;
-    
-            /*debug = this.add.graphics();
-    
-            debug.clear().lineStyle(1, 0x00ff00);
-            debug.lineBetween(0, destination.y, 800, destination.y);
-            debug.lineBetween(destination.x, 0, destination.x, 600);*/
     
             this.physics.moveToObject(this.player, this.destination, this.speed);
     
@@ -162,8 +175,6 @@ class MainScene extends Phaser.Scene
         //Check the distance between the player and the destination player clicked
         distanceToDestination = this.CheckDistance(this.player, this.destination);
     
-            //  4 is our distance tolerance, i.e. how close the source can get to the target
-            //  before it is considered as being there. The faster it moves, the more tolerance is required.
             if (distanceToDestination < 4)
             {
                 this.player.body.reset(this.destination.x, this.destination.y);
