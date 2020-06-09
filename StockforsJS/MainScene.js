@@ -17,6 +17,8 @@ class MainScene extends Phaser.Scene
         this.movingOnPath = false;
         this.speed = 400;
         this.debug;
+
+        this.buildings;
     }
 
     preload ()
@@ -26,6 +28,8 @@ class MainScene extends Phaser.Scene
         this.load.image('buttonBG', 'Assets/images/menu/button-bg.png');
         this.load.image('buttonText', 'Assets/images/menu/button-text.png');
         this.load.image('menuBG', 'Assets/images/menu/menu-bg.png');
+
+        this.load.image('Building2', 'Assets/images/map/Buildings/rem_0002');
     }
 
     create ()
@@ -50,6 +54,11 @@ class MainScene extends Phaser.Scene
         this.input.mouse.disableContextMenu();
         
         this.player.body.setCollideWorldBounds(true);
+
+        this.buildings = this.physics.add.staticGroup()
+        this.buildings.create((600, 400, 'Building2'));
+
+        //this.add.image(800, 600, 'Building2');
 
         this.InitializeCamera();
         this.MovementInitialize();
@@ -90,21 +99,15 @@ class MainScene extends Phaser.Scene
     
         //Stop player from moving when hitting the edges of the map
         this.player.body.onWorldBounds = true;
-        this.physics.world.on('worldbounds', this.onWorldBounds);
+        this.physics.world.on('worldbounds', function(body){
+            //Stops object from moving
+            body.speed = 0;
+    
+            this.movingOnPath = false;
+        },this);
         
     }
     
-    //Called when a physics object hits the edges of the map
-    onWorldBounds(body)
-    {
-    
-        //Stops object from moving
-        body.speed = 0;
-    
-        this.movingOnPath = false;
-    
-        
-    }
     
     MovementUpdate(){
         
@@ -143,16 +146,16 @@ class MainScene extends Phaser.Scene
             this.player.setVelocityY(0);
         }
         
-        //Check the distance between the player and the destination
-        let distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, this.destination.x, this.destination.y);
-    
+        //Check the distance between the player and the destination player clicked
+        let distanceToDestination = this.CheckDistance(this.player, this.destination);
+
         if (this.player.body.speed > 0)
         {
             //distanceText.setText('Distance: ' + distance);
     
             //  4 is our distance tolerance, i.e. how close the source can get to the target
             //  before it is considered as being there. The faster it moves, the more tolerance is required.
-            if (distance < 4)
+            if (distanceToDestination < 4)
             {
                 this.player.body.reset(this.destination.x, this.destination.y);
     
@@ -166,6 +169,17 @@ class MainScene extends Phaser.Scene
             
         }
 
+        //Check if player is near a building
+        //distanceToDestination = 
+
+    }
+
+    //Check distance between two objects
+    CheckDistance(sourceObject, destinationObject)
+    {
+        let distance = Phaser.Math.Distance.Between(sourceObject.x, sourceObject.y, destinationObject.x, destinationObject.y);
+
+        return distance;
     }
 
     InitializeCamera()
