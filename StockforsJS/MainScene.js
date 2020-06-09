@@ -60,7 +60,7 @@ class MainScene extends Phaser.Scene
         this.buildings.create(600, 400, 'Building2').setScale(0.3).refreshBody();
         this.buildings.create(800, 200, 'Building5').setScale(0.3).refreshBody();
 
-        this.physics.add.collider(this.player, this.buildings);
+        this.physics.add.collider(this.player, this.buildings, this.playerHitBuilding, null, this);
 
         this.InitializeCamera();
         this.MovementInitialize();
@@ -75,6 +75,12 @@ class MainScene extends Phaser.Scene
     {
 
         this.MovementUpdate();
+    }
+
+    //Stops player when colliding with a building
+    playerHitBuilding(player)
+    {
+        player.body.stop();
     }
 
     MovementInitialize(){
@@ -102,7 +108,7 @@ class MainScene extends Phaser.Scene
         this.player.body.onWorldBounds = true;
         this.physics.world.on('worldbounds', function(body){
             //Stops object from moving
-            body.speed = 0;
+            body.stop();
     
             this.movingOnPath = false;
         },this);
