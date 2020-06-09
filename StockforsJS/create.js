@@ -8,6 +8,7 @@ var pointer;
 
 var debugText;
 
+
 function create ()
     {
 
@@ -34,7 +35,7 @@ function create ()
         this.InitializeCamera();
         this.MovementInitialize();
 
-        this.createButton(200, 200);
+        this.createContainer(200, 200);
         
         
     }
