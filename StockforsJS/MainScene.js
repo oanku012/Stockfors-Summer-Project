@@ -54,7 +54,7 @@ class MainScene extends Phaser.Scene
         this.InitializeCamera();
         this.MovementInitialize();
 
-        this.createButton(200, 200);
+        this.createContainer(200, 200);
         
         
     }
@@ -202,50 +202,56 @@ class MainScene extends Phaser.Scene
     });
     }
 
-    createButton (posX, posY) 
+    createContainer (posX, posY) 
     {
-    let bg = this.add.image(0, 0, 'buttonBG');
-    let text = this.add.image(0, 0, 'buttonText');
-
+        // Button
+        let buttonBG = this.add.image(0, 0, 'buttonBG');
+        let buttonText = this.add.image(0, 0, 'buttonText');
     
-    let button = this.add.container(posX, posY, [ bg, text ]);
-
-
-    button.setSize(bg.width, bg.height);
-
-    button.setInteractive();
-
-    let popupBG = this.add.image(0, 0, 'menuBG');
-    let popup = this.add.container(800, 600, [ popupBG ]);
-    popup.setVisible(false);
-
-
-    button.on('pointerover', function () {
-
-        bg.setTint(0x44ff44);
-
-    });
-
-    button.on('pointerout', function () {
-
-        bg.clearTint();
-
-    });
-
-    button.on('pointerdown', function () {
-
-        if (popup.visible == true)
-        {
-            popup.setVisible(false);
-        }
-        else 
-        {
-            popup.setVisible(true);
-        }
+        let button = this.add.container(posX, posY, [ buttonBG, buttonText ]);
+        button.setSize(buttonBG.width, buttonBG.height);
+        button.setInteractive();
+    
+        // Popup menu
+        let screenCenterX = this.cameras.main.worldView.x + this.cameras.main.width / 2;
+        let screenCenterY = this.cameras.main.worldView.y + this.cameras.main.height / 2;
+        let popupBG = this.add.image(0, 0, 'menuBG');
+        let popup = this.add.container(screenCenterX * .5, screenCenterY * .5, [ popupBG ]);
+        popup.setVisible(false);
+    
+        // Exit button
+        let exitButtonBG = this.add.image(0,0, 'exitButton');
+        let exitButton = this.add.container(screenCenterX - popupBG.width * .66, screenCenterY - popupBG.height * 1.025, [ exitButtonBG ]);
+        exitButton.setVisible(false);
+    
+        button.on('pointerover', function () {
+    
+            buttonBG.setTint(0x44ff44);
+    
+        });
+    
+        button.on('pointerout', function () {
+    
+            buttonBG.clearTint();
+    
+        });
+    
+        button.on('pointerdown', function () {
+    
+            if (popup.visible == true)
+            {
+                popup.setVisible(false);
+                exitButton.setVisible(false);
+            }
+            else 
+            {
+                popup.setVisible(true);
+                exitButton.setVisible(true);
+            }
+            
+        });
+    
         
-    });
-
-    
     }
 
 
