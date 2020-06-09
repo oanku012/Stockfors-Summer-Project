@@ -17,7 +17,7 @@ function createContainer (posX, posY)
 
     // Exit button
     var exitButtonBG = this.add.image(0,0, 'exitButton');
-    var exitButton = this.add.container(screenCenterX - popupBG.width, screenCenterY - popupBG.height, [ exitButtonBG ]);
+    var exitButton = this.add.container(screenCenterX - popupBG.width * .66, screenCenterY - popupBG.height * 1.025, [ exitButtonBG ]);
     exitButton.setVisible(false);
 
     button.on('pointerover', function () {
