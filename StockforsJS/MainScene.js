@@ -31,6 +31,7 @@ class MainScene extends Phaser.Scene
         this.load.image('menuBG', 'Assets/images/menu/menu-bg.png');
 
         this.load.image('Building2', 'Assets/images/map/Buildings/rem_0002');
+        this.load.image('Building5','Assets/images/map/Buildings/rem_0005');
         this.load.image('exitButton', 'Assets/images/menu/exit-button.png');
     }
 
@@ -56,9 +57,10 @@ class MainScene extends Phaser.Scene
         this.player.body.setCollideWorldBounds(true);
 
         this.buildings = this.physics.add.staticGroup()
-        this.buildings.create((600, 400, 'Building2'));
+        this.buildings.create(600, 400, 'Building2').setScale(0.3).refreshBody();
+        this.buildings.create(800, 200, 'Building5').setScale(0.3).refreshBody();
 
-        //this.add.image(800, 600, 'Building2');
+        this.physics.add.collider(this.player, this.buildings);
 
         this.InitializeCamera();
         this.MovementInitialize();
@@ -71,8 +73,6 @@ class MainScene extends Phaser.Scene
 
     update ()
     {
-    
-        //pointer = this.input.activePointer;
 
         this.MovementUpdate();
     }
