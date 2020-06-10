@@ -38,6 +38,14 @@ class MenuScene extends Phaser.Scene
         let exitButton = this.add.container(700, 400, [ exitButtonBG ]);
         exitButton.setSize(exitButtonBG.width, exitButtonBG.height);
         exitButton.setInteractive();
+
+        let title = this.add.text(300, 450, 'Title');
+        title.setFontSize(48);
+        title.setColor("black");
+        
+        let description = this.add.text(300, 600, 'description');
+        description.setFontSize(24);
+        description.setColor("black");
     
         /*
         button.on('pointerover', function () {
