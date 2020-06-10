@@ -2,9 +2,11 @@ class StockforsScene extends MapScene
 {
     constructor()
     {
-        super('StockforsScene');
+        SceneKey = 'StockforsScene'
 
-        this.key = 'StockforsScene'
+        super(SceneKey);
+
+        
 
         this.PatruunanTalo;
         this.PakkausMuseo;

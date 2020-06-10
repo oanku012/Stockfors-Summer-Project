@@ -1,8 +1,11 @@
+var SceneKey = 'MapScene';
+
 class MapScene extends Phaser.Scene 
 {
     constructor()
     {
-        super('MapScene');
+
+        super(SceneKey);
 
         //From create.js
         this.player;
@@ -19,7 +22,7 @@ class MapScene extends Phaser.Scene
 
         this.buildings;
 
-        this.key = 'MapScene';
+        //this.key = 'MapScene';
         
     }
 
@@ -30,7 +33,7 @@ class MapScene extends Phaser.Scene
 
     create ()
     {
-        this.scene.key = this.key;
+        //this.scene.key = this.key;
         console.log(this.scene.key);
 
         this.player = this.physics.add.sprite(400, 300, 'player');
