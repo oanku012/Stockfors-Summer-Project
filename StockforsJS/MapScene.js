@@ -19,7 +19,7 @@ class MapScene extends Phaser.Scene
 
         this.buildings;
 
-        
+        this.key = 'MapScene';
         
     }
 
@@ -30,7 +30,8 @@ class MapScene extends Phaser.Scene
 
     create ()
     {
-        
+        this.scene.key = this.key;
+        console.log(this.scene.key);
 
         this.player = this.physics.add.sprite(400, 300, 'player');
 
