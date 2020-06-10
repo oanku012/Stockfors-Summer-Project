@@ -1,1 +1,0 @@
-//class KirkkoScene extends 
