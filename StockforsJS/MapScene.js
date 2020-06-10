@@ -1,8 +1,8 @@
-class MainScene extends Phaser.Scene
+class MapScene extends Phaser.Scene 
 {
     constructor()
     {
-        super('MainScene');
+        super('MapScene');
 
         //From create.js
         this.player;
@@ -16,40 +16,19 @@ class MainScene extends Phaser.Scene
         this.destination = new Phaser.Math.Vector2();
         this.movingOnPath = false;
         this.speed = 400;
-        this.debug;
 
         this.buildings;
-
-        this.PatruunanTalo;
-        this.PakkausMuseo;
         
     }
 
     preload ()
     {
-        this.load.image('map', 'Assets/images/map/Red Bank.png');
-        this.load.spritesheet('player', 'Assets/images/character/dude.png', { frameWidth: 32, frameHeight: 48 });
-        this.load.image('buttonBG', 'Assets/images/menu/button-bg.png');
-        this.load.image('buttonText', 'Assets/images/menu/button-text.png');
-        this.load.image('menuBG', 'Assets/images/menu/menu-bg.png');
-
-        this.load.image('PatruunanTalo', 'Assets/images/map/Buildings/rem_0002');
-        this.load.image('PakkausMuseo','Assets/images/map/Buildings/rem_0005');
-        this.load.image('exitButton', 'Assets/images/menu/exit-button.png');
+        
     }
 
     create ()
     {
-                
-        this.add.image(400, 300, 'map');
-        
         this.player = this.physics.add.sprite(400, 300, 'player');
-
-        this.add.text(300, 40, "Stockfors", {font: "40px Arial", fill: "yellow"});
-
-        /*this.debugText = this.add.text(1600, 10, "Debug stuff here.", {font: "40px Arial", fill: "white"});
-        
-        this.debugText.setScrollFactor(0, 0);*/
 
         this.arrowKeys = this.input.keyboard.createCursorKeys();
         this.wasdKeys = this.input.keyboard.addKeys('W,S,A,D');
@@ -63,8 +42,6 @@ class MainScene extends Phaser.Scene
         this.BuildingsInitialize();
         this.InitializeCamera();
         this.MovementInitialize();
-
-        this.createButton(200, 200);
 
         
         
@@ -93,14 +70,6 @@ class MainScene extends Phaser.Scene
     BuildingsInitialize()
     {
         this.buildings = this.physics.add.staticGroup();
-        
-        this.PatruunanTalo = this.buildings.create(600, 400, 'PatruunanTalo').setScale(0.3).refreshBody();
-
-        this.PatruunanTalo.scene = 'MenuScene';
-
-        this.PakkausMuseo = this.buildings.create(800, 200, 'PakkausMuseo').setScale(0.3).refreshBody();
-
-        this.PakkausMuseo.scene = 'MenuScene';
 
         this.physics.add.collider(this.player, this.buildings, this.playerHitBuilding, null, this);
     }
@@ -181,7 +150,7 @@ class MainScene extends Phaser.Scene
     
                 this.movingOnPath = false;
     
-                //This is just to let the this.player move using keys after moving to a position with the mouse
+                //This is just to let the player move using keys after moving to a position with the mouse
                 this.destination.x = -1000;
                 this.destination.y = -1000;
             }
@@ -189,13 +158,6 @@ class MainScene extends Phaser.Scene
             
         }
 
-        //Check if player is near a building
-        /*distanceToDestination = this.CheckDistance(this.player, this.buildings);
-
-        if(distanceToDestination < 100)
-        {
-            this.scene.start('MenuScene');
-        }*/
 
     }
 

@@ -16,7 +16,7 @@ var config = {
             }
         },
 
-        scene: [ MainScene, MenuScene ]
+        scene: [ StockforsScene, MenuScene ]
         
         /*{
             preload: preload,
