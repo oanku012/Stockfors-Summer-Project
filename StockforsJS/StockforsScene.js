@@ -2,9 +2,9 @@ class StockforsScene extends MapScene
 {
     constructor()
     {
-        SceneKey = 'StockforsScene'
+        //SceneKey = 'StockforsScene'
 
-        super(SceneKey);
+        super('StockforsScene');
 
         
 

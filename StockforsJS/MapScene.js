@@ -1,8 +1,6 @@
-var SceneKey = 'MapScene';
-
 class MapScene extends Phaser.Scene 
 {
-    constructor()
+    constructor(SceneKey)
     {
 
         super(SceneKey);
