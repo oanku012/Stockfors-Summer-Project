@@ -4,9 +4,6 @@ class StockforsScene extends MapScene
     {
         super('StockforsScene');
 
-        this.startingPoint.x = 400;
-        this.startingPoint.y = 300;
-
         this.PatruunanTalo;
         this.PakkausMuseo;
 
