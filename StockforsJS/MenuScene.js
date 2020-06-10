@@ -18,6 +18,7 @@ class MenuScene extends Phaser.Scene
     create ()
     {
         this.createContainer ();
+
     }
 
 
@@ -79,7 +80,7 @@ class MenuScene extends Phaser.Scene
         });
     
         exitButton.on('pointerdown', function (event) {
-            this.scene.start('MainScene');
+            this.scene.start('StockforsScene');
           }, this);
     
         
