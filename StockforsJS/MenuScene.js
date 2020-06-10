@@ -18,6 +18,8 @@ class MenuScene extends Phaser.Scene
     create ()
     {
         this.createContainer ();
+        console.log(this.scene.key);
+
 
     }
 

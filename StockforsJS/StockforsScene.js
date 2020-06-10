@@ -2,14 +2,15 @@ class StockforsScene extends MapScene
 {
     constructor()
     {
-        //SceneKey = 'StockforsScene'
-
         super('StockforsScene');
 
-        
+        this.startingPoint.x = 400;
+        this.startingPoint.y = 300;
 
         this.PatruunanTalo;
         this.PakkausMuseo;
+
+        this.KirkkoTie;
     }
 
     preload()
@@ -23,18 +24,25 @@ class StockforsScene extends MapScene
         this.load.image('PatruunanTalo', 'Assets/images/map/Buildings/rem_0002');
         this.load.image('PakkausMuseo','Assets/images/map/Buildings/rem_0005');
         this.load.image('exitButton', 'Assets/images/menu/exit-button.png');
+
+        this.load.image('Nuoli', 'Assets/images/map/arrowSign');
     }
 
-    create()
+    //Use parameters when starting this scene from another scene to set the position of the player
+    create(startingPointX, startingPointY)
     {
-        
-        
+        //Check if parameters are not numbers and if so give them the default values
+        if(isNaN(startingPointX) && isNaN(startingPointY))
+        {
+            startingPointX = 400;
+            startingPointY = 300;
+        }
 
         this.add.image(400, 300, 'map');
         this.add.text(300, 40, "Stockfors", {font: "40px Arial", fill: "yellow"});
         
         
-        super.create();
+        super.create(startingPointX, startingPointY);
         this.createButton(200, 200);
 
     }
@@ -50,5 +58,9 @@ class StockforsScene extends MapScene
         this.PakkausMuseo = this.buildings.create(800, 200, 'PakkausMuseo').setScale(0.3).refreshBody();
 
         this.PakkausMuseo.scene = 'MenuScene';
+
+        this.KirkkoTie = this.buildings.create(1400, 500, 'Nuoli').setScale(0.1).refreshBody();
+
+        this.KirkkoTie.scene = 'KirkkoScene';
     }
 }

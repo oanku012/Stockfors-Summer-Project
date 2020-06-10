@@ -10,7 +10,6 @@ class MapScene extends Phaser.Scene
         this.arrowKeys;
         this.wasdKeys;
         this.pointer;
-        //this.debugText;
 
         //From movement.js
         this.currentPath;
@@ -19,8 +18,6 @@ class MapScene extends Phaser.Scene
         this.speed = 400;
 
         this.buildings;
-
-        //this.key = 'MapScene';
         
     }
 
@@ -29,12 +26,11 @@ class MapScene extends Phaser.Scene
         
     }
 
-    create ()
+    create (startingPointX, startingPointY)
     {
-        //this.scene.key = this.key;
         console.log(this.scene.key);
 
-        this.player = this.physics.add.sprite(400, 300, 'player');
+        this.player = this.physics.add.sprite(startingPointX, startingPointY, 'player');
 
         this.arrowKeys = this.input.keyboard.createCursorKeys();
         this.wasdKeys = this.input.keyboard.addKeys('W,S,A,D');
@@ -47,7 +43,10 @@ class MapScene extends Phaser.Scene
         
         this.BuildingsInitialize();
         this.InitializeCamera();
-        this.MovementInitialize();
+
+        //Movement is initialized with a slight delay so that player clicking the button to return outside won't trigger movement
+        this.time.delayedCall(100, this.MovementInitialize, null, this)
+        
 
         
         
@@ -55,8 +54,10 @@ class MapScene extends Phaser.Scene
 
     update ()
     {
-
+        
         this.MovementUpdate();
+      
+        
     }
 
     /*//Used to find the right buildings from the physics group
@@ -82,7 +83,7 @@ class MapScene extends Phaser.Scene
 
     MovementInitialize(){
     
-        this.input.on('pointerup', function (pointer)
+        this.input.on('pointerup', function ()
         {
             this.destination.x = this.pointer.worldX;
             this.destination.y = this.pointer.worldY;
@@ -108,6 +109,8 @@ class MapScene extends Phaser.Scene
     
     MovementUpdate(){
         
+        
+
         //Movement with WASD and arrow keys
         if (this.arrowKeys.left.isDown || this.wasdKeys.A.isDown)
         {
