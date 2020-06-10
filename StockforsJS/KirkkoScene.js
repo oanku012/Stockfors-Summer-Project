@@ -1,1 +1,4 @@
-//class KirkkoScene extends 
+class KirkkoScene extends MapScene
+{
+    
+}

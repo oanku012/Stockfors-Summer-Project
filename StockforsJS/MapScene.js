@@ -18,6 +18,8 @@ class MapScene extends Phaser.Scene
         this.speed = 400;
 
         this.buildings;
+
+        
         
     }
 
@@ -28,6 +30,8 @@ class MapScene extends Phaser.Scene
 
     create ()
     {
+        
+
         this.player = this.physics.add.sprite(400, 300, 'player');
 
         this.arrowKeys = this.input.keyboard.createCursorKeys();

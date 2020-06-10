@@ -4,6 +4,8 @@ class StockforsScene extends MapScene
     {
         super('StockforsScene');
 
+        this.key = 'StockforsScene';
+
         this.PatruunanTalo;
         this.PakkausMuseo;
     }
@@ -23,6 +25,8 @@ class StockforsScene extends MapScene
 
     create()
     {
+        console.log(this.scene.key);
+
         this.add.image(400, 300, 'map');
         this.add.text(300, 40, "Stockfors", {font: "40px Arial", fill: "yellow"});
         
