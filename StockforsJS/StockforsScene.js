@@ -54,7 +54,7 @@ class StockforsScene extends MapScene
 
         this.PatruunanTalo.body.setSize(175, 75);
 
-        this.PatruunanTalo.scene = 'MenuScene';
+        this.PatruunanTalo.scene = 'PatruunaScene';
 
         this.PakkausMuseo = this.buildings.create(800, 200, 'PakkausMuseo').setScale(0.3).setDepth(200).refreshBody();
 
@@ -62,7 +62,7 @@ class StockforsScene extends MapScene
 
         this.PakkausMuseo.body.setSize(175, 50);
 
-        this.PakkausMuseo.scene = 'MenuScene';
+        this.PakkausMuseo.scene = 'PakkausMuseoScene';
 
         this.KirkkoTie = this.buildings.create(1400, 500, 'Nuoli').setScale(0.1).setDepth(500).refreshBody();
 
