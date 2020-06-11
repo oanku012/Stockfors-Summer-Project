@@ -16,7 +16,7 @@ var config = {
             }
         },
 
-        scene: [ StockforsScene, MenuScene, KirkkoScene ]
+        scene: [ StockforsScene, MenuScene, KirkkoScene, PatruunaScene, PakkausMuseoScene ]
         
         /*{
             preload: preload,
