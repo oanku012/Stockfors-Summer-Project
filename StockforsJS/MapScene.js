@@ -12,12 +12,14 @@ class MapScene extends Phaser.Scene
         this.pointer;
 
         //From movement.js
-        this.currentPath;
-        this.destination = new Phaser.Math.Vector2();
         this.movingOnPath = false;
-        this.speed = 400;
+        this.speed = 10;
+        this.movementVector = new Phaser.Math.Vector2();
+        this.destination = new Phaser.Math.Vector2();
 
-        this.buildings;
+        this.buildings = {};
+
+        this.sceneToOpen;
         
     }
 
@@ -30,18 +32,22 @@ class MapScene extends Phaser.Scene
     {
         console.log(this.scene.key);
 
-        this.player = this.physics.add.sprite(startingPointX, startingPointY, 'player');
+        this.sceneToOpen = null;
 
+        this.matter.world.setBounds();
+
+        this.player = this.matter.add.sprite(startingPointX, startingPointY, 'player');
         this.player.setDepth(this.player.y);
+        this.player.setFixedRotation();
+
+        //First value is friction against walls, second value is air resistance
+        this.player.setFriction(0.5, 0);
 
         this.arrowKeys = this.input.keyboard.createCursorKeys();
         this.wasdKeys = this.input.keyboard.addKeys('W,S,A,D');
         this.pointer = this.input.activePointer;
 
         this.input.mouse.disableContextMenu();
-        
-        this.player.body.setCollideWorldBounds(true);
-
         
         this.BuildingsInitialize();
         this.InitializeCamera();
@@ -63,51 +69,53 @@ class MapScene extends Phaser.Scene
         {
             this.player.setDepth(this.player.y);
         }
+
+        if(typeof this.sceneToOpen === 'string')
+        {
+            this.scene.start(this.sceneToOpen);
+        }
+
+        //console.log(this.player.x + this.player.y);
     }
 
-    /*//Used to find the right buildings from the physics group
-    findBuilding(thisName)
-    {
-        return thisName === thisName;
-    }*/
-
-    //When player collides with a building, stop player and load scene associated with the building
-    playerHitBuilding(player, building)
-    {
-        player.body.stop();
-
-        this.scene.start(building.scene);
-    }
+    
 
     BuildingsInitialize()
     {
-        this.buildings = this.physics.add.staticGroup();
+        //this.buildings = this.physics.add.staticGroup();
 
-        this.physics.add.collider(this.player, this.buildings, this.playerHitBuilding, null, this);
+        //this.physics.add.collider(this.player, this.buildings, this.playerHitBuilding, null, this);
+
+        //this.buildings = [PatruunanTalo, PakkausMuseo, Kirkkotie];
     }
 
     MovementInitialize(){
     
-        this.input.on('pointerup', function ()
+        //Make player move in direction of mouse click, MAYBE MAKE THIS SO IF POINTER IS HELD DOWN IT WILL CONTINUOUSLY MOVE TOWARDS THE CURSOR????
+        this.input.on('pointerdown', function ()
         {
             this.destination.x = this.pointer.worldX;
             this.destination.y = this.pointer.worldY;
     
-            this.physics.moveToObject(this.player, this.destination, this.speed);
-    
+            this.movementVector.x = this.pointer.worldX-this.player.x;
+            this.movementVector.y = this.pointer.worldY-this.player.y;
+
+            this.movementVector.setLength(this.speed);
+
+            this.player.setVelocity(this.movementVector.x, this.movementVector.y);
+
+            
+
             this.movingOnPath = true;
     
             
         }, this);
-    
-        //Stop player from moving when hitting the edges of the map
-        this.player.body.onWorldBounds = true;
-        this.physics.world.on('worldbounds', function(body){
-            //Stops object from moving
-            body.stop();
-    
-            this.movingOnPath = false;
-        },this);
+
+        /*this.matter.world.on('collisionstart', function(event, bodyA, bodyB)
+        {
+            bodyB.startScene = true;
+            
+        });*/
         
     }
     
@@ -130,8 +138,9 @@ class MapScene extends Phaser.Scene
         }
         else if(this.movingOnPath == false)
         {
+            
             this.player.setVelocityX(0);
-    
+            
         }
     
         if (this.arrowKeys.up.isDown || this.wasdKeys.W.isDown)
@@ -160,7 +169,7 @@ class MapScene extends Phaser.Scene
     
             if (distanceToDestination < 4)
             {
-                this.player.body.reset(this.destination.x, this.destination.y);
+                this.player.setVelocity(0,0);
     
                 this.movingOnPath = false;
     

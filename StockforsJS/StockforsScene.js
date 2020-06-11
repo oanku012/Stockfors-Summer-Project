@@ -4,10 +4,10 @@ class StockforsScene extends MapScene
     {
         super('StockforsScene');
 
-        this.PatruunanTalo;
+        /*this.PatruunanTalo;
         this.PakkausMuseo;
 
-        this.KirkkoTie;
+        this.KirkkoTie;*/
     }
 
     preload()
@@ -48,35 +48,14 @@ class StockforsScene extends MapScene
     {
         super.BuildingsInitialize();
 
-        this.PatruunanTalo = this.buildings.create(600, 400, 'PatruunanTalo').setScale(0.3).setDepth(400).refreshBody();
+        this.buildings.PatruunanTalo = this.matter.add.image(600, 400, 'PatruunanTalo').setScale(0.3).setStatic(true);
+        this.buildings.PatruunanTalo.scene = 'PatruunaScene';
+        
+        this.buildings.PakkausMuseo = this.matter.add.image(800, 200, 'PakkausMuseo').setScale(0.3).setStatic(true);
+        this.buildings.PakkausMuseo.scene = 'PakkausMuseoScene';
 
-        this.PatruunanTalo.setPosition(600, 370);
+        this.buildings.KirkkoTie = this.matter.add.image(1400, 500, 'Nuoli').setScale(0.1).setStatic(true);
+        this.buildings.KirkkoTie.scene = 'KirkkoScene';
 
-        this.PatruunanTalo.body.setSize(175, 75);
-
-        this.PatruunanTalo.scene = 'PatruunaScene';
-
-        this.PakkausMuseo = this.buildings.create(800, 200, 'PakkausMuseo').setScale(0.3).setDepth(200).refreshBody();
-
-        this.PakkausMuseo.setPosition(800, 150);
-
-        this.PakkausMuseo.body.setSize(175, 50);
-
-        this.PakkausMuseo.scene = 'PakkausMuseoScene';
-
-        this.KirkkoTie = this.buildings.create(1400, 500, 'Nuoli').setScale(0.1).setDepth(500).refreshBody();
-
-        this.KirkkoTie.scene = 'KirkkoScene'; 
-
-        //let testitalo = this.add.image(200, 200, 'PatruunanTalo');
-
-        //testitalo.depth = testitalo.y + 64;
-
-        /*let buildingsArray = this.buildings.getChildren();
-
-        for(var i = 0; i< buildingsArray.length; i++)
-        {
-            buildingsArray[i].setDepth(buildingsArray[i].y + 64);
-        }*/
     }
 }
