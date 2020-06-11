@@ -57,7 +57,7 @@ class MapScene extends Phaser.Scene
         
         this.MovementUpdate();
       
-        
+        this.player.setDepth(this.player.y);
     }
 
     /*//Used to find the right buildings from the physics group
