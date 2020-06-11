@@ -10,6 +10,13 @@ var config = {
         
         physics: {
             default: 'arcade',
+            matter: {
+                debug: true,
+                enablesleeping: true,
+                gravity: {
+                    y: 0
+                }
+            },
             arcade: {
                 //gravity: { y: 0 },
                 debug: true

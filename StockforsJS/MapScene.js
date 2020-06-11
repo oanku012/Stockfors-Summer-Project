@@ -32,6 +32,8 @@ class MapScene extends Phaser.Scene
 
         this.player = this.physics.add.sprite(startingPointX, startingPointY, 'player');
 
+        this.player.setDepth(this.player.y);
+
         this.arrowKeys = this.input.keyboard.createCursorKeys();
         this.wasdKeys = this.input.keyboard.addKeys('W,S,A,D');
         this.pointer = this.input.activePointer;
@@ -57,7 +59,10 @@ class MapScene extends Phaser.Scene
         
         this.MovementUpdate();
       
-        this.player.setDepth(this.player.y);
+        if(this.player.body.speed > 0)
+        {
+            this.player.setDepth(this.player.y);
+        }
     }
 
     /*//Used to find the right buildings from the physics group
