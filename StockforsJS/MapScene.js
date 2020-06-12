@@ -13,7 +13,7 @@ class MapScene extends Phaser.Scene
 
         //From movement.js
         this.movingOnPath = false;
-        this.speed = 7;
+        this.speed = 5;
         this.movementVector = new Phaser.Math.Vector2();
         this.destination = new Phaser.Math.Vector2();
 
@@ -193,7 +193,7 @@ class MapScene extends Phaser.Scene
             this.destination.x = this.pointer.worldX;
             this.destination.y = this.pointer.worldY;
 
-            if(this.CheckDistance(this.player, this.destination)>50)
+            if(this.CheckDistance(this.player, this.destination)>30)
             {
 
                 this.movementVector.x = this.pointer.worldX-this.player.x;
@@ -207,11 +207,6 @@ class MapScene extends Phaser.Scene
             }
         }
         
-
-        
-
-        
-
 
     }
 
