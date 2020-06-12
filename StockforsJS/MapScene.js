@@ -48,6 +48,7 @@ class MapScene extends Phaser.Scene
         //Makes it so that the pointer world position is updated when camera moves
         this.input.setPollAlways();
         
+        this.CreateAnimations();
         this.BuildingsInitialize();
         this.InitializeCamera();
 
@@ -57,17 +58,6 @@ class MapScene extends Phaser.Scene
         
         
         
-    }
-
-    OnPlayerCollision(player, scene, building)
-    {
-        //player.setVelocity(0,0);
-
-        console.log('Collided with ' + building.key);
-
-        //scene.start(building.sceneToOpen);
-
-
     }
 
     update ()
@@ -80,12 +70,7 @@ class MapScene extends Phaser.Scene
             this.player.setDepth(this.player.y);
         }
 
-        /*if(typeof this.sceneToOpen === 'string')
-        {
-            this.scene.start(this.sceneToOpen);
-        }*/
-
-        //console.log(this.player.x + this.player.y);
+       
     }
 
     
@@ -97,31 +82,33 @@ class MapScene extends Phaser.Scene
 
     MovementInitialize(){
     
-        //Make player move in direction of mouse click, MAYBE MAKE THIS SO IF POINTER IS HELD DOWN IT WILL CONTINUOUSLY MOVE TOWARDS THE CURSOR????
-        this.input.on('pointerdown', function ()
+        //Make player move in direction of mouse click
+        /*this.input.on('pointerdown', function ()
         {
-            /*this.destination.x = this.pointer.worldX;
-            this.destination.y = this.pointer.worldY;
-    
-            this.movementVector.x = this.pointer.worldX-this.player.x;
-            this.movementVector.y = this.pointer.worldY-this.player.y;
-
-            this.movementVector.setLength(this.speed);
-
-            this.player.setVelocity(this.movementVector.x, this.movementVector.y);
-
-            
-
-            this.movingOnPath = true;*/
     
             
-        }, this);
+        }, this);*/
 
-        /*this.matter.world.on('collisionstart', function(event, bodyA, bodyB)
+        this.matter.world.on('collisionstart', function(event, bodyA, bodyB)
         {
-            bodyB.startScene = true;
+            //Checks if either of the colliding objects contain the openScene function
+            if(bodyB.gameObject != null)
+            {
+                if(typeof bodyB.gameObject.openScene === 'function')
+                {
+                    bodyB.gameObject.openScene();
+                }
+            }
+            else if(bodyA.gameObject != null)
+            {
+                if(typeof bodyA.gameObject.openScene === 'function')
+                {
+                    bodyA.gameObject.openScene();
+                }
+            }
+
             
-        });*/
+        });
         
     }
     
@@ -206,6 +193,66 @@ class MapScene extends Phaser.Scene
                 this.movingOnPath = true;
             }
         }
+
+        //Apply the correct animations to player based on direction of movement
+        if(this.player.body.speed>0)
+        {
+            const obliqueThreshold = 2/10;
+            const straightThreshold = 8/10;
+
+            console.log(this.player.body.velocity);
+
+            if(this.player.body.velocity.x>(this.speed*(straightThreshold)))
+            {
+            
+                console.log('Moving right');
+                
+                this.player.anims.play('right', true);
+            }
+            else if(this.player.body.velocity.y>(this.speed)*(obliqueThreshold) && this.player.body.velocity.x>(this.speed*obliqueThreshold))
+            {
+                console.log('Moving downright');
+
+                this.player.anims.play('downright', true);
+            }
+            else if(this.player.body.velocity.y>(this.speed*(straightThreshold)))
+            {
+                console.log('Moving down');
+
+                this.player.anims.play('down', true);
+            }
+            else if(this.player.body.velocity.y>(this.speed)*(obliqueThreshold) && this.player.body.velocity.x<(-this.speed*obliqueThreshold))
+            {
+                console.log('Moving downleft');
+
+                this.player.anims.play('downleft', true);
+            }
+            else if(this.player.body.velocity.x<(-this.speed*(straightThreshold)))
+            {
+                console.log('Moving left');
+
+                this.player.anims.play('left', true);
+            }
+            else if(this.player.body.velocity.y<(-this.speed)*(obliqueThreshold) && this.player.body.velocity.x<(-this.speed*obliqueThreshold))
+            {
+                console.log('Moving upleft');
+
+                this.player.anims.play('upleft', true);
+            }
+            else if(this.player.body.velocity.y<(-this.speed*(straightThreshold)))
+            {
+                console.log('Moving up');
+
+                this.player.anims.play('up', true);
+            }
+            else if(this.player.body.velocity.y<(-this.speed)*(obliqueThreshold) && this.player.body.velocity.x>(this.speed*obliqueThreshold))
+            {
+                console.log('Moving upright');
+
+                this.player.anims.play('upright', true);
+            }
+            
+        }
         
 
     }
@@ -235,14 +282,12 @@ class MapScene extends Phaser.Scene
             if((camera.zoom - deltaY*0.05) < maxZoom)
             {
                 camera.setZoom(camera.zoom - deltaY*0.05); 
-                //this.debugText.setScale(1 /camera.zoom, 1/camera.zoom);
             }
             
         }
         else
         {
             camera.setZoom(minZoom);
-            //this.debugText.setScale(1 /camera.zoom, 1/camera.zoom);
 
         }        
 
@@ -280,6 +325,67 @@ class MapScene extends Phaser.Scene
           }, this);
     
         
+    }
+
+    CreateAnimations()
+    {
+        
+        this.anims.create({
+            key: 'right',
+            frames: this.anims.generateFrameNumbers('player', { start: 5, end: 8 }),
+            frameRate: 10,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'downright',
+            frames: this.anims.generateFrameNumbers('player', { start: 5, end: 8 }),
+            frameRate: 10,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'down',
+            frames: [{key: 'player', frame: 4 }],
+            frameRate: 10,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'downleft',
+            frames: this.anims.generateFrameNumbers('player', { start: 0, end: 3 }),
+            frameRate: 10,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'left',
+            frames: this.anims.generateFrameNumbers('player', { start: 0, end: 3 }),
+            frameRate: 10,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'upleft',
+            frames: this.anims.generateFrameNumbers('player', { start: 0, end: 3 }),
+            frameRate: 10,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'up',
+            frames: this.anims.generateFrameNumbers('player', { start: 5, end: 8 }),
+            frameRate: 10,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'upright',
+            frames: this.anims.generateFrameNumbers('player', { start: 5, end: 8 }),
+            frameRate: 10,
+            repeat: -1
+        });
+    
     }
 
 

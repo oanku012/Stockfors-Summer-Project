@@ -4,10 +4,6 @@ class StockforsScene extends MapScene
     {
         super('StockforsScene');
 
-        /*this.PatruunanTalo;
-        this.PakkausMuseo;
-
-        this.KirkkoTie;*/
     }
 
     preload()
@@ -48,26 +44,21 @@ class StockforsScene extends MapScene
     {
         super.BuildingsInitialize();
 
+        const thisScene = this.scene;
+
         this.buildings.PatruunanTalo = this.matter.add.image(600, 400, 'PatruunanTalo').setScale(0.3).setStatic(true);
-        this.buildings.PatruunanTalo.scene = 'PatruunaScene';
-        //RIKKINÄINEN PASKA!!!!!!!
-        //this.buildings.PatruunanTalo.body.setOnCollideWith(this.player.body, this.OnPlayerCollision(this.player, this.scene, this.buildings.PatruunanTalo));
+        this.buildings.PatruunanTalo.openScene = function(){
+            thisScene.start('PatruunaScene');
+        };
         
         this.buildings.PakkausMuseo = this.matter.add.image(800, 200, 'PakkausMuseo').setScale(0.3).setStatic(true);
-        this.buildings.PakkausMuseo.scene = 'PakkausMuseoScene';
-        //this.player.body.setOnCollideWith(this.buildings.PakkausMuseo.body, this.OnPlayerCollision(this.player, this.scene, this.buildings.PakkausMuseo));
-
-        this.buildings.KirkkoTie = this.matter.add.image(1400, 500, 'Nuoli').setScale(0.1).setStatic(true);
-        this.buildings.KirkkoTie.scene = 'KirkkoScene';
-
-        /*let buildingsArray = Object.keys(this.buildings);
-
+        this.buildings.PakkausMuseo.openScene = function(){
+            thisScene.start('PakkausMuseoScene');
+        };
         
-        for(let i = 0; i<buildingsArray.length; i++)
-        {
-            this.player.setOnCollideWith(this.buildings[buildingsArray[i]].body, this.OnPlayerCollision(this.player, this.scene, this.buildings[buildingsArray[i]]));
-            
-        }*/
-
+        this.buildings.KirkkoTie = this.matter.add.image(1400, 500, 'Nuoli').setScale(0.1).setStatic(true);
+        this.buildings.KirkkoTie.openScene = function(){
+            thisScene.start('KirkkoScene');
+        };
     }
 }
