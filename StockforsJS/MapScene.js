@@ -30,13 +30,8 @@ class MapScene extends Phaser.Scene {
     //This is called when starting scene with this.scene.start
     init(startingPointX, startingPointY) {
 
-        
-        //if (isNaN(startingPointX) == false && isNaN(startingPointY) == false) {
-            
-            console.log('Hello');
-            this.startingPoint.x = startingPointX;
-            this.startingPoint.y = startingPointY;
-        //}
+        this.startingPoint.x = startingPointX;
+        this.startingPoint.y = startingPointY;
 
     }
 
@@ -182,10 +177,6 @@ class MapScene extends Phaser.Scene {
                     this.player.setVelocity(0, 0);
 
                     this.movingOnPath = false;
-
-                    //This is just to let the player move using keys after moving to a position with the mouse
-                    //this.destination.x = -1000;
-                    //this.destination.y = -1000;
                 }
 
 
