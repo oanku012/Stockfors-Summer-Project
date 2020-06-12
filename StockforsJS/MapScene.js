@@ -13,7 +13,7 @@ class MapScene extends Phaser.Scene
 
         //From movement.js
         this.movingOnPath = false;
-        this.speed = 10;
+        this.speed = 7;
         this.movementVector = new Phaser.Math.Vector2();
         this.destination = new Phaser.Math.Vector2();
 
@@ -36,18 +36,17 @@ class MapScene extends Phaser.Scene
 
         this.matter.world.setBounds();
 
-        this.player = this.matter.add.sprite(startingPointX, startingPointY, 'player');
+        this.player = this.matter.add.sprite(startingPointX, startingPointY, 'player').setBounce(0).setFixedRotation().setFriction(20, 0).setIgnoreGravity(true);
         this.player.setDepth(this.player.y);
-        this.player.setFixedRotation();
-
-        //First value is friction against walls, second value is air resistance
-        this.player.setFriction(0.5, 0);
 
         this.arrowKeys = this.input.keyboard.createCursorKeys();
         this.wasdKeys = this.input.keyboard.addKeys('W,S,A,D');
         this.pointer = this.input.activePointer;
 
         this.input.mouse.disableContextMenu();
+
+        //Makes it so that the pointer world position is updated when camera moves
+        this.input.setPollAlways();
         
         this.BuildingsInitialize();
         this.InitializeCamera();
@@ -55,9 +54,20 @@ class MapScene extends Phaser.Scene
         //Movement is initialized with a slight delay so that player clicking the button to return outside won't trigger movement
         this.time.delayedCall(100, this.MovementInitialize, null, this)
         
+        
+        
+        
+    }
 
-        
-        
+    OnPlayerCollision(player, scene, building)
+    {
+        //player.setVelocity(0,0);
+
+        console.log('Collided with ' + building.key);
+
+        //scene.start(building.sceneToOpen);
+
+
     }
 
     update ()
@@ -70,10 +80,10 @@ class MapScene extends Phaser.Scene
             this.player.setDepth(this.player.y);
         }
 
-        if(typeof this.sceneToOpen === 'string')
+        /*if(typeof this.sceneToOpen === 'string')
         {
             this.scene.start(this.sceneToOpen);
-        }
+        }*/
 
         //console.log(this.player.x + this.player.y);
     }
@@ -82,11 +92,7 @@ class MapScene extends Phaser.Scene
 
     BuildingsInitialize()
     {
-        //this.buildings = this.physics.add.staticGroup();
-
-        //this.physics.add.collider(this.player, this.buildings, this.playerHitBuilding, null, this);
-
-        //this.buildings = [PatruunanTalo, PakkausMuseo, Kirkkotie];
+        
     }
 
     MovementInitialize(){
@@ -94,7 +100,7 @@ class MapScene extends Phaser.Scene
         //Make player move in direction of mouse click, MAYBE MAKE THIS SO IF POINTER IS HELD DOWN IT WILL CONTINUOUSLY MOVE TOWARDS THE CURSOR????
         this.input.on('pointerdown', function ()
         {
-            this.destination.x = this.pointer.worldX;
+            /*this.destination.x = this.pointer.worldX;
             this.destination.y = this.pointer.worldY;
     
             this.movementVector.x = this.pointer.worldX-this.player.x;
@@ -106,7 +112,7 @@ class MapScene extends Phaser.Scene
 
             
 
-            this.movingOnPath = true;
+            this.movingOnPath = true;*/
     
             
         }, this);
@@ -159,14 +165,14 @@ class MapScene extends Phaser.Scene
         {
             this.player.setVelocityY(0);
         }
-        
-        let distanceToDestination;
-
-        if (this.player.body.speed > 0)
+        else if (this.movingOnPath == true)
         {
-        //Check the distance between the player and the destination player clicked
-        distanceToDestination = this.CheckDistance(this.player, this.destination);
-    
+            let distanceToDestination;
+
+            //Check the distance between the player and the destination player clicked
+            distanceToDestination = this.CheckDistance(this.player, this.destination);
+
+
             if (distanceToDestination < 4)
             {
                 this.player.setVelocity(0,0);
@@ -174,12 +180,37 @@ class MapScene extends Phaser.Scene
                 this.movingOnPath = false;
     
                 //This is just to let the player move using keys after moving to a position with the mouse
-                this.destination.x = -1000;
-                this.destination.y = -1000;
+                //this.destination.x = -1000;
+                //this.destination.y = -1000;
             }
     
             
         }
+
+
+        if(this.pointer.isDown == true)
+        {
+            this.destination.x = this.pointer.worldX;
+            this.destination.y = this.pointer.worldY;
+
+            if(this.CheckDistance(this.player, this.destination)>50)
+            {
+
+                this.movementVector.x = this.pointer.worldX-this.player.x;
+                this.movementVector.y = this.pointer.worldY-this.player.y;
+
+                this.movementVector.setLength(this.speed);
+
+                this.player.setVelocity(this.movementVector.x, this.movementVector.y);
+
+                this.movingOnPath = true;
+            }
+        }
+        
+
+        
+
+        
 
 
     }
