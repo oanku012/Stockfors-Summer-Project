@@ -100,23 +100,36 @@ class MapScene extends Phaser.Scene {
             
         }, this);*/
 
+        //This doesn't seem to work correctly, only gets called when player starts the game?
+        //this.player.setOnCollide(this.OnCollisionStop(this.movementVector, this.movingOnPath, this.player));
+
         this.matter.world.on('collisionstart', function (event, bodyA, bodyB) {
             //Checks if either of the colliding objects contain the openScene function
             if (bodyB.gameObject != null) {
+                //bodyB.gameObject.setVelocity(0,0);
                 if (typeof bodyB.gameObject.openScene === 'function') {
                     bodyB.gameObject.openScene();
                 }
             }
             else if (bodyA.gameObject != null) {
+                //bodyA.gameObject.setVelocity(0,0);
                 if (typeof bodyA.gameObject.openScene === 'function') {
                     bodyA.gameObject.openScene();
                 }
             }
 
-
         });
 
     }
+
+    /*OnCollisionStop(movementVector, movingOnPath, player)
+    {
+        movementVector.x = 0;
+        movementVector.y = 0;
+        player.setVelocity(0, 0);
+        movingOnPath = false;
+        console.log('Player collided');
+    }*/
 
 
     MovementUpdate() {
@@ -127,13 +140,15 @@ class MapScene extends Phaser.Scene {
 
             if (this.arrowKeys.left.isDown || this.wasdKeys.A.isDown) {
 
-                this.player.setVelocityX(-this.speed);
+                this.movementVector.x = -this.speed;
 
                 this.movingOnPath = false;
 
             }
             else if (this.arrowKeys.right.isDown || this.wasdKeys.D.isDown) {
-                this.player.setVelocityX(this.speed);
+                
+                this.movementVector.x = this.speed;
+                
                 this.movingOnPath = false;
 
 
@@ -141,30 +156,27 @@ class MapScene extends Phaser.Scene {
 
             else if (this.movingOnPath == false) {
 
-
-                this.player.setVelocityX(0);
-
-
+                this.movementVector.x = 0;
             }
 
 
             if (this.arrowKeys.up.isDown || this.wasdKeys.W.isDown) {
 
-                this.player.setVelocityY(-this.speed);
+                this.movementVector.y = -this.speed;
 
                 this.movingOnPath = false;
 
 
             }
-
             else if (this.arrowKeys.down.isDown || this.wasdKeys.S.isDown) {
 
-                this.player.setVelocityY(this.speed);
+                this.movementVector.y = this.speed;
                 this.movingOnPath = false;
 
             }
             else if (this.movingOnPath == false) {
-                this.player.setVelocityY(0);
+
+                this.movementVector.y = 0;
             }
             else if (this.movingOnPath == true) {
                 let distanceToDestination;
@@ -174,7 +186,9 @@ class MapScene extends Phaser.Scene {
 
 
                 if (distanceToDestination < 4) {
-                    this.player.setVelocity(0, 0);
+
+                    this.movementVector.x = 0;
+                    this.movementVector.y = 0;
 
                     this.movingOnPath = false;
                 }
@@ -182,73 +196,82 @@ class MapScene extends Phaser.Scene {
 
             }
 
+            
+
 
             if (this.pointer.isDown == true) {
                 this.destination.x = this.pointer.worldX;
                 this.destination.y = this.pointer.worldY;
 
-                if (this.CheckDistance(this.player, this.destination) > 30) {
+                if (this.CheckDistance(this.player, this.destination) > 20) {
 
                     this.movementVector.x = this.pointer.worldX - this.player.x;
                     this.movementVector.y = this.pointer.worldY - this.player.y;
-
-                    this.movementVector.setLength(this.speed);
-
-                    this.player.setVelocity(this.movementVector.x, this.movementVector.y);
 
                     this.movingOnPath = true;
                 }
             }
 
+            //Final player movement is applied here, updated when current movement vector is different from current velocity
+            if(this.movementVector != this.player.velocity)
+            {
+                this.movementVector.setLength(this.speed);
+                this.player.setVelocity(this.movementVector.x, this.movementVector.y);
+            }
+            
             //Apply the correct animations to player based on direction of movement
             if (this.player.body.speed > 0) {
                 const obliqueThreshold = 2 / 10;
                 const straightThreshold = 8 / 10;
 
-                console.log(this.player.body.velocity);
+                //console.log(this.player.body.velocity);
 
                 if (this.player.body.velocity.x > (this.speed * (straightThreshold))) {
 
-                    console.log('Moving right');
+                    //console.log('Moving right');
 
                     this.player.anims.play('right', true);
                 }
                 else if (this.player.body.velocity.y > (this.speed) * (obliqueThreshold) && this.player.body.velocity.x > (this.speed * obliqueThreshold)) {
-                    console.log('Moving downright');
+                    //console.log('Moving downright');
 
                     this.player.anims.play('downright', true);
                 }
                 else if (this.player.body.velocity.y > (this.speed * (straightThreshold))) {
-                    console.log('Moving down');
+                    //console.log('Moving down');
 
                     this.player.anims.play('down', true);
                 }
                 else if (this.player.body.velocity.y > (this.speed) * (obliqueThreshold) && this.player.body.velocity.x < (-this.speed * obliqueThreshold)) {
-                    console.log('Moving downleft');
+                    //console.log('Moving downleft');
 
                     this.player.anims.play('downleft', true);
                 }
                 else if (this.player.body.velocity.x < (-this.speed * (straightThreshold))) {
-                    console.log('Moving left');
+                    //console.log('Moving left');
 
                     this.player.anims.play('left', true);
                 }
                 else if (this.player.body.velocity.y < (-this.speed) * (obliqueThreshold) && this.player.body.velocity.x < (-this.speed * obliqueThreshold)) {
-                    console.log('Moving upleft');
+                    //console.log('Moving upleft');
 
                     this.player.anims.play('upleft', true);
                 }
                 else if (this.player.body.velocity.y < (-this.speed * (straightThreshold))) {
-                    console.log('Moving up');
+                    //console.log('Moving up');
 
                     this.player.anims.play('up', true);
                 }
                 else if (this.player.body.velocity.y < (-this.speed) * (obliqueThreshold) && this.player.body.velocity.x > (this.speed * obliqueThreshold)) {
-                    console.log('Moving upright');
+                    //console.log('Moving upright');
 
                     this.player.anims.play('upright', true);
                 }
 
+            }
+            else
+            {
+                this.player.anims.play('down');
             }
 
         }
