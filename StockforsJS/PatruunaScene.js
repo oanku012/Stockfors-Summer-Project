@@ -16,6 +16,9 @@ class PatruunaScene extends MenuScene
 
     create ()
     {
+        this.playerSpawnPosition.x = 800;
+        this.playerSpawnPosition.y = 800;
+
         super.create();
     }
 

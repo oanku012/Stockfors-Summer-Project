@@ -6,6 +6,8 @@ class MenuScene extends Phaser.Scene
 
         this.title = 'Placeholder title';
         this.description = 'Placeholder description';
+
+        this.playerSpawnPosition = {};
     }
 
     preload ()
@@ -106,7 +108,7 @@ class MenuScene extends Phaser.Scene
         });
     
         exitButton.on('pointerdown', function (event) {
-            this.scene.start('StockforsScene');
+            this.scene.start('StockforsScene', this.playerSpawnPosition.x, this.playerSpawnPosition.y);
           }, this);
     }
 
