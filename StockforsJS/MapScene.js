@@ -72,7 +72,7 @@ class MapScene extends Phaser.Scene {
 
 
 
-        this.createButton(this.cameras.main.centerX, this.cameras.main.centerY, 'OptionsMenuScene');
+        this.createButton(this.cameras.main.centerX + this.cameras.main.width * .4, this.cameras.main.centerY - this.cameras.main.height * .4, 'OptionsMenuScene');
     }
 
     update() {
@@ -342,6 +342,7 @@ class MapScene extends Phaser.Scene {
         button.setSize(buttonBG.width, buttonBG.height);
         button.setInteractive();
 
+        button.setScrollFactor(0);
         
         button.on('pointerover', function () {
 
