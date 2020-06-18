@@ -1,5 +1,6 @@
 class MapScene extends Phaser.Scene 
 {
+
     constructor(SceneKey)
     {
 
@@ -26,6 +27,7 @@ class MapScene extends Phaser.Scene
         
     }
 
+
     create (startingPointX, startingPointY)
     {
         console.log(this.scene.key);
@@ -50,8 +52,7 @@ class MapScene extends Phaser.Scene
         this.time.delayedCall(100, this.MovementInitialize, null, this)
         
 
-        
-        
+        this.createButton(this.cameras.main.centerX, this.cameras.main.centerY, 'OptionsMenuScene');
     }
 
     update ()
@@ -217,7 +218,7 @@ class MapScene extends Phaser.Scene
     });
     }
 
-    createButton (posX, posY) 
+    createButton (posX, posY, scene)
     {
         // Button
         let buttonBG = this.add.image(0, 0, 'buttonBG');
@@ -226,6 +227,8 @@ class MapScene extends Phaser.Scene
         let button = this.add.container(posX, posY, [ buttonBG, buttonText ]);
         button.setSize(buttonBG.width, buttonBG.height);
         button.setInteractive();
+
+        button.startFollow(this.cameras.main.centerX);
         
         button.on('pointerover', function () {
     
@@ -241,10 +244,8 @@ class MapScene extends Phaser.Scene
     
         button.on('pointerdown', function (event) {
             // ...
-            this.scene.start('MenuScene');
+            this.scene.run(scene);
           }, this);
-    
-        
     }
 
 

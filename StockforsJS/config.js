@@ -23,7 +23,7 @@ var config = {
             }
         },
 
-        scene: [ StockforsScene, MenuScene, KirkkoScene, PatruunaScene, PakkausMuseoScene ]
+        scene: [ StockforsScene, MenuScene, KirkkoScene, PatruunaScene, PakkausMuseoScene, OptionsMenuScene ]
         
         /*{
             preload: preload,

@@ -40,7 +40,6 @@ class StockforsScene extends MapScene
         
         
         super.create(startingPointX, startingPointY);
-        this.createButton(200, 200);
 
     }
 

@@ -31,19 +31,7 @@ class MenuScene extends Phaser.Scene
         let menuBG = this.add.image(0, 0, 'menuBG');
         let menu = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY, [ menuBG ]);
 
-        /*
-        // Button
-        let buttonBG = this.add.image(0, 0, 'buttonBG');
-        let buttonText = this.add.image(0, 0, 'buttonText');
-        */ 
-
-        // Exit button
-        let exitButtonBG = this.add.image(0,0, 'exitButton');
-        let exitButton = this.add.container(menuBG.width / 2, -menuBG.height / 2, [ exitButtonBG ]);
-        exitButton.setSize(exitButtonBG.width, exitButtonBG.height);
-        menu.add(exitButton);
-        exitButton.setInteractive();
-
+        // title and description
         let title = this.add.text(0, -350, this.title);
         title.setPosition(-title.width * 1.5, -350);
         title.setFontSize(48);
@@ -63,8 +51,16 @@ class MenuScene extends Phaser.Scene
             });
 
         menu.add(description);
-    
-        /*
+
+        // Keep menu in middle of screen
+        let camera = this.cameras.main;
+        camera.startFollow(menu, true, 0.08, 0.08);
+
+        /* Button used for something maybe
+        // Button
+        let buttonBG = this.add.image(0, 0, 'buttonBG');
+        let buttonText = this.add.image(0, 0, 'buttonText');
+
         button.on('pointerover', function () {
     
             buttonBG.setTint(0x44ff44);
@@ -83,6 +79,20 @@ class MenuScene extends Phaser.Scene
         });
         */
 
+        this.createExitButton(menuBG, menu);
+        
+    }
+
+    // Separate function because it needs to be overwritten
+    createExitButton(menuBG, menu) 
+    {
+        // Exit button
+        let exitButtonBG = this.add.image(0,0, 'exitButton');
+        let exitButton = this.add.container(menuBG.width / 2, -menuBG.height / 2, [ exitButtonBG ]);
+        exitButton.setSize(exitButtonBG.width, exitButtonBG.height);
+        menu.add(exitButton);
+        exitButton.setInteractive();
+
         exitButton.on('pointerover', function () {
     
             exitButtonBG.setTint(0xeb4034);
@@ -98,7 +108,7 @@ class MenuScene extends Phaser.Scene
         exitButton.on('pointerdown', function (event) {
             this.scene.start('StockforsScene');
           }, this);
-    
-        
     }
+
+    
 }
