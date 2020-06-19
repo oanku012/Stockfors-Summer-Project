@@ -33,6 +33,8 @@ class OptionsMenuScene extends MenuScene
         menu.add(exitButton);
         exitButton.setInteractive();
 
+        var pressed = false;
+
         exitButton.on('pointerover', function () {
     
             exitButtonBG.setTint(0xeb4034);
@@ -42,11 +44,21 @@ class OptionsMenuScene extends MenuScene
         exitButton.on('pointerout', function () {
     
             exitButtonBG.clearTint();
+            pressed = false;
+    
+        });
+
+        exitButton.on('pointerdown', function () {
+    
+            pressed = true;
     
         });
     
-        exitButton.on('pointerdown', function (event) {
-            this.scene.stop('OptionsMenuScene');
+        exitButton.on('pointerup', function (event) {
+            if (pressed)
+            {
+                this.scene.stop('OptionsMenuScene');
+            }
           }, this);
     }
 }

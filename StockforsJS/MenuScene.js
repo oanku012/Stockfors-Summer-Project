@@ -95,6 +95,8 @@ class MenuScene extends Phaser.Scene
         menu.add(exitButton);
         exitButton.setInteractive();
 
+        var pressed = false;
+
         exitButton.on('pointerover', function () {
     
             exitButtonBG.setTint(0xeb4034);
@@ -104,11 +106,21 @@ class MenuScene extends Phaser.Scene
         exitButton.on('pointerout', function () {
     
             exitButtonBG.clearTint();
+            pressed = false;
+    
+        });
+
+        exitButton.on('pointerdown', function () {
+    
+            pressed = true;
     
         });
     
-        exitButton.on('pointerdown', function (event) {
-            this.scene.start('StockforsScene', this.playerSpawnPosition.x, this.playerSpawnPosition.y);
+        exitButton.on('pointerup', function (event) {
+            if (pressed)
+            {
+                this.scene.start('StockforsScene', this.playerSpawnPosition.x, this.playerSpawnPosition.y);
+            }
           }, this);
     }
 

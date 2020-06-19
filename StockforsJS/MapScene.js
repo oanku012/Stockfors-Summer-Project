@@ -26,6 +26,8 @@ class MapScene extends Phaser.Scene {
             y: 0
         }
 
+        this.optionsMenuButton;
+
     }
 
     //This is called when starting scene with this.scene.start
@@ -69,10 +71,10 @@ class MapScene extends Phaser.Scene {
         //Movement is initialized with a slight delay so that player clicking the button to return outside won't trigger movement
         this.time.delayedCall(200, function () { this.readyToMove = true; }, null, this)
 
-
-
-
-        this.createButton(this.cameras.main.centerX + this.cameras.main.width * .4, this.cameras.main.centerY - this.cameras.main.height * .4, 'OptionsMenuScene');
+        // UI stuff
+        this.createUI();
+        // Reorganize the UI when the game gets resized
+        this.scale.on('resize', this.resize, this);
     }
 
     update() {
@@ -344,22 +346,53 @@ class MapScene extends Phaser.Scene {
 
         button.setScrollFactor(0);
         
+        var pressed = false;
+
         button.on('pointerover', function () {
-
+    
             buttonBG.setTint(0x44ff44);
-
+    
         });
-
+    
         button.on('pointerout', function () {
-
+    
             buttonBG.clearTint();
-
+            pressed = false;
+    
         });
 
-        button.on('pointerdown', function (event) {
-            // ...
-            this.scene.run(scene);
+        button.on('pointerdown', function () {
+    
+            pressed = true;
+    
+        });
+    
+        button.on('pointerup', function (event) {
+            if (pressed)
+            {
+                this.scene.run(scene);
+            }
           }, this);
+
+
+          return button;
+          
+    }
+
+    createUI()
+    {
+        this.optionsMenuButton = this.createButton(this.cameras.main.centerX + this.cameras.main.width * .4, this.cameras.main.centerY - this.cameras.main.height * .4, 'OptionsMenuScene');
+    }
+
+    destroyUI()
+    {
+        this.optionsMenuButton.destroy();
+    }
+
+    resize()
+    {
+        this.destroyUI();
+        this.createUI();
     }
 
     CreateAnimations() {
