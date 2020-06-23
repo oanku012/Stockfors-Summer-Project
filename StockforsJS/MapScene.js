@@ -3,13 +3,13 @@ class MapScene extends Phaser.Scene {
 
         super(SceneKey);
 
-        //From create.js
         this.player;
         this.arrowKeys;
         this.wasdKeys;
         this.pointer;
+        this.map;
 
-        //From movement.js
+       
         this.movingOnPath = false;
         this.speed = 5;
         this.movementVector = new Phaser.Math.Vector2();
@@ -27,6 +27,8 @@ class MapScene extends Phaser.Scene {
         }
 
         this.optionsMenuButton;
+
+        this.pointerOverUI = false;
 
     }
 
@@ -68,13 +70,15 @@ class MapScene extends Phaser.Scene {
         this.InitializeCamera();
         this.MovementInitialize();
 
-        //Movement is initialized with a slight delay so that player clicking the button to return outside won't trigger movement
+        //Movement is allowed with a slight delay so that player clicking the button to return outside won't trigger movement
         this.time.delayedCall(200, function () { this.readyToMove = true; }, null, this)
 
         // UI stuff
         this.createUI();
         // Reorganize the UI when the game gets resized
         this.scale.on('resize', this.resize, this);
+
+        currentMap = this;
     }
 
     update() {
@@ -122,6 +126,14 @@ class MapScene extends Phaser.Scene {
             }
 
         });
+
+        this.player.body.velocity.x = 0;
+        this.player.body.velocity.y = 0;
+
+        this.movementVector.x = 0;
+        this.movementVector.y = 0;
+
+        
 
     }
 
@@ -200,9 +212,12 @@ class MapScene extends Phaser.Scene {
             }
 
             
+            //console.log(this.pointerOverUI);
 
+            
 
-            if (this.pointer.isDown == true) {
+            if (this.pointer.isDown == true && this.pointerOverUI == false && this.readyToMove) {
+
                 this.destination.x = this.pointer.worldX;
                 this.destination.y = this.pointer.worldY;
 
@@ -351,6 +366,11 @@ class MapScene extends Phaser.Scene {
         button.on('pointerover', function () {
     
             buttonBG.setTint(0x44ff44);
+
+            //This is just to stop the player from moving when opening options menu
+            this.scene.pointerOverUI = true;
+
+            //console.log(this.scene.pointerOverUI);
     
         });
     
@@ -358,11 +378,18 @@ class MapScene extends Phaser.Scene {
     
             buttonBG.clearTint();
             pressed = false;
+
+            
+
+            this.scene.pointerOverUI = false;
+
+            //console.log(this.scene.pointerOverUI);
+
     
         });
 
         button.on('pointerdown', function () {
-    
+            
             pressed = true;
     
         });

@@ -38,6 +38,9 @@ class OptionsMenuScene extends MenuScene
         exitButton.on('pointerover', function () {
     
             exitButtonBG.setTint(0xeb4034);
+
+            //Stops player from moving when leaving options, needs to be made universal for all menus
+            currentMap.pointerOverUI = true;
     
         });
     
@@ -45,11 +48,16 @@ class OptionsMenuScene extends MenuScene
     
             exitButtonBG.clearTint();
             pressed = false;
+
+            currentMap.pointerOverUI = false;
     
         });
 
         exitButton.on('pointerdown', function () {
-    
+            console.log(currentMap);
+            
+            
+            
             pressed = true;
     
         });
@@ -58,6 +66,10 @@ class OptionsMenuScene extends MenuScene
             if (pressed)
             {
                 this.scene.stop('OptionsMenuScene');
+
+                currentMap.pointerOverUI = false;
+
+                
             }
           }, this);
     }
