@@ -27,7 +27,6 @@ class MapScene extends Phaser.Scene {
         }
 
         this.optionsMenuButton;
-
     }
 
     //This is called when starting scene with this.scene.start

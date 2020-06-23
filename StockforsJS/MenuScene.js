@@ -8,6 +8,9 @@ class MenuScene extends Phaser.Scene
         this.description = 'Placeholder description';
 
         this.playerSpawnPosition = {};
+
+        this.menuBG;
+        this.menu;
     }
 
     preload ()
@@ -21,7 +24,8 @@ class MenuScene extends Phaser.Scene
 
     create ()
     {
-        this.createContainer ();
+        this.createContainer();
+        this.createExitButton();
         console.log(this.scene.key);
 
     }
@@ -30,15 +34,15 @@ class MenuScene extends Phaser.Scene
     createContainer () 
     {
         // Menu
-        let menuBG = this.add.image(0, 0, 'menuBG');
-        let menu = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY, [ menuBG ]);
+        this.menuBG = this.add.image(0, 0, 'menuBG');
+        this.menu = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY, [ this.menuBG ]);
 
         // title and description
         let title = this.add.text(0, -350, this.title);
         title.setPosition(-title.width * 1.5, -350);
         title.setFontSize(48);
         title.setColor("black");
-        menu.add(title);
+        this.menu.add(title);
         
         let description = this.make.text({
                 x: 0,
@@ -52,11 +56,11 @@ class MenuScene extends Phaser.Scene
                 }
             });
 
-        menu.add(description);
+        this.menu.add(description);
 
         // Keep menu in middle of screen
         let camera = this.cameras.main;
-        camera.startFollow(menu, true, 0.08, 0.08);
+        camera.startFollow(this.menu, true, 0.08, 0.08);
 
         /* Button used for something maybe
         // Button
@@ -80,19 +84,17 @@ class MenuScene extends Phaser.Scene
             
         });
         */
-
-        this.createExitButton(menuBG, menu);
         
     }
 
     // Separate function because it needs to be overwritten
-    createExitButton(menuBG, menu) 
+    createExitButton() 
     {
         // Exit button
         let exitButtonBG = this.add.image(0,0, 'exitButton');
-        let exitButton = this.add.container(menuBG.width / 2, -menuBG.height / 2, [ exitButtonBG ]);
+        let exitButton = this.add.container(this.menuBG.width / 2, -this.menuBG.height / 2, [ exitButtonBG ]);
         exitButton.setSize(exitButtonBG.width, exitButtonBG.height);
-        menu.add(exitButton);
+        this.menu.add(exitButton);
         exitButton.setInteractive();
 
         var pressed = false;

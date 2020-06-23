@@ -1,3 +1,5 @@
+const { Game } = require("phaser");
+
 class OptionsMenuScene extends MenuScene
 {
     constructor()
@@ -16,21 +18,51 @@ class OptionsMenuScene extends MenuScene
 
     create ()
     {
-        super.create();
+        this.createContainer();
+        this.createOptionsMenu();
+        this.createExitButton();
     }
 
     createContainer () 
     {
         super.createContainer();
+        
     }
 
-    createExitButton(menuBG, menu) 
+    createOptionsMenu()
+    {
+        this.musicOn = true;
+        this.soundOn = true;
+         
+        this.musicButton = this.add.image(-100, -200, 'checkedBox');
+        this.musicText = this.add.text(0, -200, 'Music Enabled', { fontSize: 24, color: "black" });
+         
+        this.soundButton = this.add.image(-100, -100, 'checkedBox');
+        this.soundText = this.add.text(0, -100, 'Sound Enabled', { fontSize: 24, color: "black"});
+         
+        this.musicButton.setInteractive();
+        this.soundButton.setInteractive();
+
+        this.menu.add([this.musicButton, this.musicText, this.soundButton, this.soundText]);
+         
+        this.musicButton.on('pointerdown', function () {
+          this.musicOn = !this.musicOn;
+          this.updateAudio();
+        }.bind(this));
+         
+        this.soundButton.on('pointerdown', function () {
+          this.soundOn = !this.soundOn;
+          this.updateAudio();
+        }.bind(this));
+    }
+
+    createExitButton() 
     {
         // Exit button
         let exitButtonBG = this.add.image(0,0, 'exitButton');
-        let exitButton = this.add.container(menuBG.width / 2, -menuBG.height / 2, [ exitButtonBG ]);
+        let exitButton = this.add.container(this.menuBG.width / 2, -this.menuBG.height / 2, [ exitButtonBG ]);
         exitButton.setSize(exitButtonBG.width, exitButtonBG.height);
-        menu.add(exitButton);
+        this.menu.add(exitButton);
         exitButton.setInteractive();
 
         var pressed = false;
