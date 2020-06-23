@@ -14,7 +14,7 @@ class MapScene extends Phaser.Scene {
         this.speed = 5;
         this.movementVector = new Phaser.Math.Vector2();
         this.destination = new Phaser.Math.Vector2();
-        this.readyToMove;
+        this.readyToMove = false;
         this.movementDirection;
 
         this.buildings = {};
@@ -48,13 +48,13 @@ class MapScene extends Phaser.Scene {
 
         console.log(this.scene.key);
 
-        this.readyToMove = false;
-
         this.sceneToOpen = null;
 
         this.player = this.matter.add.sprite(this.startingPoint.x, this.startingPoint.y, 'player');
         this.player.setDepth(this.player.y);
         this.player.setRectangle(50, 102).setBounce(0).setFixedRotation().setFriction(1, 0).setIgnoreGravity(true);
+
+        this.map.setInteractive();
 
         this.arrowKeys = this.input.keyboard.createCursorKeys();
         this.wasdKeys = this.input.keyboard.addKeys('W,S,A,D');
@@ -133,7 +133,10 @@ class MapScene extends Phaser.Scene {
         this.movementVector.x = 0;
         this.movementVector.y = 0;
 
-        
+        //Set pointeroverUI to false when over the map
+        this.map.on('pointerover', function(){
+            this.scene.pointerOverUI = false;
+        });
 
     }
 
@@ -216,7 +219,7 @@ class MapScene extends Phaser.Scene {
 
             
 
-            if (this.pointer.isDown == true && this.pointerOverUI == false && this.readyToMove) {
+            if (this.pointer.isDown == true && this.pointerOverUI == false) {
 
                 this.destination.x = this.pointer.worldX;
                 this.destination.y = this.pointer.worldY;
@@ -310,6 +313,10 @@ class MapScene extends Phaser.Scene {
             }
 
         }
+        else if(this.player.body.speed > 0)
+        {
+            this.stopPlayerMovement();
+        }
 
 
     }
@@ -349,6 +356,17 @@ class MapScene extends Phaser.Scene {
         });
     }
 
+    stopPlayerMovement()
+    {
+        this.player.setVelocity(0, 0);
+
+        this.movementVector.x = 0;
+        this.movementVector.y = 0;
+
+        this.destination.x = 0;
+        this.destination.y = 0;
+    }
+
     createButton (posX, posY, scene)
     {
         // Button
@@ -381,7 +399,7 @@ class MapScene extends Phaser.Scene {
 
             
 
-            this.scene.pointerOverUI = false;
+            //this.scene.pointerOverUI = false;
 
             //console.log(this.scene.pointerOverUI);
 
@@ -391,16 +409,26 @@ class MapScene extends Phaser.Scene {
         button.on('pointerdown', function () {
             
             pressed = true;
+
+            
     
         });
     
         button.on('pointerup', function (event) {
+            
+
             if (pressed)
             {
+                this.readyToMove = false;
+                
+                //this.stopPlayerMovement();
+
                 this.scene.run(scene);
+                
             }
           }, this);
 
+          
 
           return button;
           

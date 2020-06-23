@@ -64,6 +64,20 @@ class MenuScene extends Phaser.Scene
         let camera = this.cameras.main;
         camera.startFollow(this.menu, true, 0.08, 0.08);
 
+        /*this.menuBG.setInteractive();
+
+        this.menuBG.on('pointerover', function () {
+    
+            currentMap.pointerOverUI = true;
+            console.log('On container');
+        });
+
+        this.menuBG.on('pointerout', function () {
+    
+            currentMap.pointerOverUI = false;
+    
+        });*/
+
         /* Button used for something maybe
         // Button
         let buttonBG = this.add.image(0, 0, 'buttonBG');
