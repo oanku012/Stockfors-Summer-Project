@@ -20,6 +20,8 @@ class MenuScene extends Phaser.Scene
         this.load.image('buttonText', 'Assets/images/menu/button-text.png');
         this.load.image('menuBG', 'Assets/images/menu/menu-bg.png');
         this.load.image('exitButton', 'Assets/images/menu/exit-button.png');
+        this.load.image('blankCheckBox', 'Assets/images/menu/blank-check-box.png');
+        this.load.image('checkedBox', 'Assets/images/menu/check-box.png');
     }
 
     create ()

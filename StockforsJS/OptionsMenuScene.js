@@ -1,5 +1,3 @@
-const { Game } = require("phaser");
-
 class OptionsMenuScene extends MenuScene
 {
     constructor()
@@ -46,15 +44,32 @@ class OptionsMenuScene extends MenuScene
         this.menu.add([this.musicButton, this.musicText, this.soundButton, this.soundText]);
          
         this.musicButton.on('pointerdown', function () {
-          this.musicOn = !this.musicOn;
-          this.updateAudio();
+            this.musicOn = !this.musicOn;
+            this.updateAudio();
         }.bind(this));
          
         this.soundButton.on('pointerdown', function () {
-          this.soundOn = !this.soundOn;
-          this.updateAudio();
+            this.soundOn = !this.soundOn;
+            this.updateAudio();
         }.bind(this));
     }
+
+    updateAudio() {
+        if (this.musicOn === false) {
+            this.musicButton.setTexture('blankCheckBox');
+        }
+        else {
+            this.musicButton.setTexture('checkedBox');
+        }
+       
+        if (this.soundOn === false) {
+            this.soundButton.setTexture('blankCheckBox');
+        }
+        else {
+            this.soundButton.setTexture('checkedBox');
+        }
+      }
+    
 
     createExitButton() 
     {
