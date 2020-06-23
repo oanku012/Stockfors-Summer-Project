@@ -31,7 +31,7 @@ class StockforsScene extends MapScene {
             this.startingPoint.y = 300;
         }
 
-        this.add.image(400, 300, 'map').setDepth(0);
+        this.map = this.add.image(400, 300, 'map').setDepth(0);
         this.add.text(300, 40, "Stockfors", { font: "40px Arial", fill: "yellow" });
 
 

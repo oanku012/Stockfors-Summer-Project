@@ -40,6 +40,8 @@ var config = {
         }*/
     };
 
+    var currentMap;
+
 //var game = new Phaser.game(config);
 
 
