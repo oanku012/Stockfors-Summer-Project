@@ -42,27 +42,30 @@ class OptionsMenuScene extends MenuScene
         this.soundButton.setInteractive();
 
         this.menu.add([this.musicButton, this.musicText, this.soundButton, this.soundText]);
+
+        // Call updateAudio to make sure we have correct values for checkboxes
+        this.updateAudio();
          
         this.musicButton.on('pointerdown', function () {
-            this.musicOn = !this.musicOn;
+            config.musicOn = !config.musicOn;
             this.updateAudio();
         }.bind(this));
          
         this.soundButton.on('pointerdown', function () {
-            this.soundOn = !this.soundOn;
+            config.soundOn = !config.soundOn;
             this.updateAudio();
         }.bind(this));
     }
 
     updateAudio() {
-        if (this.musicOn === false) {
+        if (config.musicOn === false) {
             this.musicButton.setTexture('blankCheckBox');
         }
         else {
             this.musicButton.setTexture('checkedBox');
         }
        
-        if (this.soundOn === false) {
+        if (config.soundOn === false) {
             this.soundButton.setTexture('blankCheckBox');
         }
         else {

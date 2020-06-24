@@ -89,7 +89,6 @@ class MapScene extends Phaser.Scene {
             this.player.setDepth(this.player.y);
         }
 
-
     }
 
 
