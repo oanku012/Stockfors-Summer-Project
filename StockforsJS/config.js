@@ -27,23 +27,14 @@ var config = {
 
         scene: [ StockforsScene, MenuScene, KirkkoScene, PatruunaScene, PakkausMuseoScene, OptionsMenuScene ]
         
-        /*{
-            preload: preload,
-            create: create,
-            update: update,
-
-            extend: {
-                
-                InitializeCamera: InitializeCamera,  
-                MovementInitialize: MovementInitialize,
-                MovementUpdate: MovementUpdate,
-                createContainer: createContainer
-            }
-        }*/
+       
     };
 
+    //Currently active map
     var currentMap;
 
-//var game = new Phaser.game(config);
+    //Whether if player is ready to move
+    var readyToMove = false; 
+
 
 

@@ -14,7 +14,7 @@ class MapScene extends Phaser.Scene {
         this.speed = 5;
         this.movementVector = new Phaser.Math.Vector2();
         this.destination = new Phaser.Math.Vector2();
-        this.readyToMove = false;
+        //this.readyToMove = false;
         this.movementDirection;
 
         this.buildings = {};
@@ -71,7 +71,7 @@ class MapScene extends Phaser.Scene {
         this.MovementInitialize();
 
         //Movement is allowed with a slight delay so that player clicking the button to return outside won't trigger movement
-        this.time.delayedCall(200, function () { this.readyToMove = true; }, null, this)
+        this.time.delayedCall(200, function () { readyToMove = true; }, null, this)
 
         // UI stuff
         this.createUI();
@@ -151,7 +151,7 @@ class MapScene extends Phaser.Scene {
 
     MovementUpdate() {
 
-        if (this.readyToMove == true) {
+        if (readyToMove == true) {
 
             //Movement with WASD and arrow keys
 
@@ -384,10 +384,8 @@ class MapScene extends Phaser.Scene {
     
             buttonBG.setTint(0x44ff44);
 
-            //This is just to stop the player from moving when opening options menu
+            //This is just to stop the player from moving when clicking options menu
             this.scene.pointerOverUI = true;
-
-            //console.log(this.scene.pointerOverUI);
     
         });
     
@@ -395,13 +393,9 @@ class MapScene extends Phaser.Scene {
     
             buttonBG.clearTint();
             pressed = false;
-
             
-
-            //this.scene.pointerOverUI = false;
-
-            //console.log(this.scene.pointerOverUI);
-
+            //Enable clicking movement when cursor goes away from the UI-button
+            this.scene.pointerOverUI = false;
     
         });
 
@@ -418,9 +412,7 @@ class MapScene extends Phaser.Scene {
 
             if (pressed)
             {
-                this.readyToMove = false;
-                
-                //this.stopPlayerMovement();
+                readyToMove = false;
 
                 this.scene.run(scene);
                 
