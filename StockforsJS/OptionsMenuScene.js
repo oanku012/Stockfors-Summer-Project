@@ -19,6 +19,9 @@ class OptionsMenuScene extends MenuScene
         this.createContainer();
         this.createOptionsMenu();
         this.createExitButton();
+
+        // Reorganize the UI when the game gets resized
+        this.scale.on('resize', this.resize, this);
     }
 
     createContainer () 

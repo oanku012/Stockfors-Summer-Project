@@ -11,6 +11,7 @@ class MenuScene extends Phaser.Scene
 
         this.menuBG;
         this.menu;
+        this.exitButton;
     }
 
     preload ()
@@ -29,6 +30,9 @@ class MenuScene extends Phaser.Scene
         this.createContainer();
         this.createExitButton();
         console.log(this.scene.key);
+
+        // Reorganize the UI when the game gets resized
+        this.scale.on('resize', this.resize, this);
 
     }
 
@@ -60,9 +64,6 @@ class MenuScene extends Phaser.Scene
 
         this.menu.add(description);
 
-        // Keep menu in middle of screen
-        let camera = this.cameras.main;
-        camera.startFollow(this.menu, true, 0.08, 0.08);
 
         /*this.menuBG.setInteractive();
 
@@ -142,5 +143,14 @@ class MenuScene extends Phaser.Scene
           }, this);
     }
 
-    
+
+    resize()
+    {
+        if (this.scene.isActive(this.scene.key))
+        {
+            this.menu.setX(this.cameras.main.centerX);
+            this.menu.setY(this.cameras.main.centerY);
+        }
+       
+    }
 }

@@ -437,7 +437,7 @@ class MapScene extends Phaser.Scene {
     {
         this.optionsMenuButton = this.createButton(this.cameras.main.centerX + this.cameras.main.width * .4, this.cameras.main.centerY - this.cameras.main.height * .4, 'OptionsMenuScene');
     }
-
+    
     destroyUI()
     {
         this.optionsMenuButton.destroy();
@@ -445,8 +445,12 @@ class MapScene extends Phaser.Scene {
 
     resize()
     {
-        this.destroyUI();
-        this.createUI();
+        if (this.scene.isActive(this.scene.key))
+        {
+            this.optionsMenuButton.setX(this.cameras.main.centerX + this.cameras.main.width * .4);
+            this.optionsMenuButton.setY(this.cameras.main.centerY - this.cameras.main.height * .4);
+        }
+       
     }
 
     CreateAnimations() {
