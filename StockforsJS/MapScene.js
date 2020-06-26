@@ -241,65 +241,71 @@ class MapScene extends Phaser.Scene {
             
             //Apply the correct animations to player based on direction of movement
             if (this.player.body.speed > 0) {
-                const obliqueThreshold = 2 / 10;
+                const obliqueThreshold = 3 / 10;
                 const straightThreshold = 8 / 10;
 
-                //console.log(this.player.body.velocity);
+                let velocX = this.player.body.velocity.x;
+                let velocY = this.player.body.velocity.y;
 
-                if (this.player.body.velocity.x > (this.speed * (straightThreshold))) {
+                console.log(this.player.body.velocity);
 
+                if (velocX > (this.speed * (straightThreshold))) {
                     //console.log('Moving right');
-
                     this.player.flipX = false;
 
                     this.movementDirection = 'right'; 
 
                 }
-                else if (this.player.body.velocity.y > (this.speed) * (obliqueThreshold) && this.player.body.velocity.x > (this.speed * obliqueThreshold)) {
-                    //console.log('Moving downright');
-
-                    this.player.flipX = false;
-
-                    this.movementDirection = 'downright';
-
-                }
-                else if (this.player.body.velocity.y > (this.speed * (straightThreshold))) {
+                
+                if (velocY > (this.speed * (straightThreshold))) {
                     //console.log('Moving down');
 
                     this.player.flipX = false;
 
                     this.movementDirection = 'down';
-                }
-                else if (this.player.body.velocity.y > (this.speed) * (obliqueThreshold) && this.player.body.velocity.x < (-this.speed * obliqueThreshold)) {
-                    //console.log('Moving downleft');
-
-                    this.player.flipX = true;
-
-                    this.movementDirection = 'downleft';
-                }
-                else if (this.player.body.velocity.x < (-this.speed * (straightThreshold))) {
+                } 
+                
+                if (velocX < (-this.speed * (straightThreshold))) {
                     //console.log('Moving left');
                     this.player.flipX = true;
 
                     this.movementDirection = 'left';
                 }
-                else if (this.player.body.velocity.y < (-this.speed) * (obliqueThreshold) && this.player.body.velocity.x < (-this.speed * obliqueThreshold)) {
-                    //console.log('Moving upleft');
-                    this.player.flipX = false;
-
-                    this.movementDirection = 'upleft';
-                }
-                else if (this.player.body.velocity.y < (-this.speed * (straightThreshold))) {
+                 
+                if (this.player.body.velocity.y < (-this.speed * (straightThreshold))) {
                     //console.log('Moving up');
                     this.player.flipX = false;
 
                     this.movementDirection = 'up';
                 }
-                else if (this.player.body.velocity.y < (-this.speed) * (obliqueThreshold) && this.player.body.velocity.x > (this.speed * obliqueThreshold)) {
+                
+                if (velocY < (-this.speed) * (obliqueThreshold) && velocX > (this.speed * obliqueThreshold)) {
                     //console.log('Moving upright');
                     this.player.flipX = true;
 
                     this.movementDirection = 'upright';
+                }
+
+                if (velocY > (this.speed) * (obliqueThreshold) && velocX > (this.speed * obliqueThreshold)) {
+                    //console.log('Moving downright');
+                    this.player.flipX = false;
+
+                    this.movementDirection = 'downright';
+
+                }
+
+                if (velocY > (this.speed) * (obliqueThreshold) && velocX < (-this.speed * obliqueThreshold)) {
+                    //console.log('Moving downleft');
+                    this.player.flipX = true;
+
+                    this.movementDirection = 'downleft';
+                }
+
+                if (velocY < (-this.speed) * (obliqueThreshold) && velocX < (-this.speed * obliqueThreshold)) {
+                    //console.log('Moving upleft');
+                    this.player.flipX = false;
+
+                    this.movementDirection = 'upleft';
                 }
 
                 this.player.anims.play(this.movementDirection, true);
