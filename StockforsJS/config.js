@@ -1,3 +1,5 @@
+//const { Game } = require("phaser");
+
 var config = {
         type: Phaser.AUTO,
         width: 1920,
@@ -25,7 +27,7 @@ var config = {
             }
         },
 
-        scene: [ StockforsScene, MenuScene, KirkkoScene, PatruunaScene, PakkausMuseoScene, OptionsMenuScene ]
+        scene: [ OpeningScene, StockforsScene, MenuScene, KirkkoScene, PatruunaScene, PakkausMuseoScene, OptionsMenuScene ]
         
        
     };
@@ -34,7 +36,36 @@ var config = {
     var currentMap;
 
     //Whether if player is ready to move
-    var readyToMove = false; 
+    var readyToMove = false;
+    
+    function saveGame(scene)
+    {
+        var file = {
+            map: scene.scene.key,
+            posX: scene.player.x, 
+            posY: scene.player.y, 
+        };
+
+        localStorage.setItem('saveFile', JSON.stringify(file));
+
+        console.log('Game saved.');
+    };
+
+    function loadGame()
+    {
+        var file = JSON.parse(localStorage.getItem('saveFile'));
+
+        //currentMap = this.scene.scene.getScene(file.map);
+
+        //return playerPosition = { x: file.posX, y: file.posY };
+
+        return file;
+
+        //currentMap.player.setPosition(file.posX, file.posY);
+    };
+
+
+    
 
 
 

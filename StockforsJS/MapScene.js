@@ -9,7 +9,7 @@ class MapScene extends Phaser.Scene {
         this.pointer;
         this.map;
 
-       
+
         this.movingOnPath = false;
         this.speed = 5;
         this.movementVector = new Phaser.Math.Vector2();
@@ -29,6 +29,8 @@ class MapScene extends Phaser.Scene {
         this.optionsMenuButton;
 
         this.pointerOverUI = false;
+
+        this.saveGameTimerEvent;
 
     }
 
@@ -54,7 +56,9 @@ class MapScene extends Phaser.Scene {
         this.player.setDepth(this.player.y);
         this.player.setRectangle(50, 102).setBounce(0).setFixedRotation().setFriction(1, 0).setIgnoreGravity(true);
 
-        this.map.setInteractive();
+        if (this.map != null) {
+            this.map.setInteractive();
+        }
 
         this.arrowKeys = this.input.keyboard.createCursorKeys();
         this.wasdKeys = this.input.keyboard.addKeys('W,S,A,D');
@@ -79,6 +83,14 @@ class MapScene extends Phaser.Scene {
         this.scale.on('resize', this.resize, this);
 
         currentMap = this;
+
+        //console.log(currentMap);
+
+        saveGame(this);
+
+
+        //Doesn't seem to loop properly yet?
+        this.saveGameTimerEvent = this.time.addEvent({ delay: 1000, callback: saveGame(this), loop: true });
     }
 
     update() {
@@ -88,6 +100,10 @@ class MapScene extends Phaser.Scene {
         if (this.player.body.speed > 0) {
             this.player.setDepth(this.player.y);
         }
+
+
+
+        //this.time.delayedCall(10000, function () { saveGame(this) }, null, this)
 
     }
 
@@ -133,9 +149,13 @@ class MapScene extends Phaser.Scene {
         this.movementVector.y = 0;
 
         //Set pointeroverUI to false when over the map
-        this.map.on('pointerover', function(){
-            this.scene.pointerOverUI = false;
-        });
+
+        if (this.map != null) {
+            this.map.on('pointerover', function () {
+                this.scene.pointerOverUI = false;
+            });
+
+        }
 
     }
 
@@ -163,9 +183,9 @@ class MapScene extends Phaser.Scene {
 
             }
             else if (this.arrowKeys.right.isDown || this.wasdKeys.D.isDown) {
-                
+
                 this.movementVector.x = this.speed;
-                
+
                 this.movingOnPath = false;
 
 
@@ -213,10 +233,10 @@ class MapScene extends Phaser.Scene {
 
             }
 
-            
+
             //console.log(this.pointerOverUI);
 
-            
+
 
             if (this.pointer.isDown == true && this.pointerOverUI == false) {
 
@@ -233,12 +253,11 @@ class MapScene extends Phaser.Scene {
             }
 
             //Final player movement is applied here, updated when current movement vector is different from current velocity
-            if(this.movementVector != this.player.body.velocity)
-            {
+            if (this.movementVector != this.player.body.velocity) {
                 this.movementVector.setLength(this.speed);
                 this.player.setVelocity(this.movementVector.x, this.movementVector.y);
             }
-            
+
             //Apply the correct animations to player based on direction of movement
             if (this.player.body.speed > 0) {
                 const obliqueThreshold = 3 / 10;
@@ -247,38 +266,38 @@ class MapScene extends Phaser.Scene {
                 let velocX = this.player.body.velocity.x;
                 let velocY = this.player.body.velocity.y;
 
-                console.log(this.player.body.velocity);
+                //console.log(this.player.body.velocity);
 
                 if (velocX > (this.speed * (straightThreshold))) {
                     //console.log('Moving right');
                     this.player.flipX = false;
 
-                    this.movementDirection = 'right'; 
+                    this.movementDirection = 'right';
 
                 }
-                
+
                 if (velocY > (this.speed * (straightThreshold))) {
                     //console.log('Moving down');
 
                     this.player.flipX = false;
 
                     this.movementDirection = 'down';
-                } 
-                
+                }
+
                 if (velocX < (-this.speed * (straightThreshold))) {
                     //console.log('Moving left');
                     this.player.flipX = true;
 
                     this.movementDirection = 'left';
                 }
-                 
+
                 if (this.player.body.velocity.y < (-this.speed * (straightThreshold))) {
                     //console.log('Moving up');
                     this.player.flipX = false;
 
                     this.movementDirection = 'up';
                 }
-                
+
                 if (velocY < (-this.speed) * (obliqueThreshold) && velocX > (this.speed * obliqueThreshold)) {
                     //console.log('Moving upright');
                     this.player.flipX = true;
@@ -311,15 +330,13 @@ class MapScene extends Phaser.Scene {
                 this.player.anims.play(this.movementDirection, true);
 
             }
-            else
-            {
+            else {
                 this.player.anims.play(this.movementDirection + 'still', true);
 
             }
 
         }
-        else if(this.player.body.speed > 0)
-        {
+        else if (this.player.body.speed > 0) {
             this.stopPlayerMovement();
         }
 
@@ -361,8 +378,7 @@ class MapScene extends Phaser.Scene {
         });
     }
 
-    stopPlayerMovement()
-    {
+    stopPlayerMovement() {
         this.player.setVelocity(0, 0);
 
         this.movementVector.x = 0;
@@ -372,8 +388,7 @@ class MapScene extends Phaser.Scene {
         this.destination.y = 0;
     }
 
-    createButton (posX, posY, scene)
-    {
+    createButton(posX, posY, scene) {
         // Button
         let buttonBG = this.add.image(0, 0, 'buttonBG');
         let buttonText = this.add.image(0, 0, 'buttonText');
@@ -383,72 +398,67 @@ class MapScene extends Phaser.Scene {
         button.setInteractive();
 
         button.setScrollFactor(0);
-        
+
         var pressed = false;
 
         button.on('pointerover', function () {
-    
+
             buttonBG.setTint(0x44ff44);
 
             //This is just to stop the player from moving when clicking options menu
             this.scene.pointerOverUI = true;
-    
+
         });
-    
+
         button.on('pointerout', function () {
-    
+
             buttonBG.clearTint();
             pressed = false;
-            
+
             //Enable clicking movement when cursor goes away from the UI-button
             this.scene.pointerOverUI = false;
-    
+
         });
 
         button.on('pointerdown', function () {
-            
+
             pressed = true;
 
-            
-    
-        });
-    
-        button.on('pointerup', function (event) {
-            
 
-            if (pressed)
-            {
+
+        });
+
+        button.on('pointerup', function (event) {
+
+
+            if (pressed) {
                 readyToMove = false;
 
                 this.scene.run(scene);
-                
+
             }
-          }, this);
+        }, this);
 
-          
 
-          return button;
-          
+
+        return button;
+
     }
 
-    createUI()
-    {
+    createUI() {
         this.optionsMenuButton = this.createButton(this.cameras.main.centerX + this.cameras.main.width * .4, this.cameras.main.centerY - this.cameras.main.height * .4, 'OptionsMenuScene');
     }
-    
-    destroyUI()
-    {
+
+    destroyUI() {
         this.optionsMenuButton.destroy();
     }
 
-    resize()
-    {
-        if (this.scene.isActive(this.scene.key))
-        {
+    resize() {
+        if (this.scene.isActive(this.scene.key)) {
             this.optionsMenuButton.setX(this.cameras.main.centerX + this.cameras.main.width * .4);
             this.optionsMenuButton.setY(this.cameras.main.centerY - this.cameras.main.height * .4);
         }
-       
+
     }
 
     CreateAnimations() {
@@ -462,7 +472,7 @@ class MapScene extends Phaser.Scene {
 
         this.anims.create({
             key: 'rightstill',
-            frames: [{ key: 'player', frame: 8}],
+            frames: [{ key: 'player', frame: 8 }],
             frameRate: 10,
             repeat: -1
         });
@@ -476,7 +486,7 @@ class MapScene extends Phaser.Scene {
 
         this.anims.create({
             key: 'downrightstill',
-            frames: [{ key: 'player', frame: 16}],
+            frames: [{ key: 'player', frame: 16 }],
             frameRate: 10,
             repeat: -1
         });
@@ -490,7 +500,7 @@ class MapScene extends Phaser.Scene {
 
         this.anims.create({
             key: 'downstill',
-            frames: [{ key: 'player', frame: 0}],
+            frames: [{ key: 'player', frame: 0 }],
             frameRate: 10,
             repeat: -1
         });
@@ -504,7 +514,7 @@ class MapScene extends Phaser.Scene {
 
         this.anims.create({
             key: 'downleftstill',
-            frames: [{ key: 'player', frame: 16}],
+            frames: [{ key: 'player', frame: 16 }],
             frameRate: 10,
             repeat: -1
         });
@@ -518,7 +528,7 @@ class MapScene extends Phaser.Scene {
 
         this.anims.create({
             key: 'leftstill',
-            frames: [{ key: 'player', frame: 8}],
+            frames: [{ key: 'player', frame: 8 }],
             frameRate: 10,
             repeat: -1
         });
@@ -532,7 +542,7 @@ class MapScene extends Phaser.Scene {
 
         this.anims.create({
             key: 'upleftstill',
-            frames: [{ key: 'player', frame: 24}],
+            frames: [{ key: 'player', frame: 24 }],
             frameRate: 10,
             repeat: -1
         });
@@ -546,7 +556,7 @@ class MapScene extends Phaser.Scene {
 
         this.anims.create({
             key: 'upstill',
-            frames: [{ key: 'player', frame: 32}],
+            frames: [{ key: 'player', frame: 32 }],
             frameRate: 10,
             repeat: -1
         });
@@ -560,7 +570,7 @@ class MapScene extends Phaser.Scene {
 
         this.anims.create({
             key: 'uprightstill',
-            frames: [{ key: 'player', frame: 24}],
+            frames: [{ key: 'player', frame: 24 }],
             frameRate: 10,
             repeat: -1
         });
