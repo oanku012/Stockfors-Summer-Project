@@ -84,10 +84,9 @@ class MapScene extends Phaser.Scene {
 
         currentMap = this;
 
-        //console.log(currentMap);
-
         saveGame(this);
 
+        //Autosave every 10 seconds
         this.saveGameTimerEvent = this.time.addEvent({ delay: 10000, callback: saveGame, callbackScope: this, loop: true });
     }
 
