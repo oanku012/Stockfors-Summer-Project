@@ -38,12 +38,12 @@ var config = {
     //Whether if player is ready to move
     var readyToMove = false;
     
-    function saveGame(scene)
+    function saveGame()
     {
         var file = {
-            map: scene.scene.key,
-            posX: scene.player.x, 
-            posY: scene.player.y, 
+            map: currentMap.scene.key,
+            posX: currentMap.player.x, 
+            posY: currentMap.player.y, 
         };
 
         localStorage.setItem('saveFile', JSON.stringify(file));

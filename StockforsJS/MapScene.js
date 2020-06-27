@@ -88,9 +88,7 @@ class MapScene extends Phaser.Scene {
 
         saveGame(this);
 
-
-        //Doesn't seem to loop properly yet?
-        this.saveGameTimerEvent = this.time.addEvent({ delay: 1000, callback: saveGame(this), loop: true });
+        this.saveGameTimerEvent = this.time.addEvent({ delay: 10000, callback: saveGame, callbackScope: this, loop: true });
     }
 
     update() {
@@ -106,8 +104,6 @@ class MapScene extends Phaser.Scene {
         //this.time.delayedCall(10000, function () { saveGame(this) }, null, this)
 
     }
-
-
 
     BuildingsInitialize() {
 
