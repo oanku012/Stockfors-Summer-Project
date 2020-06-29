@@ -7,17 +7,21 @@ class StockforsScene extends MapScene {
     }
 
     preload() {
-        this.load.image('map', 'Assets/images/map/Red Bank.png');
+        this.load.image('map', 'Assets/images/map/kartta.png');
         this.load.spritesheet('player', 'Assets/images/character/player.png', { frameWidth: 72.5, frameHeight: 109.6 });
         this.load.image('buttonBG', 'Assets/images/menu/button-bg.png');
         this.load.image('buttonText', 'Assets/images/menu/button-text.png');
         this.load.image('menuBG', 'Assets/images/menu/menu-bg.png');
 
-        this.load.image('PatruunanTalo', 'Assets/images/map/Buildings/rem_0002');
-        this.load.image('PakkausMuseo', 'Assets/images/map/Buildings/rem_0005');
-        this.load.image('exitButton', 'Assets/images/menu/exit-button.png');
-
+        this.load.image('PatruunanTalo', 'Assets/images/map/Buildings/Patruunantalo');
+        this.load.image('PakkausMuseo', 'Assets/images/map/Buildings/Pakkausmuseo');
+        this.load.image('Kaarihalli', 'Assets/images/map/Buildings/Kaarihalli');
+        this.load.image('Hunajatalo', 'Assets/images/map/Buildings/Hunajatalo');
+        this.load.image('Tallirakennus', 'Assets/images/map/Buildings/Tallirakennus');
         this.load.image('Nuoli', 'Assets/images/map/arrowSign');
+
+        this.load.image('exitButton', 'Assets/images/menu/exit-button.png');
+        
     }
 
     //Use parameters when starting this scene from another scene to set the position of the player
@@ -31,7 +35,8 @@ class StockforsScene extends MapScene {
             this.startingPoint.y = 300;
         }
 
-        this.map = this.add.image(400, 300, 'map').setDepth(0);
+        this.map = this.add.image(0, 0, 'map').setDepth(0).setDisplayOrigin(0, 0);
+
         this.add.text(300, 40, "Stockfors", { font: "40px Arial", fill: "yellow" });
 
 
@@ -42,21 +47,29 @@ class StockforsScene extends MapScene {
     BuildingsInitialize() {
         super.BuildingsInitialize();
 
-        const thisScene = this.scene;
+        this.buildings.PatruunanTalo = this.matter.add.image(1130, 700, 'PatruunanTalo').setScale(0.4);
+        
+        this.buildings.PakkausMuseo = this.matter.add.image(550, 800, 'PakkausMuseo').setScale(0.2);
 
-        this.buildings.PatruunanTalo = this.matter.add.image(600, 400, 'PatruunanTalo').setScale(0.3).setStatic(true);
-        this.buildings.PatruunanTalo.openScene = function () {
-            thisScene.start('PatruunaScene');
-        };
+        this.buildings.Hunajatalo = this.matter.add.image(880, 750, 'Hunajatalo').setScale(0.2);
 
-        this.buildings.PakkausMuseo = this.matter.add.image(800, 200, 'PakkausMuseo').setScale(0.3).setStatic(true);
-        this.buildings.PakkausMuseo.openScene = function () {
-            thisScene.start('PakkausMuseoScene');
-        };
+        this.buildings.Tallirakennus = this.matter.add.image(400, 900, 'Tallirakennus').setScale(0.25);
 
-        this.buildings.KirkkoTie = this.matter.add.image(1400, 500, 'Nuoli').setScale(0.1).setStatic(true);
-        this.buildings.KirkkoTie.openScene = function () {
-            thisScene.start('KirkkoScene');
-        };
+        this.buildings.Kaarihalli = this.matter.add.image(450, 500, 'Kaarihalli').setScale(0.3);
+
+        this.buildings.KirkkoTie = this.matter.add.image(1400, 500, 'Nuoli').setScale(0.1);
+
+        Object.values(this.buildings).forEach(building => {
+            
+            building.setDepth(building.y).setStatic(true);
+            building.sceneKey = building.texture.key + 'Scene';
+
+            /*building.openScene = function () {
+            this.start(building.texture.key + 'Scene');
+        };*/
+        }, this);
+
+        //this.levelContainer.setScale(1.5);
+
     }
 }

@@ -1,4 +1,4 @@
-class PatruunaScene extends MenuScene
+class PatruunanTaloScene extends MenuScene
 {
     constructor()
     {
