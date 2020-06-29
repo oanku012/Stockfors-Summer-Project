@@ -44,6 +44,8 @@ var config = {
             map: currentMap.scene.key,
             posX: currentMap.player.x, 
             posY: currentMap.player.y, 
+            MusicOn: config.musicOn,
+            SoundOn: config.soundOn 
         };
 
         localStorage.setItem('saveFile', JSON.stringify(file));
@@ -55,13 +57,11 @@ var config = {
     {
         var file = JSON.parse(localStorage.getItem('saveFile'));
 
-        //currentMap = this.scene.scene.getScene(file.map);
-
-        //return playerPosition = { x: file.posX, y: file.posY };
+        config.musicOn = file.MusicOn;
+        config.soundOn = file.SoundOn;
 
         return file;
 
-        //currentMap.player.setPosition(file.posX, file.posY);
     };
 
 
