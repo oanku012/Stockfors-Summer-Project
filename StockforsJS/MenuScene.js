@@ -77,9 +77,12 @@ class MenuScene extends Phaser.Scene
             imgTitle.setColor("black");
             this.menu.add(imgTitle);
 
+            var previousX = -200;
+
             this.images.forEach(element => {
                 this.menu.add(element[0]);
-                element[0].setPosition(0, 300);
+                element[0].setPosition(previousX, 320);
+                previousX += 100;
 
                 var pressed = false;
 
@@ -142,10 +145,18 @@ class MenuScene extends Phaser.Scene
 
     createImage(image)
     {
-        let newImage = this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, image);
-
+        let newImage = this.add.image(0, 0, image);
+        
+        // add to menu for easy resize
+        this.menu.add(newImage);
         var pressed = false;
         newImage.setInteractive();
+
+        newImage.on('pointerout', function () {
+    
+            pressed = false;
+    
+        });
 
         newImage.on('pointerdown', function () {
     
