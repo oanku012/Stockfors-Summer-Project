@@ -12,6 +12,8 @@ class MenuScene extends Phaser.Scene
         this.menuBG;
         this.menu;
         this.exitButton;
+
+        this.images = [];
     }
 
     preload ()
@@ -23,6 +25,8 @@ class MenuScene extends Phaser.Scene
         this.load.image('exitButton', 'Assets/images/menu/exit-button.png');
         this.load.image('blankCheckBox', 'Assets/images/menu/blank-check-box.png');
         this.load.image('checkedBox', 'Assets/images/menu/check-box.png');
+        this.load.image('1thumb', 'Assets/images/photos/1_thumb');
+        this.load.image('1full', 'Assets/images/photos/1_full');
     }
 
     create ()
@@ -64,20 +68,52 @@ class MenuScene extends Phaser.Scene
 
         this.menu.add(description);
 
+        // image thumbnails
+        if (this.images.length > 0)
+        {
+            let imgTitle = this.add.text(0, 0, "Images");
+            imgTitle.setPosition(-imgTitle.width * 1.5, 220);
+            imgTitle.setFontSize(36);
+            imgTitle.setColor("black");
+            this.menu.add(imgTitle);
 
-        /*this.menuBG.setInteractive();
+            this.images.forEach(element => {
+                this.menu.add(element[0]);
+                element[0].setPosition(0, 300);
 
-        this.menuBG.on('pointerover', function () {
-    
-            currentMap.pointerOverUI = true;
-            console.log('On container');
-        });
+                var pressed = false;
 
-        this.menuBG.on('pointerout', function () {
+                element[0].setInteractive();
+
+                element[0].on('pointerover', function () {
     
-            currentMap.pointerOverUI = false;
-    
-        });*/
+                    element[0].setTint(0xeb4034);
+            
+                });
+            
+                element[0].on('pointerout', function () {
+            
+                    element[0].clearTint();
+                    pressed = false;
+            
+                });
+        
+                element[0].on('pointerdown', function () {
+            
+                    pressed = true;
+            
+                });
+            
+                element[0].on('pointerup', function (event) {
+                    if (pressed)
+                    {
+                        // Open image
+                        this.createImage(element[1]);
+                    }
+                  }, this);
+            });
+        }
+
 
         /* Button used for something maybe
         // Button
@@ -102,6 +138,27 @@ class MenuScene extends Phaser.Scene
         });
         */
         
+    }
+
+    createImage(image)
+    {
+        let newImage = this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, image);
+
+        var pressed = false;
+        newImage.setInteractive();
+
+        newImage.on('pointerdown', function () {
+    
+            pressed = true;
+    
+        });
+    
+        newImage.on('pointerup', function (event) {
+            if (pressed)
+            {
+                newImage.destroy();
+            }
+          }, this);
     }
 
     // Separate function because it needs to be overwritten
@@ -138,6 +195,8 @@ class MenuScene extends Phaser.Scene
         exitButton.on('pointerup', function (event) {
             if (pressed)
             {
+                // empty images manually to prevent crash
+                this.images = [];
                 this.scene.start('StockforsScene', this.playerSpawnPosition.x, this.playerSpawnPosition.y);
             }
           }, this);
