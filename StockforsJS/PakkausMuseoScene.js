@@ -1,8 +1,8 @@
-class PakkausMuseoScene extends MenuScene
+class PakkausmuseoScene extends MenuScene
 {
     constructor()
     {
-        super('PakkausMuseoScene');
+        super('PakkausmuseoScene');
 
         this.title = 'Pakkausmuseo';
         this.description = 'Tämä on pakkausmuseo.';

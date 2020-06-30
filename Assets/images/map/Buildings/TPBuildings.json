@@ -1,0 +1,125 @@
+{
+	"textures": [
+		{
+			"image": "TPBuildings.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 2006,
+				"h": 1860
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "Tallirakennus",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 1337,
+						"h": 617
+					},
+					"spriteSourceSize": {
+						"x": 49,
+						"y": 58,
+						"w": 1287,
+						"h": 515
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 1287,
+						"h": 515
+					}
+				},
+				{
+					"filename": "Hunajatalo",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 1071,
+						"h": 916
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 12,
+						"w": 1042,
+						"h": 863
+					},
+					"frame": {
+						"x": 1,
+						"y": 518,
+						"w": 1042,
+						"h": 863
+					}
+				},
+				{
+					"filename": "Kaarihalli",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 1098,
+						"h": 580
+					},
+					"spriteSourceSize": {
+						"x": 41,
+						"y": 60,
+						"w": 1005,
+						"h": 476
+					},
+					"frame": {
+						"x": 1,
+						"y": 1383,
+						"w": 1005,
+						"h": 476
+					}
+				},
+				{
+					"filename": "Pakkausmuseo",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 1036,
+						"h": 542
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 47,
+						"w": 997,
+						"h": 433
+					},
+					"frame": {
+						"x": 1008,
+						"y": 1383,
+						"w": 997,
+						"h": 433
+					}
+				},
+				{
+					"filename": "Patruunantalo",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 906,
+						"h": 456
+					},
+					"spriteSourceSize": {
+						"x": 22,
+						"y": 16,
+						"w": 873,
+						"h": 428
+					},
+					"frame": {
+						"x": 1045,
+						"y": 518,
+						"w": 873,
+						"h": 428
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:1d69881fa9c56319980cc2540ef88a54:88083c1f3c48b4f1d6ceedff5f0fd978:2476198be9fa65b60881c5fccada28ab$"
+	}
+}

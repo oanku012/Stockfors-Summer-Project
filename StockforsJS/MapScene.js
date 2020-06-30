@@ -8,8 +8,6 @@ class MapScene extends Phaser.Scene {
         this.wasdKeys;
         this.pointer;
 
-
-
         this.movingOnPath = false;
         this.speed = 3;
         this.movementVector = new Phaser.Math.Vector2();
@@ -24,6 +22,9 @@ class MapScene extends Phaser.Scene {
         this.buildings = {};
         this.buildingButton;
         //this.levelContainer;
+
+        this.collisionCat1;
+        this.collisionCat2;
 
         this.sceneToOpen;
 
@@ -58,40 +59,20 @@ class MapScene extends Phaser.Scene {
 
         this.sceneToOpen = null;
 
-        this.player = this.matter.add.sprite(this.startingPoint.x, this.startingPoint.y, 'player');
-        this.player.setDepth(this.player.y).setScale(0.75);
-        this.player.setRectangle(30, 78).setBounce(0).setFixedRotation().setFriction(1, 0).setIgnoreGravity(true);
-
         //Collision layers
-        let cat1 = this.matter.world.nextCategory();
-        let cat2 = this.matter.world.nextCategory();
-
-        this.player.setCollisionCategory(cat1).setCollidesWith([cat1]);
+        this.collisionCat1 = this.matter.world.nextCategory();
+        //this.collisionCat2 = this.matter.world.nextCategory();
 
         if (this.map != null) {
             this.map.setInteractive();
         }
 
-        this.arrowKeys = this.input.keyboard.createCursorKeys();
-        this.wasdKeys = this.input.keyboard.addKeys('W,S,A,D');
-        this.pointer = this.input.activePointer;
-
-        this.input.mouse.disableContextMenu();
-
-        //Makes it so that the pointer world position is updated when camera moves
-        this.input.setPollAlways();
-
+        this.InputInitialize();
+        this.PlayerInitialize();
         this.CreateAnimations();
         this.BuildingsInitialize();
         this.InitializeCamera();
         this.MovementInitialize();
-
-        //Sets collision category for all buildings
-        Object.values(this.buildings).forEach(element => {
-            element.setCollisionCategory(cat2);
-        });
-
-
 
         //Was gonna use a container to manage all the level objects, but turns out it's not the best solution if you want physics and separate depth sorting
         /*this.levelContainer.add(this.map);
@@ -110,15 +91,15 @@ class MapScene extends Phaser.Scene {
         // Reorganize the UI when the game gets resized
         this.scale.on('resize', this.resize, this);
 
-        currentMap = this;
-
-        saveGame(this);
-
         //Autosave every 10 seconds
         this.saveGameTimerEvent = this.time.addEvent({ delay: 10000, callback: saveGame, callbackScope: this, loop: true });
 
         //Changed this to not run on every frame, because when you're overlapping 2 buildings it would get called constantly
         this.overLapTimer = this.time.addEvent({delay: 100, callback: this.CheckForOverlap, callbackScope: this, loop: true});
+
+        currentMap = this;
+
+        saveGame(this);
     }
 
     update() {
@@ -135,7 +116,33 @@ class MapScene extends Phaser.Scene {
 
     }
 
-    BuildingsInitialize() {
+    InputInitialize()
+    {
+        this.arrowKeys = this.input.keyboard.createCursorKeys();
+        this.wasdKeys = this.input.keyboard.addKeys('W,S,A,D');
+        this.pointer = this.input.activePointer;
+
+        this.input.mouse.disableContextMenu();
+
+        //Makes it so that the pointer world position is updated when camera moves
+        this.input.setPollAlways();
+    }
+
+    PlayerInitialize()
+    {
+        this.player = this.matter.add.sprite(this.startingPoint.x, this.startingPoint.y, 'player');
+        this.player.setDepth(this.player.y).setScale(0.75);
+        this.player.setRectangle(30, 30).setBounce(0).setFixedRotation().setFriction(1, 0).setIgnoreGravity(true).setDisplayOrigin(35, 90);
+        this.player.setCollisionCategory(this.collisionCat1)
+        //this.player.setCollidesWith([this.collisionCat1]);
+    }
+
+    BuildingsInitialize() 
+    {
+        /*//Sets collision category for all buildings
+        Object.values(this.buildings).forEach(element => {
+            element.setCollisionCategory(this.collisionCat1);
+        });*/
 
         //Container for all map objects in this level
         //this.levelContainer = this.add.container(0, 0);
@@ -143,16 +150,6 @@ class MapScene extends Phaser.Scene {
     }
 
     MovementInitialize() {
-
-        //Make player move in direction of mouse click
-        /*this.input.on('pointerdown', function ()
-        {
-    
-            
-        }, this);*/
-
-        //This doesn't seem to work correctly, only gets called when player starts the game?
-        //this.player.setOnCollide(this.OnCollisionStop(this.movementVector, this.movingOnPath, this.player));
 
         //Doesn't do anything now since buildings are using overlap
         this.matter.world.on('collisionstart', function (event, bodyA, bodyB) {
@@ -197,10 +194,7 @@ class MapScene extends Phaser.Scene {
         if (this.matter.overlap(this.player, Object.values(this.buildings), function (bodyA, bodyB) {
 
             if ((this.playerOverLapping == false || this.currentOverlapBody != bodyB)) {
-                console.log('Overlapping with ' + bodyB.gameObject.texture.key);
-                //bodyB.gameObject.openScene();
-
-                //console.log(bodyB.gameObject.sceneKey);
+                console.log('Overlapping with ' + bodyB.gameObject.frame.name);
 
                 if(this.buildingButton != null)
                 {

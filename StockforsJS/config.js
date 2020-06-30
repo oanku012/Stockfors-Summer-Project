@@ -27,7 +27,7 @@ var config = {
             }
         },
 
-        scene: [ OpeningScene, StockforsScene, MenuScene, KirkkoScene, PatruunanTaloScene, PakkausMuseoScene, OptionsMenuScene ]
+        scene: [ OpeningScene, StockforsScene, MenuScene, KirkkoScene, PatruunantaloScene, PakkausmuseoScene, OptionsMenuScene ]
         
        
     };
