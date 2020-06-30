@@ -110,10 +110,14 @@ class OptionsMenuScene extends MenuScene
         exitButton.on('pointerup', function (event) {
             if (pressed)
             {
-                this.scene.stop('OptionsMenuScene');
+                this.scene.stop(this.scene.key);
+
+                //this.time.paused = false;
 
                 readyToMove = true;
             }
           }, this);
+
+        
     }
 }
