@@ -80,34 +80,35 @@ class MenuScene extends Phaser.Scene
             var previousX = -200;
 
             this.images.forEach(element => {
-                this.menu.add(element[0]);
-                element[0].setPosition(previousX, 320);
+                let img = this.add.image(0, 0, element[0])
+                this.menu.add(img);
+                img.setPosition(previousX, 320);
                 previousX += 100;
 
                 var pressed = false;
 
-                element[0].setInteractive();
+                img.setInteractive();
 
-                element[0].on('pointerover', function () {
+                img.on('pointerover', function () {
     
-                    element[0].setTint(0xeb4034);
+                    img.setTint(0xeb4034);
             
                 });
             
-                element[0].on('pointerout', function () {
+                img.on('pointerout', function () {
             
-                    element[0].clearTint();
+                    img.clearTint();
                     pressed = false;
             
                 });
         
-                element[0].on('pointerdown', function () {
+                img.on('pointerdown', function () {
             
                     pressed = true;
             
                 });
             
-                element[0].on('pointerup', function (event) {
+                img.on('pointerup', function (event) {
                     if (pressed)
                     {
                         // Open image
