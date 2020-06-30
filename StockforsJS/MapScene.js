@@ -15,10 +15,14 @@ class MapScene extends Phaser.Scene {
         this.movementVector = new Phaser.Math.Vector2();
         this.destination = new Phaser.Math.Vector2();
         this.movementDirection;
+
         this.playerOverLapping = false;
+        this.currentOverlapBody;
+        this.overLapTimer;
 
         this.map;
         this.buildings = {};
+        this.buildingButton;
         //this.levelContainer;
 
         this.sceneToOpen;
@@ -112,6 +116,9 @@ class MapScene extends Phaser.Scene {
 
         //Autosave every 10 seconds
         this.saveGameTimerEvent = this.time.addEvent({ delay: 10000, callback: saveGame, callbackScope: this, loop: true });
+
+        //Changed this to not run on every frame, because when you're overlapping 2 buildings it would get called constantly
+        this.overLapTimer = this.time.addEvent({delay: 100, callback: this.CheckForOverlap, callbackScope: this, loop: true});
     }
 
     update() {
@@ -184,6 +191,38 @@ class MapScene extends Phaser.Scene {
 
     }
 
+    CheckForOverlap()
+    {
+        //Checks if player overlaps with one of the buildings, apparently matter doesn't have an event for this so this runs on every frame
+        if (this.matter.overlap(this.player, Object.values(this.buildings), function (bodyA, bodyB) {
+
+            if ((this.playerOverLapping == false || this.currentOverlapBody != bodyB)) {
+                console.log('Overlapping with ' + bodyB.gameObject.texture.key);
+                //bodyB.gameObject.openScene();
+
+                //console.log(bodyB.gameObject.sceneKey);
+
+                if(this.buildingButton != null)
+                {
+                    this.buildingButton.destroy();
+                }
+
+                this.buildingButton = this.createButton(bodyB.gameObject.x + 100, bodyB.gameObject.y - 50, bodyB.gameObject.sceneKey, false, 1, 0.3);
+
+                this.playerOverLapping = true;
+                this.currentOverlapBody = bodyB;
+            }
+
+        }, null, this) == false && this.playerOverLapping == true) {
+            this.playerOverLapping = false
+            this.currentOverlapBody = null;
+
+            if (this.buildingButton != null) {
+                this.buildingButton.destroy();
+            }
+        }
+    }
+
     /*OnCollisionStop(movementVector, movingOnPath, player)
     {
         movementVector.x = 0;
@@ -196,23 +235,7 @@ class MapScene extends Phaser.Scene {
 
     MovementUpdate() {
 
-        //Checks if player overlaps with one of the buildings, apparently matter doesn't have an event for this so this runs on every frame
-        if (this.matter.overlap(this.player, Object.values(this.buildings), function (bodyA, bodyB) {
-
-            if (this.playerOverLapping == false) {
-                console.log('Overlapping with ' + bodyB.gameObject.texture.key);
-                //bodyB.gameObject.openScene();
-
-                //console.log(bodyB.gameObject.sceneKey);
-
-                this.createButton(bodyB.gameObject.x, bodyB.gameObject.y, bodyB.gameObject.sceneKey, false);
-
-                this.playerOverLapping = true;
-            }
-
-        }, null, this) == false) {
-            this.playerOverLapping = false
-        }
+        
 
 
         if (readyToMove == true) {
@@ -435,7 +458,7 @@ class MapScene extends Phaser.Scene {
         this.destination.y = 0;
     }
 
-    createButton(posX, posY, scene, runOnTop) {
+    createButton(posX, posY, scene, runOnTop, scrollFactor, scale) {
         // Button
         let buttonBG = this.add.image(0, 0, 'buttonBG');
         let buttonText = this.add.image(0, 0, 'buttonText');
@@ -444,7 +467,7 @@ class MapScene extends Phaser.Scene {
         button.setSize(buttonBG.width, buttonBG.height);
         button.setInteractive();
 
-        button.setScrollFactor(0);
+        button.setScrollFactor(scrollFactor).setDepth(9999).setScale(scale);
 
         var pressed = false;
 
@@ -484,12 +507,10 @@ class MapScene extends Phaser.Scene {
                 //Only affects timer events, have to be setup separately for physics
                 //this.time.paused = true;
 
-                if(runOnTop == true)
-                {
+                if (runOnTop == true) {
                     this.scene.run(scene);
                 }
-                else
-                {
+                else {
                     this.scene.start(scene);
                 }
 
@@ -503,7 +524,7 @@ class MapScene extends Phaser.Scene {
     }
 
     createUI() {
-        this.optionsMenuButton = this.createButton(this.cameras.main.centerX + this.cameras.main.width * .4, this.cameras.main.centerY - this.cameras.main.height * .4, 'OptionsMenuScene', true);
+        this.optionsMenuButton = this.createButton(this.cameras.main.centerX + this.cameras.main.width * .4, this.cameras.main.centerY - this.cameras.main.height * .4, 'OptionsMenuScene', true, 0, 1);
     }
 
     destroyUI() {

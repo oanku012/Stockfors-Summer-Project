@@ -38,6 +38,7 @@ var config = {
     //Whether if player is ready to move
     var readyToMove = false;
     
+    //Sometimes the player seems to appear at the wrong spot when loading?
     function saveGame()
     {
         var file = {
