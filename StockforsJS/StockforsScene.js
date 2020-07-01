@@ -48,39 +48,50 @@ class StockforsScene extends MapScene {
     }
 
     BuildingsInitialize() {
-        super.BuildingsInitialize();
+        
 
         let bodies = this.cache.json.get('buildingBodies');
 
-        this.buildings.PatruunanTalo = this.matter.add.sprite(1090, 760, 'buildingSheet', 'Patruunantalo', {shape: bodies.Patruunantalo }).setScale(0.4);
-        //this.buildings.PatruunanTalo.setRectangle(300, 150);
-        
-        this.buildings.PakkausMuseo = this.matter.add.sprite(550, 850, 'buildingSheet', 'Pakkausmuseo', {shape: bodies.Pakkausmuseo }).setScale(0.2);
-        //this.buildings.PakkausMuseo.setRectangle(150, 75);
+        let entranceRadius = 40;
 
-        this.buildings.Hunajatalo = this.matter.add.sprite(840, 750, 'buildingSheet', 'Hunajatalo', {shape: bodies.Hunajatalo }).setScale(0.2);
-        //this.buildings.Hunajatalo.setRectangle(200, 100);
+        this.buildings.PatruunanTalo = this.matter.add.sprite(1090, 760, 'buildingSheet', 'Patruunantalo', {shape: bodies.Patruunantalo }).setScale(0.4);
+        let Patruuna = this.buildings.PatruunanTalo;
+        Patruuna.entrance = this.matter.add.circle(Patruuna.x + 110, Patruuna.y, entranceRadius, {collisionFilter: this.collisionCat2});
+       
+        this.buildings.PakkausMuseo = this.matter.add.sprite(550, 850, 'buildingSheet', 'Pakkausmuseo', {shape: bodies.Pakkausmuseo }).setScale(0.2);
+        let Pakkaus = this.buildings.PakkausMuseo;
+        Pakkaus.entrance = this.matter.add.circle(Pakkaus.x + 70, Pakkaus.y, entranceRadius, {collisionFilter: this.collisionCat2});
+
+        this.buildings.Hunajatalo = this.matter.add.sprite(830, 770, 'buildingSheet', 'Hunajatalo', {shape: bodies.Hunajatalo }).setScale(0.2);
+        let Hunaja = this.buildings.Hunajatalo;
+        Hunaja.entrance = this.matter.add.circle(Hunaja.x + 90, Hunaja.y, entranceRadius, {collisionFilter: this.collisionCat2});
 
         this.buildings.Tallirakennus = this.matter.add.sprite(380, 930, 'buildingSheet', 'Tallirakennus', {shape: bodies.Tallirakennus }).setScale(0.25);
-        //this.buildings.Tallirakennus.setRectangle(300, 100);
+        let Talli = this.buildings.Tallirakennus;
+        Talli.entrance = this.matter.add.circle(Talli.x + 130, Talli.y - 20, entranceRadius, {collisionFilter: this.collisionCat2});
 
         this.buildings.Kaarihalli = this.matter.add.sprite(450, 500, 'buildingSheet', 'Kaarihalli', {shape: bodies.Kaarihalli}).setScale(0.3);
-        //this.buildings.Kaarihalli.setRectangle(300, 150);
+        let Kaari = this.buildings.Kaarihalli;
+        Kaari.entrance = this.matter.add.circle(Kaari.x + 150, Kaari.y, entranceRadius, {collisionFilter: this.collisionCat2});
 
-        this.buildings.KirkkoTie = this.matter.add.image(1400, 500, 'Nuoli').setScale(0.1);
+        //this.buildings.KirkkoTie = this.matter.add.image(1400, 500, 'Nuoli').setScale(0.1);
 
         
         Object.values(this.buildings).forEach(building => {
             
             building.setDepth(building.y).setStatic(true);
         
-            building.sceneKey = building.frame.name + 'Scene';
+            building.entrance.sceneKey = building.frame.name + 'Scene';
+
+            this.buildingEntrances.push(building.entrance);
 
             //console.log(building.sceneKey);
             
         }, this);
 
         //this.levelContainer.setScale(1.5);
+
+        super.BuildingsInitialize();
 
     }
 }

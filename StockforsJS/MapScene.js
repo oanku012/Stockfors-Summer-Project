@@ -21,7 +21,7 @@ class MapScene extends Phaser.Scene {
         this.map;
         this.buildings = {};
         this.buildingButton;
-        //this.levelContainer;
+        this.buildingEntrances = [];
 
         this.collisionCat1;
         this.collisionCat2;
@@ -61,7 +61,7 @@ class MapScene extends Phaser.Scene {
 
         //Collision layers
         this.collisionCat1 = this.matter.world.nextCategory();
-        //this.collisionCat2 = this.matter.world.nextCategory();
+        this.collisionCat2 = this.matter.world.nextCategory();
 
         if (this.map != null) {
             this.map.setInteractive();
@@ -73,15 +73,6 @@ class MapScene extends Phaser.Scene {
         this.BuildingsInitialize();
         this.InitializeCamera();
         this.MovementInitialize();
-
-        //Was gonna use a container to manage all the level objects, but turns out it's not the best solution if you want physics and separate depth sorting
-        /*this.levelContainer.add(this.map);
-        this.levelContainer.add(Object.values(this.buildings));
-        //this.levelContainer.body.refreshBody();
-
-        this.levelContainer.list.forEach(function(item){ 
-            item.body.updateBounds();
-        }, );*/
 
         //Movement is allowed with a slight delay so that player clicking the button to return outside won't trigger movement
         this.time.delayedCall(200, function () { readyToMove = true; }, null, this)
@@ -110,10 +101,6 @@ class MapScene extends Phaser.Scene {
             this.player.setDepth(this.player.y);
         }
 
-
-
-        //this.time.delayedCall(10000, function () { saveGame(this) }, null, this)
-
     }
 
     InputInitialize()
@@ -134,26 +121,28 @@ class MapScene extends Phaser.Scene {
         this.player.setDepth(this.player.y).setScale(0.75);
         this.player.setRectangle(30, 30).setBounce(0).setFixedRotation().setFriction(1, 0).setIgnoreGravity(true).setDisplayOrigin(35, 90);
         this.player.setCollisionCategory(this.collisionCat1)
-        //this.player.setCollidesWith([this.collisionCat1]);
+        this.player.setCollidesWith([this.collisionCat1]);
     }
 
     BuildingsInitialize() 
     {
-        /*//Sets collision category for all buildings
+
+        //Sets collision category for all buildings
         Object.values(this.buildings).forEach(element => {
             element.setCollisionCategory(this.collisionCat1);
-        });*/
 
-        //Container for all map objects in this level
-        //this.levelContainer = this.add.container(0, 0);
+        });
 
     }
 
     MovementInitialize() {
 
-        //Doesn't do anything now since buildings are using overlap
         this.matter.world.on('collisionstart', function (event, bodyA, bodyB) {
-            //Checks if either of the colliding objects contain the openScene function
+
+            this.stopPlayerMovement();
+
+            //Changed scene opening to trigger from overlap instead
+            /*//Checks if either of the colliding objects contain the openScene function
             if (bodyB.gameObject != null) {
                 //bodyB.gameObject.setVelocity(0,0);
                 if (typeof bodyB.gameObject.openScene === 'function') {
@@ -165,9 +154,9 @@ class MapScene extends Phaser.Scene {
                 if (typeof bodyA.gameObject.openScene === 'function') {
                     bodyA.gameObject.openScene();
                 }
-            }
+            }*/
 
-        });
+        }, this);
 
 
 
@@ -190,18 +179,19 @@ class MapScene extends Phaser.Scene {
 
     CheckForOverlap()
     {
-        //Checks if player overlaps with one of the buildings, apparently matter doesn't have an event for this so this runs on every frame
-        if (this.matter.overlap(this.player, Object.values(this.buildings), function (bodyA, bodyB) {
+        //Checks if player overlaps with one of the building entrances, apparently matter doesn't have an event for this so this runs on every frame
+        if (this.matter.overlap(this.player, this.buildingEntrances, function (bodyA, bodyB) {
 
             if ((this.playerOverLapping == false || this.currentOverlapBody != bodyB)) {
-                console.log('Overlapping with ' + bodyB.gameObject.frame.name);
+                
+                console.log('Overlapping with ' + bodyB.sceneKey.replace("Scene", ""));
 
                 if(this.buildingButton != null)
                 {
                     this.buildingButton.destroy();
                 }
 
-                this.buildingButton = this.createButton(bodyB.gameObject.x + 100, bodyB.gameObject.y - 50, bodyB.gameObject.sceneKey, false, 1, 0.3);
+                this.buildingButton = this.createButton(bodyB.position.x + 50, bodyB.position.y - 50, bodyB.sceneKey, false, 1, 0.3);
 
                 this.playerOverLapping = true;
                 this.currentOverlapBody = bodyB;
@@ -216,15 +206,6 @@ class MapScene extends Phaser.Scene {
             }
         }
     }
-
-    /*OnCollisionStop(movementVector, movingOnPath, player)
-    {
-        movementVector.x = 0;
-        movementVector.y = 0;
-        player.setVelocity(0, 0);
-        movingOnPath = false;
-        console.log('Player collided');
-    }*/
 
 
     MovementUpdate() {
