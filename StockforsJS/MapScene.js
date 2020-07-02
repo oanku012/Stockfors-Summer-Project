@@ -42,10 +42,11 @@ class MapScene extends Phaser.Scene {
     }
 
     //This is called when starting scene with this.scene.start
-    init(startingPointX, startingPointY) {
+    init(startPoint) {
 
-        this.startingPoint.x = startingPointX;
-        this.startingPoint.y = startingPointY;
+        //console.log(startingPointX + ' ' + startingPointY);
+        this.startingPoint.x = startPoint.x;
+        this.startingPoint.y = startPoint.y;
 
     }
 
@@ -90,7 +91,7 @@ class MapScene extends Phaser.Scene {
 
         currentMap = this;
 
-        saveGame(this);
+        saveGame();
     }
 
     update() {
@@ -122,17 +123,36 @@ class MapScene extends Phaser.Scene {
         this.player.setRectangle(30, 30).setBounce(0).setFixedRotation().setFriction(1, 0).setIgnoreGravity(true).setDisplayOrigin(35, 90);
         this.player.setCollisionCategory(this.collisionCat1)
         this.player.setCollidesWith([this.collisionCat1]);
+
+        console.log('Player spawned at ' + this.player.x, this.player.y);
     }
 
     BuildingsInitialize() 
     {
 
-        //Sets collision category for all buildings
+        //Sets collision category and pointerinteraction for all buildings
         Object.values(this.buildings).forEach(element => {
             element.setCollisionCategory(this.collisionCat1);
+            element.setInteractive();
+            element.on('pointerup', function(pointer)
+            {
+                this.sceneToOpen = element.entrance.sceneKey;
 
+                //If the player is standing at the entrance and clicks the building it will enter the building
+                if(this.playerOverLapping == true && this.sceneToOpen != null && this.currentOverlapBody == element.entrance)
+                {
+                    this.EnterBuilding();
+                }
+
+            }, this);
         });
 
+    }
+
+    EnterBuilding()
+    {
+        saveGame();
+        this.scene.start(this.sceneToOpen);
     }
 
     MovementInitialize() {
@@ -191,10 +211,20 @@ class MapScene extends Phaser.Scene {
                     this.buildingButton.destroy();
                 }
 
-                this.buildingButton = this.createButton(bodyB.position.x + 50, bodyB.position.y - 50, bodyB.sceneKey, false, 1, 0.3);
+                //this.buildingButton = this.createButton(bodyB.position.x + 50, bodyB.position.y - 50, bodyB.sceneKey, false, 1, 0.3);
+
+                //this.sceneToOpen = bodyB.sceneKey;
 
                 this.playerOverLapping = true;
                 this.currentOverlapBody = bodyB;
+
+                //If the player clicked the building from afar and arrived at the entrance it will enter the building
+                if(this.sceneToOpen == bodyB.sceneKey)
+                {
+                    this.EnterBuilding();
+                }
+
+                
             }
 
         }, null, this) == false && this.playerOverLapping == true) {

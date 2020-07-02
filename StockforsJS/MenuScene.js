@@ -209,6 +209,14 @@ class MenuScene extends Phaser.Scene
             {
                 // empty images manually to prevent crash
                 this.images = [];
+                let saveData = loadGame();
+
+                if(saveData != null)
+                {
+                    this.playerSpawnPosition.x = saveData.posX;
+                    this.playerSpawnPosition.y = saveData.posY;
+                }
+
                 this.scene.start('StockforsScene', this.playerSpawnPosition.x, this.playerSpawnPosition.y);
             }
           }, this);

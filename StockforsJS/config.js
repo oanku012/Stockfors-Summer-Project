@@ -51,16 +51,21 @@ var config = {
 
         localStorage.setItem('saveFile', JSON.stringify(file));
 
-        console.log('Game saved.');
+        console.log('Game saved. Player position: ' + file.posX, file.posY);
     };
 
     function loadGame()
     {
         var file = JSON.parse(localStorage.getItem('saveFile'));
 
+        if(file != null)
+        {
+        
         config.musicOn = file.MusicOn;
         config.soundOn = file.SoundOn;
 
+        }
+        
         return file;
 
     };
