@@ -17,6 +17,7 @@ class PakkausmuseoScene extends MenuScene
     create ()
     {
         super.create();
+
     }
 
     createContainer () 

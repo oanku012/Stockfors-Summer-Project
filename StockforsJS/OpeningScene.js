@@ -8,6 +8,14 @@ class OpeningScene extends Phaser.Scene {
         this.clearDataText;
     }
 
+    preload()
+    {
+        this.load.image('buttonBG', 'Assets/images/menu/button-bg.png');
+        this.load.image('buttonText', 'Assets/images/menu/button-text.png');
+        this.load.image('menuBG', 'Assets/images/menu/menu-bg.png');
+        this.load.image('exitButton', 'Assets/images/menu/exit-button.png');
+    }
+
     create() {
         this.add.text(700, 200, "Stockfors Kartalle", { font: "40px Arial", fill: "yellow" });
 
@@ -25,7 +33,6 @@ class OpeningScene extends Phaser.Scene {
 
         let saveFile = loadGame();
 
-        //
         if(saveFile != null)
         {
             config.musicOn = saveFile.MusicOn;
@@ -56,6 +63,17 @@ class OpeningScene extends Phaser.Scene {
             console.log('Saved data cleared');
         });
 
+        createButton(this.cameras.main.centerX + this.cameras.main.width * .4, this.cameras.main.centerY - this.cameras.main.height * .4, 'OptionsMenuScene', true, 0, 1, this);
+
+        //Just for testing purposes
+        let muistipeliButton = this.add.image(200, 200, 'buttonBG');
+
+        muistipeliButton.setInteractive();
+
+        muistipeliButton.on('pointerup', function(){
+            this.scene.start('MuistiPeliScene');
+        }, this);
+
         /*this.input.keyboard.on('keydown', function (event) {
             let saveFile = loadGame();
 
@@ -71,6 +89,8 @@ class OpeningScene extends Phaser.Scene {
                 console.log('Started new game.');
             }
         });*/
+
+        
     }
 
     

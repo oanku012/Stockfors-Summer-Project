@@ -19,10 +19,6 @@ class MenuScene extends Phaser.Scene
     preload ()
     {
        
-        this.load.image('buttonBG', 'Assets/images/menu/button-bg.png');
-        this.load.image('buttonText', 'Assets/images/menu/button-text.png');
-        this.load.image('menuBG', 'Assets/images/menu/menu-bg.png');
-        this.load.image('exitButton', 'Assets/images/menu/exit-button.png');
         this.load.image('blankCheckBox', 'Assets/images/menu/blank-check-box.png');
         this.load.image('checkedBox', 'Assets/images/menu/check-box.png');
         this.load.image('1thumb', 'Assets/images/photos/1_thumb');

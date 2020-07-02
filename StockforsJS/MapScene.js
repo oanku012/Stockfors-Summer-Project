@@ -23,8 +23,8 @@ class MapScene extends Phaser.Scene {
         this.buildingButton;
         this.buildingEntrances = [];
 
-        this.collisionCat1;
-        this.collisionCat2;
+        //this.collisionCat1;
+        //this.collisionCat2;
 
         this.sceneToOpen;
 
@@ -61,8 +61,11 @@ class MapScene extends Phaser.Scene {
         this.sceneToOpen = null;
 
         //Collision layers
-        this.collisionCat1 = this.matter.world.nextCategory();
-        this.collisionCat2 = this.matter.world.nextCategory();
+        if (collisionCat1 == null && collisionCat2 == null) {
+            
+            collisionCat1 = this.matter.world.nextCategory();
+            collisionCat2 = this.matter.world.nextCategory();
+        }
 
         if (this.map != null) {
             this.map.setInteractive();
@@ -87,7 +90,7 @@ class MapScene extends Phaser.Scene {
         this.saveGameTimerEvent = this.time.addEvent({ delay: 10000, callback: saveGame, callbackScope: this, loop: true });
 
         //Changed this to not run on every frame, because when you're overlapping 2 buildings it would get called constantly
-        this.overLapTimer = this.time.addEvent({delay: 100, callback: this.CheckForOverlap, callbackScope: this, loop: true});
+        this.overLapTimer = this.time.addEvent({ delay: 100, callback: this.CheckForOverlap, callbackScope: this, loop: true });
 
         currentMap = this;
 
@@ -104,8 +107,7 @@ class MapScene extends Phaser.Scene {
 
     }
 
-    InputInitialize()
-    {
+    InputInitialize() {
         this.arrowKeys = this.input.keyboard.createCursorKeys();
         this.wasdKeys = this.input.keyboard.addKeys('W,S,A,D');
         this.pointer = this.input.activePointer;
@@ -116,31 +118,27 @@ class MapScene extends Phaser.Scene {
         this.input.setPollAlways();
     }
 
-    PlayerInitialize()
-    {
+    PlayerInitialize() {
         this.player = this.matter.add.sprite(this.startingPoint.x, this.startingPoint.y, 'player');
         this.player.setDepth(this.player.y).setScale(0.75);
         this.player.setRectangle(30, 30).setBounce(0).setFixedRotation().setFriction(1, 0).setIgnoreGravity(true).setDisplayOrigin(35, 90);
-        this.player.setCollisionCategory(this.collisionCat1)
-        this.player.setCollidesWith([this.collisionCat1]);
+        this.player.setCollisionCategory(collisionCat1)
+        this.player.setCollidesWith([collisionCat1]);
 
         console.log('Player spawned at ' + this.player.x, this.player.y);
     }
 
-    BuildingsInitialize() 
-    {
+    BuildingsInitialize() {
 
         //Sets collision category and pointerinteraction for all buildings
         Object.values(this.buildings).forEach(element => {
-            element.setCollisionCategory(this.collisionCat1);
+            element.setCollisionCategory(collisionCat1);
             element.setInteractive();
-            element.on('pointerup', function(pointer)
-            {
+            element.on('pointerup', function (pointer) {
                 this.sceneToOpen = element.entrance.sceneKey;
 
                 //If the player is standing at the entrance and clicks the building it will enter the building
-                if(this.playerOverLapping == true && this.sceneToOpen != null && this.currentOverlapBody == element.entrance)
-                {
+                if (this.playerOverLapping == true && this.sceneToOpen != null && this.currentOverlapBody == element.entrance) {
                     this.EnterBuilding();
                 }
 
@@ -149,10 +147,9 @@ class MapScene extends Phaser.Scene {
 
     }
 
-    EnterBuilding()
-    {
+    EnterBuilding() {
         saveGame();
-        playerExitPosition = {x: this.player.x, y: this.player.y};
+        playerExitPosition = { x: this.player.x, y: this.player.y };
         this.scene.start(this.sceneToOpen);
     }
 
@@ -198,17 +195,15 @@ class MapScene extends Phaser.Scene {
 
     }
 
-    CheckForOverlap()
-    {
+    CheckForOverlap() {
         //Checks if player overlaps with one of the building entrances, apparently matter doesn't have an event for this so this runs on every frame
         if (this.matter.overlap(this.player, this.buildingEntrances, function (bodyA, bodyB) {
 
             if ((this.playerOverLapping == false || this.currentOverlapBody != bodyB)) {
-                
+
                 console.log('Overlapping with ' + bodyB.sceneKey.replace("Scene", ""));
 
-                if(this.buildingButton != null)
-                {
+                if (this.buildingButton != null) {
                     this.buildingButton.destroy();
                 }
 
@@ -220,12 +215,11 @@ class MapScene extends Phaser.Scene {
                 this.currentOverlapBody = bodyB;
 
                 //If the player clicked the building from afar and arrived at the entrance it will enter the building
-                if(this.sceneToOpen == bodyB.sceneKey)
-                {
+                if (this.sceneToOpen == bodyB.sceneKey) {
                     this.EnterBuilding();
                 }
 
-                
+
             }
 
         }, null, this) == false && this.playerOverLapping == true) {
@@ -241,7 +235,7 @@ class MapScene extends Phaser.Scene {
 
     MovementUpdate() {
 
-        
+
 
 
         if (readyToMove == true) {
@@ -297,10 +291,12 @@ class MapScene extends Phaser.Scene {
 
                 if (distanceToDestination < 4) {
 
-                    this.movementVector.x = 0;
-                    this.movementVector.y = 0;
+                    //this.movementVector.x = 0;
+                    //this.movementVector.y = 0;
 
-                    this.movingOnPath = false;
+                    //this.movingOnPath = false;
+
+                    this.stopPlayerMovement();
                 }
 
 
@@ -310,7 +306,7 @@ class MapScene extends Phaser.Scene {
             //console.log(this.pointerOverUI);
 
 
-
+            //When pointer is down update destination and movement vector
             if (this.pointer.isDown == true && this.pointerOverUI == false) {
 
                 this.destination.x = this.pointer.worldX;
@@ -322,6 +318,17 @@ class MapScene extends Phaser.Scene {
                     this.movementVector.y = this.pointer.worldY - this.player.y;
 
                     this.movingOnPath = true;
+                }
+            }
+
+            //Updates movement vector towards the target destination, fixes the player moving incorrectly after colliding with a building
+            if(this.movingOnPath)
+            {
+                if (this.CheckDistance(this.player, this.destination) > 20) {
+
+                    this.movementVector.x = this.destination.x - this.player.x;
+                    this.movementVector.y = this.destination.y - this.player.y;
+
                 }
             }
 
@@ -462,9 +469,12 @@ class MapScene extends Phaser.Scene {
 
         this.destination.x = 0;
         this.destination.y = 0;
+
+        this.movingOnPath = false;
     }
 
-    createButton(posX, posY, scene, runOnTop, scrollFactor, scale) {
+    //Moved this to global so the options menu could be created in the opening scene
+    /*createButton(posX, posY, scene, runOnTop, scrollFactor, scale) {
         // Button
         let buttonBG = this.add.image(0, 0, 'buttonBG');
         let buttonText = this.add.image(0, 0, 'buttonText');
@@ -527,10 +537,10 @@ class MapScene extends Phaser.Scene {
 
         return button;
 
-    }
+    }*/
 
     createUI() {
-        this.optionsMenuButton = this.createButton(this.cameras.main.centerX + this.cameras.main.width * .4, this.cameras.main.centerY - this.cameras.main.height * .4, 'OptionsMenuScene', true, 0, 1);
+        this.optionsMenuButton = createButton(this.cameras.main.centerX + this.cameras.main.width * .4, this.cameras.main.centerY - this.cameras.main.height * .4, 'OptionsMenuScene', true, 0, 1, this);
     }
 
     destroyUI() {
