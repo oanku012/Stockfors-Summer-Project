@@ -37,6 +37,9 @@ var config = {
 
     //Whether if player is ready to move
     var readyToMove = false;
+
+    //This is updated every time player enters a building, player can then be spawned back to that position when exiting the building
+    var playerExitPosition;
     
     //Sometimes the player seems to appear at the wrong spot when loading?
     function saveGame()
@@ -61,8 +64,9 @@ var config = {
         if(file != null)
         {
         
-        config.musicOn = file.MusicOn;
-        config.soundOn = file.SoundOn;
+            //Moved this to the opening scene class so that loadgame can be used just to get specific values
+            //config.musicOn = file.MusicOn;
+            //config.soundOn = file.SoundOn;
 
         }
         

@@ -7,7 +7,7 @@ class MenuScene extends Phaser.Scene
         this.title = 'Placeholder title';
         this.description = 'Placeholder description';
 
-        this.playerSpawnPosition = {};
+        //this.playerSpawnPosition = {};
 
         this.menuBG;
         this.menu;
@@ -209,15 +209,8 @@ class MenuScene extends Phaser.Scene
             {
                 // empty images manually to prevent crash
                 this.images = [];
-                let saveData = loadGame();
 
-                if(saveData != null)
-                {
-                    this.playerSpawnPosition.x = saveData.posX;
-                    this.playerSpawnPosition.y = saveData.posY;
-                }
-
-                this.scene.start('StockforsScene', this.playerSpawnPosition.x, this.playerSpawnPosition.y);
+                this.scene.start('StockforsScene', playerExitPosition);
             }
           }, this);
     }

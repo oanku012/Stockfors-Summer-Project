@@ -23,11 +23,19 @@ class OpeningScene extends Phaser.Scene {
             console.log('Started new game.');
         });
 
+        let saveFile = loadGame();
+
+        //
+        if(saveFile != null)
+        {
+            config.musicOn = saveFile.MusicOn;
+            config.soundOn = saveFile.SoundOn;
+        }
+
         this.continueText.setInteractive();
 
         this.continueText.on('pointerup', function()
         {
-            let saveFile = loadGame();
 
             if (saveFile != null) {
                 this.scene.scene.start(saveFile.map, {x: saveFile.posX, y: saveFile.posY});
@@ -65,8 +73,6 @@ class OpeningScene extends Phaser.Scene {
         });*/
     }
 
-    update() {
-
-    }
+    
 
 }

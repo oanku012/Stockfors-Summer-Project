@@ -152,6 +152,7 @@ class MapScene extends Phaser.Scene {
     EnterBuilding()
     {
         saveGame();
+        playerExitPosition = {x: this.player.x, y: this.player.y};
         this.scene.start(this.sceneToOpen);
     }
 
