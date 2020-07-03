@@ -8,12 +8,25 @@ class OpeningScene extends Phaser.Scene {
         this.clearDataText;
     }
 
-    preload()
-    {
+    preload() {
         this.load.image('buttonBG', 'Assets/images/menu/button-bg.png');
         this.load.image('buttonText', 'Assets/images/menu/button-text.png');
         this.load.image('menuBG', 'Assets/images/menu/menu-bg.png');
         this.load.image('exitButton', 'Assets/images/menu/exit-button.png');
+
+        this.load.spritesheet('playerWalk', 'Assets/images/character/PlayerWalking.png', { frameWidth: 378.5, frameHeight: 379.6 });
+        this.load.spritesheet('playerIdle', 'Assets/images/character/PlayerStanding.png', { frameWidth: 378.5, frameHeight: 378.4 });
+
+        this.load.image('map', 'Assets/images/map/kartta.png');
+        /*this.load.image('PatruunanTalo', 'Assets/images/map/Buildings/Patruunantalo');
+        this.load.image('PakkausMuseo', 'Assets/images/map/Buildings/Pakkausmuseo');
+        this.load.image('Kaarihalli', 'Assets/images/map/Buildings/Kaarihalli');
+        this.load.image('Hunajatalo', 'Assets/images/map/Buildings/Hunajatalo');
+        this.load.image('Tallirakennus', 'Assets/images/map/Buildings/Tallirakennus');*/
+        this.load.image('Nuoli', 'Assets/images/map/arrowSign');
+
+        this.load.atlas('buildingSheet', 'Assets/images/map/Buildings/TPBuildings.png', 'Assets/images/map/Buildings/TPBuildings.json')
+        this.load.json('buildingBodies', 'Assets/images/map/Buildings/PEBuildings.json');
     }
 
     create() {
@@ -25,30 +38,35 @@ class OpeningScene extends Phaser.Scene {
 
         this.newGameText.setInteractive();
 
-        this.newGameText.on('pointerup', function()
-        {
+        this.newGameText.on('pointerup', function () {
             this.scene.scene.start('StockforsScene');
             console.log('Started new game.');
         });
 
-        let saveFile = loadGame();
+        let savedSettings = loadSettings();
 
-        if(saveFile != null)
-        {
-            config.musicOn = saveFile.MusicOn;
-            config.soundOn = saveFile.SoundOn;
+        if (savedSettings != null) {
+            
+            config.musicOn = savedSettings.MusicOn;
+            config.soundOn = savedSettings.SoundOn;
+            
         }
+
+        let savedGame = loadGame();
 
         this.continueText.setInteractive();
 
-        this.continueText.on('pointerup', function()
+        this.continueText.on('pointerup', function () 
         {
 
-            if (saveFile != null) {
-                this.scene.scene.start(saveFile.map, {x: saveFile.posX, y: saveFile.posY});
+            if (savedGame != null) 
+            {
+                
+                this.scene.scene.start(savedGame.map, { x: savedGame.posX, y: savedGame.posY });
                 console.log('Loaded game from save file.');
+                
             }
-            else
+            else 
             {
                 console.log('No save file available, start a new game instead.');
             }
@@ -56,8 +74,7 @@ class OpeningScene extends Phaser.Scene {
 
         this.clearDataText.setInteractive();
 
-        this.clearDataText.on('pointerup', function()
-        {
+        this.clearDataText.on('pointerup', function () {
             localStorage.clear();
 
             console.log('Saved data cleared');
@@ -70,7 +87,7 @@ class OpeningScene extends Phaser.Scene {
 
         muistipeliButton.setInteractive();
 
-        muistipeliButton.on('pointerup', function(){
+        muistipeliButton.on('pointerup', function () {
             this.scene.start('MuistiPeliScene');
         }, this);
 
@@ -90,9 +107,9 @@ class OpeningScene extends Phaser.Scene {
             }
         });*/
 
-        
+
     }
 
-    
+
 
 }

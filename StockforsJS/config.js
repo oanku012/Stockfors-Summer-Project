@@ -59,9 +59,7 @@ var config = {
         var file = {
             map: currentMap.scene.key,
             posX: currentMap.player.x, 
-            posY: currentMap.player.y, 
-            MusicOn: config.musicOn,
-            SoundOn: config.soundOn 
+            posY: currentMap.player.y 
         };
 
         localStorage.setItem('saveFile', JSON.stringify(file));
@@ -69,10 +67,22 @@ var config = {
         console.log('Game saved. Player position: ' + file.posX, file.posY);
     };
 
+    function saveSettings()
+    {
+        var file = { 
+            MusicOn: config.musicOn,
+            SoundOn: config.soundOn 
+        };
+
+        localStorage.setItem('settings', JSON.stringify(file));
+
+        console.log('Settings saved.');
+    }
+
     function loadGame()
     {
         var file = JSON.parse(localStorage.getItem('saveFile'));
-
+        
         if(file != null)
         {
         
@@ -85,6 +95,13 @@ var config = {
         return file;
 
     };
+
+    function loadSettings()
+    {
+        var file = JSON.parse(localStorage.getItem('settings'));
+
+        return file;
+    }
 
     //Moved this here so the options menu could be added to the opening scene as well, some things like pointerOverUI only apply to map scenes
     function createButton(posX, posY, scene, runOnTop, scrollFactor, scale, context) {

@@ -8,18 +8,7 @@ class StockforsScene extends MapScene {
 
     preload() {
         
-        this.load.spritesheet('player', 'Assets/images/character/player.png', { frameWidth: 72.5, frameHeight: 109.6 });
-
-        this.load.image('map', 'Assets/images/map/kartta.png');
-        /*this.load.image('PatruunanTalo', 'Assets/images/map/Buildings/Patruunantalo');
-        this.load.image('PakkausMuseo', 'Assets/images/map/Buildings/Pakkausmuseo');
-        this.load.image('Kaarihalli', 'Assets/images/map/Buildings/Kaarihalli');
-        this.load.image('Hunajatalo', 'Assets/images/map/Buildings/Hunajatalo');
-        this.load.image('Tallirakennus', 'Assets/images/map/Buildings/Tallirakennus');*/
-        this.load.image('Nuoli', 'Assets/images/map/arrowSign');
-
-        this.load.atlas('buildingSheet', 'Assets/images/map/Buildings/TPBuildings.png', 'Assets/images/map/Buildings/TPBuildings.json')
-        this.load.json('buildingBodies', 'Assets/images/map/Buildings/PEBuildings.json');
+        //Moved everything here to OpeningScene
         
     }
 

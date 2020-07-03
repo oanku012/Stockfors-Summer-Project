@@ -110,6 +110,8 @@ class OptionsMenuScene extends MenuScene
         exitButton.on('pointerup', function (event) {
             if (pressed)
             {
+                saveSettings();
+
                 this.scene.stop(this.scene.key);
 
                 //this.time.paused = false;

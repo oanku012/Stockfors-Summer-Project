@@ -12,7 +12,7 @@ class MapScene extends Phaser.Scene {
         this.speed = 3;
         this.movementVector = new Phaser.Math.Vector2();
         this.destination = new Phaser.Math.Vector2();
-        this.movementDirection;
+        this.movementDirection = 'down';
 
         this.playerOverLapping = false;
         this.currentOverlapBody;
@@ -119,11 +119,12 @@ class MapScene extends Phaser.Scene {
     }
 
     PlayerInitialize() {
-        this.player = this.matter.add.sprite(this.startingPoint.x, this.startingPoint.y, 'player');
-        this.player.setDepth(this.player.y).setScale(0.75);
-        this.player.setRectangle(30, 30).setBounce(0).setFixedRotation().setFriction(1, 0).setIgnoreGravity(true).setDisplayOrigin(35, 90);
-        this.player.setCollisionCategory(collisionCat1)
+        this.player = this.matter.add.sprite(this.startingPoint.x, this.startingPoint.y, 'playerIdle');
+        this.player.setDepth(this.player.y).setScale(0.3);
+        this.player.setRectangle(30, 30).setBounce(0).setFixedRotation().setFriction(1, 0).setIgnoreGravity(true).setDisplayOrigin(170, 300);
+        this.player.setCollisionCategory(collisionCat1);
         this.player.setCollidesWith([collisionCat1]);
+        this.player.anims.play(this.movementDirection + 'still', true);
 
         console.log('Player spawned at ' + this.player.x, this.player.y);
     }
@@ -350,7 +351,7 @@ class MapScene extends Phaser.Scene {
 
                 if (velocX > (this.speed * (straightThreshold))) {
                     //console.log('Moving right');
-                    this.player.flipX = false;
+                    this.player.setFlipX(false);
 
                     this.movementDirection = 'right';
 
@@ -359,35 +360,34 @@ class MapScene extends Phaser.Scene {
                 if (velocY > (this.speed * (straightThreshold))) {
                     //console.log('Moving down');
 
-                    this.player.flipX = false;
+                    this.player.setFlipX(false);
 
                     this.movementDirection = 'down';
                 }
 
                 if (velocX < (-this.speed * (straightThreshold))) {
                     //console.log('Moving left');
-                    this.player.flipX = true;
+                    this.player.setFlipX(true);
 
                     this.movementDirection = 'left';
                 }
 
                 if (this.player.body.velocity.y < (-this.speed * (straightThreshold))) {
                     //console.log('Moving up');
-                    this.player.flipX = false;
+                    this.player.setFlipX(false);
 
                     this.movementDirection = 'up';
                 }
 
                 if (velocY < (-this.speed) * (obliqueThreshold) && velocX > (this.speed * obliqueThreshold)) {
                     //console.log('Moving upright');
-                    this.player.flipX = true;
-
+                    this.player.setFlipX(true);
                     this.movementDirection = 'upright';
                 }
 
                 if (velocY > (this.speed) * (obliqueThreshold) && velocX > (this.speed * obliqueThreshold)) {
                     //console.log('Moving downright');
-                    this.player.flipX = false;
+                    this.player.setFlipX(false);
 
                     this.movementDirection = 'downright';
 
@@ -395,14 +395,14 @@ class MapScene extends Phaser.Scene {
 
                 if (velocY > (this.speed) * (obliqueThreshold) && velocX < (-this.speed * obliqueThreshold)) {
                     //console.log('Moving downleft');
-                    this.player.flipX = true;
+                    this.player.setFlipX(true);
 
                     this.movementDirection = 'downleft';
                 }
 
                 if (velocY < (-this.speed) * (obliqueThreshold) && velocX < (-this.speed * obliqueThreshold)) {
                     //console.log('Moving upleft');
-                    this.player.flipX = false;
+                    this.player.setFlipX(false);
 
                     this.movementDirection = 'upleft';
                 }
@@ -559,112 +559,112 @@ class MapScene extends Phaser.Scene {
 
         this.anims.create({
             key: 'right',
-            frames: this.anims.generateFrameNumbers('player', { start: 8, end: 15 }),
+            frames: this.anims.generateFrameNumbers('playerWalk', { start: 8, end: 15 }),
             frameRate: 10,
             repeat: -1
         });
 
         this.anims.create({
             key: 'rightstill',
-            frames: [{ key: 'player', frame: 8 }],
+            frames: this.anims.generateFrameNumbers('playerIdle', { start: 8, end: 15 }),
             frameRate: 10,
             repeat: -1
         });
 
         this.anims.create({
             key: 'downright',
-            frames: this.anims.generateFrameNumbers('player', { start: 16, end: 23 }),
+            frames: this.anims.generateFrameNumbers('playerWalk', { start: 16, end: 23 }),
             frameRate: 10,
             repeat: -1
         });
 
         this.anims.create({
             key: 'downrightstill',
-            frames: [{ key: 'player', frame: 16 }],
+            frames: this.anims.generateFrameNumbers('playerIdle', { start: 16, end: 23 }),
             frameRate: 10,
             repeat: -1
         });
 
         this.anims.create({
             key: 'down',
-            frames: this.anims.generateFrameNumbers('player', { start: 0, end: 7 }),
+            frames: this.anims.generateFrameNumbers('playerWalk', { start: 0, end: 7 }),
             frameRate: 10,
             repeat: -1
         });
 
         this.anims.create({
             key: 'downstill',
-            frames: [{ key: 'player', frame: 0 }],
+            frames: this.anims.generateFrameNumbers('playerIdle', { start: 0, end: 7 }),
             frameRate: 10,
             repeat: -1
         });
 
         this.anims.create({
             key: 'downleft',
-            frames: this.anims.generateFrameNumbers('player', { start: 16, end: 23 }),
+            frames: this.anims.generateFrameNumbers('playerWalk', { start: 16, end: 23 }),
             frameRate: 10,
             repeat: -1
         });
 
         this.anims.create({
             key: 'downleftstill',
-            frames: [{ key: 'player', frame: 16 }],
+            frames: this.anims.generateFrameNumbers('playerIdle', { start: 16, end: 23 }),
             frameRate: 10,
             repeat: -1
         });
 
         this.anims.create({
             key: 'left',
-            frames: this.anims.generateFrameNumbers('player', { start: 8, end: 15 }),
+            frames: this.anims.generateFrameNumbers('playerWalk', { start: 8, end: 15 }),
             frameRate: 10,
             repeat: -1
         });
 
         this.anims.create({
             key: 'leftstill',
-            frames: [{ key: 'player', frame: 8 }],
+            frames: this.anims.generateFrameNumbers('playerIdle', { start: 8, end: 15 }),
             frameRate: 10,
             repeat: -1
         });
 
         this.anims.create({
             key: 'upleft',
-            frames: this.anims.generateFrameNumbers('player', { start: 24, end: 31 }),
+            frames: this.anims.generateFrameNumbers('playerWalk', { start: 24, end: 31 }),
             frameRate: 10,
             repeat: -1
         });
 
         this.anims.create({
             key: 'upleftstill',
-            frames: [{ key: 'player', frame: 24 }],
+            frames: this.anims.generateFrameNumbers('playerIdle', { start: 24, end: 31 }),
             frameRate: 10,
             repeat: -1
         });
 
         this.anims.create({
             key: 'up',
-            frames: this.anims.generateFrameNumbers('player', { start: 32, end: 38 }),
+            frames: this.anims.generateFrameNumbers('playerWalk', { start: 32, end: 38 }),
             frameRate: 10,
             repeat: -1
         });
 
         this.anims.create({
             key: 'upstill',
-            frames: [{ key: 'player', frame: 32 }],
+            frames: this.anims.generateFrameNumbers('playerIdle', { start: 32, end: 38 }),
             frameRate: 10,
             repeat: -1
         });
 
         this.anims.create({
             key: 'upright',
-            frames: this.anims.generateFrameNumbers('player', { start: 24, end: 31 }),
+            frames: this.anims.generateFrameNumbers('playerWalk', { start: 24, end: 31 }),
             frameRate: 10,
             repeat: -1
         });
 
         this.anims.create({
             key: 'uprightstill',
-            frames: [{ key: 'player', frame: 24 }],
+            frames: this.anims.generateFrameNumbers('playerIdle', { start: 24, end: 31 }),
             frameRate: 10,
             repeat: -1
         });
