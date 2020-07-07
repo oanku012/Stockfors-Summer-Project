@@ -39,6 +39,8 @@ class MapScene extends Phaser.Scene {
 
         this.saveGameTimerEvent;
 
+        this.frameRate = 10;
+
     }
 
     //This is called when starting scene with this.scene.start
@@ -560,112 +562,112 @@ class MapScene extends Phaser.Scene {
         this.anims.create({
             key: 'right',
             frames: this.anims.generateFrameNumbers('playerWalk', { start: 8, end: 15 }),
-            frameRate: 10,
+            frameRate: this.frameRate,
             repeat: -1
         });
 
         this.anims.create({
             key: 'rightstill',
             frames: this.anims.generateFrameNumbers('playerIdle', { start: 8, end: 15 }),
-            frameRate: 10,
+            frameRate: this.frameRate,
             repeat: -1
         });
 
         this.anims.create({
             key: 'downright',
             frames: this.anims.generateFrameNumbers('playerWalk', { start: 16, end: 23 }),
-            frameRate: 10,
+            frameRate: this.frameRate,
             repeat: -1
         });
 
         this.anims.create({
             key: 'downrightstill',
             frames: this.anims.generateFrameNumbers('playerIdle', { start: 16, end: 23 }),
-            frameRate: 10,
+            frameRate: this.frameRate,
             repeat: -1
         });
 
         this.anims.create({
             key: 'down',
             frames: this.anims.generateFrameNumbers('playerWalk', { start: 0, end: 7 }),
-            frameRate: 10,
+            frameRate: this.frameRate,
             repeat: -1
         });
 
         this.anims.create({
             key: 'downstill',
             frames: this.anims.generateFrameNumbers('playerIdle', { start: 0, end: 7 }),
-            frameRate: 10,
+            frameRate: this.frameRate,
             repeat: -1
         });
 
         this.anims.create({
             key: 'downleft',
             frames: this.anims.generateFrameNumbers('playerWalk', { start: 16, end: 23 }),
-            frameRate: 10,
+            frameRate: this.frameRate,
             repeat: -1
         });
 
         this.anims.create({
             key: 'downleftstill',
             frames: this.anims.generateFrameNumbers('playerIdle', { start: 16, end: 23 }),
-            frameRate: 10,
+            frameRate: this.frameRate,
             repeat: -1
         });
 
         this.anims.create({
             key: 'left',
             frames: this.anims.generateFrameNumbers('playerWalk', { start: 8, end: 15 }),
-            frameRate: 10,
+            frameRate: this.frameRate,
             repeat: -1
         });
 
         this.anims.create({
             key: 'leftstill',
             frames: this.anims.generateFrameNumbers('playerIdle', { start: 8, end: 15 }),
-            frameRate: 10,
+            frameRate: this.frameRate,
             repeat: -1
         });
 
         this.anims.create({
             key: 'upleft',
             frames: this.anims.generateFrameNumbers('playerWalk', { start: 24, end: 31 }),
-            frameRate: 10,
+            frameRate: this.frameRate,
             repeat: -1
         });
 
         this.anims.create({
             key: 'upleftstill',
             frames: this.anims.generateFrameNumbers('playerIdle', { start: 24, end: 31 }),
-            frameRate: 10,
+            frameRate: this.frameRate,
             repeat: -1
         });
 
         this.anims.create({
             key: 'up',
             frames: this.anims.generateFrameNumbers('playerWalk', { start: 32, end: 38 }),
-            frameRate: 10,
+            frameRate: this.frameRate,
             repeat: -1
         });
 
         this.anims.create({
             key: 'upstill',
             frames: this.anims.generateFrameNumbers('playerIdle', { start: 32, end: 38 }),
-            frameRate: 10,
+            frameRate: this.frameRate,
             repeat: -1
         });
 
         this.anims.create({
             key: 'upright',
             frames: this.anims.generateFrameNumbers('playerWalk', { start: 24, end: 31 }),
-            frameRate: 10,
+            frameRate: this.frameRate,
             repeat: -1
         });
 
         this.anims.create({
             key: 'uprightstill',
             frames: this.anims.generateFrameNumbers('playerIdle', { start: 24, end: 31 }),
-            frameRate: 10,
+            frameRate: this.frameRate,
             repeat: -1
         });
 

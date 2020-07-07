@@ -12,16 +12,18 @@ class MuistiPeliScene extends Phaser.Scene {
 
         this.cardImages = [];
 
-        this.eskimo = { src: 'Assets/images/Muistipeli/Kortti (1)', added: 0 };
-        this.aino = { src: 'Assets/images/Muistipeli/Kortti (2)', added: 0 };
-        this.katriina = { src: 'Assets/images/Muistipeli/Kortti (3)', added: 0 };
-        this.paula = { src: 'Assets/images/Muistipeli/Kortti (4)', added: 0 };
-        this.punahilkka = { src: 'Assets/images/Muistipeli/Kortti (5)', added: 0 };
-        this.tupakka = { src: 'Assets/images/Muistipeli/Kortti (6)', added: 0 };
-        this.koskenlaskija = { src: 'Assets/images/Muistipeli/Kortti (7)', added: 0 };
-        this.rana = { src: 'Assets/images/Muistipeli/Kortti (8)', added: 0 };
+        this.eskimo = { src: 'Assets/images/Muistipeli/Eskimo', added: 0 };
+        this.aino = { src: 'Assets/images/Muistipeli/Aino', added: 0 };
+        this.katriina = { src: 'Assets/images/Muistipeli/Katriina', added: 0 };
+        this.paula = { src: 'Assets/images/Muistipeli/Paula', added: 0 };
+        this.punahilkka = { src: 'Assets/images/Muistipeli/Punahilkka', added: 0 };
+        this.tupakka = { src: 'Assets/images/Muistipeli/Tupakka', added: 0 };
+        this.koskenlaskija = { src: 'Assets/images/Muistipeli/Koskenlaskija', added: 0 };
+        this.rana = { src: 'Assets/images/Muistipeli/Rana', added: 0 };
 
         this.openedCards = [];
+
+        this.clicks = 0;
     }
 
     create() {
@@ -66,18 +68,19 @@ class MuistiPeliScene extends Phaser.Scene {
         card.backTween;
         card.index = index;
 
-        let frontIMG = document.createElement('img');
-        frontIMG.src = img;
-        frontIMG.style = 'width: ' + this.cardSize + 'px; height: ' + this.cardSize + 'px; backface-visibility: hidden; position: relative; left: ' + this.cardSize / 2 + 'px; top: ' + this.cardSize / 2 + 'px';
+        card.frontIMG = document.createElement('img');
+        card.frontIMG.src = img;
+        card.frontIMG.style = 'width: ' + this.cardSize + 'px; height: ' + this.cardSize + 'px; backface-visibility: hidden; position: relative; left: ' + this.cardSize / 2 + 'px; top: ' + this.cardSize / 2 + 'px';
 
-        let backIMG = document.createElement('img');
-        backIMG.src = 'Assets/images/Muistipeli/Kortti (9)';
-        backIMG.style = 'width: ' + this.cardSize + 'px; height: ' + this.cardSize + 'px; backface-visibility: hidden; position: relative; left: ' + this.cardSize / 2 + 'px; top: ' + this.cardSize / 2 + 'px';
+        card.backIMG = document.createElement('img');
+        card.backIMG.src = 'Assets/images/Muistipeli/Takapuoli';
+        card.backIMG.style = 'width: ' + this.cardSize + 'px; height: ' + this.cardSize + 'px; backface-visibility: hidden; position: relative; left: ' + this.cardSize / 2 + 'px; top: ' + this.cardSize / 2 + 'px';
 
-        card.front = this.add.dom(x, y, frontIMG);
+        card.front = this.add.dom(x, y, card.frontIMG);
         card.front.setPerspective(config.width).setInteractive().setDepth(1);
         card.front.rotate3d.set(0, 1, 0, 180);
 
+        //This was for clicking the front-side of the card, but it's not really necessary
         /*card.front.on('pointerup', function () {
 
             if (card.frontTween.isPlaying() == false && card.backTween.isPlaying() == false) {
@@ -93,28 +96,52 @@ class MuistiPeliScene extends Phaser.Scene {
 
         }, this);*/
 
-        card.back = this.add.dom(x, y, backIMG);
+        card.back = this.add.dom(x, y, card.backIMG);
         card.back.setPerspective(config.width).setInteractive().setDepth(10);
         card.back.rotate3d.set(0, 1, 0, 0);
         card.back.on('pointerup', function () {
 
-            if (card.frontTween.isPlaying() == false && card.backTween.isPlaying() == false) {
+            if (card.frontTween.isPlaying() == false && card.backTween.isPlaying() == false && this.openedCards.length<2) {
                 console.log('Clicked back of ' + img);
+
+                this.clicks++;
 
                 this.RotateCard(card, true);
 
                 this.openedCards.push(card);
 
+                console.log('Cards opened: ' + this.openedCards.length);
+
                 if (this.openedCards.length == 2) {
-                    this.time.delayedCall(2000, function () {
-                        this.openedCards.forEach(element => {
-                            this.RotateCard(element, false);
 
-                        });
+                    console.log(this.openedCards[0].frontIMG.src); 
+                    console.log(this.openedCards[1].frontIMG.src); 
 
+                    if (this.openedCards[0].frontIMG.src != this.openedCards[1].frontIMG.src) {
+
+                        this.time.delayedCall(2000, function () {
+                            this.openedCards.forEach(element => {
+                                this.RotateCard(element, false);
+
+                            });
+
+                            this.openedCards = [];
+
+                        }, null, this);
+
+                    }
+                    else
+                    {
                         this.openedCards = [];
 
-                    }, this);
+                        if(this.cardArray.every(function(current) {
+                            return current.open == true;
+                        })){
+                            console.log('You won the game. Clicks: ' + this.clicks);
+                        }
+                    
+                    }
+                    
                 }
             }
 

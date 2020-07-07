@@ -14,8 +14,8 @@ class OpeningScene extends Phaser.Scene {
         this.load.image('menuBG', 'Assets/images/menu/menu-bg.png');
         this.load.image('exitButton', 'Assets/images/menu/exit-button.png');
 
-        this.load.spritesheet('playerWalk', 'Assets/images/character/PlayerWalking.png', { frameWidth: 378.5, frameHeight: 379.6 });
-        this.load.spritesheet('playerIdle', 'Assets/images/character/PlayerStanding.png', { frameWidth: 378.5, frameHeight: 378.4 });
+        this.load.spritesheet('playerWalk', 'Assets/images/character/PlayerWalking.png', { frameWidth: 378, frameHeight: 378 });
+        this.load.spritesheet('playerIdle', 'Assets/images/character/PlayerStanding.png', { frameWidth: 378, frameHeight: 378 });
 
         this.load.image('map', 'Assets/images/map/kartta.png');
         /*this.load.image('PatruunanTalo', 'Assets/images/map/Buildings/Patruunantalo');
