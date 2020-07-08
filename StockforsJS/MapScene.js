@@ -35,7 +35,7 @@ class MapScene extends Phaser.Scene {
 
         this.optionsMenuButton;
 
-        this.pointerOverUI = false;
+        this.pointerOverUI;
 
         this.saveGameTimerEvent;
 
@@ -61,6 +61,8 @@ class MapScene extends Phaser.Scene {
         console.log(this.scene.key);
 
         this.sceneToOpen = null;
+
+        this.pointerOverUI = false;
 
         //Collision layers
         if (collisionCat1 == null && collisionCat2 == null) {
@@ -122,8 +124,8 @@ class MapScene extends Phaser.Scene {
 
     PlayerInitialize() {
         this.player = this.matter.add.sprite(this.startingPoint.x, this.startingPoint.y, 'playerIdle');
-        this.player.setDepth(this.player.y).setScale(0.3);
-        this.player.setRectangle(30, 30).setBounce(0).setFixedRotation().setFriction(1, 0).setIgnoreGravity(true).setDisplayOrigin(170, 300);
+        this.player.setDepth(this.player.y).setScale(0.25);
+        this.player.setRectangle(30, 30).setBounce(0).setFixedRotation().setFriction(1, 0).setIgnoreGravity(true).setDisplayOrigin(190, 320);
         this.player.setCollisionCategory(collisionCat1);
         this.player.setCollidesWith([collisionCat1]);
         this.player.anims.play(this.movementDirection + 'still', true);

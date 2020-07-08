@@ -3,38 +3,167 @@ class MuistiPeliScene extends Phaser.Scene {
     constructor() {
         super('MuistiPeliScene');
 
-        this.cardCount = 16;
-        this.columnCount = 4;
+        //Count of cards on the board
+        this.cardCount;
+        this.columnCount;
 
-        this.cardSize = 160;
+        this.cardSize;
 
-        this.cardArray = [];
+        //Array of cards on the board, doesn't serve much purpose right now
+        this.cardArray;
 
-        this.cardImages = [];
+        //Array of all the different card arts that can be randomly assigned for the cards on board
+        this.cardImages;
 
-        this.eskimo = { src: 'Assets/images/Muistipeli/Eskimo', added: 0 };
-        this.aino = { src: 'Assets/images/Muistipeli/Aino', added: 0 };
-        this.katriina = { src: 'Assets/images/Muistipeli/Katriina', added: 0 };
-        this.paula = { src: 'Assets/images/Muistipeli/Paula', added: 0 };
-        this.punahilkka = { src: 'Assets/images/Muistipeli/Punahilkka', added: 0 };
-        this.tupakka = { src: 'Assets/images/Muistipeli/Tupakka', added: 0 };
-        this.koskenlaskija = { src: 'Assets/images/Muistipeli/Koskenlaskija', added: 0 };
-        this.rana = { src: 'Assets/images/Muistipeli/Rana', added: 0 };
+        this.eskimo;
+        this.aino;
+        this.katriina;
+        this.paula;
+        this.punahilkka;
+        this.tupakka;
+        this.koskenlaskija;
+        this.rana;
 
-        this.openedCards = [];
+        this.openedCards;
 
-        this.clicks = 0;
+        this.clicks;
+
+        this.difficulty;
     }
 
     create() {
 
         console.log('Muistipeli');
 
-        this.cardImages.push(this.eskimo, this.aino, this.katriina, this.paula, this.punahilkka, this.tupakka, this.koskenlaskija, this.rana);
+        this.clicks = 0;
+        this.cardSize = 0;
 
+        this.cardCount = 16;
+        this.columnCount = 4;
+
+        this.cardSize = 160;
+
+        this.cardArray = [];
+        this.openedCards = [];
+
+        this.difficulty = 'normal';
+
+        //Added is used to check how many copies of this card are on the board, used is for checking if the card was chosen to be included in the game
+        this.eskimo = { src: 'Assets/images/Muistipeli/Eskimo', added: 0, used: false };
+        this.aino = { src: 'Assets/images/Muistipeli/Aino', added: 0, used: false };
+        this.katriina = { src: 'Assets/images/Muistipeli/Katriina', added: 0, used: false };
+        this.paula = { src: 'Assets/images/Muistipeli/Paula', added: 0, used: false };
+        this.punahilkka = { src: 'Assets/images/Muistipeli/Punahilkka', added: 0, used: false };
+        this.tupakka = { src: 'Assets/images/Muistipeli/Tupakka', added: 0, used: false };
+        this.koskenlaskija = { src: 'Assets/images/Muistipeli/Koskenlaskija', added: 0, used: false };
+        this.rana = { src: 'Assets/images/Muistipeli/Rana', added: 0, used: false };
+
+        this.cardImages = [this.eskimo, this.aino, this.katriina, this.paula, this.punahilkka, this.tupakka, this.koskenlaskija, this.rana];
+
+        let startDiv = document.createElement('div');
+        startDiv.style = 'background-color: brown; width: 200px; height: 100px; font: 48px Arial; font-weight: bold; text-align: center; position: relative; left: 100px; top: 50px;';
+        startDiv.innerText = 'Start game';
+
+        let easyDiv = document.createElement('div');
+        easyDiv.style = 'background-color: brown; width: 200px; height: 100px; font: 48px Arial; font-weight: bold; text-align: center; position: relative; left: 100px; top: 50px;';
+        easyDiv.innerText = 'Easy';
+
+        let normalDiv = document.createElement('div');
+        normalDiv.style = 'background-color: brown; width: 200px; height: 100px; font: 48px Arial; font-weight: bold; text-align: center; position: relative; left: 100px; top: 50px;';
+        normalDiv.innerText = 'Normal';
+
+        let hardDiv = document.createElement('div');
+        hardDiv.style = 'background-color: brown; width: 200px; height: 100px; font: 48px Arial; font-weight: bold; text-align: center; position: relative; left: 100px; top: 50px;';
+        hardDiv.innerText = 'Hard';
+
+        let gameStart = this.add.dom(920, 320, startDiv);
+        let easy = this.add.dom(700, 200, easyDiv);
+        let normal = this.add.dom(920, 200, normalDiv);
+        let hard = this.add.dom(1140, 200, hardDiv);
+
+        gameStart.setInteractive();
+        gameStart.on('pointerup', function () {
+            this.StartGame(this.difficulty);
+
+            gameStart.destroy();
+            easy.destroy();
+            normal.destroy();
+            hard.destroy();
+        }, this);
+
+        easy.setInteractive();
+        easy.on('pointerup', function () {
+            this.difficulty = 'easy';
+            console.log('Selected: ' + this.difficulty);
+        }, this);
+
+        normal.setInteractive();
+        normal.on('pointerup', function () {
+            this.difficulty = 'normal';
+            console.log('Selected: ' + this.difficulty);
+        }, this);
+
+        hard.setInteractive();
+        hard.on('pointerup', function () {
+            this.difficulty = 'hard';
+            console.log('Selected: ' + this.difficulty);
+        }, this);
+
+    }
+
+    StartGame(difficulty) {
         let currentRow = 1;
         let currentColumn = 1;
 
+        let cardsToUse = [];
+
+        //Change count of cards for the game based on difficulty and randomly choose what card arts to use 
+        if (difficulty == 'easy') {
+            this.cardCount = 8;
+            for (var i = 0; i < this.cardCount / 2; i++) {
+                let cardToUse;
+
+                //Check if card has already been chosen once
+                do {
+                    cardToUse = this.cardImages[Math.floor(Math.random() * this.cardImages.length)];
+                }
+                while (cardToUse.used == true)
+
+                cardToUse.used = true;
+
+                cardsToUse.push(cardToUse);
+            }
+        }
+        else if (difficulty == 'normal') {
+            this.cardCount = 16;
+            for (var i = 0; i < this.cardCount / 2; i++) {
+                let cardToUse;
+                do {
+                    cardToUse = this.cardImages[Math.floor(Math.random() * this.cardImages.length)];
+                }
+                while (cardToUse.used == true)
+
+                cardToUse.used = true;
+
+                cardsToUse.push(cardToUse);
+            }
+        }
+        else if (difficulty == 'hard') {
+            this.cardCount = 24;
+            for (var i = 0; i < this.cardCount / 2; i++) {
+                let cardToUse;
+                do {
+                    cardToUse = this.cardImages[Math.floor(Math.random() * this.cardImages.length)];
+                }
+                while (cardToUse.used == true)
+
+                cardToUse.used = true;
+
+                cardsToUse.push(cardToUse);
+            }
+        }
+
+        //Add the cards to the board
         for (var i = 0; i < this.cardCount; i++) {
 
             if (i > (currentRow * this.columnCount) - 1) {
@@ -48,7 +177,7 @@ class MuistiPeliScene extends Phaser.Scene {
             let image;
 
             do {
-                image = this.cardImages[Math.floor(Math.random() * this.cardImages.length)];
+                image = cardsToUse[Math.floor(Math.random() * cardsToUse.length)];
             }
             while (image.added == 2)
 
@@ -101,7 +230,7 @@ class MuistiPeliScene extends Phaser.Scene {
         card.back.rotate3d.set(0, 1, 0, 0);
         card.back.on('pointerup', function () {
 
-            if (card.frontTween.isPlaying() == false && card.backTween.isPlaying() == false && this.openedCards.length<2) {
+            if (card.frontTween.isPlaying() == false && card.backTween.isPlaying() == false && this.openedCards.length < 2) {
                 console.log('Clicked back of ' + img);
 
                 this.clicks++;
@@ -114,9 +243,10 @@ class MuistiPeliScene extends Phaser.Scene {
 
                 if (this.openedCards.length == 2) {
 
-                    console.log(this.openedCards[0].frontIMG.src); 
-                    console.log(this.openedCards[1].frontIMG.src); 
+                    console.log(this.openedCards[0].frontIMG.src);
+                    console.log(this.openedCards[1].frontIMG.src);
 
+                    //Close cards with a delay if they are not the same, otherwise check if all cards have been revealed
                     if (this.openedCards[0].frontIMG.src != this.openedCards[1].frontIMG.src) {
 
                         this.time.delayedCall(2000, function () {
@@ -130,18 +260,35 @@ class MuistiPeliScene extends Phaser.Scene {
                         }, null, this);
 
                     }
-                    else
-                    {
+                    else {
                         this.openedCards = [];
 
-                        if(this.cardArray.every(function(current) {
+                        if (this.cardArray.every(function (current) {
                             return current.open == true;
-                        })){
+                        })) {
                             console.log('You won the game. Clicks: ' + this.clicks);
+
+                            let winDiv = document.createElement('div');
+                            winDiv.style = 'background-color: brown; width: 400px; height: 150px; font: 40px Arial; font-weight: bold; text-align: center; position: relative; left: 100px; top: 50px';
+                            winDiv.innerText = 'You won the game. \n Number of reveals: ' + this.clicks;
+
+                            let win = this.add.dom(600, 100, winDiv);
+                            win.setDepth(20).setDisplayOrigin(0);
+
+                            let restartDiv = document.createElement('div');
+                            restartDiv.style = 'background-color: brown; width: 400px; height: 100px; font: 40px Arial; font-weight: bold; text-align: center; position: relative; left: 100px; top: 50px';
+                            restartDiv.innerText = 'Click to restart';
+
+                            let restart = this.add.dom(600, 250, restartDiv);
+                            restart.setDepth(20).setInteractive().setDisplayOrigin(0);
+
+                            restart.on('pointerup', function () {
+                                this.scene.restart();
+                            }, this);
                         }
-                    
+
                     }
-                    
+
                 }
             }
 
