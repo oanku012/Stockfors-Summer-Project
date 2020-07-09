@@ -39,9 +39,11 @@ class OpeningScene extends Phaser.Scene {
         this.newGameText.setInteractive();
 
         this.newGameText.on('pointerup', function () {
-            this.scene.scene.start('StockforsScene');
+            gameState = startingGameState;
+
+            this.scene.start('StockforsScene');
             console.log('Started new game.');
-        });
+        }, this);
 
         let savedGame = loadGame();
 
@@ -62,7 +64,7 @@ class OpeningScene extends Phaser.Scene {
             if (savedGame != null) 
             {
                 
-                this.scene.start(savedGame.currentMap, { x: savedGame.playerX, y: savedGame.playerY });
+                this.scene.start(gameState.currentMap, { x: gameState.playerX, y: gameState.playerY });
                 console.log('Loaded game from save file.');
                 
             }

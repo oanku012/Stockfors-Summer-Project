@@ -9,7 +9,7 @@ class MuistiPeliScene extends Phaser.Scene {
 
         this.cardSize;
 
-        //Array of cards on the board, doesn't serve much purpose right now
+        //Array of cards on the board
         this.cardArray;
 
         //Array of all the different card arts that can be randomly assigned for the cards on board
@@ -243,8 +243,8 @@ class MuistiPeliScene extends Phaser.Scene {
 
                 if (this.openedCards.length == 2) {
 
-                    console.log(this.openedCards[0].frontIMG.src);
-                    console.log(this.openedCards[1].frontIMG.src);
+                    //console.log(this.openedCards[0].frontIMG.src);
+                    //console.log(this.openedCards[1].frontIMG.src);
 
                     //Close cards with a delay if they are not the same, otherwise check if all cards have been revealed
                     if (this.openedCards[0].frontIMG.src != this.openedCards[1].frontIMG.src) {
@@ -263,6 +263,7 @@ class MuistiPeliScene extends Phaser.Scene {
                     else {
                         this.openedCards = [];
 
+                        //If every card has been revealed, win the game
                         if (this.cardArray.every(function (current) {
                             return current.open == true;
                         })) {
@@ -285,6 +286,22 @@ class MuistiPeliScene extends Phaser.Scene {
                             restart.on('pointerup', function () {
                                 this.scene.restart();
                             }, this);
+
+                            if (this.difficulty == 'easy') {
+                                if (this.clicks < gameState.MPScoreEasy || gameState.MPScoreEasy == startingGameState.MPScoreEasy) {
+                                    saveGame({ MPScoreEasy: this.clicks });
+                                }
+                            }
+                            else if (this.difficulty == 'normal') {
+                                if (this.clicks < gameState.MPScoreMedium || gameState.MPScoreMedium == startingGameState.MPScoreMedium) {
+                                    saveGame({ MPScoreMedium: this.clicks });
+                                }
+                            }
+                            else if (this.difficulty == 'hard') {
+                                if (this.clicks < gameState.MPScoreHard || gameState.MPScoreHard == startingGameState.MPScoreHard) {
+                                    saveGame({ MPScoreHard: this.clicks });
+                                }
+                            }
                         }
 
                     }
@@ -312,10 +329,6 @@ class MuistiPeliScene extends Phaser.Scene {
         });
 
         return card;
-
-    }
-
-    update() {
 
     }
 

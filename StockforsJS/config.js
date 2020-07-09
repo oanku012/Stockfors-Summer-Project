@@ -56,15 +56,20 @@ var collisionCat2;
 //Default position for spawning the player at the beginning of the game
 var playerStartPosition = { x: 200, y: 300 };
 
-//Values in this object are updated when playing the game and this object is passed on to the save file
-var gameState = {
+//Default game state values when starting a new game
+var startingGameState = {
     currentMap: 'StockforsScene',
     playerX: playerStartPosition.x,
     playerY: playerStartPosition.y,
     musicOn: true,
     soundOn: true,
-    MPScore: 0
+    MPScoreEasy: 0, 
+    MPScoreMedium: 0, 
+    MPScoreHard: 0
 };
+
+//Game state passed on to the save file
+var gameState = startingGameState;
 
 /*
 function saveGame(currentMap = gameState.currentMap, posX = gameState.playerX, posY = gameState.playerY,
@@ -88,35 +93,15 @@ function saveGame(currentMap = gameState.currentMap, posX = gameState.playerX, p
 
 }*/
 
-function saveGame(state = {currentMap: gameState.currentMap, playerX: gameState.playerX, playerY: gameState.playerY, musicOn: gameState.musicOn, soundOn: gameState.soundOn, MPScore: gameState.MPScore}) {
+function saveGame(state = {currentMap: gameState.currentMap, playerX: gameState.playerX, playerY: gameState.playerY, musicOn: gameState.musicOn, soundOn: gameState.soundOn, MPScoreEasy: gameState.MPScoreEasy, MPScoreMedium: gameState.MPScoreMedium, MPScoreHard: gameState.MPScoreHard}) {
 
-    if(state.currentMap){
-        gameState.currentMap = state.currentMap;
-    }
+    Object.assign(gameState, state);
 
-    if(state.playerX){
-        gameState.playerX = state.playerX;
-    }
-
-    if(state.playerY){
-        gameState.playerY = state.playerY;
-    }
-
-    if(state.musicOn){
-        gameState.musicOn = state.musicOn;
-    }
-
-    if(state.soundOn){
-        gameState.soundOn = state.soundOn;
-    }
-
-    if(state.MPScore){
-        gameState.MPScore = state.MPScore;
-    }
+    console.log(gameState);
 
     localStorage.setItem('saveFile', JSON.stringify(gameState));
 
-    console.log('Game saved. Current map: ' + gameState.currentMap + ' Player position: ' + gameState.playerX + ' ' + gameState.playerY + ' Music on: ' + gameState.musicOn + ' Sound on: ' + gameState.soundOn + ' MPScore: ' + gameState.MPScore);
+    console.log('Game saved.');
 
 }
 
@@ -124,8 +109,8 @@ function loadGame() {
 
     var file = JSON.parse(localStorage.getItem('saveFile'));
 
-    if (file != null) {
-
+    if (file) {
+        gameState = file;
     }
 
     return file;
