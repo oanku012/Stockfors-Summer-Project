@@ -9,7 +9,7 @@ var config = {
     parent: 'game',
 
     scale: {
-        mode: Phaser.Scale.RESIZE,
+        mode: Phaser.Scale.FIT,
         autoCenter: Phaser.Scale.CENTER_BOTH,
 
     },
@@ -197,7 +197,6 @@ function createButton(posX, posY, scene, runOnTop, scrollFactor, scale, context)
 
         }
     }, context);
-
 
 
     return button;
