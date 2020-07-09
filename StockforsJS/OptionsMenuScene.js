@@ -40,14 +40,19 @@ class OptionsMenuScene extends MenuScene
          
         this.soundButton = this.add.image(-100, -100, 'checkedBox');
         this.soundText = this.add.text(0, -100, 'Sound Enabled', { fontSize: 24, color: "black"});
+
+        this.fullScreenButton = this.add.image(-100, 0, 'blankCheckBox');
+        this.fullScreenText = this.add.text(0, 0, 'Fullscreen', { fontSize: 24, color: "black"});
          
         this.musicButton.setInteractive();
         this.soundButton.setInteractive();
+        this.fullScreenButton.setInteractive();
 
-        this.menu.add([this.musicButton, this.musicText, this.soundButton, this.soundText]);
+        this.menu.add([this.musicButton, this.musicText, this.soundButton, this.soundText, this.fullScreenButton, this.fullScreenText]);
 
         // Call updateAudio to make sure we have correct values for checkboxes
         this.updateAudio();
+        this.updateFullScreen();
          
         this.musicButton.on('pointerdown', function () {
             config.musicOn = !config.musicOn;
@@ -58,6 +63,12 @@ class OptionsMenuScene extends MenuScene
             config.soundOn = !config.soundOn;
             this.updateAudio();
         }.bind(this));
+
+        this.fullScreenButton.on('pointerdown', function() {
+            this.scale.toggleFullscreen();
+            this.updateFullScreen();
+        }.bind(this));
+        
     }
 
     updateAudio() {
@@ -73,6 +84,16 @@ class OptionsMenuScene extends MenuScene
         }
         else {
             this.soundButton.setTexture('checkedBox');
+        }
+      }
+
+      updateFullScreen() {
+        if (this.scale.isFullscreen) {
+            // On start full screen
+            this.fullScreenButton.setTexture('checkedBox')
+        } else {
+            // On stop full screen
+            this.fullScreenButton.setTexture('blankCheckBox')
         }
       }
     
