@@ -19,8 +19,8 @@ class StockforsScene extends MapScene {
 
         //Check if initialized parameters are not numbers and if so give them default values
         if (isNaN(this.startingPoint.x) && isNaN(this.startingPoint.y)) {
-            this.startingPoint.x = 200;
-            this.startingPoint.y = 300;
+            this.startingPoint.x = playerStartPosition.x;
+            this.startingPoint.y = playerStartPosition.y;
         }
 
         this.map = this.add.image(0, 0, 'map').setDepth(0).setDisplayOrigin(0, 0);

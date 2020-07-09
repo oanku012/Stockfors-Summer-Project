@@ -43,16 +43,16 @@ class OpeningScene extends Phaser.Scene {
             console.log('Started new game.');
         });
 
-        let savedSettings = loadSettings();
+        let savedGame = loadGame();
 
-        if (savedSettings != null) {
+        //let savedSettings = loadGame('settings');
+
+        if (savedGame != null) {
             
-            config.musicOn = savedSettings.MusicOn;
-            config.soundOn = savedSettings.SoundOn;
+            config.musicOn = savedGame.MusicOn;
+            config.soundOn = savedGame.SoundOn;
             
         }
-
-        let savedGame = loadGame();
 
         this.continueText.setInteractive();
 
@@ -62,7 +62,7 @@ class OpeningScene extends Phaser.Scene {
             if (savedGame != null) 
             {
                 
-                this.scene.scene.start(savedGame.map, { x: savedGame.posX, y: savedGame.posY });
+                this.scene.start(savedGame.currentMap, { x: savedGame.playerX, y: savedGame.playerY });
                 console.log('Loaded game from save file.');
                 
             }
@@ -70,7 +70,7 @@ class OpeningScene extends Phaser.Scene {
             {
                 console.log('No save file available, start a new game instead.');
             }
-        });
+        }, this);
 
         this.clearDataText.setInteractive();
 

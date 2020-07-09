@@ -91,14 +91,22 @@ class MapScene extends Phaser.Scene {
         this.scale.on('resize', this.resize, this);
 
         //Autosave every 10 seconds
-        this.saveGameTimerEvent = this.time.addEvent({ delay: 10000, callback: saveGame, callbackScope: this, loop: true });
+        this.saveGameTimerEvent = this.time.addEvent({ delay: 10000, callback: this.SavePosition, callbackScope: this, loop: true});
 
         //Changed this to not run on every frame, because when you're overlapping 2 buildings it would get called constantly
         this.overLapTimer = this.time.addEvent({ delay: 100, callback: this.CheckForOverlap, callbackScope: this, loop: true });
 
-        currentMap = this;
+        //gameState.currentMap = this;
 
-        saveGame();
+        //saveGame(this.scene.key, this.player.x, this.player.y);
+        saveGame({currentMap: this.scene.key, playerX: this.player.x, playerY: this.player.y});
+
+    }
+
+    //Couldn't just call save game from the timer event directly, because it wouldn't update the position value
+    SavePosition()
+    {
+        saveGame({currentMap: this.scene.key, playerX: this.player.x, playerY: this.player.y});
     }
 
     update() {

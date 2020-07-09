@@ -110,7 +110,9 @@ class OptionsMenuScene extends MenuScene
         exitButton.on('pointerup', function (event) {
             if (pressed)
             {
-                saveSettings();
+                //Uses default values from function declaration when undefined is set
+                //saveGame(undefined, undefined, undefined, config.musicOn, config.soundOn);
+                saveGame({musicOn: config.musicOn, soundOn: config.soundOn});
 
                 this.scene.stop(this.scene.key);
 
