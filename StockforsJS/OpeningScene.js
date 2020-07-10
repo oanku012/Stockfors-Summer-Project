@@ -3,9 +3,11 @@ class OpeningScene extends Phaser.Scene {
     constructor() {
         super('OpeningScene');
 
-        this.newGameText;
-        this.continueText;
+        this.newGame;
+        this.continue;
         this.clearDataText;
+
+        this.menuContainer;
     }
 
     preload() {
@@ -18,27 +20,59 @@ class OpeningScene extends Phaser.Scene {
         this.load.spritesheet('playerIdle', 'Assets/images/character/PlayerStanding.png', { frameWidth: 378, frameHeight: 378 });
 
         this.load.image('map', 'Assets/images/map/kartta.png');
-        /*this.load.image('PatruunanTalo', 'Assets/images/map/Buildings/Patruunantalo');
-        this.load.image('PakkausMuseo', 'Assets/images/map/Buildings/Pakkausmuseo');
-        this.load.image('Kaarihalli', 'Assets/images/map/Buildings/Kaarihalli');
-        this.load.image('Hunajatalo', 'Assets/images/map/Buildings/Hunajatalo');
-        this.load.image('Tallirakennus', 'Assets/images/map/Buildings/Tallirakennus');*/
+
         this.load.image('Nuoli', 'Assets/images/map/arrowSign');
 
-        this.load.atlas('buildingSheet', 'Assets/images/map/Buildings/TPBuildings.png', 'Assets/images/map/Buildings/TPBuildings.json')
+        //Used texturepacker and physicseditor to compile the buildings into a single spritesheet
+        this.load.atlas('buildingSheet', 'Assets/images/map/Buildings/TPBuildings.png', 'Assets/images/map/Buildings/TPBuildings.json');
         this.load.json('buildingBodies', 'Assets/images/map/Buildings/PEBuildings.json');
+
+        this.load.atlas('buttonSheet', 'Assets/images/menu/Buttons/MenuButtons.png', 'Assets/images/menu/Buttons/MenuButtons.json');
+        this.load.atlas('BGSheet', 'Assets/images/menu/Backgrounds/MenuBackgrounds.png', 'Assets/images/menu/Backgrounds/MenuBackgrounds.json');
+        this.load.image('Logo', 'Assets/images/menu/Logo.png');
     }
 
     create() {
         this.add.text(700, 200, "Stockfors Kartalle", { font: "40px Arial", fill: "yellow" });
 
-        this.newGameText = this.add.text(700, 300, "Start new game.", { font: "40px Arial", fill: "white" });
-        this.continueText = this.add.text(700, 400, "Continue", { font: "40px Arial", fill: "white" });
+        this.cameras.main.backgroundColor.setTo(255, 255, 255);
+
+        this.aloitusPohja = this.add.sprite(0, 0, 'BGSheet', 'Aloitusruutu');
+
+        this.logo = this.add.image(-137, -835, 'Logo').setScale(0.22);
+        this.newGame = this.add.sprite(-200, 700, 'buttonSheet', 'Aloita');
+        this.continue = this.add.sprite(200, 700, 'buttonSheet', 'Jatka');
+        this.fi = this.add.sprite(-225, 550, 'buttonSheet', 'FI').setScale(0.3);
+        this.eng = this.add.sprite(-12, 550, 'buttonSheet', 'ENG').setScale(0.3);
+        this.swe = this.add.sprite(210, 550, 'buttonSheet', 'SWE').setScale(0.3);
+        this.ohje = this.add.sprite(500, 700, 'buttonSheet', 'Ohje');
         this.clearDataText = this.add.text(1400, 200, "Clear save data", { font: "40px Arial", fill: "white" });
 
-        this.newGameText.setInteractive();
+        this.menuContainer = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY + 20, 
+            [   this.aloitusPohja, 
+                this.logo, 
+                this.newGame, 
+                this.continue, 
+                this.fi, 
+                this.eng, 
+                this.swe, 
+                this.ohje]);
 
-        this.newGameText.on('pointerup', function () {
+        this.menuContainer.setScale(0.56);
+
+        this.newGame.setInteractive();
+
+        this.newGame.on('pointerdown', function () {
+            this.newGame.setTexture('buttonSheet', 'Aloita_Pressed');
+        }, this);
+
+        this.newGame.on('pointerout', function () {
+            if (this.input.activePointer.isDown) {
+                this.newGame.setTexture('buttonSheet', 'Aloita');
+            }
+        }, this);
+
+        this.newGame.on('pointerup', function () {
             gameState = startingGameState;
 
             this.scene.start('StockforsScene');
@@ -50,26 +84,33 @@ class OpeningScene extends Phaser.Scene {
         //let savedSettings = loadGame('settings');
 
         if (savedGame != null) {
-            
+
             config.musicOn = savedGame.MusicOn;
             config.soundOn = savedGame.SoundOn;
-            
+
         }
 
-        this.continueText.setInteractive();
+        this.continue.setInteractive();
 
-        this.continueText.on('pointerup', function () 
-        {
+        this.continue.on('pointerdown', function () {
+            this.continue.setTexture('buttonSheet', 'Jatka_Pressed');
+        }, this);
 
-            if (savedGame != null) 
-            {
-                
+        this.continue.on('pointerout', function () {
+
+            if (this.input.activePointer.isDown) {
+                this.continue.setTexture('buttonSheet', 'Jatka');
+            }
+        }, this);
+
+        this.continue.on('pointerup', function () {
+            if (savedGame != null) {
+
                 this.scene.start(gameState.currentMap, { x: gameState.playerX, y: gameState.playerY });
                 console.log('Loaded game from save file.');
-                
+
             }
-            else 
-            {
+            else {
                 console.log('No save file available, start a new game instead.');
             }
         }, this);

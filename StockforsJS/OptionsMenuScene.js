@@ -35,13 +35,13 @@ class OptionsMenuScene extends MenuScene
         this.musicOn = true;
         this.soundOn = true;
          
-        this.musicButton = this.add.image(-100, -200, 'checkedBox');
+        this.musicButton = this.add.sprite(-100, -200, 'buttonSheet', 'CheckmarkON');
         this.musicText = this.add.text(0, -200, 'Music Enabled', { fontSize: 24, color: "black" });
          
-        this.soundButton = this.add.image(-100, -100, 'checkedBox');
+        this.soundButton = this.add.image(-100, -100, 'buttonSheet', 'CheckmarkON');
         this.soundText = this.add.text(0, -100, 'Sound Enabled', { fontSize: 24, color: "black"});
 
-        this.fullScreenButton = this.add.image(-100, 0, 'blankCheckBox');
+        this.fullScreenButton = this.add.image(-100, 0, 'buttonSheet', 'CheckmarkOFF');
         this.fullScreenText = this.add.text(0, 0, 'Fullscreen', { fontSize: 24, color: "black"});
          
         this.musicButton.setInteractive();
@@ -73,27 +73,27 @@ class OptionsMenuScene extends MenuScene
 
     updateAudio() {
         if (config.musicOn === false) {
-            this.musicButton.setTexture('blankCheckBox');
+            this.musicButton.setTexture('buttonSheet', 'CheckmarkOFF');
         }
         else {
-            this.musicButton.setTexture('checkedBox');
+            this.musicButton.setTexture('buttonSheet', 'CheckmarkON');
         }
        
         if (config.soundOn === false) {
-            this.soundButton.setTexture('blankCheckBox');
+            this.soundButton.setTexture('buttonSheet', 'CheckmarkOFF');
         }
         else {
-            this.soundButton.setTexture('checkedBox');
+            this.soundButton.setTexture('buttonSheet', 'CheckmarkON');
         }
       }
 
       updateFullScreen() {
         if (this.scale.isFullscreen) {
             // On start full screen
-            this.fullScreenButton.setTexture('checkedBox')
+            this.fullScreenButton.setTexture('buttonSheet', 'CheckmarkON')
         } else {
             // On stop full screen
-            this.fullScreenButton.setTexture('blankCheckBox')
+            this.fullScreenButton.setTexture('buttonSheet', 'CheckmarkOFF')
         }
       }
     

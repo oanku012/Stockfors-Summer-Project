@@ -63,8 +63,8 @@ var startingGameState = {
     playerY: playerStartPosition.y,
     musicOn: true,
     soundOn: true,
-    MPScoreEasy: 0, 
-    MPScoreMedium: 0, 
+    MPScoreEasy: 0,
+    MPScoreMedium: 0,
     MPScoreHard: 0
 };
 
@@ -93,15 +93,25 @@ function saveGame(currentMap = gameState.currentMap, posX = gameState.playerX, p
 
 }*/
 
-function saveGame(state = {currentMap: gameState.currentMap, playerX: gameState.playerX, playerY: gameState.playerY, musicOn: gameState.musicOn, soundOn: gameState.soundOn, MPScoreEasy: gameState.MPScoreEasy, MPScoreMedium: gameState.MPScoreMedium, MPScoreHard: gameState.MPScoreHard}) {
+function saveGame(state = {
+    currentMap: gameState.currentMap,
+    playerX: gameState.playerX,
+    playerY: gameState.playerY,
+    musicOn: gameState.musicOn,
+    soundOn: gameState.soundOn,
+    MPScoreEasy: gameState.MPScoreEasy,
+    MPScoreMedium: gameState.MPScoreMedium,
+    MPScoreHard: gameState.MPScoreHard
+}) {
 
+    //Assigns values from function parameter to the gamestate without removing the existing values with a different key
     Object.assign(gameState, state);
-
-    console.log(gameState);
 
     localStorage.setItem('saveFile', JSON.stringify(gameState));
 
     console.log('Game saved.');
+
+    console.log(gameState);
 
 }
 
