@@ -40,8 +40,8 @@ var config = {
 
 };
 
-//Currently active map
-//var currentMap;
+//If pointer is over UI-elements
+var pointerOverUI;
 
 //Whether if player is ready to move
 var readyToMove = false;
@@ -127,7 +127,7 @@ function createButton(posX, posY, scene, runOnTop, scrollFactor, scale, context,
         //buttonBG.setTint(0x44ff44);
 
         //This is just to stop the player from moving when clicking options menu
-        context.pointerOverUI = true;
+        pointerOverUI = true;
 
     });
 
@@ -137,7 +137,7 @@ function createButton(posX, posY, scene, runOnTop, scrollFactor, scale, context,
         pressed = false;
 
         //Enable clicking movement when cursor goes away from the UI-button
-        context.pointerOverUI = false;
+        pointerOverUI = false;
 
     });
 

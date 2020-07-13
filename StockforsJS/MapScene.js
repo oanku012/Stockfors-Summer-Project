@@ -35,7 +35,7 @@ class MapScene extends Phaser.Scene {
 
         this.optionsMenuButton;
 
-        this.pointerOverUI;
+        //this.pointerOverUI;
 
         this.saveGameTimerEvent;
 
@@ -62,7 +62,7 @@ class MapScene extends Phaser.Scene {
 
         this.sceneToOpen = null;
 
-        this.pointerOverUI = false;
+        //pointerOverUI = false;
 
         //Collision layers
         if (collisionCat1 == null && collisionCat2 == null) {
@@ -85,10 +85,11 @@ class MapScene extends Phaser.Scene {
         //Movement is allowed with a slight delay so that player clicking the button to return outside won't trigger movement
         this.time.delayedCall(200, function () { readyToMove = true; }, null, this)
 
+        /*
         // UI stuff
         this.createUI();
         // Reorganize the UI when the game gets resized
-        this.scale.on('resize', this.resize, this);
+        this.scale.on('resize', this.resize, this);*/
 
         //Autosave every 10 seconds
         this.saveGameTimerEvent = this.time.addEvent({ delay: 10000, callback: this.SavePosition, callbackScope: this, loop: true});
@@ -98,8 +99,7 @@ class MapScene extends Phaser.Scene {
 
         //gameState.currentMap = this;
 
-        //saveGame(this.scene.key, this.player.x, this.player.y);
-        saveGame({currentMap: this.scene.key, playerX: this.player.x, playerY: this.player.y});
+        this.SavePosition();
 
     }
 
@@ -163,7 +163,7 @@ class MapScene extends Phaser.Scene {
     }
 
     EnterBuilding() {
-        saveGame();
+        this.SavePosition();
         playerExitPosition = { x: this.player.x, y: this.player.y };
         this.scene.start(this.sceneToOpen);
     }
@@ -203,7 +203,7 @@ class MapScene extends Phaser.Scene {
 
         if (this.map != null) {
             this.map.on('pointerover', function () {
-                this.scene.pointerOverUI = false;
+                pointerOverUI = false;
             });
 
         }
@@ -327,7 +327,7 @@ class MapScene extends Phaser.Scene {
 
 
             //When pointer is down update destination and movement vector
-            if (this.pointer.isDown == true && this.pointerOverUI == false) {
+            if (this.pointer.isDown == true && pointerOverUI == false) {
 
                 this.destination.x = this.pointer.worldX;
                 this.destination.y = this.pointer.worldY;
@@ -500,13 +500,13 @@ class MapScene extends Phaser.Scene {
         this.optionsMenuButton.destroy();
     }
 
-    resize() {
+    /*resize() {
         if (this.scene.isActive(this.scene.key)) {
             this.optionsMenuButton.setX(this.cameras.main.centerX + this.cameras.main.width * .4);
             this.optionsMenuButton.setY(this.cameras.main.centerY - this.cameras.main.height * .4);
         }
 
-    }
+    }*/
 
     CreateAnimations() {
 
