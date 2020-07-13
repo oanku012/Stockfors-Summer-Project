@@ -20,7 +20,10 @@ class MenuScene extends Phaser.Scene
 
     preload ()
     {
-       
+        // Load JSON data
+        var path = ("Localization/buildings/" + this.name + ".json");
+        this.load.json(this.name + 'buildingData', path);
+
         this.load.image('blankCheckBox', 'Assets/images/menu/blank-check-box.png');
         this.load.image('checkedBox', 'Assets/images/menu/check-box.png');
         this.load.image('1thumb', 'Assets/images/photos/1_thumb');
@@ -31,32 +34,26 @@ class MenuScene extends Phaser.Scene
     {
         
         // Get title and description from a json file
-        var path = ("Localization/buildings/" + this.name + ".json");
-        fetch(path)
-        .then(response => response.json())
-        .then(json => this.setBuildingData(json["title"], json["description"]));
+        var data = this.cache.json.get(this.name + 'buildingData');
+
+        console.log(data);
+
+        if (data["title"] != null && data["description"] != null)
+        {
+            this.title =  data["title"];
+            this.description = data["description"];
+        }
         
+
+        this.createContainer();
+        this.createExitButton();
+        console.log(this.scene.key);
 
         // Reorganize the UI when the game gets resized
         this.scale.on('resize', this.resize, this);
 
     }
 
-    setBuildingData(title, description)
-    {
-        console.log(description);
-
-        if (title != null && description != null)
-        {
-            this.title =  title;
-            this.description = description;
-        }
-
-        // this stuff needs to be here since the method which sets the info is async so its delayed
-        this.createContainer();
-        this.createExitButton();
-        console.log(this.scene.key);
-    }
 
     createContainer () 
     {

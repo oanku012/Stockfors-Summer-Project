@@ -4,8 +4,7 @@ class PakkausmuseoScene extends MenuScene
     {
         super('PakkausmuseoScene');
 
-        this.title = 'Pakkausmuseo';
-        this.description = 'Tämä on pakkausmuseo.';
+        this.name = 'Pakkausmuseo';
 
     }
 
