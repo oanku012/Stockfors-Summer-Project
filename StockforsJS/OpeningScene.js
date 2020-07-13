@@ -35,14 +35,18 @@ class OpeningScene extends Phaser.Scene {
 
     create() {
 
+        
+
         this.CreateInstructions();
 
         this.CreateMainMenu();
 
         this.ohjeContainer.setVisible(false);
 
+        this.scene.run('UI');
+        
 
-        createButton(this.cameras.main.centerX + this.cameras.main.width * .4, this.cameras.main.centerY - this.cameras.main.height * .4, 'OptionsMenuScene', true, 0, 1, this);
+        //createButton(this.cameras.main.centerX + this.cameras.main.width * .4, this.cameras.main.centerY - this.cameras.main.height * .4, 'OptionsMenuScene', true, 0, 0.56, this, 'MenuAtlas', 'UI Buttons/Asetukset');
 
         /*this.input.keyboard.on('keydown', function (event) {
             let saveFile = loadGame();

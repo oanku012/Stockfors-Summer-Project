@@ -35,7 +35,7 @@ var config = {
 
 
 
-    scene: [OpeningScene, StockforsScene, MenuScene, KirkkoScene, PatruunantaloScene, PakkausmuseoScene, OptionsMenuScene, MuistiPeliScene]
+    scene: [OpeningScene, StockforsScene, MenuScene, KirkkoScene, PatruunantaloScene, PakkausmuseoScene, OptionsMenuScene, MuistiPeliScene, UI]
 
 
 };
@@ -107,13 +107,15 @@ function loadGame() {
 
 
 //Moved this here so the options menu could be added to the opening scene as well, some things like pointerOverUI only apply to map scenes
-function createButton(posX, posY, scene, runOnTop, scrollFactor, scale, context) {
+function createButton(posX, posY, scene, runOnTop, scrollFactor, scale, context, sprite, frame) {
     // Button
-    let buttonBG = context.add.image(0, 0, 'buttonBG');
-    let buttonText = context.add.image(0, 0, 'buttonText');
+    //let buttonBG = context.add.image(0, 0, 'buttonBG');
+    //let buttonText = context.add.image(0, 0, 'buttonText');
 
-    let button = context.add.container(posX, posY, [buttonBG, buttonText]);
-    button.setSize(buttonBG.width, buttonBG.height);
+    //let button = context.add.container(posX, posY, [buttonBG, buttonText]);
+
+    let button = context.add.sprite(posX, posY, sprite, frame);
+    //button.setSize(buttonBG.width, buttonBG.height);
     button.setInteractive();
 
     button.setScrollFactor(scrollFactor).setDepth(9999).setScale(scale);
@@ -122,7 +124,7 @@ function createButton(posX, posY, scene, runOnTop, scrollFactor, scale, context)
 
     button.on('pointerover', function () {
 
-        buttonBG.setTint(0x44ff44);
+        //buttonBG.setTint(0x44ff44);
 
         //This is just to stop the player from moving when clicking options menu
         context.pointerOverUI = true;
@@ -131,7 +133,7 @@ function createButton(posX, posY, scene, runOnTop, scrollFactor, scale, context)
 
     button.on('pointerout', function () {
 
-        buttonBG.clearTint();
+        //buttonBG.clearTint();
         pressed = false;
 
         //Enable clicking movement when cursor goes away from the UI-button

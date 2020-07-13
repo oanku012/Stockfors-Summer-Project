@@ -326,9 +326,6 @@ class MapScene extends Phaser.Scene {
             }
 
 
-            console.log(this.pointerOverUI);
-
-
             //When pointer is down update destination and movement vector
             if (this.pointer.isDown == true && this.pointerOverUI == false) {
 
@@ -496,7 +493,7 @@ class MapScene extends Phaser.Scene {
     }
 
     createUI() {
-        this.optionsMenuButton = createButton(this.cameras.main.centerX + this.cameras.main.width * .4, this.cameras.main.centerY - this.cameras.main.height * .4, 'OptionsMenuScene', true, 0, 1, this);
+        //this.optionsMenuButton = createButton(this.cameras.main.centerX + this.cameras.main.width * .4, this.cameras.main.centerY - this.cameras.main.height * .4, 'OptionsMenuScene', true, 0, 0.56, this, 'MenuAtlas', 'UI Buttons/Asetukset');
     }
 
     destroyUI() {
