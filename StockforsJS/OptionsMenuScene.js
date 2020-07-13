@@ -43,6 +43,7 @@ class OptionsMenuScene extends MenuScene
 
         this.fullScreenButton = this.add.image(-100, 0, 'MenuAtlas', 'UI Buttons/CheckmarkOFF');
         this.fullScreenText = this.add.text(0, 0, 'Fullscreen', { fontSize: 24, color: "black"});
+        this.isFullscreen = this.scale.isFullscreen;
          
         this.musicButton.setInteractive();
         this.soundButton.setInteractive();
@@ -66,7 +67,12 @@ class OptionsMenuScene extends MenuScene
 
         this.fullScreenButton.on('pointerdown', function() {
             this.scale.toggleFullscreen();
+
+            this.isFullscreen = !this.isFullscreen;
+
             this.updateFullScreen();
+
+
         }.bind(this));
 
         this.menu.setScale(0.56);
@@ -90,7 +96,7 @@ class OptionsMenuScene extends MenuScene
       }
 
       updateFullScreen() {
-        if (this.scale.isFullscreen) {
+        if (this.isFullscreen) {
             // On start full screen
             this.fullScreenButton.setTexture('MenuAtlas', 'UI Buttons/CheckmarkON')
         } else {

@@ -138,6 +138,8 @@ class MapScene extends Phaser.Scene {
         this.player.setCollidesWith([collisionCat1]);
         this.player.anims.play(this.movementDirection + 'still', true);
 
+        this.stopPlayerMovement();
+
         console.log('Player spawned at ' + this.player.x, this.player.y);
     }
 
@@ -245,6 +247,13 @@ class MapScene extends Phaser.Scene {
         }
     }
 
+    SetKeyMovement(){
+        
+
+        this.movingOnPath = false;
+
+        this.sceneToOpen = null;
+    }
 
     MovementUpdate() {
 
@@ -259,14 +268,14 @@ class MapScene extends Phaser.Scene {
 
                 this.movementVector.x = -this.speed;
 
-                this.movingOnPath = false;
+                this.SetKeyMovement();
 
             }
             else if (this.arrowKeys.right.isDown || this.wasdKeys.D.isDown) {
 
                 this.movementVector.x = this.speed;
 
-                this.movingOnPath = false;
+                this.SetKeyMovement();
 
 
             }
@@ -281,14 +290,15 @@ class MapScene extends Phaser.Scene {
 
                 this.movementVector.y = -this.speed;
 
-                this.movingOnPath = false;
+                this.SetKeyMovement();
 
 
             }
             else if (this.arrowKeys.down.isDown || this.wasdKeys.S.isDown) {
 
                 this.movementVector.y = this.speed;
-                this.movingOnPath = false;
+                
+                this.SetKeyMovement();
 
             }
             else if (this.movingOnPath == false) {
