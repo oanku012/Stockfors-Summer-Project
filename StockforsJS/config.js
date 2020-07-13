@@ -71,28 +71,6 @@ var startingGameState = {
 //Game state passed on to the save file
 var gameState = startingGameState;
 
-/*
-function saveGame(currentMap = gameState.currentMap, posX = gameState.playerX, posY = gameState.playerY,
-    musicOn = gameState.musicOn, soundOn = gameState.soundOn, MPScore = gameState.MPScore) {
-
-    var state = {
-        currentMap: currentMap,
-        playerX: posX,
-        playerY: posY,
-        musicOn: musicOn,
-        soundOn: soundOn,
-        MPScore: MPScore
-    }
-
-    localStorage.setItem('saveFile', JSON.stringify(state));
-
-    gameState = state;
-
-    console.log('Game saved. Current map: ' + state.currentMap + ' Player position: ' + state.playerX + ' ' + state.playerY + ' Music on: ' + state.musicOn + ' Sound on: ' + state.soundOn + ' MPScore: ' + state.MPScore);
-
-
-}*/
-
 function saveGame(state = {
     currentMap: gameState.currentMap,
     playerX: gameState.playerX,
@@ -127,11 +105,6 @@ function loadGame() {
 
 };
 
-/*function loadSettings() {
-    var file = JSON.parse(localStorage.getItem('settings'));
-
-    return file;
-}*/
 
 //Moved this here so the options menu could be added to the opening scene as well, some things like pointerOverUI only apply to map scenes
 function createButton(posX, posY, scene, runOnTop, scrollFactor, scale, context) {
@@ -152,7 +125,7 @@ function createButton(posX, posY, scene, runOnTop, scrollFactor, scale, context)
         buttonBG.setTint(0x44ff44);
 
         //This is just to stop the player from moving when clicking options menu
-        context.scene.pointerOverUI = true;
+        context.pointerOverUI = true;
 
     });
 
@@ -162,7 +135,7 @@ function createButton(posX, posY, scene, runOnTop, scrollFactor, scale, context)
         pressed = false;
 
         //Enable clicking movement when cursor goes away from the UI-button
-        context.scene.pointerOverUI = false;
+        context.pointerOverUI = false;
 
     });
 

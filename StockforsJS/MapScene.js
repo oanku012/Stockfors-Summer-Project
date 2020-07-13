@@ -94,7 +94,7 @@ class MapScene extends Phaser.Scene {
         this.saveGameTimerEvent = this.time.addEvent({ delay: 10000, callback: this.SavePosition, callbackScope: this, loop: true});
 
         //Changed this to not run on every frame, because when you're overlapping 2 buildings it would get called constantly
-        this.overLapTimer = this.time.addEvent({ delay: 100, callback: this.CheckForOverlap, callbackScope: this, loop: true });
+        this.overLapTimer = this.time.addEvent({ delay: 200, callback: this.CheckForOverlap, callbackScope: this, loop: true });
 
         //gameState.currentMap = this;
 
@@ -211,7 +211,7 @@ class MapScene extends Phaser.Scene {
     }
 
     CheckForOverlap() {
-        //Checks if player overlaps with one of the building entrances, apparently matter doesn't have an event for this so this runs on every frame
+        //Checks if player overlaps with one of the building entrances, apparently matter doesn't have an event for this so this runs repeatedly
         if (this.matter.overlap(this.player, this.buildingEntrances, function (bodyA, bodyB) {
 
             if ((this.playerOverLapping == false || this.currentOverlapBody != bodyB)) {
@@ -326,7 +326,7 @@ class MapScene extends Phaser.Scene {
             }
 
 
-            //console.log(this.pointerOverUI);
+            console.log(this.pointerOverUI);
 
 
             //When pointer is down update destination and movement vector
