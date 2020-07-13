@@ -4,6 +4,8 @@ class MenuScene extends Phaser.Scene
     {
         super(SceneKey);
 
+        this.name;
+
         this.title = 'Placeholder title';
         this.description = 'Placeholder description';
 
@@ -27,15 +29,34 @@ class MenuScene extends Phaser.Scene
 
     create ()
     {
-        this.createContainer();
-        this.createExitButton();
-        console.log(this.scene.key);
+        
+        // Get title and description from a json file
+        var path = ("Localization/buildings/" + this.name + ".json");
+        fetch(path)
+        .then(response => response.json())
+        .then(json => this.setBuildingData(json["title"], json["description"]));
+        
 
         // Reorganize the UI when the game gets resized
         this.scale.on('resize', this.resize, this);
 
     }
 
+    setBuildingData(title, description)
+    {
+        console.log(description);
+
+        if (title != null && description != null)
+        {
+            this.title =  title;
+            this.description = description;
+        }
+
+        // this stuff needs to be here since the method which sets the info is async so its delayed
+        this.createContainer();
+        this.createExitButton();
+        console.log(this.scene.key);
+    }
 
     createContainer () 
     {
