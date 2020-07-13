@@ -37,10 +37,10 @@ class MenuScene extends Phaser.Scene
     }
 
 
-    createContainer () 
+    createContainer (menusprite, frame) 
     {
         // Menu
-        this.menuBG = this.add.image(0, 0, 'menuBG');
+        this.menuBG = this.add.sprite(0, 0, menusprite, frame);
         this.menu = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY, [ this.menuBG ]);
 
         // title and description

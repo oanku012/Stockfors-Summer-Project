@@ -7,7 +7,7 @@ class OpeningScene extends Phaser.Scene {
         this.continue;
         this.clearDataText;
 
-        this.menuContainer;
+        this.mainMenuContainer;
     }
 
     preload() {
@@ -27,101 +27,20 @@ class OpeningScene extends Phaser.Scene {
         this.load.atlas('buildingSheet', 'Assets/images/map/Buildings/TPBuildings.png', 'Assets/images/map/Buildings/TPBuildings.json');
         this.load.json('buildingBodies', 'Assets/images/map/Buildings/PEBuildings.json');
 
-        this.load.atlas('buttonSheet', 'Assets/images/menu/Buttons/MenuButtons.png', 'Assets/images/menu/Buttons/MenuButtons.json');
-        this.load.atlas('BGSheet', 'Assets/images/menu/Backgrounds/MenuBackgrounds.png', 'Assets/images/menu/Backgrounds/MenuBackgrounds.json');
+        //this.load.atlas('buttonSheet', 'Assets/images/menu/Buttons/MenuButtons.png', 'Assets/images/menu/Buttons/MenuButtons.json');
+        //this.load.atlas('BGSheet', 'Assets/images/menu/Backgrounds/MenuBackgrounds.png', 'Assets/images/menu/Backgrounds/MenuBackgrounds.json');
+        this.load.atlas('MenuAtlas', 'Assets/images/menu/MenuAssets.png', 'Assets/images/menu/MenuAssets.json');
         this.load.image('Logo', 'Assets/images/menu/Logo.png');
     }
 
     create() {
-        this.add.text(700, 200, "Stockfors Kartalle", { font: "40px Arial", fill: "yellow" });
 
-        this.cameras.main.backgroundColor.setTo(255, 255, 255);
+        this.CreateInstructions();
 
-        this.aloitusPohja = this.add.sprite(0, 0, 'BGSheet', 'Aloitusruutu');
+        this.CreateMainMenu();
 
-        this.logo = this.add.image(-137, -835, 'Logo').setScale(0.22);
-        this.newGame = this.add.sprite(-200, 700, 'buttonSheet', 'Aloita');
-        this.continue = this.add.sprite(200, 700, 'buttonSheet', 'Jatka');
-        this.fi = this.add.sprite(-225, 550, 'buttonSheet', 'FI').setScale(0.3);
-        this.eng = this.add.sprite(-12, 550, 'buttonSheet', 'ENG').setScale(0.3);
-        this.swe = this.add.sprite(210, 550, 'buttonSheet', 'SWE').setScale(0.3);
-        this.ohje = this.add.sprite(500, 700, 'buttonSheet', 'Ohje');
-        this.clearDataText = this.add.text(1400, 200, "Clear save data", { font: "40px Arial", fill: "white" });
+        this.ohjeContainer.setVisible(false);
 
-        this.menuContainer = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY + 20, 
-            [   this.aloitusPohja, 
-                this.logo, 
-                this.newGame, 
-                this.continue, 
-                this.fi, 
-                this.eng, 
-                this.swe, 
-                this.ohje]);
-
-        this.menuContainer.setScale(0.56);
-
-        this.newGame.setInteractive();
-
-        this.newGame.on('pointerdown', function () {
-            this.newGame.setTexture('buttonSheet', 'Aloita_Pressed');
-        }, this);
-
-        this.newGame.on('pointerout', function () {
-            if (this.input.activePointer.isDown) {
-                this.newGame.setTexture('buttonSheet', 'Aloita');
-            }
-        }, this);
-
-        this.newGame.on('pointerup', function () {
-            gameState = startingGameState;
-
-            this.scene.start('StockforsScene');
-            console.log('Started new game.');
-        }, this);
-
-        let savedGame = loadGame();
-
-        //let savedSettings = loadGame('settings');
-
-        if (savedGame != null) {
-
-            config.musicOn = savedGame.MusicOn;
-            config.soundOn = savedGame.SoundOn;
-
-        }
-
-        this.continue.setInteractive();
-
-        this.continue.on('pointerdown', function () {
-            this.continue.setTexture('buttonSheet', 'Jatka_Pressed');
-        }, this);
-
-        this.continue.on('pointerout', function () {
-
-            if (this.input.activePointer.isDown) {
-                this.continue.setTexture('buttonSheet', 'Jatka');
-            }
-        }, this);
-
-        this.continue.on('pointerup', function () {
-            if (savedGame != null) {
-
-                this.scene.start(gameState.currentMap, { x: gameState.playerX, y: gameState.playerY });
-                console.log('Loaded game from save file.');
-
-            }
-            else {
-                console.log('No save file available, start a new game instead.');
-            }
-        }, this);
-
-        this.clearDataText.setInteractive();
-
-        this.clearDataText.on('pointerup', function () {
-            localStorage.clear();
-
-            console.log('Saved data cleared');
-        });
 
         createButton(this.cameras.main.centerX + this.cameras.main.width * .4, this.cameras.main.centerY - this.cameras.main.height * .4, 'OptionsMenuScene', true, 0, 1, this);
 
@@ -142,6 +61,157 @@ class OpeningScene extends Phaser.Scene {
         });*/
 
 
+    }
+
+    CreateMainMenu() {
+        //Doesn't seem to work
+        //this.scale.lockOrientation(Phaser.Scale.LANDSCAPE);
+
+        //this.add.text(700, 200, "Stockfors Kartalle", { font: "40px Arial", fill: "yellow" });
+
+        this.cameras.main.backgroundColor.setTo(255, 255, 255);
+
+        this.aloitusPohja = this.add.sprite(-80, -83, 'MenuAtlas', 'UI Pohjat/Aloitusruutu');
+
+        this.newGame = this.add.sprite(-200, 700, 'MenuAtlas', 'UI Buttons/Aloita');
+        this.continue = this.add.sprite(200, 700, 'MenuAtlas', 'UI Buttons/Jatka');
+        this.fi = this.add.sprite(-225, 550, 'MenuAtlas', 'UI Buttons/FI').setScale(0.3);
+        this.eng = this.add.sprite(-12, 550, 'MenuAtlas', 'UI Buttons/ENG').setScale(0.3);
+        this.swe = this.add.sprite(210, 550, 'MenuAtlas', 'UI Buttons/SWE').setScale(0.3);
+        this.ohjeNappi = this.add.sprite(500, 700, 'MenuAtlas', 'UI Buttons/Ohje');
+        this.clearDataText = this.add.text(1400, 200, "Clear save data", { font: "40px Arial", fill: "white" });
+
+        this.mainMenuContainer = this.CreateMenuContainer(
+            [this.aloitusPohja,
+            this.newGame,
+            this.continue,
+            this.fi,
+            this.eng,
+            this.swe,
+            this.ohjeNappi]);
+
+        this.newGame.on('pointerdown', function () {
+            this.newGame.setTexture('MenuAtlas', 'UI Buttons/Aloita_Pressed');
+        }, this);
+
+        this.newGame.on('pointerout', function () {
+            if (this.input.activePointer.isDown) {
+                this.newGame.setTexture('MenuAtlas', 'UI Buttons/Aloita');
+            }
+        }, this);
+
+        this.newGame.on('pointerup', function () {
+            if (this.newGame.pressed == true) {
+
+                gameState = startingGameState;
+
+                this.scene.start('StockforsScene');
+                console.log('Started new game.');
+            }
+        }, this);
+
+        let savedGame = loadGame();
+
+        //let savedSettings = loadGame('settings');
+
+        if (savedGame != null) {
+
+            config.musicOn = savedGame.MusicOn;
+            config.soundOn = savedGame.SoundOn;
+
+        }
+
+        this.continue.on('pointerdown', function () {
+            this.continue.setTexture('MenuAtlas', 'UI Buttons/Jatka_Pressed');
+        }, this);
+
+        this.continue.on('pointerout', function () {
+
+            if (this.input.activePointer.isDown) {
+                this.continue.setTexture('MenuAtlas', 'UI Buttons/Jatka');
+            }
+        }, this);
+
+        this.continue.on('pointerup', function () {
+
+            if (this.continue.pressed == true) {
+
+                if (savedGame != null) {
+
+                    this.scene.start(gameState.currentMap, { x: gameState.playerX, y: gameState.playerY });
+                    console.log('Loaded game from save file.');
+
+                }
+                else {
+                    console.log('No save file available, start a new game instead.');
+                }
+            }
+        }, this);
+
+        this.ohjeNappi.on('pointerup', function () {
+            if (this.ohjeNappi.pressed == true) {
+
+                this.mainMenuContainer.setVisible(false);
+                this.ohjeContainer.setVisible(true);
+
+            }
+        }, this);
+
+        this.clearDataText.setInteractive();
+
+        this.clearDataText.on('pointerup', function () {
+            localStorage.clear();
+
+            console.log('Saved data cleared');
+        });
+    }
+
+    CreateInstructions() {
+        this.ohjePohja = this.add.sprite(-40, -40, 'MenuAtlas', 'UI Pohjat/Ohjeruutu');
+
+        this.back = this.add.sprite(-400, 700, 'MenuAtlas', 'UI Buttons/Takaisin');
+
+        this.ohjeContainer = this.CreateMenuContainer([this.ohjePohja, this.back]);
+
+        this.back.on('pointerdown', function () {
+            this.back.setTexture('MenuAtlas', 'UI Buttons/Takaisin_Pressed');
+        }, this);
+
+        this.back.on('pointerout', function () {
+
+            if (this.input.activePointer.isDown) {
+                this.back.setTexture('MenuAtlas', 'UI Buttons/Takaisin');
+            }
+        }, this);
+
+        this.back.on('pointerup', function () {
+            if (this.back.pressed == true) {
+                this.back.setTexture('MenuAtlas', 'UI Buttons/Takaisin');
+                this.mainMenuContainer.setVisible(true);
+                this.ohjeContainer.setVisible(false);
+            }
+        }, this);
+
+    }
+
+    CreateMenuContainer(elementsToAdd = []) {
+        let container = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY + 20, elementsToAdd);
+
+        container.iterate(function (element) {
+            element.setInteractive();
+            element.pressed = false;
+            element.on('pointerdown', function () {
+                element.pressed = true;
+            }, this);
+
+            element.on('pointerout', function () {
+                element.pressed = false;
+            }, this);
+        }, this);
+
+        container.setScale(0.56);
+
+        return container;
     }
 
 

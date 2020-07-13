@@ -26,7 +26,7 @@ class OptionsMenuScene extends MenuScene
 
     createContainer () 
     {
-        super.createContainer();
+        super.createContainer('MenuAtlas', 'UI Pohjat/Settings');
         
     }
 
@@ -35,13 +35,13 @@ class OptionsMenuScene extends MenuScene
         this.musicOn = true;
         this.soundOn = true;
          
-        this.musicButton = this.add.sprite(-100, -200, 'buttonSheet', 'CheckmarkON');
+        this.musicButton = this.add.sprite(-100, -200, 'MenuAtlas', 'UI Buttons/CheckmarkON');
         this.musicText = this.add.text(0, -200, 'Music Enabled', { fontSize: 24, color: "black" });
          
-        this.soundButton = this.add.image(-100, -100, 'buttonSheet', 'CheckmarkON');
+        this.soundButton = this.add.image(-100, -100, 'MenuAtlas', 'UI Buttons/CheckmarkON');
         this.soundText = this.add.text(0, -100, 'Sound Enabled', { fontSize: 24, color: "black"});
 
-        this.fullScreenButton = this.add.image(-100, 0, 'buttonSheet', 'CheckmarkOFF');
+        this.fullScreenButton = this.add.image(-100, 0, 'MenuAtlas', 'UI Buttons/CheckmarkOFF');
         this.fullScreenText = this.add.text(0, 0, 'Fullscreen', { fontSize: 24, color: "black"});
          
         this.musicButton.setInteractive();
@@ -68,32 +68,34 @@ class OptionsMenuScene extends MenuScene
             this.scale.toggleFullscreen();
             this.updateFullScreen();
         }.bind(this));
+
+        this.menu.setScale(0.56);
         
     }
 
     updateAudio() {
         if (config.musicOn === false) {
-            this.musicButton.setTexture('buttonSheet', 'CheckmarkOFF');
+            this.musicButton.setTexture('MenuAtlas', 'UI Buttons/CheckmarkOFF');
         }
         else {
-            this.musicButton.setTexture('buttonSheet', 'CheckmarkON');
+            this.musicButton.setTexture('MenuAtlas', 'UI Buttons/CheckmarkON');
         }
        
         if (config.soundOn === false) {
-            this.soundButton.setTexture('buttonSheet', 'CheckmarkOFF');
+            this.soundButton.setTexture('MenuAtlas', 'UI Buttons/CheckmarkOFF');
         }
         else {
-            this.soundButton.setTexture('buttonSheet', 'CheckmarkON');
+            this.soundButton.setTexture('MenuAtlas', 'UI Buttons/CheckmarkON');
         }
       }
 
       updateFullScreen() {
         if (this.scale.isFullscreen) {
             // On start full screen
-            this.fullScreenButton.setTexture('buttonSheet', 'CheckmarkON')
+            this.fullScreenButton.setTexture('MenuAtlas', 'UI Buttons/CheckmarkON')
         } else {
             // On stop full screen
-            this.fullScreenButton.setTexture('buttonSheet', 'CheckmarkOFF')
+            this.fullScreenButton.setTexture('MenuAtlas', 'UI Buttons/CheckmarkOFF')
         }
       }
     
@@ -101,9 +103,9 @@ class OptionsMenuScene extends MenuScene
     createExitButton() 
     {
         // Exit button
-        let exitButtonBG = this.add.image(0,0, 'exitButton');
-        let exitButton = this.add.container(this.menuBG.width / 2, -this.menuBG.height / 2, [ exitButtonBG ]);
-        exitButton.setSize(exitButtonBG.width, exitButtonBG.height);
+        let exitButton = this.add.sprite(35, 400, 'MenuAtlas', 'UI Buttons/Sulje');
+        //let exitButton = this.add.container(this.menuBG.width / 2, -this.menuBG.height / 2, [ exitButtonBG ]);
+        //exitButton.setSize(exitButtonBG.width, exitButtonBG.height);
         this.menu.add(exitButton);
         exitButton.setInteractive();
 
@@ -111,19 +113,19 @@ class OptionsMenuScene extends MenuScene
 
         exitButton.on('pointerover', function () {
     
-            exitButtonBG.setTint(0xeb4034);
-    
+            //exitButtonBG.setTint(0xeb4034);
+            
         });
     
         exitButton.on('pointerout', function () {
-    
-            exitButtonBG.clearTint();
+            exitButton.setTexture('MenuAtlas', 'UI Buttons/Sulje');
+            //exitButtonBG.clearTint();
             pressed = false;
     
         });
 
         exitButton.on('pointerdown', function () {
-            
+            exitButton.setTexture('MenuAtlas', 'UI Buttons/Sulje_Pressed');
             pressed = true;
     
         });
@@ -131,6 +133,9 @@ class OptionsMenuScene extends MenuScene
         exitButton.on('pointerup', function (event) {
             if (pressed)
             {
+                exitButton.setTexture('MenuAtlas', 'UI Buttons/Sulje');
+
+
                 //Uses default values from function declaration when undefined is set
                 //saveGame(undefined, undefined, undefined, config.musicOn, config.soundOn);
                 saveGame({musicOn: config.musicOn, soundOn: config.soundOn});
