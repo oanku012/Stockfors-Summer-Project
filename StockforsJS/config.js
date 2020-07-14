@@ -35,13 +35,13 @@ var config = {
 
 
 
-    scene: [OpeningScene, StockforsScene, MenuScene, KirkkoScene, PatruunantaloScene, PakkausmuseoScene, OptionsMenuScene, MuistiPeliScene]
+    scene: [OpeningScene, StockforsScene, MenuScene, KirkkoScene, PatruunantaloScene, PakkausmuseoScene, OptionsMenuScene, MuistiPeliScene, UI]
 
 
 };
 
-//Currently active map
-//var currentMap;
+//If pointer is over UI-elements
+var pointerOverUI;
 
 //Whether if player is ready to move
 var readyToMove = false;
@@ -70,28 +70,6 @@ var startingGameState = {
 
 //Game state passed on to the save file
 var gameState = startingGameState;
-
-/*
-function saveGame(currentMap = gameState.currentMap, posX = gameState.playerX, posY = gameState.playerY,
-    musicOn = gameState.musicOn, soundOn = gameState.soundOn, MPScore = gameState.MPScore) {
-
-    var state = {
-        currentMap: currentMap,
-        playerX: posX,
-        playerY: posY,
-        musicOn: musicOn,
-        soundOn: soundOn,
-        MPScore: MPScore
-    }
-
-    localStorage.setItem('saveFile', JSON.stringify(state));
-
-    gameState = state;
-
-    console.log('Game saved. Current map: ' + state.currentMap + ' Player position: ' + state.playerX + ' ' + state.playerY + ' Music on: ' + state.musicOn + ' Sound on: ' + state.soundOn + ' MPScore: ' + state.MPScore);
-
-
-}*/
 
 function saveGame(state = {
     currentMap: gameState.currentMap,
@@ -127,20 +105,17 @@ function loadGame() {
 
 };
 
-/*function loadSettings() {
-    var file = JSON.parse(localStorage.getItem('settings'));
-
-    return file;
-}*/
 
 //Moved this here so the options menu could be added to the opening scene as well, some things like pointerOverUI only apply to map scenes
-function createButton(posX, posY, scene, runOnTop, scrollFactor, scale, context) {
+function createButton(posX, posY, scene, runOnTop, scrollFactor, scale, context, sprite, frame) {
     // Button
-    let buttonBG = context.add.image(0, 0, 'buttonBG');
-    let buttonText = context.add.image(0, 0, 'buttonText');
+    //let buttonBG = context.add.image(0, 0, 'buttonBG');
+    //let buttonText = context.add.image(0, 0, 'buttonText');
 
-    let button = context.add.container(posX, posY, [buttonBG, buttonText]);
-    button.setSize(buttonBG.width, buttonBG.height);
+    //let button = context.add.container(posX, posY, [buttonBG, buttonText]);
+
+    let button = context.add.sprite(posX, posY, sprite, frame);
+    //button.setSize(buttonBG.width, buttonBG.height);
     button.setInteractive();
 
     button.setScrollFactor(scrollFactor).setDepth(9999).setScale(scale);
@@ -149,20 +124,20 @@ function createButton(posX, posY, scene, runOnTop, scrollFactor, scale, context)
 
     button.on('pointerover', function () {
 
-        buttonBG.setTint(0x44ff44);
+        //buttonBG.setTint(0x44ff44);
 
         //This is just to stop the player from moving when clicking options menu
-        context.scene.pointerOverUI = true;
+        pointerOverUI = true;
 
     });
 
     button.on('pointerout', function () {
 
-        buttonBG.clearTint();
+        //buttonBG.clearTint();
         pressed = false;
 
         //Enable clicking movement when cursor goes away from the UI-button
-        context.scene.pointerOverUI = false;
+        pointerOverUI = false;
 
     });
 
