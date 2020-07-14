@@ -11,6 +11,10 @@ class OpeningScene extends Phaser.Scene {
     }
 
     preload() {
+        // Load JSON data
+        var path = ("Localization/MainMenu.json");
+        this.load.json('mainMenuData', path);
+
         this.load.image('buttonBG', 'Assets/images/menu/button-bg.png');
         this.load.image('buttonText', 'Assets/images/menu/button-text.png');
         this.load.image('menuBG', 'Assets/images/menu/menu-bg.png');
@@ -73,6 +77,21 @@ class OpeningScene extends Phaser.Scene {
 
         this.aloitusPohja = this.add.sprite(-80, -83, 'MenuAtlas', 'UI Pohjat/Aloitusruutu');
 
+        // Get title and description from a json file
+        var data = this.cache.json.get('mainMenuData');
+
+        this.infoText = this.make.text({
+            x: 0,
+            y: -100,
+            text: data['OpeningText'],
+            origin: { x: 0.5, y: 0.5 },
+            style: {
+                font: '40px Arial',
+                fill: 'black',
+                wordWrap: { width: 1000 }
+            }
+        });
+
         this.newGame = this.add.sprite(-200, 700, 'MenuAtlas', 'UI Buttons/Aloita');
         this.continue = this.add.sprite(200, 700, 'MenuAtlas', 'UI Buttons/Jatka');
         this.fi = this.add.sprite(-225, 550, 'MenuAtlas', 'UI Buttons/FI').setScale(0.3);
@@ -83,6 +102,7 @@ class OpeningScene extends Phaser.Scene {
 
         this.mainMenuContainer = this.CreateMenuContainer(
             [this.aloitusPohja,
+            this.infoText,
             this.newGame,
             this.continue,
             this.fi,
