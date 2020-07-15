@@ -36,7 +36,7 @@ var config = {
 
 
 
-    scene: [OpeningScene, StockforsScene, BuildingScene, KirkkoScene, PatruunantaloScene, PakkausmuseoScene, OptionsMenuScene, MuistiPeliScene, UI]
+    scene: [OpeningScene, StockforsScene, BuildingScene, KirkkoScene, PatruunantaloScene, PakkausmuseoScene, OptionsMenuScene, MuistiPeliScene, UI, KaarihalliScene, TallirakennusScene]
 
 
 };
@@ -46,9 +46,6 @@ var pointerOverUI;
 
 //Whether if player is ready to move
 var readyToMove = false;
-
-//This is updated every time player enters a building, player can then be spawned back to that position when exiting the building
-var playerExitPosition;
 
 //Collision layers, these are global because to my understanding the value given by this.matter.world.nextcategory() doesn't go back to the start when re-creating a scene and collision would break after entering and re-entering a scene certain amount of times
 var collisionCat1;

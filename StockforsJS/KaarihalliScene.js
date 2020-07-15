@@ -1,21 +1,21 @@
-class PakkausmuseoScene extends BuildingScene
+class KaarihalliScene extends BuildingScene
 {
     constructor()
     {
-        super('PakkausmuseoScene');
+        super('KaarihalliScene');
 
-        this.name = 'Pakkausmuseo';
+        this.name = 'Kaarihalli';
 
     }
 
     preload ()
     {
-        super.preload();
+        
     }
 
     create ()
     {
-        this.minigame = 'MuistiPeliScene';
+        //this.minigame = 'MuistiPeliScene';
 
         super.create();
         
