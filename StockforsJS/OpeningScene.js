@@ -16,7 +16,7 @@ class OpeningScene extends Phaser.Scene {
         this.load.json('mainMenuData', path);
 
         // Json data for all building info
-        var path = ("Localization/FI/buildings.json");
+        var path = ("Localization/FI/Buildings.json");
         this.load.json('buildingData', path);
 
         this.load.image('buttonBG', 'Assets/images/menu/button-bg.png');
@@ -212,7 +212,35 @@ class OpeningScene extends Phaser.Scene {
 
         this.back = this.add.sprite(-400, 700, 'MenuAtlas', 'UI Buttons/Takaisin');
 
-        this.ohjeContainer = this.CreateMenuContainer([this.ohjePohja, this.back]);
+        // Get title and description from a json file
+        var data = this.cache.json.get('mainMenuData');
+
+        this.helpHeader = this.make.text({
+            x: 0,
+            y: -700,
+            text: data['HelpHeader'],
+            origin: { x: 0.5, y: 0.0 },
+            style: {
+                font: '44px Arial',
+                fill: 'black',
+                wordWrap: { width: 1000 }
+            }
+        });
+
+        this.helpText = this.make.text({
+            x: 0,
+            y: -100,
+            text: data['HelpText'],
+            origin: { x: 0.5, y: 0.5 },
+            style: {
+                font: '40px Arial',
+                fill: 'black',
+                wordWrap: { width: 1000 }
+            }
+        });
+
+
+        this.ohjeContainer = this.CreateMenuContainer([this.ohjePohja, this.back, this.helpHeader, this.helpText]);
 
         this.back.on('pointerdown', function () {
             this.back.setTexture('MenuAtlas', 'UI Buttons/Takaisin_Pressed');
