@@ -12,8 +12,12 @@ class OpeningScene extends Phaser.Scene {
 
     preload() {
         // Load JSON data
-        var path = ("Localization/MainMenu.json");
+        var path = ("Localization/FI/MainMenu.json");
         this.load.json('mainMenuData', path);
+
+        // Json data for all building info
+        var path = ("Localization/FI/buildings.json");
+        this.load.json('buildingData', path);
 
         this.load.image('buttonBG', 'Assets/images/menu/button-bg.png');
         this.load.image('buttonText', 'Assets/images/menu/button-text.png');
@@ -84,6 +88,18 @@ class OpeningScene extends Phaser.Scene {
         // Get title and description from a json file
         var data = this.cache.json.get('mainMenuData');
 
+        this.infoHeader = this.make.text({
+            x: 0,
+            y: -650,
+            text: data['OpeningHeader'],
+            origin: { x: 0.5, y: 0.5 },
+            style: {
+                font: '44px Arial',
+                fill: 'black',
+                wordWrap: { width: 1000 }
+            }
+        });
+
         this.infoText = this.make.text({
             x: 0,
             y: -100,
@@ -107,6 +123,7 @@ class OpeningScene extends Phaser.Scene {
         this.mainMenuContainer = this.CreateMenuContainer(
             [this.aloitusPohja,
             this.infoText,
+            this.infoHeader,
             this.newGame,
             this.continue,
             this.fi,

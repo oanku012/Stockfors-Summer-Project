@@ -20,9 +20,6 @@ class MenuScene extends Phaser.Scene
 
     preload ()
     {
-        // Load JSON data
-        var path = ("Localization/buildings/" + this.name + ".json");
-        this.load.json(this.name + 'buildingData', path);
 
         this.load.image('blankCheckBox', 'Assets/images/menu/blank-check-box.png');
         this.load.image('checkedBox', 'Assets/images/menu/check-box.png');
@@ -34,16 +31,15 @@ class MenuScene extends Phaser.Scene
     {
         
         // Get title and description from a json file
-        var data = this.cache.json.get(this.name + 'buildingData');
+        var data = this.cache.json.get('buildingData');
 
         console.log(data);
 
-        if (data["title"] != null && data["description"] != null)
+        if (data[this.name][0] != null && data[this.name][1] != null)
         {
-            this.title =  data["title"];
-            this.description = data["description"];
+            this.title = data[this.name[0]];
+            this.description = data[this.name[1]];
         }
-        
 
         this.createContainer();
         this.createExitButton();
