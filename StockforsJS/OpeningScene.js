@@ -11,12 +11,18 @@ class OpeningScene extends Phaser.Scene {
     }
 
     preload() {
+        console.log("Preloading...");
+
+        // Make sure to remove all localization data before loading any
+        this.cache.json.remove('mainMenuData');
+        this.cache.json.remove('buildingData');
+
         // Load JSON data
-        var path = ("Localization/FI/MainMenu.json");
+        var path = ("Localization/"+config.language+"/MainMenu.json?v=1");
         this.load.json('mainMenuData', path);
 
         // Json data for all building info
-        var path = ("Localization/FI/Buildings.json");
+        var path = ("Localization/"+config.language+"/Buildings.json?v=1");
         this.load.json('buildingData', path);
 
         this.load.image('buttonBG', 'Assets/images/menu/button-bg.png');
@@ -130,6 +136,28 @@ class OpeningScene extends Phaser.Scene {
             this.eng,
             this.swe,
             this.ohjeNappi]);
+
+        
+        
+        // Language button functionality
+        this.fi.on('pointerup', function () {
+            if (this.fi.pressed == true) {
+                config.language = 'FI';
+                console.log('Language set to Finnish.');
+                this.scene.restart();
+            }
+        }, this);
+
+        // Language button functionality
+        this.eng.on('pointerup', function () {
+            if (this.eng.pressed == true) {
+                config.language = 'EN';
+                console.log('Language set to English.');
+                this.scene.restart();
+            }
+        }, this);
+
+            
 
         this.newGame.on('pointerdown', function () {
             this.newGame.setTexture('MenuAtlas', 'UI Buttons/Aloita_Pressed');
