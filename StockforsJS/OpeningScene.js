@@ -43,7 +43,7 @@ class OpeningScene extends Phaser.Scene {
 
     create() {
 
-        
+
 
         this.CreateInstructions();
 
@@ -52,7 +52,7 @@ class OpeningScene extends Phaser.Scene {
         this.ohjeContainer.setVisible(false);
 
         this.scene.run('UI');
-        
+
 
         //createButton(this.cameras.main.centerX + this.cameras.main.width * .4, this.cameras.main.centerY - this.cameras.main.height * .4, 'OptionsMenuScene', true, 0, 0.56, this, 'MenuAtlas', 'UI Buttons/Asetukset');
 
@@ -118,7 +118,7 @@ class OpeningScene extends Phaser.Scene {
         this.eng = this.add.sprite(-12, 550, 'MenuAtlas', 'UI Buttons/ENG').setScale(0.3);
         this.swe = this.add.sprite(210, 550, 'MenuAtlas', 'UI Buttons/SWE').setScale(0.3);
         this.ohjeNappi = this.add.sprite(500, 700, 'MenuAtlas', 'UI Buttons/Ohje');
-        this.clearDataText = this.add.text(1400, 200, "Clear save data", { font: "40px Arial", fill: "white" });
+        this.clearDataText = this.add.text(1400, 200, "Clear save data", { font: "40px Arial", fill: "black" });
 
         this.mainMenuContainer = this.CreateMenuContainer(
             [this.aloitusPohja,
@@ -157,9 +157,15 @@ class OpeningScene extends Phaser.Scene {
 
         if (savedGame != null) {
 
-            config.musicOn = savedGame.MusicOn;
-            config.soundOn = savedGame.SoundOn;
-
+            if (savedGame.musicOn != undefined && savedGame.soundOn != undefined) {
+                config.musicOn = savedGame.musicOn;
+                config.soundOn = savedGame.soundOn;
+                console.log('Settings loaded and set.');
+            }
+            else
+            {
+                console.log('Sound settings undefined.');
+            }
         }
 
         this.continue.on('pointerdown', function () {
