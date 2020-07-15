@@ -42,6 +42,8 @@ class OptionsMenuScene extends Phaser.Scene
 
     createOptionsMenu()
     {
+        console.log(config.musicOn);
+
         this.musicOn = true;
         this.soundOn = true;
 
@@ -100,14 +102,14 @@ class OptionsMenuScene extends Phaser.Scene
     }
 
     updateAudio() {
-        if (config.musicOn === false) {
+        if (config.musicOn == false) {
             this.musicButton.setTexture('MenuAtlas', 'UI Buttons/CheckmarkOFF');
         }
         else {
             this.musicButton.setTexture('MenuAtlas', 'UI Buttons/CheckmarkON');
         }
        
-        if (config.soundOn === false) {
+        if (config.soundOn == false) {
             this.soundButton.setTexture('MenuAtlas', 'UI Buttons/CheckmarkOFF');
         }
         else {
@@ -161,9 +163,6 @@ class OptionsMenuScene extends Phaser.Scene
             {
                 exitButton.setTexture('MenuAtlas', 'UI Buttons/Sulje');
 
-
-                //Uses default values from function declaration when undefined is set
-                //saveGame(undefined, undefined, undefined, config.musicOn, config.soundOn);
                 saveGame({musicOn: config.musicOn, soundOn: config.soundOn});
 
                 this.scene.stop(this.scene.key);
