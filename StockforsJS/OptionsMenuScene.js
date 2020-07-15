@@ -1,4 +1,4 @@
-class OptionsMenuScene extends MenuScene
+class OptionsMenuScene extends Phaser.Scene
 {
     constructor()
     {
@@ -11,7 +11,7 @@ class OptionsMenuScene extends MenuScene
 
     preload ()
     {
-        super.preload();
+        
     }
 
     create ()
@@ -21,12 +21,22 @@ class OptionsMenuScene extends MenuScene
         this.createExitButton();
 
         // Reorganize the UI when the game gets resized
-        this.scale.on('resize', this.resize, this);
+        //this.scale.on('resize', this.resize, this);
     }
 
     createContainer () 
     {
-        super.createContainer('MenuAtlas', 'UI Pohjat/Settings');
+        
+        // Menu
+        this.menuBG = this.add.sprite(0, 0, 'MenuAtlas', 'UI Pohjat/Settings');
+        this.menu = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY, [ this.menuBG ]).setScale(0.56);
+
+        // title and description
+        let title = this.add.text(0, 0, this.title);
+        title.setPosition(-title.width * 1.5, -370);
+        title.setFontSize(48);
+        title.setColor("black");
+        this.menu.add(title);
         
     }
 
@@ -34,20 +44,30 @@ class OptionsMenuScene extends MenuScene
     {
         this.musicOn = true;
         this.soundOn = true;
-         
-        this.musicButton = this.add.sprite(-100, -200, 'MenuAtlas', 'UI Buttons/CheckmarkON');
-        this.musicText = this.add.text(0, -200, 'Music Enabled', { fontSize: 24, color: "black" });
-         
-        this.soundButton = this.add.image(-100, -100, 'MenuAtlas', 'UI Buttons/CheckmarkON');
-        this.soundText = this.add.text(0, -100, 'Sound Enabled', { fontSize: 24, color: "black"});
 
-        this.fullScreenButton = this.add.image(-100, 0, 'MenuAtlas', 'UI Buttons/CheckmarkOFF');
-        this.fullScreenText = this.add.text(0, 0, 'Fullscreen', { fontSize: 24, color: "black"});
+        let firstRow = -205;
+
+        let rowGap = 140;
+
+        let fontsize = 48;
+
+        //The text align doesn't work on one line text
+        this.musicButton = this.add.sprite(-400, firstRow, 'MenuAtlas', 'UI Buttons/CheckmarkON');
+        this.musicText = this.add.text(-200, firstRow, 'Music Enabled \n ', { fontSize: fontsize, color: "black", align: 'center'});
+        //this.musicText.setPosition(-this.musicText.width * 1.5, firstRow);
+
+        this.soundButton = this.add.image(-400, firstRow + rowGap, 'MenuAtlas', 'UI Buttons/CheckmarkON');
+        this.soundText = this.add.text(-200, firstRow + rowGap, 'Sound Enabled \n ', { fontSize: fontsize, color: "black", align: 'center'});
+
+        this.fullScreenButton = this.add.image(-400, firstRow + rowGap * 2, 'MenuAtlas', 'UI Buttons/CheckmarkOFF');
+        this.fullScreenText = this.add.text(-200, firstRow + rowGap * 2, 'Fullscreen \n ', { fontSize: fontsize, color: "black", align: 'center'});
         this.isFullscreen = this.scale.isFullscreen;
          
         this.musicButton.setInteractive();
         this.soundButton.setInteractive();
         this.fullScreenButton.setInteractive();
+
+        //this.optionColumn = new uiWidgets.Column(this.game, -100, -200);
 
         this.menu.add([this.musicButton, this.musicText, this.soundButton, this.soundText, this.fullScreenButton, this.fullScreenText]);
 

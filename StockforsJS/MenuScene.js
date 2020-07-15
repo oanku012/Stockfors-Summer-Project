@@ -126,30 +126,6 @@ class MenuScene extends Phaser.Scene
                   }, this);
             });
         }
-
-
-        /* Button used for something maybe
-        // Button
-        let buttonBG = this.add.image(0, 0, 'buttonBG');
-        let buttonText = this.add.image(0, 0, 'buttonText');
-
-        button.on('pointerover', function () {
-    
-            buttonBG.setTint(0x44ff44);
-    
-        });
-    
-        button.on('pointerout', function () {
-    
-            buttonBG.clearTint();
-    
-        });
-    
-        button.on('pointerdown', function () {
-            // Click function
-            
-        });
-        */
         
     }
 
