@@ -37,8 +37,8 @@ class MenuScene extends Phaser.Scene
 
         if (data[this.name][0] != null && data[this.name][1] != null)
         {
-            this.title = data[this.name[0]];
-            this.description = data[this.name[1]];
+            this.title = data[this.name][0];
+            this.description = data[this.name][1];
         }
 
         this.createContainer();

@@ -6,6 +6,7 @@ var config = {
     height: 1080,
     soundOn: true,
     musicOn: true,
+    language: 'FI',
     parent: 'game',
 
     scale: {

@@ -53,7 +53,7 @@ class MapScene extends Phaser.Scene {
     }
 
     preload() {
-
+        
     }
 
     create() {
