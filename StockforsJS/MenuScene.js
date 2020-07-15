@@ -54,7 +54,7 @@ class MenuScene extends Phaser.Scene
     {
         // Menu
         this.menuBG = this.add.sprite(0, 0, menusprite, frame);
-        this.menu = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY, [ this.menuBG ]);
+        this.menu = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY, [ this.menuBG ]).setScale(0.56);
 
         // title and description
         let title = this.add.text(0, -350, this.title);

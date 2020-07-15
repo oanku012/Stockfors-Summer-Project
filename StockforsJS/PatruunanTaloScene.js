@@ -29,7 +29,7 @@ class PatruunantaloScene extends MenuScene
 
     createContainer () 
     {
-        super.createContainer();
+        super.createContainer('MenuAtlas', 'UI Pohjat/InsideVaaka');
 
         // possibly other stuff here
     }
