@@ -29,7 +29,7 @@ class OptionsMenuScene extends Phaser.Scene
         
         // Menu
         this.menuBG = this.add.sprite(0, 0, 'MenuAtlas', 'UI Pohjat/Settings');
-        this.menu = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY, [ this.menuBG ]).setScale(0.56);
+        this.menu = this.add.container(this.cameras.main.centerX - 18, this.cameras.main.centerY, [ this.menuBG ]).setScale(0.56);
 
         // title and description
         let title = this.add.text(0, 0, this.title);

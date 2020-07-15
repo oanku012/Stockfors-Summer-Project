@@ -1,4 +1,4 @@
-class PatruunantaloScene extends MenuScene
+class PatruunantaloScene extends BuildingScene
 {
     constructor()
     {
@@ -29,7 +29,7 @@ class PatruunantaloScene extends MenuScene
 
     createContainer () 
     {
-        super.createContainer('MenuAtlas', 'UI Pohjat/InsideVaaka');
+        super.createContainer();
 
         // possibly other stuff here
     }

@@ -1,4 +1,4 @@
-class MenuScene extends Phaser.Scene
+class BuildingScene extends Phaser.Scene
 {
     constructor(SceneKey)
     {
@@ -29,6 +29,7 @@ class MenuScene extends Phaser.Scene
 
     create ()
     {
+        this.cameras.main.backgroundColor.setTo(255, 255, 255);
         
         // Get title and description from a json file
         var data = this.cache.json.get('buildingData');
@@ -39,6 +40,8 @@ class MenuScene extends Phaser.Scene
         {
             this.title = data[this.name[0]];
             this.description = data[this.name[1]];
+
+            console.log('Title added: ' + this.title);
         }
 
         this.createContainer();
@@ -46,14 +49,14 @@ class MenuScene extends Phaser.Scene
         console.log(this.scene.key);
 
         // Reorganize the UI when the game gets resized
-        this.scale.on('resize', this.resize, this);
+        //this.scale.on('resize', this.resize, this);
 
     }
 
-    createContainer (menusprite, frame) 
+    createContainer () 
     {
         // Menu
-        this.menuBG = this.add.sprite(0, 0, menusprite, frame);
+        this.menuBG = this.add.sprite(0, 0, 'MenuAtlas', 'UI Pohjat/InsideVaaka');
         this.menu = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY, [ this.menuBG ]).setScale(0.56);
 
         // title and description

@@ -1,4 +1,4 @@
-class PakkausmuseoScene extends MenuScene
+class PakkausmuseoScene extends BuildingScene
 {
     constructor()
     {
@@ -29,7 +29,7 @@ class PakkausmuseoScene extends MenuScene
 
     createContainer () 
     {
-        super.createContainer('MenuAtlas', 'UI Pohjat/InsideVaaka');
+        super.createContainer();
 
         // possibly other stuff here
     }
