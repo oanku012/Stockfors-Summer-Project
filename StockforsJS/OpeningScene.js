@@ -11,20 +11,20 @@ class OpeningScene extends Phaser.Scene {
     }
 
     preload() {
-        console.log("Preloading...");
-
         // Make sure to remove all localization data before loading any
         this.cache.json.remove('mainMenuData');
         this.cache.json.remove('buildingData');
 
         // Load JSON data
-        var path = ("Localization/"+config.language+"/MainMenu.json?v=1");
+        var path = ("Localization/"+config.language+"/MainMenu.json");
         this.load.json('mainMenuData', path);
 
         // Json data for all building info
-        var path = ("Localization/"+config.language+"/Buildings.json?v=1");
+        var path = ("Localization/"+config.language+"/Buildings.json");
         this.load.json('buildingData', path);
 
+        // This stuff is now loaded in assets.json
+        /*
         this.load.image('buttonBG', 'Assets/images/menu/button-bg.png');
         this.load.image('buttonText', 'Assets/images/menu/button-text.png');
         this.load.image('menuBG', 'Assets/images/menu/menu-bg.png');
@@ -45,6 +45,7 @@ class OpeningScene extends Phaser.Scene {
         //this.load.atlas('BGSheet', 'Assets/images/menu/Backgrounds/MenuBackgrounds.png', 'Assets/images/menu/Backgrounds/MenuBackgrounds.json');
         this.load.atlas('MenuAtlas', 'Assets/images/menu/MenuAssets.png', 'Assets/images/menu/MenuAssets.json');
         this.load.image('Logo', 'Assets/images/menu/Logo.png');
+        */
     }
 
     //This is used when restarting the scene with a chosen language, when languagechosen is true the language menu is hidden
