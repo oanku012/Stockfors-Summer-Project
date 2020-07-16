@@ -47,18 +47,44 @@ class OpeningScene extends Phaser.Scene {
         this.load.image('Logo', 'Assets/images/menu/Logo.png');
     }
 
+    //This is used when restarting the scene with a chosen language, when languagechosen is true the language menu is hidden
+    init(languageChosen)
+    {
+
+        if(languageChosen == true)
+        {
+            this.languageChosen = true;
+        }
+        else
+        {
+            this.languageChosen = false;
+        }
+    }
+
     create() {
 
         this.cameras.main.backgroundColor.setTo(255, 255, 255);
+
+        this.CreateLanguageMenu();
 
         this.CreateInstructions();
 
         this.CreateMainMenu();
 
-        this.ohjeContainer.setVisible(false);
-
         this.scene.run('UI');
 
+        if(this.languageChosen)
+        {   
+            this.languageContainer.setVisible(false);
+            this.mainMenuContainer.setVisible(true);
+        }
+        else
+        {
+            this.languageContainer.setVisible(true);
+            this.mainMenuContainer.setVisible(false);
+        }
+
+        this.ohjeContainer.setVisible(false);
 
         //createButton(this.cameras.main.centerX + this.cameras.main.width * .4, this.cameras.main.centerY - this.cameras.main.height * .4, 'OptionsMenuScene', true, 0, 0.56, this, 'MenuAtlas', 'UI Buttons/Asetukset');
 
@@ -83,7 +109,37 @@ class OpeningScene extends Phaser.Scene {
 
     CreateLanguageMenu()
     {
-        this.languagePohja = this.add.sprite(-80, -83, 'MenuAtlas', 'UI Pohjat/Kielivalikko');
+        this.languagePohja = this.add.sprite(0, -83, 'MenuAtlas', 'UI Pohjat/Kielivalikko');
+
+        let flagScale = 0.5;
+
+        this.fi = this.add.sprite(-300, -150, 'MenuAtlas', 'UI Buttons/FI').setScale(flagScale);
+        this.eng = this.add.sprite(0, -150, 'MenuAtlas', 'UI Buttons/ENG').setScale(flagScale);
+        this.swe = this.add.sprite(300, -150, 'MenuAtlas', 'UI Buttons/SWE').setScale(flagScale);
+
+        this.languageContainer = this.CreateMenuContainer([this.languagePohja, this.fi, this.eng, this.swe]);
+
+         // Language button functionality
+         this.fi.on('pointerup', function () {
+            if (this.fi.pressed == true) {
+                config.language = 'FI';
+                console.log('Language set to Finnish.');
+                this.scene.restart(true);
+
+                
+            }
+        }, this);
+
+        // Language button functionality
+        this.eng.on('pointerup', function () {
+            if (this.eng.pressed == true) {
+                config.language = 'EN';
+                console.log('Language set to English.');
+                this.scene.restart(true);
+            }
+        }, this);
+
+        
     }
 
     CreateMainMenu() {
@@ -127,9 +183,6 @@ class OpeningScene extends Phaser.Scene {
         this.newGame = CreateTextButton(this, -200, 700, 'UI Buttons/Nappi', 'Aloita peli');
         //this.continue = this.add.sprite(200, 700, 'MenuAtlas', 'UI Buttons/Nappi');
         this.continue = CreateTextButton(this, 200, 700, 'UI Buttons/Nappi', 'Jatka peliä');
-        this.fi = this.add.sprite(-225, 550, 'MenuAtlas', 'UI Buttons/FI').setScale(0.3);
-        this.eng = this.add.sprite(-12, 550, 'MenuAtlas', 'UI Buttons/ENG').setScale(0.3);
-        this.swe = this.add.sprite(210, 550, 'MenuAtlas', 'UI Buttons/SWE').setScale(0.3);
         this.ohjeNappi = this.add.sprite(500, 700, 'MenuAtlas', 'UI Buttons/Ohje');
         this.clearDataText = this.add.text(1400, 200, "Clear save data", { font: "40px Arial", fill: "black" });
 
@@ -139,33 +192,8 @@ class OpeningScene extends Phaser.Scene {
             this.infoHeader,
             this.newGame,
             this.continue,
-            this.fi,
-            this.eng,
-            this.swe,
             this.ohjeNappi]);
-
-        
-        
-        // Language button functionality
-        this.fi.on('pointerup', function () {
-            if (this.fi.pressed == true) {
-                config.language = 'FI';
-                console.log('Language set to Finnish.');
-                this.scene.restart();
-            }
-        }, this);
-
-        // Language button functionality
-        this.eng.on('pointerup', function () {
-            if (this.eng.pressed == true) {
-                config.language = 'EN';
-                console.log('Language set to English.');
-                this.scene.restart();
-            }
-        }, this);
-
             
-
         this.newGame.on('pointerdown', function () {
             this.newGame.bg.setTexture('MenuAtlas', 'UI Buttons/Nappi_Pressed');
         }, this);
