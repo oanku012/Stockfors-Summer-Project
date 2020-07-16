@@ -1,7 +1,5 @@
-class OptionsMenuScene extends Phaser.Scene
-{
-    constructor()
-    {
+class OptionsMenuScene extends Phaser.Scene {
+    constructor() {
         super('OptionsMenuScene');
 
         this.title = 'Options';
@@ -9,27 +7,26 @@ class OptionsMenuScene extends Phaser.Scene
 
     }
 
-    preload ()
-    {
-        
+    preload() {
+
     }
 
-    create ()
-    {
+    create() {
         this.createContainer();
-        this.createOptionsMenu();
         this.createExitButton();
+        this.createOptionsMenu();
+        this.CreateFlags();
+
 
         // Reorganize the UI when the game gets resized
         //this.scale.on('resize', this.resize, this);
     }
 
-    createContainer () 
-    {
-        
+    createContainer() {
+
         // Menu
-        this.menuBG = this.add.sprite(0, 0, 'MenuAtlas', 'UI Pohjat/Settings');
-        this.menu = this.add.container(this.cameras.main.centerX - 18, this.cameras.main.centerY, [ this.menuBG ]).setScale(0.56);
+        this.menuBG = this.add.sprite(0, 0, 'MenuAtlas', 'UI Pohjat/Settings').setOrigin(0.479, 0.5);
+        this.menu = this.add.container(this.cameras.main.centerX - 37, this.cameras.main.centerY, [this.menuBG]).setScale(0.57);
         //This is just to move all the elements that are separate from the backgrounds
         this.menuElements = this.add.container(40, 0);
 
@@ -39,11 +36,10 @@ class OptionsMenuScene extends Phaser.Scene
         title.setFontSize(48);
         title.setColor("black");
         this.menu.add(title);
-        
+
     }
 
-    createOptionsMenu()
-    {
+    createOptionsMenu() {
 
         this.musicOn = true;
         this.soundOn = true;
@@ -56,46 +52,46 @@ class OptionsMenuScene extends Phaser.Scene
 
         //The text align doesn't work on one line text
         this.musicButton = this.add.sprite(-400, firstRow, 'MenuAtlas', 'UI Buttons/CheckmarkON').setOrigin(0.5, 0.3);
-        this.musicText = this.add.text(-200, firstRow, 'Music Enabled \n ', { fontSize: fontsize, color: "black", align: 'center', origin: { x: 0.5, y: 0.5 }});
+        this.musicText = this.add.text(-200, firstRow, 'Music Enabled \n ', { fontSize: fontsize, color: "black", align: 'center', origin: { x: 0.5, y: 0.5 } });
         this.musicText.setPosition(-this.musicText.width * 0.5, firstRow);
 
         this.soundButton = this.add.image(-400, firstRow + rowGap, 'MenuAtlas', 'UI Buttons/CheckmarkON').setOrigin(0.5, 0.3);
-        this.soundText = this.add.text(-200, firstRow + rowGap, 'Sound Enabled \n ', { fontSize: fontsize, color: "black", align: 'center', origin: { x: 0.5, y: 0.5 }});
+        this.soundText = this.add.text(-200, firstRow + rowGap, 'Sound Enabled \n ', { fontSize: fontsize, color: "black", align: 'center', origin: { x: 0.5, y: 0.5 } });
         this.soundText.setPosition(-this.soundText.width * 0.5, firstRow + rowGap);
 
 
         this.fullScreenButton = this.add.image(-400, firstRow + rowGap * 2, 'MenuAtlas', 'UI Buttons/CheckmarkOFF').setOrigin(0.5, 0.3);
-        this.fullScreenText = this.add.text(-200, firstRow + rowGap * 2, 'Fullscreen \n ', { fontSize: fontsize, color: "black", align: 'center', origin: { x: 0.5, y: 0.5 }});
+        this.fullScreenText = this.add.text(-200, firstRow + rowGap * 2, 'Fullscreen \n ', { fontSize: fontsize, color: "black", align: 'center', origin: { x: 0.5, y: 0.5 } });
         this.fullScreenText.setPosition(-this.fullScreenText.width * 0.5, firstRow + rowGap * 2);
-        
-        
+
+
         this.isFullscreen = this.scale.isFullscreen;
-         
+
         this.musicButton.setInteractive();
         this.soundButton.setInteractive();
         this.fullScreenButton.setInteractive();
 
         //this.optionColumn = new uiWidgets.Column(this.game, -100, -200);
 
-        this.menuElements.add([this.musicButton, this.musicText, this.soundButton, this.soundText, this.fullScreenButton, this.fullScreenText]);
+        this.menuElements.add([this.musicButton, this.musicText, this.soundButton, this.soundText, this.fullScreenButton, this.fullScreenText, this.exitButton]);
 
         this.menu.add(this.menuElements);
 
         // Call updateAudio to make sure we have correct values for checkboxes
         this.updateAudio();
         this.updateFullScreen();
-         
+
         this.musicButton.on('pointerdown', function () {
             config.musicOn = !config.musicOn;
             this.updateAudio();
         }.bind(this));
-         
+
         this.soundButton.on('pointerdown', function () {
             config.soundOn = !config.soundOn;
             this.updateAudio();
         }.bind(this));
 
-        this.fullScreenButton.on('pointerdown', function() {
+        this.fullScreenButton.on('pointerdown', function () {
             this.scale.toggleFullscreen();
 
             this.isFullscreen = !this.isFullscreen;
@@ -106,7 +102,7 @@ class OptionsMenuScene extends Phaser.Scene
         }.bind(this));
 
         this.menu.setScale(0.56);
-        
+
     }
 
     updateAudio() {
@@ -116,16 +112,16 @@ class OptionsMenuScene extends Phaser.Scene
         else {
             this.musicButton.setTexture('MenuAtlas', 'UI Buttons/CheckmarkON');
         }
-       
+
         if (config.soundOn == false) {
             this.soundButton.setTexture('MenuAtlas', 'UI Buttons/CheckmarkOFF');
         }
         else {
             this.soundButton.setTexture('MenuAtlas', 'UI Buttons/CheckmarkON');
         }
-      }
+    }
 
-      updateFullScreen() {
+    updateFullScreen() {
         if (this.isFullscreen) {
             // On start full screen
             this.fullScreenButton.setTexture('MenuAtlas', 'UI Buttons/CheckmarkON')
@@ -133,47 +129,42 @@ class OptionsMenuScene extends Phaser.Scene
             // On stop full screen
             this.fullScreenButton.setTexture('MenuAtlas', 'UI Buttons/CheckmarkOFF')
         }
-      }
-    
+    }
 
-    createExitButton() 
-    {
+
+    createExitButton() {
         // Exit button
         //let exitButton = this.add.sprite(35, 400, 'MenuAtlas', 'UI Buttons/Sulje');
-        let exitButton = CreateTextButton(this, 35, 400, 'UI Buttons/Nappi', 'Sulje');
+        this.exitButton = CreateTextButton(this, 0, 430, 'UI Buttons/Nappi', 'Sulje');
+
+        this.exitButton.setPosition(-this.exitButton.width * 0.05, 430);
+
         //let exitButton = this.add.container(this.menuBG.width / 2, -this.menuBG.height / 2, [ exitButtonBG ]);
         //exitButton.setSize(exitButtonBG.width, exitButtonBG.height);
-        this.menu.add(exitButton);
-        exitButton.setInteractive();
+        //this.menu.add(this.exitButton);
+        this.exitButton.setInteractive();
 
         var pressed = false;
 
-        exitButton.on('pointerover', function () {
-    
-            //exitButtonBG.setTint(0xeb4034);
-            
-        });
-    
-        exitButton.on('pointerout', function () {
-            exitButton.bg.setTexture('MenuAtlas', 'UI Buttons/Nappi');
-            exitButton.bg.clearTint();
+        this.exitButton.on('pointerout', function () {
+
+            this.exitButton.bg.clearTint();
             pressed = false;
-    
-        });
 
-        exitButton.on('pointerdown', function () {
-            //exitButton.bg.setTexture('MenuAtlas', 'UI Buttons/Nappi_Pressed');
-            exitButton.bg.setTint(0xd5d1c7);
+        }, this);
+
+        this.exitButton.on('pointerdown', function () {
+
+            this.exitButton.bg.setTint(0xd5d1c7);
             pressed = true;
-    
-        });
-    
-        exitButton.on('pointerup', function (event) {
-            if (pressed)
-            {
-                exitButton.bg.setTexture('MenuAtlas', 'UI Buttons/Nappi');
 
-                saveGame({musicOn: config.musicOn, soundOn: config.soundOn});
+        }, this);
+
+        this.exitButton.on('pointerup', function (event) {
+            if (pressed) {
+                this.exitButton.bg.setTexture('MenuAtlas', 'UI Buttons/Nappi');
+
+                saveGame({ musicOn: config.musicOn, soundOn: config.soundOn });
 
                 this.scene.stop(this.scene.key);
 
@@ -181,8 +172,68 @@ class OptionsMenuScene extends Phaser.Scene
 
                 readyToMove = true;
             }
-          }, this);
+        }, this);
 
-        
+
+    }
+
+    CreateFlags() {
+        let flagScale = 0.3;
+
+        this.fi = this.add.sprite(-220, 300, 'MenuAtlas', 'UI Buttons/FI').setScale(flagScale);
+        this.eng = this.add.sprite(0, 300, 'MenuAtlas', 'UI Buttons/ENG').setScale(flagScale);
+        this.swe = this.add.sprite(220, 300, 'MenuAtlas', 'UI Buttons/SWE').setScale(flagScale);
+
+        this.menuElements.add([this.fi, this.eng, this.swe]);
+
+        this.fi.setInteractive();
+
+        this.fi.on('pointerdown', function () {
+            this.fi.pressed = true;
+            this.fi.setTint(0xd5d1c7);
+        }, this);
+
+        this.fi.on('pointerout', function () {
+
+            if (this.fi.pressed) {
+                this.fi.pressed = false;
+                this.fi.clearTint();
+            }
+        }, this);
+
+        // Language button functionality
+        this.fi.on('pointerup', function () {
+            if (this.fi.pressed == true) {
+                config.language = 'FI';
+                console.log('Language set to Finnish.');
+                this.scene.restart(true);
+
+
+            }
+        }, this);
+
+        this.eng.setInteractive();
+
+        this.eng.on('pointerdown', function () {
+            this.eng.pressed = true;
+            this.eng.setTint(0xd5d1c7);
+        }, this);
+
+        this.eng.on('pointerout', function () {
+
+            if (this.eng.pressed) {
+                this.eng.pressed = false;
+                this.eng.clearTint();
+            }
+        }, this);
+
+        // Language button functionality
+        this.eng.on('pointerup', function () {
+            if (this.eng.pressed == true) {
+                config.language = 'EN';
+                console.log('Language set to English.');
+                this.scene.restart(true);
+            }
+        }, this);
     }
 }
