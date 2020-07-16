@@ -1,0 +1,21 @@
+{
+    "image": {
+        "buttonBG": "Assets/images/menu/button-bg.png",
+        "buttonText": "Assets/images/menu/button-text.png",
+        "menuBG": "Assets/images/menu/menu-bg.png",
+        "exitButton": "Assets/images/menu/exit-button.png",
+        "map": "Assets/images/map/kartta.png",
+        "Nuoli": "Assets/images/map/arrowSign"
+    },
+
+    "atlas": {
+        "buildingSheet": ["Assets/images/map/Buildings/TPBuildings.png", "Assets/images/map/Buildings/TPBuildings.json"],
+        "buildingBodies": ["Assets/images/character/PlayerStanding.png", "Assets/images/character/PlayerStanding.png"],
+        "MenuAtlas": ["Assets/images/menu/MenuAssets.png", "Assets/images/menu/MenuAssets.json"]
+    },
+
+    "spritesheet": {
+        "playerWalk" : ["Assets/images/character/PlayerWalking.png", { "frameWidth": 378, "frameHeight": 378 }],
+        "playerIdle" : ["Assets/images/character/PlayerStanding.png", { "frameWidth": 378, "frameHeight": 378 }]
+    }
+}
