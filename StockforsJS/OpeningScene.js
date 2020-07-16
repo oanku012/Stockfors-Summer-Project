@@ -18,11 +18,11 @@ class OpeningScene extends Phaser.Scene {
         this.cache.json.remove('buildingData');
 
         // Load JSON data
-        var path = ("Localization/"+config.language+"/MainMenu.json?v=1");
+        var path = ("Localization/" + config.language + "/MainMenu.json?v=1");
         this.load.json('mainMenuData', path);
 
         // Json data for all building info
-        var path = ("Localization/"+config.language+"/Buildings.json?v=1");
+        var path = ("Localization/" + config.language + "/Buildings.json?v=1");
         this.load.json('buildingData', path);
 
         this.load.image('buttonBG', 'Assets/images/menu/button-bg.png');
@@ -48,15 +48,12 @@ class OpeningScene extends Phaser.Scene {
     }
 
     //This is used when restarting the scene with a chosen language, when languagechosen is true the language menu is hidden
-    init(languageChosen)
-    {
+    init(languageChosen) {
 
-        if(languageChosen == true)
-        {
+        if (languageChosen == true) {
             this.languageChosen = true;
         }
-        else
-        {
+        else {
             this.languageChosen = false;
         }
     }
@@ -73,13 +70,11 @@ class OpeningScene extends Phaser.Scene {
 
         this.scene.run('UI');
 
-        if(this.languageChosen)
-        {   
+        if (this.languageChosen) {
             this.languageContainer.setVisible(false);
             this.mainMenuContainer.setVisible(true);
         }
-        else
-        {
+        else {
             this.languageContainer.setVisible(true);
             this.mainMenuContainer.setVisible(false);
         }
@@ -107,8 +102,7 @@ class OpeningScene extends Phaser.Scene {
 
     }
 
-    CreateLanguageMenu()
-    {
+    CreateLanguageMenu() {
         this.languagePohja = this.add.sprite(0, -83, 'MenuAtlas', 'UI Pohjat/Kielivalikko');
 
         let flagScale = 0.5;
@@ -119,14 +113,14 @@ class OpeningScene extends Phaser.Scene {
 
         this.languageContainer = this.CreateMenuContainer([this.languagePohja, this.fi, this.eng, this.swe]);
 
-         // Language button functionality
-         this.fi.on('pointerup', function () {
+        // Language button functionality
+        this.fi.on('pointerup', function () {
             if (this.fi.pressed == true) {
                 config.language = 'FI';
                 console.log('Language set to Finnish.');
                 this.scene.restart(true);
 
-                
+
             }
         }, this);
 
@@ -139,7 +133,7 @@ class OpeningScene extends Phaser.Scene {
             }
         }, this);
 
-        
+
     }
 
     CreateMainMenu() {
@@ -148,7 +142,7 @@ class OpeningScene extends Phaser.Scene {
 
         //this.add.text(700, 200, "Stockfors Kartalle", { font: "40px Arial", fill: "yellow" });
 
-        
+
 
         this.aloitusPohja = this.add.sprite(-80, -83, 'MenuAtlas', 'UI Pohjat/Aloitusruutu');
 
@@ -193,16 +187,6 @@ class OpeningScene extends Phaser.Scene {
             this.newGame,
             this.continue,
             this.ohjeNappi]);
-            
-        this.newGame.on('pointerdown', function () {
-            this.newGame.bg.setTexture('MenuAtlas', 'UI Buttons/Nappi_Pressed');
-        }, this);
-
-        this.newGame.on('pointerout', function () {
-            if (this.input.activePointer.isDown) {
-                this.newGame.bg.setTexture('MenuAtlas', 'UI Buttons/Nappi');
-            }
-        }, this);
 
         this.newGame.on('pointerup', function () {
             if (this.newGame.pressed == true) {
@@ -225,22 +209,11 @@ class OpeningScene extends Phaser.Scene {
                 config.soundOn = savedGame.soundOn;
                 console.log('Settings loaded and set.');
             }
-            else
-            {
+            else {
                 console.log('Sound settings undefined.');
             }
         }
 
-        this.continue.on('pointerdown', function () {
-            this.continue.bg.setTexture('MenuAtlas', 'UI Buttons/Nappi_Pressed');
-        }, this);
-
-        this.continue.on('pointerout', function () {
-
-            if (this.input.activePointer.isDown) {
-                this.continue.bg.setTexture('MenuAtlas', 'UI Buttons/Nappi');
-            }
-        }, this);
 
         this.continue.on('pointerup', function () {
 
@@ -257,6 +230,7 @@ class OpeningScene extends Phaser.Scene {
                 }
             }
         }, this);
+
 
         this.ohjeNappi.on('pointerup', function () {
             if (this.ohjeNappi.pressed == true) {
@@ -313,20 +287,9 @@ class OpeningScene extends Phaser.Scene {
 
         this.ohjeContainer = this.CreateMenuContainer([this.ohjePohja, this.back, this.helpHeader, this.helpText]);
 
-        this.back.on('pointerdown', function () {
-            this.back.bg.setTexture('MenuAtlas', 'UI Buttons/Takaisin_Pressed');
-        }, this);
-
-        this.back.on('pointerout', function () {
-
-            if (this.input.activePointer.isDown) {
-                this.back.bg.setTexture('MenuAtlas', 'UI Buttons/Takaisin');
-            }
-        }, this);
-
         this.back.on('pointerup', function () {
             if (this.back.pressed == true) {
-                this.back.bg.setTexture('MenuAtlas', 'UI Buttons/Takaisin');
+                //this.back.bg.setTexture('MenuAtlas', 'UI Buttons/Takaisin');
                 this.mainMenuContainer.setVisible(true);
                 this.ohjeContainer.setVisible(false);
             }
@@ -342,10 +305,22 @@ class OpeningScene extends Phaser.Scene {
             element.pressed = false;
             element.on('pointerdown', function () {
                 element.pressed = true;
+                if (element.bg) {
+                    element.bg.setTint(0xd5d1c7);
+                }
+                else {
+                    element.setTint(0xd5d1c7);
+                }
             }, this);
 
             element.on('pointerout', function () {
                 element.pressed = false;
+                if (element.bg) {
+                    element.bg.clearTint();
+                }
+                else {
+                    element.clearTint();
+                }
             }, this);
         }, this);
 

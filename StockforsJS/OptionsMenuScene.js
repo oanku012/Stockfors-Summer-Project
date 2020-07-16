@@ -30,10 +30,12 @@ class OptionsMenuScene extends Phaser.Scene
         // Menu
         this.menuBG = this.add.sprite(0, 0, 'MenuAtlas', 'UI Pohjat/Settings');
         this.menu = this.add.container(this.cameras.main.centerX - 18, this.cameras.main.centerY, [ this.menuBG ]).setScale(0.56);
+        //This is just to move all the elements that are separate from the backgrounds
+        this.menuElements = this.add.container(40, 0);
 
         // title and description
         let title = this.add.text(0, 0, this.title);
-        title.setPosition(-title.width * 1.5, -370);
+        title.setPosition(-title.width * 2, -350);
         title.setFontSize(48);
         title.setColor("black");
         this.menu.add(title);
@@ -46,22 +48,27 @@ class OptionsMenuScene extends Phaser.Scene
         this.musicOn = true;
         this.soundOn = true;
 
-        let firstRow = -175;
+        let firstRow = -170;
 
-        let rowGap = 150;
+        let rowGap = 135;
 
         let fontsize = 48;
 
         //The text align doesn't work on one line text
-        this.musicButton = this.add.sprite(-400, firstRow, 'MenuAtlas', 'UI Buttons/CheckmarkON');
-        this.musicText = this.add.text(-200, firstRow, 'Music Enabled \n ', { fontSize: fontsize, color: "black", align: 'center', origin: { x: 0.5, y: 0 }});
-        //this.musicText.setPosition(-this.musicText.width * 1.5, firstRow);
+        this.musicButton = this.add.sprite(-400, firstRow, 'MenuAtlas', 'UI Buttons/CheckmarkON').setOrigin(0.5, 0.3);
+        this.musicText = this.add.text(-200, firstRow, 'Music Enabled \n ', { fontSize: fontsize, color: "black", align: 'center', origin: { x: 0.5, y: 0.5 }});
+        this.musicText.setPosition(-this.musicText.width * 0.5, firstRow);
 
-        this.soundButton = this.add.image(-400, firstRow + rowGap, 'MenuAtlas', 'UI Buttons/CheckmarkON');
-        this.soundText = this.add.text(-200, firstRow + rowGap, 'Sound Enabled \n ', { fontSize: fontsize, color: "black", align: 'center', origin: { x: 0.5, y: 0 }});
+        this.soundButton = this.add.image(-400, firstRow + rowGap, 'MenuAtlas', 'UI Buttons/CheckmarkON').setOrigin(0.5, 0.3);
+        this.soundText = this.add.text(-200, firstRow + rowGap, 'Sound Enabled \n ', { fontSize: fontsize, color: "black", align: 'center', origin: { x: 0.5, y: 0.5 }});
+        this.soundText.setPosition(-this.soundText.width * 0.5, firstRow + rowGap);
 
-        this.fullScreenButton = this.add.image(-400, firstRow + rowGap * 2, 'MenuAtlas', 'UI Buttons/CheckmarkOFF');
-        this.fullScreenText = this.add.text(-200, firstRow + rowGap * 2, 'Fullscreen \n ', { fontSize: fontsize, color: "black", align: 'center', origin: { x: 0.5, y: 0 }});
+
+        this.fullScreenButton = this.add.image(-400, firstRow + rowGap * 2, 'MenuAtlas', 'UI Buttons/CheckmarkOFF').setOrigin(0.5, 0.3);
+        this.fullScreenText = this.add.text(-200, firstRow + rowGap * 2, 'Fullscreen \n ', { fontSize: fontsize, color: "black", align: 'center', origin: { x: 0.5, y: 0.5 }});
+        this.fullScreenText.setPosition(-this.fullScreenText.width * 0.5, firstRow + rowGap * 2);
+        
+        
         this.isFullscreen = this.scale.isFullscreen;
          
         this.musicButton.setInteractive();
@@ -70,7 +77,9 @@ class OptionsMenuScene extends Phaser.Scene
 
         //this.optionColumn = new uiWidgets.Column(this.game, -100, -200);
 
-        this.menu.add([this.musicButton, this.musicText, this.soundButton, this.soundText, this.fullScreenButton, this.fullScreenText]);
+        this.menuElements.add([this.musicButton, this.musicText, this.soundButton, this.soundText, this.fullScreenButton, this.fullScreenText]);
+
+        this.menu.add(this.menuElements);
 
         // Call updateAudio to make sure we have correct values for checkboxes
         this.updateAudio();
@@ -147,13 +156,14 @@ class OptionsMenuScene extends Phaser.Scene
     
         exitButton.on('pointerout', function () {
             exitButton.bg.setTexture('MenuAtlas', 'UI Buttons/Nappi');
-            //exitButtonBG.clearTint();
+            exitButton.bg.clearTint();
             pressed = false;
     
         });
 
         exitButton.on('pointerdown', function () {
-            exitButton.bg.setTexture('MenuAtlas', 'UI Buttons/Nappi_Pressed');
+            //exitButton.bg.setTexture('MenuAtlas', 'UI Buttons/Nappi_Pressed');
+            exitButton.bg.setTint(0xd5d1c7);
             pressed = true;
     
         });

@@ -115,27 +115,6 @@
 					}
 				},
 				{
-					"filename": "UI Buttons/ENG_Pressed",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 444,
-						"h": 253
-					},
-					"spriteSourceSize": {
-						"x": 15,
-						"y": 7,
-						"w": 421,
-						"h": 238
-					},
-					"frame": {
-						"x": 1296,
-						"y": 3058,
-						"w": 421,
-						"h": 238
-					}
-				},
-				{
 					"filename": "UI Pohjat/Ohjeruutu",
 					"rotated": false,
 					"trimmed": true,
@@ -234,94 +213,31 @@
 						"h": 584
 					},
 					"frame": {
-						"x": 1719,
+						"x": 1695,
 						"y": 2759,
 						"w": 1202,
 						"h": 584
 					}
 				},
 				{
-					"filename": "UI Buttons/SWE_Pressed",
+					"filename": "UI Buttons/Nappi",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 443,
-						"h": 253
+						"w": 371,
+						"h": 142
 					},
 					"spriteSourceSize": {
-						"x": 12,
+						"x": 5,
 						"y": 9,
-						"w": 422,
-						"h": 237
+						"w": 357,
+						"h": 122
 					},
 					"frame": {
-						"x": 2923,
-						"y": 2759,
-						"w": 422,
-						"h": 237
-					}
-				},
-				{
-					"filename": "UI Buttons/FI_Pressed",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 449,
-						"h": 255
-					},
-					"spriteSourceSize": {
-						"x": 16,
-						"y": 7,
-						"w": 420,
-						"h": 237
-					},
-					"frame": {
-						"x": 2923,
-						"y": 2998,
-						"w": 420,
-						"h": 237
-					}
-				},
-				{
-					"filename": "UI Buttons/CheckmarkON",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 104,
-						"h": 102
-					},
-					"spriteSourceSize": {
-						"x": 6,
-						"y": 5,
-						"w": 89,
-						"h": 93
-					},
-					"frame": {
-						"x": 2923,
-						"y": 3237,
-						"w": 89,
-						"h": 93
-					}
-				},
-				{
-					"filename": "UI Buttons/Edellinen_Pressed",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 184,
-						"h": 168
-					},
-					"spriteSourceSize": {
-						"x": 15,
-						"y": 2,
-						"w": 161,
-						"h": 161
-					},
-					"frame": {
-						"x": 3345,
-						"y": 2998,
-						"w": 161,
-						"h": 161
+						"x": 1296,
+						"y": 3058,
+						"w": 357,
+						"h": 122
 					}
 				},
 				{
@@ -339,8 +255,8 @@
 						"h": 161
 					},
 					"frame": {
-						"x": 3345,
-						"y": 3161,
+						"x": 1296,
+						"y": 3182,
 						"w": 160,
 						"h": 161
 					}
@@ -360,94 +276,10 @@
 						"h": 160
 					},
 					"frame": {
-						"x": 3507,
-						"y": 3161,
+						"x": 1458,
+						"y": 3182,
 						"w": 161,
 						"h": 160
-					}
-				},
-				{
-					"filename": "UI Buttons/OK",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 214,
-						"h": 127
-					},
-					"spriteSourceSize": {
-						"x": 8,
-						"y": 4,
-						"w": 198,
-						"h": 122
-					},
-					"frame": {
-						"x": 3670,
-						"y": 2759,
-						"w": 198,
-						"h": 122
-					}
-				},
-				{
-					"filename": "UI Buttons/Infocards",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 168,
-						"h": 141
-					},
-					"spriteSourceSize": {
-						"x": 8,
-						"y": 4,
-						"w": 152,
-						"h": 134
-					},
-					"frame": {
-						"x": 3508,
-						"y": 2759,
-						"w": 152,
-						"h": 134
-					}
-				},
-				{
-					"filename": "UI Buttons/Games",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 182,
-						"h": 148
-					},
-					"spriteSourceSize": {
-						"x": 13,
-						"y": 9,
-						"w": 151,
-						"h": 136
-					},
-					"frame": {
-						"x": 3347,
-						"y": 2759,
-						"w": 151,
-						"h": 136
-					}
-				},
-				{
-					"filename": "UI Buttons/OK_Pressed",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 214,
-						"h": 131
-					},
-					"spriteSourceSize": {
-						"x": 8,
-						"y": 4,
-						"w": 198,
-						"h": 122
-					},
-					"frame": {
-						"x": 3670,
-						"y": 2883,
-						"w": 198,
-						"h": 122
 					}
 				},
 				{
@@ -465,136 +297,10 @@
 						"h": 147
 					},
 					"frame": {
-						"x": 3508,
-						"y": 3007,
+						"x": 2899,
+						"y": 2759,
 						"w": 137,
 						"h": 147
-					}
-				},
-				{
-					"filename": "UI Buttons/Gallery_Pressed",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 180,
-						"h": 147
-					},
-					"spriteSourceSize": {
-						"x": 16,
-						"y": 6,
-						"w": 150,
-						"h": 138
-					},
-					"frame": {
-						"x": 3647,
-						"y": 3007,
-						"w": 150,
-						"h": 138
-					}
-				},
-				{
-					"filename": "UI Buttons/Seuraava_Pressed",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 176,
-						"h": 172
-					},
-					"spriteSourceSize": {
-						"x": 9,
-						"y": 5,
-						"w": 161,
-						"h": 160
-					},
-					"frame": {
-						"x": 3670,
-						"y": 3147,
-						"w": 161,
-						"h": 160
-					}
-				},
-				{
-					"filename": "UI Buttons/Nappi",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 371,
-						"h": 142
-					},
-					"spriteSourceSize": {
-						"x": 5,
-						"y": 9,
-						"w": 357,
-						"h": 122
-					},
-					"frame": {
-						"x": 1695,
-						"y": 1767,
-						"w": 357,
-						"h": 122
-					}
-				},
-				{
-					"filename": "UI Buttons/Nappi_Pressed",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 371,
-						"h": 140
-					},
-					"spriteSourceSize": {
-						"x": 9,
-						"y": 7,
-						"w": 356,
-						"h": 123
-					},
-					"frame": {
-						"x": 2054,
-						"y": 1767,
-						"w": 356,
-						"h": 123
-					}
-				},
-				{
-					"filename": "UI Buttons/Takaisin_Pressed",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 354,
-						"h": 148
-					},
-					"spriteSourceSize": {
-						"x": 10,
-						"y": 6,
-						"w": 332,
-						"h": 138
-					},
-					"frame": {
-						"x": 1695,
-						"y": 1891,
-						"w": 332,
-						"h": 138
-					}
-				},
-				{
-					"filename": "UI Buttons/Games_Pressed",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 182,
-						"h": 147
-					},
-					"spriteSourceSize": {
-						"x": 14,
-						"y": 7,
-						"w": 151,
-						"h": 136
-					},
-					"frame": {
-						"x": 2412,
-						"y": 1767,
-						"w": 151,
-						"h": 136
 					}
 				},
 				{
@@ -612,73 +318,10 @@
 						"h": 137
 					},
 					"frame": {
-						"x": 2029,
-						"y": 1892,
+						"x": 2899,
+						"y": 2908,
 						"w": 332,
 						"h": 137
-					}
-				},
-				{
-					"filename": "UI Buttons/Panorama_Pressed",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 169,
-						"h": 144
-					},
-					"spriteSourceSize": {
-						"x": 13,
-						"y": 3,
-						"w": 151,
-						"h": 136
-					},
-					"frame": {
-						"x": 2363,
-						"y": 1905,
-						"w": 151,
-						"h": 136
-					}
-				},
-				{
-					"filename": "UI Buttons/Ohje",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 122,
-						"h": 136
-					},
-					"spriteSourceSize": {
-						"x": 6,
-						"y": 13,
-						"w": 110,
-						"h": 116
-					},
-					"frame": {
-						"x": 2516,
-						"y": 1905,
-						"w": 110,
-						"h": 116
-					}
-				},
-				{
-					"filename": "UI Buttons/Infocards_Pressed",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 168,
-						"h": 144
-					},
-					"spriteSourceSize": {
-						"x": 8,
-						"y": 6,
-						"w": 151,
-						"h": 134
-					},
-					"frame": {
-						"x": 1695,
-						"y": 2031,
-						"w": 151,
-						"h": 134
 					}
 				},
 				{
@@ -696,10 +339,31 @@
 						"h": 137
 					},
 					"frame": {
-						"x": 1848,
-						"y": 2031,
+						"x": 3038,
+						"y": 2759,
 						"w": 150,
 						"h": 137
+					}
+				},
+				{
+					"filename": "UI Buttons/Games",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 182,
+						"h": 148
+					},
+					"spriteSourceSize": {
+						"x": 13,
+						"y": 9,
+						"w": 151,
+						"h": 136
+					},
+					"frame": {
+						"x": 3190,
+						"y": 2759,
+						"w": 151,
+						"h": 136
 					}
 				},
 				{
@@ -717,10 +381,31 @@
 						"h": 135
 					},
 					"frame": {
-						"x": 1695,
-						"y": 2167,
+						"x": 2899,
+						"y": 3047,
 						"w": 150,
 						"h": 135
+					}
+				},
+				{
+					"filename": "UI Buttons/Infocards",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 168,
+						"h": 141
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 4,
+						"w": 152,
+						"h": 134
+					},
+					"frame": {
+						"x": 2899,
+						"y": 3184,
+						"w": 152,
+						"h": 134
 					}
 				},
 				{
@@ -738,31 +423,73 @@
 						"h": 132
 					},
 					"frame": {
-						"x": 2000,
-						"y": 2031,
+						"x": 3051,
+						"y": 3047,
 						"w": 147,
 						"h": 132
 					}
 				},
 				{
-					"filename": "UI Buttons/Webpage_Pressed",
+					"filename": "UI Buttons/OK",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 165,
-						"h": 141
+						"w": 214,
+						"h": 127
 					},
 					"spriteSourceSize": {
-						"x": 9,
-						"y": 5,
-						"w": 147,
-						"h": 132
+						"x": 8,
+						"y": 4,
+						"w": 198,
+						"h": 122
 					},
 					"frame": {
-						"x": 2149,
-						"y": 2031,
-						"w": 147,
-						"h": 132
+						"x": 3053,
+						"y": 3181,
+						"w": 198,
+						"h": 122
+					}
+				},
+				{
+					"filename": "UI Buttons/Ohje",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 122,
+						"h": 136
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 13,
+						"w": 110,
+						"h": 116
+					},
+					"frame": {
+						"x": 3200,
+						"y": 3047,
+						"w": 110,
+						"h": 116
+					}
+				},
+				{
+					"filename": "UI Buttons/CheckmarkON",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 104,
+						"h": 102
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 5,
+						"w": 89,
+						"h": 93
+					},
+					"frame": {
+						"x": 3233,
+						"y": 2897,
+						"w": 89,
+						"h": 93
 					}
 				}
 			]
@@ -771,6 +498,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:af8aa798eea89586a51e5e181ac6e3e1:1526ddd116443fc7425ce3971f376b92:db73c82039b998ae246ed77057f631ea$"
+		"smartupdate": "$TexturePacker:SmartUpdate:66820486b1b7267cf4ce47308590d6ed:f4b8901da322600c663f1ba766ed281d:db73c82039b998ae246ed77057f631ea$"
 	}
 }

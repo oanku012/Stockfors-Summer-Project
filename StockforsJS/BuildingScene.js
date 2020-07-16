@@ -182,13 +182,15 @@ class BuildingScene extends Phaser.Scene {
         exitButtonBG.defaultFrame = exitButtonBG.frame.name;
 
         this.exitButton.on('pointerdown', function () {
-            exitButtonBG.setTexture('MenuAtlas', exitButtonBG.defaultFrame + '_Pressed');
+            //exitButtonBG.setTexture('MenuAtlas', exitButtonBG.defaultFrame + '_Pressed');
+            exitButtonBG.setTint(0xd5d1c7);
             this.exitButton.pressed = true;
         }, this);
 
         this.exitButton.on('pointerout', function () {
             if (this.input.activePointer.isDown) {
-                exitButtonBG.setTexture('MenuAtlas', exitButtonBG.defaultFrame);
+                //exitButtonBG.setTexture('MenuAtlas', exitButtonBG.defaultFrame);
+                exitButtonBG.clearTint();
                 this.exitButton.pressed = false;
             }
         }, this);
@@ -279,13 +281,15 @@ class BuildingScene extends Phaser.Scene {
                 button.defaultFrame = button.frame.name;
 
                 button.on('pointerdown', function () {
-                    button.setTexture('MenuAtlas', button.defaultFrame + '_Pressed');
+                    //button.setTexture('MenuAtlas', button.defaultFrame + '_Pressed');
+                    button.setTint(0xd5d1c7);
                     button.pressed = true;
                 }, this);
 
                 button.on('pointerout', function () {
                     if (this.input.activePointer.isDown) {
-                        button.setTexture('MenuAtlas', button.defaultFrame);
+                        //button.setTexture('MenuAtlas', button.defaultFrame);¨
+                        button.clearTint();
                         button.pressed = false;
                     }
                 }, this);
