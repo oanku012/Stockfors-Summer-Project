@@ -206,9 +206,13 @@ class OptionsMenuScene extends Phaser.Scene {
             if (this.fi.pressed == true) {
                 config.language = 'FI';
                 console.log('Language set to Finnish.');
-                this.scene.restart(true);
+                //this.scene.restart(true);
 
+                let activeScenes = game.scene.getScenes(true);
 
+                activeScenes.forEach(function(scene){
+                    scene.scene.restart(true);
+                }, this);
             }
         }, this);
 
@@ -232,7 +236,11 @@ class OptionsMenuScene extends Phaser.Scene {
             if (this.eng.pressed == true) {
                 config.language = 'EN';
                 console.log('Language set to English.');
-                this.scene.restart(true);
+                let activeScenes = game.scene.getScenes(true);
+
+                activeScenes.forEach(function(scene){
+                    scene.scene.restart(true);
+                }, this);
             }
         }, this);
     }
