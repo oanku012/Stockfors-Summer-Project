@@ -69,11 +69,11 @@ class OpeningScene extends Phaser.Scene {
 
         this.CreateMainMenu();
 
-        this.scene.run('UI');
-
         if (this.languageChosen) {
             this.languageContainer.setVisible(false);
             this.mainMenuContainer.setVisible(true);
+
+            this.scene.run('UI');
         }
         else {
             this.languageContainer.setVisible(true);
