@@ -49,7 +49,7 @@ class OpeningScene extends Phaser.Scene {
 
     create() {
 
-
+        this.cameras.main.backgroundColor.setTo(255, 255, 255);
 
         this.CreateInstructions();
 
@@ -81,13 +81,18 @@ class OpeningScene extends Phaser.Scene {
 
     }
 
+    CreateLanguageMenu()
+    {
+        this.languagePohja = this.add.sprite(-80, -83, 'MenuAtlas', 'UI Pohjat/Kielivalikko');
+    }
+
     CreateMainMenu() {
         //Doesn't seem to work
         //this.scale.lockOrientation(Phaser.Scale.LANDSCAPE);
 
         //this.add.text(700, 200, "Stockfors Kartalle", { font: "40px Arial", fill: "yellow" });
 
-        this.cameras.main.backgroundColor.setTo(255, 255, 255);
+        
 
         this.aloitusPohja = this.add.sprite(-80, -83, 'MenuAtlas', 'UI Pohjat/Aloitusruutu');
 
@@ -118,8 +123,10 @@ class OpeningScene extends Phaser.Scene {
             }
         });
 
-        this.newGame = this.add.sprite(-200, 700, 'MenuAtlas', 'UI Buttons/Aloita');
-        this.continue = this.add.sprite(200, 700, 'MenuAtlas', 'UI Buttons/Jatka');
+        //this.newGame = this.add.sprite(-200, 700, 'MenuAtlas', 'UI Buttons/Nappi');
+        this.newGame = CreateTextButton(this, -200, 700, 'UI Buttons/Nappi', 'Aloita peli');
+        //this.continue = this.add.sprite(200, 700, 'MenuAtlas', 'UI Buttons/Nappi');
+        this.continue = CreateTextButton(this, 200, 700, 'UI Buttons/Nappi', 'Jatka peliä');
         this.fi = this.add.sprite(-225, 550, 'MenuAtlas', 'UI Buttons/FI').setScale(0.3);
         this.eng = this.add.sprite(-12, 550, 'MenuAtlas', 'UI Buttons/ENG').setScale(0.3);
         this.swe = this.add.sprite(210, 550, 'MenuAtlas', 'UI Buttons/SWE').setScale(0.3);
@@ -160,12 +167,12 @@ class OpeningScene extends Phaser.Scene {
             
 
         this.newGame.on('pointerdown', function () {
-            this.newGame.setTexture('MenuAtlas', 'UI Buttons/Aloita_Pressed');
+            this.newGame.bg.setTexture('MenuAtlas', 'UI Buttons/Nappi_Pressed');
         }, this);
 
         this.newGame.on('pointerout', function () {
             if (this.input.activePointer.isDown) {
-                this.newGame.setTexture('MenuAtlas', 'UI Buttons/Aloita');
+                this.newGame.bg.setTexture('MenuAtlas', 'UI Buttons/Nappi');
             }
         }, this);
 
@@ -197,13 +204,13 @@ class OpeningScene extends Phaser.Scene {
         }
 
         this.continue.on('pointerdown', function () {
-            this.continue.setTexture('MenuAtlas', 'UI Buttons/Jatka_Pressed');
+            this.continue.bg.setTexture('MenuAtlas', 'UI Buttons/Nappi_Pressed');
         }, this);
 
         this.continue.on('pointerout', function () {
 
             if (this.input.activePointer.isDown) {
-                this.continue.setTexture('MenuAtlas', 'UI Buttons/Jatka');
+                this.continue.bg.setTexture('MenuAtlas', 'UI Buttons/Nappi');
             }
         }, this);
 
@@ -244,7 +251,9 @@ class OpeningScene extends Phaser.Scene {
     CreateInstructions() {
         this.ohjePohja = this.add.sprite(-40, -40, 'MenuAtlas', 'UI Pohjat/Ohjeruutu');
 
-        this.back = this.add.sprite(-400, 700, 'MenuAtlas', 'UI Buttons/Takaisin');
+        //this.back = this.add.sprite(-400, 700, 'MenuAtlas', 'UI Buttons/Takaisin');
+
+        this.back = CreateTextButton(this, -400, 700, 'UI Buttons/Takaisin', 'Takaisin');
 
         // Get title and description from a json file
         var data = this.cache.json.get('mainMenuData');
@@ -277,19 +286,19 @@ class OpeningScene extends Phaser.Scene {
         this.ohjeContainer = this.CreateMenuContainer([this.ohjePohja, this.back, this.helpHeader, this.helpText]);
 
         this.back.on('pointerdown', function () {
-            this.back.setTexture('MenuAtlas', 'UI Buttons/Takaisin_Pressed');
+            this.back.bg.setTexture('MenuAtlas', 'UI Buttons/Takaisin_Pressed');
         }, this);
 
         this.back.on('pointerout', function () {
 
             if (this.input.activePointer.isDown) {
-                this.back.setTexture('MenuAtlas', 'UI Buttons/Takaisin');
+                this.back.bg.setTexture('MenuAtlas', 'UI Buttons/Takaisin');
             }
         }, this);
 
         this.back.on('pointerup', function () {
             if (this.back.pressed == true) {
-                this.back.setTexture('MenuAtlas', 'UI Buttons/Takaisin');
+                this.back.bg.setTexture('MenuAtlas', 'UI Buttons/Takaisin');
                 this.mainMenuContainer.setVisible(true);
                 this.ohjeContainer.setVisible(false);
             }

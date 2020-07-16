@@ -166,27 +166,29 @@ class BuildingScene extends Phaser.Scene {
 
     // Separate function because it needs to be overwritten
     createExitButton() {
-        // Maybe later so that the button is a container and a text is inside it?
-        this.exitButton = this.add.sprite((-this.menuBG.width / 2) + 200, (this.menuBG.height / 2) - 100, 'MenuAtlas', 'UI Buttons/Takaisin');
+
+
+
+        this.exitButton = CreateTextButton(this, (-this.menuBG.width / 2) + 200, (this.menuBG.height / 2) - 100, 'UI Buttons/Takaisin', 'Takaisin');
+        //this.add.sprite((-this.menuBG.width / 2) + 200, (this.menuBG.height / 2) - 100, 'MenuAtlas', 'UI Buttons/Takaisin');
         //this.exitButton = this.add.container((-this.menuBG.width / 2) + 200, (this.menuBG.height / 2) - 100, [exitButtonBG]);
         //this.exitButton.setSize(exitButtonBG.width, exitButtonBG.height);
         this.menu.add(this.exitButton);
 
-        var pressed = false;
-
+        let exitButtonBG = this.exitButton.bg;
 
         this.exitButton.setInteractive();
 
-        this.exitButton.defaultFrame = this.exitButton.frame.name;
+        exitButtonBG.defaultFrame = exitButtonBG.frame.name;
 
         this.exitButton.on('pointerdown', function () {
-            this.exitButton.setTexture('MenuAtlas', this.exitButton.defaultFrame + '_Pressed');
+            exitButtonBG.setTexture('MenuAtlas', exitButtonBG.defaultFrame + '_Pressed');
             this.exitButton.pressed = true;
         }, this);
 
         this.exitButton.on('pointerout', function () {
             if (this.input.activePointer.isDown) {
-                this.exitButton.setTexture('MenuAtlas', this.exitButton.defaultFrame);
+                exitButtonBG.setTexture('MenuAtlas', exitButtonBG.defaultFrame);
                 this.exitButton.pressed = false;
             }
         }, this);
