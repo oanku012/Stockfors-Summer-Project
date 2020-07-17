@@ -26,10 +26,12 @@ class BuildingScene extends Phaser.Scene {
         this.menuButtons;
 
         this.images = [];
+
+        this.switchableContainers = [];
     }
 
     preload() {
-        
+
     }
 
     create() {
@@ -50,7 +52,11 @@ class BuildingScene extends Phaser.Scene {
         this.createContainer();
         this.createExitButton();
         this.CreateBottomButtons();
+        this.CreateAlbum();
+        this.CreateInfoCard();
         console.log(this.scene.key);
+
+        this.ContainerTransition(this.infoContainer);
 
         // Reorganize the UI when the game gets resized
         //this.scale.on('resize', this.resize, this);
@@ -71,95 +77,10 @@ class BuildingScene extends Phaser.Scene {
         title.setColor("black");
         this.menu.add(title);
 
-        let description = this.make.text({
-            x: 0,
-            y: 0,
-            text: this.description,
-            origin: { x: 0.5, y: 0.5 },
-            style: {
-                font: '34px Arial',
-                fill: 'black',
-                wordWrap: { width: 500 }
-            }
-        });
 
-        this.menu.add(description);
 
-        // image thumbnails
-        if (this.images.length > 0) {
-            let imgTitle = this.add.text(0, 0, "Images");
-            imgTitle.setPosition(-imgTitle.width * 1.5, 220);
-            imgTitle.setFontSize(36);
-            imgTitle.setColor("black");
-            this.menu.add(imgTitle);
 
-            var previousX = -200;
 
-            this.images.forEach(element => {
-                let img = this.add.image(0, 0, element[0])
-                this.menu.add(img);
-                img.setPosition(previousX, 320);
-                previousX += 100;
-
-                var pressed = false;
-
-                img.setInteractive();
-
-                img.on('pointerover', function () {
-
-                    img.setTint(0xeb4034);
-
-                });
-
-                img.on('pointerout', function () {
-
-                    img.clearTint();
-                    pressed = false;
-
-                });
-
-                img.on('pointerdown', function () {
-
-                    pressed = true;
-
-                });
-
-                img.on('pointerup', function (event) {
-                    if (pressed) {
-                        // Open image
-                        this.createImage(element[1]);
-                    }
-                }, this);
-            });
-        }
-
-    }
-
-    createImage(image) {
-        let newImage = this.add.image(0, 0, image);
-
-        // add to menu for easy resize
-        this.menu.add(newImage);
-        var pressed = false;
-        newImage.setInteractive();
-
-        newImage.on('pointerout', function () {
-
-            pressed = false;
-
-        });
-
-        newImage.on('pointerdown', function () {
-
-            pressed = true;
-
-        });
-
-        newImage.on('pointerup', function (event) {
-            if (pressed) {
-                newImage.destroy();
-            }
-        }, this);
     }
 
     // Separate function because it needs to be overwritten
@@ -206,7 +127,7 @@ class BuildingScene extends Phaser.Scene {
 
     CreateBottomButtons() {
 
-        let rightMostPosition = -50;
+        let rightMostPosition = -60;
 
         let buttonsAdded = 0;
 
@@ -218,7 +139,9 @@ class BuildingScene extends Phaser.Scene {
             this.minipeliButton = this.add.sprite(rightMostPosition - (buttonsAdded * 200), 0, 'MenuAtlas', 'UI Buttons/Games');
 
             this.minipeliButton.on('pointerup', function () {
-                this.scene.start(this.minigame);
+                if (this.minipeliButton.pressed == true) {
+                    this.scene.start(this.minigame);
+                }
             }, this);
 
             //this.menu.add(this.minipeliButton);
@@ -250,7 +173,9 @@ class BuildingScene extends Phaser.Scene {
         this.infoButton = this.add.sprite(rightMostPosition - (buttonsAdded * 200), 0, 'MenuAtlas', 'UI Buttons/Infocards');
 
         this.infoButton.on('pointerup', function () {
-            //Start info here
+            if (this.infoButton.pressed) {
+                this.ContainerTransition(this.infoContainer);
+            }
         }, this);
 
         //this.menu.add(this.infoButton);
@@ -262,7 +187,10 @@ class BuildingScene extends Phaser.Scene {
         this.albumButton = this.add.sprite(rightMostPosition - (buttonsAdded * 200), 0, 'MenuAtlas', 'UI Buttons/Gallery');
 
         this.albumButton.on('pointerup', function () {
-            //Start album here
+            if (this.albumButton.pressed) {
+                this.ContainerTransition(this.albumContainer);
+            }
+
         }, this);
 
         //this.menu.add(this.albumButton);
@@ -298,13 +226,17 @@ class BuildingScene extends Phaser.Scene {
                         button.pressed = false;
                     }
                 }, this);
+
+                button.on('pointerup', function () {
+                    button.clearTint();
+                })
             }
 
         }, this);
 
         this.menuButtons.setSize(menuButtonsWidth, this.infoButton.height);
 
-        this.menuButtons.setPosition(this.menuButtons.width /2, (this.menuBG.height / 2) - 100);
+        this.menuButtons.setPosition(this.menuButtons.width / 2, (this.menuBG.height / 2) - 100);
 
         /*let graphics = this.add.graphics({lineStyle: {width: 2, color: 'red'}, fillStyle: 'red'});
 
@@ -319,4 +251,148 @@ class BuildingScene extends Phaser.Scene {
         }
 
     }
+
+    CreateInfoCard() {
+        this.infoContainer = this.add.container(0, 0);
+
+        let description = this.make.text({
+            x: 0,
+            y: 0,
+            text: this.description,
+            origin: { x: 0.5, y: 0.5 },
+            style: {
+                font: '34px Arial',
+                fill: 'black',
+                wordWrap: { width: 500 }
+            }
+        });
+
+        let arrowButtonForward = this.add.sprite(500, 0, 'MenuAtlas', 'UI Buttons/Nuoli');
+        let arrowButtonBackward = this.add.sprite(-500, 0, 'MenuAtlas', 'UI Buttons/Nuoli').setFlipX(true);
+
+
+
+        this.infoContainer.add([arrowButtonForward, arrowButtonBackward]);
+
+        this.infoContainer.iterate(function (element) {
+            element.setInteractive();
+
+            element.on('pointerdown', function () {
+                element.pressed = true;
+                element.setTint(0xd5d1c7);
+            })
+
+            element.on('pointerout', function () {
+                element.pressed = false;
+                element.clearTint();
+            })
+
+            element.on('pointerup', function () {
+                element.clearTint();
+            })
+        }, this);
+
+        //Added this afterwards so I could easily iterate the two buttons
+        this.infoContainer.add(description);
+
+        this.switchableContainers.push(this.infoContainer);
+
+        this.menu.add(this.infoContainer);
+    }
+
+    CreateAlbum() {
+        this.albumContainer = this.add.container(0, -500).setScale(1.2);
+
+        // image thumbnails
+        if (this.images.length > 0) {
+            let imgTitle = this.add.text(0, 0, "Images");
+            imgTitle.setPosition(-imgTitle.width * 1.5, 120);
+            imgTitle.setFontSize(36);
+            imgTitle.setColor("black");
+            //this.menu.add(imgTitle);
+            this.albumContainer.add(imgTitle);
+
+            var previousX = -200;
+
+            this.images.forEach(element => {
+                let img = this.add.image(0, 0, element[0])
+                this.albumContainer.add(img);
+                img.setPosition(previousX, 220);
+                previousX += 100;
+
+                var pressed = false;
+
+                img.setInteractive();
+
+                img.on('pointerover', function () {
+
+                    img.setTint(0xeb4034);
+
+                });
+
+                img.on('pointerout', function () {
+
+                    img.clearTint();
+                    pressed = false;
+
+                });
+
+                img.on('pointerdown', function () {
+
+                    pressed = true;
+
+                });
+
+                img.on('pointerup', function (event) {
+                    if (pressed) {
+                        // Open image
+                        this.createImage(element[1]);
+                    }
+                }, this);
+            });
+        }
+
+        this.menu.add(this.albumContainer);
+
+        this.switchableContainers.push(this.albumContainer);
+    }
+
+    createImage(image) {
+        let newImage = this.add.image(0, 0, image);
+
+        // add to menu for easy resize
+        this.menu.add(newImage);
+        var pressed = false;
+        newImage.setInteractive();
+
+        newImage.on('pointerout', function () {
+
+            pressed = false;
+
+        });
+
+        newImage.on('pointerdown', function () {
+
+            pressed = true;
+
+        });
+
+        newImage.on('pointerup', function (event) {
+            if (pressed) {
+                newImage.destroy();
+            }
+        }, this);
+    }
+
+    ContainerTransition(containerToOpen) {
+        this.switchableContainers.forEach(function (element) {
+            if (element == containerToOpen) {
+                element.setVisible(true);
+            }
+            else {
+                element.setVisible(false);
+            }
+        })
+    }
+
 }

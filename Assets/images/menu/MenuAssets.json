@@ -241,28 +241,7 @@
 					}
 				},
 				{
-					"filename": "UI Buttons/Edellinen",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 184,
-						"h": 173
-					},
-					"spriteSourceSize": {
-						"x": 11,
-						"y": 9,
-						"w": 160,
-						"h": 161
-					},
-					"frame": {
-						"x": 1296,
-						"y": 3182,
-						"w": 160,
-						"h": 161
-					}
-				},
-				{
-					"filename": "UI Buttons/Seuraava",
+					"filename": "UI Buttons/Nuoli",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -276,10 +255,31 @@
 						"h": 160
 					},
 					"frame": {
-						"x": 1458,
+						"x": 1296,
 						"y": 3182,
 						"w": 161,
 						"h": 160
+					}
+				},
+				{
+					"filename": "UI Buttons/OK",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 214,
+						"h": 127
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 4,
+						"w": 198,
+						"h": 122
+					},
+					"frame": {
+						"x": 1459,
+						"y": 3182,
+						"w": 198,
+						"h": 122
 					}
 				},
 				{
@@ -430,27 +430,6 @@
 					}
 				},
 				{
-					"filename": "UI Buttons/OK",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 214,
-						"h": 127
-					},
-					"spriteSourceSize": {
-						"x": 8,
-						"y": 4,
-						"w": 198,
-						"h": 122
-					},
-					"frame": {
-						"x": 3053,
-						"y": 3181,
-						"w": 198,
-						"h": 122
-					}
-				},
-				{
 					"filename": "UI Buttons/Ohje",
 					"rotated": false,
 					"trimmed": true,
@@ -465,8 +444,8 @@
 						"h": 116
 					},
 					"frame": {
-						"x": 3200,
-						"y": 3047,
+						"x": 3053,
+						"y": 3181,
 						"w": 110,
 						"h": 116
 					}
@@ -486,8 +465,8 @@
 						"h": 93
 					},
 					"frame": {
-						"x": 3233,
-						"y": 2897,
+						"x": 3165,
+						"y": 3181,
 						"w": 89,
 						"h": 93
 					}
@@ -498,6 +477,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:66820486b1b7267cf4ce47308590d6ed:f4b8901da322600c663f1ba766ed281d:db73c82039b998ae246ed77057f631ea$"
+		"smartupdate": "$TexturePacker:SmartUpdate:a5e5c4abfe8ec765a81ce068ca45d8ca:f44f88ab92694aeedfac4da7f4cf5d04:db73c82039b998ae246ed77057f631ea$"
 	}
 }
