@@ -29,11 +29,7 @@ class BuildingScene extends Phaser.Scene {
     }
 
     preload() {
-
-        /*this.load.image('blankCheckBox', 'Assets/images/menu/blank-check-box.png');
-        this.load.image('checkedBox', 'Assets/images/menu/check-box.png');
-        this.load.image('1thumb', 'Assets/images/photos/1_thumb');
-        this.load.image('1full', 'Assets/images/photos/1_full');*/
+        
     }
 
     create() {
@@ -68,8 +64,8 @@ class BuildingScene extends Phaser.Scene {
 
         // title and description
         let title = this.add.text(0, -350, this.title);
-        title.setPosition(-title.width * 1.5, -480);
         title.setFontSize(64);
+        title.setPosition(-title.width * .5, -480);
         title.setColor("black");
         this.menu.add(title);
 
