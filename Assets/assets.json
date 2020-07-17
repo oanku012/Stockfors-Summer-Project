@@ -5,7 +5,10 @@
         "menuBG": "Assets/images/menu/menu-bg.png",
         "exitButton": "Assets/images/menu/exit-button.png",
         "map": "Assets/images/map/kartta.png",
-        "Nuoli": "Assets/images/map/arrowSign"
+        "blankCheckBox": "Assets/images/menu/blank-check-box.png",
+        "checkedBox": "Assets/images/map/arrowSign",
+        "1thumb": "Assets/images/photos/1_thumb",
+        "1full": "Assets/images/photos/1_full"
     },
 
     "atlas": {
