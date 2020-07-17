@@ -16,11 +16,11 @@ class OpeningScene extends Phaser.Scene {
         this.cache.json.remove('buildingData');
 
         // Load JSON data
-        var path = ("Localization/"+config.language+"/MainMenu.json");
+        var path = ("Localization/" + config.language + "/MainMenu.json");
         this.load.json('mainMenuData', path);
 
         // Json data for all building info
-        var path = ("Localization/"+config.language+"/Buildings.json");
+        var path = ("Localization/" + config.language + "/Buildings.json");
         this.load.json('buildingData', path);
 
         // This stuff is now loaded in assets.json
@@ -63,6 +63,8 @@ class OpeningScene extends Phaser.Scene {
 
         this.cameras.main.backgroundColor.setTo(255, 255, 255);
 
+        this.data = this.cache.json.get('mainMenuData');
+
         this.CreateLanguageMenu();
 
         this.CreateInstructions();
@@ -74,6 +76,7 @@ class OpeningScene extends Phaser.Scene {
             this.mainMenuContainer.setVisible(true);
 
             this.scene.run('UI');
+
         }
         else {
             this.languageContainer.setVisible(true);
@@ -148,12 +151,12 @@ class OpeningScene extends Phaser.Scene {
         this.aloitusPohja = this.add.sprite(-80, -83, 'MenuAtlas', 'UI Pohjat/Aloitusruutu');
 
         // Get title and description from a json file
-        var data = this.cache.json.get('mainMenuData');
+        //var data = this.cache.json.get('mainMenuData');
 
         this.infoHeader = this.make.text({
             x: 0,
             y: -650,
-            text: data['OpeningHeader'],
+            text: this.data['OpeningHeader'],
             origin: { x: 0.5, y: 0.5 },
             style: {
                 font: '44px Arial',
@@ -165,7 +168,7 @@ class OpeningScene extends Phaser.Scene {
         this.infoText = this.make.text({
             x: 0,
             y: -100,
-            text: data['OpeningText'],
+            text: this.data['OpeningText'],
             origin: { x: 0.5, y: 0.5 },
             style: {
                 font: '40px Arial',
@@ -175,9 +178,9 @@ class OpeningScene extends Phaser.Scene {
         });
 
         //this.newGame = this.add.sprite(-200, 700, 'MenuAtlas', 'UI Buttons/Nappi');
-        this.newGame = CreateTextButton(this, -200, 700, 'UI Buttons/Nappi', 'Aloita peli');
+        this.newGame = CreateTextButton(this, -200, 700, 'UI Buttons/Nappi', this.data['NewGame']);
         //this.continue = this.add.sprite(200, 700, 'MenuAtlas', 'UI Buttons/Nappi');
-        this.continue = CreateTextButton(this, 200, 700, 'UI Buttons/Nappi', 'Jatka peliä');
+        this.continue = CreateTextButton(this, 200, 700, 'UI Buttons/Nappi', this.data['ContinueGame']);
         this.ohjeNappi = this.add.sprite(500, 700, 'MenuAtlas', 'UI Buttons/Ohje');
         this.clearDataText = this.add.text(1400, 200, "Clear save data", { font: "40px Arial", fill: "black" });
 
@@ -252,19 +255,18 @@ class OpeningScene extends Phaser.Scene {
     }
 
     CreateInstructions() {
+
         this.ohjePohja = this.add.sprite(-40, -40, 'MenuAtlas', 'UI Pohjat/Ohjeruutu');
 
-        //this.back = this.add.sprite(-400, 700, 'MenuAtlas', 'UI Buttons/Takaisin');
-
-        this.back = CreateTextButton(this, -400, 700, 'UI Buttons/Takaisin', 'Takaisin');
+        this.back = CreateTextButton(this, -400, 700, 'UI Buttons/Takaisin', this.data['Back']);
 
         // Get title and description from a json file
-        var data = this.cache.json.get('mainMenuData');
+        //var data = this.cache.json.get('mainMenuData');
 
         this.helpHeader = this.make.text({
             x: 0,
             y: -700,
-            text: data['HelpHeader'],
+            text: this.data['HelpHeader'],
             origin: { x: 0.5, y: 0.0 },
             style: {
                 font: '44px Arial',
@@ -276,7 +278,7 @@ class OpeningScene extends Phaser.Scene {
         this.helpText = this.make.text({
             x: 0,
             y: -100,
-            text: data['HelpText'],
+            text: this.data['HelpText'],
             origin: { x: 0.5, y: 0.5 },
             style: {
                 font: '40px Arial',
@@ -302,43 +304,43 @@ class OpeningScene extends Phaser.Scene {
         let container = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY + 20, elementsToAdd);
 
         container.iterate(function (element) {
-            
+
             //Couldn't come up with a more elegant solution to exclude the backgrounds
-            if(element != this.ohjePohja && element != this.aloitusPohja && element != this.languagePohja){
+            if (element != this.ohjePohja && element != this.aloitusPohja && element != this.languagePohja) {
 
-            element.setInteractive();
-            element.pressed = false;
-            element.on('pointerdown', function () {
-                element.pressed = true;
-                if (element.bg) {
-                    element.bg.setTint(0xd5d1c7);
-                }
-                else {
-                    element.setTint(0xd5d1c7);
-                }
-            }, this);
-
-            element.on('pointerout', function () {
+                element.setInteractive();
                 element.pressed = false;
-                if (element.bg) {
-                    element.bg.clearTint();
-                }
-                else {
-                    element.clearTint();
-                }
-            }, this);
+                element.on('pointerdown', function () {
+                    element.pressed = true;
+                    if (element.bg) {
+                        element.bg.setTint(0xd5d1c7);
+                    }
+                    else {
+                        element.setTint(0xd5d1c7);
+                    }
+                }, this);
 
-            element.on('pointerup', function(){
-                //element.pressed = false;
-                if (element.bg) {
-                    element.bg.clearTint();
-                }
-                else {
-                    element.clearTint();
-                }
-            }, this);
+                element.on('pointerout', function () {
+                    element.pressed = false;
+                    if (element.bg) {
+                        element.bg.clearTint();
+                    }
+                    else {
+                        element.clearTint();
+                    }
+                }, this);
 
-        }
+                element.on('pointerup', function () {
+                    //element.pressed = false;
+                    if (element.bg) {
+                        element.bg.clearTint();
+                    }
+                    else {
+                        element.clearTint();
+                    }
+                }, this);
+
+            }
         }, this);
 
         container.setScale(0.56);

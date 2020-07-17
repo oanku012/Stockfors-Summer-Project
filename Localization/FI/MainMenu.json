@@ -2,6 +2,8 @@
     "OpeningHeader" : "TERVETULOA STOCKFORS KARTALLA - NETTISOVELLUKSEEN",
     "OpeningText" : "Stockforsin hiomoalue on Pyhtäällä sijaitseva kulttuurihistoriallisesti rikas alue ja merkittävä osa sen historiaa. Puuhiomo oli 1960-luvulle asti Pyhtään suurin työllistäjä, joka vaikutti kirkonkylän kasvuun ja elämään huomattavasti.\n\nEntisöintitöiden jälkeen 2000-luvulla alue on täynnä pienyrityksiä, kulttuuria ja taidetta. Vuosittainen Stockfors Art Fair -taidenäyttely pidetään Stockforsin halleissa. Kaarihallia voi vuokrata tapahtumakäyttöön ja alueella toimii myös hotelli Patruunantalossa, pakkausmuseo sekä lintuhoitola.\n\nTämän sivuston tarkoituksena on tuoda alue jokaiselle tutuksi erilaisten tekstien, kuvien ja pelien avulla! ",
     "HelpHeader" : "OHJEET",
-    "HelpText" : "Sovellus toimii keinona tutustua Pyhtään Stockforsin historialliseen tehdasalueeseen sekä alueella toimiviin yrityksiin. Tavoitteena on oppia alueen historiasta, miljööstä ja kulttuurista.\n\nPelaajahahmo liikkuu WASD-näppäimillä Stockforsin aluetta kuvaavalla kartalla. Hiirellä klikkaamalla taloja tai yrityksien logoja pääset tutustumaan niihin paremmin avautuvan infoikkunan avulla.\n\nInfoikkunassa pystyt lukemaan kohteen historiasta, katsomaan kuvia sekä kokeilemaan 360 asteen panoraamaa tilasta. Tietyistä kohteista löytyy myös erilaisia pelejä, kuten pala- ja muistipelejä Stockforsiin liittyen."
-    
+    "HelpText" : "Sovellus toimii keinona tutustua Pyhtään Stockforsin historialliseen tehdasalueeseen sekä alueella toimiviin yrityksiin. Tavoitteena on oppia alueen historiasta, miljööstä ja kulttuurista.\n\nPelaajahahmo liikkuu WASD-näppäimillä Stockforsin aluetta kuvaavalla kartalla. Hiirellä klikkaamalla taloja tai yrityksien logoja pääset tutustumaan niihin paremmin avautuvan infoikkunan avulla.\n\nInfoikkunassa pystyt lukemaan kohteen historiasta, katsomaan kuvia sekä kokeilemaan 360 asteen panoraamaa tilasta. Tietyistä kohteista löytyy myös erilaisia pelejä, kuten pala- ja muistipelejä Stockforsiin liittyen.",
+    "NewGame" : "Aloita peli",
+    "ContinueGame" : "Jatka peliä",
+    "Back" : "Takaisin"
 }
