@@ -302,6 +302,10 @@ class OpeningScene extends Phaser.Scene {
         let container = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY + 20, elementsToAdd);
 
         container.iterate(function (element) {
+            
+            //Couldn't come up with a more elegant solution to exclude the backgrounds
+            if(element != this.ohjePohja && element != this.aloitusPohja && element != this.languagePohja){
+
             element.setInteractive();
             element.pressed = false;
             element.on('pointerdown', function () {
@@ -323,6 +327,18 @@ class OpeningScene extends Phaser.Scene {
                     element.clearTint();
                 }
             }, this);
+
+            element.on('pointerup', function(){
+                //element.pressed = false;
+                if (element.bg) {
+                    element.bg.clearTint();
+                }
+                else {
+                    element.clearTint();
+                }
+            }, this);
+
+        }
         }, this);
 
         container.setScale(0.56);

@@ -66,6 +66,8 @@ class BuildingScene extends Phaser.Scene {
         this.menuBG = this.add.sprite(0, 0, 'MenuAtlas', 'UI Pohjat/InsideVaaka');
         this.menu = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY, [this.menuBG]).setScale(0.56);
 
+        //this.menu.setSize(this.menuBG.width, this.menuBG.height);
+
         // title and description
         let title = this.add.text(0, -350, this.title);
         title.setPosition(-title.width * 1.5, -480);
@@ -208,7 +210,7 @@ class BuildingScene extends Phaser.Scene {
 
     CreateBottomButtons() {
 
-        let rightMostPosition = 200;
+        let rightMostPosition = -50;
 
         let buttonsAdded = 0;
 
@@ -229,6 +231,8 @@ class BuildingScene extends Phaser.Scene {
 
             buttonsAdded++;
         }
+
+        //console.log(this.minipeliButton.width/2);
 
         //Just for testing
         //this.panoramas = true;
@@ -269,6 +273,8 @@ class BuildingScene extends Phaser.Scene {
 
         this.menuButtons.add(this.albumButton);
 
+        let menuButtonsWidth = 0;
+
         buttonsAdded++;
 
         this.menu.add(this.menuButtons);
@@ -276,6 +282,9 @@ class BuildingScene extends Phaser.Scene {
         this.menuButtons.iterate(function (button) {
 
             if (button) {
+
+                menuButtonsWidth += button.width;
+
                 button.setInteractive();
 
                 button.defaultFrame = button.frame.name;
@@ -296,6 +305,15 @@ class BuildingScene extends Phaser.Scene {
             }
 
         }, this);
+
+        this.menuButtons.setSize(menuButtonsWidth, this.infoButton.height);
+
+        this.menuButtons.setPosition(this.menuButtons.width /2, (this.menuBG.height / 2) - 100);
+
+        /*let graphics = this.add.graphics({lineStyle: {width: 2, color: 'red'}, fillStyle: 'red'});
+
+        graphics.strokeRectShape(this.menu.getBounds());
+        graphics.strokeRectShape(this.menuButtons.getBounds());*/
     }
 
     resize() {
