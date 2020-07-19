@@ -249,7 +249,7 @@ class MuistiPeliScene extends Phaser.Scene {
                     //Close cards with a delay if they are not the same, otherwise check if all cards have been revealed
                     if (this.openedCards[0].frontIMG.src != this.openedCards[1].frontIMG.src) {
 
-                        this.time.delayedCall(2000, function () {
+                        this.time.delayedCall(1000, function () {
                             this.openedCards.forEach(element => {
                                 this.RotateCard(element, false);
 

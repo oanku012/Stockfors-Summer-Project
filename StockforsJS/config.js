@@ -156,11 +156,21 @@ function createButton(posX, posY, scene, runOnTop, scrollFactor, scale, context,
             //Only affects timer events, have to be setup separately for physics
             //this.time.paused = true;
 
-            if (runOnTop == true) {
-                context.scene.run(scene);
+            if (button.open != true) {
+                if (runOnTop == true) {
+                    context.scene.run(scene);
+                    button.open = true;
+                }
+                else {
+                    context.scene.start(scene);
+                    button.open = true;
+                }
             }
-            else {
-                context.scene.start(scene);
+            else
+            {
+                //Lets you close the scene if you press the button
+                context.scene.stop(scene);
+                button.open = false;
             }
 
         }
