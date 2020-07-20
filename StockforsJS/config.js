@@ -36,7 +36,7 @@ var config = {
 
 
 
-    scene: [BootScene, PreloadScene, OpeningScene, StockforsScene, BuildingScene, KirkkoScene, PatruunantaloScene, PakkausmuseoScene, OptionsMenuScene, MuistiPeliScene, UI, KaarihalliScene, TallirakennusScene]
+    scene: [BootScene, PreloadScene, OpeningScene, StockforsScene, BuildingScene, KirkkoScene, PatruunantaloScene, PakkausmuseoScene, OptionsMenuScene, MuistiPeliScene, PalapeliScene, UI, KaarihalliScene, TallirakennusScene]
 
 
 };
