@@ -14,9 +14,10 @@ class MapScene extends Phaser.Scene {
         this.destination = new Phaser.Math.Vector2();
         this.movementDirection = 'down';
 
-        this.playerOverLapping = false;
+        this.playerOverLapping;
         this.currentOverlapBody;
         this.overLapTimer;
+        this.enteringBuilding;
 
         this.map;
         this.buildings = {};
@@ -61,6 +62,10 @@ class MapScene extends Phaser.Scene {
         console.log(this.scene.key);
 
         this.sceneToOpen = null;
+
+        this.playerOverLapping = false;
+        this.currentOverlapBody = null;
+        this.enteringBuilding = false;
 
         //pointerOverUI = false;
 
@@ -117,6 +122,12 @@ class MapScene extends Phaser.Scene {
             this.player.setDepth(this.player.y);
         }
 
+        if(this.enteringBuilding)
+        {
+            this.enteringBuilding = false;
+            this.EnterBuilding();
+        }
+
     }
 
     InputInitialize() {
@@ -153,8 +164,10 @@ class MapScene extends Phaser.Scene {
                 this.sceneToOpen = element.entrance.sceneKey;
 
                 //If the player is standing at the entrance and clicks the building it will enter the building
-                if (this.playerOverLapping == true && this.sceneToOpen != null && this.currentOverlapBody == element.entrance) {
-                    this.EnterBuilding();
+                if (this.playerOverLapping == true && this.sceneToOpen && this.currentOverlapBody == element.entrance) {
+                    //this.EnterBuilding();
+
+                    this.enteringBuilding = true;
                 }
 
             }, this);
@@ -166,6 +179,8 @@ class MapScene extends Phaser.Scene {
         this.SavePosition();
         
         this.scene.start(this.sceneToOpen);
+
+        this.sceneToOpen = null;
     }
 
     MovementInitialize() {
@@ -222,16 +237,13 @@ class MapScene extends Phaser.Scene {
                     this.buildingButton.destroy();
                 }
 
-                //this.buildingButton = this.createButton(bodyB.position.x + 50, bodyB.position.y - 50, bodyB.sceneKey, false, 1, 0.3);
-
-                //this.sceneToOpen = bodyB.sceneKey;
-
                 this.playerOverLapping = true;
                 this.currentOverlapBody = bodyB;
 
                 //If the player clicked the building from afar and arrived at the entrance it will enter the building
                 if (this.sceneToOpen == bodyB.sceneKey) {
-                    this.EnterBuilding();
+                    //this.EnterBuilding();
+                    this.enteringBuilding = true;
                 }
 
 
