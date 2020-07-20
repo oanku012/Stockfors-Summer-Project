@@ -29,11 +29,18 @@ class MuistiPeliScene extends Phaser.Scene {
         this.clicks;
 
         this.difficulty;
+
+        //Array of all menu dom elements in the scene, used to hide them when opening options
+        this.menuElements;
+        this.cardElements;
     }
 
     create() {
 
         console.log('Muistipeli');
+
+        //If all the dom elements are visible
+        this.visible = true;
 
         this.clicks = 0;
         this.cardSize = 0;
@@ -45,6 +52,8 @@ class MuistiPeliScene extends Phaser.Scene {
 
         this.cardArray = [];
         this.openedCards = [];
+        this.menuElements = [];
+        this.cardElements = [];
 
         this.difficulty = 'normal';
 
@@ -83,31 +92,47 @@ class MuistiPeliScene extends Phaser.Scene {
 
         gameStart.setInteractive();
         gameStart.on('pointerup', function () {
+
+
+
             this.StartGame(this.difficulty);
 
+            this.menuElements = [];
             gameStart.destroy();
             easy.destroy();
             normal.destroy();
             hard.destroy();
+
         }, this);
 
         easy.setInteractive();
-        easy.on('pointerup', function () {
+        easy.on('pointerdown', function () {
+
             this.difficulty = 'easy';
             console.log('Selected: ' + this.difficulty);
+
         }, this);
 
         normal.setInteractive();
-        normal.on('pointerup', function () {
+        normal.on('pointerdown', function () {
+
+
             this.difficulty = 'normal';
             console.log('Selected: ' + this.difficulty);
+
         }, this);
 
         hard.setInteractive();
-        hard.on('pointerup', function () {
+        hard.on('pointerdown', function () {
+
+
             this.difficulty = 'hard';
             console.log('Selected: ' + this.difficulty);
+
         }, this);
+
+        this.menuElements.push(gameStart, easy, normal, hard);
+
 
     }
 
@@ -228,9 +253,10 @@ class MuistiPeliScene extends Phaser.Scene {
         card.back = this.add.dom(x, y, card.backIMG);
         card.back.setPerspective(config.width).setInteractive().setDepth(10);
         card.back.rotate3d.set(0, 1, 0, 0);
-        card.back.on('pointerup', function () {
+        card.back.on('pointerdown', function () {
 
             if (card.frontTween.isPlaying() == false && card.backTween.isPlaying() == false && this.openedCards.length < 2) {
+
                 console.log('Clicked back of ' + img);
 
                 this.clicks++;
@@ -283,8 +309,10 @@ class MuistiPeliScene extends Phaser.Scene {
                             let restart = this.add.dom(600, 250, restartDiv);
                             restart.setDepth(20).setInteractive().setDisplayOrigin(0);
 
-                            restart.on('pointerup', function () {
+                            restart.on('pointerdown', function () {
+
                                 this.scene.restart();
+
                             }, this);
 
                             if (this.difficulty == 'easy') {
@@ -327,6 +355,8 @@ class MuistiPeliScene extends Phaser.Scene {
             ease: 'Sine.easeInOut',
             paused: true
         });
+
+        this.cardElements.push(card.front, card.back);
 
         return card;
 
@@ -379,8 +409,78 @@ class MuistiPeliScene extends Phaser.Scene {
         }
 
 
+    }
 
+    update() {
+        if (optionsButton.open && this.visible) {
 
+            this.menuElements.forEach(element => {
+                if (element) {
+                    element.setVisible(false);
+                    element.disableInteractive();
+                    //console.log(item);
+                }
+            }, this);
 
+            this.cardElements.forEach(function (element) {
+
+                if (element) {
+                    element.setVisible(false);
+                    element.disableInteractive();
+                }
+
+            }, this);
+
+            /*for (let i = 0; i < this.menuElements.length; i++) {
+                if (this.menuElements[i]) {
+                    this.menuElements[i].setVisible(false);
+                    this.menuElements[i].disableInteractive();
+                    //console.log(this.menuElements[i]);
+                }
+            }
+
+            for (let i = 0; i < this.cardElements.length; i++) {
+                if (this.cardElements[i]) {
+                    this.cardElements[i].setVisible(false);
+                    this.cardElements[i].disableInteractive();
+
+                }
+            }*/
+
+            this.visible = false;
+        }
+        else if (this.visible == false && optionsButton.open == false) {
+            this.menuElements.forEach(function (element) {
+                if (element) {
+                    element.setVisible(true);
+                    element.setInteractive();
+                }
+
+            }, this);
+
+            this.cardElements.forEach(function (element) {
+                if (element) {
+                    element.setVisible(true);
+                    element.setInteractive();
+                }
+            }, this);
+
+            /*for (let i = 0; i < this.menuElements.length; i++) {
+                if (this.menuElements[i]) {
+                    this.menuElements[i].setVisible(true);
+                    this.menuElements[i].setInteractive();
+                }
+            }
+
+            for (let i = 0; i < this.cardElements.length; i++) {
+                if (this.cardElements[i]) {
+                    this.cardElements[i].setVisible(true);
+                    this.cardElements[i].setInteractive();
+                }
+            }*/
+
+            this.visible = true;
+
+        }
     }
 }

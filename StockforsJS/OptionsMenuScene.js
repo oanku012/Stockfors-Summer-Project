@@ -26,7 +26,7 @@ class OptionsMenuScene extends Phaser.Scene {
 
         // Menu
         this.menuBG = this.add.sprite(0, 0, 'MenuAtlas', 'UI Pohjat/Settings').setOrigin(0.479, 0.5);
-        this.menu = this.add.container(this.cameras.main.centerX - 37, this.cameras.main.centerY, [this.menuBG]).setScale(0.57);
+        this.menu = this.add.container(this.cameras.main.centerX - 37, this.cameras.main.centerY, [this.menuBG]).setScale(0.57).setDepth(9999);
         //This is just to move all the elements that are separate from the backgrounds
         this.menuElements = this.add.container(40, 0);
 
@@ -162,13 +162,14 @@ class OptionsMenuScene extends Phaser.Scene {
 
         this.exitButton.on('pointerup', function (event) {
             if (pressed) {
-                this.exitButton.bg.setTexture('MenuAtlas', 'UI Buttons/Nappi');
 
                 saveGame({ musicOn: config.musicOn, soundOn: config.soundOn });
 
                 this.scene.stop(this.scene.key);
 
                 //this.time.paused = false;
+
+                optionsButton.open = false;
 
                 readyToMove = true;
             }

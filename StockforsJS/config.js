@@ -12,7 +12,7 @@ var config = {
     scale: {
         mode: Phaser.Scale.FIT,
         autoCenter: Phaser.Scale.CENTER_BOTH,
-
+        fullscreenTarget: 'game'
     },
 
     dom: {
@@ -43,6 +43,9 @@ var config = {
 
 //If pointer is over UI-elements
 var pointerOverUI;
+
+//Put this here so I can easily reference it in the options menu scene and muistipeliscene
+var optionsButton;
 
 //Whether if player is ready to move
 var readyToMove = false;
