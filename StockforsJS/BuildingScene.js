@@ -25,6 +25,8 @@ class BuildingScene extends Phaser.Scene {
 
         this.menuButtons;
 
+        this.infoTexts = [];
+        this.infoCards = [];
         this.images = [];
 
         this.switchableContainers = [];
@@ -44,7 +46,9 @@ class BuildingScene extends Phaser.Scene {
 
         if (data[this.name][0] != null && data[this.name][1] != null) {
             this.title = data[this.name][0];
-            this.description = data[this.name][1];
+            //this.description = data[this.name][1];
+
+            this.infoTexts = data[this.name][1];
 
             console.log('Title added: ' + this.title);
         }
@@ -53,7 +57,7 @@ class BuildingScene extends Phaser.Scene {
         this.createExitButton();
         this.CreateBottomButtons();
         this.CreateAlbum();
-        this.CreateInfoCard();
+        this.CreateInfoContainer();
         console.log(this.scene.key);
 
         this.ContainerTransition(this.infoContainer);
@@ -252,25 +256,28 @@ class BuildingScene extends Phaser.Scene {
 
     }
 
-    CreateInfoCard() {
+    CreateInfoContainer() {
         this.infoContainer = this.add.container(0, 0);
 
-        let description = this.make.text({
-            x: 0,
-            y: 0,
-            text: this.description,
-            origin: { x: 0.5, y: 0.5 },
-            style: {
-                font: '34px Arial',
-                fill: 'black',
-                wordWrap: { width: 500 }
-            }
-        });
+
+        this.infoTexts.forEach(infoText =>{
+            let infoCard = this.CreateInfoCard(infoText);
+
+            this.infoCards.push(infoCard);
+
+            this.infoContainer.add([infoCard, infoCard.description]);
+
+            console.log(infoText);
+        }, this);
 
         let arrowButtonForward = this.add.sprite(500, 0, 'MenuAtlas', 'UI Buttons/Nuoli');
         let arrowButtonBackward = this.add.sprite(-500, 0, 'MenuAtlas', 'UI Buttons/Nuoli').setFlipX(true);
 
+        //this.infoContainer.add(this.infoCards);
 
+        this.openedCard = 0;
+
+        this.ChangeCard(this.openedCard);
 
         this.infoContainer.add([arrowButtonForward, arrowButtonBackward]);
 
@@ -288,16 +295,60 @@ class BuildingScene extends Phaser.Scene {
             })
 
             element.on('pointerup', function () {
-                element.clearTint();
-            })
-        }, this);
+                
 
-        //Added this afterwards so I could easily iterate the two buttons
-        this.infoContainer.add(description);
+                if(element.pressed == true)
+                {
+                    element.clearTint();
+                    if(element.flipX == false && this.openedCard < this.infoCards.length - 1)
+                    {
+                        this.openedCard++;
+                        this.ChangeCard(this.openedCard);
+                    }
+                    else if(element.flipX && this.openedCard > 0)
+                    {
+                        this.openedCard--;
+                        this.ChangeCard(this.openedCard); 
+                    }
+                }
+            }, this)
+        }, this);
 
         this.switchableContainers.push(this.infoContainer);
 
         this.menu.add(this.infoContainer);
+    }
+
+    CreateInfoCard(text)
+    {
+        let infoCard = this.add.sprite(0, 0, 'MenuAtlas', 'UI Pohjat/InsideVaaka').setScale(0.45, 0.6);
+
+        infoCard.description = this.make.text({
+            x: 0,
+            y: 0,
+            text: text,
+            origin: { x: 0.5, y: 0.5 },
+            style: {
+                font: '34px Arial',
+                fill: 'black',
+                wordWrap: { width: 500 }
+            }
+        });
+
+        
+
+        return infoCard;
+    }
+
+    ChangeCard(cardIndex)
+    {
+        this.infoCards.forEach(card =>{
+            card.setVisible(false);
+            card.description.setVisible(false);
+        });
+
+        this.infoCards[cardIndex].setVisible(true);
+        this.infoCards[cardIndex].description.setVisible(true);
     }
 
     CreateAlbum() {

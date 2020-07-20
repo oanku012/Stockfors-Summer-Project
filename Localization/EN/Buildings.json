@@ -1,4 +1,4 @@
 {
-     "Patruunantalo" : ["Patruunantalo", "Patruunatalo desc ENG"],
-     "Pakkausmuseo" : ["Pakkausmuseo", "Pakkausmuseo desc ENG"]
+     "Patruunantalo" : ["Patruunantalo", ["Patruunatalo card 1 ENG", "Patruunantalo card 2 ENG"]],
+     "Pakkausmuseo" : ["Pakkausmuseo", ["Pakkausmuseo card 1 ENG", "Pakkausmuseo card 2 ENG"]]
 }

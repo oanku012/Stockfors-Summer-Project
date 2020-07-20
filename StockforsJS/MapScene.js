@@ -72,9 +72,18 @@ class MapScene extends Phaser.Scene {
         //Collision layers
         if (collisionCat1 == null && collisionCat2 == null) {
             
-            collisionCat1 = this.matter.world.nextCategory();
+            collisionCat1 = 1;
             collisionCat2 = this.matter.world.nextCategory();
         }
+
+        //this.matter.world.setBounds(0, 0, 3000, 1000, 64, true, true, true, true);
+
+        //Used this to change the collision category on the walls of the map, but wasn't actually necessary since I could just change collisioncat1 to the default category that the walls use
+        /*
+        Object.values(this.matter.world.walls).forEach(wall => {
+            wall.collisionFilter.category = collisionCat1;
+
+        });*/
 
         if (this.map != null) {
             this.map.setInteractive();
