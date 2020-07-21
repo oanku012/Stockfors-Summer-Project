@@ -13,6 +13,8 @@ class PalapeliScene extends Phaser.Scene {
         this.shuffledIndexArray = [];
 
         this.board;
+
+        this.gameWon = false;
     }
 
     preload() {
@@ -21,6 +23,7 @@ class PalapeliScene extends Phaser.Scene {
     }
 
     create() {
+
         this.prepareBoard();
 
         // code for clicking on pieces
@@ -31,9 +34,17 @@ class PalapeliScene extends Phaser.Scene {
     
         }, this);
 
+
+        // Win game button for testing, remove when finished
+        var keyObj = this.input.keyboard.addKey('W');
+            keyObj.on('up', function(event) { this.finishGame(); }, this);
+
     }
 
+
     prepareBoard() {
+        this.gameWon = false;
+
         var piecesIndex = 0,
             i, j,
             piece;
@@ -153,16 +164,24 @@ class PalapeliScene extends Phaser.Scene {
         });
     
         if (isFinished) {
-            this.showFinishedText();
+            this.finishGame();
         }
     }
 
-    showFinishedText() {
-        var style = { font: "40px Arial", fill: "#000", align: "center"};
+    finishGame() {
+        if (!this.gameWon)
+        {
+            var container = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY);
 
-        var text = this.add.text(config.width, config.height, "Congratulations! \nYou made it!", style);
+            var style = { font: "60px Arial", fill: "white", align: "center"};
+            var text = this.add.text(0, 0, "Congratulations! \nYou made it!", style);
+            container.add(text);
+
+            // Todo add buttons for restart or exit
     
-        text.anchor.set(0.5);
+        }
+        
+        this.gameWon = true;
     }
     
     createShuffledIndexArray() {

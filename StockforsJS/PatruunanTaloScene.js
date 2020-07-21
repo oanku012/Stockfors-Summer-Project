@@ -30,6 +30,8 @@ class PatruunantaloScene extends BuildingScene
         this.images.push(["1thumb", "1full" ]);
         this.images.push(["1thumb", "1full" ]);
 
+        this.minigame = 'PalapeliScene';
+
         super.create();
     }
 
