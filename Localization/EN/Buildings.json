@@ -1,4 +1,10 @@
 {
-     "Patruunantalo" : ["Patruunantalo", ["Patruunatalo card 1 ENG", "Patruunantalo card 2 ENG"]],
-     "Pakkausmuseo" : ["Pakkausmuseo", ["Pakkausmuseo card 1 ENG", "Pakkausmuseo card 2 ENG"]]
+     "Patruunantalo" : {
+          "Title": "Patruunantalo", 
+          "InfoCards" : ["Patruunatalo card 1 ENG", "Patruunantalo card 2 ENG"],
+          "Album" : "Images here somehow" },
+     "Pakkausmuseo" : { 
+          "Title": "PakkausMuseo", 
+          "InfoCards" : ["Pakkausmuseo card 1 ENG", "Pakkausmuseo card 2 ENG"],
+          "Album" : "Images here somehow" }
 }

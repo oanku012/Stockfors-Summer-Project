@@ -52,10 +52,10 @@ class BuildingScene extends Phaser.Scene {
 
         console.log(data);
 
-        if (data[this.name][0] != null && data[this.name][1] != null) {
-            this.title = data[this.name][0];
+        if (data[this.name].Title != null && data[this.name].InfoCards != null) {
+            this.title = data[this.name].Title;
 
-            this.infoTexts = data[this.name][1];
+            this.infoTexts = data[this.name].InfoCards;
 
             console.log('Title added: ' + this.title);
         }
@@ -250,16 +250,17 @@ class BuildingScene extends Phaser.Scene {
 
     CreateBottomButtons() {
 
-        let rightMostPosition = -60;
+        let rightMostPosition = -75;
 
         let buttonsAdded = 0;
 
         this.menuButtons = this.add.container(buttonsAdded * 20, (this.menuBG.height / 2) - 100);
 
+        let buttonGap = 180;
 
         if (this.minigame) {
 
-            this.minipeliButton = this.add.sprite(rightMostPosition - (buttonsAdded * 200), 0, 'MenuAtlas', 'UI Buttons/Games');
+            this.minipeliButton = this.add.sprite(rightMostPosition - (buttonsAdded * buttonGap), 0, 'MenuAtlas', 'UI Buttons/Games');
 
             this.minipeliButton.on('pointerup', function () {
                 if (this.minipeliButton.pressed == true) {
@@ -273,10 +274,10 @@ class BuildingScene extends Phaser.Scene {
         }
 
         //Just for testing
-        //this.panoramas = true;
+        this.panoramas = true;
 
         if (this.panoramas) {
-            this.panoramaButton = this.add.sprite(rightMostPosition - (buttonsAdded * 200), 0, 'MenuAtlas', 'UI Buttons/Panorama');
+            this.panoramaButton = this.add.sprite(rightMostPosition - (buttonsAdded * buttonGap), 0, 'MenuAtlas', 'UI Buttons/Panorama');
 
             this.panoramaButton.on('pointerup', function () {
                 //Start panorama here
@@ -287,7 +288,7 @@ class BuildingScene extends Phaser.Scene {
             buttonsAdded++;
         }
 
-        this.infoButton = this.add.sprite(rightMostPosition - (buttonsAdded * 200), 0, 'MenuAtlas', 'UI Buttons/Infocards');
+        this.infoButton = this.add.sprite(rightMostPosition - (buttonsAdded * buttonGap), 0, 'MenuAtlas', 'UI Buttons/Infocards');
 
         this.infoButton.on('pointerup', function () {
             if (this.infoButton.pressed) {
@@ -299,7 +300,7 @@ class BuildingScene extends Phaser.Scene {
 
         buttonsAdded++;
 
-        this.albumButton = this.add.sprite(rightMostPosition - (buttonsAdded * 200), 0, 'MenuAtlas', 'UI Buttons/Gallery');
+        this.albumButton = this.add.sprite(rightMostPosition - (buttonsAdded * buttonGap), 0, 'MenuAtlas', 'UI Buttons/Gallery');
 
         this.albumButton.on('pointerup', function () {
             if (this.albumButton.pressed) {
@@ -313,11 +314,10 @@ class BuildingScene extends Phaser.Scene {
         buttonsAdded++;
 
         if (this.url) {
-            this.webButton = this.add.sprite(rightMostPosition - (buttonsAdded * 200), 0, 'MenuAtlas', 'UI Buttons/Webpage');
+            this.webButton = this.add.sprite(rightMostPosition - (buttonsAdded * buttonGap), 0, 'MenuAtlas', 'UI Buttons/Webpage');
 
             this.webButton.on('pointerup', function () {
                 if (this.webButton.pressed) {
-                    //this.ContainerTransition(this.wContainer);
 
                     window.open(this.url);
                 }
@@ -325,8 +325,6 @@ class BuildingScene extends Phaser.Scene {
             }, this);
 
             this.menuButtons.add(this.webButton);
-
-            console.log('web button added');
 
             buttonsAdded++;
         }
@@ -569,6 +567,11 @@ class BuildingScene extends Phaser.Scene {
                 newImage.destroy();
             }
         }, this);
+    }
+
+    CreatePanoRamaContainer()
+    {
+
     }
 
     ContainerTransition(containerToOpen) {
