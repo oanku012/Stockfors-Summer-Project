@@ -252,6 +252,13 @@ class OpeningScene extends Phaser.Scene {
 
             console.log('Saved data cleared');
         });
+
+        if(!savedGame)
+        {
+            this.continue.setVisible(false);
+
+            this.newGame.setPosition(0, 700);
+        }
     }
 
     CreateInstructions() {

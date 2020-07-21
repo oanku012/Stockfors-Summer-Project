@@ -5,6 +5,7 @@ class PatruunantaloScene extends BuildingScene
         super('PatruunantaloScene');
 
         this.name = 'Patruunantalo';
+        this.url = 'https://www.google.com';
 
     }
 
