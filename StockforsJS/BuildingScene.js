@@ -6,12 +6,13 @@ class BuildingScene extends Phaser.Scene {
 
         this.title = 'Placeholder title';
         this.ohjeTitle = 'Placeholder ohje';
-        
+
 
         //this.playerSpawnPosition = {};
 
         //The minigame for this building
         this.minigame;
+        this.url;
 
         this.panoramas;
 
@@ -40,7 +41,7 @@ class BuildingScene extends Phaser.Scene {
     create() {
         this.infoTexts = [];
         this.infoCards = [];
-        this.images = [];
+        //this.images = [];
         this.switchableContainers = [];
 
 
@@ -93,8 +94,7 @@ class BuildingScene extends Phaser.Scene {
 
     }
 
-    CreateInstructions()
-    {
+    CreateInstructions() {
         this.ohjeBG = this.add.sprite(0, 0, 'MenuAtlas', 'UI Pohjat/Ohjeet-infoikkuna');
         this.ohje = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY, [this.ohjeBG]).setScale(0.56);
 
@@ -180,8 +180,7 @@ class BuildingScene extends Phaser.Scene {
         this.ohje.add([backButton, title, infoDescription, albumDescription, panoDescription, gameDescription, webDescription]);
     }
 
-    CreateInstructionButton()
-    {
+    CreateInstructionButton() {
         this.instructionButton = this.add.sprite((this.menuBG.width / 2 - 100), (this.menuBG.height / 2) - 100, 'MenuAtlas', 'UI Buttons/Ohje');
 
         this.instructionButton.setInteractive();
@@ -217,7 +216,7 @@ class BuildingScene extends Phaser.Scene {
 
 
         this.exitButton = CreateTextButton(this, (-this.menuBG.width / 2) + 200, (this.menuBG.height / 2) - 100, 'UI Buttons/Takaisin', 'Takaisin');
-        
+
         this.menu.add(this.exitButton);
 
         /*let exitButtonBG = this.exitButton.bg;
@@ -311,9 +310,28 @@ class BuildingScene extends Phaser.Scene {
 
         this.menuButtons.add(this.albumButton);
 
-        let menuButtonsWidth = 0;
-
         buttonsAdded++;
+
+        if (this.url) {
+            this.webButton = this.add.sprite(rightMostPosition - (buttonsAdded * 200), 0, 'MenuAtlas', 'UI Buttons/Webpage');
+
+            this.webButton.on('pointerup', function () {
+                if (this.webButton.pressed) {
+                    //this.ContainerTransition(this.wContainer);
+
+                    window.open(this.url);
+                }
+
+            }, this);
+
+            this.menuButtons.add(this.webButton);
+
+            console.log('web button added');
+
+            buttonsAdded++;
+        }
+
+        let menuButtonsWidth = 0;
 
         this.menu.add(this.menuButtons);
 
@@ -367,7 +385,7 @@ class BuildingScene extends Phaser.Scene {
     CreateInfoContainer() {
         this.infoContainer = this.add.container(0, 0);
 
-        this.infoTexts.forEach(infoText =>{
+        this.infoTexts.forEach(infoText => {
             let infoCard = this.CreateInfoCard(infoText);
 
             this.infoCards.push(infoCard);
@@ -402,20 +420,17 @@ class BuildingScene extends Phaser.Scene {
             });
 
             element.on('pointerup', function () {
-                
 
-                if(element.pressed == true)
-                {
+
+                if (element.pressed == true) {
                     element.clearTint();
-                    if(element.flipX == false && this.openedCard < this.infoCards.length - 1)
-                    {
+                    if (element.flipX == false && this.openedCard < this.infoCards.length - 1) {
                         this.openedCard++;
                         this.ChangeCard(this.openedCard);
                     }
-                    else if(element.flipX && this.openedCard > 0)
-                    {
+                    else if (element.flipX && this.openedCard > 0) {
                         this.openedCard--;
-                        this.ChangeCard(this.openedCard); 
+                        this.ChangeCard(this.openedCard);
                     }
                 }
             }, this)
@@ -426,9 +441,8 @@ class BuildingScene extends Phaser.Scene {
         this.menu.add(this.infoContainer);
     }
 
-    CreateInfoCard(text)
-    {
-        
+    CreateInfoCard(text) {
+
 
         let infoCard = this.add.sprite(0, 0, 'MenuAtlas', 'UI Pohjat/InsideVaaka').setScale(0.45, 0.6);
 
@@ -449,9 +463,8 @@ class BuildingScene extends Phaser.Scene {
         return infoCard;
     }
 
-    ChangeCard(cardIndex)
-    {
-        this.infoCards.forEach(card =>{
+    ChangeCard(cardIndex) {
+        this.infoCards.forEach(card => {
             card.setVisible(false);
             card.description.setVisible(false);
         });
@@ -481,7 +494,7 @@ class BuildingScene extends Phaser.Scene {
             let row = 1;
 
             this.images.forEach(element => {
-                let img = this.add.image(previousX, 50 + 100*row, element[0])
+                let img = this.add.image(previousX, 50 + 100 * row, element[0])
                 this.albumContainer.add(img);
                 //img.setPosition(previousX, 50 + 100*row);
                 previousX += 100;
@@ -490,8 +503,7 @@ class BuildingScene extends Phaser.Scene {
 
                 column++;
 
-                if(column >= rowLimit)
-                {
+                if (column >= rowLimit) {
                     row++;
                     column = 0;
                     previousX = -200;
