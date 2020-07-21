@@ -19,7 +19,7 @@ class PalapeliScene extends Phaser.Scene {
 
     preload() {
         // Probably move this to assets.json once the game is working
-        this.load.spritesheet("puzzleBackground", "Assets/images/palapeli/bl.jpg", { "frameWidth": this.PIECE_WIDTH, "frameHeight": this.PIECE_HEIGHT } );
+        this.load.spritesheet("puzzleBackground", "Assets/images/palapeli/patruunantalo.jpg", { "frameWidth": this.PIECE_WIDTH, "frameHeight": this.PIECE_HEIGHT } );
     }
 
     create() {
