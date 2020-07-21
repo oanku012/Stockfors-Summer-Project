@@ -35,5 +35,26 @@ function CreateTextButton(context, x, y, buttonspriteframe, text) {
     //This is just so there's an easy to use reference to the button element
     container.bg = button;
 
+    container.setInteractive();
+
+    container.on('pointerdown', function () {
+        button.setTint(0xd5d1c7);
+        container.pressed = true;
+    }, context);
+
+    container.on('pointerout', function () {
+        if (this.input.activePointer.isDown) {
+            button.clearTint();
+            container.pressed = false;
+        }
+    }, context);
+
+
+    container.on('pointerup', function (event) {
+        if (container.pressed) {
+            button.clearTint();
+        }
+    }, context);
+
     return container;
 }

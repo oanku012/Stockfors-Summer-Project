@@ -308,35 +308,45 @@ class OpeningScene extends Phaser.Scene {
             //Couldn't come up with a more elegant solution to exclude the backgrounds
             if (element != this.ohjePohja && element != this.aloitusPohja && element != this.languagePohja) {
 
-                element.setInteractive();
-                element.pressed = false;
+                //Some of this stuff is now done in the createtextbutton function so they're commented off
+
+                if(element.bg == undefined){
+                    element.setInteractive();
+                    element.pressed = false;
+                }
+                
                 element.on('pointerdown', function () {
-                    element.pressed = true;
+                    //element.pressed = true;
+                    
                     if (element.bg) {
-                        element.bg.setTint(0xd5d1c7);
+                        //element.bg.setTint(0xd5d1c7);
                     }
                     else {
                         element.setTint(0xd5d1c7);
+                        element.pressed = true;
                     }
                 }, this);
 
                 element.on('pointerout', function () {
-                    element.pressed = false;
+                    //element.pressed = false;
                     if (element.bg) {
-                        element.bg.clearTint();
+                        //element.bg.clearTint();
                     }
                     else {
                         element.clearTint();
+                        element.pressed = false;
+
                     }
                 }, this);
 
                 element.on('pointerup', function () {
-                    //element.pressed = false;
+                   
                     if (element.bg) {
-                        element.bg.clearTint();
+                        //element.bg.clearTint();
                     }
                     else {
                         element.clearTint();
+
                     }
                 }, this);
 

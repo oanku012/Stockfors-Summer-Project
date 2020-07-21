@@ -5,7 +5,8 @@ class BuildingScene extends Phaser.Scene {
         this.name;
 
         this.title = 'Placeholder title';
-        this.description = 'Placeholder description';
+        this.ohjeTitle = 'Placeholder ohje';
+        
 
         //this.playerSpawnPosition = {};
 
@@ -46,16 +47,17 @@ class BuildingScene extends Phaser.Scene {
 
         if (data[this.name][0] != null && data[this.name][1] != null) {
             this.title = data[this.name][0];
-            //this.description = data[this.name][1];
 
             this.infoTexts = data[this.name][1];
 
             console.log('Title added: ' + this.title);
         }
 
-        this.createContainer();
+        this.createMenuContainer();
+        this.CreateInstructions();
         this.createExitButton();
         this.CreateBottomButtons();
+        this.CreateInstructionButton();
         this.CreateAlbum();
         this.CreateInfoContainer();
         console.log(this.scene.key);
@@ -67,10 +69,10 @@ class BuildingScene extends Phaser.Scene {
 
     }
 
-    createContainer() {
+    createMenuContainer() {
         // Menu
         this.menuBG = this.add.sprite(0, 0, 'MenuAtlas', 'UI Pohjat/InsideVaaka');
-        this.menu = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY, [this.menuBG]).setScale(0.56);
+        this.menu = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY, [this.menuBG]).setScale(0.7);
 
         //this.menu.setSize(this.menuBG.width, this.menuBG.height);
 
@@ -87,6 +89,124 @@ class BuildingScene extends Phaser.Scene {
 
     }
 
+    CreateInstructions()
+    {
+        this.ohjeBG = this.add.sprite(0, 0, 'MenuAtlas', 'UI Pohjat/Ohjeet-infoikkuna');
+        this.ohje = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY, [this.ohjeBG]).setScale(0.56);
+
+        // title
+        let title = this.add.text(0, -450, this.ohjeTitle);
+        title.setFontSize(64);
+        title.setPosition(-title.width * .7, -680);
+        title.setColor("black");
+
+        let textX = -200;
+
+        let infoDescription = this.make.text({
+            x: textX,
+            y: -433,
+            text: 'Diibadaaba',
+            origin: { x: 0.5, y: 0.5 },
+            style: {
+                font: '34px Arial',
+                fill: 'black',
+                wordWrap: { width: 500 }
+            }
+        });
+
+        let albumDescription = this.make.text({
+            x: textX,
+            y: -247,
+            text: 'Diibadaaba',
+            origin: { x: 0.5, y: 0.5 },
+            style: {
+                font: '34px Arial',
+                fill: 'black',
+                wordWrap: { width: 500 }
+            }
+        });
+
+        let panoDescription = this.make.text({
+            x: textX,
+            y: -67,
+            text: 'Diibadaaba',
+            origin: { x: 0.5, y: 0.5 },
+            style: {
+                font: '34px Arial',
+                fill: 'black',
+                wordWrap: { width: 500 }
+            }
+        });
+
+        let gameDescription = this.make.text({
+            x: textX,
+            y: 120,
+            text: 'Diibadaaba',
+            origin: { x: 0.5, y: 0.5 },
+            style: {
+                font: '34px Arial',
+                fill: 'black',
+                wordWrap: { width: 500 }
+            }
+        });
+
+        let webDescription = this.make.text({
+            x: textX,
+            y: 310,
+            text: 'Diibadaaba',
+            origin: { x: 0.5, y: 0.5 },
+            style: {
+                font: '34px Arial',
+                fill: 'black',
+                wordWrap: { width: 500 }
+            }
+        });
+
+        this.ohje.setVisible(false);
+
+        let backButton = CreateTextButton(this, (-this.ohjeBG.width / 2) + 270, (this.ohjeBG.height / 2) - 100, 'UI Buttons/Takaisin', 'Takaisin');
+
+        backButton.on('pointerup', function (event) {
+            if (backButton.pressed) {
+                this.ohje.setVisible(false);
+                this.menu.setVisible(true);
+            }
+        }, this);
+
+        this.ohje.add([backButton, title, infoDescription, albumDescription, panoDescription, gameDescription, webDescription]);
+    }
+
+    CreateInstructionButton()
+    {
+        this.instructionButton = this.add.sprite((this.menuBG.width / 2 - 100), (this.menuBG.height / 2) - 100, 'MenuAtlas', 'UI Buttons/Ohje');
+
+        this.instructionButton.setInteractive();
+
+        this.instructionButton.on('pointerdown', function () {
+            this.instructionButton.setTint(0xd5d1c7);
+            this.instructionButton.pressed = true;
+        }, this);
+
+        this.instructionButton.on('pointerout', function () {
+            if (this.input.activePointer.isDown) {
+                this.instructionButton.clearTint();
+                this.instructionButton.pressed = false;
+            }
+        }, this);
+
+
+        this.instructionButton.on('pointerup', function (event) {
+            if (this.instructionButton.pressed) {
+                this.instructionButton.clearTint();
+                this.ohje.setVisible(true);
+                this.menu.setVisible(false);
+                this.instructionButton.pressed = false;
+            }
+        }, this);
+
+        this.menu.add(this.instructionButton);
+    }
+
     // Separate function because it needs to be overwritten
     createExitButton() {
 
@@ -98,11 +218,9 @@ class BuildingScene extends Phaser.Scene {
         //this.exitButton.setSize(exitButtonBG.width, exitButtonBG.height);
         this.menu.add(this.exitButton);
 
-        let exitButtonBG = this.exitButton.bg;
+        /*let exitButtonBG = this.exitButton.bg;
 
         this.exitButton.setInteractive();
-
-        exitButtonBG.defaultFrame = exitButtonBG.frame.name;
 
         this.exitButton.on('pointerdown', function () {
             //exitButtonBG.setTexture('MenuAtlas', exitButtonBG.defaultFrame + '_Pressed');
@@ -116,7 +234,7 @@ class BuildingScene extends Phaser.Scene {
                 exitButtonBG.clearTint();
                 this.exitButton.pressed = false;
             }
-        }, this);
+        }, this);*/
 
 
         this.exitButton.on('pointerup', function (event) {
@@ -356,22 +474,35 @@ class BuildingScene extends Phaser.Scene {
 
         // image thumbnails
         if (this.images.length > 0) {
-            let imgTitle = this.add.text(0, 0, "Images");
+            /*let imgTitle = this.add.text(0, 0, "Images");
             imgTitle.setPosition(-imgTitle.width * 1.5, 120);
             imgTitle.setFontSize(36);
-            imgTitle.setColor("black");
+            imgTitle.setColor("black");*/
             //this.menu.add(imgTitle);
-            this.albumContainer.add(imgTitle);
+            //this.albumContainer.add(imgTitle);
 
             var previousX = -200;
 
+            let column = 0;
+            let rowLimit = 5;
+            let row = 1;
+
             this.images.forEach(element => {
-                let img = this.add.image(0, 0, element[0])
+                let img = this.add.image(previousX, 50 + 100*row, element[0])
                 this.albumContainer.add(img);
-                img.setPosition(previousX, 220);
+                //img.setPosition(previousX, 50 + 100*row);
                 previousX += 100;
 
                 var pressed = false;
+
+                column++;
+
+                if(column >= rowLimit)
+                {
+                    row++;
+                    column = 0;
+                    previousX = -200;
+                }
 
                 img.setInteractive();
 

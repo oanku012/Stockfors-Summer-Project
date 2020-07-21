@@ -269,9 +269,6 @@ class MuistiPeliScene extends Phaser.Scene {
 
                 if (this.openedCards.length == 2) {
 
-                    //console.log(this.openedCards[0].frontIMG.src);
-                    //console.log(this.openedCards[1].frontIMG.src);
-
                     //Close cards with a delay if they are not the same, otherwise check if all cards have been revealed
                     if (this.openedCards[0].frontIMG.src != this.openedCards[1].frontIMG.src) {
 
@@ -412,13 +409,14 @@ class MuistiPeliScene extends Phaser.Scene {
     }
 
     update() {
+
+        //Dom elements are hidden when options are opened
         if (optionsButton.open && this.visible) {
 
             this.menuElements.forEach(element => {
                 if (element) {
                     element.setVisible(false);
                     element.disableInteractive();
-                    //console.log(item);
                 }
             }, this);
 
@@ -430,22 +428,6 @@ class MuistiPeliScene extends Phaser.Scene {
                 }
 
             }, this);
-
-            /*for (let i = 0; i < this.menuElements.length; i++) {
-                if (this.menuElements[i]) {
-                    this.menuElements[i].setVisible(false);
-                    this.menuElements[i].disableInteractive();
-                    //console.log(this.menuElements[i]);
-                }
-            }
-
-            for (let i = 0; i < this.cardElements.length; i++) {
-                if (this.cardElements[i]) {
-                    this.cardElements[i].setVisible(false);
-                    this.cardElements[i].disableInteractive();
-
-                }
-            }*/
 
             this.visible = false;
         }
@@ -464,20 +446,6 @@ class MuistiPeliScene extends Phaser.Scene {
                     element.setInteractive();
                 }
             }, this);
-
-            /*for (let i = 0; i < this.menuElements.length; i++) {
-                if (this.menuElements[i]) {
-                    this.menuElements[i].setVisible(true);
-                    this.menuElements[i].setInteractive();
-                }
-            }
-
-            for (let i = 0; i < this.cardElements.length; i++) {
-                if (this.cardElements[i]) {
-                    this.cardElements[i].setVisible(true);
-                    this.cardElements[i].setInteractive();
-                }
-            }*/
 
             this.visible = true;
 
