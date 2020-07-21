@@ -38,6 +38,12 @@ class BuildingScene extends Phaser.Scene {
     }
 
     create() {
+        this.infoTexts = [];
+        this.infoCards = [];
+        this.images = [];
+        this.switchableContainers = [];
+
+
         this.cameras.main.backgroundColor.setTo(255, 255, 255);
 
         // Get title and description from a json file
@@ -73,8 +79,6 @@ class BuildingScene extends Phaser.Scene {
         // Menu
         this.menuBG = this.add.sprite(0, 0, 'MenuAtlas', 'UI Pohjat/InsideVaaka');
         this.menu = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY, [this.menuBG]).setScale(0.7);
-
-        //this.menu.setSize(this.menuBG.width, this.menuBG.height);
 
         // title and description
         let title = this.add.text(0, -350, this.title);
@@ -213,9 +217,7 @@ class BuildingScene extends Phaser.Scene {
 
 
         this.exitButton = CreateTextButton(this, (-this.menuBG.width / 2) + 200, (this.menuBG.height / 2) - 100, 'UI Buttons/Takaisin', 'Takaisin');
-        //this.add.sprite((-this.menuBG.width / 2) + 200, (this.menuBG.height / 2) - 100, 'MenuAtlas', 'UI Buttons/Takaisin');
-        //this.exitButton = this.add.container((-this.menuBG.width / 2) + 200, (this.menuBG.height / 2) - 100, [exitButtonBG]);
-        //this.exitButton.setSize(exitButtonBG.width, exitButtonBG.height);
+        
         this.menu.add(this.exitButton);
 
         /*let exitButtonBG = this.exitButton.bg;
@@ -266,14 +268,10 @@ class BuildingScene extends Phaser.Scene {
                 }
             }, this);
 
-            //this.menu.add(this.minipeliButton);
-
             this.menuButtons.add(this.minipeliButton);
 
             buttonsAdded++;
         }
-
-        //console.log(this.minipeliButton.width/2);
 
         //Just for testing
         //this.panoramas = true;
@@ -284,8 +282,6 @@ class BuildingScene extends Phaser.Scene {
             this.panoramaButton.on('pointerup', function () {
                 //Start panorama here
             }, this);
-
-            //this.menu.add(this.panoramaButton);
 
             this.menuButtons.add(this.panoramaButton);
 
@@ -300,8 +296,6 @@ class BuildingScene extends Phaser.Scene {
             }
         }, this);
 
-        //this.menu.add(this.infoButton);
-
         this.menuButtons.add(this.infoButton);
 
         buttonsAdded++;
@@ -314,8 +308,6 @@ class BuildingScene extends Phaser.Scene {
             }
 
         }, this);
-
-        //this.menu.add(this.albumButton);
 
         this.menuButtons.add(this.albumButton);
 
@@ -336,14 +328,12 @@ class BuildingScene extends Phaser.Scene {
                 button.defaultFrame = button.frame.name;
 
                 button.on('pointerdown', function () {
-                    //button.setTexture('MenuAtlas', button.defaultFrame + '_Pressed');
                     button.setTint(0xd5d1c7);
                     button.pressed = true;
                 }, this);
 
                 button.on('pointerout', function () {
                     if (this.input.activePointer.isDown) {
-                        //button.setTexture('MenuAtlas', button.defaultFrame);¨
                         button.clearTint();
                         button.pressed = false;
                     }
@@ -377,7 +367,6 @@ class BuildingScene extends Phaser.Scene {
     CreateInfoContainer() {
         this.infoContainer = this.add.container(0, 0);
 
-
         this.infoTexts.forEach(infoText =>{
             let infoCard = this.CreateInfoCard(infoText);
 
@@ -385,7 +374,7 @@ class BuildingScene extends Phaser.Scene {
 
             this.infoContainer.add([infoCard, infoCard.description]);
 
-            console.log(infoText);
+            //console.log(infoText);
         }, this);
 
         let arrowButtonForward = this.add.sprite(500, 0, 'MenuAtlas', 'UI Buttons/Nuoli');
@@ -405,12 +394,12 @@ class BuildingScene extends Phaser.Scene {
             element.on('pointerdown', function () {
                 element.pressed = true;
                 element.setTint(0xd5d1c7);
-            })
+            });
 
             element.on('pointerout', function () {
                 element.pressed = false;
                 element.clearTint();
-            })
+            });
 
             element.on('pointerup', function () {
                 
@@ -439,6 +428,8 @@ class BuildingScene extends Phaser.Scene {
 
     CreateInfoCard(text)
     {
+        
+
         let infoCard = this.add.sprite(0, 0, 'MenuAtlas', 'UI Pohjat/InsideVaaka').setScale(0.45, 0.6);
 
         infoCard.description = this.make.text({
@@ -453,7 +444,7 @@ class BuildingScene extends Phaser.Scene {
             }
         });
 
-        
+        console.log('Card created with text: ' + text);
 
         return infoCard;
     }
@@ -467,6 +458,8 @@ class BuildingScene extends Phaser.Scene {
 
         this.infoCards[cardIndex].setVisible(true);
         this.infoCards[cardIndex].description.setVisible(true);
+
+        console.log('Changed to: ' + cardIndex);
     }
 
     CreateAlbum() {
