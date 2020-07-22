@@ -167,7 +167,7 @@ class OpeningScene extends Phaser.Scene {
 
         this.infoText = this.make.text({
             x: 0,
-            y: -100,
+            y: -200,
             text: this.data['OpeningText'],
             origin: { x: 0.5, y: 0.5 },
             style: {
@@ -284,7 +284,7 @@ class OpeningScene extends Phaser.Scene {
 
         this.helpText = this.make.text({
             x: 0,
-            y: -100,
+            y: -200,
             text: this.data['HelpText'],
             origin: { x: 0.5, y: 0.5 },
             style: {

@@ -47,15 +47,15 @@ class BuildingScene extends Phaser.Scene {
 
         this.cameras.main.backgroundColor.setTo(255, 255, 255);
 
-        // Get title and description from a json file
-        var data = this.cache.json.get('buildingData');
+        // Get text data from a json file
+        this.data = this.cache.json.get('buildingData');
 
-        console.log(data);
+        console.log(this.data);
 
-        if (data[this.name].Title != null && data[this.name].InfoCards != null) {
-            this.title = data[this.name].Title;
+        if (this.data[this.name].Title != null && this.data[this.name].InfoCards != null) {
+            this.title = this.data[this.name].Title;
 
-            this.infoTexts = data[this.name].InfoCards;
+            this.infoTexts = this.data[this.name].InfoCards;
 
             console.log('Title added: ' + this.title);
         }
@@ -104,66 +104,52 @@ class BuildingScene extends Phaser.Scene {
         title.setPosition(-title.width * .7, -680);
         title.setColor("black");
 
-        let textX = -200;
+        let textX = -50;
+
+        let style = {
+            font: '34px Arial',
+            fill: 'black',
+            wordWrap: { width: 600 }
+        };
 
         let infoDescription = this.make.text({
             x: textX,
             y: -433,
-            text: 'Diibadaaba',
+            text: this.data['Ohjeet'].InfoCards,
             origin: { x: 0.5, y: 0.5 },
-            style: {
-                font: '34px Arial',
-                fill: 'black',
-                wordWrap: { width: 500 }
-            }
+            style: style
         });
 
         let albumDescription = this.make.text({
             x: textX,
             y: -247,
-            text: 'Diibadaaba',
+            text: this.data['Ohjeet'].Album,
             origin: { x: 0.5, y: 0.5 },
-            style: {
-                font: '34px Arial',
-                fill: 'black',
-                wordWrap: { width: 500 }
-            }
+            style: style
         });
 
         let panoDescription = this.make.text({
             x: textX,
             y: -67,
-            text: 'Diibadaaba',
+            text: this.data['Ohjeet'].Panoramas,
             origin: { x: 0.5, y: 0.5 },
-            style: {
-                font: '34px Arial',
-                fill: 'black',
-                wordWrap: { width: 500 }
-            }
+            style: style
         });
 
         let gameDescription = this.make.text({
             x: textX,
             y: 120,
-            text: 'Diibadaaba',
+            text: this.data['Ohjeet'].Game,
             origin: { x: 0.5, y: 0.5 },
-            style: {
-                font: '34px Arial',
-                fill: 'black',
-                wordWrap: { width: 500 }
-            }
+            style: style
         });
 
         let webDescription = this.make.text({
             x: textX,
             y: 310,
-            text: 'Diibadaaba',
+            text: this.data['Ohjeet'].Web,
             origin: { x: 0.5, y: 0.5 },
-            style: {
-                font: '34px Arial',
-                fill: 'black',
-                wordWrap: { width: 500 }
-            }
+            style: style
         });
 
         this.ohje.setVisible(false);
@@ -393,8 +379,8 @@ class BuildingScene extends Phaser.Scene {
             //console.log(infoText);
         }, this);
 
-        let arrowButtonForward = this.add.sprite(500, 0, 'MenuAtlas', 'UI Buttons/Nuoli');
-        let arrowButtonBackward = this.add.sprite(-500, 0, 'MenuAtlas', 'UI Buttons/Nuoli').setFlipX(true);
+        let arrowButtonForward = this.add.sprite(600, 0, 'MenuAtlas', 'UI Buttons/Nuoli');
+        let arrowButtonBackward = this.add.sprite(-600, 0, 'MenuAtlas', 'UI Buttons/Nuoli').setFlipX(true);
 
         //this.infoContainer.add(this.infoCards);
 
@@ -442,7 +428,7 @@ class BuildingScene extends Phaser.Scene {
     CreateInfoCard(text) {
 
 
-        let infoCard = this.add.sprite(0, 0, 'MenuAtlas', 'UI Pohjat/InsideVaaka').setScale(0.45, 0.6);
+        let infoCard = this.add.sprite(0, 0, 'MenuAtlas', 'UI Pohjat/InsideVaaka').setScale(0.5, 0.68);
 
         infoCard.description = this.make.text({
             x: 0,
@@ -452,7 +438,7 @@ class BuildingScene extends Phaser.Scene {
             style: {
                 font: '34px Arial',
                 fill: 'black',
-                wordWrap: { width: 500 }
+                wordWrap: { width: 780 }
             }
         });
 
