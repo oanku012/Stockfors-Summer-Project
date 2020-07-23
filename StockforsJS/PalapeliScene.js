@@ -106,20 +106,20 @@ class PalapeliScene extends Phaser.Scene {
         {
             // Make sure the photos used for the game have the same resolutions that are used here
             case this.difficulties.EASY:
-                this.BOARD_COLS = Math.floor(800 / this.PIECE_WIDTH);
+                this.BOARD_COLS = Math.floor(600 / this.PIECE_WIDTH);
                 this.BOARD_ROWS = Math.floor(600 / this.PIECE_HEIGHT);
                 console.log("EASY game started");
                 break;
 
             case this.difficulties.MEDIUM:
-                this.BOARD_COLS = Math.floor(1280 / this.PIECE_WIDTH);
-                this.BOARD_ROWS = Math.floor(960 / this.PIECE_HEIGHT);
+                this.BOARD_COLS = Math.floor(800 / this.PIECE_WIDTH);
+                this.BOARD_ROWS = Math.floor(600 / this.PIECE_HEIGHT);
                 console.log("MEDIUM game started");
                 break;
 
             case this.difficulties.HARD:
-                this.BOARD_COLS = Math.floor(1600 / this.PIECE_WIDTH);
-                this.BOARD_ROWS = Math.floor(1200 / this.PIECE_HEIGHT);
+                this.BOARD_COLS = Math.floor(800 / this.PIECE_WIDTH);
+                this.BOARD_ROWS = Math.floor(800 / this.PIECE_HEIGHT);
                 console.log("HARD game started");
                 break;
         }
@@ -159,7 +159,7 @@ class PalapeliScene extends Phaser.Scene {
                 }
                 else
                 {
-                    piece = this.piecesGroup.create(j * this.PIECE_WIDTH, i * this.PIECE_HEIGHT, 'blackPiece');
+                    piece = this.piecesGroup.create(j * this.PIECE_WIDTH, i * this.PIECE_HEIGHT, 'blackPiece', 0, false);
                     piece.black = true;
                 }
 
@@ -174,6 +174,7 @@ class PalapeliScene extends Phaser.Scene {
                 piecesIndex++;
             }
         }
+
     }
 
     selectPiece(piece) {
