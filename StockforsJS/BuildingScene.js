@@ -104,7 +104,7 @@ class BuildingScene extends Phaser.Scene {
         title.setPosition(-title.width * .7, -680);
         title.setColor("black");
 
-        let textX = -50;
+        let textX = -320;
 
         let style = {
             font: '34px Arial',
@@ -116,7 +116,7 @@ class BuildingScene extends Phaser.Scene {
             x: textX,
             y: -433,
             text: this.data['Ohjeet'].InfoCards,
-            origin: { x: 0.5, y: 0.5 },
+            origin: { x: 0, y: 0.5 },
             style: style
         });
 
@@ -124,7 +124,7 @@ class BuildingScene extends Phaser.Scene {
             x: textX,
             y: -247,
             text: this.data['Ohjeet'].Album,
-            origin: { x: 0.5, y: 0.5 },
+            origin: { x: 0, y: 0.5 },
             style: style
         });
 
@@ -132,7 +132,7 @@ class BuildingScene extends Phaser.Scene {
             x: textX,
             y: -67,
             text: this.data['Ohjeet'].Panoramas,
-            origin: { x: 0.5, y: 0.5 },
+            origin: { x: 0, y: 0.5 },
             style: style
         });
 
@@ -140,7 +140,7 @@ class BuildingScene extends Phaser.Scene {
             x: textX,
             y: 120,
             text: this.data['Ohjeet'].Game,
-            origin: { x: 0.5, y: 0.5 },
+            origin: { x: 0, y: 0.5 },
             style: style
         });
 
@@ -148,7 +148,7 @@ class BuildingScene extends Phaser.Scene {
             x: textX,
             y: 310,
             text: this.data['Ohjeet'].Web,
-            origin: { x: 0.5, y: 0.5 },
+            origin: { x: 0, y: 0.5 },
             style: style
         });
 
