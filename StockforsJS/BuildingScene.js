@@ -5,7 +5,7 @@ class BuildingScene extends Phaser.Scene {
         this.name;
 
         this.title = 'Placeholder title';
-        this.ohjeTitle = 'Placeholder ohje';
+        //this.ohjeTitle = 'Placeholder ohje';
 
 
         //this.playerSpawnPosition = {};
@@ -99,7 +99,7 @@ class BuildingScene extends Phaser.Scene {
         this.ohje = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY, [this.ohjeBG]).setScale(0.56);
 
         // title
-        let title = this.add.text(0, -450, this.ohjeTitle);
+        let title = this.add.text(0, -450, this.data['Ohjeet'].Title);
         title.setFontSize(64);
         title.setPosition(-title.width * .7, -680);
         title.setColor("black");

@@ -16,6 +16,7 @@
           "Album": "Images here somehow"
      },
      "Ohjeet": {
+          "Title" : "Ohjeet",
           "InfoCards": "Infokortit. Infokortit sisältävät yleistietoa kohteesta ja sen historiasta.",
           "Album": "Albumi. Kuvia kohteesta.",
           "Panoramas": "Panoraama. 360 asteen panoraamanäkymä kohteesta.",

@@ -11,17 +11,26 @@ class OpeningScene extends Phaser.Scene {
     }
 
     preload() {
-        // Make sure to remove all localization data before loading any
-        this.cache.json.remove('mainMenuData');
-        this.cache.json.remove('buildingData');
 
-        // Load JSON data
-        var path = ("Localization/" + config.language + "/MainMenu.json");
-        this.load.json('mainMenuData', path);
+        //Only loaded when languagechanged is false(which it is by default) so that it doesn't load unnecessarily when changing the language from the options menu
+        if (!languageChanged) {
+           // Make sure to remove all localization data before loading any
+            this.cache.json.remove('mainMenuData');
+            this.cache.json.remove('buildingData');
 
-        // Json data for all building info
-        var path = ("Localization/" + config.language + "/Buildings.json");
-        this.load.json('buildingData', path);
+            // Load JSON data
+            var path = ("Localization/" + config.language + "/MainMenu.json");
+            this.load.json('mainMenuData', path);
+
+            // Json data for all building info
+            var path = ("Localization/" + config.language + "/Buildings.json");
+            this.load.json('buildingData', path);
+
+            console.log('Language loaded from opening scene.');
+
+            
+        }
+
 
         // This stuff is now loaded in assets.json
         /*
@@ -57,6 +66,8 @@ class OpeningScene extends Phaser.Scene {
         else {
             this.languageChosen = false;
         }
+
+        //console.log(this.languageChosen);
     }
 
     create() {
@@ -76,6 +87,8 @@ class OpeningScene extends Phaser.Scene {
             this.mainMenuContainer.setVisible(true);
 
             this.scene.run('UI');
+
+            this.languageChosen = false;
 
         }
         else {
@@ -253,8 +266,7 @@ class OpeningScene extends Phaser.Scene {
             console.log('Saved data cleared');
         });
 
-        if(!savedGame)
-        {
+        if (!savedGame) {
             this.continue.setVisible(false);
 
             this.newGame.setPosition(0, 700);
@@ -317,14 +329,14 @@ class OpeningScene extends Phaser.Scene {
 
                 //Some of this stuff is now done in the createtextbutton function so they're commented off
 
-                if(element.bg == undefined){
+                if (element.bg == undefined) {
                     element.setInteractive();
                     element.pressed = false;
                 }
-                
+
                 element.on('pointerdown', function () {
                     //element.pressed = true;
-                    
+
                     if (element.bg) {
                         //element.bg.setTint(0xd5d1c7);
                     }
@@ -347,7 +359,7 @@ class OpeningScene extends Phaser.Scene {
                 }, this);
 
                 element.on('pointerup', function () {
-                   
+
                     if (element.bg) {
                         //element.bg.clearTint();
                     }

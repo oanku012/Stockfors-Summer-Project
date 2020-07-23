@@ -17,6 +17,7 @@
           "Album": "Images here somehow"
      },
      "Ohjeet": {
+          "Title" : "Instructions",
           "InfoCards": "Info cards. Info cards contain general information about the location and its history.",
           "Album": "Album. Pictures taken at the location.",
           "Panoramas": "Panorama. 360-degree panorama taken at the location.",

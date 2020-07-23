@@ -1,3 +1,6 @@
+//Bool used to indicate when language is being changed
+var languageChanged = false;
+
 class OptionsMenuScene extends Phaser.Scene {
     constructor() {
         super('OptionsMenuScene');
@@ -9,6 +12,23 @@ class OptionsMenuScene extends Phaser.Scene {
 
     preload() {
 
+        if (languageChanged) {
+            // Make sure to remove all localization data before loading any
+            this.cache.json.remove('mainMenuData');
+            this.cache.json.remove('buildingData');
+
+            // Load JSON data
+            var path = ("Localization/" + config.language + "/MainMenu.json");
+            this.load.json('mainMenuData', path);
+
+            // Json data for all building info
+            var path = ("Localization/" + config.language + "/Buildings.json");
+            this.load.json('buildingData', path);
+
+            //languageChanged = false;
+
+            console.log('Language loaded');
+        }
     }
 
     create() {
@@ -205,15 +225,34 @@ class OptionsMenuScene extends Phaser.Scene {
         // Language button functionality
         this.fi.on('pointerup', function () {
             if (this.fi.pressed == true) {
+                languageChanged = true;
+
                 config.language = 'FI';
                 console.log('Language set to Finnish.');
-                //this.scene.restart(true);
+
+                //Options is restarted first so that it loads the correct language
+                this.scene.restart();
 
                 let activeScenes = game.scene.getScenes(true);
 
-                activeScenes.forEach(function(scene){
-                    scene.scene.restart(true);
+
+                activeScenes.forEach(function (scene) {
+                    //Condition so that options isn't restarted twice
+                    if (scene != this) {
+                        scene.time.delayedCall(100, function () {
+                            scene.scene.restart();
+                            console.log('Scene restarted to change language.');
+                            
+                            //Not the most elegant solution, but this is done with a delay so that it's not set to false before opening scene restarts and stops the opening scene from loading the language separately
+                            this.time.delayedCall(100, function(){
+                                languageChanged = false;
+                            }, null, this);
+                        }, null, this);
+                    }
                 }, this);
+
+
+
             }
         }, this);
 
@@ -235,12 +274,32 @@ class OptionsMenuScene extends Phaser.Scene {
         // Language button functionality
         this.eng.on('pointerup', function () {
             if (this.eng.pressed == true) {
+                languageChanged = true;
+
                 config.language = 'EN';
                 console.log('Language set to English.');
+
+                //Options is restarted first so that it loads the correct language
+                this.scene.restart();
+
                 let activeScenes = game.scene.getScenes(true);
 
-                activeScenes.forEach(function(scene){
-                    scene.scene.restart(true);
+                activeScenes.forEach(function (scene) {
+                    //Condition so that options isn't restarted twice
+                    if (scene != this) {
+                        scene.time.delayedCall(100, function () {
+                            scene.scene.restart();
+                            console.log('Scene restarted to change language.');
+                            
+                            //Not the most elegant solution, but this is done with a delay so that it's not set to false before opening scene restarts and stops the opening scene from loading the language separately
+                            this.time.delayedCall(100, function(){
+                                languageChanged = false;
+                            }, null, this);
+
+                           
+                            
+                        }, null, this);
+                    }
                 }, this);
             }
         }, this);
