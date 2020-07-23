@@ -3,6 +3,15 @@ class PalapeliScene extends Phaser.Scene {
     constructor() {
         super('PalapeliScene');
 
+        this.difficulties = {
+            EASY: 'easy',
+            MEDIUM: 'medium',
+            HARD: 'hard'
+        }
+
+        this.difficulty;
+
+
         this.PIECE_WIDTH = 200;
         this.PIECE_HEIGHT = 200;
         this.BOARD_COLS;
@@ -14,17 +23,61 @@ class PalapeliScene extends Phaser.Scene {
 
         this.board;
 
+
         this.gameWon = false;
     }
 
     preload() {
         // Probably move this to assets.json once the game is working
-        this.load.spritesheet("puzzleBackground", "Assets/images/palapeli/patruunantalo.jpg", { "frameWidth": this.PIECE_WIDTH, "frameHeight": this.PIECE_HEIGHT } );
+        this.load.spritesheet("puzzleEasy", "Assets/images/palapeli/patruunantalo_easy.jpg", { "frameWidth": this.PIECE_WIDTH, "frameHeight": this.PIECE_HEIGHT } );
+        this.load.spritesheet("puzzleMedium", "Assets/images/palapeli/patruunantalo_medium.jpg", { "frameWidth": this.PIECE_WIDTH, "frameHeight": this.PIECE_HEIGHT } );
+        this.load.spritesheet("puzzleHard", "Assets/images/palapeli/patruunantalo_hard.jpg", { "frameWidth": this.PIECE_WIDTH, "frameHeight": this.PIECE_HEIGHT } );
     }
 
     create() {
+        
+        this.createMainMenu();
 
-        this.prepareBoard();
+    }
+
+    createMainMenu()
+    {
+        // difficulty menu
+        let menu = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY);
+        let menuBG = this.add.sprite(0, 0, 'menuBG');
+        menu.add(menuBG);
+
+        let easyButton = CreateTextButton(this, 0, -200, 'UI Buttons/Nappi', 'Easy');
+        let mediumButton = CreateTextButton(this, 0, 0, 'UI Buttons/Nappi', 'Medium');
+        let hardButton = CreateTextButton(this, 0, 200, 'UI Buttons/Nappi', 'Hard');
+        menu.add([easyButton, mediumButton, hardButton]);
+
+        easyButton.on('pointerup', function () {
+            if (easyButton.pressed) {
+                this.setupGame(this.difficulties.EASY);
+                menu.destroy();
+            }
+        }, this);
+
+        mediumButton.on('pointerup', function () {
+            if (mediumButton.pressed) {
+                this.setupGame(this.difficulties.MEDIUM);
+                menu.destroy();
+            }
+        }, this);
+
+        hardButton.on('pointerup', function () {
+            if (hardButton.pressed) {
+                this.setupGame(this.difficulties.HARD);
+                menu.destroy();
+            }
+        }, this);
+
+    }
+
+    setupGame(difficulty)
+    {
+        this.prepareBoard(difficulty);
 
         // code for clicking on pieces
         this.input.on('gameobjectdown', function (pointer, gameObject) {
@@ -38,21 +91,37 @@ class PalapeliScene extends Phaser.Scene {
         // Win game button for testing, remove when finished
         var keyObj = this.input.keyboard.addKey('W');
             keyObj.on('up', function(event) { this.finishGame(); }, this);
-
     }
 
 
-    prepareBoard() {
+    prepareBoard(difficulty) {
         this.gameWon = false;
 
         var piecesIndex = 0,
             i, j,
             piece;
 
+        switch (difficulty)
+        {
+            case this.difficulties.EASY:
+                this.BOARD_COLS = Math.floor(800 / this.PIECE_WIDTH);
+                this.BOARD_ROWS = Math.floor(600 / this.PIECE_HEIGHT);
+                console.log("EASY game started");
+                break;
+
+            case this.difficulties.MEDIUM:
+                this.BOARD_COLS = Math.floor(1280 / this.PIECE_WIDTH);
+                this.BOARD_ROWS = Math.floor(960 / this.PIECE_HEIGHT);
+                console.log("MEDIUM game started");
+                break;
+
+            case this.difficulties.HARD:
+                this.BOARD_COLS = Math.floor(1600 / this.PIECE_WIDTH);
+                this.BOARD_ROWS = Math.floor(1200 / this.PIECE_HEIGHT);
+                console.log("HARD game started");
+                break;
+        }
         
-        // currently set for 800x600 res since that seems to be the only one the base background works with
-        this.BOARD_COLS = Math.floor(800 / this.PIECE_WIDTH);
-        this.BOARD_ROWS = Math.floor(600 / this.PIECE_HEIGHT);
         
 
         this.piecesAmount = this.BOARD_COLS * this.BOARD_ROWS;
@@ -70,7 +139,21 @@ class PalapeliScene extends Phaser.Scene {
             {
                 if (this.shuffledIndexArray[piecesIndex])
                 {
-                    piece = this.piecesGroup.create(j * this.PIECE_WIDTH, i * this.PIECE_HEIGHT, "puzzleBackground", this.shuffledIndexArray[piecesIndex]);
+
+                    switch (difficulty)
+                    {
+                        case this.difficulties.EASY:
+                            piece = this.piecesGroup.create(j * this.PIECE_WIDTH, i * this.PIECE_HEIGHT, "puzzleEasy", this.shuffledIndexArray[piecesIndex]);
+                            break;
+
+                        case this.difficulties.MEDIUM:
+                            piece = this.piecesGroup.create(j * this.PIECE_WIDTH, i * this.PIECE_HEIGHT, "puzzleMedium", this.shuffledIndexArray[piecesIndex]);
+                            break;
+
+                        case this.difficulties.HARD:
+                            piece = this.piecesGroup.create(j * this.PIECE_WIDTH, i * this.PIECE_HEIGHT, "puzzleHard", this.shuffledIndexArray[piecesIndex]);
+                            break;
+                    }
                 }
                 else
                 {
@@ -89,10 +172,6 @@ class PalapeliScene extends Phaser.Scene {
                 piecesIndex++;
             }
         }
-
-        this.piecesGroup.children.each(function(element) {
-            console.log(element.name);
-        });
     }
 
     selectPiece(piece) {
