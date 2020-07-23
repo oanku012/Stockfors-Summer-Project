@@ -32,6 +32,7 @@ class PalapeliScene extends Phaser.Scene {
         this.load.spritesheet("puzzleEasy", "Assets/images/palapeli/patruunantalo_easy.jpg", { "frameWidth": this.PIECE_WIDTH, "frameHeight": this.PIECE_HEIGHT } );
         this.load.spritesheet("puzzleMedium", "Assets/images/palapeli/patruunantalo_medium.jpg", { "frameWidth": this.PIECE_WIDTH, "frameHeight": this.PIECE_HEIGHT } );
         this.load.spritesheet("puzzleHard", "Assets/images/palapeli/patruunantalo_hard.jpg", { "frameWidth": this.PIECE_WIDTH, "frameHeight": this.PIECE_HEIGHT } );
+        this.load.spritesheet("blackPiece", "Assets/images/palapeli/black.jpg", { "frameWidth": this.PIECE_WIDTH, "frameHeight": this.PIECE_HEIGHT } );
     }
 
     create() {
@@ -103,6 +104,7 @@ class PalapeliScene extends Phaser.Scene {
 
         switch (difficulty)
         {
+            // Make sure the photos used for the game have the same resolutions that are used here
             case this.difficulties.EASY:
                 this.BOARD_COLS = Math.floor(800 / this.PIECE_WIDTH);
                 this.BOARD_ROWS = Math.floor(600 / this.PIECE_HEIGHT);
@@ -130,8 +132,8 @@ class PalapeliScene extends Phaser.Scene {
 
         this.piecesGroup = this.add.group();
 
-        this.board = this.add.container(this.cameras.main.centerX *.5, this.cameras.main.centerY *.5);
-        
+
+        this.board = this.add.container(this.cameras.main.centerX *.25, this.cameras.main.centerY *.25);
 
         for (i = 0; i < this.BOARD_ROWS; i++)
         {
@@ -157,7 +159,7 @@ class PalapeliScene extends Phaser.Scene {
                 }
                 else
                 {
-                    piece = this.piecesGroup.create(j * this.PIECE_WIDTH, i * this.PIECE_HEIGHT);
+                    piece = this.piecesGroup.create(j * this.PIECE_WIDTH, i * this.PIECE_HEIGHT, 'blackPiece');
                     piece.black = true;
                 }
 
