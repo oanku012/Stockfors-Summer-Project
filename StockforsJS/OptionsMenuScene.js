@@ -37,6 +37,7 @@ class OptionsMenuScene extends Phaser.Scene {
 
     create() {
 
+            this.scene.bringToTop();
         //this.time.delayedCall(100, function () {
             this.data = this.cache.json.get('optionsData');
 
