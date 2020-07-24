@@ -16,6 +16,7 @@ class OptionsMenuScene extends Phaser.Scene {
             // Make sure to remove all localization data before loading any
             this.cache.json.remove('mainMenuData');
             this.cache.json.remove('buildingData');
+            this.cache.json.remove('optionsData');
 
             // Load JSON data
             var path = ("Localization/" + config.language + "/MainMenu.json");
@@ -25,18 +26,26 @@ class OptionsMenuScene extends Phaser.Scene {
             var path = ("Localization/" + config.language + "/Buildings.json");
             this.load.json('buildingData', path);
 
-            //languageChanged = false;
+            // Json data for all options info
+            var path = ("Localization/" + config.language + "/OptionsMenu.json");
+            this.load.json('optionsData', path);
+
 
             console.log('Language loaded');
         }
     }
 
     create() {
-        this.createContainer();
-        this.createExitButton();
-        this.createOptionsMenu();
-        this.CreateFlags();
 
+        //this.time.delayedCall(100, function () {
+            this.data = this.cache.json.get('optionsData');
+
+            this.createContainer();
+            this.createExitButton();
+            this.createOptionsMenu();
+            this.CreateFlags();
+
+        //}, null, this);
 
         // Reorganize the UI when the game gets resized
         //this.scale.on('resize', this.resize, this);
@@ -72,16 +81,16 @@ class OptionsMenuScene extends Phaser.Scene {
 
         //The text align doesn't work on one line text
         this.musicButton = this.add.sprite(-400, firstRow, 'MenuAtlas', 'UI Buttons/CheckmarkON').setOrigin(0.5, 0.3);
-        this.musicText = this.add.text(-200, firstRow, 'Music Enabled \n ', { fontSize: fontsize, color: "black", align: 'center', origin: { x: 0.5, y: 0.5 } });
+        this.musicText = this.add.text(-200, firstRow, this.data['Music'], { fontSize: fontsize, color: "black", align: 'center', origin: { x: 0.5, y: 0.5 } });
         this.musicText.setPosition(-this.musicText.width * 0.5, firstRow);
 
         this.soundButton = this.add.image(-400, firstRow + rowGap, 'MenuAtlas', 'UI Buttons/CheckmarkON').setOrigin(0.5, 0.3);
-        this.soundText = this.add.text(-200, firstRow + rowGap, 'Sound Enabled \n ', { fontSize: fontsize, color: "black", align: 'center', origin: { x: 0.5, y: 0.5 } });
+        this.soundText = this.add.text(-200, firstRow + rowGap, this.data['Sound'], { fontSize: fontsize, color: "black", align: 'center', origin: { x: 0.5, y: 0.5 } });
         this.soundText.setPosition(-this.soundText.width * 0.5, firstRow + rowGap);
 
 
         this.fullScreenButton = this.add.image(-400, firstRow + rowGap * 2, 'MenuAtlas', 'UI Buttons/CheckmarkOFF').setOrigin(0.5, 0.3);
-        this.fullScreenText = this.add.text(-200, firstRow + rowGap * 2, 'Fullscreen \n ', { fontSize: fontsize, color: "black", align: 'center', origin: { x: 0.5, y: 0.5 } });
+        this.fullScreenText = this.add.text(-200, firstRow + rowGap * 2, this.data['Fullscreen'], { fontSize: fontsize, color: "black", align: 'center', origin: { x: 0.5, y: 0.5 } });
         this.fullScreenText.setPosition(-this.fullScreenText.width * 0.5, firstRow + rowGap * 2);
 
 
@@ -155,7 +164,7 @@ class OptionsMenuScene extends Phaser.Scene {
     createExitButton() {
         // Exit button
         //let exitButton = this.add.sprite(35, 400, 'MenuAtlas', 'UI Buttons/Sulje');
-        this.exitButton = CreateTextButton(this, 0, 430, 'UI Buttons/Nappi', 'Sulje');
+        this.exitButton = CreateTextButton(this, 0, 430, 'UI Buttons/Nappi', this.data['Close']);
 
         this.exitButton.setPosition(-this.exitButton.width * 0.05, 430);
 
@@ -242,16 +251,21 @@ class OptionsMenuScene extends Phaser.Scene {
                         scene.time.delayedCall(100, function () {
 
                             //If scene includes the player then save the current position of the player before restarting
-                            if(scene.player)
+                            if (scene.player) {
+                                saveGame({ currentMap: scene.scene.key, playerX: scene.player.x, playerY: scene.player.y });
+                                scene.scene.restart({ x: gameState.playerX, y: gameState.playerY });
+                            }
+                            else
                             {
-                                saveGame({currentMap: scene.scene.key, playerX: scene.player.x, playerY: scene.player.y});
+                                scene.scene.restart();
+
                             }
 
-                            scene.scene.restart({ x: gameState.playerX, y: gameState.playerY });
-                            console.log('Scene restarted to change language.');
                             
+                            console.log('Scene restarted to change language.');
+
                             //Not the most elegant solution, but this is done with a delay so that it's not set to false before opening scene restarts and stops the opening scene from loading the language separately
-                            this.time.delayedCall(100, function(){
+                            this.time.delayedCall(100, function () {
                                 languageChanged = false;
                             }, null, this);
                         }, null, this);
@@ -295,23 +309,26 @@ class OptionsMenuScene extends Phaser.Scene {
                     //Condition so that options isn't restarted twice
                     if (scene != this) {
                         scene.time.delayedCall(100, function () {
-                            
+
                             //If scene includes the player then save the current position of the player before restarting
-                            if(scene.player)
+                            if (scene.player) {
+                                saveGame({ currentMap: scene.scene.key, playerX: scene.player.x, playerY: scene.player.y });
+                                scene.scene.restart({ x: gameState.playerX, y: gameState.playerY });
+                            }
+                            else
                             {
-                                saveGame({currentMap: scene.scene.key, playerX: scene.player.x, playerY: scene.player.y});
+                                scene.scene.restart();
                             }
 
-                            scene.scene.restart({ x: gameState.playerX, y: gameState.playerY });
                             console.log('Scene restarted to change language.');
-                            
+
                             //Not the most elegant solution, but this is done with a delay so that it's not set to false before opening scene restarts and stops the opening scene from loading the language separately
-                            this.time.delayedCall(100, function(){
+                            this.time.delayedCall(100, function () {
                                 languageChanged = false;
                             }, null, this);
 
-                           
-                            
+
+
                         }, null, this);
                     }
                 }, this);

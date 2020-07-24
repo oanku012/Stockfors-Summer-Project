@@ -13,10 +13,11 @@ class OpeningScene extends Phaser.Scene {
     preload() {
 
         //Only loaded when languagechanged is false(which it is by default) so that it doesn't load unnecessarily when changing the language from the options menu
-        if (!languageChanged) {
+        if (languageChanged === false) {
            // Make sure to remove all localization data before loading any
             this.cache.json.remove('mainMenuData');
             this.cache.json.remove('buildingData');
+            this.cache.json.remove('optionsData');
 
             // Load JSON data
             var path = ("Localization/" + config.language + "/MainMenu.json");
@@ -25,6 +26,10 @@ class OpeningScene extends Phaser.Scene {
             // Json data for all building info
             var path = ("Localization/" + config.language + "/Buildings.json");
             this.load.json('buildingData', path);
+
+            // Json data for all options info
+            var path = ("Localization/" + config.language + "/OptionsMenu.json");
+            this.load.json('optionsData', path);
 
             console.log('Language loaded from opening scene.');
 
