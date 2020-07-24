@@ -229,7 +229,7 @@ class BuildingScene extends Phaser.Scene {
                 // empty images manually to prevent crash
                 this.images = [];
 
-                this.scene.start('StockforsScene', { x: gameState.playerX, y: gameState.playerY });
+                this.scene.start(gameState.currentMap, { x: gameState.playerX, y: gameState.playerY });
             }
         }, this);
     }

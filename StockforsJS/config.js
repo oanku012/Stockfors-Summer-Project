@@ -83,14 +83,28 @@ function saveGame(state = {
     MPScoreHard: gameState.MPScoreHard
 }) {
 
+    let oldGameState = JSON.parse(JSON.stringify(gameState));
+
     //Assigns values from function parameter to the gamestate without removing the existing values with a different key
     Object.assign(gameState, state);
 
-    localStorage.setItem('saveFile', JSON.stringify(gameState));
+    //Save only if the new game state is different from the old one
+    if (compareObjectValues(gameState, oldGameState) == false) {
+        localStorage.setItem('saveFile', JSON.stringify(gameState)); 
 
-    console.log('Game saved.');
+        console.log('Game saved.'); 
 
-    console.log(gameState);
+        //console.log(oldGameState);
+        console.log(gameState);
+
+    }
+    else
+    {
+        console.log('State has not changed, save cancelled.');
+
+        //console.log(oldGameState);
+        //console.log(gameState);
+    }
 
 }
 
@@ -105,6 +119,24 @@ function loadGame() {
     return file;
 
 };
+
+function compareObjectValues(obj1, obj2)
+{
+    let obj1Keys = Object.keys(obj1);
+    let obj2Keys = Object.keys(obj2);
+
+    if(obj1Keys.length !== obj2Keys.length){
+        return false;
+    }
+
+    for(let objKey of obj1Keys){
+        if(obj1[objKey] !== obj2[objKey]){
+            return false;
+        }
+    }
+
+    return true;
+}
 
 
 //Moved this here so the options menu could be added to the opening scene as well, some things like pointerOverUI only apply to map scenes
@@ -169,8 +201,7 @@ function createButton(posX, posY, scene, runOnTop, scrollFactor, scale, context,
                     button.open = true;
                 }
             }
-            else
-            {
+            else {
                 //Lets you close the scene if you press the button
                 context.scene.stop(scene);
                 button.open = false;
