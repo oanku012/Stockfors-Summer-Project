@@ -44,6 +44,8 @@ class MuistiPeliScene extends Phaser.Scene {
         //If all the dom elements are visible
         this.visible = true;
 
+        this.gameEnded = false;
+
         this.clicks = 0;
         this.cardSize = 0;
 
@@ -350,6 +352,8 @@ class MuistiPeliScene extends Phaser.Scene {
 
                                 //console.log('You won the game. Clicks: ' + this.clicks);
 
+                                this.gameEnded = true;
+
                                 this.HideCards(false);
 
                                 /*let winDiv = document.createElement('div');
@@ -497,13 +501,14 @@ class MuistiPeliScene extends Phaser.Scene {
             this.HideCards(false);
 
         }
-        else if (this.visible == false && optionsButton.open == false) {
+        else if (this.visible == false && optionsButton.open == false && this.gameEnded == false) {
 
             this.HideCards(true);
 
         }
     }
 
+    //If reveal cards is true then reveal cards
     HideCards(revealCards) {
         if (!revealCards) {
             this.cardElements.forEach(function (element) {
