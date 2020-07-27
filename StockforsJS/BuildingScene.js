@@ -48,7 +48,7 @@ class BuildingScene extends Phaser.Scene {
         this.cameras.main.backgroundColor.setTo(255, 255, 255);
 
         // Get text data from a json file
-        this.data = this.cache.json.get('buildingData');
+        this.data = this.cache.json.get('data').Buildings;
 
         console.log(this.data);
 

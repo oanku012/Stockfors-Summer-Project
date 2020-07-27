@@ -1,0 +1,53 @@
+{
+    "Buildings": {
+        "Patruunantalo": {
+            "Title": "Patruunantalo",
+            "InfoCards": [
+                "Patruunantalo oli alun perin rakennettu vuonna 1903 tehtaanjohtajan eli isännöitsijän asunnoksi. Huvilana se oli hyvin kartanomainen ja sisälsi monia konttoreita. Patruunantalon rakenne muuttui tehtaan tarpeiden mukaan, ja siihen saatettiin tarvittaessa rakentaa esimerkiksi lisää konttoreita. Stockforsin pääkonttori toimi tehtaan yhteydessä vuoteen 1918 saakka, jolloin se päätettiin siirtää Loviisaan.\n \nSota-aikana Patruunantalo toimi arestipaikkana isännöitsijälle. Punaisten päättäessä toteuttaa suunnitelmansa Lennart Baumgartnerin ja Georg Larssonin taposta, hakivat he juuri Patruunantalosta isännöitsijän kohtaamaan tuomionsa.\n \nTehtaiden lopetettua vuonna 1984 alue pääsi ränsistymään niin pahasti, että Patruunantalon päärakennuksen sisällä kasvoi koivuja. Alueen siirryttyä yksityiselle omistajalle, alettiin myös Patruunantaloa kunnostamaan. Remontissa pyrittiin entisöimään kartano ja sen tyyli mahdollisimman todentuntuisesti.",
+                "Patruunantalo toimi jonkin aikaa kartanohotellina, joka vaikutti sen sisustuselementteihin.\n \nMyöhemmin Patruunantalossa on toiminut hotelli- ja tilausravintola vuodesta 2003 lähtien. Patruunantalossa on muunneltavia koulutus-, kokous- ja juhlatiloja 5 – 100 henkilölle. Majoitustiloina Patruunantalossa toimii yhteensä 22 huonetta, jotka ovat jakautuneet kolmeen eri rakennukseen; Patruunantaloon, Hunajataloon (entinen talous- ja säilytystila viljalle ja ruualle) ja Paloasemaan. Patruunantalosta löytyy 8 majoitushuonetta kokoustilojen lisäksi, Viereisestä Hunajatalossa 10 majoitushuonetta ja Paloaseman yläkerrasta osa.\n \nPyhtään paloasema ja palokunta perustettiin aikoinaan juuri Stockforsin tehdasta varten. Myöhemmin palokunta on keskitetty tarpeen mukaan. Nykyisin paloasemalla pidetään kesäisin vaihtelevia näyttelyitä ja sen yläkerrasta löytyy majoitustiloja."
+            ],
+            "Album": "Images here somehow"
+        },
+        "Pakkausmuseo": {
+            "Title": "PakkausMuseo",
+            "InfoCards": [
+                "Pakkausmuseo card 1 FI",
+                "Pakkausmuseo card 2 FI"
+            ],
+            "Album": "Images here somehow"
+        },
+        "Ohjeet": {
+            "Title": "Ohjeet",
+            "InfoCards": "Infokortit. Infokortit sisältävät yleistietoa kohteesta ja sen historiasta.",
+            "Album": "Albumi. Kuvia kohteesta.",
+            "Panoramas": "Panoraama. 360 asteen panoraamanäkymä kohteesta.",
+            "Game": "Peli. Tietyistä kohteista löytyy erilaisia minipelejä, kuten muisti- tai palapelejä.",
+            "Web": "Verkkosivut. Tästä voit päästä kohteen yrityksen verkkosivuille."
+        }
+    },
+    "MainMenu": {
+        "OpeningHeader": "TERVETULOA STOCKFORS KARTALLA - NETTISOVELLUKSEEN",
+        "OpeningText": "Stockforsin hiomoalue on Pyhtäällä sijaitseva kulttuurihistoriallisesti rikas alue ja merkittävä osa sen historiaa. Puuhiomo oli 1960-luvulle asti Pyhtään suurin työllistäjä, joka vaikutti kirkonkylän kasvuun ja elämään huomattavasti.\n\nEntisöintitöiden jälkeen 2000-luvulla alue on täynnä pienyrityksiä, kulttuuria ja taidetta. Vuosittainen Stockfors Art Fair -taidenäyttely pidetään Stockforsin halleissa. Kaarihallia voi vuokrata tapahtumakäyttöön ja alueella toimii myös hotelli Patruunantalossa, pakkausmuseo sekä lintuhoitola.\n\nTämän sivuston tarkoituksena on tuoda alue jokaiselle tutuksi erilaisten tekstien, kuvien ja pelien avulla! ",
+        "HelpHeader": "OHJEET",
+        "HelpText": "Sovellus toimii keinona tutustua Pyhtään Stockforsin historialliseen tehdasalueeseen sekä alueella toimiviin yrityksiin. Tavoitteena on oppia alueen historiasta, miljööstä ja kulttuurista.\n\nPelaajahahmo liikkuu WASD-näppäimillä Stockforsin aluetta kuvaavalla kartalla. Hiirellä klikkaamalla taloja tai yrityksien logoja pääset tutustumaan niihin paremmin avautuvan infoikkunan avulla.\n\nInfoikkunassa pystyt lukemaan kohteen historiasta, katsomaan kuvia sekä kokeilemaan 360 asteen panoraamaa tilasta. Tietyistä kohteista löytyy myös erilaisia pelejä, kuten pala- ja muistipelejä Stockforsiin liittyen.",
+        "NewGame": "Aloita peli",
+        "ContinueGame": "Jatka peliä",
+        "Back": "Takaisin"
+    },
+    "OptionsMenu": {
+        "Title": "Asetukset",
+        "Close": "Sulje",
+        "Sound": "Äänet",
+        "Music": "Musiikki",
+        "Fullscreen": "Koko ruutu"
+    },
+    "Muistipeli": {
+        "Easy": "Helppo",
+        "Normal": "Normaali",
+        "Hard": "Vaikea",
+        "Exit": "Poistu",
+        "Win": "Voitit pelin. Kääntöjen määrä: ",
+        "HighScore": "Ennätys: ",
+        "Restart": "Aloita uudelleen."
+    }
+}

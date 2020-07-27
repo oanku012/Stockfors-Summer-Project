@@ -13,30 +13,34 @@ class OptionsMenuScene extends Phaser.Scene {
     preload() {
 
         if (languageChanged) {
-            // Make sure to remove all localization data before loading any
-            this.cache.json.remove('mainMenuData');
-            this.cache.json.remove('buildingData');
-            this.cache.json.remove('optionsData');
-            this.cache.json.remove('muistipeliData');
+            /*// Make sure to remove all localization data before loading any
+           this.cache.json.remove('mainMenuData');
+           this.cache.json.remove('buildingData');
+           this.cache.json.remove('optionsData');
+           this.cache.json.remove('muistipeliData');
 
-            // Load JSON data
-            var path = ("Localization/" + config.language + "/MainMenu.json");
-            this.load.json('mainMenuData', path);
+           // Load JSON data
+           var path = ("Localization/" + config.language + "/MainMenu.json");
+           this.load.json('mainMenuData', path);
 
-            // Json data for all building info
-            var path = ("Localization/" + config.language + "/Buildings.json");
-            this.load.json('buildingData', path);
+           // Json data for all building info
+           var path = ("Localization/" + config.language + "/Buildings.json");
+           this.load.json('buildingData', path);
 
-            // Json data for all options info
-            var path = ("Localization/" + config.language + "/OptionsMenu.json");
-            this.load.json('optionsData', path);
+           // Json data for all options info
+           var path = ("Localization/" + config.language + "/OptionsMenu.json");
+           this.load.json('optionsData', path);
 
-            // Json data for all muistipeli info
-            var path = ("Localization/" + config.language + "/Muistipeli.json");
-            this.load.json('muistipeliData', path);
+           // Json data for all muistipeli info
+           var path = ("Localization/" + config.language + "/Muistipeli.json");
+           this.load.json('muistipeliData', path);*/
+           
+           this.cache.json.remove('data');
 
+           var path = ("Localization/" + config.language + "/data.json");
+           this.load.json('data', path);
 
-            console.log('Language loaded');
+           console.log('Language loaded');
         }
     }
 
@@ -45,7 +49,7 @@ class OptionsMenuScene extends Phaser.Scene {
         optionsButton.open = true;
         this.scene.bringToTop();
         //this.time.delayedCall(100, function () {
-        this.data = this.cache.json.get('optionsData');
+        this.data = this.cache.json.get('data').OptionsMenu;
 
         this.createContainer();
         this.createExitButton();
@@ -68,7 +72,7 @@ class OptionsMenuScene extends Phaser.Scene {
         this.menuElements = this.add.container(40, 0);
 
         // title and description
-        let title = this.add.text(0, 0, this.title);
+        let title = this.add.text(0, 0, this.data.Title);
         title.setPosition(-title.width * 2, -350);
         title.setFontSize(48);
         title.setColor("black");

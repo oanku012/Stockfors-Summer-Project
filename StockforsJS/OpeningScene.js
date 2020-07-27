@@ -14,7 +14,7 @@ class OpeningScene extends Phaser.Scene {
 
         //Only loaded when languagechanged is false(which it is by default) so that it doesn't load unnecessarily when changing the language from the options menu
         if (languageChanged === false) {
-           // Make sure to remove all localization data before loading any
+           /*// Make sure to remove all localization data before loading any
            this.cache.json.remove('mainMenuData');
            this.cache.json.remove('buildingData');
            this.cache.json.remove('optionsData');
@@ -34,8 +34,12 @@ class OpeningScene extends Phaser.Scene {
 
            // Json data for all muistipeli info
            var path = ("Localization/" + config.language + "/Muistipeli.json");
-           this.load.json('muistipeliData', path);
+           this.load.json('muistipeliData', path);*/
 
+           this.cache.json.remove('data');
+
+           var path = ("Localization/" + config.language + "/data.json");
+           this.load.json('data', path);
 
            console.log('Language loaded');
 
@@ -85,7 +89,7 @@ class OpeningScene extends Phaser.Scene {
 
         this.cameras.main.backgroundColor.setTo(255, 255, 255);
 
-        this.data = this.cache.json.get('mainMenuData');
+        this.data = this.cache.json.get('data').MainMenu;
 
         this.CreateLanguageMenu();
 

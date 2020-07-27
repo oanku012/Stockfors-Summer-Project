@@ -1,0 +1,54 @@
+{
+    "Buildings": {
+        "Patruunantalo": {
+            "Title": "Patruunantalo",
+            "InfoCards": [
+                "Patruunantalo was originally build in 1903 as the factory manager’s house. As a villa it reminded of a manor and had many offices inside it. It was often remodelled after the current needs of the factory. The main office of Stockfors served in the vicinity of the factory until 1918, when it was moved to Loviisa. \n \nDuring the war, Patruunantalo served as a place of detention for the factory manager. As the Red Guards decided to execute their plan of killing Lennart Baumgartner and Georg Larsson, Patruunantalo was the place where the first the step -imprisoning the two- of the plan happened. \n \nAs the factories were shut down in 1984 the villa was so badly forgotten that birches were growing inside the estate. After the property was moved to a private owner the renovation of Patruunantalo began. The goal was to stay as true as possible to the original Patruunantalo and its style.",
+                "Patruunantalo worked as a manor hotel for a while, which had a lasting impact to the house’s décor.\n \nSince 2003, Patruunantalo has been a home to a hotel and a catering service.  Patruunantalo holds modifiable rooms for meetings, celebrations and educational purposes for 5-100 people. The 22 hotel rooms are split between three houses; Patruunantalo, Hunajatalo (which served as a stowage for food during the factory days) and Paloasema, ex fire station.\n \nThe fire station of Pyhtää and the fire department was founded for the Stockfors factory. Later the fire department was moved, and now the old fire station functions as a hotel and a place to hold exhibitions, especially during summers.",
+                "Patruunantalo card 3 ENG"
+            ],
+            "Album": "Images here somehow"
+        },
+        "Pakkausmuseo": {
+            "Title": "PakkausMuseo",
+            "InfoCards": [
+                "Pakkausmuseo card 1 ENG",
+                "Pakkausmuseo card 2 ENG"
+            ],
+            "Album": "Images here somehow"
+        },
+        "Ohjeet": {
+            "Title": "Instructions",
+            "InfoCards": "Info cards. Info cards contain general information about the location and its history.",
+            "Album": "Album. Pictures taken at the location.",
+            "Panoramas": "Panorama. 360-degree panorama taken at the location.",
+            "Game": "Minigame. Some locations include a minigame such as a memory- or sliding-puzzle.",
+            "Web": "Website. Some locations include a link to the website of the company associated with the location."
+        }
+    },
+    "MainMenu": {
+        "OpeningHeader": "WELCOME TO THE STOCKFORS ON THE MAP - WEB APPLICATION",
+        "OpeningText": "The Stockfors groundwood mill is a culture-historically rich and significant area located at Pyhtää. Until the 1960's the groundwood mill was the largest employer at Pyhtää and had a significant impact on the growth and life of Pyhtää's Kirkonkylä. \n \nAfter the area was refurbished, it's now full of small companies, culture and art. The annual Stockfors Art Fair is held at the halls of Stockfors. Kaarihalli (Arc hall) can be rented for use in events and the area also has a hotel located in Patruunantalo (Owner's house) and a package museum as well as a bird sanctuary. \n \nThe aim of this web application is to familiarize people with the area through text, images and games. ",
+        "HelpHeader": "INSTRUCTIONS",
+        "HelpText": "This app is meant to familiarize people with the historical industrial site of Stockfors in Pyhtää and the different companies acting in the area. The goal is to learn about the site's history and culture. \n\nThe game lets you explore a map depicting the Stockfors-area by moving around with a player character. You can move the player character by clicking or tapping where you want to go or by using the WASD- or arrow-keys. You can visit different buildings and locations around the map by moving the player to an entrance highlighted by a glowing effect. \n\nFrom there you can find more information about the history of the place you're visiting as well as pictures, 360 panoramas and in some places even different minigames. ",
+        "NewGame": "New game",
+        "ContinueGame": "Continue game",
+        "Back": "Back"
+    },
+    "OptionsMenu": {
+        "Title": "Options",
+        "Close": "Close",
+        "Sound": "Sound",
+        "Music": "Music",
+        "Fullscreen": "Fullscreen"
+    },
+    "Muistipeli": {
+        "Easy": "Easy",
+        "Normal": "Normal",
+        "Hard": "Hard",
+        "Exit": "Exit",
+        "Win": "You won the game. Number of reveals: ",
+        "HighScore": "High score: ",
+        "Restart": "Click to restart."
+    }
+}

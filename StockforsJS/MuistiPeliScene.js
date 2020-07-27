@@ -37,7 +37,9 @@ class MuistiPeliScene extends Phaser.Scene {
 
     create() {
 
-        this.data = this.cache.json.get('muistipeliData');
+        this.data = this.cache.json.get('data');
+
+        this.data = this.data.Muistipeli;
 
         console.log('Muistipeli');
 
