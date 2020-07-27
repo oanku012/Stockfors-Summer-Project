@@ -80,7 +80,7 @@ class PalapeliScene extends Phaser.Scene {
 
         back.on('pointerup', function () {
             if (back.pressed) {
-                this.scene.start(gameState.currentMap, { x: gameState.playerX, y: gameState.playerY });
+                this.scene.start('PatruunantaloScene');
 
             }
         }, this);

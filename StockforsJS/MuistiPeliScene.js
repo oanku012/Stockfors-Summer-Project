@@ -142,7 +142,7 @@ class MuistiPeliScene extends Phaser.Scene {
 
         back.on('pointerup', function () {
             if (back.pressed) {
-                this.scene.start(gameState.currentMap, { x: gameState.playerX, y: gameState.playerY });
+                this.scene.start('PakkausmuseoScene');
 
             }
         }, this);
@@ -400,7 +400,7 @@ class MuistiPeliScene extends Phaser.Scene {
                                     }
 
                                     //highScore.text.text = this.data.HighScore + gameState.MPScoreMedium;
-                                    win.text.text = this.data.Win + this.clicks + '\n' + this.data.HighScore + gameState.MPScoreEasy;
+                                    win.text.text = this.data.Win + this.clicks + '\n' + this.data.HighScore + gameState.MPScoreMedium;
 
 
                                 }
@@ -408,7 +408,7 @@ class MuistiPeliScene extends Phaser.Scene {
                                     if (this.clicks < gameState.MPScoreHard || gameState.MPScoreHard == startingGameState.MPScoreHard) {
                                         saveGame({ MPScoreHard: this.clicks });
                                     }
-                                    win.text.text = this.data.Win + this.clicks + '\n' + this.data.HighScore + gameState.MPScoreEasy;
+                                    win.text.text = this.data.Win + this.clicks + '\n' + this.data.HighScore + gameState.MPScoreHard;
                                     //highScore.text.text = this.data.HighScore + gameState.MPScoreHard;
 
                                 }
