@@ -110,8 +110,8 @@ class MuistiPeliScene extends Phaser.Scene {
         let easy = CreateTextButton(this, 0, -200, 'UI Buttons/Nappi', this.data.Easy);
         let normal = CreateTextButton(this, 0, 0, 'UI Buttons/Nappi', this.data.Normal);
         let hard = CreateTextButton(this, 0, 200, 'UI Buttons/Nappi', this.data.Hard);
-        let back = CreateTextButton(this, -600, 300, 'UI Buttons/Takaisin', this.data.Exit);
-        menu.add([easy, normal, hard, back]);
+        let back = CreateTextButton(this, 200, 1000, 'UI Buttons/Takaisin', this.data.Exit);
+        menu.add([easy, normal, hard]);
 
         easy.on('pointerup', function () {
             if (easy.pressed) {

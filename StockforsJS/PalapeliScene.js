@@ -37,6 +37,8 @@ class PalapeliScene extends Phaser.Scene {
 
     create() {
         
+        this.data = this.cache.json.get('data').Palapeli;
+
         this.createMainMenu();
 
     }
@@ -48,9 +50,11 @@ class PalapeliScene extends Phaser.Scene {
         let menuBG = this.add.sprite(0, 0, 'menuBG');
         menu.add(menuBG);
 
-        let easyButton = CreateTextButton(this, 0, -200, 'UI Buttons/Nappi', 'Easy');
-        let mediumButton = CreateTextButton(this, 0, 0, 'UI Buttons/Nappi', 'Medium');
-        let hardButton = CreateTextButton(this, 0, 200, 'UI Buttons/Nappi', 'Hard');
+        let easyButton = CreateTextButton(this, 0, -200, 'UI Buttons/Nappi', this.data.Easy);
+        let mediumButton = CreateTextButton(this, 0, 0, 'UI Buttons/Nappi', this.data.Normal);
+        let hardButton = CreateTextButton(this, 0, 200, 'UI Buttons/Nappi', this.data.Hard);
+        let back = CreateTextButton(this, 200, 1000, 'UI Buttons/Takaisin', this.data.Exit);
+
         menu.add([easyButton, mediumButton, hardButton]);
 
         easyButton.on('pointerup', function () {
@@ -71,6 +75,13 @@ class PalapeliScene extends Phaser.Scene {
             if (hardButton.pressed) {
                 this.setupGame(this.difficulties.HARD);
                 menu.destroy();
+            }
+        }, this);
+
+        back.on('pointerup', function () {
+            if (back.pressed) {
+                this.scene.start(gameState.currentMap, { x: gameState.playerX, y: gameState.playerY });
+
             }
         }, this);
 
@@ -256,7 +267,7 @@ class PalapeliScene extends Phaser.Scene {
             var container = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY);
 
             var style = { font: "60px Arial", fill: "white", align: "center"};
-            var text = this.add.text(0, 0, "Congratulations! \nYou made it!", style);
+            var text = this.add.text(0, 0, this.data.Win, style);
             container.add(text);
 
             // Todo add buttons for restart or exit
