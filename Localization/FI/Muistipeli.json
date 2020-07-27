@@ -1,0 +1,9 @@
+{
+    "Easy": "Helppo",
+    "Normal": "Normaali",
+    "Hard": "Vaikea",
+    "Exit": "Poistu",
+    "Win": "Voitit pelin. Kääntöjen määrä: ",
+    "HighScore": "Ennätys: ",
+    "Restart": "Aloita uudelleen."
+}

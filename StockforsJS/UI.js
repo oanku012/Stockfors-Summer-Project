@@ -7,6 +7,7 @@ class UI extends Phaser.Scene {
     create() {
         optionsButton = createButton(this.cameras.main.centerX + this.cameras.main.width * .475, this.cameras.main.centerY - this.cameras.main.height * .445, 'OptionsMenuScene', true, 0, 0.56, this, 'MenuAtlas', 'UI Buttons/Asetukset');
 
+        
         //this.add.sprite(400, 400, 'MenuAtlas','UI Buttons/Asetukset');
 
     }
@@ -16,11 +17,24 @@ function CreateTextButton(context, x, y, buttonspriteframe, text) {
 
     let button = context.add.sprite(0, 0, 'MenuAtlas', buttonspriteframe);
 
-    let buttontext = context.add.text(-button.width * 0.15, -20, text, { fontSize: 40, color: 'black' });
+    //let buttontext = context.add.text(-button.width * 0.15, -20, text, { fontSize: 40, color: 'black', wordWrap: {width: button.width}});
+
+    let buttontext = context.make.text({
+        x: -button.width * 0.15,
+        y: -20,
+        text: text,
+        origin: { x: 0.5, y: 0.5 },
+        style: {
+            font: '38px Arial',
+            fill: 'black',
+            wordWrap: { width: button.width },
+            align: 'center'
+        }
+    });
 
     buttontext.setDisplayOrigin(button.width / 2, button.height / 2);
 
-    if (buttonspriteframe == 'UI Buttons/Nappi') {
+    if (buttonspriteframe == 'UI Buttons/Nappi' || buttonspriteframe == 'UI Buttons/OK') {
         buttontext.setPosition((button.width / 2) - (buttontext.width / 2), (button.height / 2) - (buttontext.height / 2));
     }
     //Move text a little to the right with back button so it's not over the icon
@@ -32,8 +46,9 @@ function CreateTextButton(context, x, y, buttonspriteframe, text) {
 
     container.setSize(button.width, button.height);
 
-    //This is just so there's an easy to use reference to the button element
+    //This is just so there's an easy to use reference to the different elements
     container.bg = button;
+    container.text = buttontext;
 
     container.setInteractive();
 

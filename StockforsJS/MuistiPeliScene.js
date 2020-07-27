@@ -37,6 +37,8 @@ class MuistiPeliScene extends Phaser.Scene {
 
     create() {
 
+        this.data = this.cache.json.get('muistipeliData');
+
         console.log('Muistipeli');
 
         //If all the dom elements are visible
@@ -69,7 +71,8 @@ class MuistiPeliScene extends Phaser.Scene {
 
         this.cardImages = [this.eskimo, this.aino, this.katriina, this.paula, this.punahilkka, this.tupakka, this.koskenlaskija, this.rana];
 
-        let startDiv = document.createElement('div');
+        //On hindsight I'm not sure why I used dom elements for these when I only really needed them for the cards
+        /*let startDiv = document.createElement('div');
         startDiv.style = 'background-color: brown; width: 200px; height: 100px; font: 48px Arial; font-weight: bold; text-align: center; position: relative; left: 100px; top: 50px;';
         startDiv.innerText = 'Start game';
 
@@ -88,9 +91,59 @@ class MuistiPeliScene extends Phaser.Scene {
         let gameStart = this.add.dom(920, 320, startDiv);
         let easy = this.add.dom(700, 200, easyDiv);
         let normal = this.add.dom(920, 200, normalDiv);
-        let hard = this.add.dom(1140, 200, hardDiv);
+        let hard = this.add.dom(1140, 200, hardDiv);*/
+        //let gameStart = CreateTextButton(this, 920, 320, 'UI Buttons/OK', 'Start game');
+        //let easy = CreateTextButton(this, 700, 200, 'UI Buttons/OK', 'Easy');
+        //let normal = CreateTextButton(this, 920, 200, 'UI Buttons/OK', 'Normal');
+        //let hard = CreateTextButton(this, 1140, 200, 'UI Buttons/OK', 'Hard');
 
-        gameStart.setInteractive();
+
+        // kopsasin nää vaa nyt siitä palapelist
+        let menu = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY);
+        let menuBG = this.add.sprite(0, 0, 'menuBG');
+        menu.add(menuBG);
+
+        let easy = CreateTextButton(this, 0, -200, 'UI Buttons/Nappi', this.data.Easy);
+        let normal = CreateTextButton(this, 0, 0, 'UI Buttons/Nappi', this.data.Normal);
+        let hard = CreateTextButton(this, 0, 200, 'UI Buttons/Nappi', this.data.Hard);
+        let back = CreateTextButton(this, -600, 300, 'UI Buttons/Takaisin', this.data.Exit);
+        menu.add([easy, normal, hard, back]);
+
+        easy.on('pointerup', function () {
+            if (easy.pressed) {
+                this.difficulty = 'easy';
+                console.log('Selected: ' + this.difficulty);
+                menu.destroy();
+                this.StartGame(this.difficulty);
+            }
+        }, this);
+
+        normal.on('pointerup', function () {
+            if (normal.pressed) {
+                this.difficulty = 'normal';
+                menu.destroy();
+                console.log('Selected: ' + this.difficulty);
+                this.StartGame(this.difficulty);
+            }
+        }, this);
+
+        hard.on('pointerup', function () {
+            if (hard.pressed) {
+                this.difficulty = 'hard';
+                console.log('Selected: ' + this.difficulty);
+                menu.destroy();
+                this.StartGame(this.difficulty);
+            }
+        }, this);
+
+        back.on('pointerup', function () {
+            if (back.pressed) {
+                this.scene.start(gameState.currentMap, { x: gameState.playerX, y: gameState.playerY });
+
+            }
+        }, this);
+
+        /*gameStart.setInteractive();
         gameStart.on('pointerup', function () {
 
 
@@ -102,6 +155,7 @@ class MuistiPeliScene extends Phaser.Scene {
             easy.destroy();
             normal.destroy();
             hard.destroy();
+            back.destroy();
 
         }, this);
 
@@ -129,9 +183,9 @@ class MuistiPeliScene extends Phaser.Scene {
             this.difficulty = 'hard';
             console.log('Selected: ' + this.difficulty);
 
-        }, this);
+        }, this);*/
 
-        this.menuElements.push(gameStart, easy, normal, hard);
+        this.menuElements.push(easy, normal, hard);
 
 
     }
@@ -267,6 +321,7 @@ class MuistiPeliScene extends Phaser.Scene {
 
                 console.log('Cards opened: ' + this.openedCards.length);
 
+                //If player revealed 2 cards
                 if (this.openedCards.length == 2) {
 
                     //Close cards with a delay if they are not the same, otherwise check if all cards have been revealed
@@ -290,43 +345,69 @@ class MuistiPeliScene extends Phaser.Scene {
                         if (this.cardArray.every(function (current) {
                             return current.open == true;
                         })) {
-                            console.log('You won the game. Clicks: ' + this.clicks);
 
-                            let winDiv = document.createElement('div');
-                            winDiv.style = 'background-color: brown; width: 400px; height: 150px; font: 40px Arial; font-weight: bold; text-align: center; position: relative; left: 100px; top: 50px';
-                            winDiv.innerText = 'You won the game. \n Number of reveals: ' + this.clicks;
+                            this.time.delayedCall(1000, function () {
 
-                            let win = this.add.dom(600, 100, winDiv);
-                            win.setDepth(20).setDisplayOrigin(0);
+                                //console.log('You won the game. Clicks: ' + this.clicks);
 
-                            let restartDiv = document.createElement('div');
-                            restartDiv.style = 'background-color: brown; width: 400px; height: 100px; font: 40px Arial; font-weight: bold; text-align: center; position: relative; left: 100px; top: 50px';
-                            restartDiv.innerText = 'Click to restart';
+                                this.HideCards(false);
 
-                            let restart = this.add.dom(600, 250, restartDiv);
-                            restart.setDepth(20).setInteractive().setDisplayOrigin(0);
+                                /*let winDiv = document.createElement('div');
+                                winDiv.style = 'background-color: brown; width: 400px; height: 150px; font: 40px Arial; font-weight: bold; text-align: center; position: relative; left: 100px; top: 50px';
+                                winDiv.innerText = 'You won the game. \n Number of reveals: ' + this.clicks;
+    
+                                let win = this.add.dom(600, 100, winDiv);
+                                win.setDepth(20).setDisplayOrigin(0);
+    
+                                let restartDiv = document.createElement('div');
+                                restartDiv.style = 'background-color: brown; width: 400px; height: 100px; font: 40px Arial; font-weight: bold; text-align: center; position: relative; left: 100px; top: 50px';
+                                restartDiv.innerText = 'Click to restart';
+    
+                                let restart = this.add.dom(600, 250, restartDiv);
+                                restart.setDepth(20).setInteractive().setDisplayOrigin(0);*/
 
-                            restart.on('pointerdown', function () {
+                                let win = CreateTextButton(this, this.cameras.main.centerX, 300, 'UI Buttons/Nappi', this.data.Win + this.clicks + '\n' + this.data.highScore).disableInteractive();
+                                //let highScore = CreateTextButton(this, this.cameras.main.centerX, 350, 'UI Buttons/Nappi', this.data.HighScore).disableInteractive();
+                                win.bg.setScale(1, 2);
+                                let restart = CreateTextButton(this, this.cameras.main.centerX, 500, 'UI Buttons/OK', this.data.Restart);
 
-                                this.scene.restart();
+                                restart.on('pointerup', function () {
 
-                            }, this);
+                                    if (restart.pressed) {
+                                        this.scene.restart();
+                                    }
 
-                            if (this.difficulty == 'easy') {
-                                if (this.clicks < gameState.MPScoreEasy || gameState.MPScoreEasy == startingGameState.MPScoreEasy) {
-                                    saveGame({ MPScoreEasy: this.clicks });
+                                }, this);
+
+                                if (this.difficulty == 'easy') {
+                                    if (this.clicks < gameState.MPScoreEasy || gameState.MPScoreEasy == startingGameState.MPScoreEasy) {
+                                        saveGame({ MPScoreEasy: this.clicks });
+
+                                    }
+
+                                    //highScore.text.text = this.data.HighScore + gameState.MPScoreEasy;
+                                    win.text.text = this.data.Win + this.clicks + '\n' + this.data.HighScore + gameState.MPScoreEasy;
                                 }
-                            }
-                            else if (this.difficulty == 'normal') {
-                                if (this.clicks < gameState.MPScoreMedium || gameState.MPScoreMedium == startingGameState.MPScoreMedium) {
-                                    saveGame({ MPScoreMedium: this.clicks });
+                                else if (this.difficulty == 'normal') {
+                                    if (this.clicks < gameState.MPScoreMedium || gameState.MPScoreMedium == startingGameState.MPScoreMedium) {
+                                        saveGame({ MPScoreMedium: this.clicks });
+                                    }
+
+                                    //highScore.text.text = this.data.HighScore + gameState.MPScoreMedium;
+                                    win.text.text = this.data.Win + this.clicks + '\n' + this.data.HighScore + gameState.MPScoreEasy;
+
+
                                 }
-                            }
-                            else if (this.difficulty == 'hard') {
-                                if (this.clicks < gameState.MPScoreHard || gameState.MPScoreHard == startingGameState.MPScoreHard) {
-                                    saveGame({ MPScoreHard: this.clicks });
+                                else if (this.difficulty == 'hard') {
+                                    if (this.clicks < gameState.MPScoreHard || gameState.MPScoreHard == startingGameState.MPScoreHard) {
+                                        saveGame({ MPScoreHard: this.clicks });
+                                    }
+                                    win.text.text = this.data.Win + this.clicks + '\n' + this.data.HighScore + gameState.MPScoreEasy;
+                                    //highScore.text.text = this.data.HighScore + gameState.MPScoreHard;
+
                                 }
-                            }
+
+                            }, null, this);
                         }
 
                     }
@@ -413,13 +494,18 @@ class MuistiPeliScene extends Phaser.Scene {
         //Dom elements are hidden when options are opened
         if (optionsButton.open && this.visible) {
 
-            this.menuElements.forEach(element => {
-                if (element) {
-                    element.setVisible(false);
-                    element.disableInteractive();
-                }
-            }, this);
+            this.HideCards(false);
 
+        }
+        else if (this.visible == false && optionsButton.open == false) {
+
+            this.HideCards(true);
+
+        }
+    }
+
+    HideCards(revealCards) {
+        if (!revealCards) {
             this.cardElements.forEach(function (element) {
 
                 if (element) {
@@ -431,15 +517,7 @@ class MuistiPeliScene extends Phaser.Scene {
 
             this.visible = false;
         }
-        else if (this.visible == false && optionsButton.open == false) {
-            this.menuElements.forEach(function (element) {
-                if (element) {
-                    element.setVisible(true);
-                    element.setInteractive();
-                }
-
-            }, this);
-
+        else {
             this.cardElements.forEach(function (element) {
                 if (element) {
                     element.setVisible(true);
@@ -448,7 +526,6 @@ class MuistiPeliScene extends Phaser.Scene {
             }, this);
 
             this.visible = true;
-
         }
     }
 }

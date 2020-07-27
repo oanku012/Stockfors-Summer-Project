@@ -36,8 +36,6 @@ class MapScene extends Phaser.Scene {
 
         this.optionsMenuButton;
 
-        //this.pointerOverUI;
-
         this.saveGameTimerEvent;
 
         this.frameRate = 10;
@@ -67,8 +65,6 @@ class MapScene extends Phaser.Scene {
         this.currentOverlapBody = null;
         this.enteringBuilding = false;
 
-        //pointerOverUI = false;
-
         //Collision layers
         if (collisionCat1 == null && collisionCat2 == null) {
             
@@ -97,7 +93,10 @@ class MapScene extends Phaser.Scene {
         this.MovementInitialize();
 
         //Movement is allowed with a slight delay so that player clicking the button to return outside won't trigger movement
-        this.time.delayedCall(200, function () { readyToMove = true; }, null, this)
+        this.time.delayedCall(200, function () { if(!optionsButton.open){
+            readyToMove = true;
+            console.log(optionsButton.open);
+        } }, null, this)
 
         /*
         // UI stuff

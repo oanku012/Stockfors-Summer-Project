@@ -17,6 +17,7 @@ class OptionsMenuScene extends Phaser.Scene {
             this.cache.json.remove('mainMenuData');
             this.cache.json.remove('buildingData');
             this.cache.json.remove('optionsData');
+            this.cache.json.remove('muistipeliData');
 
             // Load JSON data
             var path = ("Localization/" + config.language + "/MainMenu.json");
@@ -30,6 +31,10 @@ class OptionsMenuScene extends Phaser.Scene {
             var path = ("Localization/" + config.language + "/OptionsMenu.json");
             this.load.json('optionsData', path);
 
+            // Json data for all muistipeli info
+            var path = ("Localization/" + config.language + "/Muistipeli.json");
+            this.load.json('muistipeliData', path);
+
 
             console.log('Language loaded');
         }
@@ -37,19 +42,21 @@ class OptionsMenuScene extends Phaser.Scene {
 
     create() {
 
-            this.scene.bringToTop();
+        optionsButton.open = true;
+        this.scene.bringToTop();
         //this.time.delayedCall(100, function () {
-            this.data = this.cache.json.get('optionsData');
+        this.data = this.cache.json.get('optionsData');
 
-            this.createContainer();
-            this.createExitButton();
-            this.createOptionsMenu();
-            this.CreateFlags();
+        this.createContainer();
+        this.createExitButton();
+        this.createOptionsMenu();
+        this.CreateFlags();
 
         //}, null, this);
 
         // Reorganize the UI when the game gets resized
         //this.scale.on('resize', this.resize, this);
+
     }
 
     createContainer() {
@@ -247,31 +254,28 @@ class OptionsMenuScene extends Phaser.Scene {
 
 
                 activeScenes.forEach(function (scene) {
-                    //Condition so that options isn't restarted twice
-                    if (scene != this) {
-                        scene.time.delayedCall(100, function () {
+                    //Condition so that options isn't restarted twice and that UI isn't restarted at all
+                    if (scene != this && scene.scene.key != 'UI') {
+                        scene.time.delayedCall(50, function () {
 
                             //If scene includes the player then save the current position of the player before restarting
                             if (scene.player) {
                                 saveGame({ currentMap: scene.scene.key, playerX: scene.player.x, playerY: scene.player.y });
                                 scene.scene.restart({ x: gameState.playerX, y: gameState.playerY });
                             }
-                            else
-                            {
+                            else {
                                 scene.scene.restart();
 
                             }
-
-                            
-                            console.log('Scene restarted to change language.');
-
-                            //Not the most elegant solution, but this is done with a delay so that it's not set to false before opening scene restarts and stops the opening scene from loading the language separately
-                            this.time.delayedCall(100, function () {
-                                languageChanged = false;
-                            }, null, this);
+                            console.log(scene.scene.key +  ' restarted to change language.');
                         }, null, this);
                     }
                 }, this);
+
+                //Not the most elegant solution, but this is done with a delay so that it's not set to false before opening scene restarts and stops the opening scene from loading the language separately
+                this.time.delayedCall(100, function () {
+                    languageChanged = false;
+                }, null, this);
 
 
 
@@ -307,32 +311,29 @@ class OptionsMenuScene extends Phaser.Scene {
                 let activeScenes = game.scene.getScenes(true);
 
                 activeScenes.forEach(function (scene) {
-                    //Condition so that options isn't restarted twice
-                    if (scene != this) {
-                        scene.time.delayedCall(100, function () {
+                    //Condition so that options isn't restarted twice and so that UI isn't restarted at all
+                    if (scene != this && scene.scene.key != 'UI') {
+                        scene.time.delayedCall(50, function () {
 
                             //If scene includes the player then save the current position of the player before restarting
                             if (scene.player) {
                                 saveGame({ currentMap: scene.scene.key, playerX: scene.player.x, playerY: scene.player.y });
                                 scene.scene.restart({ x: gameState.playerX, y: gameState.playerY });
                             }
-                            else
-                            {
+                            else {
                                 scene.scene.restart();
                             }
 
-                            console.log('Scene restarted to change language.');
-
-                            //Not the most elegant solution, but this is done with a delay so that it's not set to false before opening scene restarts and stops the opening scene from loading the language separately
-                            this.time.delayedCall(100, function () {
-                                languageChanged = false;
-                            }, null, this);
-
-
+                            console.log(scene.scene.key +  ' restarted to change language.');
 
                         }, null, this);
                     }
                 }, this);
+
+                //Not the most elegant solution, but this is done with a delay so that it's not set to false before opening scene restarts and stops the opening scene from loading the language separately
+                this.time.delayedCall(100, function () {
+                    languageChanged = false;
+                }, null, this);
             }
         }, this);
     }
