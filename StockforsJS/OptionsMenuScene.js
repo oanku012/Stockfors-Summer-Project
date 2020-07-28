@@ -85,24 +85,24 @@ class OptionsMenuScene extends Phaser.Scene {
         this.musicOn = true;
         this.soundOn = true;
 
-        let firstRow = -170;
+        let firstRow = -195;
 
         let rowGap = 135;
 
         let fontsize = 48;
 
         //The text align doesn't work on one line text
-        this.musicButton = this.add.sprite(-400, firstRow, 'MenuAtlas', 'UI Buttons/CheckmarkON').setOrigin(0.5, 0.3);
-        this.musicText = this.add.text(-200, firstRow, this.data['Music'], { fontSize: fontsize, color: "black", align: 'center', origin: { x: 0.5, y: 0.5 } });
+        this.musicButton = this.add.sprite(-400, firstRow, 'MenuAtlas', 'UI Buttons/CheckmarkON').setOrigin(0.5, 0.5);
+        this.musicText = this.add.text(-200, firstRow, this.data['Music'], { fontSize: fontsize, color: "black", align: 'center', origin: { x: 0.5, y: 0 } });
         this.musicText.setPosition(-this.musicText.width * 0.5, firstRow);
 
-        this.soundButton = this.add.image(-400, firstRow + rowGap, 'MenuAtlas', 'UI Buttons/CheckmarkON').setOrigin(0.5, 0.3);
-        this.soundText = this.add.text(-200, firstRow + rowGap, this.data['Sound'], { fontSize: fontsize, color: "black", align: 'center', origin: { x: 0.5, y: 0.5 } });
+        this.soundButton = this.add.image(-400, firstRow + rowGap, 'MenuAtlas', 'UI Buttons/CheckmarkON').setOrigin(0.5, 0.5);
+        this.soundText = this.add.text(-200, firstRow + rowGap, this.data['Sound'], { fontSize: fontsize, color: "black", align: 'center', origin: { x: 0.5, y: 0 } });
         this.soundText.setPosition(-this.soundText.width * 0.5, firstRow + rowGap);
 
 
-        this.fullScreenButton = this.add.image(-400, firstRow + rowGap * 2, 'MenuAtlas', 'UI Buttons/CheckmarkOFF').setOrigin(0.5, 0.3);
-        this.fullScreenText = this.add.text(-200, firstRow + rowGap * 2, this.data['Fullscreen'], { fontSize: fontsize, color: "black", align: 'center', origin: { x: 0.5, y: 0.5 } });
+        this.fullScreenButton = this.add.image(-400, firstRow + rowGap * 2, 'MenuAtlas', 'UI Buttons/CheckmarkOFF').setOrigin(0.5, 0.5);
+        this.fullScreenText = this.add.text(-200, firstRow + rowGap * 2, this.data['Fullscreen'], { fontSize: fontsize, color: "black", align: 'center', origin: { x: 0.5, y: 0 } });
         this.fullScreenText.setPosition(-this.fullScreenText.width * 0.5, firstRow + rowGap * 2);
 
 
@@ -176,9 +176,9 @@ class OptionsMenuScene extends Phaser.Scene {
     createExitButton() {
         // Exit button
         //let exitButton = this.add.sprite(35, 400, 'MenuAtlas', 'UI Buttons/Sulje');
-        this.exitButton = CreateTextButton(this, 0, 430, 'UI Buttons/Nappi', this.data['Close']);
+        this.exitButton = CreateTextButton(this, 0, 400, 'UI Buttons/Nappi', this.data['Close']);
 
-        this.exitButton.setPosition(-this.exitButton.width * 0.05, 430);
+        this.exitButton.setPosition(0, 410);
 
         //let exitButton = this.add.container(this.menuBG.width / 2, -this.menuBG.height / 2, [ exitButtonBG ]);
         //exitButton.setSize(exitButtonBG.width, exitButtonBG.height);
@@ -220,13 +220,13 @@ class OptionsMenuScene extends Phaser.Scene {
     }
 
     CreateFlags() {
-        let flagScale = 0.3;
+        let flagScale = 0.41;
 
-        this.fi = this.add.sprite(-220, 300, 'MenuAtlas', 'UI Buttons/FI').setScale(flagScale);
-        this.eng = this.add.sprite(0, 300, 'MenuAtlas', 'UI Buttons/ENG').setScale(flagScale);
-        this.swe = this.add.sprite(220, 300, 'MenuAtlas', 'UI Buttons/SWE').setScale(flagScale);
+        this.fi = this.add.sprite(-135, 275, 'MenuAtlas', 'UI Buttons/FI').setScale(flagScale);
+        this.eng = this.add.sprite(150, 275, 'MenuAtlas', 'UI Buttons/ENG').setScale(flagScale);
+        //this.swe = this.add.sprite(220, 300, 'MenuAtlas', 'UI Buttons/SWE').setScale(flagScale);
 
-        this.menuElements.add([this.fi, this.eng, this.swe]);
+        this.menuElements.add([this.fi, this.eng]);
 
         this.fi.setInteractive();
 

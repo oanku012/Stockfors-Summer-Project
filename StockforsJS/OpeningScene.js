@@ -137,13 +137,13 @@ class OpeningScene extends Phaser.Scene {
     CreateLanguageMenu() {
         this.languagePohja = this.add.sprite(0, -83, 'MenuAtlas', 'UI Pohjat/Kielivalikko');
 
-        let flagScale = 0.5;
+        let flagScale = 0.7;
 
-        this.fi = this.add.sprite(-300, -150, 'MenuAtlas', 'UI Buttons/FI').setScale(flagScale);
-        this.eng = this.add.sprite(0, -150, 'MenuAtlas', 'UI Buttons/ENG').setScale(flagScale);
-        this.swe = this.add.sprite(300, -150, 'MenuAtlas', 'UI Buttons/SWE').setScale(flagScale);
+        this.fi = this.add.sprite(-200, -130, 'MenuAtlas', 'UI Buttons/FI').setScale(flagScale);
+        this.eng = this.add.sprite(200, -130, 'MenuAtlas', 'UI Buttons/ENG').setScale(flagScale);
+        //this.swe = this.add.sprite(300, -150, 'MenuAtlas', 'UI Buttons/SWE').setScale(flagScale);
 
-        this.languageContainer = this.CreateMenuContainer([this.languagePohja, this.fi, this.eng, this.swe]);
+        this.languageContainer = this.CreateMenuContainer([this.languagePohja, this.fi, this.eng]);
 
         // Language button functionality
         this.fi.on('pointerup', function () {

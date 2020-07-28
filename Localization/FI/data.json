@@ -21,7 +21,8 @@
             "Panoramas": "Panoraama. 360 asteen panoraamanäkymä kohteesta.",
             "Game": "Peli. Tietyistä kohteista löytyy erilaisia minipelejä, kuten muisti- tai palapelejä.",
             "Web": "Verkkosivut. Tästä voit päästä kohteen yrityksen verkkosivuille."
-        }
+        },
+        "Back": "Poistu"
     },
     "MainMenu": {
         "OpeningHeader": "TERVETULOA STOCKFORS KARTALLA - NETTISOVELLUKSEEN",

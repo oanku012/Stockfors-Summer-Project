@@ -22,7 +22,8 @@
             "Panoramas": "Panorama. 360-degree panorama taken at the location.",
             "Game": "Minigame. Some locations include a minigame such as a memory- or sliding-puzzle.",
             "Web": "Website. Some locations include a link to the website of the company associated with the location."
-        }
+        },
+        "Back": "Exit"
     },
     "MainMenu": {
         "OpeningHeader": "WELCOME TO THE STOCKFORS ON THE MAP - WEB APPLICATION",

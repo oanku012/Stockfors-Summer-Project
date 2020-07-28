@@ -154,7 +154,7 @@ class BuildingScene extends Phaser.Scene {
 
         this.ohje.setVisible(false);
 
-        let backButton = CreateTextButton(this, (-this.ohjeBG.width / 2) + 270, (this.ohjeBG.height / 2) - 100, 'UI Buttons/Takaisin', 'Takaisin');
+        let backButton = CreateTextButton(this, (-this.ohjeBG.width / 2) + 270, (this.ohjeBG.height / 2) - 100, 'UI Buttons/Takaisin', this.data.Back);
 
         backButton.on('pointerup', function (event) {
             if (backButton.pressed) {
@@ -201,7 +201,7 @@ class BuildingScene extends Phaser.Scene {
 
 
 
-        this.exitButton = CreateTextButton(this, (-this.menuBG.width / 2) + 200, (this.menuBG.height / 2) - 100, 'UI Buttons/Takaisin', 'Takaisin');
+        this.exitButton = CreateTextButton(this, (-this.menuBG.width / 2) + 200, (this.menuBG.height / 2) - 100, 'UI Buttons/Takaisin', this.data.Back);
 
         this.menu.add(this.exitButton);
 
@@ -471,17 +471,17 @@ class BuildingScene extends Phaser.Scene {
             //this.menu.add(imgTitle);
             //this.albumContainer.add(imgTitle);
 
-            var previousX = -200;
+            var previousX = -315;
 
             let column = 0;
             let rowLimit = 5;
             let row = 1;
 
             this.images.forEach(element => {
-                let img = this.add.image(previousX, 50 + 100 * row, element[0])
+                let img = this.add.image(previousX, 50 + 120 * row, element).setScale(0.03);
                 this.albumContainer.add(img);
                 //img.setPosition(previousX, 50 + 100*row);
-                previousX += 100;
+                previousX += 150;
 
                 var pressed = false;
 
@@ -490,7 +490,7 @@ class BuildingScene extends Phaser.Scene {
                 if (column >= rowLimit) {
                     row++;
                     column = 0;
-                    previousX = -200;
+                    previousX = -315;
                 }
 
                 img.setInteractive();
@@ -517,7 +517,7 @@ class BuildingScene extends Phaser.Scene {
                 img.on('pointerup', function (event) {
                     if (pressed) {
                         // Open image
-                        this.createImage(element[1]);
+                        this.createImage(element);
                     }
                 }, this);
             });
@@ -529,7 +529,7 @@ class BuildingScene extends Phaser.Scene {
     }
 
     createImage(image) {
-        let newImage = this.add.image(0, 0, image);
+        let newImage = this.add.image(0, 0, image).setScale(0.5);
 
         // add to menu for easy resize
         this.menu.add(newImage);
