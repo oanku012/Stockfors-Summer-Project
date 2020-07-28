@@ -53,7 +53,8 @@
         "Normal": "Normaali",
         "Hard": "Vaikea",
         "Exit": "Poistu",
-        "Win": "Voitit pelin.",
-        "Restart": "Aloita uudelleen."
+        "Win": "Voitit pelin!",
+        "Restart": "Aloita uudelleen.",
+        "TotalMoves": "Siirtoja yhteensä: "
     }
 }
