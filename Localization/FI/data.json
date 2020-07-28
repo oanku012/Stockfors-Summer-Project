@@ -53,6 +53,7 @@
         "Normal": "Normaali",
         "Hard": "Vaikea",
         "Exit": "Poistu",
+        "BackToMenu": "Päävalikkoon",
         "Win": "Voitit pelin!",
         "Restart": "Aloita uudelleen.",
         "TotalMoves": "Siirtoja yhteensä: "

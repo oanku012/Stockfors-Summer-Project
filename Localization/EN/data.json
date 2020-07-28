@@ -54,6 +54,7 @@
         "Normal": "Normal",
         "Hard": "Hard",
         "Exit": "Exit",
+        "BackToMenu": "Back to menu",
         "Win": "You won!",
         "Restart": "Click to restart.",
         "TotalMoves": "Total moves: "

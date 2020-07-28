@@ -302,7 +302,7 @@ class PalapeliScene extends Phaser.Scene {
                 style: style
             });
 
-            let button = CreateTextButton(this, 0, 200, 'UI Buttons/Nappi', "Back to menu");
+            let button = CreateTextButton(this, 0, 200, 'UI Buttons/Nappi', this.data.BackToMenu);
     
             menu.add([menuBG, winText, movesText, button]);
 
