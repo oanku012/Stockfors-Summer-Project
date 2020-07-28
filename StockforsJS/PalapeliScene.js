@@ -23,6 +23,7 @@ class PalapeliScene extends Phaser.Scene {
 
         this.board;
 
+        this.totalMoves = 0;
 
         this.gameWon = false;
     }
@@ -89,6 +90,8 @@ class PalapeliScene extends Phaser.Scene {
 
     setupGame(difficulty)
     {
+        this.totalMoves = 0;
+
         this.prepareBoard(difficulty);
 
         // code for clicking on pieces
@@ -243,6 +246,8 @@ class PalapeliScene extends Phaser.Scene {
         blackPiece.currentIndex = tmpPiece.currentIndex;
         blackPiece.name ='piece' + blackPiece.posX.toString() + 'x' + blackPiece.posY.toString();
 
+        this.totalMoves++;
+
         this.checkIfFinished();
     }
 
@@ -264,14 +269,49 @@ class PalapeliScene extends Phaser.Scene {
     finishGame() {
         if (!this.gameWon)
         {
-            var container = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY);
 
-            var style = { font: "60px Arial", fill: "white", align: "center"};
-            var text = this.add.text(0, 0, this.data.Win, style);
-            container.add(text);
+            // end game menu
+            let menu = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY);
+            let menuBG = this.add.sprite(0, 0, 'menuBG');
 
-            // Todo add buttons for restart or exit
+            /*
+            var style = { font: "40px Arial", fill: "black", align: "center"};
+            var winText = this.add.text(-200, -100, this.data.Win, style);
+            var movesText = this.add.text(0, 0, this.data.Win, style);
+            */
+
+            let style = {
+                font: '40px Arial',
+                fill: 'black',
+                wordWrap: { width: 600 }
+            };
     
+            let winText = this.make.text({
+                x: 0,
+                y: -200,
+                text: this.data.Win,
+                origin: { x: 0.5, y: 0.5 },
+                style: style
+            });
+
+            let movesText = this.make.text({
+                x: 0,
+                y: -100,
+                text: this.data.TotalMoves + this.totalMoves,
+                origin: { x: 0.5, y: 0.5 },
+                style: style
+            });
+
+            let button = CreateTextButton(this, 0, 200, 'UI Buttons/Nappi', this.data.BackToMenu);
+    
+            menu.add([menuBG, winText, movesText, button]);
+
+            button.on('pointerup', function () {
+                if (button.pressed) {
+                    this.scene.start(this);
+    
+                }
+            }, this);
         }
         
         this.gameWon = true;
