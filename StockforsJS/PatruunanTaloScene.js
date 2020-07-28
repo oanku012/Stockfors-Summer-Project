@@ -33,6 +33,8 @@ class PatruunantaloScene extends BuildingScene
         this.images.push(["1thumb", "1full" ]);
         this.images.push(["1thumb", "1full" ]);*/
 
+        this.images = [];
+
         this.images.push("PatruunaImage1");
         this.images.push("PatruunaImage1");
         this.images.push("PatruunaImage1");
