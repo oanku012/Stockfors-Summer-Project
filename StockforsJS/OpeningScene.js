@@ -46,6 +46,13 @@ class OpeningScene extends Phaser.Scene {
             
         }
 
+        /*this.load.audio('Footstep1', 'Assets/sounds/Footstep1.ogg');
+        this.load.audio('Footstep2', 'Assets/sounds/Footstep2.ogg');
+        this.load.audio('Footstep3', 'Assets/sounds/Footstep3.ogg');
+        this.load.audio('Footstep4', 'Assets/sounds/Footstep4.ogg');
+        this.load.audio('Footstep5', 'Assets/sounds/Footstep5.ogg');
+        this.load.audio('Footstep6', 'Assets/sounds/Footstep6.ogg');*/
+
 
         // This stuff is now loaded in assets.json
         /*
@@ -113,6 +120,8 @@ class OpeningScene extends Phaser.Scene {
 
         this.ohjeContainer.setVisible(false);
 
+        //this.DecodeAudio();
+
         //createButton(this.cameras.main.centerX + this.cameras.main.width * .4, this.cameras.main.centerY - this.cameras.main.height * .4, 'OptionsMenuScene', true, 0, 0.56, this, 'MenuAtlas', 'UI Buttons/Asetukset');
 
         /*this.input.keyboard.on('keydown', function (event) {
@@ -132,6 +141,15 @@ class OpeningScene extends Phaser.Scene {
         });*/
 
 
+    }
+
+    DecodeAudio(){
+        this.sound.decodeAudio("Footstep1", "Assets/sounds/Footstep1.ogg");
+        this.sound.decodeAudio("Footstep2", "Assets/sounds/Footstep2.ogg");
+        this.sound.decodeAudio("Footstep3", "Assets/sounds/Footstep3.ogg");
+        this.sound.decodeAudio("Footstep4", "Assets/sounds/Footstep4.ogg");
+        this.sound.decodeAudio("Footstep5", "Assets/sounds/Footstep5.ogg");
+        this.sound.decodeAudio("Footstep6", "Assets/sounds/Footstep6.ogg");
     }
 
     CreateLanguageMenu() {

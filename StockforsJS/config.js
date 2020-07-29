@@ -8,6 +8,9 @@ var config = {
     musicOn: true,
     language: 'FI',
     parent: 'game',
+    /*audio:{
+        disableWebAudio: true
+    },*/
 
     scale: {
         mode: Phaser.Scale.FIT,
@@ -137,7 +140,12 @@ function compareObjectValues(obj1, obj2)
 
     return true;
 }
-
+/*
+function PlaySound(soundKey, context)
+{
+    context.sound.play(soundKey);
+}
+*/
 
 //Moved this here so the options menu could be added to the opening scene as well, some things like pointerOverUI only apply to map scenes
 function createButton(posX, posY, scene, runOnTop, scrollFactor, scale, context, sprite, frame) {
