@@ -73,7 +73,7 @@ class OptionsMenuScene extends Phaser.Scene {
 
         // title and description
         let title = this.add.text(0, 0, this.data.Title);
-        title.setPosition(-title.width * 2, -350);
+        title.setPosition(-title.width * 2, -352);
         title.setFontSize(48);
         title.setColor("black");
         this.menu.add(title);
@@ -85,25 +85,25 @@ class OptionsMenuScene extends Phaser.Scene {
         this.musicOn = true;
         this.soundOn = true;
 
-        let firstRow = -195;
+        let firstRow = -178;
 
-        let rowGap = 135;
+        let rowGap = 137;
 
         let fontsize = 48;
 
         //The text align doesn't work on one line text
         this.musicButton = this.add.sprite(-400, firstRow, 'MenuAtlas', 'UI Buttons/CheckmarkON').setOrigin(0.5, 0.5);
-        this.musicText = this.add.text(-200, firstRow, this.data['Music'], { fontSize: fontsize, color: "black", align: 'center', origin: { x: 0.5, y: 0 } });
-        this.musicText.setPosition(-this.musicText.width * 0.5, firstRow);
+        this.musicText = this.add.text(-200, firstRow, this.data['Music'], { fontSize: fontsize, color: "black", align: 'center', origin: { x: 0.5, y: 0.5 } });
+        this.musicText.setPosition(-this.musicText.width * 0.5, firstRow - 20);
 
         this.soundButton = this.add.image(-400, firstRow + rowGap, 'MenuAtlas', 'UI Buttons/CheckmarkON').setOrigin(0.5, 0.5);
-        this.soundText = this.add.text(-200, firstRow + rowGap, this.data['Sound'], { fontSize: fontsize, color: "black", align: 'center', origin: { x: 0.5, y: 0 } });
-        this.soundText.setPosition(-this.soundText.width * 0.5, firstRow + rowGap);
+        this.soundText = this.add.text(-200, firstRow + rowGap, this.data['Sound'], { fontSize: fontsize, color: "black", align: 'center', origin: { x: 0.5, y: 0.5 } });
+        this.soundText.setPosition(-this.soundText.width * 0.5, firstRow + rowGap - 20);
 
 
         this.fullScreenButton = this.add.image(-400, firstRow + rowGap * 2, 'MenuAtlas', 'UI Buttons/CheckmarkOFF').setOrigin(0.5, 0.5);
-        this.fullScreenText = this.add.text(-200, firstRow + rowGap * 2, this.data['Fullscreen'], { fontSize: fontsize, color: "black", align: 'center', origin: { x: 0.5, y: 0 } });
-        this.fullScreenText.setPosition(-this.fullScreenText.width * 0.5, firstRow + rowGap * 2);
+        this.fullScreenText = this.add.text(-200, firstRow + rowGap * 2, this.data['Fullscreen'], { fontSize: fontsize, color: "black", align: 'center', origin: { x: 0.5, y: 0.5 } });
+        this.fullScreenText.setPosition(-this.fullScreenText.width * 0.5, (firstRow + rowGap * 2) - 20);
 
 
         this.isFullscreen = this.scale.isFullscreen;
