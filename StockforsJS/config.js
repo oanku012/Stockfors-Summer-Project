@@ -22,6 +22,11 @@ var config = {
         createContainer: true
     },
 
+    fps: {
+        target: 60, 
+        forceSetTimeOut: true
+    },
+
     physics: {
         default: 'matter',
         matter: {
@@ -30,6 +35,7 @@ var config = {
             gravity: {
                 y: 0
             }
+            
         },
         arcade: {
             //gravity: { y: 0 },

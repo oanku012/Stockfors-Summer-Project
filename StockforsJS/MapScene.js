@@ -138,10 +138,9 @@ class MapScene extends Phaser.Scene {
 
     }
 
-    CreateSounds()
-    {
+    CreateSounds() {
         this.footSteps = [];
-        
+
         this.footSteps.push(this.sound.add('Footstep1'));
         this.footSteps.push(this.sound.add('Footstep2'));
         this.footSteps.push(this.sound.add('Footstep3'));
@@ -231,18 +230,20 @@ class MapScene extends Phaser.Scene {
         //Plays footstep sounds
         this.footStepTimer = this.time.addEvent({
             delay: 400, callback: function () {
-                let index;
+                if (config.soundOn) {
+                    let index;
 
-                do {
-                    index = (Math.floor(Math.random() * 6));
-                }//Should prevent the same sound from playing multiple times in a row
-                while (index === lastindex);
+                    do {
+                        index = (Math.floor(Math.random() * 6));
+                    }//Should prevent the same sound from playing multiple times in a row
+                    while (index === lastindex);
 
-                lastindex = index;
+                    lastindex = index;
 
-                this.footSteps[index].play();
-                //this.sound.play('Footstep' + index);
-              
+                    this.footSteps[index].play();
+                    //this.sound.play('Footstep' + index);
+                }
+
             }, callbackScope: this, loop: true, paused: true
         });
 
