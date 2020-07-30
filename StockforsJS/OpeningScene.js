@@ -45,31 +45,6 @@ class OpeningScene extends Phaser.Scene {
 
             
         }
-
-
-        // This stuff is now loaded in assets.json
-        /*
-        this.load.image('buttonBG', 'Assets/images/menu/button-bg.png');
-        this.load.image('buttonText', 'Assets/images/menu/button-text.png');
-        this.load.image('menuBG', 'Assets/images/menu/menu-bg.png');
-        this.load.image('exitButton', 'Assets/images/menu/exit-button.png');
-
-        this.load.spritesheet('playerWalk', 'Assets/images/character/PlayerWalking.png', { frameWidth: 378, frameHeight: 378 });
-        this.load.spritesheet('playerIdle', 'Assets/images/character/PlayerStanding.png', { frameWidth: 378, frameHeight: 378 });
-
-        this.load.image('map', 'Assets/images/map/kartta.png');
-
-        this.load.image('Nuoli', 'Assets/images/map/arrowSign');
-
-        //Used texturepacker and physicseditor to compile the buildings into a single spritesheet
-        this.load.atlas('buildingSheet', 'Assets/images/map/Buildings/TPBuildings.png', 'Assets/images/map/Buildings/TPBuildings.json');
-        this.load.json('buildingBodies', 'Assets/images/map/Buildings/PEBuildings.json');
-
-        //this.load.atlas('buttonSheet', 'Assets/images/menu/Buttons/MenuButtons.png', 'Assets/images/menu/Buttons/MenuButtons.json');
-        //this.load.atlas('BGSheet', 'Assets/images/menu/Backgrounds/MenuBackgrounds.png', 'Assets/images/menu/Backgrounds/MenuBackgrounds.json');
-        this.load.atlas('MenuAtlas', 'Assets/images/menu/MenuAssets.png', 'Assets/images/menu/MenuAssets.json');
-        this.load.image('Logo', 'Assets/images/menu/Logo.png');
-        */
     }
 
     //This is used when restarting the scene with a chosen language, when languagechosen is true the language menu is hidden

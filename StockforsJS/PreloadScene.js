@@ -1,5 +1,9 @@
 class PreloadScene extends Phaser.Scene {
 
+    init(data){
+        this.sceneToLoad = data.sceneToLoad;
+      }
+
     constructor()
     {
         super('PreloadScene');
@@ -7,8 +11,10 @@ class PreloadScene extends Phaser.Scene {
 
     preload ()
     {
+        console.log(this.sceneToLoad);
         this.loadAssets(this.cache.json.get('assets'));
-        this.add.image(this.centerX(), this.centerY(), 'logo');
+        let logo = this.add.image(this.centerX(), this.centerY(), 'logo');
+        logo.setScale(.2, .2);
         this.createProgressbar(this.centerX(), this.centerY() + 200);
     }
 
@@ -57,7 +63,7 @@ class PreloadScene extends Phaser.Scene {
         {
 
             this.load.off('progress', updateProgressbar);
-            this.scene.start('OpeningScene');
+            this.scene.start(this.sceneToLoad);
 
         }, this);
     }
