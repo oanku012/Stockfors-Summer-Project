@@ -48,7 +48,8 @@
         "Exit": "Exit",
         "Win": "You won the game. Number of reveals: ",
         "HighScore": "High score: ",
-        "Restart": "Click to restart."
+        "Restart": "Click to restart.",
+        "Back": "Back"
     },
     "Palapeli": {
         "Easy": "Easy",

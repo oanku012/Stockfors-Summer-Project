@@ -47,7 +47,8 @@
         "Exit": "Poistu",
         "Win": "Voitit pelin. Kääntöjen määrä: ",
         "HighScore": "Ennätys: ",
-        "Restart": "Aloita uudelleen."
+        "Restart": "Aloita uudelleen.",
+        "Back": "Takaisin"
     },
     "Palapeli": {
         "Easy": "Helppo",

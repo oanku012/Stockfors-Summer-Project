@@ -37,9 +37,7 @@ class MuistiPeliScene extends Phaser.Scene {
 
     create() {
 
-        this.data = this.cache.json.get('data');
-
-        this.data = this.data.Muistipeli;
+        this.data = this.cache.json.get('data').Muistipeli;
 
         console.log('Muistipeli');
 
@@ -76,15 +74,16 @@ class MuistiPeliScene extends Phaser.Scene {
         this.cardImages = [this.eskimo, this.aino, this.katriina, this.paula, this.punahilkka, this.tupakka, this.koskenlaskija, this.rana];
 
         // kopsasin nää vaa nyt siitä palapelist
-        let menu = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY);
+        this.menu = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY);
         let menuBG = this.add.sprite(0, 0, 'MenuAtlas', 'UI Pohjat/Pelipohja').setScale(0.6, 0.5);
-        menu.add(menuBG);
+        this.menu.add(menuBG);
 
         let easy = CreateTextButton(this, 0, -200, 'UI Buttons/Nappi', this.data.Easy);
         let normal = CreateTextButton(this, 0, 0, 'UI Buttons/Nappi', this.data.Normal);
         let hard = CreateTextButton(this, 0, 200, 'UI Buttons/Nappi', this.data.Hard);
-        let back = CreateTextButton(this, 200, 1000, 'UI Buttons/Takaisin', this.data.Exit);
-        menu.add([easy, normal, hard]);
+        let exit = CreateTextButton(this, 170, 70, 'UI Buttons/Takaisin', this.data.Exit).setScale(0.8);
+        
+        this.menu.add([easy, normal, hard]);
 
         easy.on('pointerup', function () {
             if (easy.pressed) {
@@ -119,8 +118,8 @@ class MuistiPeliScene extends Phaser.Scene {
             }
         }, this);
 
-        back.on('pointerup', function () {
-            if (back.pressed) {
+        exit.on('pointerup', function () {
+            if (exit.pressed) {
                 this.scene.start('PakkausmuseoScene');
 
             }
@@ -174,6 +173,20 @@ class MuistiPeliScene extends Phaser.Scene {
     }
 
     StartGame(difficulty) {
+
+        //Not sure why the data on this doesn't work??
+        let back = CreateTextButton(this, -450, 410, 'UI Buttons/Takaisin', this.data.Back).setScale(0.5, 0.6);
+
+        back.on('pointerup', function()
+        {
+            if(back.pressed)
+            {
+                this.scene.restart();
+            }
+        }, this);
+
+        this.menu.add(back);
+
         let currentRow = 1;
         let currentColumn = 1;
 
@@ -225,6 +238,8 @@ class MuistiPeliScene extends Phaser.Scene {
             }
         }
 
+        let rowCount = this.cardCount/this.columnCount;
+
         //Add the cards to the board
         for (var i = 0; i < this.cardCount; i++) {
 
@@ -234,7 +249,8 @@ class MuistiPeliScene extends Phaser.Scene {
             }
 
             let x = 600 + (currentColumn - 1) * (this.cardSize + 20);
-            let y = 100 + (currentRow - 1) * (this.cardSize + 20);
+            //Should position the cards roughly on the center of the screen regardless of the amount
+            let y = (this.cameras.main.centerY - (this.cardSize/2) * rowCount )+ (currentRow - 1) * (this.cardSize + 20);
 
             let image;
 
