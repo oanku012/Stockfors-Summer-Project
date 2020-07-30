@@ -196,8 +196,9 @@ class MapScene extends Phaser.Scene {
 
     EnterBuilding() {
         this.SavePosition();
-
-        this.scene.start(this.sceneToOpen);
+        
+        // load scene loader with scene to open as parameter
+        this.scene.start('SceneLoader', { sceneToLoad: this.sceneToOpen });
 
         this.sceneToOpen = null;
     }
