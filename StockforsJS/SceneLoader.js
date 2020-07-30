@@ -19,6 +19,14 @@ class SceneLoader extends Phaser.Scene {
 
     create ()
     {
-        this.scene.start('PreloadScene', { sceneToLoad: this.sceneToLoad });
+        if (this.cache.json.exists('assets'))
+        {
+            this.scene.start('PreloadScene', { sceneToLoad: this.sceneToLoad });
+        }
+        else
+        {
+            this.scene.start(this.sceneToLoad);
+        }
+        
     }
 }

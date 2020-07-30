@@ -61,6 +61,8 @@ class PreloadScene extends Phaser.Scene {
 
         this.load.once('complete', function ()
         {
+            // unload dummy file so we can load it again
+            this.textures.remove('dummy');
 
             this.load.off('progress', updateProgressbar);
             this.scene.start(this.sceneToLoad);
@@ -140,8 +142,13 @@ class PreloadScene extends Phaser.Scene {
                     // xml:ƒ (key, url, xhrSettings)
                     this.load[group](key, value);
                 }
+
             }, this);
         }, this);
+
+        // load dummy file to ensure loading gets completed
+        this.load.image('dummy', 'Assets/images/dummy.jpg');
+
     }
 
     centerX ()
