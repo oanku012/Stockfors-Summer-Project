@@ -167,7 +167,7 @@ class BuildingScene extends Phaser.Scene {
     }
 
     CreateInstructionButton() {
-        this.instructionButton = this.add.sprite((this.menuBG.width / 2 - 100), (this.menuBG.height / 2) - 100, 'MenuAtlas', 'UI Buttons/Ohje');
+        this.instructionButton = this.add.sprite((this.menuBG.width / 2 - 30), (this.menuBG.height / 2) - 20, 'MenuAtlas', 'UI Buttons/Ohje');
 
         this.instructionButton.setInteractive();
 
@@ -201,7 +201,7 @@ class BuildingScene extends Phaser.Scene {
 
 
 
-        this.exitButton = CreateTextButton(this, (-this.menuBG.width / 2) + 200, (this.menuBG.height / 2) - 100, 'UI Buttons/Takaisin', this.data.Back);
+        this.exitButton = CreateTextButton(this, (-this.menuBG.width / 2) + 100, (this.menuBG.height / 2) - 20, 'UI Buttons/Takaisin', this.data.Back);
 
         this.menu.add(this.exitButton);
 

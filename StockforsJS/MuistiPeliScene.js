@@ -75,36 +75,9 @@ class MuistiPeliScene extends Phaser.Scene {
 
         this.cardImages = [this.eskimo, this.aino, this.katriina, this.paula, this.punahilkka, this.tupakka, this.koskenlaskija, this.rana];
 
-        //On hindsight I'm not sure why I used dom elements for these when I only really needed them for the cards
-        /*let startDiv = document.createElement('div');
-        startDiv.style = 'background-color: brown; width: 200px; height: 100px; font: 48px Arial; font-weight: bold; text-align: center; position: relative; left: 100px; top: 50px;';
-        startDiv.innerText = 'Start game';
-
-        let easyDiv = document.createElement('div');
-        easyDiv.style = 'background-color: brown; width: 200px; height: 100px; font: 48px Arial; font-weight: bold; text-align: center; position: relative; left: 100px; top: 50px;';
-        easyDiv.innerText = 'Easy';
-
-        let normalDiv = document.createElement('div');
-        normalDiv.style = 'background-color: brown; width: 200px; height: 100px; font: 48px Arial; font-weight: bold; text-align: center; position: relative; left: 100px; top: 50px;';
-        normalDiv.innerText = 'Normal';
-
-        let hardDiv = document.createElement('div');
-        hardDiv.style = 'background-color: brown; width: 200px; height: 100px; font: 48px Arial; font-weight: bold; text-align: center; position: relative; left: 100px; top: 50px;';
-        hardDiv.innerText = 'Hard';
-
-        let gameStart = this.add.dom(920, 320, startDiv);
-        let easy = this.add.dom(700, 200, easyDiv);
-        let normal = this.add.dom(920, 200, normalDiv);
-        let hard = this.add.dom(1140, 200, hardDiv);*/
-        //let gameStart = CreateTextButton(this, 920, 320, 'UI Buttons/OK', 'Start game');
-        //let easy = CreateTextButton(this, 700, 200, 'UI Buttons/OK', 'Easy');
-        //let normal = CreateTextButton(this, 920, 200, 'UI Buttons/OK', 'Normal');
-        //let hard = CreateTextButton(this, 1140, 200, 'UI Buttons/OK', 'Hard');
-
-
         // kopsasin nää vaa nyt siitä palapelist
         let menu = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY);
-        let menuBG = this.add.sprite(0, 0, 'menuBG');
+        let menuBG = this.add.sprite(0, 0, 'MenuAtlas', 'UI Pohjat/Pelipohja').setScale(0.6, 0.5);
         menu.add(menuBG);
 
         let easy = CreateTextButton(this, 0, -200, 'UI Buttons/Nappi', this.data.Easy);
@@ -117,7 +90,9 @@ class MuistiPeliScene extends Phaser.Scene {
             if (easy.pressed) {
                 this.difficulty = 'easy';
                 console.log('Selected: ' + this.difficulty);
-                menu.destroy();
+                easy.destroy();
+                normal.destroy();
+                hard.destroy();
                 this.StartGame(this.difficulty);
             }
         }, this);
@@ -125,7 +100,9 @@ class MuistiPeliScene extends Phaser.Scene {
         normal.on('pointerup', function () {
             if (normal.pressed) {
                 this.difficulty = 'normal';
-                menu.destroy();
+                easy.destroy();
+                normal.destroy();
+                hard.destroy();
                 console.log('Selected: ' + this.difficulty);
                 this.StartGame(this.difficulty);
             }
@@ -135,7 +112,9 @@ class MuistiPeliScene extends Phaser.Scene {
             if (hard.pressed) {
                 this.difficulty = 'hard';
                 console.log('Selected: ' + this.difficulty);
-                menu.destroy();
+                easy.destroy();
+                normal.destroy();
+                hard.destroy();
                 this.StartGame(this.difficulty);
             }
         }, this);

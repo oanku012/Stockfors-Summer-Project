@@ -18,10 +18,13 @@
         "buildingBodies": [
             "Assets/images/character/PlayerStanding.png",
             "Assets/images/character/PlayerStanding.png"
-        ],
+        ]
+        
+    },
+    "multiatlas":{
         "MenuAtlas": [
-            "Assets/images/menu/MenuAssets.png",
-            "Assets/images/menu/MenuAssets.json"
+            "Assets/images/menu/MenuAssets.json",
+            "Assets/images/menu"
         ]
     },
     "spritesheet": {
