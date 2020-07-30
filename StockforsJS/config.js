@@ -8,6 +8,9 @@ var config = {
     musicOn: true,
     language: 'FI',
     parent: 'game',
+    /*audio:{
+        disableWebAudio: true
+    },*/
 
     scale: {
         mode: Phaser.Scale.FIT,
@@ -19,6 +22,11 @@ var config = {
         createContainer: true
     },
 
+    fps: {
+        target: 60, 
+        forceSetTimeOut: true
+    },
+
     physics: {
         default: 'matter',
         matter: {
@@ -27,6 +35,7 @@ var config = {
             gravity: {
                 y: 0
             }
+            
         },
         arcade: {
             //gravity: { y: 0 },
@@ -137,7 +146,12 @@ function compareObjectValues(obj1, obj2)
 
     return true;
 }
-
+/*
+function PlaySound(soundKey, context)
+{
+    context.sound.play(soundKey);
+}
+*/
 
 //Moved this here so the options menu could be added to the opening scene as well, some things like pointerOverUI only apply to map scenes
 function createButton(posX, posY, scene, runOnTop, scrollFactor, scale, context, sprite, frame) {

@@ -52,7 +52,7 @@ class MapScene extends Phaser.Scene {
     }
 
     preload() {
-        
+
     }
 
     create() {
@@ -67,7 +67,7 @@ class MapScene extends Phaser.Scene {
 
         //Collision layers
         if (collisionCat1 == null && collisionCat2 == null) {
-            
+
             collisionCat1 = 1;
             collisionCat2 = this.matter.world.nextCategory();
         }
@@ -85,6 +85,7 @@ class MapScene extends Phaser.Scene {
             this.map.setInteractive();
         }
 
+        this.CreateSounds();
         this.InputInitialize();
         this.PlayerInitialize();
         this.CreateAnimations();
@@ -93,9 +94,11 @@ class MapScene extends Phaser.Scene {
         this.MovementInitialize();
 
         //Movement is allowed with a slight delay so that player clicking the button to return outside won't trigger movement
-        this.time.delayedCall(200, function () { if(!optionsButton.open){
-            readyToMove = true;
-        } }, null, this)
+        this.time.delayedCall(200, function () {
+            if (!optionsButton.open) {
+                readyToMove = true;
+            }
+        }, null, this)
 
         /*
         // UI stuff
@@ -104,7 +107,7 @@ class MapScene extends Phaser.Scene {
         this.scale.on('resize', this.resize, this);*/
 
         //Autosave every 10 seconds
-        this.saveGameTimerEvent = this.time.addEvent({ delay: 10000, callback: this.SavePosition, callbackScope: this, loop: true});
+        this.saveGameTimerEvent = this.time.addEvent({ delay: 10000, callback: this.SavePosition, callbackScope: this, loop: true });
 
         //Changed this to not run on every frame, because when you're overlapping 2 buildings it would get called constantly
         this.overLapTimer = this.time.addEvent({ delay: 200, callback: this.CheckForOverlap, callbackScope: this, loop: true });
@@ -116,9 +119,8 @@ class MapScene extends Phaser.Scene {
     }
 
     //Couldn't just call save game from the timer event directly, because it wouldn't update the position value
-    SavePosition()
-    {
-        saveGame({currentMap: this.scene.key, playerX: this.player.x, playerY: this.player.y});
+    SavePosition() {
+        saveGame({ currentMap: this.scene.key, playerX: this.player.x, playerY: this.player.y });
     }
 
     update() {
@@ -129,12 +131,22 @@ class MapScene extends Phaser.Scene {
             this.player.setDepth(this.player.y);
         }
 
-        if(this.enteringBuilding)
-        {
+        if (this.enteringBuilding) {
             this.enteringBuilding = false;
             this.EnterBuilding();
         }
 
+    }
+
+    CreateSounds() {
+        this.footSteps = [];
+
+        this.footSteps.push(this.sound.add('Footstep1'));
+        this.footSteps.push(this.sound.add('Footstep2'));
+        this.footSteps.push(this.sound.add('Footstep3'));
+        this.footSteps.push(this.sound.add('Footstep4'));
+        this.footSteps.push(this.sound.add('Footstep5'));
+        this.footSteps.push(this.sound.add('Footstep6'));
     }
 
     InputInitialize() {
@@ -214,7 +226,27 @@ class MapScene extends Phaser.Scene {
 
         }, this);
 
+        let lastindex;
 
+        //Plays footstep sounds
+        this.footStepTimer = this.time.addEvent({
+            delay: 400, callback: function () {
+                if (config.soundOn) {
+                    let index;
+
+                    do {
+                        index = (Math.floor(Math.random() * 6));
+                    }//Should prevent the same sound from playing multiple times in a row
+                    while (index === lastindex);
+
+                    lastindex = index;
+
+                    this.footSteps[index].play();
+                    //this.sound.play('Footstep' + index);
+                }
+
+            }, callbackScope: this, loop: true, paused: true
+        });
 
         this.player.body.velocity.x = 0;
         this.player.body.velocity.y = 0;
@@ -267,8 +299,8 @@ class MapScene extends Phaser.Scene {
         }
     }
 
-    SetKeyMovement(){
-        
+    SetKeyMovement() {
+
 
         this.movingOnPath = false;
 
@@ -317,7 +349,7 @@ class MapScene extends Phaser.Scene {
             else if (this.arrowKeys.down.isDown || this.wasdKeys.S.isDown) {
 
                 this.movementVector.y = this.speed;
-                
+
                 this.SetKeyMovement();
 
             }
@@ -362,8 +394,7 @@ class MapScene extends Phaser.Scene {
             }
 
             //Updates movement vector towards the target destination, fixes the player moving incorrectly after colliding with a building
-            if(this.movingOnPath)
-            {
+            if (this.movingOnPath) {
                 if (this.CheckDistance(this.player, this.destination) > 20) {
 
                     this.movementVector.x = this.destination.x - this.player.x;
@@ -380,6 +411,10 @@ class MapScene extends Phaser.Scene {
 
             //Apply the correct animations to player based on direction of movement
             if (this.player.body.speed > 0) {
+
+                //Plays the footstep audio.
+                this.footStepTimer.paused = false;
+
                 const obliqueThreshold = 3 / 10;
                 const straightThreshold = 8 / 10;
 
@@ -451,6 +486,7 @@ class MapScene extends Phaser.Scene {
             }
             else {
                 this.player.anims.play(this.movementDirection + 'still', true);
+                this.footStepTimer.paused = true;
 
             }
 

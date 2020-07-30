@@ -10,15 +10,60 @@
         "1thumb": "Assets/images/photos/1_thumb",
         "1full": "Assets/images/photos/1_full"
     },
-
     "atlas": {
-        "buildingSheet": ["Assets/images/map/Buildings/TPBuildings.png", "Assets/images/map/Buildings/TPBuildings.json"],
-        "buildingBodies": ["Assets/images/character/PlayerStanding.png", "Assets/images/character/PlayerStanding.png"],
-        "MenuAtlas": ["Assets/images/menu/MenuAssets.png", "Assets/images/menu/MenuAssets.json"]
+        "buildingSheet": [
+            "Assets/images/map/Buildings/TPBuildings.png",
+            "Assets/images/map/Buildings/TPBuildings.json"
+        ],
+        "buildingBodies": [
+            "Assets/images/character/PlayerStanding.png",
+            "Assets/images/character/PlayerStanding.png"
+        ],
+        "MenuAtlas": [
+            "Assets/images/menu/MenuAssets.png",
+            "Assets/images/menu/MenuAssets.json"
+        ]
     },
-
     "spritesheet": {
-        "playerWalk" : ["Assets/images/character/PlayerWalking.png", { "frameWidth": 378, "frameHeight": 378 }],
-        "playerIdle" : ["Assets/images/character/PlayerStanding.png", { "frameWidth": 378, "frameHeight": 378 }]
+        "playerWalk": [
+            "Assets/images/character/PlayerWalking.png",
+            {
+                "frameWidth": 378,
+                "frameHeight": 378
+            }
+        ],
+        "playerIdle": [
+            "Assets/images/character/PlayerStanding.png",
+            {
+                "frameWidth": 378,
+                "frameHeight": 378
+            }
+        ]
+    },
+    "audio": {
+        "Footstep1": {
+            "ogg": "Assets/sounds/Footstep1.ogg"
+            
+        },
+        "Footstep2": {
+            "ogg": "Assets/sounds/Footstep2.ogg"
+            
+        },
+        "Footstep3": {
+            "ogg": "Assets/sounds/Footstep3.ogg"
+            
+        },
+        "Footstep4": {
+            "ogg": "Assets/sounds/Footstep4.ogg"
+            
+        },
+        "Footstep5": {
+            "ogg": "Assets/sounds/Footstep5.ogg"
+            
+        },
+        "Footstep6": {
+            "ogg": "Assets/sounds/Footstep6.ogg"
+            
+        }
     }
 }

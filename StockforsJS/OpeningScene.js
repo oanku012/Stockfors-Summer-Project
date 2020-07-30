@@ -45,6 +45,38 @@ class OpeningScene extends Phaser.Scene {
 
             
         }
+
+        /*this.load.audio('Footstep1', 'Assets/sounds/Footstep1.ogg');
+        this.load.audio('Footstep2', 'Assets/sounds/Footstep2.ogg');
+        this.load.audio('Footstep3', 'Assets/sounds/Footstep3.ogg');
+        this.load.audio('Footstep4', 'Assets/sounds/Footstep4.ogg');
+        this.load.audio('Footstep5', 'Assets/sounds/Footstep5.ogg');
+        this.load.audio('Footstep6', 'Assets/sounds/Footstep6.ogg');*/
+
+
+        // This stuff is now loaded in assets.json
+        /*
+        this.load.image('buttonBG', 'Assets/images/menu/button-bg.png');
+        this.load.image('buttonText', 'Assets/images/menu/button-text.png');
+        this.load.image('menuBG', 'Assets/images/menu/menu-bg.png');
+        this.load.image('exitButton', 'Assets/images/menu/exit-button.png');
+
+        this.load.spritesheet('playerWalk', 'Assets/images/character/PlayerWalking.png', { frameWidth: 378, frameHeight: 378 });
+        this.load.spritesheet('playerIdle', 'Assets/images/character/PlayerStanding.png', { frameWidth: 378, frameHeight: 378 });
+
+        this.load.image('map', 'Assets/images/map/kartta.png');
+
+        this.load.image('Nuoli', 'Assets/images/map/arrowSign');
+
+        //Used texturepacker and physicseditor to compile the buildings into a single spritesheet
+        this.load.atlas('buildingSheet', 'Assets/images/map/Buildings/TPBuildings.png', 'Assets/images/map/Buildings/TPBuildings.json');
+        this.load.json('buildingBodies', 'Assets/images/map/Buildings/PEBuildings.json');
+
+        //this.load.atlas('buttonSheet', 'Assets/images/menu/Buttons/MenuButtons.png', 'Assets/images/menu/Buttons/MenuButtons.json');
+        //this.load.atlas('BGSheet', 'Assets/images/menu/Backgrounds/MenuBackgrounds.png', 'Assets/images/menu/Backgrounds/MenuBackgrounds.json');
+        this.load.atlas('MenuAtlas', 'Assets/images/menu/MenuAssets.png', 'Assets/images/menu/MenuAssets.json');
+        this.load.image('Logo', 'Assets/images/menu/Logo.png');
+        */
     }
 
     //This is used when restarting the scene with a chosen language, when languagechosen is true the language menu is hidden
@@ -88,6 +120,8 @@ class OpeningScene extends Phaser.Scene {
 
         this.ohjeContainer.setVisible(false);
 
+        //this.DecodeAudio();
+
         //createButton(this.cameras.main.centerX + this.cameras.main.width * .4, this.cameras.main.centerY - this.cameras.main.height * .4, 'OptionsMenuScene', true, 0, 0.56, this, 'MenuAtlas', 'UI Buttons/Asetukset');
 
         /*this.input.keyboard.on('keydown', function (event) {
@@ -107,6 +141,15 @@ class OpeningScene extends Phaser.Scene {
         });*/
 
 
+    }
+
+    DecodeAudio(){
+        this.sound.decodeAudio("Footstep1", "Assets/sounds/Footstep1.ogg");
+        this.sound.decodeAudio("Footstep2", "Assets/sounds/Footstep2.ogg");
+        this.sound.decodeAudio("Footstep3", "Assets/sounds/Footstep3.ogg");
+        this.sound.decodeAudio("Footstep4", "Assets/sounds/Footstep4.ogg");
+        this.sound.decodeAudio("Footstep5", "Assets/sounds/Footstep5.ogg");
+        this.sound.decodeAudio("Footstep6", "Assets/sounds/Footstep6.ogg");
     }
 
     CreateLanguageMenu() {
