@@ -96,6 +96,8 @@ class OpeningScene extends Phaser.Scene {
 
     create() {
 
+        this.cameras.main.backgroundColor.setTo(255, 255, 255);
+
         this.data = this.cache.json.get('data').MainMenu;
 
         this.CreateLanguageMenu();
@@ -143,14 +145,14 @@ class OpeningScene extends Phaser.Scene {
 
     }
 
-    DecodeAudio(){
+    /*DecodeAudio(){
         this.sound.decodeAudio("Footstep1", "Assets/sounds/Footstep1.ogg");
         this.sound.decodeAudio("Footstep2", "Assets/sounds/Footstep2.ogg");
         this.sound.decodeAudio("Footstep3", "Assets/sounds/Footstep3.ogg");
         this.sound.decodeAudio("Footstep4", "Assets/sounds/Footstep4.ogg");
         this.sound.decodeAudio("Footstep5", "Assets/sounds/Footstep5.ogg");
         this.sound.decodeAudio("Footstep6", "Assets/sounds/Footstep6.ogg");
-    }
+    }*/
 
     CreateLanguageMenu() {
         this.languagePohja = this.add.sprite(0, -83, 'MenuAtlas', 'UI Pohjat/Kielivalikko');

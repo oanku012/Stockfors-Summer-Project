@@ -263,22 +263,6 @@ class MuistiPeliScene extends Phaser.Scene {
         card.front.setPerspective(config.width).setInteractive().setDepth(1);
         card.front.rotate3d.set(0, 1, 0, 180);
 
-        //This was for clicking the front-side of the card, but it's not really necessary
-        /*card.front.on('pointerup', function () {
-
-            if (card.frontTween.isPlaying() == false && card.backTween.isPlaying() == false) {
-                console.log('Clicked front of ' + img);
-
-                this.RotateCard(card, false);
-                card.back.setDepth(10);
-                card.front.setDepth(1);
-                
-
-                card.open = false;
-            }
-
-        }, this);*/
-
         card.back = this.add.dom(x, y, card.backIMG);
         card.back.setPerspective(config.width).setInteractive().setDepth(10);
         card.back.rotate3d.set(0, 1, 0, 0);
@@ -329,24 +313,10 @@ class MuistiPeliScene extends Phaser.Scene {
 
                                 this.HideCards(false);
 
-                                /*let winDiv = document.createElement('div');
-                                winDiv.style = 'background-color: brown; width: 400px; height: 150px; font: 40px Arial; font-weight: bold; text-align: center; position: relative; left: 100px; top: 50px';
-                                winDiv.innerText = 'You won the game. \n Number of reveals: ' + this.clicks;
-    
-                                let win = this.add.dom(600, 100, winDiv);
-                                win.setDepth(20).setDisplayOrigin(0);
-    
-                                let restartDiv = document.createElement('div');
-                                restartDiv.style = 'background-color: brown; width: 400px; height: 100px; font: 40px Arial; font-weight: bold; text-align: center; position: relative; left: 100px; top: 50px';
-                                restartDiv.innerText = 'Click to restart';
-    
-                                let restart = this.add.dom(600, 250, restartDiv);
-                                restart.setDepth(20).setInteractive().setDisplayOrigin(0);*/
-
-                                let win = CreateTextButton(this, this.cameras.main.centerX, 300, 'UI Buttons/Nappi', this.data.Win + this.clicks + '\n' + this.data.highScore).disableInteractive();
+                                let win = CreateTextButton(this, this.cameras.main.centerX, this.cameras.main.centerY, 'UI Buttons/Nappi', this.data.Win + this.clicks + '\n' + this.data.highScore).disableInteractive();
                                 //let highScore = CreateTextButton(this, this.cameras.main.centerX, 350, 'UI Buttons/Nappi', this.data.HighScore).disableInteractive();
                                 win.bg.setScale(1, 2);
-                                let restart = CreateTextButton(this, this.cameras.main.centerX, 500, 'UI Buttons/OK', this.data.Restart);
+                                let restart = CreateTextButton(this, this.cameras.main.centerX, this.cameras.main.centerY + 200, 'UI Buttons/OK', this.data.Restart);
 
                                 restart.on('pointerup', function () {
 

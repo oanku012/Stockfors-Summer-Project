@@ -56,6 +56,8 @@ class OptionsMenuScene extends Phaser.Scene {
         this.createOptionsMenu();
         this.CreateFlags();
 
+        this.add.image(0, 0, 'MenuAtlas', 'UI Pohjat/Tummennus').setOrigin(0);
+
         //this.cameras.main.backgroundColor.setTo(255, 255, 255);
 
         //}, null, this);
@@ -75,9 +77,10 @@ class OptionsMenuScene extends Phaser.Scene {
 
         // title and description
         let title = this.add.text(0, 0, this.data.Title);
-        title.setPosition(-title.width * 2, -352);
-        title.setFontSize(48);
+        title.setPosition(-450, -365);
+        title.setFontSize(60);
         title.setColor("black");
+        title.setFontStyle('bold');
         this.menu.add(title);
 
     }

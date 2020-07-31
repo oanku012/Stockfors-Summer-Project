@@ -470,7 +470,7 @@ class BuildingScene extends Phaser.Scene {
             //this.menu.add(imgTitle);
             //this.albumContainer.add(imgTitle);
 
-            var previousX = -315;
+            var previousX = -300;
 
             let column = 0;
             let rowLimit = 5;
@@ -489,7 +489,7 @@ class BuildingScene extends Phaser.Scene {
                 if (column >= rowLimit) {
                     row++;
                     column = 0;
-                    previousX = -315;
+                    previousX = -300;
                 }
 
                 img.setInteractive();

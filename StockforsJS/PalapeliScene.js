@@ -46,9 +46,11 @@ class PalapeliScene extends Phaser.Scene {
 
     createMainMenu()
     {
+        this.cameras.main.backgroundColor.setTo(255, 255, 255);
+
         // difficulty menu
         let menu = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY);
-        let menuBG = this.add.sprite(0, 0, 'menuBG');
+        let menuBG = this.add.sprite(0, 0, 'MenuAtlas', 'UI Pohjat/Pelipohja').setScale(0.25, 0.32);
         menu.add(menuBG);
 
         let easyButton = CreateTextButton(this, 0, -200, 'UI Buttons/Nappi', this.data.Easy);
