@@ -56,12 +56,11 @@ class MuistiPeliScene extends Phaser.Scene {
         this.gameEnded = false;
 
         this.clicks = 0;
-        this.cardSize = 0;
 
         this.cardCount = 16;
         this.columnCount = 4;
 
-        this.cardSize = 160;
+        this.cardSize = 150;
 
         this.cardArray = [];
         this.openedCards = [];
@@ -72,24 +71,13 @@ class MuistiPeliScene extends Phaser.Scene {
         this.difficulty = 'normal';
 
         //Added is used to check how many copies of this card are on the board, used is for checking if the card was chosen to be included in the game
-        this.eskimo = { src: 'Assets/images/Muistipeli/Eskimo', added: 0, used: false };
-        this.aino = { src: 'Assets/images/Muistipeli/Aino', added: 0, used: false };
-        this.katriina = { src: 'Assets/images/Muistipeli/Katriina', added: 0, used: false };
-        this.paula = { src: 'Assets/images/Muistipeli/Paula', added: 0, used: false };
-        this.punahilkka = { src: 'Assets/images/Muistipeli/Punahilkka', added: 0, used: false };
-        this.tupakka = { src: 'Assets/images/Muistipeli/Tupakka', added: 0, used: false };
-        this.koskenlaskija = { src: 'Assets/images/Muistipeli/Koskenlaskija', added: 0, used: false };
-        this.rana = { src: 'Assets/images/Muistipeli/Rana', added: 0, used: false };
-
         for(let i = 1; i<29; i++)
         {
             this.cardImages.push({ src: 'Assets/images/Muistipeli/Kortti'+ i, added: 0, used: false })
         }
 
-        //this.cardImages = [this.eskimo, this.aino, this.katriina, this.paula, this.punahilkka, this.tupakka, this.koskenlaskija, this.rana];
-
         // kopsasin nää vaa nyt siitä palapelist
-        this.menu = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY);
+        this.menu = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY - 3).setScale(0.9);
         let menuBG = this.add.sprite(0, 0, 'MenuAtlas', 'UI Pohjat/Pelipohja').setScale(0.25, 0.32);
         this.menu.add(menuBG);
 
@@ -109,7 +97,7 @@ class MuistiPeliScene extends Phaser.Scene {
                 easy.destroy();
                 normal.destroy();
                 hard.destroy();
-                menuBG.setScale(0.5, 0.3);
+                menuBG.setScale(0.5, 0.4);
                 this.menu.setSize(menuBG.width, menuBG.height);
                 this.StartGame(this.difficulty);
                 
@@ -123,7 +111,7 @@ class MuistiPeliScene extends Phaser.Scene {
                 normal.destroy();
                 hard.destroy();
                 console.log('Selected: ' + this.difficulty);
-                menuBG.setScale(0.5, 0.5);
+                menuBG.setScale(0.6, 0.5);
                 this.menu.setSize(menuBG.width, menuBG.height);
                 this.StartGame(this.difficulty);
                 
@@ -137,7 +125,7 @@ class MuistiPeliScene extends Phaser.Scene {
                 easy.destroy();
                 normal.destroy();
                 hard.destroy();
-                menuBG.setScale(0.7, 0.5);
+                menuBG.setScale(0.7, 0.56);
                 this.menu.setSize(menuBG.width, menuBG.height);
                 this.StartGame(this.difficulty);
             }
@@ -149,48 +137,6 @@ class MuistiPeliScene extends Phaser.Scene {
 
             }
         }, this);
-
-        /*gameStart.setInteractive();
-        gameStart.on('pointerup', function () {
-
-
-
-            this.StartGame(this.difficulty);
-
-            this.menuElements = [];
-            gameStart.destroy();
-            easy.destroy();
-            normal.destroy();
-            hard.destroy();
-            back.destroy();
-
-        }, this);
-
-        easy.setInteractive();
-        easy.on('pointerdown', function () {
-
-            this.difficulty = 'easy';
-            console.log('Selected: ' + this.difficulty);
-
-        }, this);
-
-        normal.setInteractive();
-        normal.on('pointerdown', function () {
-
-
-            this.difficulty = 'normal';
-            console.log('Selected: ' + this.difficulty);
-
-        }, this);
-
-        hard.setInteractive();
-        hard.on('pointerdown', function () {
-
-
-            this.difficulty = 'hard';
-            console.log('Selected: ' + this.difficulty);
-
-        }, this);*/
 
         this.menuElements.push(easy, normal, hard);
 
@@ -216,11 +162,11 @@ class MuistiPeliScene extends Phaser.Scene {
 
         let cardsToUse = [];
 
-        let startX = 608;
+        let startX = 628;
 
         //Change count of cards for the game based on difficulty and randomly choose what card arts to use 
         if (difficulty == 'easy') {
-            this.cardCount = 8;
+            this.cardCount = 12;
             for (var i = 0; i < this.cardCount / 2; i++) {
                 let cardToUse;
 
@@ -236,7 +182,9 @@ class MuistiPeliScene extends Phaser.Scene {
             }
         }
         else if (difficulty == 'normal') {
-            this.cardCount = 16;
+            this.cardCount = 20;
+            this.columnCount = 5;
+            startX = 544;
             for (var i = 0; i < this.cardCount / 2; i++) {
                 let cardToUse;
                 do {
@@ -250,9 +198,9 @@ class MuistiPeliScene extends Phaser.Scene {
             }
         }
         else if (difficulty == 'hard') {
-            this.cardCount = 24;
+            this.cardCount = 30;
             this.columnCount = 6;
-            startX = 424;
+            startX = 460;
             for (var i = 0; i < this.cardCount / 2; i++) {
                 let cardToUse;
                 do {
@@ -278,7 +226,7 @@ class MuistiPeliScene extends Phaser.Scene {
 
             let x = startX + (currentColumn - 1) * (this.cardSize + 20);
             //Should position the cards roughly on the center of the screen regardless of the amount
-            let y = (this.cameras.main.centerY - ((this.cardSize/2) + 6) * rowCount )+ (currentRow - 1) * (this.cardSize + 20);
+            let y = (this.cameras.main.centerY - ((this.cardSize/2) + 10) * rowCount )+ (currentRow - 1) * (this.cardSize + 20);
 
             let image;
 
