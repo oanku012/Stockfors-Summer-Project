@@ -11,7 +11,8 @@ class PreloadScene extends Phaser.Scene {
 
     preload ()
     {
-        console.log(this.sceneToLoad);
+        console.log("Loading scene: " + this.sceneToLoad);
+        this.cameras.main.backgroundColor.setTo(255, 255, 255);
         this.loadAssets(this.cache.json.get('assets'));
         let logo = this.add.image(this.centerX(), this.centerY(), 'logo');
         logo.setScale(.2, .2);
@@ -53,7 +54,7 @@ class PreloadScene extends Phaser.Scene {
         let updateProgressbar = function (percentage)
         {
             progressbar.clear();
-            progressbar.fillStyle(0xffffff, 1);
+            progressbar.fillStyle(0x000000, 1);
             progressbar.fillRect(xStart, yStart, percentage * width, height);
         };
 

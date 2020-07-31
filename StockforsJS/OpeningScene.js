@@ -43,6 +43,8 @@ class OpeningScene extends Phaser.Scene {
 
            console.log('Language loaded');
 
+           this.cameras.main.backgroundColor.setTo(255, 255, 255);
+
             
         }
 
@@ -93,8 +95,6 @@ class OpeningScene extends Phaser.Scene {
     }
 
     create() {
-
-        this.cameras.main.backgroundColor.setTo(255, 255, 255);
 
         this.data = this.cache.json.get('data').MainMenu;
 
