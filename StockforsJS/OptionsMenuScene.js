@@ -56,6 +56,8 @@ class OptionsMenuScene extends Phaser.Scene {
         this.createOptionsMenu();
         this.CreateFlags();
 
+        //this.cameras.main.backgroundColor.setTo(255, 255, 255);
+
         //}, null, this);
 
         // Reorganize the UI when the game gets resized

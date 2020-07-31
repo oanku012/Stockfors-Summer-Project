@@ -35,7 +35,16 @@ class MuistiPeliScene extends Phaser.Scene {
         this.cardElements;
     }
 
+    preload()
+    {
+        this.load.image('background', 'Assets/images/Albums/Pakkausmuseo/Pakkausmuseo.jpg');
+    }
+
     create() {
+
+        this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, 'background').setScale(0.5);
+
+        this.cameras.main.backgroundColor.setTo(255, 255, 255);
 
         this.data = this.cache.json.get('data').Muistipeli;
 
@@ -58,6 +67,7 @@ class MuistiPeliScene extends Phaser.Scene {
         this.openedCards = [];
         this.menuElements = [];
         this.cardElements = [];
+        this.cardImages = [];
 
         this.difficulty = 'normal';
 
@@ -71,12 +81,19 @@ class MuistiPeliScene extends Phaser.Scene {
         this.koskenlaskija = { src: 'Assets/images/Muistipeli/Koskenlaskija', added: 0, used: false };
         this.rana = { src: 'Assets/images/Muistipeli/Rana', added: 0, used: false };
 
-        this.cardImages = [this.eskimo, this.aino, this.katriina, this.paula, this.punahilkka, this.tupakka, this.koskenlaskija, this.rana];
+        for(let i = 1; i<29; i++)
+        {
+            this.cardImages.push({ src: 'Assets/images/Muistipeli/Kortti'+ i, added: 0, used: false })
+        }
+
+        //this.cardImages = [this.eskimo, this.aino, this.katriina, this.paula, this.punahilkka, this.tupakka, this.koskenlaskija, this.rana];
 
         // kopsasin nää vaa nyt siitä palapelist
         this.menu = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY);
-        let menuBG = this.add.sprite(0, 0, 'MenuAtlas', 'UI Pohjat/Pelipohja').setScale(0.6, 0.5);
+        let menuBG = this.add.sprite(0, 0, 'MenuAtlas', 'UI Pohjat/Pelipohja').setScale(0.25, 0.32);
         this.menu.add(menuBG);
+
+        this.menu.bg = menuBG;
 
         let easy = CreateTextButton(this, 0, -200, 'UI Buttons/Nappi', this.data.Easy);
         let normal = CreateTextButton(this, 0, 0, 'UI Buttons/Nappi', this.data.Normal);
@@ -92,7 +109,10 @@ class MuistiPeliScene extends Phaser.Scene {
                 easy.destroy();
                 normal.destroy();
                 hard.destroy();
+                menuBG.setScale(0.5, 0.3);
+                this.menu.setSize(menuBG.width, menuBG.height);
                 this.StartGame(this.difficulty);
+                
             }
         }, this);
 
@@ -103,7 +123,10 @@ class MuistiPeliScene extends Phaser.Scene {
                 normal.destroy();
                 hard.destroy();
                 console.log('Selected: ' + this.difficulty);
+                menuBG.setScale(0.5, 0.5);
+                this.menu.setSize(menuBG.width, menuBG.height);
                 this.StartGame(this.difficulty);
+                
             }
         }, this);
 
@@ -114,6 +137,8 @@ class MuistiPeliScene extends Phaser.Scene {
                 easy.destroy();
                 normal.destroy();
                 hard.destroy();
+                menuBG.setScale(0.7, 0.5);
+                this.menu.setSize(menuBG.width, menuBG.height);
                 this.StartGame(this.difficulty);
             }
         }, this);
@@ -174,8 +199,7 @@ class MuistiPeliScene extends Phaser.Scene {
 
     StartGame(difficulty) {
 
-        //Not sure why the data on this doesn't work??
-        let back = CreateTextButton(this, -450, 410, 'UI Buttons/Takaisin', this.data.Back).setScale(0.5, 0.6);
+        let back = CreateTextButton(this, (-this.menu.width/2)* this.menu.bg.scaleX, (this.menu.height/2) * this.menu.bg.scaleY, 'UI Buttons/Takaisin', this.data.Back).setScale(0.7);
 
         back.on('pointerup', function()
         {
@@ -191,6 +215,8 @@ class MuistiPeliScene extends Phaser.Scene {
         let currentColumn = 1;
 
         let cardsToUse = [];
+
+        let startX = 608;
 
         //Change count of cards for the game based on difficulty and randomly choose what card arts to use 
         if (difficulty == 'easy') {
@@ -225,6 +251,8 @@ class MuistiPeliScene extends Phaser.Scene {
         }
         else if (difficulty == 'hard') {
             this.cardCount = 24;
+            this.columnCount = 6;
+            startX = 424;
             for (var i = 0; i < this.cardCount / 2; i++) {
                 let cardToUse;
                 do {
@@ -248,9 +276,9 @@ class MuistiPeliScene extends Phaser.Scene {
                 currentColumn = 1;
             }
 
-            let x = 600 + (currentColumn - 1) * (this.cardSize + 20);
+            let x = startX + (currentColumn - 1) * (this.cardSize + 20);
             //Should position the cards roughly on the center of the screen regardless of the amount
-            let y = (this.cameras.main.centerY - (this.cardSize/2) * rowCount )+ (currentRow - 1) * (this.cardSize + 20);
+            let y = (this.cameras.main.centerY - ((this.cardSize/2) + 6) * rowCount )+ (currentRow - 1) * (this.cardSize + 20);
 
             let image;
 
@@ -280,7 +308,7 @@ class MuistiPeliScene extends Phaser.Scene {
         card.frontIMG.style = 'width: ' + this.cardSize + 'px; height: ' + this.cardSize + 'px; backface-visibility: hidden; position: relative; left: ' + this.cardSize / 2 + 'px; top: ' + this.cardSize / 2 + 'px';
 
         card.backIMG = document.createElement('img');
-        card.backIMG.src = 'Assets/images/Muistipeli/Takapuoli';
+        card.backIMG.src = 'Assets/images/Muistipeli/Korttipohja';
         card.backIMG.style = 'width: ' + this.cardSize + 'px; height: ' + this.cardSize + 'px; backface-visibility: hidden; position: relative; left: ' + this.cardSize / 2 + 'px; top: ' + this.cardSize / 2 + 'px';
 
         card.front = this.add.dom(x, y, card.frontIMG);
