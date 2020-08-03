@@ -124,22 +124,24 @@ class PalapeliScene extends Phaser.Scene {
             case this.difficulties.EASY:
                 this.BOARD_COLS = Math.floor(600 / this.PIECE_WIDTH);
                 this.BOARD_ROWS = Math.floor(600 / this.PIECE_HEIGHT);
+                this.board = this.add.container(this.cameras.main.centerX - 600 * .35, this.cameras.main.centerY - 600 * .4);
                 console.log("EASY game started");
                 break;
 
             case this.difficulties.MEDIUM:
                 this.BOARD_COLS = Math.floor(800 / this.PIECE_WIDTH);
                 this.BOARD_ROWS = Math.floor(600 / this.PIECE_HEIGHT);
+                this.board = this.add.container(this.cameras.main.centerX - 800 * .35, this.cameras.main.centerY - 600 * .4);
                 console.log("MEDIUM game started");
                 break;
 
             case this.difficulties.HARD:
                 this.BOARD_COLS = Math.floor(800 / this.PIECE_WIDTH);
                 this.BOARD_ROWS = Math.floor(800 / this.PIECE_HEIGHT);
+                this.board = this.add.container(this.cameras.main.centerX - 800 * .35, this.cameras.main.centerY - 800 * .4);
                 console.log("HARD game started");
                 break;
         }
-        
         
 
         this.piecesAmount = this.BOARD_COLS * this.BOARD_ROWS;
@@ -148,8 +150,6 @@ class PalapeliScene extends Phaser.Scene {
 
         this.piecesGroup = this.add.group();
 
-
-        this.board = this.add.container(this.cameras.main.centerX *.25, this.cameras.main.centerY *.25);
 
         for (i = 0; i < this.BOARD_ROWS; i++)
         {
