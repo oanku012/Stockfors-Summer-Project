@@ -49,35 +49,52 @@ class PalapeliScene extends Phaser.Scene {
         this.cameras.main.backgroundColor.setTo(255, 255, 255);
 
         // difficulty menu
-        let menu = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY);
+        this.menu = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY);
         let menuBG = this.add.sprite(0, 0, 'MenuAtlas', 'UI Pohjat/Pelipohja').setScale(0.25, 0.32);
-        menu.add(menuBG);
+        this.menu.add(menuBG);
+
+        this.menu.bg = menuBG;
 
         let easyButton = CreateTextButton(this, 0, -200, 'UI Buttons/Nappi', this.data.Easy);
         let mediumButton = CreateTextButton(this, 0, 0, 'UI Buttons/Nappi', this.data.Normal);
         let hardButton = CreateTextButton(this, 0, 200, 'UI Buttons/Nappi', this.data.Hard);
         let back = CreateTextButton(this, 200, 1000, 'UI Buttons/Takaisin', this.data.Exit);
 
-        menu.add([easyButton, mediumButton, hardButton]);
+        this.menu.add([easyButton, mediumButton, hardButton]);
 
         easyButton.on('pointerup', function () {
             if (easyButton.pressed) {
+                
+                //menu.destroy();
+                easyButton.destroy();
+                mediumButton.destroy();
+                hardButton.destroy();
+                menuBG.setScale(0.4, 0.4);
                 this.setupGame(this.difficulties.EASY);
-                menu.destroy();
             }
         }, this);
 
         mediumButton.on('pointerup', function () {
             if (mediumButton.pressed) {
+                
+                //menu.destroy();
+                easyButton.destroy();
+                mediumButton.destroy();
+                hardButton.destroy();
+                menuBG.setScale(0.5, 0.38);
                 this.setupGame(this.difficulties.MEDIUM);
-                menu.destroy();
             }
         }, this);
 
         hardButton.on('pointerup', function () {
             if (hardButton.pressed) {
+                
+                //menu.destroy();
+                easyButton.destroy();
+                mediumButton.destroy();
+                hardButton.destroy();
+                menuBG.setScale(0.5, 0.5);
                 this.setupGame(this.difficulties.HARD);
-                menu.destroy();
             }
         }, this);
 
@@ -112,6 +129,19 @@ class PalapeliScene extends Phaser.Scene {
 
 
     prepareBoard(difficulty) {
+
+        let back = CreateTextButton(this, 0, (this.menu.bg.height/2) * this.menu.bg.scaleY, 'UI Buttons/Nappi', this.data.Restart).setScale(0.7);
+
+        back.on('pointerup', function()
+        {
+            if(back.pressed)
+            {
+                this.scene.restart();
+            }
+        }, this);
+
+        this.menu.add(back);
+
         this.gameWon = false;
 
         var piecesIndex = 0,
@@ -124,21 +154,21 @@ class PalapeliScene extends Phaser.Scene {
             case this.difficulties.EASY:
                 this.BOARD_COLS = Math.floor(600 / this.PIECE_WIDTH);
                 this.BOARD_ROWS = Math.floor(600 / this.PIECE_HEIGHT);
-                this.board = this.add.container(this.cameras.main.centerX - 600 * .35, this.cameras.main.centerY - 600 * .4);
+                this.board = this.add.container(this.cameras.main.centerX - 570 * .35, this.cameras.main.centerY - 500 * .4);
                 console.log("EASY game started");
                 break;
 
             case this.difficulties.MEDIUM:
                 this.BOARD_COLS = Math.floor(800 / this.PIECE_WIDTH);
                 this.BOARD_ROWS = Math.floor(600 / this.PIECE_HEIGHT);
-                this.board = this.add.container(this.cameras.main.centerX - 800 * .35, this.cameras.main.centerY - 600 * .4);
+                this.board = this.add.container(this.cameras.main.centerX - 850 * .35, this.cameras.main.centerY - 500 * .4);
                 console.log("MEDIUM game started");
                 break;
 
             case this.difficulties.HARD:
                 this.BOARD_COLS = Math.floor(800 / this.PIECE_WIDTH);
                 this.BOARD_ROWS = Math.floor(800 / this.PIECE_HEIGHT);
-                this.board = this.add.container(this.cameras.main.centerX - 800 * .35, this.cameras.main.centerY - 800 * .4);
+                this.board = this.add.container(this.cameras.main.centerX - 850 * .35, this.cameras.main.centerY - 750 * .4);
                 console.log("HARD game started");
                 break;
         }

@@ -48,6 +48,10 @@ class OptionsMenuScene extends Phaser.Scene {
 
         optionsButton.open = true;
         this.scene.bringToTop();
+
+        //Brings the UI to the top so the options button in the corner isn't tinted over
+        game.scene.getScene('UI').scene.bringToTop();
+
         //this.time.delayedCall(100, function () {
         this.data = this.cache.json.get('data').OptionsMenu;
 
@@ -58,7 +62,7 @@ class OptionsMenuScene extends Phaser.Scene {
 
         //this.add.image(0, 0, 'MenuAtlas', 'UI Pohjat/Tummennus').setOrigin(0);
 
-        this.cameras.main.backgroundColor.setTo(0, 0, 0, 50);
+        this.cameras.main.backgroundColor.setTo(0, 0, 0, 100);
 
         //}, null, this);
 
@@ -77,7 +81,7 @@ class OptionsMenuScene extends Phaser.Scene {
 
         // title and description
         let title = this.add.text(0, 0, this.data.Title);
-        title.setPosition(-450, -365);
+        title.setPosition(-450, -370);
         title.setFontSize(60);
         title.setColor("black");
         title.setFontStyle('bold');

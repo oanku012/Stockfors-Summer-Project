@@ -115,7 +115,6 @@ class MuistiPeliScene extends Phaser.Scene {
                 hard.destroy();
                 title.destroy();
                 menuBG.setScale(0.5, 0.4);
-                this.menu.setSize(menuBG.width, menuBG.height);
                 this.StartGame(this.difficulty);
                 
             }
@@ -130,7 +129,6 @@ class MuistiPeliScene extends Phaser.Scene {
                 title.destroy();
                 console.log('Selected: ' + this.difficulty);
                 menuBG.setScale(0.6, 0.5);
-                this.menu.setSize(menuBG.width, menuBG.height);
                 this.StartGame(this.difficulty);
                 
             }
@@ -145,7 +143,6 @@ class MuistiPeliScene extends Phaser.Scene {
                 hard.destroy();
                 title.destroy();
                 menuBG.setScale(0.7, 0.56);
-                this.menu.setSize(menuBG.width, menuBG.height);
                 this.StartGame(this.difficulty);
             }
         }, this);
@@ -167,7 +164,7 @@ class MuistiPeliScene extends Phaser.Scene {
         //X coordinate for placing the restart button in the corner
         //(-this.menu.width/2)* this.menu.bg.scaleX
 
-        let back = CreateTextButton(this, 0, (this.menu.height/2) * this.menu.bg.scaleY, 'UI Buttons/Nappi', this.data.Back).setScale(0.7);
+        let back = CreateTextButton(this, 0, (this.menu.bg.height/2) * this.menu.bg.scaleY, 'UI Buttons/Nappi', this.data.Back).setScale(0.7);
 
         back.on('pointerup', function()
         {
