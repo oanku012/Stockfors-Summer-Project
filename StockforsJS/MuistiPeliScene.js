@@ -145,7 +145,10 @@ class MuistiPeliScene extends Phaser.Scene {
 
     StartGame(difficulty) {
 
-        let back = CreateTextButton(this, (-this.menu.width/2)* this.menu.bg.scaleX, (this.menu.height/2) * this.menu.bg.scaleY, 'UI Buttons/Takaisin', this.data.Back).setScale(0.7);
+        //X coordinate for placing the restart button in the corner
+        //(-this.menu.width/2)* this.menu.bg.scaleX
+
+        let back = CreateTextButton(this, 0, (this.menu.height/2) * this.menu.bg.scaleY, 'UI Buttons/Nappi', this.data.Back).setScale(0.7);
 
         back.on('pointerup', function()
         {
@@ -315,16 +318,16 @@ class MuistiPeliScene extends Phaser.Scene {
 
                                 let win = CreateTextButton(this, this.cameras.main.centerX, this.cameras.main.centerY, 'UI Buttons/Nappi', this.data.Win + this.clicks + '\n' + this.data.highScore).disableInteractive();
                                 //let highScore = CreateTextButton(this, this.cameras.main.centerX, 350, 'UI Buttons/Nappi', this.data.HighScore).disableInteractive();
-                                win.bg.setScale(1, 2);
-                                let restart = CreateTextButton(this, this.cameras.main.centerX, this.cameras.main.centerY + 200, 'UI Buttons/OK', this.data.Restart);
+                                win.bg.setScale(1.1, 1.65);
+                                //let restart = CreateTextButton(this, this.cameras.main.centerX, this.cameras.main.centerY + 200, 'UI Buttons/OK', this.data.Restart);
 
-                                restart.on('pointerup', function () {
+                                /*restart.on('pointerup', function () {
 
                                     if (restart.pressed) {
                                         this.scene.restart();
                                     }
 
-                                }, this);
+                                }, this);*/
 
                                 if (this.difficulty == 'easy') {
                                     if (this.clicks < gameState.MPScoreEasy || gameState.MPScoreEasy == startingGameState.MPScoreEasy) {

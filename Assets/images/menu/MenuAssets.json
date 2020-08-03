@@ -435,8 +435,8 @@
 			"image": "MenuAssets-1.png",
 			"format": "RGBA8888",
 			"size": {
-				"w": 3188,
-				"h": 2850
+				"w": 2535,
+				"h": 2965
 			},
 			"scale": 1,
 			"frames": [
@@ -462,27 +462,6 @@
 					}
 				},
 				{
-					"filename": "UI Pohjat/Tummennus",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 1920,
-						"h": 1083
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 1920,
-						"h": 1083
-					},
-					"frame": {
-						"x": 1,
-						"y": 1766,
-						"w": 1920,
-						"h": 1083
-					}
-				},
-				{
 					"filename": "UI Pohjat/InsideVaaka",
 					"rotated": false,
 					"trimmed": true,
@@ -497,8 +476,8 @@
 						"h": 1198
 					},
 					"frame": {
-						"x": 1270,
-						"y": 1,
+						"x": 1,
+						"y": 1766,
 						"w": 1692,
 						"h": 1198
 					}
@@ -518,8 +497,8 @@
 						"h": 991
 					},
 					"frame": {
-						"x": 1923,
-						"y": 1201,
+						"x": 1270,
+						"y": 1,
 						"w": 1264,
 						"h": 991
 					}
@@ -539,8 +518,8 @@
 						"h": 584
 					},
 					"frame": {
-						"x": 1923,
-						"y": 2194,
+						"x": 1270,
+						"y": 994,
 						"w": 1202,
 						"h": 584
 					}
@@ -551,6 +530,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:a2e8632b84ff17fddcdd1513f4cb1a1e:d3bc66ed112340979ab844c2268ffb64:e65da5ba29d08851ccf425b5c3d43287$"
+		"smartupdate": "$TexturePacker:SmartUpdate:1745752eef8aee230b38a89681073255:b8886de0feaa30a6aa9c1414f20d7332:e65da5ba29d08851ccf425b5c3d43287$"
 	}
 }
