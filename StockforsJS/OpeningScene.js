@@ -202,14 +202,15 @@ class OpeningScene extends Phaser.Scene {
         //var data = this.cache.json.get('mainMenuData');
 
         this.infoHeader = this.make.text({
-            x: 0,
-            y: -650,
+            x: -500,
+            y: -655,
             text: this.data['OpeningHeader'],
-            origin: { x: 0.5, y: 0.5 },
+            origin: { x: 0, y: 0.5 },
             style: {
-                font: '44px Arial',
+                font: '44px LexendTera',
                 fill: 'black',
-                wordWrap: { width: 1000 }
+                wordWrap: { width: 1000 },
+                align: 'left'
             }
         });
 
@@ -219,8 +220,9 @@ class OpeningScene extends Phaser.Scene {
             text: this.data['OpeningText'],
             origin: { x: 0.5, y: 0.5 },
             style: {
-                font: '40px Arial',
+                font: '40px Carme',
                 fill: 'black',
+                align: 'left',
                 wordWrap: { width: 1000 }
             }
         });
@@ -230,7 +232,7 @@ class OpeningScene extends Phaser.Scene {
         //this.continue = this.add.sprite(200, 700, 'MenuAtlas', 'UI Buttons/Nappi');
         this.continue = CreateTextButton(this, 200, 700, 'UI Buttons/Nappi', this.data['ContinueGame']);
         this.ohjeNappi = this.add.sprite(500, 700, 'MenuAtlas', 'UI Buttons/Ohje');
-        this.clearDataText = this.add.text(1400, 200, "Clear save data", { font: "40px Arial", fill: "black" });
+        this.clearDataText = this.add.text(1400, 200, "Clear save data", { font: "40px Carme", fill: "black" });
 
         this.mainMenuContainer = this.CreateMenuContainer(
             [this.aloitusPohja,
@@ -318,24 +320,24 @@ class OpeningScene extends Phaser.Scene {
         //var data = this.cache.json.get('mainMenuData');
 
         this.helpHeader = this.make.text({
-            x: 0,
+            x: -530,
             y: -700,
             text: this.data['HelpHeader'],
-            origin: { x: 0.5, y: 0.0 },
+            origin: { x: 0, y: 0.0 },
             style: {
-                font: '44px Arial',
+                font: '44px LexendTera',
                 fill: 'black',
                 wordWrap: { width: 1000 }
             }
         });
 
         this.helpText = this.make.text({
-            x: 0,
+            x: -530,
             y: -200,
             text: this.data['HelpText'],
-            origin: { x: 0.5, y: 0.5 },
+            origin: { x: 0, y: 0.5 },
             style: {
-                font: '40px Arial',
+                font: '40px Carme',
                 fill: 'black',
                 wordWrap: { width: 1000 }
             }

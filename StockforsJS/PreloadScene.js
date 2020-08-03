@@ -17,6 +17,13 @@ class PreloadScene extends Phaser.Scene {
         let logo = this.add.image(this.centerX(), this.centerY(), 'logo');
         logo.setScale(.2, .2);
         this.createProgressbar(this.centerX(), this.centerY() + 200);
+        this.load.script('webfont', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js');
+    }
+
+    create()
+    {
+        //Loads up all the fonts
+        FontsInit();
     }
 
     createProgressbar (x, y)

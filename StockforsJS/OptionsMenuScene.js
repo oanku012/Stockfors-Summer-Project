@@ -81,6 +81,7 @@ class OptionsMenuScene extends Phaser.Scene {
         title.setFontSize(60);
         title.setColor("black");
         title.setFontStyle('bold');
+        title.setFontFamily('LexendTera');
         this.menu.add(title);
 
     }
@@ -98,16 +99,16 @@ class OptionsMenuScene extends Phaser.Scene {
 
         //The text align doesn't work on one line text
         this.musicButton = this.add.sprite(-400, firstRow, 'MenuAtlas', 'UI Buttons/CheckmarkON').setOrigin(0.5, 0.5);
-        this.musicText = this.add.text(-200, firstRow, this.data['Music'], { fontSize: fontsize, color: "black", align: 'center', origin: { x: 0.5, y: 0.5 } });
+        this.musicText = this.add.text(-200, firstRow, this.data['Music'], { fontSize: fontsize, fontFamily: 'Carme', color: "black", align: 'center', origin: { x: 0.5, y: 0.5 } });
         this.musicText.setPosition(-this.musicText.width * 0.5, firstRow - 20);
 
         this.soundButton = this.add.image(-400, firstRow + rowGap, 'MenuAtlas', 'UI Buttons/CheckmarkON').setOrigin(0.5, 0.5);
-        this.soundText = this.add.text(-200, firstRow + rowGap, this.data['Sound'], { fontSize: fontsize, color: "black", align: 'center', origin: { x: 0.5, y: 0.5 } });
+        this.soundText = this.add.text(-200, firstRow + rowGap, this.data['Sound'], { fontSize: fontsize, fontFamily: 'Carme', color: "black", align: 'center', origin: { x: 0.5, y: 0.5 } });
         this.soundText.setPosition(-this.soundText.width * 0.5, firstRow + rowGap - 20);
 
 
         this.fullScreenButton = this.add.image(-400, firstRow + rowGap * 2, 'MenuAtlas', 'UI Buttons/CheckmarkOFF').setOrigin(0.5, 0.5);
-        this.fullScreenText = this.add.text(-200, firstRow + rowGap * 2, this.data['Fullscreen'], { fontSize: fontsize, color: "black", align: 'center', origin: { x: 0.5, y: 0.5 } });
+        this.fullScreenText = this.add.text(-200, firstRow + rowGap * 2, this.data['Fullscreen'], { fontSize: fontsize, fontFamily: 'Carme', color: "black", align: 'center', origin: { x: 0.5, y: 0.5 } });
         this.fullScreenText.setPosition(-this.fullScreenText.width * 0.5, (firstRow + rowGap * 2) - 20);
 
 

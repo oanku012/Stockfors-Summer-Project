@@ -44,9 +44,26 @@ class MuistiPeliScene extends Phaser.Scene {
 
         this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, 'background').setScale(0.5);
 
+        
+
         this.cameras.main.backgroundColor.setTo(255, 255, 255);
 
         this.data = this.cache.json.get('data').Muistipeli;
+
+        let title = this.make.text({
+            x: 0,
+            y: -400,
+            text: this.data.Title,
+            origin: { x: 0.5, y: 0.5 },
+            style: {
+                font: '64px LexendTera',
+                fill: 'black',
+                //backgroundColor: '#747474',
+                
+            }
+        });
+
+        title.setShadow(5, 5, 'grey', 5, false, true);
 
         console.log('Muistipeli');
 
@@ -79,7 +96,6 @@ class MuistiPeliScene extends Phaser.Scene {
         // kopsasin nää vaa nyt siitä palapelist
         this.menu = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY - 3).setScale(0.9);
         let menuBG = this.add.sprite(0, 0, 'MenuAtlas', 'UI Pohjat/Pelipohja').setScale(0.25, 0.32);
-        this.menu.add(menuBG);
 
         this.menu.bg = menuBG;
 
@@ -88,7 +104,7 @@ class MuistiPeliScene extends Phaser.Scene {
         let hard = CreateTextButton(this, 0, 200, 'UI Buttons/Nappi', this.data.Hard);
         let exit = CreateTextButton(this, 170, 70, 'UI Buttons/Takaisin', this.data.Exit).setScale(0.8);
         
-        this.menu.add([easy, normal, hard]);
+        this.menu.add([menuBG, title, easy, normal, hard]);
 
         easy.on('pointerup', function () {
             if (easy.pressed) {
@@ -97,6 +113,7 @@ class MuistiPeliScene extends Phaser.Scene {
                 easy.destroy();
                 normal.destroy();
                 hard.destroy();
+                title.destroy();
                 menuBG.setScale(0.5, 0.4);
                 this.menu.setSize(menuBG.width, menuBG.height);
                 this.StartGame(this.difficulty);
@@ -110,6 +127,7 @@ class MuistiPeliScene extends Phaser.Scene {
                 easy.destroy();
                 normal.destroy();
                 hard.destroy();
+                title.destroy();
                 console.log('Selected: ' + this.difficulty);
                 menuBG.setScale(0.6, 0.5);
                 this.menu.setSize(menuBG.width, menuBG.height);
@@ -125,6 +143,7 @@ class MuistiPeliScene extends Phaser.Scene {
                 easy.destroy();
                 normal.destroy();
                 hard.destroy();
+                title.destroy();
                 menuBG.setScale(0.7, 0.56);
                 this.menu.setSize(menuBG.width, menuBG.height);
                 this.StartGame(this.difficulty);

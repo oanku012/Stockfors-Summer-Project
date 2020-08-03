@@ -14,6 +14,7 @@ class BootScene extends Phaser.Scene {
         this.load.json('assets', 'Assets/json/MainAssets.json');
         this.load.json('buildingBodies', 'Assets/images/map/Buildings/PEBuildings.json');
         this.load.image('logo', 'Assets/images/menu/Logo.png');
+        
     }
 
     create ()
@@ -21,4 +22,5 @@ class BootScene extends Phaser.Scene {
         this.scene.start('PreloadScene', { sceneToLoad: 'OpeningScene' });
     }
 
+    
 }

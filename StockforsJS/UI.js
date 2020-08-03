@@ -25,7 +25,7 @@ function CreateTextButton(context, x, y, buttonspriteframe, text) {
         text: text,
         origin: { x: 0.5, y: 0.5 },
         style: {
-            font: '38px Arial',
+            font: '38px Carme',
             fill: 'black',
             wordWrap: { width: button.width },
             align: 'center'

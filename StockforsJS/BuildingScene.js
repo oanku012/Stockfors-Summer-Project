@@ -83,8 +83,10 @@ class BuildingScene extends Phaser.Scene {
         // title and description
         let title = this.add.text(0, -350, this.title);
         title.setFontSize(64);
-        title.setPosition(-title.width * .5, -480);
+        title.setPosition(0, -480);
         title.setColor("black");
+        title.setFontFamily('LexendTera');
+        title.setOrigin(0.5, 0.5);
         this.menu.add(title);
 
 
@@ -106,7 +108,7 @@ class BuildingScene extends Phaser.Scene {
         let textX = -320;
 
         let style = {
-            font: '34px Arial',
+            font: '34px Carme',
             fill: 'black',
             wordWrap: { width: 600 }
         };
@@ -435,7 +437,7 @@ class BuildingScene extends Phaser.Scene {
             text: text,
             origin: { x: 0.5, y: 0.5 },
             style: {
-                font: '34px Arial',
+                font: '34px Carme',
                 fill: 'black',
                 wordWrap: { width: 780 }
             }

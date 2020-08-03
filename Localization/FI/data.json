@@ -48,7 +48,8 @@
         "Win": "Voitit pelin. Kääntöjen määrä: ",
         "HighScore": "Ennätys: ",
         "Restart": "Aloita uudelleen.",
-        "Back": "Aloita uudelleen"
+        "Back": "Aloita uudelleen",
+        "Title": "MUISTIPELI"
     },
     "Palapeli": {
         "Easy": "Helppo",
