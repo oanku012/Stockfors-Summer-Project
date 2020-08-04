@@ -40,6 +40,11 @@ class BuildingScene extends Phaser.Scene {
     }
 
     create() {
+
+        //let bounds = this.matter.world.setBounds(-90, 0, 2500, 1000, 64, true, true, false, false);
+
+        
+
         this.infoTexts = [];
         this.infoCards = [];
         //this.images = [];
@@ -66,6 +71,7 @@ class BuildingScene extends Phaser.Scene {
         this.CreateInstructionButton();
         this.CreateAlbum();
         this.CreateInfoContainer();
+        this.CreatePanoRamaContainer();
         console.log(this.scene.key);
 
         this.ContainerTransition(this.infoContainer);
@@ -268,6 +274,10 @@ class BuildingScene extends Phaser.Scene {
 
             this.panoramaButton.on('pointerup', function () {
                 //Start panorama here
+                if(this.panoramaButton.pressed){
+                this.ContainerTransition(this.panoramaContainer);
+
+                }
             }, this);
 
             this.menuButtons.add(this.panoramaButton);
@@ -558,6 +568,61 @@ class BuildingScene extends Phaser.Scene {
 
     CreatePanoRamaContainer()
     {
+        this.panoramaContainer = this.add.container(0, 0);
+
+        let testImage = this.matter.add.image(0, 0, 'PatruunaImage1').setFrictionAir(0).setIgnoreGravity(true);
+
+        
+
+        let arrowButtonForward = this.add.sprite(600, 0, 'MenuAtlas', 'UI Buttons/Nuoli');
+        let arrowButtonBackward = this.add.sprite(-600, 0, 'MenuAtlas', 'UI Buttons/Nuoli').setFlipX(true);
+
+        this.panoramaContainer.add([arrowButtonForward, arrowButtonBackward]);
+
+        this.panoramaContainer.iterate(function (element) {
+            element.setInteractive();
+
+            element.on('pointerdown', function () {
+                element.pressed = true;
+                element.setTint(0xd5d1c7);
+
+                
+                if (element.flipX == false && testImage.x > -500) {
+                    testImage.setVelocityX(-10);
+                }
+                else if (element.flipX && testImage.x < 500) {
+                    testImage.setVelocityX(10); 
+                }
+            });
+
+            element.on('pointerout', function () {
+                element.pressed = false;
+                element.clearTint();
+
+                testImage.setVelocityX(0);
+            });
+
+            element.on('pointerup', function () {
+
+                if (element.pressed == true) {
+                    element.clearTint();
+                    
+                }
+
+                testImage.setVelocityX(0);
+            }, this)
+        }, this);
+
+        this.panoramaContainer.addAt(testImage, 0);
+
+        this.menu.add(this.panoramaContainer);
+
+        this.switchableContainers.push(this.panoramaContainer);
+
+        //this.panoramaContainer.right = arrowButtonForward;
+        //this.panoramaContainer.left = arrowButtonBackward;
+
+        this.panoramaContainer.image = testImage;
 
     }
 
@@ -570,6 +635,16 @@ class BuildingScene extends Phaser.Scene {
                 element.setVisible(false);
             }
         })
+    }
+
+    update()
+    {
+        //Stops movement of panorama image once it hits a certain point
+        if(this.panoramaContainer.image.x <= -600 || this.panoramaContainer.image.x >= 600)
+        {
+            this.panoramaContainer.image.setVelocityX(0);
+        }
+
     }
 
 }
