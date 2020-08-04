@@ -75,7 +75,8 @@ var startingGameState = {
     soundOn: true,
     MPScoreEasy: 0,
     MPScoreMedium: 0,
-    MPScoreHard: 0
+    MPScoreHard: 0,
+    newGame: true
 };
 
 //Game state passed on to the save file
@@ -89,7 +90,8 @@ function saveGame(state = {
     soundOn: gameState.soundOn,
     MPScoreEasy: gameState.MPScoreEasy,
     MPScoreMedium: gameState.MPScoreMedium,
-    MPScoreHard: gameState.MPScoreHard
+    MPScoreHard: gameState.MPScoreHard,
+    newGame: gameState.newGame
 }) {
 
     let oldGameState = JSON.parse(JSON.stringify(gameState));

@@ -41,6 +41,14 @@
                 "frameWidth": 378,
                 "frameHeight": 378
             }
+        ],
+        "wave": [
+            "Assets/images/character/Wave.png",
+            {
+                "frameWidth": 378,
+                "frameHeight": 378
+            }
+
         ]
     },
     "audio": {

@@ -95,7 +95,7 @@ class MapScene extends Phaser.Scene {
 
         //Movement is allowed with a slight delay so that player clicking the button to return outside won't trigger movement
         this.time.delayedCall(200, function () {
-            if (!optionsButton.open) {
+            if (!optionsButton.open && introPlaying === false) {
                 readyToMove = true;
             }
         }, null, this)
