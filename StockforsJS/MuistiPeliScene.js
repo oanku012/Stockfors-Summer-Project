@@ -52,7 +52,7 @@ class MuistiPeliScene extends Phaser.Scene {
 
         let title = this.make.text({
             x: 0,
-            y: -400,
+            y: -220,
             text: this.data.Title,
             origin: { x: 0.5, y: 0.5 },
             style: {
@@ -64,6 +64,20 @@ class MuistiPeliScene extends Phaser.Scene {
         });
 
         title.setShadow(5, 5, 'grey', 5, false, true);
+
+        let description = this.make.text({
+            x: -480,
+            y: -20,
+            text: this.data.Description,
+            origin: { x: 0, y: 0.5 },
+            style: {
+                font: '40px Carme',
+                fill: 'black',
+                wordWrap: { width: 980 }
+                //backgroundColor: '#747474',
+                
+            }
+        });
 
         console.log('Muistipeli');
 
@@ -95,16 +109,16 @@ class MuistiPeliScene extends Phaser.Scene {
 
         // kopsasin nää vaa nyt siitä palapelist
         this.menu = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY - 3).setScale(0.9);
-        let menuBG = this.add.sprite(0, 0, 'MenuAtlas', 'UI Pohjat/Pelipohja').setScale(0.25, 0.32);
+        let menuBG = this.add.sprite(0, 0, 'MenuAtlas', 'UI Pohjat/Pelipohja').setScale(0.55, 0.3);
 
         this.menu.bg = menuBG;
 
-        let easy = CreateTextButton(this, 0, -200, 'UI Buttons/Nappi', this.data.Easy);
-        let normal = CreateTextButton(this, 0, 0, 'UI Buttons/Nappi', this.data.Normal);
-        let hard = CreateTextButton(this, 0, 200, 'UI Buttons/Nappi', this.data.Hard);
+        let easy = CreateTextButton(this, -330, 200, 'UI Buttons/Nappi', this.data.Easy).setScale(0.8);
+        let normal = CreateTextButton(this, 0, 200, 'UI Buttons/Nappi', this.data.Normal).setScale(0.8);
+        let hard = CreateTextButton(this, 330, 200, 'UI Buttons/Nappi', this.data.Hard).setScale(0.8);
         let exit = CreateTextButton(this, 170, 70, 'UI Buttons/Takaisin', this.data.Exit).setScale(0.8);
         
-        this.menu.add([menuBG, title, easy, normal, hard]);
+        this.menu.add([menuBG, title, description, easy, normal, hard]);
 
         easy.on('pointerup', function () {
             if (easy.pressed) {

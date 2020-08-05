@@ -49,7 +49,8 @@
         "HighScore": "Ennätys: ",
         "Restart": "Aloita uudelleen.",
         "Back": "Aloita uudelleen",
-        "Title": "MUISTIPELI"
+        "Title": "MUISTIPELI",
+        "Description": "Klassinen muistipeli jossa käännetään kortteja ja yritetään löytää kaikki saman kortin parit mahdollisimman pienellä määrällä yrityksiä. Korttien kuvina on käytetty Pakkausmuseosta löytyviä vanhoja tuotteita. Valitse vain alhaalta haluamasi vaikeustaso ja peli alkaa. "
     },
     "Palapeli": {
         "Easy": "Helppo",

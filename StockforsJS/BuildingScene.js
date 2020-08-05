@@ -574,8 +574,8 @@ class BuildingScene extends Phaser.Scene {
 
         
 
-        let arrowButtonForward = this.add.sprite(600, 0, 'MenuAtlas', 'UI Buttons/Nuoli');
-        let arrowButtonBackward = this.add.sprite(-600, 0, 'MenuAtlas', 'UI Buttons/Nuoli').setFlipX(true);
+        let arrowButtonForward = this.add.sprite(1000, 0, 'MenuAtlas', 'UI Buttons/Nuoli');
+        let arrowButtonBackward = this.add.sprite(-1000, 0, 'MenuAtlas', 'UI Buttons/Nuoli').setFlipX(true);
 
         this.panoramaContainer.add([arrowButtonForward, arrowButtonBackward]);
 
