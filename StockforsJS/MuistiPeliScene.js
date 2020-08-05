@@ -128,6 +128,7 @@ class MuistiPeliScene extends Phaser.Scene {
                 normal.destroy();
                 hard.destroy();
                 title.destroy();
+                description.destroy();
                 menuBG.setScale(0.5, 0.4);
                 this.StartGame(this.difficulty);
                 
@@ -140,6 +141,7 @@ class MuistiPeliScene extends Phaser.Scene {
                 easy.destroy();
                 normal.destroy();
                 hard.destroy();
+                description.destroy();
                 title.destroy();
                 console.log('Selected: ' + this.difficulty);
                 menuBG.setScale(0.6, 0.5);
@@ -156,6 +158,7 @@ class MuistiPeliScene extends Phaser.Scene {
                 normal.destroy();
                 hard.destroy();
                 title.destroy();
+                description.destroy();
                 menuBG.setScale(0.7, 0.56);
                 this.StartGame(this.difficulty);
             }
