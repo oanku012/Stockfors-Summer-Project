@@ -62,6 +62,8 @@
         "BackToMenu": "Back to menu",
         "Win": "You won!",
         "Restart": "Restart",
-        "TotalMoves": "Total moves: "
+        "TotalMoves": "Total moves: ",
+        "Title": "SLIDING PUZZLE",
+        "Description": "A sliding puzzle where you move pieces around until it forms a cohesive picture. Click one of the pieces to move it into the empty slot next to it. Choose a difficulty level from below to start the game."
     }
 }

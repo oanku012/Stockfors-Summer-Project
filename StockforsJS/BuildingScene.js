@@ -574,18 +574,20 @@ class BuildingScene extends Phaser.Scene {
 
         
 
-        let arrowButtonForward = this.add.sprite(1000, 0, 'MenuAtlas', 'UI Buttons/Nuoli');
-        let arrowButtonBackward = this.add.sprite(-1000, 0, 'MenuAtlas', 'UI Buttons/Nuoli').setFlipX(true);
+        let arrowButtonForward = this.add.sprite(1100, 0, 'MenuAtlas', 'UI Buttons/Nuoli');
+        let arrowButtonBackward = this.add.sprite(-1100, 0, 'MenuAtlas', 'UI Buttons/Nuoli').setFlipX(true);
 
         this.panoramaContainer.add([arrowButtonForward, arrowButtonBackward]);
 
         this.panoramaContainer.iterate(function (element) {
             element.setInteractive();
 
+            element.setAlpha(0.4);
+
             element.on('pointerdown', function () {
                 element.pressed = true;
                 element.setTint(0xd5d1c7);
-
+                element.setAlpha(1);
                 
                 if (element.flipX == false && testImage.x > -500) {
                     testImage.setVelocityX(-10);
@@ -595,9 +597,15 @@ class BuildingScene extends Phaser.Scene {
                 }
             });
 
+            element.on('pointerover', function(){
+                element.setAlpha(1);
+
+            });
+
             element.on('pointerout', function () {
                 element.pressed = false;
                 element.clearTint();
+                element.setAlpha(0.4);
 
                 testImage.setVelocityX(0);
             });
@@ -618,9 +626,6 @@ class BuildingScene extends Phaser.Scene {
         this.menu.add(this.panoramaContainer);
 
         this.switchableContainers.push(this.panoramaContainer);
-
-        //this.panoramaContainer.right = arrowButtonForward;
-        //this.panoramaContainer.left = arrowButtonBackward;
 
         this.panoramaContainer.image = testImage;
 

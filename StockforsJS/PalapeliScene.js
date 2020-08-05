@@ -48,19 +48,49 @@ class PalapeliScene extends Phaser.Scene {
     {
         this.cameras.main.backgroundColor.setTo(255, 255, 255);
 
+        let title = this.make.text({
+            x: 0,
+            y: -220,
+            text: this.data.Title,
+            origin: { x: 0.5, y: 0.5 },
+            style: {
+                font: '64px LexendTera',
+                fill: 'black',
+                //backgroundColor: '#747474',
+                
+            }
+        });
+
+        title.setShadow(5, 5, 'grey', 5, false, true);
+
+        let description = this.make.text({
+            x: -480,
+            y: -20,
+            text: this.data.Description,
+            origin: { x: 0, y: 0.5 },
+            style: {
+                font: '40px Carme',
+                fill: 'black',
+                wordWrap: { width: 980 }
+                //backgroundColor: '#747474',
+                
+            }
+        });
+
         // difficulty menu
         this.menu = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY);
-        let menuBG = this.add.sprite(0, 0, 'MenuAtlas', 'UI Pohjat/Pelipohja').setScale(0.25, 0.32);
+        let menuBG = this.add.sprite(0, 0, 'MenuAtlas', 'UI Pohjat/Pelipohja').setScale(0.55, 0.3);
+        //let menuBG = this.add.sprite(0, 0, 'MenuAtlas', 'UI Pohjat/Pelipohja').setScale(0.25, 0.32);
         this.menu.add(menuBG);
 
         this.menu.bg = menuBG;
 
-        let easyButton = CreateTextButton(this, 0, -200, 'UI Buttons/Nappi', this.data.Easy);
-        let mediumButton = CreateTextButton(this, 0, 0, 'UI Buttons/Nappi', this.data.Normal);
-        let hardButton = CreateTextButton(this, 0, 200, 'UI Buttons/Nappi', this.data.Hard);
+        let easyButton = CreateTextButton(this, -330, 200, 'UI Buttons/Nappi', this.data.Easy).setScale(0.8);
+        let mediumButton = CreateTextButton(this, 0, 200, 'UI Buttons/Nappi', this.data.Normal).setScale(0.8);
+        let hardButton = CreateTextButton(this, 330, 200, 'UI Buttons/Nappi', this.data.Hard).setScale(0.8);
         let back = CreateTextButton(this, 200, 1000, 'UI Buttons/Takaisin', this.data.Exit);
 
-        this.menu.add([easyButton, mediumButton, hardButton]);
+        this.menu.add([easyButton, mediumButton, hardButton, title, description]);
 
         easyButton.on('pointerup', function () {
             if (easyButton.pressed) {
@@ -69,6 +99,8 @@ class PalapeliScene extends Phaser.Scene {
                 easyButton.destroy();
                 mediumButton.destroy();
                 hardButton.destroy();
+                title.destroy();
+                description.destroy();
                 menuBG.setScale(0.4, 0.4);
                 this.setupGame(this.difficulties.EASY);
             }
@@ -81,6 +113,8 @@ class PalapeliScene extends Phaser.Scene {
                 easyButton.destroy();
                 mediumButton.destroy();
                 hardButton.destroy();
+                title.destroy();
+                description.destroy();
                 menuBG.setScale(0.5, 0.38);
                 this.setupGame(this.difficulties.MEDIUM);
             }
@@ -93,6 +127,8 @@ class PalapeliScene extends Phaser.Scene {
                 easyButton.destroy();
                 mediumButton.destroy();
                 hardButton.destroy();
+                title.destroy();
+                description.destroy();
                 menuBG.setScale(0.5, 0.5);
                 this.setupGame(this.difficulties.HARD);
             }

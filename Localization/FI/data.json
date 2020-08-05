@@ -60,6 +60,8 @@
         "BackToMenu": "Päävalikkoon",
         "Win": "Voitit pelin!",
         "Restart": "Aloita uudelleen.",
-        "TotalMoves": "Siirtoja yhteensä: "
+        "TotalMoves": "Siirtoja yhteensä: ",
+        "Title": "LIUKUPALAPELI",
+        "Description": "Liukupalapeli, jossa siirrellään paloja kunnes ne muodostavat yhtenäisen kuvan. Klikkaa palaa niin se siirtyy vieressä olevaan tyhjään kohtaan. Valitse alhaalta vaikeustaso niin peli alkaa."
     }
 }
