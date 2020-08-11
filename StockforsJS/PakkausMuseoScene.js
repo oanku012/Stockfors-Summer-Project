@@ -17,6 +17,10 @@ class PakkausmuseoScene extends BuildingScene
     {
         this.minigame = 'MuistiPeliScene';
 
+        this.images = [];
+
+        this.images.push("PakkausImage1", "PakkausImage2", "PakkausImage3", "PakkausImage4");
+
         super.create();
         
         

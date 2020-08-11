@@ -489,7 +489,7 @@ class BuildingScene extends Phaser.Scene {
             let row = 1;
 
             this.images.forEach(element => {
-                let img = this.add.image(previousX, 50 + 120 * row, element).setScale(0.03);
+                let img = this.add.image(previousX, 50 + 120 * row, element).setDisplaySize(140, 100);
                 this.albumContainer.add(img);
                 //img.setPosition(previousX, 50 + 100*row);
                 previousX += 150;
@@ -508,7 +508,7 @@ class BuildingScene extends Phaser.Scene {
 
                 img.on('pointerover', function () {
 
-                    img.setTint(0xeb4034);
+                    img.setTint(0xd5d1c7);
 
                 });
 
@@ -540,10 +540,11 @@ class BuildingScene extends Phaser.Scene {
     }
 
     createImage(image) {
-        let newImage = this.add.image(0, 0, image).setScale(0.5);
+        let newImage = this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, image).setScale(0.8);
 
+        //Commented this out so I can easily make the menu invisible separately when opening an image
         // add to menu for easy resize
-        this.menu.add(newImage);
+        //this.menu.add(newImage);
         var pressed = false;
         newImage.setInteractive();
 
@@ -562,16 +563,18 @@ class BuildingScene extends Phaser.Scene {
         newImage.on('pointerup', function (event) {
             if (pressed) {
                 newImage.destroy();
+                this.menu.setVisible(true);
+                
             }
         }, this);
+
+        this.menu.setVisible(false);
     }
 
     CreatePanoRamaContainer() {
         this.panoramaContainer = this.add.container(0, 0);
 
         let testImage = this.matter.add.image(0, 0, 'PatruunaImage1').setFrictionAir(0).setIgnoreGravity(true);
-
-
 
         let arrowButtonForward = this.add.sprite(1100, 0, 'MenuAtlas', 'UI Buttons/Nuoli');
         let arrowButtonBackward = this.add.sprite(-1100, 0, 'MenuAtlas', 'UI Buttons/Nuoli').setFlipX(true);

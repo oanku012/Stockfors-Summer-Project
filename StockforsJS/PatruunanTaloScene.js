@@ -19,29 +19,10 @@ class PatruunantaloScene extends BuildingScene
         //this.playerSpawnPosition.x = 800;
         //this.playerSpawnPosition.y = 800;
 
-        /*this.images.push(["1thumb", "1full" ]);
-        this.images.push(["1thumb", "1full" ]);
-        this.images.push(["1thumb", "1full" ]);
-        this.images.push(["1thumb", "1full" ]);
-        this.images.push(["1thumb", "1full" ]);
-        this.images.push(["1thumb", "1full" ]);
-        this.images.push(["1thumb", "1full" ]);
-        this.images.push(["1thumb", "1full" ]);
-        this.images.push(["1thumb", "1full" ]);
-        this.images.push(["1thumb", "1full" ]);*/
-
         this.images = [];
 
-        this.images.push("PatruunaImage1");
-        this.images.push("PatruunaImage1");
-        this.images.push("PatruunaImage1");
-        this.images.push("PatruunaImage1");
-        this.images.push("PatruunaImage1");
-        this.images.push("PatruunaImage2");
-        this.images.push("PatruunaImage2");
-        this.images.push("PatruunaImage2");
-        this.images.push("PatruunaImage2");
-        this.images.push("PatruunaImage2");
+        this.images.push("PatruunaImage1", "PatruunaImage2", "PatruunaImage3", "PatruunaImage4","PatruunaImage5", "PatruunaImage6", "PatruunaImage7", 
+        "PatruunaImage8", "PatruunaImage9", "PatruunaImage10", "PatruunaImage11", "PatruunaImage12","PatruunaImage13","PatruunaImage14","PatruunaImage15");
 
         this.minigame = 'PalapeliScene';
 

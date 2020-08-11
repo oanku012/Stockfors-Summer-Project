@@ -51,7 +51,8 @@
         "Restart": "Click to restart.",
         "Back": "Restart",
         "Title": "CONCENTRATION",
-        "Description": "A classic Concentration game, where the goal is to flip over cards and find matching pairs with as little amount of tries as possible. The images used for the cards are different packages found at the package museum. Just choose a difficulty from below and let the game begin. "
+        "Description": "A classic Concentration game, where the goal is to flip over cards and find matching pairs with as little amount of tries as possible. The images used for the cards are different packages found at the package museum. Just choose a difficulty from below and let the game begin. ",
+        "Congratz": "Congratulations!"
 
     },
     "Palapeli": {

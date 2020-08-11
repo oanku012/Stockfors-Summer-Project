@@ -193,6 +193,8 @@ class MuistiPeliScene extends Phaser.Scene {
 
         this.menu.add(back);
 
+        this.menu.back = back;
+
         let currentRow = 1;
         let currentColumn = 1;
 
@@ -349,9 +351,44 @@ class MuistiPeliScene extends Phaser.Scene {
 
                                 this.HideCards(false);
 
-                                let win = CreateTextButton(this, this.cameras.main.centerX, this.cameras.main.centerY, 'UI Buttons/Nappi', this.data.Win + this.clicks + '\n' + this.data.highScore).disableInteractive();
+                                //let win = CreateTextButton(this, this.cameras.main.centerX, this.cameras.main.centerY, 'UI Buttons/Nappi', this.data.Win + this.clicks + '\n' + this.data.highScore).disableInteractive();
+
+                                let title = this.make.text({
+                                    x: this.cameras.main.centerX,
+                                    y: this.cameras.main.centerY - 75,
+                                    text: this.data.Congratz,
+                                    origin: { x: 0.5, y: 0.5 },
+                                    style: {
+                                        font: '64px LexendTera',
+                                        fill: 'black',
+                                        //backgroundColor: '#747474',
+                                        
+                                    }
+                                });
+                        
+                                title.setShadow(5, 5, 'grey', 5, false, true);
+                        
+                                let description = this.make.text({
+                                    x: this.cameras.main.centerX,
+                                    y: this.cameras.main.centerY + 25,
+                                    text: this.data.Win,
+                                    origin: { x: 0.5, y: 0.5 },
+                                    style: {
+                                        font: '40px Carme',
+                                        fill: 'black',
+                                        wordWrap: { width: 980 },
+                                        align: 'center'
+                                        //backgroundColor: '#747474',
+                                        
+                                    }
+                                });
+
+                                this.menu.bg.setScale(0.5, 0.16);
+                                this.menu.back.setPosition(0, (this.menu.bg.height/2) * this.menu.bg.scaleY);
+
+
                                 //let highScore = CreateTextButton(this, this.cameras.main.centerX, 350, 'UI Buttons/Nappi', this.data.HighScore).disableInteractive();
-                                win.bg.setScale(1.1, 1.65);
+                                //win.bg.setScale(1.3, 2.4);
                                 //let restart = CreateTextButton(this, this.cameras.main.centerX, this.cameras.main.centerY + 200, 'UI Buttons/OK', this.data.Restart);
 
                                 /*restart.on('pointerup', function () {
@@ -369,7 +406,9 @@ class MuistiPeliScene extends Phaser.Scene {
                                     }
 
                                     //highScore.text.text = this.data.HighScore + gameState.MPScoreEasy;
-                                    win.text.text = this.data.Win + this.clicks + '\n' + this.data.HighScore + gameState.MPScoreEasy;
+                                    //win.text.text = this.data.Win + this.clicks + '\n' + this.data.HighScore + gameState.MPScoreEasy;
+                                    description.text = this.data.Win + this.clicks + '\n' + this.data.HighScore + gameState.MPScoreEasy;
+
                                 }
                                 else if (this.difficulty == 'normal') {
                                     if (this.clicks < gameState.MPScoreMedium || gameState.MPScoreMedium == startingGameState.MPScoreMedium) {
@@ -377,7 +416,8 @@ class MuistiPeliScene extends Phaser.Scene {
                                     }
 
                                     //highScore.text.text = this.data.HighScore + gameState.MPScoreMedium;
-                                    win.text.text = this.data.Win + this.clicks + '\n' + this.data.HighScore + gameState.MPScoreMedium;
+                                    //win.text.text = this.data.Win + this.clicks + '\n' + this.data.HighScore + gameState.MPScoreMedium;
+                                    description.text = this.data.Win + this.clicks + '\n' + this.data.HighScore + gameState.MPScoreMedium;
 
 
                                 }
@@ -385,8 +425,9 @@ class MuistiPeliScene extends Phaser.Scene {
                                     if (this.clicks < gameState.MPScoreHard || gameState.MPScoreHard == startingGameState.MPScoreHard) {
                                         saveGame({ MPScoreHard: this.clicks });
                                     }
-                                    win.text.text = this.data.Win + this.clicks + '\n' + this.data.HighScore + gameState.MPScoreHard;
+                                    //win.text.text = this.data.Win + this.clicks + '\n' + this.data.HighScore + gameState.MPScoreHard;
                                     //highScore.text.text = this.data.HighScore + gameState.MPScoreHard;
+                                    description.text = this.data.Win + this.clicks + '\n' + this.data.HighScore + gameState.MPScoreHard;
 
                                 }
 

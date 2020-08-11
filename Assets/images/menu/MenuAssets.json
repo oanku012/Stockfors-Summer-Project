@@ -5,7 +5,7 @@
 			"format": "RGBA8888",
 			"size": {
 				"w": 3200,
-				"h": 3937
+				"h": 3946
 			},
 			"scale": 1,
 			"frames": [
@@ -178,6 +178,27 @@
 					}
 				},
 				{
+					"filename": "UI Buttons/Ohje",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 122,
+						"h": 136
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 13,
+						"w": 110,
+						"h": 116
+					},
+					"frame": {
+						"x": 1,
+						"y": 3829,
+						"w": 110,
+						"h": 116
+					}
+				},
+				{
 					"filename": "UI Buttons/CheckmarkON",
 					"rotated": false,
 					"trimmed": true,
@@ -192,7 +213,7 @@
 						"h": 93
 					},
 					"frame": {
-						"x": 1,
+						"x": 113,
 						"y": 3829,
 						"w": 89,
 						"h": 93
@@ -213,7 +234,7 @@
 						"h": 89
 					},
 					"frame": {
-						"x": 92,
+						"x": 204,
 						"y": 3829,
 						"w": 89,
 						"h": 89
@@ -262,24 +283,24 @@
 					}
 				},
 				{
-					"filename": "UI Buttons/Ohje",
+					"filename": "UI Buttons/Arrow",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 122,
-						"h": 136
+						"w": 160,
+						"h": 129
 					},
 					"spriteSourceSize": {
-						"x": 6,
-						"y": 13,
-						"w": 110,
-						"h": 116
+						"x": 4,
+						"y": 2,
+						"w": 152,
+						"h": 124
 					},
 					"frame": {
 						"x": 535,
 						"y": 3814,
-						"w": 110,
-						"h": 116
+						"w": 152,
+						"h": 124
 					}
 				},
 				{
@@ -530,6 +551,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:1745752eef8aee230b38a89681073255:b8886de0feaa30a6aa9c1414f20d7332:e65da5ba29d08851ccf425b5c3d43287$"
+		"smartupdate": "$TexturePacker:SmartUpdate:97f6dc5c83396ff049f976183a1904f2:c5030b558e8d42c9a282894a0b551127:e65da5ba29d08851ccf425b5c3d43287$"
 	}
 }
