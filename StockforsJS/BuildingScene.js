@@ -381,11 +381,14 @@ class BuildingScene extends Phaser.Scene {
         this.infoContainer = this.add.container(0, 0);
 
         this.infoTexts.forEach(infoText => {
-            let infoCard = this.CreateInfoCard(infoText);
+            /*let infoCard = this.CreateInfoCard(infoText);
 
             this.infoCards.push(infoCard);
 
-            this.infoContainer.add([infoCard, infoCard.description]);
+            this.infoContainer.add([infoCard, infoCard.description]);*/
+            
+            this.CreateInfoCards(infoText);
+
 
             //console.log(infoText);
         }, this);
@@ -436,26 +439,102 @@ class BuildingScene extends Phaser.Scene {
         this.menu.add(this.infoContainer);
     }
 
+    /*
     CreateInfoCard(text) {
 
 
-        let infoCard = this.add.sprite(0, 0, 'MenuAtlas', 'UI Pohjat/InsideVaaka').setScale(0.5, 0.68);
+        let infoCard = this.add.sprite(0, 10, 'MenuAtlas', 'UI Pohjat/Infokorttipohja').setScale(1.3, 1.37);
 
         infoCard.description = this.make.text({
             x: 0,
-            y: 0,
+            y: -380,
             text: text,
-            origin: { x: 0.5, y: 0.5 },
+            origin: { x: 0.5, y: 0 },
             style: {
                 font: '34px Carme',
                 fill: 'black',
-                wordWrap: { width: 780 }
+                wordWrap: { width: 960}
             }
         });
+
+        //infoCard.description.setMaxLines(18);
+
+        //let usedLines = infoCard.description.getWrappedText();
+
+        //console.log(usedLines);
 
         console.log('Card created with text: ' + text);
 
         return infoCard;
+    }*/
+
+    CreateInfoCards(text)
+    {
+        
+
+        let maxLines = 18;
+
+        let remainingLines = text;
+
+        //This is just a really clumsy and convoluted way of automatically splitting the infocard text across multiple cards
+        do{
+            let infoCard = this.add.sprite(0, 10, 'MenuAtlas', 'UI Pohjat/Infokorttipohja').setScale(1.3, 1.37);
+
+            //Linebreaks disappear when the string is later turned into an array and back into a string so £@ is used to indicate a spot for a linebreak
+            let lineToUse = remainingLines.replaceAll('£@', '');
+
+            //This is the visible text on a card that has all the £@ taken out
+            infoCard.description = this.make.text({
+                x: -500,
+                y: -380,
+                text: lineToUse,
+                origin: { x: 0, y: 0 },
+                style: {
+                    font: '34px Carme',
+                    fill: 'black',
+                    wordWrap: { width: 960}
+                }
+            });
+
+            //This one isn't visible, but it has the £@ symbols which we can use later
+            let dummyDescription = this.make.text({
+                text: remainingLines,
+                style: {
+                    font: '34px Carme',
+                    fill: 'black',
+                    wordWrap: { width: 960}
+                },
+                visible: false
+            });
+
+            //Set the maximum number of lines so the text won't overflow from the card
+            infoCard.description.setMaxLines(maxLines);
+            dummyDescription.setMaxLines(maxLines);
+
+            //This is an array of lines that are added to a card, does not account for the max lines so lines beyond the ones shown on the card are here
+            let wrappedText = dummyDescription.getWrappedText();
+
+            //Here we separate the lines from the array that are on the new card from the remaining lines and turn it into a string, the linebreaks don't carry over to the new string
+            let usedLines = wrappedText.slice(0, maxLines).join("").toString();
+
+            //console.log(usedLines);
+
+            //This gets the remaining lines for the later cards by replacing the lines in the current card with an empty string
+            remainingLines = wrappedText.join("").toString().replace(usedLines, "");
+
+            //console.log(remainingLines);
+
+            //Because the linebreaks don't carry over they have to be added here, £@ is also added so later cards still have it as an indicator for the linebreaks
+            remainingLines = remainingLines.replaceAll("£@", '£@\n\n');
+
+            this.infoCards.push(infoCard);
+
+            this.infoContainer.add([infoCard, infoCard.description]);
+
+            
+        }//Loop as long as there are still lines to add
+        while(remainingLines !== "");
+
     }
 
     ChangeCard(cardIndex) {

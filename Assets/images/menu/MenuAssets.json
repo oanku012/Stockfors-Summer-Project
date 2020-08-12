@@ -4,8 +4,8 @@
 			"image": "MenuAssets-0.png",
 			"format": "RGBA8888",
 			"size": {
-				"w": 3200,
-				"h": 3946
+				"w": 3902,
+				"h": 3958
 			},
 			"scale": 1,
 			"frames": [
@@ -31,129 +31,45 @@
 					}
 				},
 				{
-					"filename": "UI Pohjat/Ohjeruutu",
+					"filename": "UI Pohjat/InsideVaaka",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 1288,
-						"h": 1777
+						"w": 1732,
+						"h": 1227
 					},
 					"spriteSourceSize": {
-						"x": 6,
+						"x": 20,
+						"y": 14,
+						"w": 1692,
+						"h": 1198
+					},
+					"frame": {
+						"x": 1845,
+						"y": 1,
+						"w": 1692,
+						"h": 1198
+					}
+				},
+				{
+					"filename": "UI Buttons/Nappi",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 371,
+						"h": 142
+					},
+					"spriteSourceSize": {
+						"x": 5,
 						"y": 9,
-						"w": 1274,
-						"h": 1764
+						"w": 357,
+						"h": 122
 					},
 					"frame": {
-						"x": 1845,
+						"x": 3539,
 						"y": 1,
-						"w": 1274,
-						"h": 1764
-					}
-				},
-				{
-					"filename": "UI Buttons/ENG",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 468,
-						"h": 272
-					},
-					"spriteSourceSize": {
-						"x": 21,
-						"y": 15,
-						"w": 429,
-						"h": 245
-					},
-					"frame": {
-						"x": 1845,
-						"y": 1767,
-						"w": 429,
-						"h": 245
-					}
-				},
-				{
-					"filename": "UI Pohjat/Pelipohja_Valkoinen",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 1854,
-						"h": 1858
-					},
-					"spriteSourceSize": {
-						"x": 7,
-						"y": 8,
-						"w": 1841,
-						"h": 1842
-					},
-					"frame": {
-						"x": 1,
-						"y": 1846,
-						"w": 1841,
-						"h": 1842
-					}
-				},
-				{
-					"filename": "UI Pohjat/Aloitusruutu",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 1364,
-						"h": 1863
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 1,
-						"w": 1355,
-						"h": 1855
-					},
-					"frame": {
-						"x": 1844,
-						"y": 2014,
-						"w": 1355,
-						"h": 1855
-					}
-				},
-				{
-					"filename": "UI Buttons/FI",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 447,
-						"h": 260
-					},
-					"spriteSourceSize": {
-						"x": 9,
-						"y": 7,
-						"w": 429,
-						"h": 245
-					},
-					"frame": {
-						"x": 2276,
-						"y": 1767,
-						"w": 429,
-						"h": 245
-					}
-				},
-				{
-					"filename": "UI Buttons/SWE",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 448,
-						"h": 263
-					},
-					"spriteSourceSize": {
-						"x": 7,
-						"y": 11,
-						"w": 431,
-						"h": 243
-					},
-					"frame": {
-						"x": 2707,
-						"y": 1767,
-						"w": 431,
-						"h": 243
+						"w": 357,
+						"h": 122
 					}
 				},
 				{
@@ -171,10 +87,199 @@
 						"h": 137
 					},
 					"frame": {
-						"x": 1,
-						"y": 3690,
+						"x": 3539,
+						"y": 125,
 						"w": 332,
 						"h": 137
+					}
+				},
+				{
+					"filename": "UI Buttons/OK",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 214,
+						"h": 127
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 4,
+						"w": 198,
+						"h": 122
+					},
+					"frame": {
+						"x": 3539,
+						"y": 264,
+						"w": 198,
+						"h": 122
+					}
+				},
+				{
+					"filename": "UI Buttons/Nuoli",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 176,
+						"h": 173
+					},
+					"spriteSourceSize": {
+						"x": 5,
+						"y": 11,
+						"w": 161,
+						"h": 160
+					},
+					"frame": {
+						"x": 3739,
+						"y": 264,
+						"w": 161,
+						"h": 160
+					}
+				},
+				{
+					"filename": "UI Buttons/Infocards",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 168,
+						"h": 141
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 4,
+						"w": 152,
+						"h": 134
+					},
+					"frame": {
+						"x": 3539,
+						"y": 388,
+						"w": 152,
+						"h": 134
+					}
+				},
+				{
+					"filename": "UI Buttons/Arrow",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 160,
+						"h": 129
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 2,
+						"w": 152,
+						"h": 124
+					},
+					"frame": {
+						"x": 3693,
+						"y": 426,
+						"w": 152,
+						"h": 124
+					}
+				},
+				{
+					"filename": "UI Buttons/Games",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 182,
+						"h": 148
+					},
+					"spriteSourceSize": {
+						"x": 13,
+						"y": 9,
+						"w": 151,
+						"h": 136
+					},
+					"frame": {
+						"x": 3539,
+						"y": 524,
+						"w": 151,
+						"h": 136
+					}
+				},
+				{
+					"filename": "UI Buttons/Gallery",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 180,
+						"h": 150
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 7,
+						"w": 150,
+						"h": 137
+					},
+					"frame": {
+						"x": 3692,
+						"y": 552,
+						"w": 150,
+						"h": 137
+					}
+				},
+				{
+					"filename": "UI Buttons/Panorama",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 169,
+						"h": 150
+					},
+					"spriteSourceSize": {
+						"x": 13,
+						"y": 7,
+						"w": 150,
+						"h": 135
+					},
+					"frame": {
+						"x": 3539,
+						"y": 662,
+						"w": 150,
+						"h": 135
+					}
+				},
+				{
+					"filename": "UI Buttons/Webpage",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 168,
+						"h": 146
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 10,
+						"w": 147,
+						"h": 132
+					},
+					"frame": {
+						"x": 3691,
+						"y": 691,
+						"w": 147,
+						"h": 132
+					}
+				},
+				{
+					"filename": "UI Buttons/Asetukset",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 153,
+						"h": 157
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 5,
+						"w": 137,
+						"h": 147
+					},
+					"frame": {
+						"x": 3539,
+						"y": 799,
+						"w": 137,
+						"h": 147
 					}
 				},
 				{
@@ -192,8 +297,8 @@
 						"h": 116
 					},
 					"frame": {
-						"x": 1,
-						"y": 3829,
+						"x": 3678,
+						"y": 825,
 						"w": 110,
 						"h": 116
 					}
@@ -213,8 +318,8 @@
 						"h": 93
 					},
 					"frame": {
-						"x": 113,
-						"y": 3829,
+						"x": 3790,
+						"y": 825,
 						"w": 89,
 						"h": 93
 					}
@@ -234,233 +339,117 @@
 						"h": 89
 					},
 					"frame": {
-						"x": 204,
-						"y": 3829,
+						"x": 3790,
+						"y": 920,
 						"w": 89,
 						"h": 89
 					}
 				},
 				{
-					"filename": "UI Buttons/Nappi",
+					"filename": "UI Pohjat/Aloitusruutu",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 371,
-						"h": 142
+						"w": 1364,
+						"h": 1863
 					},
 					"spriteSourceSize": {
-						"x": 5,
-						"y": 9,
-						"w": 357,
-						"h": 122
+						"x": 0,
+						"y": 1,
+						"w": 1355,
+						"h": 1855
 					},
 					"frame": {
-						"x": 335,
-						"y": 3690,
-						"w": 357,
-						"h": 122
+						"x": 1,
+						"y": 1846,
+						"w": 1355,
+						"h": 1855
 					}
 				},
 				{
-					"filename": "UI Buttons/OK",
+					"filename": "UI Buttons/ENG",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 214,
-						"h": 127
+						"w": 468,
+						"h": 272
 					},
 					"spriteSourceSize": {
-						"x": 8,
-						"y": 4,
-						"w": 198,
-						"h": 122
+						"x": 21,
+						"y": 15,
+						"w": 429,
+						"h": 245
 					},
 					"frame": {
-						"x": 335,
-						"y": 3814,
-						"w": 198,
-						"h": 122
+						"x": 1,
+						"y": 3703,
+						"w": 429,
+						"h": 245
 					}
 				},
 				{
-					"filename": "UI Buttons/Arrow",
+					"filename": "UI Buttons/FI",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 160,
-						"h": 129
+						"w": 447,
+						"h": 260
 					},
 					"spriteSourceSize": {
-						"x": 4,
-						"y": 2,
-						"w": 152,
-						"h": 124
+						"x": 9,
+						"y": 7,
+						"w": 429,
+						"h": 245
 					},
 					"frame": {
-						"x": 535,
-						"y": 3814,
-						"w": 152,
-						"h": 124
+						"x": 432,
+						"y": 3703,
+						"w": 429,
+						"h": 245
 					}
 				},
 				{
-					"filename": "UI Buttons/Nuoli",
+					"filename": "UI Buttons/SWE",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 176,
-						"h": 173
+						"w": 448,
+						"h": 263
 					},
 					"spriteSourceSize": {
-						"x": 5,
+						"x": 7,
 						"y": 11,
-						"w": 161,
-						"h": 160
+						"w": 431,
+						"h": 243
 					},
 					"frame": {
-						"x": 694,
-						"y": 3690,
-						"w": 161,
-						"h": 160
+						"x": 863,
+						"y": 3703,
+						"w": 431,
+						"h": 243
 					}
 				},
 				{
-					"filename": "UI Buttons/Gallery",
+					"filename": "UI Pohjat/Ohjeruutu",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 180,
-						"h": 150
+						"w": 1288,
+						"h": 1777
 					},
 					"spriteSourceSize": {
-						"x": 15,
-						"y": 7,
-						"w": 150,
-						"h": 137
-					},
-					"frame": {
-						"x": 857,
-						"y": 3690,
-						"w": 150,
-						"h": 137
-					}
-				},
-				{
-					"filename": "UI Buttons/Games",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 182,
-						"h": 148
-					},
-					"spriteSourceSize": {
-						"x": 13,
+						"x": 6,
 						"y": 9,
-						"w": 151,
-						"h": 136
+						"w": 1274,
+						"h": 1764
 					},
 					"frame": {
-						"x": 1009,
-						"y": 3690,
-						"w": 151,
-						"h": 136
+						"x": 1358,
+						"y": 1846,
+						"w": 1274,
+						"h": 1764
 					}
 				},
-				{
-					"filename": "UI Buttons/Infocards",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 168,
-						"h": 141
-					},
-					"spriteSourceSize": {
-						"x": 8,
-						"y": 4,
-						"w": 152,
-						"h": 134
-					},
-					"frame": {
-						"x": 1162,
-						"y": 3690,
-						"w": 152,
-						"h": 134
-					}
-				},
-				{
-					"filename": "UI Buttons/Panorama",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 169,
-						"h": 150
-					},
-					"spriteSourceSize": {
-						"x": 13,
-						"y": 7,
-						"w": 150,
-						"h": 135
-					},
-					"frame": {
-						"x": 1316,
-						"y": 3690,
-						"w": 150,
-						"h": 135
-					}
-				},
-				{
-					"filename": "UI Buttons/Asetukset",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 153,
-						"h": 157
-					},
-					"spriteSourceSize": {
-						"x": 8,
-						"y": 5,
-						"w": 137,
-						"h": 147
-					},
-					"frame": {
-						"x": 1468,
-						"y": 3690,
-						"w": 137,
-						"h": 147
-					}
-				},
-				{
-					"filename": "UI Buttons/Webpage",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 168,
-						"h": 146
-					},
-					"spriteSourceSize": {
-						"x": 12,
-						"y": 10,
-						"w": 147,
-						"h": 132
-					},
-					"frame": {
-						"x": 1607,
-						"y": 3690,
-						"w": 147,
-						"h": 132
-					}
-				}
-			]
-		},
-		{
-			"image": "MenuAssets-1.png",
-			"format": "RGBA8888",
-			"size": {
-				"w": 2535,
-				"h": 2965
-			},
-			"scale": 1,
-			"frames": [
 				{
 					"filename": "UI Pohjat/Ohjeet-infoikkuna",
 					"rotated": false,
@@ -476,31 +465,10 @@
 						"h": 1763
 					},
 					"frame": {
-						"x": 1,
-						"y": 1,
+						"x": 2634,
+						"y": 1201,
 						"w": 1267,
 						"h": 1763
-					}
-				},
-				{
-					"filename": "UI Pohjat/InsideVaaka",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 1732,
-						"h": 1227
-					},
-					"spriteSourceSize": {
-						"x": 20,
-						"y": 14,
-						"w": 1692,
-						"h": 1198
-					},
-					"frame": {
-						"x": 1,
-						"y": 1766,
-						"w": 1692,
-						"h": 1198
 					}
 				},
 				{
@@ -518,10 +486,42 @@
 						"h": 991
 					},
 					"frame": {
-						"x": 1270,
-						"y": 1,
+						"x": 2634,
+						"y": 2966,
 						"w": 1264,
 						"h": 991
+					}
+				}
+			]
+		},
+		{
+			"image": "MenuAssets-1.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 2026,
+				"h": 621
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "UI Pohjat/Infokorttipohja",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 836,
+						"h": 634
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 8,
+						"w": 820,
+						"h": 619
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 820,
+						"h": 619
 					}
 				},
 				{
@@ -539,8 +539,8 @@
 						"h": 584
 					},
 					"frame": {
-						"x": 1270,
-						"y": 994,
+						"x": 823,
+						"y": 1,
 						"w": 1202,
 						"h": 584
 					}
@@ -551,6 +551,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:97f6dc5c83396ff049f976183a1904f2:c5030b558e8d42c9a282894a0b551127:e65da5ba29d08851ccf425b5c3d43287$"
+		"smartupdate": "$TexturePacker:SmartUpdate:1e124613a81105773c76971021c7e620:74d4da1e7960c686cf281b306e399634:e65da5ba29d08851ccf425b5c3d43287$"
 	}
 }
