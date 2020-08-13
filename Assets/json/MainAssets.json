@@ -11,10 +11,6 @@
         "1full": "Assets/images/photos/1_full"
     },
     "atlas": {
-        "buildingSheet": [
-            "Assets/images/map/Buildings/TPBuildings.png",
-            "Assets/images/map/Buildings/TPBuildings.json"
-        ],
         "buildingBodies": [
             "Assets/images/character/PlayerStanding.png",
             "Assets/images/character/PlayerStanding.png"
@@ -25,6 +21,10 @@
         "MenuAtlas": [
             "Assets/images/menu/MenuAssets.json",
             "Assets/images/menu"
+        ],
+        "buildingSheet": [
+            "Assets/images/map/Buildings/TPBuildings.json",
+            "Assets/images/map/Buildings"
         ]
     },
     "spritesheet": {

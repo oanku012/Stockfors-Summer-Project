@@ -9,7 +9,7 @@ class MapScene extends Phaser.Scene {
         this.pointer;
 
         this.movingOnPath = false;
-        this.speed = 3;
+        this.speed = 6;
         this.movementVector = new Phaser.Math.Vector2();
         this.destination = new Phaser.Math.Vector2();
         this.movementDirection = 'down';
@@ -57,6 +57,8 @@ class MapScene extends Phaser.Scene {
 
     create() {
 
+        this.cameras.main.backgroundColor.setTo(255, 255, 255);
+
         console.log(this.scene.key);
 
         this.sceneToOpen = null;
@@ -72,7 +74,7 @@ class MapScene extends Phaser.Scene {
             collisionCat2 = this.matter.world.nextCategory();
         }
 
-        //this.matter.world.setBounds(0, 0, 3000, 1000, 64, true, true, true, true);
+        this.matter.world.setBounds(0, 0, 4000, 2000, 64, true, true, true, true);
 
         //Used this to change the collision category on the walls of the map, but wasn't actually necessary since I could just change collisioncat1 to the default category that the walls use
         /*
@@ -162,8 +164,8 @@ class MapScene extends Phaser.Scene {
 
     PlayerInitialize() {
         this.player = this.matter.add.sprite(this.startingPoint.x, this.startingPoint.y, 'playerIdle');
-        this.player.setDepth(this.player.y).setScale(0.25);
-        this.player.setRectangle(30, 30).setBounce(0).setFixedRotation().setFriction(1, 0).setIgnoreGravity(true).setDisplayOrigin(190, 320);
+        this.player.setDepth(this.player.y).setScale(0.4);
+        this.player.setRectangle(40, 40).setBounce(0).setFixedRotation().setFriction(1, 0).setIgnoreGravity(true).setDisplayOrigin(190, 320);
         this.player.setCollisionCategory(collisionCat1);
         this.player.setCollidesWith([collisionCat1]);
         this.player.anims.play(this.movementDirection + 'still', true);
@@ -509,7 +511,7 @@ class MapScene extends Phaser.Scene {
         let camera = this.cameras.main;
 
         let maxZoom = 2;
-        let minZoom = 1;
+        let minZoom = 0.5;
 
         camera.startFollow(this.player, true, 0.08, 0.08);
 

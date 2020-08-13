@@ -1,75 +1,96 @@
 {
 	"textures": [
 		{
-			"image": "TPBuildings.png",
+			"image": "TPBuildings-0.png",
 			"format": "RGBA8888",
 			"size": {
-				"w": 2006,
-				"h": 1860
+				"w": 1977,
+				"h": 1285
 			},
 			"scale": 1,
 			"frames": [
+				{
+					"filename": "Piippuhalli",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 673,
+						"h": 568
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 15,
+						"w": 650,
+						"h": 539
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 650,
+						"h": 539
+					}
+				},
+				{
+					"filename": "Paloasema",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 650,
+						"h": 505
+					},
+					"spriteSourceSize": {
+						"x": 26,
+						"y": 31,
+						"w": 607,
+						"h": 457
+					},
+					"frame": {
+						"x": 1,
+						"y": 542,
+						"w": 607,
+						"h": 457
+					}
+				},
 				{
 					"filename": "Tallirakennus",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 1337,
-						"h": 617
+						"w": 681,
+						"h": 335
 					},
 					"spriteSourceSize": {
-						"x": 49,
-						"y": 58,
-						"w": 1287,
-						"h": 515
+						"x": 30,
+						"y": 31,
+						"w": 639,
+						"h": 283
 					},
 					"frame": {
 						"x": 1,
-						"y": 1,
-						"w": 1287,
-						"h": 515
+						"y": 1001,
+						"w": 639,
+						"h": 283
 					}
 				},
 				{
-					"filename": "Hunajatalo",
+					"filename": "Hallirakennus",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 1071,
-						"h": 916
+						"w": 668,
+						"h": 468
 					},
 					"spriteSourceSize": {
-						"x": 15,
-						"y": 12,
-						"w": 1042,
-						"h": 863
+						"x": 0,
+						"y": 8,
+						"w": 661,
+						"h": 452
 					},
 					"frame": {
-						"x": 1,
-						"y": 518,
-						"w": 1042,
-						"h": 863
-					}
-				},
-				{
-					"filename": "Kaarihalli",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 1098,
-						"h": 580
-					},
-					"spriteSourceSize": {
-						"x": 41,
-						"y": 60,
-						"w": 1005,
-						"h": 476
-					},
-					"frame": {
-						"x": 1,
-						"y": 1383,
-						"w": 1005,
-						"h": 476
+						"x": 610,
+						"y": 542,
+						"w": 661,
+						"h": 452
 					}
 				},
 				{
@@ -77,20 +98,41 @@
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 1036,
-						"h": 542
+						"w": 669,
+						"h": 319
 					},
 					"spriteSourceSize": {
-						"x": 7,
-						"y": 47,
-						"w": 997,
-						"h": 433
+						"x": 13,
+						"y": 17,
+						"w": 644,
+						"h": 288
 					},
 					"frame": {
-						"x": 1008,
-						"y": 1383,
-						"w": 997,
-						"h": 433
+						"x": 642,
+						"y": 996,
+						"w": 644,
+						"h": 288
+					}
+				},
+				{
+					"filename": "Hiomo",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 712,
+						"h": 383
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 12,
+						"w": 703,
+						"h": 364
+					},
+					"frame": {
+						"x": 1273,
+						"y": 1,
+						"w": 703,
+						"h": 364
 					}
 				},
 				{
@@ -98,20 +140,83 @@
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 906,
-						"h": 456
+						"w": 660,
+						"h": 351
 					},
 					"spriteSourceSize": {
-						"x": 22,
-						"y": 16,
-						"w": 873,
-						"h": 428
+						"x": 25,
+						"y": 39,
+						"w": 612,
+						"h": 312
 					},
 					"frame": {
-						"x": 1045,
-						"y": 518,
-						"w": 873,
-						"h": 428
+						"x": 653,
+						"y": 1,
+						"w": 612,
+						"h": 312
+					}
+				},
+				{
+					"filename": "Lintuhoitola",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 700,
+						"h": 175
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 7,
+						"w": 682,
+						"h": 162
+					},
+					"frame": {
+						"x": 1288,
+						"y": 367,
+						"w": 682,
+						"h": 162
+					}
+				},
+				{
+					"filename": "Hunajatalo",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 721,
+						"h": 379
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 23,
+						"w": 681,
+						"h": 338
+					},
+					"frame": {
+						"x": 1288,
+						"y": 531,
+						"w": 681,
+						"h": 338
+					}
+				},
+				{
+					"filename": "Kaarihalli",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 648,
+						"h": 350
+					},
+					"spriteSourceSize": {
+						"x": 14,
+						"y": 14,
+						"w": 625,
+						"h": 329
+					},
+					"frame": {
+						"x": 1288,
+						"y": 871,
+						"w": 625,
+						"h": 329
 					}
 				}
 			]
@@ -120,6 +225,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:1d69881fa9c56319980cc2540ef88a54:88083c1f3c48b4f1d6ceedff5f0fd978:2476198be9fa65b60881c5fccada28ab$"
+		"smartupdate": "$TexturePacker:SmartUpdate:b5524cb2b3ba9c8036b89837ca4f5859:2dd0ada7337d6df2f71e67bfe201c8dc:2b9fb787d8ea55b23262400e1cf4ac04$"
 	}
 }

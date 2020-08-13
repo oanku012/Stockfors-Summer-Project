@@ -1,13 +1,13 @@
 {
 	"generator_info": "Shape definitions generated with PhysicsEditor. Visit https://www.codeandweb.com/physicseditor",
-	"Patruunantalo": {
+	"Hallirakennus": {
 		"type": "fromPhysicsEditor",
-		"label": "Patruunantalo",
+		"label": "Hallirakennus",
 		"isStatic": false,
-		"density": 0.1,
+		"density": 0.10000000149011612,
 		"restitution": 0,
-		"friction": 0.1,
-		"frictionAir": 0.01,
+		"friction": 0.10000000149011612,
+		"frictionAir": 0.009999999776482582,
 		"frictionStatic": 0.5,
 		"collisionFilter": {
 			"group": 0,
@@ -19,9 +19,32 @@
 				"label": "",
 				"isSensor": false,
 				"vertices": [
-					[ { "x":889, "y":358 }, { "x":726, "y":350 }, { "x":508, "y":387 }, { "x":610, "y":382 } ],
-					[ { "x":154, "y":439 }, { "x":377, "y":413 }, { "x":508, "y":387 }, { "x":52, "y":414 } ],
-					[ { "x":726, "y":350 }, { "x":52, "y":414 }, { "x":508, "y":387 } ]
+					[ { "x":27, "y":413 }, { "x":41, "y":439 }, { "x":105, "y":454 }, { "x":399, "y":413 }, { "x":402, "y":364 }, { "x":43, "y":397 } ],
+					[ { "x":4, "y":360 }, { "x":43, "y":397 }, { "x":654, "y":339 }, { "x":558, "y":323 }, { "x":5, "y":346 } ]
+				]
+			}
+		]
+	},
+	"Hiomo": {
+		"type": "fromPhysicsEditor",
+		"label": "Hiomo",
+		"isStatic": false,
+		"density": 0.10000000149011612,
+		"restitution": 0,
+		"friction": 0.10000000149011612,
+		"frictionAir": 0.009999999776482582,
+		"frictionStatic": 0.5,
+		"collisionFilter": {
+			"group": 0,
+			"category": 1,
+			"mask": 255
+		},
+		"fixtures": [
+			{
+				"label": "",
+				"isSensor": false,
+				"vertices": [
+					[ { "x":6, "y":328 }, { "x":6, "y":352 }, { "x":218, "y":367 }, { "x":705, "y":340 }, { "x":616, "y":319 }, { "x":491, "y":314 }, { "x":126, "y":315 } ]
 				]
 			}
 		]
@@ -45,7 +68,7 @@
 				"label": "",
 				"isSensor": false,
 				"vertices": [
-					[ { "x":952, "y":789 }, { "x":113, "y":412 }, { "x":43, "y":425 }, { "x":697, "y":857 } ]
+					[ { "x":348, "y":352 }, { "x":692, "y":343 }, { "x":691, "y":315 }, { "x":129, "y":277 }, { "x":33, "y":279 } ]
 				]
 			}
 		]
@@ -69,7 +92,31 @@
 				"label": "",
 				"isSensor": false,
 				"vertices": [
-					[ { "x":45, "y":264 }, { "x":118, "y":525 }, { "x":1030, "y":373 }, { "x":960, "y":145 } ]
+					[ { "x":42, "y":333 }, { "x":277, "y":335 }, { "x":630, "y":177 }, { "x":573, "y":181 }, { "x":17, "y":245 } ]
+				]
+			}
+		]
+	},
+	"Lintuhoitola": {
+		"type": "fromPhysicsEditor",
+		"label": "Lintuhoitola",
+		"isStatic": false,
+		"density": 0.10000000149011612,
+		"restitution": 0,
+		"friction": 0.10000000149011612,
+		"frictionAir": 0.009999999776482582,
+		"frictionStatic": 0.5,
+		"collisionFilter": {
+			"group": 0,
+			"category": 1,
+			"mask": 255
+		},
+		"fixtures": [
+			{
+				"label": "",
+				"isSensor": false,
+				"vertices": [
+					[ { "x":670, "y":123 }, { "x":600, "y":116 }, { "x":122, "y":134 }, { "x":9, "y":160 }, { "x":516, "y":144 } ]
 				]
 			}
 		]
@@ -93,8 +140,80 @@
 				"label": "",
 				"isSensor": false,
 				"vertices": [
-					[ { "x":55, "y":429 }, { "x":410, "y":476 }, { "x":683, "y":414 }, { "x":572, "y":383 } ],
-					[ { "x":572, "y":383 }, { "x":683, "y":414 }, { "x":909, "y":426 }, { "x":969, "y":407 } ]
+					[ { "x":627, "y":260 }, { "x":347, "y":237 }, { "x":445, "y":260 }, { "x":593, "y":281 } ],
+					[ { "x":47, "y":271 }, { "x":266, "y":298 }, { "x":445, "y":260 }, { "x":347, "y":237 } ]
+				]
+			}
+		]
+	},
+	"Paloasema": {
+		"type": "fromPhysicsEditor",
+		"label": "Paloasema",
+		"isStatic": false,
+		"density": 0.10000000149011612,
+		"restitution": 0,
+		"friction": 0.10000000149011612,
+		"frictionAir": 0.009999999776482582,
+		"frictionStatic": 0.5,
+		"collisionFilter": {
+			"group": 0,
+			"category": 1,
+			"mask": 255
+		},
+		"fixtures": [
+			{
+				"label": "",
+				"isSensor": false,
+				"vertices": [
+					[ { "x":32, "y":465 }, { "x":152, "y":487 }, { "x":625, "y":443 }, { "x":536, "y":434 } ]
+				]
+			}
+		]
+	},
+	"Patruunantalo": {
+		"type": "fromPhysicsEditor",
+		"label": "Patruunantalo",
+		"isStatic": false,
+		"density": 0.10000000149011612,
+		"restitution": 0,
+		"friction": 0.10000000149011612,
+		"frictionAir": 0.009999999776482582,
+		"frictionStatic": 0.5,
+		"collisionFilter": {
+			"group": 0,
+			"category": 1,
+			"mask": 255
+		},
+		"fixtures": [
+			{
+				"label": "",
+				"isSensor": false,
+				"vertices": [
+					[ { "x":74, "y":300 }, { "x":261, "y":326 }, { "x":633, "y":285 }, { "x":503, "y":279 } ]
+				]
+			}
+		]
+	},
+	"Piippuhalli": {
+		"type": "fromPhysicsEditor",
+		"label": "Piippuhalli",
+		"isStatic": false,
+		"density": 0.10000000149011612,
+		"restitution": 0,
+		"friction": 0.10000000149011612,
+		"frictionAir": 0.009999999776482582,
+		"frictionStatic": 0.5,
+		"collisionFilter": {
+			"group": 0,
+			"category": 1,
+			"mask": 255
+		},
+		"fixtures": [
+			{
+				"label": "",
+				"isSensor": false,
+				"vertices": [
+					[ { "x":41, "y":497 }, { "x":126, "y":546 }, { "x":665, "y":494 }, { "x":587, "y":488 } ]
 				]
 			}
 		]
@@ -118,7 +237,7 @@
 				"label": "",
 				"isSensor": false,
 				"vertices": [
-					[ { "x":215, "y":566 }, { "x":1184, "y":451 }, { "x":1187, "y":357 }, { "x":357, "y":435 } ]
+					[ { "x":46, "y":281 }, { "x":79, "y":311 }, { "x":626, "y":274 }, { "x":567, "y":258 } ]
 				]
 			}
 		]

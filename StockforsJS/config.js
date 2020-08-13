@@ -30,7 +30,7 @@ var config = {
     physics: {
         default: 'matter',
         matter: {
-            debug: false,
+            debug: true,
             enablesleeping: true,
             gravity: {
                 y: 0
