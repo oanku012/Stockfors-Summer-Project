@@ -23,8 +23,8 @@ var config = {
     },
 
     fps: {
-        target: 60 
-        //forceSetTimeOut: true
+        target: 60,
+        forceSetTimeOut: true
     },
 
     physics: {

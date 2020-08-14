@@ -84,7 +84,7 @@ class BuildingScene extends Phaser.Scene {
     createMenuContainer() {
         // Menu
         this.menuBG = this.add.sprite(0, 0, 'MenuAtlas', 'UI Pohjat/InsideVaaka');
-        this.menu = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY - 10, [this.menuBG]).setScale(0.8);
+        this.menu = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY - 20, [this.menuBG]).setScale(0.8);
 
         // title and description
         let title = this.add.text(0, -350, this.title);
@@ -485,6 +485,8 @@ class BuildingScene extends Phaser.Scene {
 
         let remainingLines = text;
 
+        this.infoContainer.zoomed = false;
+
         //This is just a really clumsy and convoluted way of automatically splitting the infocard text across multiple cards
         do {
             let infoCard = this.add.sprite(0, 5, 'MenuAtlas', 'UI Pohjat/Infokorttipohja').setScale(1.3);
@@ -536,55 +538,60 @@ class BuildingScene extends Phaser.Scene {
             //Because the linebreaks don't carry over they have to be added here, £ is also added so later cards still have it as an indicator for the linebreaks
             remainingLines = remainingLines.replaceAll("£", '£\n\n');
 
-            let topRight = infoCard.getTopRight();
 
-            infoCard.zoomButton = this.add.sprite(topRight.x - 20, topRight.y + 20, 'MenuAtlas', 'UI Buttons/Zoom_In');
-
-            let zoom = infoCard.zoomButton;
-
-            zoom.setInteractive();
-
-            zoom.on('pointerdown', function () {
-                zoom.pressed = true;
-                zoom.setTint(0xd5d1c7);
-            });
-
-            zoom.on('pointerout', function () {
-                zoom.pressed = false;
-                zoom.clearTint();
-            });
-
-            zoom.on('pointerup', function () {
-                if (zoom.pressed === true) {
-                    console.log('Zoomed card');
-                    infoCard.setScale(2);
-                    infoCard.description.setScale(1.55);
-                    infoCard.description.x = -750;
-                    infoCard.description.y = -570;
-
-                    topRight = infoCard.getTopRight();
-
-                    zoom.x = topRight.x - 20;
-                    zoom.y = topRight.y + 20;
-                    zoom.clearTint();
-
-                    this.infoContainer.arrowForw.x += 230;
-                    this.infoContainer.arrowBack.x -= 230;
-
-                    this.ChangeVisibility([this.infoContainer]);
-
-                }
-            }, this);
 
             this.infoCards.push(infoCard);
 
-            this.infoContainer.add([infoCard, infoCard.description, infoCard.zoomButton]);
+            this.infoContainer.add([infoCard, infoCard.description]);
 
 
         }//Loop as long as there are still lines to add
         while (remainingLines !== "");
 
 
+        this.infoContainer.zoomButton = this.add.sprite(530, -390, 'MenuAtlas', 'UI Buttons/Zoom_In');
+
+        let zoom = this.infoContainer.zoomButton;
+
+        zoom.setInteractive();
+
+        zoom.on('pointerdown', function () {
+            zoom.pressed = true;
+            zoom.setTint(0xd5d1c7);
+        });
+
+        zoom.on('pointerout', function () {
+            zoom.pressed = false;
+            zoom.clearTint();
+        });
+
+        zoom.on('pointerup', function () {
+            if (zoom.pressed === true && this.infoContainer.zoomed === false) {
+
+                this.infoContainer.setScale(1.5);
+                this.infoContainer.zoomed = true;
+                this.infoContainer.arrowForw.setScale(0.675);
+                this.infoContainer.arrowBack.setScale(0.675);
+                zoom.clearTint();
+                this.ChangeVisibility([this.infoContainer]);
+                zoom.setTexture('MenuAtlas', 'UI Buttons/Zoom_Out');
+
+            }
+            else if (zoom.pressed && this.infoContainer.zoomed) {
+
+                this.ChangeVisibility(true);
+
+                this.infoContainer.setScale(1);
+                this.infoContainer.zoomed = false;
+                this.infoContainer.arrowForw.setScale(0.9);
+                this.infoContainer.arrowBack.setScale(0.9);
+                this.ContainerTransition(this.infoContainer);
+                zoom.setTexture('MenuAtlas', 'UI Buttons/Zoom_In');
+                zoom.clearTint();
+            }
+        }, this);
+
+        this.infoContainer.add(zoom);
 
     }
 
@@ -592,12 +599,12 @@ class BuildingScene extends Phaser.Scene {
         this.infoCards.forEach(card => {
             card.setVisible(false);
             card.description.setVisible(false);
-            card.zoomButton.setVisible(false);
+            //card.zoomButton.setVisible(false);
         });
 
         this.infoCards[cardIndex].setVisible(true);
         this.infoCards[cardIndex].description.setVisible(true);
-        this.infoCards[cardIndex].zoomButton.setVisible(true);
+        //this.infoCards[cardIndex].zoomButton.setVisible(true);
 
         console.log('Changed to: ' + cardIndex);
     }
@@ -821,20 +828,26 @@ class BuildingScene extends Phaser.Scene {
     //Changes visibility of menu elements so that only elements in the keepVisible parameter are kept visible
     ChangeVisibility(keepVisible) {
 
-        this.menu.iterate(item => {
+        if (Array.isArray(keepVisible)) {
+            this.menu.iterate(item => {
 
-            keepVisible.forEach(element => {
-                if(element === item)
-                {
-                    item.visible = true;
-                }
-                else
-                {
-                    item.visible = false;
-                }
+                keepVisible.forEach(element => {
+                    if (element === item) {
+                        item.visible = true;
+                    }
+                    else {
+                        item.visible = false;
+                    }
+                });
+
             });
 
-        });
+        }
+        else if (keepVisible === true) {
+            this.menu.iterate(item => {
+                item.visible = true;
+            });
+        }
     }
 
 }
