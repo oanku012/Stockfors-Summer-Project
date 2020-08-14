@@ -9,7 +9,7 @@ class MapScene extends Phaser.Scene {
         this.pointer;
 
         this.movingOnPath = false;
-        this.speed = 6;
+        this.speed = 5;
         this.movementVector = new Phaser.Math.Vector2();
         this.destination = new Phaser.Math.Vector2();
         this.movementDirection = 'down';
@@ -74,7 +74,7 @@ class MapScene extends Phaser.Scene {
             collisionCat2 = this.matter.world.nextCategory();
         }
 
-        this.matter.world.setBounds(0, 0, 4000, 2000, 64, true, true, true, true);
+        //this.matter.world.setBounds(0, 0, 5000, 2000, 64, true, true, true, true);
 
         //Used this to change the collision category on the walls of the map, but wasn't actually necessary since I could just change collisioncat1 to the default category that the walls use
         /*
@@ -138,6 +138,8 @@ class MapScene extends Phaser.Scene {
             this.EnterBuilding();
         }
 
+        //console.log(this.pointer.worldX + ' ' + this.pointer.worldY);
+
     }
 
     CreateSounds() {
@@ -164,8 +166,8 @@ class MapScene extends Phaser.Scene {
 
     PlayerInitialize() {
         this.player = this.matter.add.sprite(this.startingPoint.x, this.startingPoint.y, 'playerIdle');
-        this.player.setDepth(this.player.y).setScale(0.4);
-        this.player.setRectangle(40, 40).setBounce(0).setFixedRotation().setFriction(1, 0).setIgnoreGravity(true).setDisplayOrigin(190, 320);
+        this.player.setDepth(this.player.y).setScale(0.3);
+        this.player.setRectangle(30, 30).setBounce(0).setFixedRotation().setFriction(1, 0).setIgnoreGravity(true).setDisplayOrigin(190, 320);
         this.player.setCollisionCategory(collisionCat1);
         this.player.setCollidesWith([collisionCat1]);
         this.player.anims.play(this.movementDirection + 'still', true);
