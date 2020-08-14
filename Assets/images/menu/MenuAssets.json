@@ -136,6 +136,27 @@
 					}
 				},
 				{
+					"filename": "UI Buttons/Arrow",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 167,
+						"h": 82
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 3,
+						"w": 159,
+						"h": 76
+					},
+					"frame": {
+						"x": 3539,
+						"y": 388,
+						"w": 159,
+						"h": 76
+					}
+				},
+				{
 					"filename": "UI Buttons/Infocards",
 					"rotated": false,
 					"trimmed": true,
@@ -150,31 +171,10 @@
 						"h": 134
 					},
 					"frame": {
-						"x": 3539,
-						"y": 388,
-						"w": 152,
-						"h": 134
-					}
-				},
-				{
-					"filename": "UI Buttons/Arrow",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 160,
-						"h": 129
-					},
-					"spriteSourceSize": {
-						"x": 4,
-						"y": 2,
-						"w": 152,
-						"h": 124
-					},
-					"frame": {
-						"x": 3693,
+						"x": 3700,
 						"y": 426,
 						"w": 152,
-						"h": 124
+						"h": 134
 					}
 				},
 				{
@@ -193,7 +193,7 @@
 					},
 					"frame": {
 						"x": 3539,
-						"y": 524,
+						"y": 466,
 						"w": 151,
 						"h": 136
 					}
@@ -214,7 +214,7 @@
 					},
 					"frame": {
 						"x": 3692,
-						"y": 552,
+						"y": 562,
 						"w": 150,
 						"h": 137
 					}
@@ -235,7 +235,7 @@
 					},
 					"frame": {
 						"x": 3539,
-						"y": 662,
+						"y": 604,
 						"w": 150,
 						"h": 135
 					}
@@ -256,7 +256,7 @@
 					},
 					"frame": {
 						"x": 3691,
-						"y": 691,
+						"y": 701,
 						"w": 147,
 						"h": 132
 					}
@@ -277,7 +277,7 @@
 					},
 					"frame": {
 						"x": 3539,
-						"y": 799,
+						"y": 741,
 						"w": 137,
 						"h": 147
 					}
@@ -298,9 +298,51 @@
 					},
 					"frame": {
 						"x": 3678,
-						"y": 825,
+						"y": 835,
 						"w": 110,
 						"h": 116
+					}
+				},
+				{
+					"filename": "UI Buttons/Zoom_In",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 104,
+						"h": 73
+					},
+					"spriteSourceSize": {
+						"x": 5,
+						"y": 1,
+						"w": 96,
+						"h": 71
+					},
+					"frame": {
+						"x": 3790,
+						"y": 835,
+						"w": 96,
+						"h": 71
+					}
+				},
+				{
+					"filename": "UI Buttons/Zoom_Out",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 104,
+						"h": 73
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 1,
+						"w": 96,
+						"h": 71
+					},
+					"frame": {
+						"x": 3790,
+						"y": 908,
+						"w": 96,
+						"h": 71
 					}
 				},
 				{
@@ -318,8 +360,8 @@
 						"h": 93
 					},
 					"frame": {
-						"x": 3790,
-						"y": 825,
+						"x": 3539,
+						"y": 890,
 						"w": 89,
 						"h": 93
 					}
@@ -339,8 +381,8 @@
 						"h": 89
 					},
 					"frame": {
-						"x": 3790,
-						"y": 920,
+						"x": 3630,
+						"y": 953,
 						"w": 89,
 						"h": 89
 					}
@@ -551,6 +593,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:1e124613a81105773c76971021c7e620:74d4da1e7960c686cf281b306e399634:e65da5ba29d08851ccf425b5c3d43287$"
+		"smartupdate": "$TexturePacker:SmartUpdate:a5b2bfc4a6b94e7cc7d267e55c46e2e5:32e578b54dc62a2b091a2e2069547f5d:e65da5ba29d08851ccf425b5c3d43287$"
 	}
 }

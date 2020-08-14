@@ -315,6 +315,7 @@ class BuildingScene extends Phaser.Scene {
 
             this.webButton.on('pointerup', function () {
                 if (this.webButton.pressed) {
+                    this.webButton.clearTint();
 
                     window.open(this.url);
                 }
@@ -353,7 +354,7 @@ class BuildingScene extends Phaser.Scene {
                 }, this);
 
                 button.on('pointerup', function () {
-                    button.clearTint();
+                    //button.clearTint();
                 })
             }
 
@@ -386,7 +387,7 @@ class BuildingScene extends Phaser.Scene {
             this.infoCards.push(infoCard);
 
             this.infoContainer.add([infoCard, infoCard.description]);*/
-            
+
             this.CreateInfoCards(infoText);
 
 
@@ -405,38 +406,47 @@ class BuildingScene extends Phaser.Scene {
         this.infoContainer.add([arrowButtonForward, arrowButtonBackward]);
 
         this.infoContainer.iterate(function (element) {
-            element.setInteractive();
 
-            element.on('pointerdown', function () {
-                element.pressed = true;
-                element.setTint(0xd5d1c7);
-            });
+            if (element === arrowButtonForward || element === arrowButtonBackward) {
+                element.setInteractive();
 
-            element.on('pointerout', function () {
-                element.pressed = false;
-                element.clearTint();
-            });
+                element.on('pointerdown', function () {
+                    element.pressed = true;
+                    element.setTint(0xd5d1c7);
+                });
 
-            element.on('pointerup', function () {
-
-
-                if (element.pressed == true) {
+                element.on('pointerout', function () {
+                    element.pressed = false;
                     element.clearTint();
-                    if (element.flipX == false && this.openedCard < this.infoCards.length - 1) {
-                        this.openedCard++;
-                        this.ChangeCard(this.openedCard);
+                });
+
+                element.on('pointerup', function () {
+
+
+                    if (element.pressed == true) {
+                        element.clearTint();
+                        if (element === arrowButtonForward && this.openedCard < this.infoCards.length - 1) {
+                            this.openedCard++;
+                            this.ChangeCard(this.openedCard);
+                        }
+                        else if (element === arrowButtonBackward && this.openedCard > 0) {
+                            this.openedCard--;
+                            this.ChangeCard(this.openedCard);
+                        }
                     }
-                    else if (element.flipX && this.openedCard > 0) {
-                        this.openedCard--;
-                        this.ChangeCard(this.openedCard);
-                    }
-                }
-            }, this)
+                }, this)
+
+            }
         }, this);
 
         this.switchableContainers.push(this.infoContainer);
 
         this.menu.add(this.infoContainer);
+
+        this.infoContainer.button = this.infoButton;
+
+        this.infoContainer.arrowForw = arrowButtonForward;
+        this.infoContainer.arrowBack = arrowButtonBackward;
     }
 
     /*
@@ -468,41 +478,40 @@ class BuildingScene extends Phaser.Scene {
         return infoCard;
     }*/
 
-    CreateInfoCards(text)
-    {
-        
+    CreateInfoCards(text) {
 
-        let maxLines = 18;
+
+        let maxLines = 17;
 
         let remainingLines = text;
 
         //This is just a really clumsy and convoluted way of automatically splitting the infocard text across multiple cards
-        do{
-            let infoCard = this.add.sprite(0, 10, 'MenuAtlas', 'UI Pohjat/Infokorttipohja').setScale(1.3, 1.37);
+        do {
+            let infoCard = this.add.sprite(0, 5, 'MenuAtlas', 'UI Pohjat/Infokorttipohja').setScale(1.3);
 
-            //Linebreaks disappear when the string is later turned into an array and back into a string so £@ is used to indicate a spot for a linebreak
-            let lineToUse = remainingLines.replaceAll('£@', '');
+            //Linebreaks disappear when the string is later turned into an array and back into a string so £ is used to indicate a spot for a linebreak
+            let lineToUse = remainingLines.replaceAll('£', '');
 
-            //This is the visible text on a card that has all the £@ taken out
+            //This is the visible text on a card that has all the £ taken out
             infoCard.description = this.make.text({
-                x: -500,
-                y: -380,
+                x: -480,
+                y: -360,
                 text: lineToUse,
                 origin: { x: 0, y: 0 },
                 style: {
                     font: '34px Carme',
                     fill: 'black',
-                    wordWrap: { width: 960}
+                    wordWrap: { width: 970 }
                 }
             });
 
-            //This one isn't visible, but it has the £@ symbols which we can use later
+            //This one isn't visible, but it has the £ symbols which we can use later
             let dummyDescription = this.make.text({
                 text: remainingLines,
                 style: {
                     font: '34px Carme',
                     fill: 'black',
-                    wordWrap: { width: 960}
+                    wordWrap: { width: 970 }
                 },
                 visible: false
             });
@@ -524,16 +533,58 @@ class BuildingScene extends Phaser.Scene {
 
             //console.log(remainingLines);
 
-            //Because the linebreaks don't carry over they have to be added here, £@ is also added so later cards still have it as an indicator for the linebreaks
-            remainingLines = remainingLines.replaceAll("£@", '£@\n\n');
+            //Because the linebreaks don't carry over they have to be added here, £ is also added so later cards still have it as an indicator for the linebreaks
+            remainingLines = remainingLines.replaceAll("£", '£\n\n');
+
+            let topRight = infoCard.getTopRight();
+
+            infoCard.zoomButton = this.add.sprite(topRight.x - 20, topRight.y + 20, 'MenuAtlas', 'UI Buttons/Zoom_In');
+
+            let zoom = infoCard.zoomButton;
+
+            zoom.setInteractive();
+
+            zoom.on('pointerdown', function () {
+                zoom.pressed = true;
+                zoom.setTint(0xd5d1c7);
+            });
+
+            zoom.on('pointerout', function () {
+                zoom.pressed = false;
+                zoom.clearTint();
+            });
+
+            zoom.on('pointerup', function () {
+                if (zoom.pressed === true) {
+                    console.log('Zoomed card');
+                    infoCard.setScale(2);
+                    infoCard.description.setScale(1.55);
+                    infoCard.description.x = -750;
+                    infoCard.description.y = -570;
+
+                    topRight = infoCard.getTopRight();
+
+                    zoom.x = topRight.x - 20;
+                    zoom.y = topRight.y + 20;
+                    zoom.clearTint();
+
+                    this.infoContainer.arrowForw.x += 230;
+                    this.infoContainer.arrowBack.x -= 230;
+
+                    this.ChangeVisibility([this.infoContainer]);
+
+                }
+            }, this);
 
             this.infoCards.push(infoCard);
 
-            this.infoContainer.add([infoCard, infoCard.description]);
+            this.infoContainer.add([infoCard, infoCard.description, infoCard.zoomButton]);
 
-            
+
         }//Loop as long as there are still lines to add
-        while(remainingLines !== "");
+        while (remainingLines !== "");
+
+
 
     }
 
@@ -541,10 +592,12 @@ class BuildingScene extends Phaser.Scene {
         this.infoCards.forEach(card => {
             card.setVisible(false);
             card.description.setVisible(false);
+            card.zoomButton.setVisible(false);
         });
 
         this.infoCards[cardIndex].setVisible(true);
         this.infoCards[cardIndex].description.setVisible(true);
+        this.infoCards[cardIndex].zoomButton.setVisible(true);
 
         console.log('Changed to: ' + cardIndex);
     }
@@ -616,10 +669,12 @@ class BuildingScene extends Phaser.Scene {
         this.menu.add(this.albumContainer);
 
         this.switchableContainers.push(this.albumContainer);
+
+        this.albumContainer.button = this.albumButton;
     }
 
     createImage(image) {
-        let newImage = this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, image).setScale(0.8);
+        let newImage = this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, image).setScale(0.5);
 
         //Commented this out so I can easily make the menu invisible separately when opening an image
         // add to menu for easy resize
@@ -643,7 +698,7 @@ class BuildingScene extends Phaser.Scene {
             if (pressed) {
                 newImage.destroy();
                 this.menu.setVisible(true);
-                
+
             }
         }, this);
 
@@ -668,7 +723,7 @@ class BuildingScene extends Phaser.Scene {
 
             element.on('pointerdown', function () {
                 element.pressed = true;
-                
+
                 element.setAlpha(1);
 
                 if (element === arrowButtonBackward || element === arrowButtonForward) {
@@ -681,8 +736,7 @@ class BuildingScene extends Phaser.Scene {
                         testImage.setVelocityX(10);
                     }
                 }
-                else 
-                {
+                else {
                     element.bg.setTint(0xd5d1c7);
 
                 }
@@ -695,37 +749,35 @@ class BuildingScene extends Phaser.Scene {
 
             element.on('pointerout', function () {
                 element.pressed = false;
-                
+
                 element.setAlpha(0.4);
 
                 if (element === arrowButtonBackward || element === arrowButtonForward) {
                     element.clearTint();
                     testImage.setVelocityX(0);
                 }
-                else
-                {
+                else {
                     element.bg.clearTint();
                 }
             });
 
             element.on('pointerup', function () {
 
-                
+
 
                 if (element === arrowButtonBackward || element === arrowButtonForward) {
 
                     testImage.setVelocityX(0);
                     if (element.pressed == true) {
                         element.clearTint();
-    
+
                     }
                 }
-                else
-                {
+                else {
                     if (element.pressed == true) {
                         element.bg.clearTint();
                         this.ContainerTransition(this.infoContainer);
-                    } 
+                    }
                 }
             }, this)
         }, this);
@@ -740,15 +792,20 @@ class BuildingScene extends Phaser.Scene {
 
         this.panoramaContainer.image = testImage;
 
+        this.panoramaContainer.button = this.panoramaButton;
+
     }
 
     ContainerTransition(containerToOpen) {
         this.switchableContainers.forEach(function (element) {
             if (element == containerToOpen) {
                 element.setVisible(true);
+                element.button.setTint(0xd5d1c7)
             }
             else {
                 element.setVisible(false);
+                element.button.clearTint();
+
             }
         })
     }
@@ -759,6 +816,25 @@ class BuildingScene extends Phaser.Scene {
             this.panoramaContainer.image.setVelocityX(0);
         }
 
+    }
+
+    //Changes visibility of menu elements so that only elements in the keepVisible parameter are kept visible
+    ChangeVisibility(keepVisible) {
+
+        this.menu.iterate(item => {
+
+            keepVisible.forEach(element => {
+                if(element === item)
+                {
+                    item.visible = true;
+                }
+                else
+                {
+                    item.visible = false;
+                }
+            });
+
+        });
     }
 
 }

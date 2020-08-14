@@ -57,7 +57,7 @@ class StockforsScene extends MapScene {
 
         this.buildings.PakkausMuseo = this.matter.add.sprite(1100, 900, 'buildingSheet', 'Pakkausmuseo', { shape: bodies.Pakkausmuseo }).setScale(0.4);
         let Pakkaus = this.buildings.PakkausMuseo;
-        Pakkaus.entrance = this.matter.add.circle(Pakkaus.x + 70, Pakkaus.y, entranceRadius, { collisionFilter: collisionCat2 });
+        Pakkaus.entrance = this.matter.add.circle(Pakkaus.x + 90, Pakkaus.y, entranceRadius, { collisionFilter: collisionCat2 });
 
         this.buildings.Hunajatalo = this.matter.add.sprite(1620, 820, 'buildingSheet', 'Hunajatalo', { shape: bodies.Hunajatalo }).setScale(0.5);
         let Hunaja = this.buildings.Hunajatalo;
@@ -93,7 +93,6 @@ class StockforsScene extends MapScene {
 
         //this.buildings.KirkkoTie = this.matter.add.image(1400, 500, 'Nuoli').setScale(0.1);
 
-
         Object.values(this.buildings).forEach(building => {
 
             building.setDepth(building.y).setStatic(true);
@@ -102,7 +101,20 @@ class StockforsScene extends MapScene {
 
             this.buildingEntrances.push(building.entrance);
 
-            //console.log(building.sceneKey);
+            building.entrance.arrow = this.add.sprite(building.entrance.position.x, building.entrance.position.y - 60, 'MenuAtlas', 'UI Buttons/Arrow').setScale(0.2, 0.3).setDepth(2000).setRotation(1.5707963268);
+
+            this.tweens.add({
+                targets: building.entrance.arrow,
+                y: building.entrance.arrow.y - 20,
+                duration: 1000,
+                ease: 'Sine.easeInOut',
+                yoyo: true,
+                loop: -1
+            });
+
+            //building.entrance.arrow.setAlpha(0.5);
+
+            //this.arrows.push(building.entrance.arrow);
 
         }, this);
 
