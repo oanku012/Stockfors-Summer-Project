@@ -492,7 +492,7 @@ class BuildingScene extends Phaser.Scene {
             let infoCard = this.add.sprite(0, 5, 'MenuAtlas', 'UI Pohjat/Infokorttipohja').setScale(1.3);
 
             //Linebreaks disappear when the string is later turned into an array and back into a string so £ is used to indicate a spot for a linebreak
-            let lineToUse = remainingLines.replaceAll('£', '');
+            let lineToUse = remainingLines.replace(/£/g, '');
 
             //This is the visible text on a card that has all the £ taken out
             infoCard.description = this.make.text({
@@ -536,7 +536,7 @@ class BuildingScene extends Phaser.Scene {
             //console.log(remainingLines);
 
             //Because the linebreaks don't carry over they have to be added here, £ is also added so later cards still have it as an indicator for the linebreaks
-            remainingLines = remainingLines.replaceAll("£", '£\n\n');
+            remainingLines = remainingLines.replace(/£/g, '£\n\n');
 
 
 
