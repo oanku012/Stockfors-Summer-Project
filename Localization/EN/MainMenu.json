@@ -1,9 +1,0 @@
-{
-    "OpeningHeader" : "WELCOME TO THE STOCKFORS ON THE MAP - WEB APPLICATION",
-    "OpeningText" : "The Stockfors groundwood mill is a culture-historically rich and significant area located at Pyhtää. Until the 1960's the groundwood mill was the largest employer at Pyhtää and had a significant impact on the growth and life of Pyhtää's Kirkonkylä. \n \nAfter the area was refurbished, it's now full of small companies, culture and art. The annual Stockfors Art Fair is held at the halls of Stockfors. Kaarihalli (Arc hall) can be rented for use in events and the area also has a hotel located in Patruunantalo (Owner's house) and a package museum as well as a bird sanctuary. \n \nThe aim of this web application is to familiarize people with the area through text, images and games. ",
-    "HelpHeader" : "INSTRUCTIONS",
-    "HelpText" : "This app is meant to familiarize people with the historical industrial site of Stockfors in Pyhtää and the different companies acting in the area. The goal is to learn about the site's history and culture. \n\nThe game lets you explore a map depicting the Stockfors-area by moving around with a player character. You can move the player character by clicking or tapping where you want to go or by using the WASD- or arrow-keys. You can visit different buildings and locations around the map by moving the player to an entrance highlighted by a glowing effect. \n\nFrom there you can find more information about the history of the place you're visiting as well as pictures, 360 panoramas and in some places even different minigames. ",
-    "NewGame" : "New game",
-    "ContinueGame" : "Continue game",
-    "Back" : "Back"
-}
