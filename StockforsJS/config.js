@@ -219,8 +219,12 @@ function createButton(posX, posY, scene, runOnTop, scrollFactor, scale, context,
             }
             else {
                 //Lets you close the scene if you press the button
+                saveGame({ musicOn: config.musicOn, soundOn: config.soundOn });
+
                 context.scene.stop(scene);
                 button.open = false;
+                readyToMove = true;
+
             }
 
         }
