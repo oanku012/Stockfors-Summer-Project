@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game | Stockfors Kartalla</title>
+
+
+    <!--<script src="dist/phaser-arcade-physics.min.js"></script>-->
+
+</head>
+
+<body>
+    <!-- This is the HTML parent container for the game.-->
+    <div id="game" style="user-select: none;">
+
+    <script type="text/javascript" src="dist/phaser.min.js"></script>
+    <script src="main.js"></script>
+    <script type="text/javascript" src="stockforsJS/BootScene.js"></script>
+    <script type="text/javascript" src="stockforsJS/PreloadScene.js"></script>
+    <script type="text/javascript" src="stockforsJS/OpeningScene.js"></script>
+    <script type="text/javascript" src="stockforsJS/MapScene.js"></script>
+    <script type="text/javascript" src="stockforsJS/KirkkoScene.js"></script>
+    <script type="text/javascript" src="stockforsJS/StockforsScene.js"></script>
+    <script type="text/javascript" src="stockforsJS/BuildingScene.js"></script>
+    <script type="text/javascript" src="stockforsJS/OptionsMenuScene.js"></script>
+    <script type="text/javascript" src="stockforsJS/PatruunantaloScene.js"></script>
+    <script type="text/javascript" src="stockforsJS/TallirakennusScene.js"></script>
+    <script type="text/javascript" src="stockforsJS/KaarihalliScene.js"></script>
+    <script type="text/javascript" src="stockforsJS/PakkausmuseoScene.js"></script>
+    <script type="text/javascript" src="stockforsJS/MuistiPeliScene.js"></script>
+    <script type="text/javascript" src="stockforsJS/PalapeliScene.js"></script>
+    <script type="text/javascript" src="stockforsJS/UI.js"></script>
+    <script type="text/javascript" src="stockforsJS/SceneLoader.js"></script>
+    <script type="text/javascript" src="dist/phaser-ui-tools.js"></script>
+    <script type="text/javascript" src="StockforsJS/config.js"></script>
+
+    <script>
+
+        var game = new Phaser.Game(config);
+    </script>
+
+    </div>
+
+</body>
+
+<!-- Removes scrolling from the page-->
+<style type="text/css">
+    body {
+        overflow: hidden;
+    }
+</style>
+
+</html>
