@@ -21,18 +21,35 @@
     
 
     <div class="overlay"></div>
+    
 
     <div class="masthead">
       <div class="masthead-bg"></div>
+      
       <div class="container h-100">
         <div class="row h-100">
           <div class="col-12 my-auto">
             <div class="masthead-content text-white py-5 py-md-0">
-              <h1 class="mb-3">Stockfors Kartalla</h1>
-              <p class="mb-5">Stockfors kartalla on Stockforsin ja XAMKin opiskelijoiden toteuttama virtuaalinen vaihtoehto lähestyä Pyhtään Stockforsin historiaa ja miljöötä.</p>
+              <h1 class="mb-3 finnish">Stockfors Kartalla</h1>
+              <p class="mb-5 finnish">Stockfors kartalla on Stockforsin ja XAMKin opiskelijoiden toteuttama virtuaalinen vaihtoehto lähestyä Pyhtään Stockforsin historiaa ja miljöötä.</p>
+              <h1 class="mb-3 english">Stockfors On The Map</h1>
+              <p class="mb-5 english">The Stockfors groundwood mill is a culture-historically rich and significant area located at Pyhtää.</p>
               <div class="input-group input-group-game">
-                  <a href="game.html" class="btn btn-block btn-secondary" role="button" aria-pressed="true">Siirry peliin!</a>
+                  <a href="game.html" class="btn btn-block btn-secondary finnish" role="button" aria-pressed="true">Siirry peliin!</a>
+                  <a href="game.html" class="btn btn-block btn-secondary english" role="button" aria-pressed="true">Start Game!</a>
               </div>
+
+              <br>
+
+              <div class="language">
+                <p class="finnish">Kieli:</p>
+                <p class="english">Language:</p>
+                <select id="select">
+                     <option id="english" value="english">English</option>
+                    <option id="finnish" value="finnish">Suomi</option>
+                </select>
+              </div>
+
             </div>
           </div>
         </div>
@@ -57,12 +74,16 @@
           </a>
         </li>
       </ul>
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- Script for changing language -->
+    <script src="language.js"></script>
   </body>
 
 </html>
