@@ -13,6 +13,7 @@ class BuildingScene extends Phaser.Scene {
         //The minigame for this building
         this.minigame;
         this.url;
+        this.backgroundImage;
 
         this.panoramas;
 
@@ -43,7 +44,7 @@ class BuildingScene extends Phaser.Scene {
 
         //let bounds = this.matter.world.setBounds(-90, 0, 2500, 1000, 64, true, true, false, false);
 
-
+        this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, this.backgroundImage).setDepth(0);
 
         this.infoTexts = [];
         this.infoCards = [];
@@ -399,10 +400,6 @@ class BuildingScene extends Phaser.Scene {
 
         //this.infoContainer.add(this.infoCards);
 
-        this.openedCard = 0;
-
-        this.ChangeCard(this.openedCard);
-
         this.infoContainer.add([arrowButtonForward, arrowButtonBackward]);
 
         this.infoContainer.iterate(function (element) {
@@ -447,6 +444,10 @@ class BuildingScene extends Phaser.Scene {
 
         this.infoContainer.arrowForw = arrowButtonForward;
         this.infoContainer.arrowBack = arrowButtonBackward;
+
+        this.openedCard = 0;
+
+        this.ChangeCard(this.openedCard);
     }
 
     /*
@@ -604,6 +605,23 @@ class BuildingScene extends Phaser.Scene {
 
         this.infoCards[cardIndex].setVisible(true);
         this.infoCards[cardIndex].description.setVisible(true);
+
+        if (cardIndex < this.infoCards.length - 1) {
+            this.infoContainer.arrowForw.setVisible(true);
+        }
+        else {
+            this.infoContainer.arrowForw.setVisible(false);
+
+        }
+
+        if (cardIndex > 0) {
+            this.infoContainer.arrowBack.setVisible(true);
+        }
+        else {
+            this.infoContainer.arrowBack.setVisible(false);
+
+        }
+
         //this.infoCards[cardIndex].zoomButton.setVisible(true);
 
         console.log('Changed to: ' + cardIndex);
@@ -627,13 +645,16 @@ class BuildingScene extends Phaser.Scene {
             let rowLimit = 5;
             let row = 1;
 
+            //Creates the list of images that can be clicked open
             this.images.forEach(element => {
                 let img = this.add.image(previousX, 50 + 120 * row, element).setDisplaySize(140, 100);
                 this.albumContainer.add(img);
                 //img.setPosition(previousX, 50 + 100*row);
                 previousX += 150;
 
-                var pressed = false;
+                img.pressed = false;
+
+                let index = this.images.indexOf(element);
 
                 column++;
 
@@ -654,62 +675,144 @@ class BuildingScene extends Phaser.Scene {
                 img.on('pointerout', function () {
 
                     img.clearTint();
-                    pressed = false;
+                    img.pressed = false;
 
                 });
 
                 img.on('pointerdown', function () {
 
-                    pressed = true;
+                    img.pressed = true;
 
                 });
 
                 img.on('pointerup', function (event) {
-                    if (pressed) {
+                    if (img.pressed) {
                         // Open image
-                        this.createImage(element);
+                        this.createImage(element, index);
                     }
                 }, this);
             });
         }
+
+        this.albumArrowForward = this.add.sprite(this.cameras.main.centerX + 800, this.cameras.main.centerY, 'MenuAtlas', 'UI Buttons/Nuoli').setScale(0.9).setVisible(false);
+        this.albumArrowBackward = this.add.sprite(this.cameras.main.centerX - 800, this.cameras.main.centerY, 'MenuAtlas', 'UI Buttons/Nuoli').setFlipX(true).setScale(0.9).setVisible(false);
+
+        this.albumArrowForward.setInteractive();
+        this.albumArrowBackward.setInteractive();
+
+        this.albumArrowForward.on('pointerdown', function () {
+            this.albumArrowForward.pressed = true;
+            this.albumArrowForward.setTint(0xd5d1c7);
+        }, this);
+
+        this.albumArrowForward.on('pointerout', function () {
+            this.albumArrowForward.pressed = false;
+            this.albumArrowForward.clearTint();
+
+        }, this);
+
+        this.albumArrowForward.on('pointerup', function () {
+            if (this.albumArrowForward.pressed) {
+                let newIndex = this.currentImageIndex + 1;
+                if (newIndex < this.images.length) {
+                    this.createImage(this.images[newIndex], newIndex);
+                }
+                this.albumArrowForward.clearTint();
+
+            }
+        }, this);
+
+        this.albumArrowBackward.on('pointerdown', function () {
+            this.albumArrowBackward.pressed = true;
+            this.albumArrowBackward.setTint(0xd5d1c7);
+
+        }, this);
+
+        this.albumArrowBackward.on('pointerout', function () {
+            this.albumArrowBackward.pressed = false;
+            this.albumArrowBackward.clearTint();
+
+        }, this);
+
+        this.albumArrowBackward.on('pointerup', function () {
+            if (this.albumArrowBackward.pressed) {
+                let newIndex = this.currentImageIndex - 1;
+                if (newIndex >= 0) {
+                    this.createImage(this.images[newIndex], newIndex);
+                }
+                this.albumArrowBackward.clearTint();
+            }
+        }, this);
+
+        //this.albumContainer.add([this.albumArrowBackward, this.albumArrowForward]);
 
         this.menu.add(this.albumContainer);
 
         this.switchableContainers.push(this.albumContainer);
 
         this.albumContainer.button = this.albumButton;
+
+
+
     }
 
-    createImage(image) {
-        let newImage = this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, image).setScale(0.5);
+    createImage(image, index) {
+
+        if (this.currentImage) {
+            this.currentImage.destroy();
+        }
+
+        let newImage = this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, image).setScale(0.7);
 
         //Commented this out so I can easily make the menu invisible separately when opening an image
         // add to menu for easy resize
         //this.menu.add(newImage);
-        var pressed = false;
+        newImage.pressed = false;
         newImage.setInteractive();
 
         newImage.on('pointerout', function () {
 
-            pressed = false;
+            newImage.pressed = false;
 
         });
 
         newImage.on('pointerdown', function () {
 
-            pressed = true;
+            newImage.pressed = true;
 
         });
 
         newImage.on('pointerup', function (event) {
-            if (pressed) {
+            if (newImage.pressed) {
                 newImage.destroy();
+                this.albumArrowForward.setVisible(false);
+                this.albumArrowBackward.setVisible(false);
                 this.menu.setVisible(true);
 
             }
         }, this);
 
+        if (index < this.images.length - 1) {
+            this.albumArrowForward.setVisible(true);
+        }
+        else {
+            this.albumArrowForward.setVisible(false);
+
+        }
+        this.albumArrowBackward.setVisible(true);
+
+        if (index > 0) {
+            this.albumArrowBackward.setVisible(true);
+        }
+        else {
+            this.albumArrowBackward.setVisible(false);
+
+        }
+
         this.menu.setVisible(false);
+
+        this.currentImage = newImage;
+        this.currentImageIndex = index;
     }
 
     CreatePanoRamaContainer() {
