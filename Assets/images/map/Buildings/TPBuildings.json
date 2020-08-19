@@ -4,8 +4,8 @@
 			"image": "TPBuildings-0.png",
 			"format": "RGBA8888",
 			"size": {
-				"w": 1977,
-				"h": 1285
+				"w": 2005,
+				"h": 1270
 			},
 			"scale": 1,
 			"frames": [
@@ -31,129 +31,24 @@
 					}
 				},
 				{
-					"filename": "Paloasema",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 650,
-						"h": 505
-					},
-					"spriteSourceSize": {
-						"x": 26,
-						"y": 31,
-						"w": 607,
-						"h": 457
-					},
-					"frame": {
-						"x": 1,
-						"y": 542,
-						"w": 607,
-						"h": 457
-					}
-				},
-				{
-					"filename": "Tallirakennus",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 681,
-						"h": 335
-					},
-					"spriteSourceSize": {
-						"x": 30,
-						"y": 31,
-						"w": 639,
-						"h": 283
-					},
-					"frame": {
-						"x": 1,
-						"y": 1001,
-						"w": 639,
-						"h": 283
-					}
-				},
-				{
 					"filename": "Hallirakennus",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 668,
-						"h": 468
+						"w": 676,
+						"h": 472
 					},
 					"spriteSourceSize": {
 						"x": 0,
-						"y": 8,
-						"w": 661,
-						"h": 452
+						"y": 7,
+						"w": 671,
+						"h": 461
 					},
 					"frame": {
-						"x": 610,
+						"x": 1,
 						"y": 542,
-						"w": 661,
-						"h": 452
-					}
-				},
-				{
-					"filename": "Pakkausmuseo",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 669,
-						"h": 319
-					},
-					"spriteSourceSize": {
-						"x": 13,
-						"y": 17,
-						"w": 644,
-						"h": 288
-					},
-					"frame": {
-						"x": 642,
-						"y": 996,
-						"w": 644,
-						"h": 288
-					}
-				},
-				{
-					"filename": "Hiomo",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 712,
-						"h": 383
-					},
-					"spriteSourceSize": {
-						"x": 2,
-						"y": 12,
-						"w": 703,
-						"h": 364
-					},
-					"frame": {
-						"x": 1273,
-						"y": 1,
-						"w": 703,
-						"h": 364
-					}
-				},
-				{
-					"filename": "Patruunantalo",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 660,
-						"h": 351
-					},
-					"spriteSourceSize": {
-						"x": 25,
-						"y": 39,
-						"w": 612,
-						"h": 312
-					},
-					"frame": {
-						"x": 653,
-						"y": 1,
-						"w": 612,
-						"h": 312
+						"w": 671,
+						"h": 461
 					}
 				},
 				{
@@ -171,10 +66,52 @@
 						"h": 162
 					},
 					"frame": {
-						"x": 1288,
-						"y": 367,
+						"x": 1,
+						"y": 1005,
 						"w": 682,
 						"h": 162
+					}
+				},
+				{
+					"filename": "Paloasema",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 650,
+						"h": 505
+					},
+					"spriteSourceSize": {
+						"x": 26,
+						"y": 31,
+						"w": 607,
+						"h": 457
+					},
+					"frame": {
+						"x": 653,
+						"y": 1,
+						"w": 607,
+						"h": 457
+					}
+				},
+				{
+					"filename": "Hiomo",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 712,
+						"h": 383
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 12,
+						"w": 703,
+						"h": 364
+					},
+					"frame": {
+						"x": 674,
+						"y": 460,
+						"w": 703,
+						"h": 364
 					}
 				},
 				{
@@ -192,8 +129,8 @@
 						"h": 338
 					},
 					"frame": {
-						"x": 1288,
-						"y": 531,
+						"x": 1262,
+						"y": 1,
 						"w": 681,
 						"h": 338
 					}
@@ -213,10 +150,73 @@
 						"h": 329
 					},
 					"frame": {
-						"x": 1288,
-						"y": 871,
+						"x": 1379,
+						"y": 341,
 						"w": 625,
 						"h": 329
+					}
+				},
+				{
+					"filename": "Patruunantalo",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 660,
+						"h": 351
+					},
+					"spriteSourceSize": {
+						"x": 25,
+						"y": 39,
+						"w": 612,
+						"h": 312
+					},
+					"frame": {
+						"x": 1379,
+						"y": 672,
+						"w": 612,
+						"h": 312
+					}
+				},
+				{
+					"filename": "Pakkausmuseo",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 669,
+						"h": 319
+					},
+					"spriteSourceSize": {
+						"x": 13,
+						"y": 17,
+						"w": 644,
+						"h": 288
+					},
+					"frame": {
+						"x": 685,
+						"y": 826,
+						"w": 644,
+						"h": 288
+					}
+				},
+				{
+					"filename": "Tallirakennus",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 681,
+						"h": 335
+					},
+					"spriteSourceSize": {
+						"x": 30,
+						"y": 31,
+						"w": 639,
+						"h": 283
+					},
+					"frame": {
+						"x": 1331,
+						"y": 986,
+						"w": 639,
+						"h": 283
 					}
 				}
 			]
@@ -225,6 +225,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:b5524cb2b3ba9c8036b89837ca4f5859:2dd0ada7337d6df2f71e67bfe201c8dc:2b9fb787d8ea55b23262400e1cf4ac04$"
+		"smartupdate": "$TexturePacker:SmartUpdate:66c91b6a9c04e93a8eb9b91561393ef9:964a043defccfcdb332d768f2adc8329:2b9fb787d8ea55b23262400e1cf4ac04$"
 	}
 }
