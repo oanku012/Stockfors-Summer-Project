@@ -12,6 +12,28 @@ class OpeningScene extends Phaser.Scene {
 
     preload() {
 
+        // Check header if we have selected a language
+        // If we do, skip language selection at the start
+        let searchParams = new URLSearchParams(window.location.search)
+        if (searchParams.has('lang'))
+        {
+            let param = searchParams.get('lang')
+            if (param === "fi")
+            {
+                config.language = 'FI';
+                console.log('Language set to Finnish.');
+                this.languageChosen = true;
+            }
+
+            else if (param === "en")
+            {
+                config.language = 'EN';
+                console.log('Language set to English.');
+                this.languageChosen = true;
+            }
+        }
+
+
         //Only loaded when languagechanged is false(which it is by default) so that it doesn't load unnecessarily when changing the language from the options menu
         if (languageChanged === false) {
            /*// Make sure to remove all localization data before loading any
@@ -105,6 +127,7 @@ class OpeningScene extends Phaser.Scene {
         this.CreateInstructions();
 
         this.CreateMainMenu();
+
 
         if (this.languageChosen) {
             this.languageContainer.setVisible(false);
