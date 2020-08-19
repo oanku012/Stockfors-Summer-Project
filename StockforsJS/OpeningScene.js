@@ -122,37 +122,8 @@ class OpeningScene extends Phaser.Scene {
 
         this.ohjeContainer.setVisible(false);
 
-        //this.DecodeAudio();
-
-        //createButton(this.cameras.main.centerX + this.cameras.main.width * .4, this.cameras.main.centerY - this.cameras.main.height * .4, 'OptionsMenuScene', true, 0, 0.56, this, 'MenuAtlas', 'UI Buttons/Asetukset');
-
-        /*this.input.keyboard.on('keydown', function (event) {
-            let saveFile = loadGame();
-
-            //currentMap = this.scene.scene.get(saveFile.map);
-
-            if (saveFile.map != null) {
-                this.scene.scene.start(saveFile.map, saveFile.posX, saveFile.posY);
-                console.log('Loaded game from save file.');
-            }
-            else
-            {
-                this.scene.scene.start('StockforsScene');
-                console.log('Started new game.');
-            }
-        });*/
-
 
     }
-
-    /*DecodeAudio(){
-        this.sound.decodeAudio("Footstep1", "Assets/sounds/Footstep1.ogg");
-        this.sound.decodeAudio("Footstep2", "Assets/sounds/Footstep2.ogg");
-        this.sound.decodeAudio("Footstep3", "Assets/sounds/Footstep3.ogg");
-        this.sound.decodeAudio("Footstep4", "Assets/sounds/Footstep4.ogg");
-        this.sound.decodeAudio("Footstep5", "Assets/sounds/Footstep5.ogg");
-        this.sound.decodeAudio("Footstep6", "Assets/sounds/Footstep6.ogg");
-    }*/
 
     CreateLanguageMenu() {
         this.languagePohja = this.add.sprite(0, -83, 'MenuAtlas', 'UI Pohjat/Kielivalikko');
@@ -356,7 +327,7 @@ class OpeningScene extends Phaser.Scene {
     }
 
     CreateMenuContainer(elementsToAdd = []) {
-        let container = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY + 20, elementsToAdd);
+        let container = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY + 30, elementsToAdd);
 
         container.iterate(function (element) {
 

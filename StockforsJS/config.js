@@ -45,7 +45,7 @@ var config = {
 
 
 
-    scene: [BootScene, PreloadScene, OpeningScene, StockforsScene, BuildingScene, KirkkoScene, PatruunantaloScene, PakkausmuseoScene, OptionsMenuScene, MuistiPeliScene, PalapeliScene, UI, KaarihalliScene, TallirakennusScene, SceneLoader]
+    scene: [BootScene, PreloadScene, OpeningScene, StockforsScene, BuildingScene, KirkkoScene, PatruunantaloScene, PakkausmuseoScene, OptionsMenuScene, MuistiPeliScene, PalapeliScene, UI, KaarihalliScene, TallirakennusScene, SceneLoader, HistoryScene]
 
 
 };
@@ -55,6 +55,7 @@ var pointerOverUI;
 
 //Put this here so I can easily reference it in the options menu scene and muistipeliscene
 var optionsButton;
+var historyButton;
 
 //Whether if player is ready to move
 var readyToMove = false;
@@ -169,7 +170,7 @@ function createButton(posX, posY, scene, runOnTop, scrollFactor, scale, context,
 
     button.setScrollFactor(scrollFactor).setDepth(9999).setScale(scale);
 
-    var pressed = false;
+    button.pressed = false;
 
     button.on('pointerover', function () {
 
@@ -183,7 +184,7 @@ function createButton(posX, posY, scene, runOnTop, scrollFactor, scale, context,
     button.on('pointerout', function () {
 
         //buttonBG.clearTint();
-        pressed = false;
+        button.pressed = false;
 
         //Enable clicking movement when cursor goes away from the UI-button
         pointerOverUI = false;
@@ -192,7 +193,7 @@ function createButton(posX, posY, scene, runOnTop, scrollFactor, scale, context,
 
     button.on('pointerdown', function () {
 
-        pressed = true;
+        button.pressed = true;
 
 
 
@@ -201,7 +202,7 @@ function createButton(posX, posY, scene, runOnTop, scrollFactor, scale, context,
     button.on('pointerup', function (event) {
 
 
-        if (pressed) {
+        if (button.pressed) {
             readyToMove = false;
 
             //Only affects timer events, have to be setup separately for physics

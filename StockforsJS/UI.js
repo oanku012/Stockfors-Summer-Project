@@ -7,7 +7,7 @@ class UI extends Phaser.Scene {
     create() {
         optionsButton = createButton(this.cameras.main.centerX + this.cameras.main.width * .475, this.cameras.main.centerY - this.cameras.main.height * .445, 'OptionsMenuScene', true, 0, 0.56, this, 'MenuAtlas', 'UI Buttons/Asetukset');
 
-        
+        historyButton = createButton(this.cameras.main.centerX - this.cameras.main.width * .470, this.cameras.main.centerY - this.cameras.main.height * .440, 'HistoryScene', true, 0, 1, this, 'MenuAtlas', 'UI Buttons/Logo').setScale(0.3);
         //this.add.sprite(400, 400, 'MenuAtlas','UI Buttons/Asetukset');
 
     }

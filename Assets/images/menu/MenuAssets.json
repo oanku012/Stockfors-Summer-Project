@@ -5,7 +5,7 @@
 			"format": "RGBA8888",
 			"size": {
 				"w": 3902,
-				"h": 3958
+				"h": 4034
 			},
 			"scale": 1,
 			"frames": [
@@ -533,6 +533,27 @@
 						"w": 1264,
 						"h": 991
 					}
+				},
+				{
+					"filename": "UI Buttons/Logo",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 400,
+						"h": 421
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 400,
+						"h": 421
+					},
+					"frame": {
+						"x": 1358,
+						"y": 3612,
+						"w": 400,
+						"h": 421
+					}
 				}
 			]
 		},
@@ -593,6 +614,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:a5b2bfc4a6b94e7cc7d267e55c46e2e5:32e578b54dc62a2b091a2e2069547f5d:e65da5ba29d08851ccf425b5c3d43287$"
+		"smartupdate": "$TexturePacker:SmartUpdate:3a62089228341569ac05346913c22b3f:1eef5f3e113306b17b9c99ef7bd759db:e65da5ba29d08851ccf425b5c3d43287$"
 	}
 }
