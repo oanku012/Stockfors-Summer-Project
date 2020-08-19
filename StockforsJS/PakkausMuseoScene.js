@@ -6,6 +6,8 @@ class PakkausmuseoScene extends BuildingScene
 
         this.name = 'Pakkausmuseo';
 
+        this.backgroundImage = 'PakkausBG';
+
     }
 
     preload ()

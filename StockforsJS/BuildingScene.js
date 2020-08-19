@@ -628,6 +628,10 @@ class BuildingScene extends Phaser.Scene {
     }
 
     CreateAlbum() {
+
+        //Background that shows up when viewing the images in an album
+        this.imageBackground = this.add.image(this.cameras.main.centerX, this.cameras.main.centerY -7, 'MenuAtlas', 'UI Pohjat/Pelipohja').setVisible(false).setScale(1);
+
         this.albumContainer = this.add.container(0, -500).setScale(1.2);
 
         // image thumbnails
@@ -694,8 +698,8 @@ class BuildingScene extends Phaser.Scene {
             });
         }
 
-        this.albumArrowForward = this.add.sprite(this.cameras.main.centerX + 800, this.cameras.main.centerY, 'MenuAtlas', 'UI Buttons/Nuoli').setScale(0.9).setVisible(false);
-        this.albumArrowBackward = this.add.sprite(this.cameras.main.centerX - 800, this.cameras.main.centerY, 'MenuAtlas', 'UI Buttons/Nuoli').setFlipX(true).setScale(0.9).setVisible(false);
+        this.albumArrowForward = this.add.sprite(this.cameras.main.centerX + 850, this.cameras.main.centerY -7, 'MenuAtlas', 'UI Buttons/Nuoli').setScale(0.9).setVisible(false);
+        this.albumArrowBackward = this.add.sprite(this.cameras.main.centerX - 850, this.cameras.main.centerY -7, 'MenuAtlas', 'UI Buttons/Nuoli').setFlipX(true).setScale(0.9).setVisible(false);
 
         this.albumArrowForward.setInteractive();
         this.albumArrowBackward.setInteractive();
@@ -744,6 +748,8 @@ class BuildingScene extends Phaser.Scene {
             }
         }, this);
 
+        
+
         //this.albumContainer.add([this.albumArrowBackward, this.albumArrowForward]);
 
         this.menu.add(this.albumContainer);
@@ -762,7 +768,9 @@ class BuildingScene extends Phaser.Scene {
             this.currentImage.destroy();
         }
 
-        let newImage = this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, image).setScale(0.7);
+        let newImage = this.add.image(this.cameras.main.centerX, this.cameras.main.centerY -7, image).setScale(0.64);
+
+        this.imageBackground.setVisible(true).setDisplaySize(newImage.width * newImage.scale + 50, newImage.height * newImage.scale + 50);
 
         //Commented this out so I can easily make the menu invisible separately when opening an image
         // add to menu for easy resize
@@ -788,6 +796,7 @@ class BuildingScene extends Phaser.Scene {
                 this.albumArrowForward.setVisible(false);
                 this.albumArrowBackward.setVisible(false);
                 this.menu.setVisible(true);
+                this.imageBackground.setVisible(false);
 
             }
         }, this);
