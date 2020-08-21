@@ -17,6 +17,8 @@ class StockforsScene extends MapScene {
     //Use parameters when starting this scene from another scene to set the position of the player
     create() {
 
+        this.data = this.cache.json.get('data').Stockfors;
+
         this.matter.world.setBounds(0, 0, 5000, 2000, 64, true, true, true, true);
 
 
@@ -51,7 +53,7 @@ class StockforsScene extends MapScene {
             //This looks like a mess I know, basically it makes new speech bubbles for the player on a timer
             let firstSpeechEvent = this.time.addEvent({
                 delay: bubbleDuration, startAt: 2000, callback: function () {
-                    let firstBubble = this.CreateSpeechBubble('Hei tervetuloa Stockforsiin.', 0.3);
+                    let firstBubble = this.CreateSpeechBubble(this.data.Intro1, 0.3);
 
                     firstBubble.close.on('pointerup', function () {
                         if (firstBubble.close.pressed) {
@@ -62,7 +64,7 @@ class StockforsScene extends MapScene {
 
                     let secondSpeechEvent = this.time.addEvent({
                         delay: bubbleDuration, callback: function () {
-                            let secondBubble = this.CreateSpeechBubble('Voit liikuttaa minua nuolinäppäimillä tai hiiren klikkauksilla.', 0.3);
+                            let secondBubble = this.CreateSpeechBubble(this.data.Intro2, 0.3);
                             firstBubble.destroy();
 
                             secondBubble.close.on('pointerup', function () {
@@ -74,7 +76,7 @@ class StockforsScene extends MapScene {
 
                             let thirdSpeechEvent = this.time.addEvent({
                                 delay: bubbleDuration, callback: function () {
-                                    let thirdBubble = this.CreateSpeechBubble('Lähestymällä nuolien osoittamia sisäänkäyntejä voit astua sisään eri kohteisiin.', 0.3);
+                                    let thirdBubble = this.CreateSpeechBubble(this.data.Intro3, 0.3);
                                     secondBubble.destroy();
         
                                     thirdBubble.close.on('pointerup', function () {
@@ -86,7 +88,7 @@ class StockforsScene extends MapScene {
 
                                     let fourthSpeechEvent = this.time.addEvent({
                                         delay: bubbleDuration, callback: function () {
-                                            let fourthBubble = this.CreateSpeechBubble('Pidä hauskaa!', 0.3);
+                                            let fourthBubble = this.CreateSpeechBubble(this.data.Intro4, 0.3);
                                             thirdBubble.destroy();
                 
                                             fourthBubble.close.on('pointerup', function () {

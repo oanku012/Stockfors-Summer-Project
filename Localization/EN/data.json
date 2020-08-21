@@ -65,5 +65,11 @@
         "TotalMoves": "Total moves: ",
         "Title": "SLIDING PUZZLE",
         "Description": "A sliding puzzle where you move pieces around until it forms a cohesive picture. Click one of the pieces to move it into the empty slot next to it. Choose a difficulty level from below to start the game."
+    },
+    "Stockfors": {
+        "Intro1": "Hey there, welcome to Stockfors.",
+        "Intro2": "You can move me around with the arrow keys or by clicking where you want to go.",
+        "Intro3": "Approach the arrows to visit different locations around the map.",
+        "Intro4": "Have fun!"
     }
 }
