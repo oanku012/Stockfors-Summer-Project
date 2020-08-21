@@ -200,7 +200,7 @@ class MapScene extends Phaser.Scene {
 
     EnterBuilding() {
         this.SavePosition();
-        
+
         // load scene loader with scene to open as parameter
         this.scene.start('SceneLoader', { sceneToLoad: this.sceneToOpen });
 
@@ -515,6 +515,8 @@ class MapScene extends Phaser.Scene {
         let maxZoom = 2;
         let minZoom = 0.5;
 
+        camera.setZoom(2);
+
         camera.startFollow(this.player, true, 0.08, 0.08);
 
         this.input.on('wheel', function (pointer, gameObjects, deltaX, deltaY, deltaZ) {
@@ -684,6 +686,88 @@ class MapScene extends Phaser.Scene {
 
     }
 
+    CreateSpeechBubble( text, scale) {
 
+        let playerTopRight = this.player.getTopRight();
+
+        
+
+        let bubble = CreateTextButton(this, 0, 0, 'UI Buttons/Puhekupla_Intro', text);        
+
+        let newScale;
+
+        if(text.length <= 50)
+        {
+            newScale = 0.4;
+            console.log('Small bubble');
+
+            
+        }
+        else if(text.length > 50 && text.length <= 75)
+        {
+            console.log('Medium bubble');
+            newScale = 0.5;
+            //bubble.x += 10;
+        }
+        else if(text.length > 75)
+        {
+            newScale = 0.6;
+            console.log('Big bubble');
+            //bubble.x += 20;
+
+        }
+
+        bubble.x = (playerTopRight.x + 100 * newScale) - 20;
+        bubble.y = (playerTopRight.y - 100 * newScale) + 20;
+
+        bubble.removeInteractive().setScale(scale);
+
+        bubble.bg.setScale(newScale).setFlipX(true);
+
+        bubble.topRight = bubble.bg.getTopRight();
+
+        bubble.close = CreateButton(this, bubble.topRight.x - 10, bubble.topRight.y + 10, 'UI Buttons/Zoom_Out');
+
+        bubble.add(bubble.close);
+
+        //bubble.bg.setDisplaySize(bubble.text.width + 50, bubble.text.height + 120);
+        //
+
+        //bubble.text.setWordWrapWidth(bubble.bg.width * bubble.bg.scale);
+
+        //Made a new text here, because adjusting the word wrap in post seemed really buggy for some reason
+        bubble.text.destroy();
+
+        bubble.text = this.make.text({
+            x: -bubble.bg.width * 0.15,
+            y: 0,
+            text: text,
+            origin: { x: 0.5, y: 0.5 },
+            style: {
+                font: '44px Carme',
+                fill: 'black',
+                wordWrap: { width: bubble.bg.width * bubble.bg.scale - 50},
+                align: 'center'
+            }
+        });
+
+        bubble.text.setDisplayOrigin((bubble.bg.width * bubble.bg.scale) / 2, (bubble.bg.height * bubble.bg.scale) / 1.54);
+
+        bubble.text.setPosition((((bubble.bg.width * bubble.bg.scale) / 2) - (bubble.text.width / 2)), ((bubble.bg.height * bubble.bg.scale )/ 2) - (bubble.text.height / 2) );
+
+        bubble.add(bubble.text);
+
+        bubble.close.on('pointerup', function () {
+
+            if (bubble.close.pressed) {
+                bubble.destroy();
+                bubble.close.destroy();
+            }
+        }, this);
+
+        bubble.setDepth(9999);
+
+        return bubble;
+    }
 
 }

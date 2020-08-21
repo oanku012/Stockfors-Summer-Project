@@ -5,15 +5,43 @@ class UI extends Phaser.Scene {
     }
 
     create() {
-        optionsButton = createButton(this.cameras.main.centerX + this.cameras.main.width * .475, this.cameras.main.centerY - this.cameras.main.height * .445, 'OptionsMenuScene', true, 0, 0.56, this, 'MenuAtlas', 'UI Buttons/Asetukset');
+        optionsButton = createSceneOpenButton(this.cameras.main.centerX + this.cameras.main.width * .475, this.cameras.main.centerY - this.cameras.main.height * .445, 'OptionsMenuScene', true, 0, 0.56, this, 'MenuAtlas', 'UI Buttons/Asetukset');
 
-        historyButton = createButton(this.cameras.main.centerX - this.cameras.main.width * .470, this.cameras.main.centerY - this.cameras.main.height * .440, 'HistoryScene', true, 0, 1, this, 'MenuAtlas', 'UI Buttons/Logo').setScale(0.3);
+        historyButton = createSceneOpenButton(this.cameras.main.centerX - this.cameras.main.width * .470, this.cameras.main.centerY - this.cameras.main.height * .440, 'HistoryScene', true, 0, 1, this, 'MenuAtlas', 'UI Buttons/Logo').setScale(0.3);
         /*historyButton.on('pointerover', function(){
 
         })*/
         //this.add.sprite(400, 400, 'MenuAtlas','UI Buttons/Asetukset');
 
     }
+}
+
+function CreateButton(context, x, y, buttonspriteframe)
+{
+    let button = context.add.sprite(x, y, 'MenuAtlas', buttonspriteframe);
+
+    button.setInteractive();
+
+    button.on('pointerdown', function () {
+        button.setTint(0xd5d1c7);
+        button.pressed = true;
+    }, context);
+
+    button.on('pointerout', function () {
+        if (this.input.activePointer.isDown) {
+            button.clearTint();
+            button.pressed = false;
+        }
+    }, context);
+
+
+    button.on('pointerup', function (event) {
+        if (button.pressed) {
+            button.clearTint();
+        }
+    }, context);
+
+    return button;
 }
 
 function CreateTextButton(context, x, y, buttonspriteframe, text) {
@@ -30,7 +58,7 @@ function CreateTextButton(context, x, y, buttonspriteframe, text) {
         style: {
             font: '44px Carme',
             fill: 'black',
-            wordWrap: { width: button.width },
+            wordWrap: { width: button.width * button.scale },
             align: 'center'
         }
     });
@@ -43,6 +71,11 @@ function CreateTextButton(context, x, y, buttonspriteframe, text) {
     //Move text a little to the right with back button so it's not over the icon
     else if (buttonspriteframe == 'UI Buttons/Takaisin') {
         buttontext.setPosition(((button.width / 2) - (buttontext.width / 2)) + 40, (button.height / 2) - (buttontext.height / 2));
+    }
+    else if (buttonspriteframe == 'UI Buttons/Puhekupla_Intro') {
+        buttontext.setPosition(((button.width / 2) - (buttontext.width / 2)), (button.height / 2) - (buttontext.height / 2));
+        //buttontext.setPosition(0, 0);
+        
     }
 
     let container = context.add.container(x, y, [button, buttontext]);
@@ -75,4 +108,83 @@ function CreateTextButton(context, x, y, buttonspriteframe, text) {
     }, context);
 
     return container;
+}
+
+function createSceneOpenButton(posX, posY, scene, runOnTop, scrollFactor, scale, context, sprite, frame) {
+    // Button
+    //let buttonBG = context.add.image(0, 0, 'buttonBG');
+    //let buttonText = context.add.image(0, 0, 'buttonText');
+
+    //let button = context.add.container(posX, posY, [buttonBG, buttonText]);
+
+    let button = context.add.sprite(posX, posY, sprite, frame);
+    //button.setSize(buttonBG.width, buttonBG.height);
+    button.setInteractive();
+
+    button.setScrollFactor(scrollFactor).setDepth(9999).setScale(scale);
+
+    button.pressed = false;
+
+    button.on('pointerover', function () {
+
+        //buttonBG.setTint(0x44ff44);
+
+        //This is just to stop the player from moving when clicking options menu
+        pointerOverUI = true;
+
+    });
+
+    button.on('pointerout', function () {
+
+        //buttonBG.clearTint();
+        button.pressed = false;
+
+        //Enable clicking movement when cursor goes away from the UI-button
+        pointerOverUI = false;
+
+    });
+
+    button.on('pointerdown', function () {
+
+        button.pressed = true;
+
+
+
+    });
+
+    button.on('pointerup', function (event) {
+
+
+        if (button.pressed) {
+            readyToMove = false;
+
+            //Only affects timer events, have to be setup separately for physics
+            //this.time.paused = true;
+
+            if (button.open != true) {
+                if (runOnTop == true) {
+                    context.scene.run(scene);
+                    button.open = true;
+                }
+                else {
+                    context.scene.start(scene);
+                    button.open = true;
+                }
+            }
+            else {
+                //Lets you close the scene if you press the button
+                saveGame({ musicOn: config.musicOn, soundOn: config.soundOn });
+
+                context.scene.stop(scene);
+                button.open = false;
+                readyToMove = true;
+
+            }
+
+        }
+    }, context);
+
+
+    return button;
+
 }

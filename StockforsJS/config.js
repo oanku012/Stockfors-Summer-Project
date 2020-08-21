@@ -65,7 +65,7 @@ var collisionCat1;
 var collisionCat2;
 
 //Default position for spawning the player at the beginning of the game
-var playerStartPosition = { x: 200, y: 300 };
+var playerStartPosition = { x: 1500, y: 1000 };
 
 //Default game state values when starting a new game
 var startingGameState = {
@@ -156,85 +156,6 @@ function PlaySound(soundKey, context)
 }
 */
 
-//Moved this here so the options menu could be added to the opening scene as well, some things like pointerOverUI only apply to map scenes
-function createButton(posX, posY, scene, runOnTop, scrollFactor, scale, context, sprite, frame) {
-    // Button
-    //let buttonBG = context.add.image(0, 0, 'buttonBG');
-    //let buttonText = context.add.image(0, 0, 'buttonText');
-
-    //let button = context.add.container(posX, posY, [buttonBG, buttonText]);
-
-    let button = context.add.sprite(posX, posY, sprite, frame);
-    //button.setSize(buttonBG.width, buttonBG.height);
-    button.setInteractive();
-
-    button.setScrollFactor(scrollFactor).setDepth(9999).setScale(scale);
-
-    button.pressed = false;
-
-    button.on('pointerover', function () {
-
-        //buttonBG.setTint(0x44ff44);
-
-        //This is just to stop the player from moving when clicking options menu
-        pointerOverUI = true;
-
-    });
-
-    button.on('pointerout', function () {
-
-        //buttonBG.clearTint();
-        button.pressed = false;
-
-        //Enable clicking movement when cursor goes away from the UI-button
-        pointerOverUI = false;
-
-    });
-
-    button.on('pointerdown', function () {
-
-        button.pressed = true;
-
-
-
-    });
-
-    button.on('pointerup', function (event) {
-
-
-        if (button.pressed) {
-            readyToMove = false;
-
-            //Only affects timer events, have to be setup separately for physics
-            //this.time.paused = true;
-
-            if (button.open != true) {
-                if (runOnTop == true) {
-                    context.scene.run(scene);
-                    button.open = true;
-                }
-                else {
-                    context.scene.start(scene);
-                    button.open = true;
-                }
-            }
-            else {
-                //Lets you close the scene if you press the button
-                saveGame({ musicOn: config.musicOn, soundOn: config.soundOn });
-
-                context.scene.stop(scene);
-                button.open = false;
-                readyToMove = true;
-
-            }
-
-        }
-    }, context);
-
-
-    return button;
-
-}
 
 function FontsInit()
 {

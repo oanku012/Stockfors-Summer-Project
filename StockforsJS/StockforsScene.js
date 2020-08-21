@@ -30,18 +30,96 @@ class StockforsScene extends MapScene {
 
         super.create();
 
-        /*this.CreateWaveAnim();
+        //this.CreateWaveAnim();
 
         if (gameState.newGame) {
             console.log('Intro is playing.');
             introPlaying = true;
             readyToMove = false;
-            this.player.anims.play('wave');
-            this.cameras.main.setZoom(3);
+            //this.player.anims.play('wave');
+            this.player.anims.play('downstill');
+            //this.cameras.main.setZoom(3);
             saveGame({ newGame: false });
 
+            //let playerTopRight = this.player.getTopRight();
 
-        }*/
+            let bubbleDuration = 3000;
+
+            //let posX = playerTopRight.x + 30;
+            //let posY = playerTopRight.y - 30;
+
+            //This looks like a mess I know, basically it makes new speech bubbles for the player on a timer
+            let firstSpeechEvent = this.time.addEvent({
+                delay: bubbleDuration, startAt: 2000, callback: function () {
+                    let firstBubble = this.CreateSpeechBubble('Hei tervetuloa Stockforsiin.', 0.3);
+
+                    firstBubble.close.on('pointerup', function () {
+                        if (firstBubble.close.pressed) {
+                            secondSpeechEvent.remove(true);
+                        }
+
+                    }, this);
+
+                    let secondSpeechEvent = this.time.addEvent({
+                        delay: bubbleDuration, callback: function () {
+                            let secondBubble = this.CreateSpeechBubble('Voit liikuttaa minua nuolinäppäimillä tai hiiren klikkauksilla.', 0.3);
+                            firstBubble.destroy();
+
+                            secondBubble.close.on('pointerup', function () {
+                                if (secondBubble.close.pressed) {
+                                    thirdSpeechEvent.remove(true);
+                                }
+        
+                            }, this);
+
+                            let thirdSpeechEvent = this.time.addEvent({
+                                delay: bubbleDuration, callback: function () {
+                                    let thirdBubble = this.CreateSpeechBubble('Lähestymällä nuolien osoittamia sisäänkäyntejä voit astua sisään eri kohteisiin.', 0.3);
+                                    secondBubble.destroy();
+        
+                                    thirdBubble.close.on('pointerup', function () {
+                                        if (thirdBubble.close.pressed) {
+                                            fourthSpeechEvent.remove(true);
+                                        }
+                                        
+                                    }, this);
+
+                                    let fourthSpeechEvent = this.time.addEvent({
+                                        delay: bubbleDuration, callback: function () {
+                                            let fourthBubble = this.CreateSpeechBubble('Pidä hauskaa!', 0.3);
+                                            thirdBubble.destroy();
+                
+                                            fourthBubble.close.on('pointerup', function () {
+                                                if (fourthBubble.close.pressed) {
+                                                    introEndEvent.remove(true);
+
+                                                }
+                                                
+                                            }, this);
+        
+                                            let introEndEvent = this.time.addEvent({
+                                                delay: bubbleDuration, callback: function() {
+                                                    readyToMove = true;
+                                                    fourthBubble.destroy();
+                                                    introPlaying = false;
+                                                }, callbackScope: this
+                                            });
+                
+                                        }, callbackScope: this
+                                    });
+        
+                                }, callbackScope: this
+                            });
+
+                        }, callbackScope: this
+                    });
+
+                }, callbackScope: this
+            });
+
+
+
+        }
     }
 
     BuildingsInitialize() {
