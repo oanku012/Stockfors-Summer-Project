@@ -14,11 +14,15 @@ class BootScene extends Phaser.Scene {
         this.load.json('assets', 'Assets/json/MainAssets.json');
         this.load.json('buildingBodies', 'Assets/images/map/Buildings/PEBuildings.json');
         this.load.image('logo', 'Assets/images/menu/Logo.png');
+        this.load.script('webfont', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js');
         
     }
 
     create ()
     {
+        //Loads up all the fonts
+        FontsInit();
+        
         this.scene.start('PreloadScene', { sceneToLoad: 'OpeningScene' });
     }
 
