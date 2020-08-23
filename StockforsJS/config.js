@@ -15,7 +15,8 @@ var config = {
     scale: {
         mode: Phaser.Scale.FIT,
         autoCenter: Phaser.Scale.CENTER_BOTH,
-        fullscreenTarget: 'game'
+        fullscreenTarget: 'game',
+        orientation: Phaser.Scale.Orientation.LANDSCAPE
     },
 
     dom: {

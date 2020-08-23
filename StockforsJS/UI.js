@@ -16,8 +16,7 @@ class UI extends Phaser.Scene {
     }
 }
 
-function CreateButton(context, x, y, buttonspriteframe)
-{
+function CreateButton(context, x, y, buttonspriteframe) {
     let button = context.add.sprite(x, y, 'MenuAtlas', buttonspriteframe);
 
     button.setInteractive();
@@ -38,6 +37,9 @@ function CreateButton(context, x, y, buttonspriteframe)
     button.on('pointerup', function (event) {
         if (button.pressed) {
             button.clearTint();
+            if (config.soundOn) {
+                context.sound.play('Click');
+            }
         }
     }, context);
 
@@ -75,7 +77,7 @@ function CreateTextButton(context, x, y, buttonspriteframe, text) {
     else if (buttonspriteframe == 'UI Buttons/Puhekupla_Intro') {
         buttontext.setPosition(((button.width / 2) - (buttontext.width / 2)), (button.height / 2) - (buttontext.height / 2));
         //buttontext.setPosition(0, 0);
-        
+
     }
 
     let container = context.add.container(x, y, [button, buttontext]);
@@ -104,6 +106,9 @@ function CreateTextButton(context, x, y, buttonspriteframe, text) {
     container.on('pointerup', function (event) {
         if (container.pressed) {
             button.clearTint();
+            if (config.soundOn) {
+                context.sound.play('Click');
+            }
         }
     }, context);
 
@@ -156,6 +161,10 @@ function createSceneOpenButton(posX, posY, scene, runOnTop, scrollFactor, scale,
 
 
         if (button.pressed) {
+
+            if (config.soundOn) {
+                context.sound.play('Click');
+            }
             readyToMove = false;
 
             //Only affects timer events, have to be setup separately for physics

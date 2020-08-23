@@ -184,7 +184,7 @@ class OpeningScene extends Phaser.Scene {
 
     CreateMainMenu() {
         //Doesn't seem to work
-        //this.scale.lockOrientation(Phaser.Scale.LANDSCAPE);
+        //this.scale.lockOrientation('landscape');
 
         //this.add.text(700, 200, "Stockfors Kartalle", { font: "40px Arial", fill: "yellow" });
 

@@ -175,22 +175,8 @@ class BuildingScene extends Phaser.Scene {
     }
 
     CreateInstructionButton() {
-        this.instructionButton = this.add.sprite((this.menuBG.width / 2 - 30), (this.menuBG.height / 2) - 20, 'MenuAtlas', 'UI Buttons/Ohje');
-
-        this.instructionButton.setInteractive();
-
-        this.instructionButton.on('pointerdown', function () {
-            this.instructionButton.setTint(0xd5d1c7);
-            this.instructionButton.pressed = true;
-        }, this);
-
-        this.instructionButton.on('pointerout', function () {
-            if (this.input.activePointer.isDown) {
-                this.instructionButton.clearTint();
-                this.instructionButton.pressed = false;
-            }
-        }, this);
-
+        this.instructionButton = CreateButton(this, (this.menuBG.width / 2 - 30), (this.menuBG.height / 2) - 20, 'UI Buttons/Ohje');
+        //this.instructionButton = this.add.sprite((this.menuBG.width / 2 - 30), (this.menuBG.height / 2) - 20, 'MenuAtlas', 'UI Buttons/Ohje');
 
         this.instructionButton.on('pointerup', function (event) {
             if (this.instructionButton.pressed) {
@@ -254,7 +240,8 @@ class BuildingScene extends Phaser.Scene {
 
         if (this.minigame) {
 
-            this.minipeliButton = this.add.sprite(rightMostPosition - (buttonsAdded * buttonGap), 0, 'MenuAtlas', 'UI Buttons/Games');
+            //this.minipeliButton = this.add.sprite(rightMostPosition - (buttonsAdded * buttonGap), 0, 'MenuAtlas', 'UI Buttons/Games');
+            this.minipeliButton = CreateButton(this, rightMostPosition - (buttonsAdded * buttonGap), 0, 'UI Buttons/Games');
 
             this.minipeliButton.on('pointerup', function () {
                 if (this.minipeliButton.pressed == true) {
@@ -271,7 +258,8 @@ class BuildingScene extends Phaser.Scene {
         this.panoramas = true;
 
         if (this.panoramas) {
-            this.panoramaButton = this.add.sprite(rightMostPosition - (buttonsAdded * buttonGap), 0, 'MenuAtlas', 'UI Buttons/Panorama');
+            //this.panoramaButton = this.add.sprite(rightMostPosition - (buttonsAdded * buttonGap), 0, 'MenuAtlas', 'UI Buttons/Panorama');
+            this.panoramaButton = CreateButton(this, rightMostPosition - (buttonsAdded * buttonGap), 0, 'UI Buttons/Panorama');
 
             this.panoramaButton.on('pointerup', function () {
                 //Start panorama here
@@ -286,7 +274,8 @@ class BuildingScene extends Phaser.Scene {
             buttonsAdded++;
         }
 
-        this.infoButton = this.add.sprite(rightMostPosition - (buttonsAdded * buttonGap), 0, 'MenuAtlas', 'UI Buttons/Infocards');
+        //this.infoButton = this.add.sprite(rightMostPosition - (buttonsAdded * buttonGap), 0, 'MenuAtlas', 'UI Buttons/Infocards');
+        this.infoButton = CreateButton(this, rightMostPosition - (buttonsAdded * buttonGap), 0, 'UI Buttons/Infocards');
 
         this.infoButton.on('pointerup', function () {
             if (this.infoButton.pressed) {
@@ -298,7 +287,8 @@ class BuildingScene extends Phaser.Scene {
 
         buttonsAdded++;
 
-        this.albumButton = this.add.sprite(rightMostPosition - (buttonsAdded * buttonGap), 0, 'MenuAtlas', 'UI Buttons/Gallery');
+        this.albumButton = CreateButton(this, rightMostPosition - (buttonsAdded * buttonGap), 0, 'UI Buttons/Gallery');
+        //this.albumButton = this.add.sprite(rightMostPosition - (buttonsAdded * buttonGap), 0, 'MenuAtlas', 'UI Buttons/Gallery');
 
         this.albumButton.on('pointerup', function () {
             if (this.albumButton.pressed) {
@@ -312,12 +302,12 @@ class BuildingScene extends Phaser.Scene {
         buttonsAdded++;
 
         if (this.url) {
-            this.webButton = this.add.sprite(rightMostPosition - (buttonsAdded * buttonGap), 0, 'MenuAtlas', 'UI Buttons/Webpage');
+            //this.webButton = this.add.sprite(rightMostPosition - (buttonsAdded * buttonGap), 0, 'MenuAtlas', 'UI Buttons/Webpage');
+            this.webButton = CreateButton(this, rightMostPosition - (buttonsAdded * buttonGap), 0, 'UI Buttons/Webpage');
 
             this.webButton.on('pointerup', function () {
                 if (this.webButton.pressed) {
-                    this.webButton.clearTint();
-
+                    
                     window.open(this.url);
                 }
 
@@ -338,11 +328,11 @@ class BuildingScene extends Phaser.Scene {
 
                 menuButtonsWidth += button.width;
 
-                button.setInteractive();
+                //button.setInteractive();
 
                 button.defaultFrame = button.frame.name;
 
-                button.on('pointerdown', function () {
+                /*button.on('pointerdown', function () {
                     button.setTint(0xd5d1c7);
                     button.pressed = true;
                 }, this);
@@ -356,7 +346,7 @@ class BuildingScene extends Phaser.Scene {
 
                 button.on('pointerup', function () {
                     //button.clearTint();
-                })
+                })*/
             }
 
         }, this);
@@ -395,8 +385,10 @@ class BuildingScene extends Phaser.Scene {
             //console.log(infoText);
         }, this);
 
-        let arrowButtonForward = this.add.sprite(700, 0, 'MenuAtlas', 'UI Buttons/Nuoli').setScale(0.9);
-        let arrowButtonBackward = this.add.sprite(-700, 0, 'MenuAtlas', 'UI Buttons/Nuoli').setFlipX(true).setScale(0.9);
+        let arrowButtonForward = CreateButton(this, 700, 0, 'UI Buttons/Nuoli').setScale(0.9);
+        let arrowButtonBackward = CreateButton(this, -700, 0, 'UI Buttons/Nuoli').setFlipX(true).setScale(0.9);
+        //let arrowButtonForward = this.add.sprite(700, 0, 'MenuAtlas', 'UI Buttons/Nuoli').setScale(0.9);
+        //let arrowButtonBackward = this.add.sprite(-700, 0, 'MenuAtlas', 'UI Buttons/Nuoli').setFlipX(true).setScale(0.9);
 
         //this.infoContainer.add(this.infoCards);
 
@@ -405,7 +397,8 @@ class BuildingScene extends Phaser.Scene {
         this.infoContainer.iterate(function (element) {
 
             if (element === arrowButtonForward || element === arrowButtonBackward) {
-                element.setInteractive();
+                
+                /*element.setInteractive();
 
                 element.on('pointerdown', function () {
                     element.pressed = true;
@@ -415,13 +408,13 @@ class BuildingScene extends Phaser.Scene {
                 element.on('pointerout', function () {
                     element.pressed = false;
                     element.clearTint();
-                });
+                });*/
 
                 element.on('pointerup', function () {
 
 
                     if (element.pressed == true) {
-                        element.clearTint();
+                        
                         if (element === arrowButtonForward && this.openedCard < this.infoCards.length - 1) {
                             this.openedCard++;
                             this.ChangeCard(this.openedCard);
@@ -449,35 +442,6 @@ class BuildingScene extends Phaser.Scene {
 
         this.ChangeCard(this.openedCard);
     }
-
-    /*
-    CreateInfoCard(text) {
-
-
-        let infoCard = this.add.sprite(0, 10, 'MenuAtlas', 'UI Pohjat/Infokorttipohja').setScale(1.3, 1.37);
-
-        infoCard.description = this.make.text({
-            x: 0,
-            y: -380,
-            text: text,
-            origin: { x: 0.5, y: 0 },
-            style: {
-                font: '34px Carme',
-                fill: 'black',
-                wordWrap: { width: 960}
-            }
-        });
-
-        //infoCard.description.setMaxLines(18);
-
-        //let usedLines = infoCard.description.getWrappedText();
-
-        //console.log(usedLines);
-
-        console.log('Card created with text: ' + text);
-
-        return infoCard;
-    }*/
 
     CreateInfoCards(text) {
 
@@ -550,21 +514,11 @@ class BuildingScene extends Phaser.Scene {
         while (remainingLines !== "");
 
 
-        this.infoContainer.zoomButton = this.add.sprite(530, -390, 'MenuAtlas', 'UI Buttons/Zoom_In');
+        this.infoContainer.zoomButton = CreateButton(this, 530, -390, 'UI Buttons/Zoom_In');
+        //this.infoContainer.zoomButton = this.add.sprite(530, -390, 'MenuAtlas', 'UI Buttons/Zoom_In');
 
         let zoom = this.infoContainer.zoomButton;
 
-        zoom.setInteractive();
-
-        zoom.on('pointerdown', function () {
-            zoom.pressed = true;
-            zoom.setTint(0xd5d1c7);
-        });
-
-        zoom.on('pointerout', function () {
-            zoom.pressed = false;
-            zoom.clearTint();
-        });
 
         zoom.on('pointerup', function () {
             if (zoom.pressed === true && this.infoContainer.zoomed === false) {
@@ -573,7 +527,6 @@ class BuildingScene extends Phaser.Scene {
                 this.infoContainer.zoomed = true;
                 this.infoContainer.arrowForw.setScale(0.675);
                 this.infoContainer.arrowBack.setScale(0.675);
-                zoom.clearTint();
                 this.ChangeVisibility([this.infoContainer]);
                 zoom.setTexture('MenuAtlas', 'UI Buttons/Zoom_Out');
 
@@ -588,7 +541,6 @@ class BuildingScene extends Phaser.Scene {
                 this.infoContainer.arrowBack.setScale(0.9);
                 this.ContainerTransition(this.infoContainer);
                 zoom.setTexture('MenuAtlas', 'UI Buttons/Zoom_In');
-                zoom.clearTint();
             }
         }, this);
 
@@ -636,12 +588,6 @@ class BuildingScene extends Phaser.Scene {
 
         // image thumbnails
         if (this.images.length > 0) {
-            /*let imgTitle = this.add.text(0, 0, "Images");
-            imgTitle.setPosition(-imgTitle.width * 1.5, 120);
-            imgTitle.setFontSize(36);
-            imgTitle.setColor("black");*/
-            //this.menu.add(imgTitle);
-            //this.albumContainer.add(imgTitle);
 
             var previousX = -300;
 
@@ -698,22 +644,8 @@ class BuildingScene extends Phaser.Scene {
             });
         }
 
-        this.albumArrowForward = this.add.sprite(this.cameras.main.centerX + 850, this.cameras.main.centerY -7, 'MenuAtlas', 'UI Buttons/Nuoli').setScale(0.9).setVisible(false);
-        this.albumArrowBackward = this.add.sprite(this.cameras.main.centerX - 850, this.cameras.main.centerY -7, 'MenuAtlas', 'UI Buttons/Nuoli').setFlipX(true).setScale(0.9).setVisible(false);
-
-        this.albumArrowForward.setInteractive();
-        this.albumArrowBackward.setInteractive();
-
-        this.albumArrowForward.on('pointerdown', function () {
-            this.albumArrowForward.pressed = true;
-            this.albumArrowForward.setTint(0xd5d1c7);
-        }, this);
-
-        this.albumArrowForward.on('pointerout', function () {
-            this.albumArrowForward.pressed = false;
-            this.albumArrowForward.clearTint();
-
-        }, this);
+        this.albumArrowForward = CreateButton(this, this.cameras.main.centerX + 850, this.cameras.main.centerY -7, 'UI Buttons/Nuoli').setScale(0.9).setVisible(false);
+        this.albumArrowBackward = CreateButton(this, this.cameras.main.centerX - 850, this.cameras.main.centerY -7, 'UI Buttons/Nuoli').setFlipX(true).setScale(0.9).setVisible(false);
 
         this.albumArrowForward.on('pointerup', function () {
             if (this.albumArrowForward.pressed) {
@@ -721,21 +653,8 @@ class BuildingScene extends Phaser.Scene {
                 if (newIndex < this.images.length) {
                     this.createImage(this.images[newIndex], newIndex);
                 }
-                this.albumArrowForward.clearTint();
 
             }
-        }, this);
-
-        this.albumArrowBackward.on('pointerdown', function () {
-            this.albumArrowBackward.pressed = true;
-            this.albumArrowBackward.setTint(0xd5d1c7);
-
-        }, this);
-
-        this.albumArrowBackward.on('pointerout', function () {
-            this.albumArrowBackward.pressed = false;
-            this.albumArrowBackward.clearTint();
-
         }, this);
 
         this.albumArrowBackward.on('pointerup', function () {
@@ -744,13 +663,8 @@ class BuildingScene extends Phaser.Scene {
                 if (newIndex >= 0) {
                     this.createImage(this.images[newIndex], newIndex);
                 }
-                this.albumArrowBackward.clearTint();
             }
         }, this);
-
-        
-
-        //this.albumContainer.add([this.albumArrowBackward, this.albumArrowForward]);
 
         this.menu.add(this.albumContainer);
 

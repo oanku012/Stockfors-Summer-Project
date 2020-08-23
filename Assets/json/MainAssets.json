@@ -75,6 +75,9 @@
         "Footstep6": {
             "ogg": "Assets/sounds/Footstep6.ogg"
             
+        },
+        "Click": {
+            "wav": "Assets/sounds/Wood_Click.wav"
         }
     }
 }
