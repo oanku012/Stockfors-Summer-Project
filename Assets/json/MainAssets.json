@@ -1,14 +1,6 @@
 {
     "image": {
-        "buttonBG": "Assets/images/menu/button-bg.png",
-        "buttonText": "Assets/images/menu/button-text.png",
-        "menuBG": "Assets/images/menu/menu-bg.png",
-        "exitButton": "Assets/images/menu/exit-button.png",
-        "map": "Assets/images/map/kartta.png",
-        "blankCheckBox": "Assets/images/menu/blank-check-box.png",
-        "checkedBox": "Assets/images/map/arrowSign",
-        "1thumb": "Assets/images/photos/1_thumb",
-        "1full": "Assets/images/photos/1_full"
+        "map": "Assets/images/map/kartta.png"
     },
     "atlas": {
         "buildingBodies": [

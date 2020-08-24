@@ -24,8 +24,8 @@ var config = {
     },
 
     fps: {
-        target: 60,
-        forceSetTimeOut: true
+        //target: 60,
+        //forceSetTimeOut: true
     },
 
     physics: {
@@ -78,7 +78,8 @@ var startingGameState = {
     MPScoreEasy: 0,
     MPScoreMedium: 0,
     MPScoreHard: 0,
-    newGame: true
+    newGame: true,
+    readyToEnter: true
 };
 
 //Game state passed on to the save file
@@ -93,7 +94,8 @@ function saveGame(state = {
     MPScoreEasy: gameState.MPScoreEasy,
     MPScoreMedium: gameState.MPScoreMedium,
     MPScoreHard: gameState.MPScoreHard,
-    newGame: gameState.newGame
+    newGame: gameState.newGame,
+    readyToEnter: gameState.readyToEnter
 }) {
 
     let oldGameState = JSON.parse(JSON.stringify(gameState));

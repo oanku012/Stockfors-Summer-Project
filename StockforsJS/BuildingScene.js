@@ -199,31 +199,13 @@ class BuildingScene extends Phaser.Scene {
 
         this.menu.add(this.exitButton);
 
-        /*let exitButtonBG = this.exitButton.bg;
-
-        this.exitButton.setInteractive();
-
-        this.exitButton.on('pointerdown', function () {
-            //exitButtonBG.setTexture('MenuAtlas', exitButtonBG.defaultFrame + '_Pressed');
-            exitButtonBG.setTint(0xd5d1c7);
-            this.exitButton.pressed = true;
-        }, this);
-
-        this.exitButton.on('pointerout', function () {
-            if (this.input.activePointer.isDown) {
-                //exitButtonBG.setTexture('MenuAtlas', exitButtonBG.defaultFrame);
-                exitButtonBG.clearTint();
-                this.exitButton.pressed = false;
-            }
-        }, this);*/
-
 
         this.exitButton.on('pointerup', function (event) {
             if (this.exitButton.pressed) {
                 // empty images manually to prevent crash
                 this.images = [];
 
-                this.scene.start(gameState.currentMap, { x: gameState.playerX, y: gameState.playerY });
+                this.scene.start(gameState.currentMap, { x: gameState.playerX, y: gameState.playerY, readyToEnter: false });
             }
         }, this);
     }

@@ -40,6 +40,8 @@ class MapScene extends Phaser.Scene {
 
         this.frameRate = 10;
 
+        this.readyToEnter = true;
+
     }
 
     //This is called when starting scene with this.scene.start
@@ -48,7 +50,12 @@ class MapScene extends Phaser.Scene {
         //console.log(startingPointX + ' ' + startingPointY);
         this.startingPoint.x = startPoint.x;
         this.startingPoint.y = startPoint.y;
-
+        if (startPoint.readyToEnter === false || startPoint.readyToEnter === true) {
+            this.readyToEnter = startPoint.readyToEnter;
+        }
+        else {
+            this.readyToEnter = gameState.readyToEnter;
+        }
     }
 
     preload() {
@@ -122,7 +129,7 @@ class MapScene extends Phaser.Scene {
 
     //Couldn't just call save game from the timer event directly, because it wouldn't update the position value
     SavePosition() {
-        saveGame({ currentMap: this.scene.key, playerX: this.player.x, playerY: this.player.y });
+        saveGame({ currentMap: this.scene.key, playerX: this.player.x, playerY: this.player.y, readyToEnter: this.readyToEnter });
     }
 
     update() {
@@ -135,7 +142,15 @@ class MapScene extends Phaser.Scene {
 
         if (this.enteringBuilding) {
             this.enteringBuilding = false;
-            this.EnterBuilding();
+
+            console.log('THIS IS THE SCENE THAT WILL BE ENTERED ' + this.sceneToOpen);
+
+            //this.time.addEvent({
+                //delay: 100, callback: function () {
+                    //console.log('ENTERING SCENE ' + this.sceneToOpen);
+                    this.EnterBuilding(this.sceneToOpen);
+                //}, callbackScope: this
+            //});
         }
 
         //console.log(this.pointer.worldX + ' ' + this.pointer.worldY);
@@ -198,11 +213,13 @@ class MapScene extends Phaser.Scene {
 
     }
 
-    EnterBuilding() {
+    EnterBuilding(buildingToEnter) {
+        this.readyToEnter = false;
+        
         this.SavePosition();
-
+    
         // load scene loader with scene to open as parameter
-        this.scene.start('SceneLoader', { sceneToLoad: this.sceneToOpen });
+        this.scene.start('SceneLoader', { sceneToLoad: buildingToEnter });
 
         this.sceneToOpen = null;
     }
@@ -285,10 +302,19 @@ class MapScene extends Phaser.Scene {
                 this.currentOverlapBody = bodyB;
 
                 //If the player clicked the building from afar and arrived at the entrance it will enter the building
-                if (this.sceneToOpen == bodyB.sceneKey) {
-                    //this.EnterBuilding();
+                //if (this.sceneToOpen == bodyB.sceneKey) {
+
+                //Added this.readyToEnter so that player won't immediately go back in when exiting a building, should go back to ready when player leaves the entrance zone
+                if (this.readyToEnter) {
+                    //Changed this so that it just enters the building when you get to the overlap zone
+
+
+                    console.log('Entering: ' + bodyB.sceneKey);
+                    this.sceneToOpen = bodyB.sceneKey;
                     this.enteringBuilding = true;
+                    //this.EnterBuilding(bodyB.sceneKey);
                 }
+                //}
 
 
             }
@@ -296,6 +322,7 @@ class MapScene extends Phaser.Scene {
         }, null, this) == false && this.playerOverLapping == true) {
             this.playerOverLapping = false
             this.currentOverlapBody = null;
+            this.readyToEnter = true;
 
             if (this.buildingButton != null) {
                 this.buildingButton.destroy();
@@ -308,7 +335,7 @@ class MapScene extends Phaser.Scene {
 
         this.movingOnPath = false;
 
-        this.sceneToOpen = null;
+        //this.sceneToOpen = null;
     }
 
     MovementUpdate() {
@@ -686,31 +713,28 @@ class MapScene extends Phaser.Scene {
 
     }
 
-    CreateSpeechBubble( text, scale) {
+    CreateSpeechBubble(text, scale) {
 
         let playerTopRight = this.player.getTopRight();
 
-        
 
-        let bubble = CreateTextButton(this, 0, 0, 'UI Buttons/Puhekupla_Intro', text);        
+
+        let bubble = CreateTextButton(this, 0, 0, 'UI Buttons/Puhekupla_Intro', text);
 
         let newScale;
 
-        if(text.length <= 50)
-        {
+        if (text.length <= 50) {
             newScale = 0.4;
             console.log('Small bubble');
 
-            
+
         }
-        else if(text.length > 50 && text.length <= 75)
-        {
+        else if (text.length > 50 && text.length <= 75) {
             console.log('Medium bubble');
             newScale = 0.5;
             //bubble.x += 10;
         }
-        else if(text.length > 75)
-        {
+        else if (text.length > 75) {
             newScale = 0.6;
             console.log('Big bubble');
             //bubble.x += 20;
@@ -746,14 +770,14 @@ class MapScene extends Phaser.Scene {
             style: {
                 font: '44px Carme',
                 fill: 'black',
-                wordWrap: { width: bubble.bg.width * bubble.bg.scale - 50},
+                wordWrap: { width: bubble.bg.width * bubble.bg.scale - 50 },
                 align: 'center'
             }
         });
 
         bubble.text.setDisplayOrigin((bubble.bg.width * bubble.bg.scale) / 2, (bubble.bg.height * bubble.bg.scale) / 1.54);
 
-        bubble.text.setPosition((((bubble.bg.width * bubble.bg.scale) / 2) - (bubble.text.width / 2)), ((bubble.bg.height * bubble.bg.scale )/ 2) - (bubble.text.height / 2) );
+        bubble.text.setPosition((((bubble.bg.width * bubble.bg.scale) / 2) - (bubble.text.width / 2)), ((bubble.bg.height * bubble.bg.scale) / 2) - (bubble.text.height / 2));
 
         bubble.add(bubble.text);
 
