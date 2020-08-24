@@ -266,7 +266,7 @@ class MapScene extends Phaser.Scene {
                     //this.sound.play('Footstep' + index);
                 }
 
-            }, callbackScope: this, loop: true, paused: true
+            }, callbackScope: this, loop: true, paused: true, startAt: 200
         });
 
         this.player.body.velocity.x = 0;
@@ -290,7 +290,7 @@ class MapScene extends Phaser.Scene {
         //Checks if player overlaps with one of the building entrances, apparently matter doesn't have an event for this so this runs repeatedly
         if (this.matter.overlap(this.player, this.buildingEntrances, function (bodyA, bodyB) {
 
-            if ((this.playerOverLapping == false || this.currentOverlapBody != bodyB)) {
+            if ((this.playerOverLapping === false || this.currentOverlapBody !== bodyB)) {
 
                 console.log('Overlapping with ' + bodyB.sceneKey.replace("Scene", ""));
 
@@ -320,6 +320,7 @@ class MapScene extends Phaser.Scene {
             }
 
         }, null, this) == false && this.playerOverLapping == true) {
+            console.log('Not overlapping');
             this.playerOverLapping = false
             this.currentOverlapBody = null;
             this.readyToEnter = true;

@@ -14,6 +14,10 @@
         "PatruunaImage12": "Assets/images/Albums/Patruunantalo/Patruunantalo (12).jpg",
         "PatruunaImage13": "Assets/images/Albums/Patruunantalo/Patruunantalo (13).jpg",
         "PatruunaImage14": "Assets/images/Albums/Patruunantalo/Patruunantalo (14).jpg",
-        "PatruunaImage15": "Assets/images/Albums/Patruunantalo/Patruunantalo (15).jpg"
+        "PatruunaImage15": "Assets/images/Albums/Patruunantalo/Patruunantalo (15).jpg",
+        "PatruunaPano1": "Assets/images/Panoramas/Patruunantalo1.jpg",
+        "PatruunaPano2": "Assets/images/Panoramas/Patruunantalo2.jpg",
+        "PatruunaPanoThumb1": "Assets/images/Panoramas/Patruunantalo1Thumb.jpg",
+        "PatruunaPanoThumb2": "Assets/images/Panoramas/Patruunantalo2Thumb.jpg"
     }
 }
