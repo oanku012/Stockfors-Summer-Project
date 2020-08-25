@@ -39,7 +39,7 @@ class StockforsScene extends MapScene {
             introPlaying = true;
             readyToMove = false;
             //this.player.anims.play('wave');
-            this.player.anims.play('downstill');
+            this.player.anims.play('talk');
             //this.cameras.main.setZoom(3);
             saveGame({ newGame: false });
 

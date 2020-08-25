@@ -540,7 +540,7 @@ class MapScene extends Phaser.Scene {
     InitializeCamera() {
         let camera = this.cameras.main;
 
-        let maxZoom = 2;
+        let maxZoom = 3;
         let minZoom = 0.5;
 
         camera.setZoom(2);
@@ -708,6 +708,13 @@ class MapScene extends Phaser.Scene {
         this.anims.create({
             key: 'uprightstill',
             frames: this.anims.generateFrameNumbers('playerIdle', { start: 24, end: 31 }),
+            frameRate: this.frameRate,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'talk',
+            frames:  this.anims.generateFrameNumbers('talk', { start: 0, end: 15 }),
             frameRate: this.frameRate,
             repeat: -1
         });

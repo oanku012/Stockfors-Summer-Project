@@ -41,6 +41,13 @@
                 "frameHeight": 378
             }
 
+        ],
+        "talk": [
+            "Assets/images/character/PlayerTalking.png",
+            {
+                "frameWidth": 378,
+                "frameHeight": 378
+            }
         ]
     },
     "audio": {
