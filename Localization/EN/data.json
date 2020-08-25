@@ -36,6 +36,7 @@
     "OptionsMenu": {
         "Title": "Options",
         "Close": "Close",
+        "Credits": "Credits",
         "Sound": "Sound",
         "Music": "Music",
         "Fullscreen": "Fullscreen"

@@ -57,6 +57,7 @@ class OptionsMenuScene extends Phaser.Scene {
 
         this.createContainer();
         this.createExitButton();
+        this.createCreditsButton();
         this.createOptionsMenu();
         this.CreateFlags();
 
@@ -124,7 +125,7 @@ class OptionsMenuScene extends Phaser.Scene {
 
         //this.optionColumn = new uiWidgets.Column(this.game, -100, -200);
 
-        this.menuElements.add([this.musicButton, this.musicText, this.soundButton, this.soundText, this.fullScreenButton, this.fullScreenText, this.exitButton]);
+        this.menuElements.add([this.musicButton, this.musicText, this.soundButton, this.soundText, this.fullScreenButton, this.fullScreenText, this.exitButton, this.creditsButton]);
 
         this.menu.add(this.menuElements);
 
@@ -185,14 +186,8 @@ class OptionsMenuScene extends Phaser.Scene {
 
     createExitButton() {
         // Exit button
-        //let exitButton = this.add.sprite(35, 400, 'MenuAtlas', 'UI Buttons/Sulje');
         this.exitButton = CreateTextButton(this, 0, 400, 'UI Buttons/Nappi', this.data['Close']);
-
-        this.exitButton.setPosition(0, 410);
-
-        //let exitButton = this.add.container(this.menuBG.width / 2, -this.menuBG.height / 2, [ exitButtonBG ]);
-        //exitButton.setSize(exitButtonBG.width, exitButtonBG.height);
-        //this.menu.add(this.exitButton);
+        this.exitButton.setPosition(-240, 410);
         this.exitButton.setInteractive();
 
         var pressed = false;
@@ -223,6 +218,37 @@ class OptionsMenuScene extends Phaser.Scene {
                 optionsButton.open = false;
 
                 readyToMove = true;
+            }
+        }, this);
+    }
+
+    createCreditsButton() {
+        // Credits button
+        this.creditsButton = CreateTextButton(this, 0, 400, 'UI Buttons/Nappi', this.data['Credits']);
+        this.creditsButton.setPosition(240, 410);
+        this.creditsButton.setInteractive();
+        
+
+        var pressed = false;
+
+        this.creditsButton.on('pointerout', function () {
+
+            this.creditsButton.bg.clearTint();
+            pressed = false;
+
+        }, this);
+
+        this.creditsButton.on('pointerdown', function () {
+
+            this.creditsButton.bg.setTint(0xd5d1c7);
+            pressed = true;
+
+        }, this);
+
+        this.creditsButton.on('pointerup', function (event) {
+            if (pressed) {
+                // Open credits scene
+                this.scene.run("CreditsScene");
             }
         }, this);
 

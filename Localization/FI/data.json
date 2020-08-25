@@ -35,6 +35,7 @@
     "OptionsMenu": {
         "Title": "Asetukset",
         "Close": "Sulje",
+        "Credits": "Tekijät",
         "Sound": "Äänet",
         "Music": "Musiikki",
         "Fullscreen": "Koko ruutu"
