@@ -6,6 +6,8 @@ class TallirakennusScene extends BuildingScene
 
         this.name = 'Tallirakennus';
 
+        this.backgroundImage = 'TalliImage1';
+
     }
 
     preload ()

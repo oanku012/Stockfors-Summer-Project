@@ -5,6 +5,8 @@ class LintuhoitolaScene extends BuildingScene
         super('LintuhoitolaScene');
 
         this.name = 'Lintuhoitola';
+        
+        this.backgroundImage = 'LintuImage1';
 
     }
 

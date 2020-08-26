@@ -6,6 +6,8 @@ class PiippuhalliScene extends BuildingScene
 
         this.name = 'Piippuhalli';
 
+        this.backgroundImage = 'PiippuImage1';
+
     }
 
     create()

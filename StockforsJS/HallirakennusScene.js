@@ -6,6 +6,7 @@ class HallirakennusScene extends BuildingScene
 
         this.name = 'Hallirakennus';
 
+        this.backgroundImage = 'HalliImage1';
     }
 
     create()

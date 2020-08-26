@@ -6,6 +6,8 @@ class HunajataloScene extends BuildingScene
 
         this.name = 'Hunajatalo';
 
+        this.backgroundImage = 'HunajaImage1';
+
     }
 
     create ()

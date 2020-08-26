@@ -6,6 +6,8 @@ class PaloasemaScene extends BuildingScene
 
         this.name = 'Paloasema';
 
+        this.backgroundImage = 'PaloImage';
+
     }
 
     create()

@@ -7,6 +7,8 @@ class PatruunantaloScene extends BuildingScene
         this.name = 'Patruunantalo';
         this.url = 'https://www.google.com';
 
+        this.backgroundImage = 'PatruunaImage1';
+
     }
 
     preload ()

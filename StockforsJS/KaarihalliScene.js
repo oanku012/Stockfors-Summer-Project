@@ -6,6 +6,8 @@ class KaarihalliScene extends BuildingScene
 
         this.name = 'Kaarihalli';
 
+        this.backgroundImage = 'KaariImage1';
+
     }
 
     preload ()

@@ -45,7 +45,9 @@ class BuildingScene extends Phaser.Scene {
 
         //let bounds = this.matter.world.setBounds(-90, 0, 2500, 1000, 64, true, true, false, false);
 
-        this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, this.backgroundImage).setDepth(0);
+        let background = this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, this.backgroundImage).setDepth(0);
+
+        background.setDisplaySize(this.sys.canvas.width, (this.sys.canvas.width/background.width) * background.height);
 
         this.infoTexts = [];
         this.infoCards = [];
@@ -579,8 +581,8 @@ class BuildingScene extends Phaser.Scene {
             });
         }
 
-        this.albumArrowForward = CreateButton(this, this.cameras.main.centerX + 850, this.cameras.main.centerY - 7, 'UI Buttons/Nuoli').setScale(0.9).setVisible(false);
-        this.albumArrowBackward = CreateButton(this, this.cameras.main.centerX - 850, this.cameras.main.centerY - 7, 'UI Buttons/Nuoli').setFlipX(true).setScale(0.9).setVisible(false);
+        this.albumArrowForward = CreateButton(this, this.cameras.main.centerX + 870, this.cameras.main.centerY - 7, 'UI Buttons/Nuoli').setScale(0.9).setVisible(false);
+        this.albumArrowBackward = CreateButton(this, this.cameras.main.centerX - 870, this.cameras.main.centerY - 7, 'UI Buttons/Nuoli').setFlipX(true).setScale(0.9).setVisible(false);
 
         this.albumArrowForward.on('pointerup', function () {
             if (this.albumArrowForward.pressed) {
@@ -617,7 +619,7 @@ class BuildingScene extends Phaser.Scene {
             this.currentImage.destroy();
         }
 
-        let newImage = this.add.image(this.cameras.main.centerX, this.cameras.main.centerY - 7, image).setScale(0.64);
+        let newImage = this.add.image(this.cameras.main.centerX, this.cameras.main.centerY - 7, image).setScale(0.8);
 
         this.imageBackground.setVisible(true).setDisplaySize(newImage.width * newImage.scale + 50, newImage.height * newImage.scale + 50);
 
