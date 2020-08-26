@@ -8,4 +8,12 @@ class HallirakennusScene extends BuildingScene
 
     }
 
+    create()
+    {
+        this.images = [];
+
+        //this.images.push("HalliImage");
+
+        super.create();
+    }
 }

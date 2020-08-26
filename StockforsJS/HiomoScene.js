@@ -8,4 +8,13 @@ class HiomoScene extends BuildingScene
 
     }
 
+    create()
+    {
+        this.images = [];
+
+        this.images.push("HiomoImage1", "HiomoImage2");
+
+        super.create();
+    }
+
 }

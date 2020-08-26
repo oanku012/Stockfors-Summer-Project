@@ -14,6 +14,62 @@
                 "Pakkausmuseo card 2 ENG"
             ]
         },
+        "Kaarihalli": {
+            "Title": "Kaarihalli",
+            "InfoCards": [
+                 "Pakkausmuseo card 1 ENG",
+                 "Pakkausmuseo card 2 ENG"
+            ]
+       },
+       "Paloasema": {
+            "Title": "Paloasema",
+            "InfoCards": [
+                 "Pakkausmuseo card 1 ENG",
+                 "Pakkausmuseo card 2 ENG"
+            ]
+       },
+       "Piippuhalli": {
+            "Title": "Piippuhalli",
+            "InfoCards": [
+                 "Pakkausmuseo card 1 ENG",
+                 "Pakkausmuseo card 2 ENG"
+            ]
+       },
+       "Hunajatalo": {
+            "Title": "Hunajatalo",
+            "InfoCards": [
+                 "Pakkausmuseo card 1 ENG",
+                 "Pakkausmuseo card 2 ENG"
+            ]
+       },
+       "Hiomo": {
+            "Title": "Hiomo",
+            "InfoCards": [
+                 "Pakkausmuseo card 1 ENG",
+                 "Pakkausmuseo card 2 ENG"
+            ]
+       },
+       "Lintuhoitola": {
+            "Title": "Lintuhoitola",
+            "InfoCards": [
+                 "Pakkausmuseo card 1 ENG",
+                 "Pakkausmuseo card 2 ENG"
+            ]
+       },
+       "Tallirakennus": {
+            "Title": "Tallirakennus",
+            "InfoCards": [
+                 "Pakkausmuseo card 1 ENG",
+                 "Pakkausmuseo card 2 ENG"
+            ]
+       },
+       "Hallirakennus": {
+            "Title": "Hallirakennus",
+            "InfoCards": [
+                 "Pakkausmuseo card 1 ENG",
+                 "Pakkausmuseo card 2 ENG"
+            ]
+       },
         "Ohjeet": {
             "Title": "Instructions",
             "InfoCards": "Info cards. Info cards contain general information about the location and its history.",

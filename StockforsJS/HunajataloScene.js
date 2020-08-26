@@ -8,4 +8,16 @@ class HunajataloScene extends BuildingScene
 
     }
 
+    create ()
+    {
+
+        this.images = [];
+
+        this.images.push("HunajaImage1", "HunajaImage2", "HunajaImage3");
+
+        super.create();
+        
+        
+    }
+
 }

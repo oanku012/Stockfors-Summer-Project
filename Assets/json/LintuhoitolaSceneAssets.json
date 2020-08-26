@@ -1,21 +1,9 @@
 {
     "image": {
-        "PatruunaImage1": "Assets/images/Albums/Patruunantalo/Patruunantalo (1).jpg",
-        "PatruunaImage2": "Assets/images/Albums/Patruunantalo/Patruunantalo (2).jpg",
-        "PatruunaImage3": "Assets/images/Albums/Patruunantalo/Patruunantalo (3).jpg",
-        "PatruunaImage4": "Assets/images/Albums/Patruunantalo/Patruunantalo (4).jpg",
-        "PatruunaImage5": "Assets/images/Albums/Patruunantalo/Patruunantalo (5).jpg",
-        "PatruunaImage6": "Assets/images/Albums/Patruunantalo/Patruunantalo (6).jpg",
-        "PatruunaImage7": "Assets/images/Albums/Patruunantalo/Patruunantalo (7).jpg",
-        "PatruunaImage8": "Assets/images/Albums/Patruunantalo/Patruunantalo (8).jpg",
-        "PatruunaImage9": "Assets/images/Albums/Patruunantalo/Patruunantalo (9).jpg",
-        "PatruunaImage10": "Assets/images/Albums/Patruunantalo/Patruunantalo (10).jpg",
-        "PatruunaImage11": "Assets/images/Albums/Patruunantalo/Patruunantalo (11).jpg",
-        "PatruunaImage12": "Assets/images/Albums/Patruunantalo/Patruunantalo (12).jpg",
-        "PatruunaImage13": "Assets/images/Albums/Patruunantalo/Patruunantalo (13).jpg",
-        "PatruunaImage14": "Assets/images/Albums/Patruunantalo/Patruunantalo (14).jpg",
-        "PatruunaImage15": "Assets/images/Albums/Patruunantalo/Patruunantalo (15).jpg",
-        "PatruunaImage16": "Assets/images/Albums/Patruunantalo/Patruunantalo (16).jpg",
-        "PatruunaImage17": "Assets/images/Albums/Patruunantalo/Patruunantalo (17).jpg"
+        "LintuImage1": "Assets/images/Albums/Lintuhoitola/Lintuhoitola (1).jpg",
+        "LintuImage2": "Assets/images/Albums/Lintuhoitola/Lintuhoitola (2).jpg",
+        "LintuImage3": "Assets/images/Albums/Lintuhoitola/Lintuhoitola (3).jpg",
+        "LintuImage4": "Assets/images/Albums/Lintuhoitola/Lintuhoitola (4).jpg"
+        
     }
 }

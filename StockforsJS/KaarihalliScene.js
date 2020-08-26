@@ -15,7 +15,10 @@ class KaarihalliScene extends BuildingScene
 
     create ()
     {
-        //this.minigame = 'MuistiPeliScene';
+        this.images = [];
+
+        this.images.push("KaariImage1", "KaariImage2");
+
 
         super.create();
         

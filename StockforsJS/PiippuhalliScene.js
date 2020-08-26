@@ -8,4 +8,12 @@ class PiippuhalliScene extends BuildingScene
 
     }
 
+    create()
+    {
+        this.images = [];
+
+        this.images.push("PiippuImage1", "PiippuImage2");
+
+        super.create();
+    }
 }

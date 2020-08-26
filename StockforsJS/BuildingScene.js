@@ -73,7 +73,9 @@ class BuildingScene extends Phaser.Scene {
         this.CreateInstructionButton();
         this.CreateAlbum();
         this.CreateInfoContainer();
-        this.CreatePanoRamaContainer();
+        if (this.panoramas && this.panoramaThumbs) {
+            this.CreatePanoRamaContainer();
+        }
         console.log(this.scene.key);
 
         this.ContainerTransition(this.infoContainer);
@@ -711,7 +713,7 @@ class BuildingScene extends Phaser.Scene {
                     element.clearTint();
                     //this.CreatePanoRamaViewer(this.panoramas[1]);
                     //window.open("https://cdn.pannellum.org/2.5/pannellum.htm#panorama=//localhost/Assets/Images/Panoramas/Patruunantalo1.jpg");
-                    
+
                 }
 
             }, this)
@@ -838,7 +840,7 @@ class BuildingScene extends Phaser.Scene {
             if (this.panoramaViewer.visible === true) {
                 if (this.panoramaViewer.image) {
                     //Stops movement of panorama image once it hits a certain point
-                    if (this.panoramaViewer.image.x <= this.panoramaViewer.image.width/2 || this.panoramaViewer.image.x >= this.panoramaViewer.image.width/2) {
+                    if (this.panoramaViewer.image.x <= this.panoramaViewer.image.width / 2 || this.panoramaViewer.image.x >= this.panoramaViewer.image.width / 2) {
                         this.panoramaViewer.image.setVelocityX(0);
                     }
                 }

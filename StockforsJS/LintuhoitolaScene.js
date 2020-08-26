@@ -8,4 +8,16 @@ class LintuhoitolaScene extends BuildingScene
 
     }
 
+    create ()
+    {
+
+        this.images = [];
+
+        this.images.push("LintuImage1", "LintuImage2", "LintuImage3", "LintuImage4");
+
+        super.create();
+        
+        
+    }
+
 }

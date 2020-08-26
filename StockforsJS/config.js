@@ -45,8 +45,8 @@ var config = {
     },
 
 
-
-    scene: [BootScene, PreloadScene, OpeningScene, StockforsScene, BuildingScene, KirkkoScene, PatruunantaloScene, PakkausmuseoScene, OptionsMenuScene, CreditsScene, MuistiPeliScene, PalapeliScene, UI, KaarihalliScene, TallirakennusScene, SceneLoader, HistoryScene]
+    //Make sure UI scene is last so that it will always appear at the top
+    scene: [BootScene, PreloadScene, OpeningScene, StockforsScene, BuildingScene, KirkkoScene, PatruunantaloScene, PakkausmuseoScene, OptionsMenuScene, CreditsScene, MuistiPeliScene, PalapeliScene,  KaarihalliScene, TallirakennusScene, SceneLoader, HistoryScene, HunajataloScene, PaloasemaScene, HiomoScene, PiippuhalliScene, HallirakennusScene, LintuhoitolaScene, UI]
 
 
 };

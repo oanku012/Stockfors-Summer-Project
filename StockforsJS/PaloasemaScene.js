@@ -8,4 +8,12 @@ class PaloasemaScene extends BuildingScene
 
     }
 
+    create()
+    {
+        this.images = [];
+
+        this.images.push("PaloImage");
+
+        super.create();
+    }
 }

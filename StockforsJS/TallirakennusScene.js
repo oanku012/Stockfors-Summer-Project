@@ -17,6 +17,10 @@ class TallirakennusScene extends BuildingScene
     {
         //this.minigame = 'MuistiPeliScene';
 
+        this.images = [];
+
+        this.images.push("TalliImage1", "TalliImage2", "TalliImage3", "TalliImage4", "TalliImage5", "TalliImage6");
+
         super.create();
         
         
