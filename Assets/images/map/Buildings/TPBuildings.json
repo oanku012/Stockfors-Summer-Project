@@ -4,8 +4,8 @@
 			"image": "TPBuildings-0.png",
 			"format": "RGBA8888",
 			"size": {
-				"w": 2005,
-				"h": 1270
+				"w": 2009,
+				"h": 1434
 			},
 			"scale": 1,
 			"frames": [
@@ -45,31 +45,10 @@
 						"h": 461
 					},
 					"frame": {
-						"x": 1,
-						"y": 542,
+						"x": 653,
+						"y": 1,
 						"w": 671,
 						"h": 461
-					}
-				},
-				{
-					"filename": "Lintuhoitola",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 700,
-						"h": 175
-					},
-					"spriteSourceSize": {
-						"x": 10,
-						"y": 7,
-						"w": 682,
-						"h": 162
-					},
-					"frame": {
-						"x": 1,
-						"y": 1005,
-						"w": 682,
-						"h": 162
 					}
 				},
 				{
@@ -87,31 +66,10 @@
 						"h": 457
 					},
 					"frame": {
-						"x": 653,
-						"y": 1,
+						"x": 1,
+						"y": 542,
 						"w": 607,
 						"h": 457
-					}
-				},
-				{
-					"filename": "Hiomo",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 712,
-						"h": 383
-					},
-					"spriteSourceSize": {
-						"x": 2,
-						"y": 12,
-						"w": 703,
-						"h": 364
-					},
-					"frame": {
-						"x": 674,
-						"y": 460,
-						"w": 703,
-						"h": 364
 					}
 				},
 				{
@@ -129,52 +87,52 @@
 						"h": 338
 					},
 					"frame": {
-						"x": 1262,
+						"x": 1326,
 						"y": 1,
 						"w": 681,
 						"h": 338
 					}
 				},
 				{
-					"filename": "Kaarihalli",
+					"filename": "Hiomo",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 648,
-						"h": 350
+						"w": 712,
+						"h": 383
 					},
 					"spriteSourceSize": {
-						"x": 14,
-						"y": 14,
-						"w": 625,
-						"h": 329
+						"x": 2,
+						"y": 12,
+						"w": 703,
+						"h": 364
 					},
 					"frame": {
-						"x": 1379,
-						"y": 341,
-						"w": 625,
-						"h": 329
+						"x": 1,
+						"y": 1001,
+						"w": 703,
+						"h": 364
 					}
 				},
 				{
-					"filename": "Patruunantalo",
+					"filename": "Lintuhoitola",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 660,
-						"h": 351
+						"w": 700,
+						"h": 175
 					},
 					"spriteSourceSize": {
-						"x": 25,
-						"y": 39,
-						"w": 612,
-						"h": 312
+						"x": 10,
+						"y": 7,
+						"w": 682,
+						"h": 162
 					},
 					"frame": {
-						"x": 1379,
-						"y": 672,
-						"w": 612,
-						"h": 312
+						"x": 1326,
+						"y": 341,
+						"w": 682,
+						"h": 162
 					}
 				},
 				{
@@ -192,8 +150,8 @@
 						"h": 288
 					},
 					"frame": {
-						"x": 685,
-						"y": 826,
+						"x": 653,
+						"y": 464,
 						"w": 644,
 						"h": 288
 					}
@@ -213,10 +171,73 @@
 						"h": 283
 					},
 					"frame": {
-						"x": 1331,
-						"y": 986,
+						"x": 1299,
+						"y": 505,
 						"w": 639,
 						"h": 283
+					}
+				},
+				{
+					"filename": "History",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 332,
+						"h": 662
+					},
+					"spriteSourceSize": {
+						"x": 18,
+						"y": 15,
+						"w": 303,
+						"h": 633
+					},
+					"frame": {
+						"x": 706,
+						"y": 754,
+						"w": 303,
+						"h": 633
+					}
+				},
+				{
+					"filename": "Kaarihalli",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 648,
+						"h": 350
+					},
+					"spriteSourceSize": {
+						"x": 14,
+						"y": 14,
+						"w": 625,
+						"h": 329
+					},
+					"frame": {
+						"x": 1011,
+						"y": 790,
+						"w": 625,
+						"h": 329
+					}
+				},
+				{
+					"filename": "Patruunantalo",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 660,
+						"h": 351
+					},
+					"spriteSourceSize": {
+						"x": 25,
+						"y": 39,
+						"w": 612,
+						"h": 312
+					},
+					"frame": {
+						"x": 1011,
+						"y": 1121,
+						"w": 612,
+						"h": 312
 					}
 				}
 			]
@@ -225,6 +246,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:66c91b6a9c04e93a8eb9b91561393ef9:964a043defccfcdb332d768f2adc8329:2b9fb787d8ea55b23262400e1cf4ac04$"
+		"smartupdate": "$TexturePacker:SmartUpdate:8c66d238c558cdc0f47f3511d22b0530:feb8b4ba974b0c02b9f4ac6d6763ac3e:2b9fb787d8ea55b23262400e1cf4ac04$"
 	}
 }

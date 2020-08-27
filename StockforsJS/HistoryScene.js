@@ -12,5 +12,7 @@ class HistoryScene extends Phaser.Scene{
 
 
         this.container = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY - 20, [this.background]);
+
+        
     }
 }

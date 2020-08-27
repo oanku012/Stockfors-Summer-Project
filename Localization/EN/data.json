@@ -60,6 +60,11 @@
                  "The hall functions as a place for art and culture. The annual art exhibition called Stockfors Art Fair has brought different artists' works on the factory premises every summer since 2004."
             ]
        },
+       "History": {
+            "Title": "The history of Stockfors",
+            "InfoCards": [
+               "A groundwood mill, founded in 1901. A sawmill also operated in Stockfors during 1906-1966, and the company owned forests and hydroelectric power-plants. Stockfors’s mill was Pyhtää’s most vital employer and employed almost a thousand people at its prime. The mechanical wood pulp and sawn timber that the mill produced was mainly sold to South America, United States and Europe.\n\nIndividuals:\n\nOriginally from Norway, engineer Olaf Bülow and consul Ole Nerdrum bought the Stockfors manor in December 1897. Like many other historical manors in Finland, the Stockfors’ manor was an ancestral estate with various owners throughout its history. The land was given to Hans Larsson Björnram in 1570 whose family kept the manor more as a secondary house, and it wasn’t until the manor was owned by the Schatelowitz family that it started to flourish. Gustav Erik Schatelowitz expanded the property by building a new main building. The name and reputation of his son Johan Gustav Schatelowitz brought attention to Stockfors, as he was known as an excellent farmer and was a role model to many other farmers. In 1870, the owner of the Stockfors’ manor changed again as the estate was compulsory auctioned. The new owner Gabriel Terechoff expanded the estate even more by buying nearby properties. After Terechoff passed, his family sold the estate to Bülow and Nerdrum. "]
+       },
         "Ohjeet": {
             "Title": "Instructions",
             "InfoCards": "Info cards. Info cards contain general information about the location and its history.",

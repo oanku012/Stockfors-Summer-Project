@@ -171,7 +171,9 @@ class StockforsScene extends MapScene {
         let Hiomo = this.buildings.Hiomo;
         Hiomo.entrance = this.matter.add.circle(Hiomo.x + 150, Hiomo.y, entranceRadius, { collisionFilter: collisionCat2 });
 
-        //this.
+        this.buildings.historiaKyltti = this.matter.add.sprite(1500, 950, 'buildingSheet', 'History', { shape: bodies.History }).setScale(0.2);
+        let History = this.buildings.historiaKyltti;
+        History.entrance = this.matter.add.circle(History.x, History.y, entranceRadius, { collisionFilter: collisionCat2 });
 
         //this.buildings.KirkkoTie = this.matter.add.image(1400, 500, 'Nuoli').setScale(0.1);
 
