@@ -224,7 +224,8 @@ class OpeningScene extends Phaser.Scene {
         
         this.newGame = CreateTextButton(this, -200, 700, 'UI Buttons/Nappi', this.data['NewGame']);
         this.continue = CreateTextButton(this, 200, 700, 'UI Buttons/Nappi', this.data['ContinueGame']);
-        this.ohjeNappi = this.add.sprite(500, 700, 'MenuAtlas', 'UI Buttons/Ohje');
+        //this.ohjeNappi = this.add.sprite(500, 700, 'MenuAtlas', 'UI Buttons/Ohje');
+        this.ohjeNappi = CreateButton(this, 500, 700, 'UI Buttons/Ohje');
         this.clearDataText = this.add.text(1400, 200, "Clear save data", { font: "40px Carme", fill: "black" });
 
         this.mainMenuContainer = this.CreateMenuContainer(

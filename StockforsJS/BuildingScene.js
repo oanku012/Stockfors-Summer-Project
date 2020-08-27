@@ -385,7 +385,7 @@ class BuildingScene extends Phaser.Scene {
     CreateInfoCards(text) {
 
 
-        let maxLines = 17;
+        let maxLines = 18;
 
         let remainingLines = text;
 
@@ -401,13 +401,13 @@ class BuildingScene extends Phaser.Scene {
             //This is the visible text on a card that has all the £ taken out
             infoCard.description = this.make.text({
                 x: -480,
-                y: -360,
+                y: -375,
                 text: lineToUse,
                 origin: { x: 0, y: 0 },
                 style: {
-                    font: '34px Carme',
+                    font: '33px Carme',
                     fill: 'black',
-                    wordWrap: { width: 970 }
+                    wordWrap: { width: 972 }
                 }
             });
 
@@ -415,9 +415,9 @@ class BuildingScene extends Phaser.Scene {
             let dummyDescription = this.make.text({
                 text: remainingLines,
                 style: {
-                    font: '34px Carme',
+                    font: '33px Carme',
                     fill: 'black',
-                    wordWrap: { width: 970 }
+                    wordWrap: { width: 972 }
                 },
                 visible: false
             });
@@ -619,9 +619,9 @@ class BuildingScene extends Phaser.Scene {
             this.currentImage.destroy();
         }
 
-        let newImage = this.add.image(this.cameras.main.centerX, this.cameras.main.centerY - 7, image).setScale(0.8);
+        let newImage = this.add.image(this.cameras.main.centerX - 2, this.cameras.main.centerY - 4, image).setScale(0.8);
 
-        this.imageBackground.setVisible(true).setDisplaySize(newImage.width * newImage.scale + 50, newImage.height * newImage.scale + 50);
+        this.imageBackground.setVisible(true).setDisplaySize(newImage.width * newImage.scale + 50, newImage.height * newImage.scale + 30);
 
         //Commented this out so I can easily make the menu invisible separately when opening an image
         // add to menu for easy resize
