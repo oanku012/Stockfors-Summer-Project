@@ -226,7 +226,7 @@ class OpeningScene extends Phaser.Scene {
         this.continue = CreateTextButton(this, 200, 700, 'UI Buttons/Nappi', this.data['ContinueGame']);
         //this.ohjeNappi = this.add.sprite(500, 700, 'MenuAtlas', 'UI Buttons/Ohje');
         this.ohjeNappi = CreateButton(this, 500, 700, 'UI Buttons/Ohje');
-        this.clearDataText = this.add.text(1400, 200, "Clear save data", { font: "40px Carme", fill: "black" });
+        //this.clearDataText = this.add.text(1400, 200, "Clear save data", { font: "40px Carme", fill: "black" });
 
         this.mainMenuContainer = this.CreateMenuContainer(
             [this.aloitusPohja,
@@ -289,13 +289,13 @@ class OpeningScene extends Phaser.Scene {
             }
         }, this);
 
-        this.clearDataText.setInteractive();
+        /*this.clearDataText.setInteractive();
 
         this.clearDataText.on('pointerup', function () {
             localStorage.clear();
 
             console.log('Saved data cleared');
-        });
+        });*/
 
         if (!savedGame) {
             this.continue.setVisible(false);

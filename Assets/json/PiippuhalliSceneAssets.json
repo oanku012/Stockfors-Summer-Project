@@ -1,7 +1,11 @@
 {
     "image": {
         "PiippuImage1": "Assets/images/Albums/Piippuhalli/Piippuhalli (1).jpg",
-        "PiippuImage2": "Assets/images/Albums/Piippuhalli/Piippuhalli (2).jpg"
+        "PiippuImage2": "Assets/images/Albums/Piippuhalli/Piippuhalli (2).jpg",
+        "PiippuImage3": "Assets/images/Albums/Piippuhalli/Korjauspaja,Kattilahuone.jpg",
+        "PiippuImage4": "Assets/images/Albums/Piippuhalli/laatikko.jpg",
+        "PiippuImage5": "Assets/images/Albums/Piippuhalli/VKP_Stockfors_002.jpg",
+        "PiippuImage6": "Assets/images/Albums/Piippuhalli/VKP_Stockfors_042.jpg"
         
     }
 }

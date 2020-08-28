@@ -616,12 +616,27 @@ class BuildingScene extends Phaser.Scene {
     createImage(image, index) {
 
         if (this.currentImage) {
+            this.currentImage.text.destroy();
             this.currentImage.destroy();
         }
 
-        let newImage = this.add.image(this.cameras.main.centerX - 2, this.cameras.main.centerY - 4, image).setScale(0.8);
+        let newImage = this.add.image(this.cameras.main.centerX - 2, this.cameras.main.centerY - 20, image).setScale(0.8);
+        
+        let bottomCenter = newImage.getBottomCenter();
+        
+        newImage.text = this.make.text({
+            x: newImage.x,
+            y: bottomCenter.y + 2,
+            text: this.data[this.name].ImageDescs[index],
+            origin: { x: 0.5, y: 0 },
+            style: {
+                font: '33px Carme',
+                fill: 'black',
+                wordWrap: { width: 972 }
+            }
+        });
 
-        this.imageBackground.setVisible(true).setDisplaySize(newImage.width * newImage.scale + 50, newImage.height * newImage.scale + 30);
+        this.imageBackground.setVisible(true).setDisplaySize(newImage.width * newImage.scale + 50, newImage.height * newImage.scale + 75);
 
         //Commented this out so I can easily make the menu invisible separately when opening an image
         // add to menu for easy resize
@@ -643,6 +658,7 @@ class BuildingScene extends Phaser.Scene {
 
         newImage.on('pointerup', function (event) {
             if (newImage.pressed) {
+                newImage.text.destroy();
                 newImage.destroy();
                 this.albumArrowForward.setVisible(false);
                 this.albumArrowBackward.setVisible(false);

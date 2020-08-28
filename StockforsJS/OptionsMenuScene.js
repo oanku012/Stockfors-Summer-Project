@@ -82,7 +82,7 @@ class OptionsMenuScene extends Phaser.Scene {
 
         // title and description
         let title = this.add.text(0, 0, this.data.Title);
-        title.setPosition(-450, -370);
+        title.setPosition(-400, -500);
         title.setFontSize(60);
         title.setColor("black");
         title.setFontStyle('bold');
@@ -96,7 +96,7 @@ class OptionsMenuScene extends Phaser.Scene {
         this.musicOn = true;
         this.soundOn = true;
 
-        let firstRow = -178;
+        let firstRow = -320;
 
         let rowGap = 137;
 
@@ -187,7 +187,7 @@ class OptionsMenuScene extends Phaser.Scene {
     createExitButton() {
         // Exit button
         this.exitButton = CreateTextButton(this, 0, 400, 'UI Buttons/Nappi', this.data['Close']);
-        this.exitButton.setPosition(-240, 410);
+        this.exitButton.setPosition(0, 310);
         this.exitButton.setInteractive();
 
         var pressed = false;
@@ -225,7 +225,7 @@ class OptionsMenuScene extends Phaser.Scene {
     createCreditsButton() {
         // Credits button
         this.creditsButton = CreateTextButton(this, 0, 400, 'UI Buttons/Nappi', this.data['Credits']);
-        this.creditsButton.setPosition(240, 410);
+        this.creditsButton.setPosition(0, 510);
         this.creditsButton.setInteractive();
         
 
@@ -258,8 +258,8 @@ class OptionsMenuScene extends Phaser.Scene {
     CreateFlags() {
         let flagScale = 0.41;
 
-        this.fi = this.add.sprite(-135, 275, 'MenuAtlas', 'UI Buttons/FI').setScale(flagScale);
-        this.eng = this.add.sprite(150, 275, 'MenuAtlas', 'UI Buttons/ENG').setScale(flagScale);
+        this.fi = this.add.sprite(-135, 150, 'MenuAtlas', 'UI Buttons/FI').setScale(flagScale);
+        this.eng = this.add.sprite(160, 150, 'MenuAtlas', 'UI Buttons/ENG').setScale(flagScale);
         //this.swe = this.add.sprite(220, 300, 'MenuAtlas', 'UI Buttons/SWE').setScale(flagScale);
 
         this.menuElements.add([this.fi, this.eng]);
