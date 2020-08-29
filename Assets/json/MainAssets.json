@@ -1,6 +1,7 @@
 {
     "image": {
-        "map": "Assets/images/map/kartta.png"
+        "map": "Assets/images/map/kartta.png",
+        "mapTausta": "Assets/images/map/Kartta_Tausta.jpg"
     },
     "atlas": {
         "buildingBodies": [

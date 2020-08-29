@@ -9,7 +9,7 @@ class MapScene extends Phaser.Scene {
         this.pointer;
 
         this.movingOnPath = false;
-        this.speed = 5;
+        this.speed = 4;
         this.movementVector = new Phaser.Math.Vector2();
         this.destination = new Phaser.Math.Vector2();
         this.movementDirection = 'down';
@@ -23,9 +23,6 @@ class MapScene extends Phaser.Scene {
         this.buildings = {};
         this.buildingButton;
         this.buildingEntrances = [];
-
-        //this.collisionCat1;
-        //this.collisionCat2;
 
         this.sceneToOpen;
 
@@ -69,6 +66,8 @@ class MapScene extends Phaser.Scene {
         console.log(this.scene.key);
 
         this.sceneToOpen = null;
+
+        this.matter.set60Hz();
 
         this.playerOverLapping = false;
         this.currentOverlapBody = null;
@@ -146,10 +145,10 @@ class MapScene extends Phaser.Scene {
             console.log('THIS IS THE SCENE THAT WILL BE ENTERED ' + this.sceneToOpen);
 
             //this.time.addEvent({
-                //delay: 100, callback: function () {
-                    //console.log('ENTERING SCENE ' + this.sceneToOpen);
-                    this.EnterBuilding(this.sceneToOpen);
-                //}, callbackScope: this
+            //delay: 100, callback: function () {
+            //console.log('ENTERING SCENE ' + this.sceneToOpen);
+            this.EnterBuilding(this.sceneToOpen);
+            //}, callbackScope: this
             //});
         }
 
@@ -181,8 +180,8 @@ class MapScene extends Phaser.Scene {
 
     PlayerInitialize() {
         this.player = this.matter.add.sprite(this.startingPoint.x, this.startingPoint.y, 'playerIdle');
-        this.player.setDepth(this.player.y).setScale(0.3);
-        this.player.setRectangle(30, 30).setBounce(0).setFixedRotation().setFriction(1, 0).setIgnoreGravity(true).setDisplayOrigin(190, 320);
+        this.player.setDepth(this.player.y).setScale(0.2);
+        this.player.setRectangle(20, 20).setBounce(0).setFixedRotation().setFriction(1, 0).setIgnoreGravity(true).setDisplayOrigin(190, 320);
         this.player.setCollisionCategory(collisionCat1);
         this.player.setCollidesWith([collisionCat1]);
         this.player.anims.play(this.movementDirection + 'still', true);
@@ -199,13 +198,18 @@ class MapScene extends Phaser.Scene {
             element.setCollisionCategory(collisionCat1);
             element.setInteractive();
             element.on('pointerup', function (pointer) {
-                this.sceneToOpen = element.entrance.sceneKey;
 
-                //If the player is standing at the entrance and clicks the building it will enter the building
-                if (this.playerOverLapping == true && this.sceneToOpen && this.currentOverlapBody == element.entrance) {
-                    //this.EnterBuilding();
+                if (element.entrance) {
+                    this.sceneToOpen = element.entrance.sceneKey;
 
-                    this.enteringBuilding = true;
+
+                    //If the player is standing at the entrance and clicks the building it will enter the building
+                    if (this.playerOverLapping == true && this.sceneToOpen && this.currentOverlapBody == element.entrance) {
+                        //this.EnterBuilding();
+
+                        this.enteringBuilding = true;
+                    }
+
                 }
 
             }, this);
@@ -215,9 +219,9 @@ class MapScene extends Phaser.Scene {
 
     EnterBuilding(buildingToEnter) {
         this.readyToEnter = false;
-        
+
         this.SavePosition();
-    
+
         // load scene loader with scene to open as parameter
         this.scene.start('SceneLoader', { sceneToLoad: buildingToEnter });
 
@@ -541,7 +545,7 @@ class MapScene extends Phaser.Scene {
         let camera = this.cameras.main;
 
         let maxZoom = 3;
-        let minZoom = 0.5;
+        let minZoom = 1.5;
 
         camera.setZoom(2);
 
@@ -714,7 +718,7 @@ class MapScene extends Phaser.Scene {
 
         this.anims.create({
             key: 'talk',
-            frames:  this.anims.generateFrameNumbers('talk', { start: 0, end: 15 }),
+            frames: this.anims.generateFrameNumbers('talk', { start: 0, end: 15 }),
             frameRate: this.frameRate,
             repeat: -1
         });

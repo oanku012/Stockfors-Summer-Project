@@ -1,25 +1,10 @@
 {
     "image": {
-        "PaloImage1": {
-            "image": "Assets/images/Albums/Paloasema/Paloasema.jpg",
-            "desc":  "Paloasema. Kuvaaja: Sara Laitinen 2020."
-        },
-        "PaloImage2": {
-            "image": "Assets/images/Albums/Paloasema/Paloasema1.jpg",
-            "desc":  "Paloasema. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988."
-        },
-        "PaloImage3": {
-            "image": "Assets/images/Albums/Paloasema/Paloasema2.jpg",
-            "desc":  "Paloasema. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988."
-        },
-        "PaloImage4": {
-            "image": "Assets/images/Albums/Paloasema/Paloasema3.jpg",
-            "desc":  "Paloasema. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988."
-        },
-        "PaloImage5": {
-            "image": "Assets/images/Albums/Paloasema/Paloasema4.jpg",
-            "desc":  "Paloasema. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988."
-        }
+        "PaloImage1": "Assets/images/Albums/Paloasema/Paloasema.jpg",
+        "PaloImage2": "Assets/images/Albums/Paloasema/Paloasema1.jpg",
+        "PaloImage3": "Assets/images/Albums/Paloasema/Paloasema2.jpg",  
+        "PaloImage4": "Assets/images/Albums/Paloasema/Paloasema3.jpg",
+        "PaloImage5": "Assets/images/Albums/Paloasema/Paloasema4.jpg"
         
     }
 }

@@ -81,8 +81,7 @@ class OptionsMenuScene extends Phaser.Scene {
         this.menuElements = this.add.container(40, 0);
 
         // title and description
-        let title = this.add.text(0, 0, this.data.Title);
-        title.setPosition(-400, -500);
+        let title = this.add.text(-410, -400, this.data.Title);
         title.setFontSize(60);
         title.setColor("black");
         title.setFontStyle('bold');
@@ -96,23 +95,24 @@ class OptionsMenuScene extends Phaser.Scene {
         this.musicOn = true;
         this.soundOn = true;
 
-        let firstRow = -320;
+        let firstRow = -210;
+        let posX = -380;
 
         let rowGap = 137;
 
         let fontsize = 48;
 
         //The text align doesn't work on one line text
-        this.musicButton = this.add.sprite(-400, firstRow, 'MenuAtlas', 'UI Buttons/CheckmarkON').setOrigin(0.5, 0.5);
+        this.musicButton = this.add.sprite(posX, firstRow, 'MenuAtlas', 'UI Buttons/CheckmarkON').setOrigin(0.5, 0.5);
         this.musicText = this.add.text(-200, firstRow, this.data['Music'], { fontSize: fontsize, fontFamily: 'Carme', color: "black", align: 'center', origin: { x: 0.5, y: 0.5 } });
         this.musicText.setPosition(-this.musicText.width * 0.5, firstRow - 20);
 
-        this.soundButton = this.add.image(-400, firstRow + rowGap, 'MenuAtlas', 'UI Buttons/CheckmarkON').setOrigin(0.5, 0.5);
+        this.soundButton = this.add.image(posX, firstRow + rowGap, 'MenuAtlas', 'UI Buttons/CheckmarkON').setOrigin(0.5, 0.5);
         this.soundText = this.add.text(-200, firstRow + rowGap, this.data['Sound'], { fontSize: fontsize, fontFamily: 'Carme', color: "black", align: 'center', origin: { x: 0.5, y: 0.5 } });
         this.soundText.setPosition(-this.soundText.width * 0.5, firstRow + rowGap - 20);
 
 
-        this.fullScreenButton = this.add.image(-400, firstRow + rowGap * 2, 'MenuAtlas', 'UI Buttons/CheckmarkOFF').setOrigin(0.5, 0.5);
+        this.fullScreenButton = this.add.image(posX, firstRow + rowGap * 2, 'MenuAtlas', 'UI Buttons/CheckmarkOFF').setOrigin(0.5, 0.5);
         this.fullScreenText = this.add.text(-200, firstRow + rowGap * 2, this.data['Fullscreen'], { fontSize: fontsize, fontFamily: 'Carme', color: "black", align: 'center', origin: { x: 0.5, y: 0.5 } });
         this.fullScreenText.setPosition(-this.fullScreenText.width * 0.5, (firstRow + rowGap * 2) - 20);
 
@@ -186,34 +186,16 @@ class OptionsMenuScene extends Phaser.Scene {
 
     createExitButton() {
         // Exit button
-        this.exitButton = CreateTextButton(this, 0, 400, 'UI Buttons/Nappi', this.data['Close']);
-        this.exitButton.setPosition(0, 310);
-        this.exitButton.setInteractive();
 
-        var pressed = false;
-
-        this.exitButton.on('pointerout', function () {
-
-            this.exitButton.bg.clearTint();
-            pressed = false;
-
-        }, this);
-
-        this.exitButton.on('pointerdown', function () {
-
-            this.exitButton.bg.setTint(0xd5d1c7);
-            pressed = true;
-
-        }, this);
+        let topRight = this.menuBG.getTopRight();
+        this.exitButton = CreateButton(this, topRight.x-60, topRight.y+80, 'UI Buttons/Zoom_Out').setScale(1.4);
 
         this.exitButton.on('pointerup', function (event) {
-            if (pressed) {
+            if (this.exitButton.pressed) {
 
                 saveGame({ musicOn: config.musicOn, soundOn: config.soundOn });
 
                 this.scene.stop(this.scene.key);
-
-                //this.time.paused = false;
 
                 optionsButton.open = false;
 
@@ -224,29 +206,11 @@ class OptionsMenuScene extends Phaser.Scene {
 
     createCreditsButton() {
         // Credits button
-        this.creditsButton = CreateTextButton(this, 0, 400, 'UI Buttons/Nappi', this.data['Credits']);
-        this.creditsButton.setPosition(0, 510);
+        this.creditsButton = CreateTextButton(this, 20, 420, 'UI Buttons/Nappi', this.data['Credits']);
         this.creditsButton.setInteractive();
-        
-
-        var pressed = false;
-
-        this.creditsButton.on('pointerout', function () {
-
-            this.creditsButton.bg.clearTint();
-            pressed = false;
-
-        }, this);
-
-        this.creditsButton.on('pointerdown', function () {
-
-            this.creditsButton.bg.setTint(0xd5d1c7);
-            pressed = true;
-
-        }, this);
 
         this.creditsButton.on('pointerup', function (event) {
-            if (pressed) {
+            if (this.creditsButton.pressed) {
                 // Open credits scene
                 this.scene.run("CreditsScene");
             }
@@ -258,8 +222,8 @@ class OptionsMenuScene extends Phaser.Scene {
     CreateFlags() {
         let flagScale = 0.41;
 
-        this.fi = this.add.sprite(-135, 150, 'MenuAtlas', 'UI Buttons/FI').setScale(flagScale);
-        this.eng = this.add.sprite(160, 150, 'MenuAtlas', 'UI Buttons/ENG').setScale(flagScale);
+        this.fi = this.add.sprite(-110, 265, 'MenuAtlas', 'UI Buttons/FI').setScale(flagScale);
+        this.eng = this.add.sprite(160, 265, 'MenuAtlas', 'UI Buttons/ENG').setScale(flagScale);
         //this.swe = this.add.sprite(220, 300, 'MenuAtlas', 'UI Buttons/SWE').setScale(flagScale);
 
         this.menuElements.add([this.fi, this.eng]);

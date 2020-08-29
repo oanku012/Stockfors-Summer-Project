@@ -4,32 +4,11 @@
 			"image": "TPBuildings-0.png",
 			"format": "RGBA8888",
 			"size": {
-				"w": 2009,
-				"h": 1434
+				"w": 1945,
+				"h": 1649
 			},
 			"scale": 1,
 			"frames": [
-				{
-					"filename": "Piippuhalli",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 673,
-						"h": 568
-					},
-					"spriteSourceSize": {
-						"x": 15,
-						"y": 15,
-						"w": 650,
-						"h": 539
-					},
-					"frame": {
-						"x": 1,
-						"y": 1,
-						"w": 650,
-						"h": 539
-					}
-				},
 				{
 					"filename": "Hallirakennus",
 					"rotated": false,
@@ -45,136 +24,10 @@
 						"h": 461
 					},
 					"frame": {
-						"x": 653,
+						"x": 1,
 						"y": 1,
 						"w": 671,
 						"h": 461
-					}
-				},
-				{
-					"filename": "Paloasema",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 650,
-						"h": 505
-					},
-					"spriteSourceSize": {
-						"x": 26,
-						"y": 31,
-						"w": 607,
-						"h": 457
-					},
-					"frame": {
-						"x": 1,
-						"y": 542,
-						"w": 607,
-						"h": 457
-					}
-				},
-				{
-					"filename": "Hunajatalo",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 721,
-						"h": 379
-					},
-					"spriteSourceSize": {
-						"x": 15,
-						"y": 23,
-						"w": 681,
-						"h": 338
-					},
-					"frame": {
-						"x": 1326,
-						"y": 1,
-						"w": 681,
-						"h": 338
-					}
-				},
-				{
-					"filename": "Hiomo",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 712,
-						"h": 383
-					},
-					"spriteSourceSize": {
-						"x": 2,
-						"y": 12,
-						"w": 703,
-						"h": 364
-					},
-					"frame": {
-						"x": 1,
-						"y": 1001,
-						"w": 703,
-						"h": 364
-					}
-				},
-				{
-					"filename": "Lintuhoitola",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 700,
-						"h": 175
-					},
-					"spriteSourceSize": {
-						"x": 10,
-						"y": 7,
-						"w": 682,
-						"h": 162
-					},
-					"frame": {
-						"x": 1326,
-						"y": 341,
-						"w": 682,
-						"h": 162
-					}
-				},
-				{
-					"filename": "Pakkausmuseo",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 669,
-						"h": 319
-					},
-					"spriteSourceSize": {
-						"x": 13,
-						"y": 17,
-						"w": 644,
-						"h": 288
-					},
-					"frame": {
-						"x": 653,
-						"y": 464,
-						"w": 644,
-						"h": 288
-					}
-				},
-				{
-					"filename": "Tallirakennus",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 681,
-						"h": 335
-					},
-					"spriteSourceSize": {
-						"x": 30,
-						"y": 31,
-						"w": 639,
-						"h": 283
-					},
-					"frame": {
-						"x": 1299,
-						"y": 505,
-						"w": 639,
-						"h": 283
 					}
 				},
 				{
@@ -192,10 +45,136 @@
 						"h": 633
 					},
 					"frame": {
-						"x": 706,
-						"y": 754,
+						"x": 674,
+						"y": 1,
 						"w": 303,
 						"h": 633
+					}
+				},
+				{
+					"filename": "Piippuhalli",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 673,
+						"h": 568
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 15,
+						"w": 650,
+						"h": 539
+					},
+					"frame": {
+						"x": 1,
+						"y": 464,
+						"w": 650,
+						"h": 539
+					}
+				},
+				{
+					"filename": "Paloasema",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 650,
+						"h": 505
+					},
+					"spriteSourceSize": {
+						"x": 26,
+						"y": 31,
+						"w": 607,
+						"h": 457
+					},
+					"frame": {
+						"x": 653,
+						"y": 636,
+						"w": 607,
+						"h": 457
+					}
+				},
+				{
+					"filename": "Hiomo",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 712,
+						"h": 383
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 12,
+						"w": 703,
+						"h": 364
+					},
+					"frame": {
+						"x": 979,
+						"y": 1,
+						"w": 703,
+						"h": 364
+					}
+				},
+				{
+					"filename": "Karting_rata",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 727,
+						"h": 123
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 8,
+						"w": 724,
+						"h": 110
+					},
+					"frame": {
+						"x": 979,
+						"y": 367,
+						"w": 724,
+						"h": 110
+					}
+				},
+				{
+					"filename": "Pensas2",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 225,
+						"h": 175
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 225,
+						"h": 175
+					},
+					"frame": {
+						"x": 1684,
+						"y": 1,
+						"w": 225,
+						"h": 175
+					}
+				},
+				{
+					"filename": "Valkoinen_aita",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 184,
+						"h": 92
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 184,
+						"h": 92
+					},
+					"frame": {
+						"x": 1684,
+						"y": 178,
+						"w": 184,
+						"h": 92
 					}
 				},
 				{
@@ -213,10 +192,178 @@
 						"h": 329
 					},
 					"frame": {
-						"x": 1011,
-						"y": 790,
+						"x": 1,
+						"y": 1005,
 						"w": 625,
 						"h": 329
+					}
+				},
+				{
+					"filename": "Katettu_silta",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 715,
+						"h": 221
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 7,
+						"w": 713,
+						"h": 208
+					},
+					"frame": {
+						"x": 628,
+						"y": 1095,
+						"w": 713,
+						"h": 208
+					}
+				},
+				{
+					"filename": "Hunajatalo",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 721,
+						"h": 379
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 23,
+						"w": 681,
+						"h": 338
+					},
+					"frame": {
+						"x": 1262,
+						"y": 479,
+						"w": 681,
+						"h": 338
+					}
+				},
+				{
+					"filename": "Portti",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 156,
+						"h": 143
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 156,
+						"h": 143
+					},
+					"frame": {
+						"x": 1705,
+						"y": 272,
+						"w": 156,
+						"h": 143
+					}
+				},
+				{
+					"filename": "Lintuhoitola",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 700,
+						"h": 175
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 7,
+						"w": 682,
+						"h": 162
+					},
+					"frame": {
+						"x": 1262,
+						"y": 819,
+						"w": 682,
+						"h": 162
+					}
+				},
+				{
+					"filename": "Portti2",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 137,
+						"h": 127
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 137,
+						"h": 127
+					},
+					"frame": {
+						"x": 979,
+						"y": 479,
+						"w": 137,
+						"h": 127
+					}
+				},
+				{
+					"filename": "Pensas",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 125,
+						"h": 97
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 125,
+						"h": 97
+					},
+					"frame": {
+						"x": 1118,
+						"y": 479,
+						"w": 125,
+						"h": 97
+					}
+				},
+				{
+					"filename": "Pensas_ja_aita",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 569,
+						"h": 177
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 569,
+						"h": 177
+					},
+					"frame": {
+						"x": 1343,
+						"y": 983,
+						"w": 569,
+						"h": 177
+					}
+				},
+				{
+					"filename": "Pakkausmuseo",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 669,
+						"h": 319
+					},
+					"spriteSourceSize": {
+						"x": 13,
+						"y": 17,
+						"w": 644,
+						"h": 288
+					},
+					"frame": {
+						"x": 628,
+						"y": 1305,
+						"w": 644,
+						"h": 288
 					}
 				},
 				{
@@ -234,10 +381,31 @@
 						"h": 312
 					},
 					"frame": {
-						"x": 1011,
-						"y": 1121,
+						"x": 1,
+						"y": 1336,
 						"w": 612,
 						"h": 312
+					}
+				},
+				{
+					"filename": "Tallirakennus",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 681,
+						"h": 335
+					},
+					"spriteSourceSize": {
+						"x": 30,
+						"y": 31,
+						"w": 639,
+						"h": 283
+					},
+					"frame": {
+						"x": 1274,
+						"y": 1305,
+						"w": 639,
+						"h": 283
 					}
 				}
 			]
@@ -246,6 +414,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:8c66d238c558cdc0f47f3511d22b0530:feb8b4ba974b0c02b9f4ac6d6763ac3e:2b9fb787d8ea55b23262400e1cf4ac04$"
+		"smartupdate": "$TexturePacker:SmartUpdate:e953a15fd3c051f6b5506f3cc143881e:521484fbdc9f6c10b56498b5a62bac69:2b9fb787d8ea55b23262400e1cf4ac04$"
 	}
 }
