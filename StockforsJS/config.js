@@ -8,9 +8,6 @@ var config = {
     musicOn: true,
     language: 'FI',
     parent: 'game',
-    /*audio:{
-        disableWebAudio: true
-    },*/
 
     scale: {
         mode: Phaser.Scale.FIT,

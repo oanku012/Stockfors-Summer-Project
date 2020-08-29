@@ -9,7 +9,7 @@ class MapScene extends Phaser.Scene {
         this.pointer;
 
         this.movingOnPath = false;
-        this.speed = 4;
+        this.speed = 2;
         this.movementVector = new Phaser.Math.Vector2();
         this.destination = new Phaser.Math.Vector2();
         this.movementDirection = 'down';
@@ -441,7 +441,7 @@ class MapScene extends Phaser.Scene {
 
             //Final player movement is applied here, updated when current movement vector is different from current velocity
             if (this.movementVector != this.player.body.velocity) {
-                this.movementVector.setLength(this.speed);
+                this.movementVector.setLength(this.speed * (this.sys.game.loop.delta/10));
                 this.player.setVelocity(this.movementVector.x, this.movementVector.y);
             }
 
