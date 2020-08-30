@@ -249,7 +249,8 @@
         "Credits": "Tekijät",
         "Sound": "Äänet",
         "Music": "Musiikki",
-        "Fullscreen": "Koko ruutu"
+        "Fullscreen": "Koko ruutu",
+        "CreditsText": "Erna Gronow - Projektipäällikkö\n\nSara Laitinen - Grafiikka, Valokuvaus\nAnna-Maria Närä - Grafiikka, Tekstit\n\nJere Loukoila - Ohjelmointi\nAnton Kujansuu - Ohjelmointi"
     },
     "Muistipeli": {
         "Easy": "Helppo",

@@ -16,6 +16,7 @@ class CreditsScene extends Phaser.Scene {
         this.scene.bringToTop();
         this.createExitButton();
         this.createContainer();
+        this.createCredits();
     }
 
     createContainer() {
@@ -35,7 +36,19 @@ class CreditsScene extends Phaser.Scene {
     }
 
     createCredits() {
+        this.credits = this.make.text({
+            x: -480,
+            y: 0,
+            text: this.data['CreditsText'],
+            origin: { x: 0, y: 1 },
+            style: {
+                font: '40px Carme',
+                fill: 'black',
+                wordWrap: { width: 980 }
+            }
+        });
 
+        this.menu.add(this.credits);
 
     }
 

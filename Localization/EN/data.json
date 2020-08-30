@@ -214,7 +214,8 @@
           "Credits": "Credits",
           "Sound": "Sound",
           "Music": "Music",
-          "Fullscreen": "Fullscreen"
+          "Fullscreen": "Fullscreen",
+          "CreditsText": "Erna Gronow - Project Lead\n\nSara Laitinen - Graphics, Photography\nAnna-Maria Närä - Graphics, Texts\n\nJere Loukoila - Programming\nAnton Kujansuu - Programming"
      },
      "Muistipeli": {
           "Easy": "Easy",
