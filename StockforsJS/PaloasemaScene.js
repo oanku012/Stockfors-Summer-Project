@@ -6,7 +6,7 @@ class PaloasemaScene extends BuildingScene
 
         this.name = 'Paloasema';
 
-        this.backgroundImage = 'PaloImage';
+        this.backgroundImage = 'PaloImage1';
 
     }
 
@@ -14,7 +14,7 @@ class PaloasemaScene extends BuildingScene
     {
         this.images = [];
 
-        this.images.push("PaloImage");
+        this.images.push("PaloImage1", "PaloImage2", "PaloImage3", "PaloImage4");
 
         super.create();
     }

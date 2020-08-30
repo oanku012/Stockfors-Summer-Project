@@ -12,7 +12,7 @@ class Karting_rataScene extends BuildingScene
 
     create()
     {
-        this.images = [];
+        //this.images = [];
 
         //this.images.push("");
 

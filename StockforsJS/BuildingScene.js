@@ -47,7 +47,7 @@ class BuildingScene extends Phaser.Scene {
 
         let background = this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, this.backgroundImage).setDepth(0);
 
-        background.setDisplaySize(this.sys.canvas.width, (this.sys.canvas.width/background.width) * background.height);
+        background.setDisplaySize(this.sys.canvas.width, (this.sys.canvas.width / background.width) * background.height);
 
         this.infoTexts = [];
         this.infoCards = [];
@@ -271,19 +271,23 @@ class BuildingScene extends Phaser.Scene {
 
         buttonsAdded++;
 
-        this.albumButton = CreateButton(this, rightMostPosition - (buttonsAdded * buttonGap), 0, 'UI Buttons/Gallery');
-        //this.albumButton = this.add.sprite(rightMostPosition - (buttonsAdded * buttonGap), 0, 'MenuAtlas', 'UI Buttons/Gallery');
+        //Scene breaks if no album????
+        if (this.images) {
+            this.albumButton = CreateButton(this, rightMostPosition - (buttonsAdded * buttonGap), 0, 'UI Buttons/Gallery');
+            //this.albumButton = this.add.sprite(rightMostPosition - (buttonsAdded * buttonGap), 0, 'MenuAtlas', 'UI Buttons/Gallery');
 
-        this.albumButton.on('pointerup', function () {
-            if (this.albumButton.pressed) {
-                this.ContainerTransition(this.albumContainer);
-            }
+            this.albumButton.on('pointerup', function () {
+                if (this.albumButton.pressed) {
+                    this.ContainerTransition(this.albumContainer);
+                }
 
-        }, this);
+            }, this);
 
-        this.menuButtons.add(this.albumButton);
+            this.menuButtons.add(this.albumButton);
 
-        buttonsAdded++;
+            buttonsAdded++;
+
+        }
 
         if (this.url) {
             //this.webButton = this.add.sprite(rightMostPosition - (buttonsAdded * buttonGap), 0, 'MenuAtlas', 'UI Buttons/Webpage');
@@ -518,9 +522,11 @@ class BuildingScene extends Phaser.Scene {
 
     CreateAlbum() {
 
+        this.imgContainerY = 50;
+
         //Background that shows up when viewing the images in an album
-        this.albumBackground = this.add.image(this.cameras.main.centerX +5, this.cameras.main.centerY - 25, 'MenuAtlas', 'UI Pohjat/Pelipohja').setVisible(false).setScale(0.86, 0.56);
-        this.imageBackground = this.add.image(this.cameras.main.centerX, this.cameras.main.centerY - 45, 'MenuAtlas', 'UI Pohjat/Infokorttipohja').setVisible(false);
+        this.albumBackground = this.add.image(this.cameras.main.centerX + 5, this.cameras.main.centerY - 20, 'MenuAtlas', 'UI Pohjat/Pelipohja').setVisible(false).setScale(1.04, 0.57);
+        this.imageBackground = this.add.image(this.cameras.main.centerX, this.cameras.main.centerY - this.imgContainerY, 'MenuAtlas', 'UI Pohjat/Infokorttipohja').setVisible(false);
         //this.textBackground = this.add.image(this.cameras.main.centerX, this.cameras.main.centerY - 7, 'MenuAtlas', 'UI Pohjat/Pelipohja').setVisible(false);
 
         this.albumContainer = this.add.container(0, -500).setScale(1.2);
@@ -583,8 +589,11 @@ class BuildingScene extends Phaser.Scene {
             });
         }
 
-        this.albumArrowForward = CreateButton(this, this.cameras.main.centerX + 870, this.cameras.main.centerY - 7, 'UI Buttons/Nuoli').setScale(0.9).setVisible(false);
-        this.albumArrowBackward = CreateButton(this, this.cameras.main.centerX - 870, this.cameras.main.centerY - 7, 'UI Buttons/Nuoli').setFlipX(true).setScale(0.9).setVisible(false);
+        let arrowX = 850;
+        let arrowY = 460;
+
+        this.albumArrowForward = CreateButton(this, this.cameras.main.centerX + arrowX, this.cameras.main.centerY + arrowY, 'UI Buttons/Arrow').setScale(0.9).setVisible(false);
+        this.albumArrowBackward = CreateButton(this, this.cameras.main.centerX - arrowX, this.cameras.main.centerY + arrowY, 'UI Buttons/Arrow').setFlipX(true).setScale(0.9).setVisible(false);
 
         this.albumArrowForward.on('pointerup', function () {
             if (this.albumArrowForward.pressed) {
@@ -622,13 +631,13 @@ class BuildingScene extends Phaser.Scene {
             this.currentImage.destroy();
         }
 
-        let newImage = this.add.image(this.cameras.main.centerX - 2, this.cameras.main.centerY - 45, image);
+        let newImage = this.add.image(this.cameras.main.centerX - 2, this.cameras.main.centerY - this.imgContainerY, image);
 
-        let imageHeight = 820;
+        let imageHeight = 900;
 
-        newImage.setDisplaySize(newImage.width / (newImage.height/imageHeight), imageHeight)
+        newImage.setDisplaySize(newImage.width / (newImage.height / imageHeight), imageHeight)
         newImage.setSizeToFrame(newImage.frame);
-        
+
         let bottomCenter = newImage.getBottomCenter();
 
         this.imageBackground.setVisible(true).setDisplaySize(newImage.displayWidth + 60, newImage.displayHeight + 60);
@@ -643,14 +652,14 @@ class BuildingScene extends Phaser.Scene {
             style: {
                 font: '33px Carme',
                 fill: 'black',
-                wordWrap: { width: this.albumBackground.width*this.albumBackground.scaleX},
+                wordWrap: { width: (this.albumBackground.width * this.albumBackground.scaleX) - 400 },
                 align: 'center'
             }
         });
 
         //this.textBackground.setVisible(true).setPosition(newImage.text.x, newImage.text.y).setDisplaySize(newImage.text.width * newImage.text.scale + 50, newImage.text.height * newImage.text.scale);
 
-        
+
 
         //Commented this out so I can easily make the menu invisible separately when opening an image
         // add to menu for easy resize

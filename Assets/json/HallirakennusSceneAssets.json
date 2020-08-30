@@ -1,8 +1,17 @@
 {
     "image": {
-        "HalliImage1": "Assets/images/Albums/Pakkausmuseo/Pakkausmuseo (1).jpg",
-        "HalliImage2": "Assets/images/Albums/Pakkausmuseo/Pakkausmuseo (2).jpg",
-        "HalliImage3": "Assets/images/Albums/Pakkausmuseo/Pakkausmuseo (3).jpg",
-        "HalliImage4": "Assets/images/Albums/Pakkausmuseo/Pakkausmuseo (4).jpg"
+        "HalliImage1": "Assets/images/Albums/Hallirakennus/Hallirakennus_ArtFair1.png",
+        "HalliImage2": "Assets/images/Albums/Hallirakennus/Hallirakennus_ArtFair2.png",
+        "HalliImage3": "Assets/images/Albums/Hallirakennus/Hallirakennus_ArtFair3.png",
+        "HalliImage4": "Assets/images/Albums/Hallirakennus/Hallirakennus_ArtFair4.png",
+        "HalliImage5": "Assets/images/Albums/Hallirakennus/Hallirakennus1.png",
+        "HalliImage6": "Assets/images/Albums/Hallirakennus/Hallirakennus2.png",
+        "HalliImage7": "Assets/images/Albums/Hallirakennus/Hallirakennus3.png",
+        "HalliImage8": "Assets/images/Albums/Hallirakennus/Hallirakennus4.png",
+        "HalliImage9": "Assets/images/Albums/Hallirakennus/Hallirakennus5.png",
+        "HalliImage10": "Assets/images/Albums/Hallirakennus/Hallirakennus6.png",
+        "HalliImage11": "Assets/images/Albums/Hallirakennus/Hallirakennus7.png",
+        "HalliImage12": "Assets/images/Albums/Hallirakennus/Hallirakennus8.png",
+        "HalliImage13": "Assets/images/Albums/Hallirakennus/Hallirakennus9.png"
     }
 }
