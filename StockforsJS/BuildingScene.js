@@ -622,11 +622,16 @@ class BuildingScene extends Phaser.Scene {
             this.currentImage.destroy();
         }
 
-        let newImage = this.add.image(this.cameras.main.centerX - 2, this.cameras.main.centerY - 45, image).setScale(0.8);
+        let newImage = this.add.image(this.cameras.main.centerX - 2, this.cameras.main.centerY - 45, image);
+
+        let imageHeight = 820;
+
+        newImage.setDisplaySize(newImage.width / (newImage.height/imageHeight), imageHeight)
+        newImage.setSizeToFrame(newImage.frame);
         
         let bottomCenter = newImage.getBottomCenter();
 
-        this.imageBackground.setVisible(true).setDisplaySize(newImage.width * newImage.scale + 60, newImage.height * newImage.scale + 60);
+        this.imageBackground.setVisible(true).setDisplaySize(newImage.displayWidth + 60, newImage.displayHeight + 60);
         this.albumBackground.setVisible(true);
         //this.imageBackground.setVisible(true);
 

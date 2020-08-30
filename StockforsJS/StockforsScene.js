@@ -280,7 +280,7 @@ class StockforsScene extends MapScene {
                 }
                 else if(building.text.text === this.data.Kirkko)
                 {
-                    building.entrance.sceneKey = 'StrukanSulutScene';
+                    building.entrance.sceneKey = 'KirkkoScene';
 
                     this.buildingEntrances.push(building.entrance);
                     

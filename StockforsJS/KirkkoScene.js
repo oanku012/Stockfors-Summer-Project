@@ -1,8 +1,10 @@
-class KirkkoScene extends MapScene
+class KirkkoScene extends BuildingScene
 {
     constructor()
     {
         super('KirkkoScene');
+
+        this.name = 'Kirkko'
     }
 
     preload()
@@ -12,6 +14,11 @@ class KirkkoScene extends MapScene
 
     create()
     {
+
+        this.images = [];
+
+        this.images.push("KirkkoImage1", "KirkkoImage2", "KirkkoImage3", "KirkkoImage4");
+
         super.create();
     }
 

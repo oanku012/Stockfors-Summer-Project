@@ -1,288 +1,287 @@
 {
-    "Buildings": {
-        "Patruunantalo": {
-            "Title": "Patruunantalo",
-            "InfoCards": [
-               "Patruunantalo oli alun perin rakennettu vuonna 1903 tehtaanjohtajan eli isännöitsijän asunnoksi. Huvilana talo oli hyvin kartanomainen. Patruunantalon rakenne muuttui tehtaan tarpeiden mukaan, ja siihen saatettiin tarvittaessa rakentaa esimerkiksi lisää konttoreita. Stockforsin pääkonttori toimi tehtaan yhteydessä vuoteen 1918 saakka, jolloin se päätettiin siirtää Loviisaan.£\n\nSota-aikana Patruunantalo toimi arestipaikkana isännöitsijälle. Punaisten päättäessä toteuttaa suunnitelmansa Lennart Baumgartnerin ja Georg Larssonin taposta, hakivat he juuri Patruunantalosta isännöitsijän kohtaamaan tuomionsa.£\n\nTehtaiden lopetettua vuonna 1984 alue pääsi ränsistymään niin pahasti, että Patruunantalon päärakennuksen sisällä kasvoi koivuja. Alueen siirryttyä yksityiselle omistajalle alettiin myös Patruunantaloa kunnostamaan. Remontissa pyrittiin entisöimään kartano ja sen tyyli mahdollisimman todentuntuisesti.£\n\nPatruunantalo toimi jonkin aikaa kartanohotellina, joka vaikutti sen sisustuselementteihin.£\n\nMyöhemmin Patruunantalossa on toiminut hotelli- ja tilausravintola vuodesta 2003 lähtien. Patruunantalossa on muunneltavia koulutus-, kokous- ja juhlatiloja 5 – 100 henkilölle. Majoitustiloina Patruunantalossa toimii yhteensä 22 huonetta, jotka ovat jakautuneet kolmeen eri rakennukseen; Patruunantaloon, Hunajataloon (entinen talous- ja säilytystila viljalle ja ruualle) ja Paloasemaan. Patruunantalosta löytyy 8 majoitushuonetta kokoustilojen lisäksi, Viereisestä Hunajatalossa 10 majoitushuonetta ja Paloaseman yläkerrasta osa." 
-          ],
-          "ImageDescs": [
-             "Patruunantalo. Kuvaaja: Sara Laitinen 2020.",
-             "Patruunantalo. Kuvaaja: Sara Laitinen 2020.",
-             "Patruunantalo. Kuvaaja: Sara Laitinen 2020.",
-             "Patruunantalo. Kuvaaja: Sara Laitinen 2020.",
-             "Patruunantalo. Kuvaaja: Sara Laitinen 2020.",
-             "Patruunantalo. Kuvaaja: Sara Laitinen 2020.",
-             "Patruunantalo. Kuvaaja: Sara Laitinen 2020.",
-             "Patruunantalo. Kuvaaja: Sara Laitinen 2020.",
-             "Patruunantalo. Kuvaaja: Sara Laitinen 2020.",
-             "Patruunantalo. Kuvaaja: Sara Laitinen 2020.",
-             "Patruunantalo. Kuvaaja: Sara Laitinen 2020.",
-             "Patruunantalo. Kuvaaja: Sara Laitinen 2020.",
-             "Patruunantalo. Kuvaaja: Sara Laitinen 2020.",
-             "Patruunantalo. Kuvaaja: Sara Laitinen 2020.",
-             "Patruunantalo. Kuvaaja: Sara Laitinen 2020.",
-             "Patruunantalo. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988."
-          ]
-               
-        },
-        "Pakkausmuseo": {
-            "Title": "PakkausMuseo",
-            "InfoCards": [
-               "Ennen kunnostamistaan pakkausmuseon päärakennus oli toiminut kunnan harrastetiloina ja tehtaan aikoina talomiehen asuntona. Mittaavan remontin jälkeen sen avajaisia vietettiin elokuussa 1998. Pakkausmuseossa on esillä erilaisia menneiden vuosikymmenien kotimaisia pakkauksia ja paperituotteita 1900-luvulta. Merkittävä määrä tuotteista on hankittu yksityiseltä keräilijältä Veli Koskelta. Myös Rafael Haarlan painotuotteita, kuten menneiden vuosien joulukääremallistoja, löytyy museosta. Pakkausmuseo on ajan kuluessa kasvanut omistajien oman keräilyn ja lahjoitusten myötä.£\n\nPakkausmuseon kokonaisuuteen kuuluu myös ulkomaalaisia pakkaustuotteita esittelevä talli. Tallista löytyy myös monenlaista muuta nähtävää, kuten vanhoja puhelimia, leluja, kirjelehtiöiden kansikuvia ja metsästyskiesejä. Talli toimi puuhiomon aikana alueen työhevosten lepopaikkana, ja se uusittiin kokonaan remontin yhteydessä. "
-            ],
-            "ImageDescs": [
-               "Pakkausmuseo. Kuvaaja: Sara Laitinen 2020.",
-               "Pakkausmuseo. Kuvaaja: Sara Laitinen 2020.",
-               "Pakkausmuseo. Kuvaaja: Sara Laitinen 2020.",
-               "Pakkausmuseo. Kuvaaja: Sara Laitinen 2020."
-               
-            ]
-        },
-        "Kaarihalli": {
-            "Title": "Kaarihalli",
-            "InfoCards": [
-                 "Stockforsin historiallinen Kaarihalli on nykyisin vapaa vuokrattavaksi, ja siellä on nähty useita häitä ja tanssitapahtumia."
-            ],
-            "ImageDescs": [
-               "Kaarihalli. Kuvaaja: Sara Laitinen 2020.",
-               "Kaarihalli. Kuvaaja: Sara Laitinen 2020.",
-               "Kaarihalli. Kuvaaja: Sara Laitinen 2020."
-            ]
-       },
-       "Paloasema": {
-            "Title": "Paloasema",
-            "InfoCards": [
-                 "Pyhtään paloasema ja palokunta perustettiin aikoinaan juuri Stockforsin tehdasta varten. Myöhemmin palokunta on keskitetty tarpeen mukaan. Nykyisin paloasemalla pidetään kesäisin vaihtelevia näyttelyitä ja sen yläkerrasta löytyy majoitustiloja."
-            ],
-            "ImageDescs": [
-               "Paloasema. Kuvaaja: Sara Laitinen 2020.",
-               "Paloasema. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
-               "Paloasema. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
-               "Paloasema. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988."
-               
-            ]
-       },
-       "Piippuhalli": {
-            "Title": "Piippuhalli",
-            "InfoCards": [
-                 "Pakkausmuseo card 1 FI",
-                 "Pakkausmuseo card 2 FI"
-            ],
-            "ImageDescs": [
-               "Piippuhalli. Kuvaaja: Sara Laitinen 2020.",
-               "Piippuhalli. Kuvaaja: Sara Laitinen 2020.",
-               "Piippuhalli. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
-               "Piippuhalli. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto.",
-               "Piippuhalli. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
-               "Piippuhalli. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988."
-            ]
-       },
-       "Hunajatalo": {
-            "Title": "Hunajatalo",
-            "InfoCards": [
-               "Hunajatalo toimi aikoinaan talous- ja säilytystilana viljalle ja ruualle. Nykyisin se toimii Patruunantalon mukana majoituspaikkana, josta löytyy 10 vuokrattavaa majoitustilaa."
-            ],
-            "ImageDescs": [
-               "Hunajatalo. Kuvaaja: Sara Laitinen 2020.",
-               "Hunajatalo. Kuvaaja: Sara Laitinen 2020.",
-               "Hunajatalo. Kuvaaja: Sara Laitinen 2020."
-            ]
-       },
-       "Hiomo": {
-            "Title": "Hiomo",
-            "InfoCards": [
-                 "Hiomo card 1 FI",
-                 "Hiomo card 2 FI"
-            ],
-            "ImageDescs": [
-               "Hiomo. Kuvaaja: Sara Laitinen 2020.",
-               "Hiomo. Kuvaaja: Sara Laitinen 2020.",
-               "Hiomo. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
-               "Hiomon moottori. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
-               "Hiomon sisältä. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
-               "Hiomon sisältä. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
-               "Hiomon sisältä. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
-               "Hiomon sisältä. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
-               "Hiomon sisältä. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988."
-            ]
-       },
-       "Lintuhoitola": {
-            "Title": "Lintuhoitola",
-            "InfoCards": [
-               "Pyhtään lintuhoitola hoivaa ja suojelee loukkaantuneita, sairaita tai muuten avun tarpeessa olevia luonnonvaraisia eläimiä, tavoitteenaan palauttaa ne takaisin luontoon. Lintuhoitola suojelee lintujen lisäksi pieniä nisäkkäitä, kuten siilejä ja oravia.£\n\nPyhtään lintuhoitola on perustettu kesäkuussa 1998 vesilintujen hoitamiseen. Tarkoituksena oli myös varautua mahdollisiin merellä tapahtuviin öljykatastrofeihin ja niiden vahingoittamiin lintuihin. Arto ja Hannele Hokkanen ovat perheensä kanssa hoitaneet lintuhoitolaa alusta asti.£\n\nLintuhoitolan tavoitteena on päästää hoidetut eläimet takaisin luontoon, mutta joissakin tapauksissa lintuja on jäänyt lintuhoitolaan loppuiäkseen. Ulkotarhat ovat pääsääntöisesti varattu juuri lintuhoitolan kestoasukeille. Ulkotarha on vierailijoille avoin paikka tutustua hoitolan lintuihin aitojen takaa."
-            ],
-            "ImageDescs": [
-               "Lintuhoitola. Kuvaaja: Sara Laitinen 2020.",
-               "Lintuhoitola. Kuvaaja: Sara Laitinen 2020.",
-               "Lintuhoitola. Kuvaaja: Sara Laitinen 2020.",
-               "Lintuhoitola. Kuvaaja: Sara Laitinen 2020."
-            ]
-       },
-       "Tallirakennus": {
-            "Title": "Tallirakennus",
-            "InfoCards": [
-                 "Pakkausmuseon kokonaisuuteen kuuluu myös ulkomaalaisia pakkaustuotteita esittelevä talli. Tallista löytyy myös monenlaista muuta nähtävää, kuten vanhoja puhelimia, leluja, kirjelehtiöiden kansikuvia ja metsästyskiesejä. Talli toimi puuhiomon aikana alueen työhevosten lepopaikkana, ja se uusittiin kokonaan remontin yhteydessä."
-            ],
-            "ImageDescs": [
-               "Tallirakennus. Kuvaaja: Sara Laitinen 2020.",
-               "Tallirakennus. Kuvaaja: Sara Laitinen 2020.",
-               "Tallirakennus. Kuvaaja: Sara Laitinen 2020.",
-               "Tallirakennus. Kuvaaja: Sara Laitinen 2020.",
-               "Tallirakennus. Kuvaaja: Sara Laitinen 2020.",
-               "Tallirakennus. Kuvaaja: Sara Laitinen 2020."
-            ]
-       },
-       "Hallirakennus": {
-            "Title": "Hallirakennus",
-            "InfoCards": [
-                 "Vanha tehdashalli toimii nykyäään taiteen ja kulttuurin toimipisteenä. Stockforsissa vuosittain järjestettävä Art Fair -taidenäyttely on esitellyt taiteilijoiden töitä tehtaan tiloissa jo vuodesta 2004 lähtien."
-            ]
-       },
-
-       "Colombier": {
-          "Title": "Colombier Finland Oy",
-          "InfoCards": [
-               "Colombier Finland Oy on vuonna 1973 perustettu osakeyhtiö. Yhtiön pääasiallinen toiminta on paperin valmistus ja jalostus. Colombierin paperijalostusta tehdään Suomen lisäksi myös Hollannissa, Englannissa ja Espanjassa, jonka lisäksi yhtiöllä on toimipisteitä Saksassa, Venäjällä ja Puolassa.  Colombierilla on maailman suurimpia brändejä toimeksiantajina.£\n\nVaikka yhtiö on hyvin kansainvälinen, sen toiminta Pyhtäällä jatkuu, ja Pyhtään kunta on ollut yhtiölle aktiivinen kumppani kasvuinvestoinneissa.£\n\nVuonna 2018 yhtiö osallistui NextGen Cup kilpailuun, jonka tarkoituksena oli löytää ratkaisu muovin käytön vähentämiselle.  Colombier Finland pääsi 12 voittajan joukkoon suunnittelemillaam kupeilla, ja kilpailu toi yhtiölle mainetta.£\n\nYhtiö sai vuonna 2019 Pyhtään yrityspalkinnon kansainvälisyyden, kasvuhakuisuuden ja ilmastonmuutoksen vastaisen toimintansa perusteella. Colombier Finland Oy kehittää jatkuvasti tuotteitaan ympäristöystävällisimmiksi. Yhtiö on luonut mm. Colombier Barrier Coating – päällysmateriaalin vähentääkseen muovin käyttöä tuotannossa ja pakkauksissa."
-          ],
-          "ImageDescs": [
-               "Colombier Finland Oy. Kuvaaja: Sara Laitinen 2020.",
-               "Colombier Finland Oy. Kuvaaja: Sara Laitinen 2020.",
-               "Colombier Finland Oy. Kuvaaja: Sara Laitinen 2020.",
-               "Colombier Finland Oy. Kuvaaja: Sara Laitinen 2020."
-          ]
-     },
-     "Pyroll": {
-          "Title": "Pyroll Oy",
-          "InfoCards": [
-               "Pyroll Oy on osakeyhtiö, jonka pääasiallinen toimiala on paperin valmistus ja jalostus. Pyroll Converting, joka on yhtiön paperin jatkojalostamiseen erikoistunut yritys, on Euroopan johtavia alassaan. Sen toimipisteitä on suomalaisten paikkakuntien lisäksi Puolassa, Hollannissa ja Saksassa. Vientimaita ovat mm. Ruotsi, Latvia ja Liettua. Niiden lisäksi esimerkiksi yhtiön säkkejä viedään Venäjälle ja Tallinnaan.£\n\nPyroll Paperitukku valmistaa niin graafisia kartonkeja, pahveja, pakkauskartonkeja kuin taide- ja offsetpainopapereita.£\n\nPyroll Oy Pakkaukset on Suomen johtavia pakkausten valmistajia, jonka merkittävimpiin tuoteryhmiin kuuluu kotelot, kääreet, pussit, kassit ja säkit. Yhtiö sekä suunnittelee että valmistaa pakkauksia asiakaspalveluna.£\n\nPyroll Oy on Reino Uusitalon perustama osakeyhtiö. Yhtiön historia alkaa vuodesta 1973 Pyhtäälle perustetusta Pyhtään Paperi Oy:sta, joka arkitti kauppojen kääreitä. Hioke toimi yhtiön raaka-aineena. Vuosien 1975-76 öljykriisi avasi yhtiölle uusia mahdollisuuksia ja se löysi oman paikkansa markkinoilla. Metsäteollisuus on kasvattanut yhtiön toimintaa. Yhtiön nimi vaihdettiin Pyroll Oy:ksi vuonna 1982. Tukkuliiketoiminta alkoi vuonna 1988 ja Stockforsin teollisuusalue ostettiin vuonna 1997. Kotkan Stora Enso Oyj on ollut merkittävä toimija ja kumppani Pyroll Oy:lle.£\n\nYhtiölle on tärkeää seurata kehitystä, varsinkin kierrätysmahdollisuuksia ja ekologisuutta."
-          ],
-          "ImageDescs": [
-
-          ]
-     },
-     "Katettu_silta": {
-          "Title": "Katettu Silta",
-          "InfoCards": [
-               "Katettu Silta."
-          ],
-          "ImageDescs": [
-               "Katettu Silta. Kuvaaja: Sara Laitinen 2020.",
-               "Katettu Silta. Kuvaaja: Sara Laitinen 2020.",
-               "Katettu Silta. Kuvaaja: Sara Laitinen 2020.",
-               "Katettu Silta. Kuvaaja: Sara Laitinen 2020.",
-               "Katettu Silta. Kuvaaja: Sara Laitinen 2020."
-          ]
-     },
-
-     "StrukanSulut": {
-          "Title": "Strukan Sulut",
-          "InfoCards": [
-               "Kymijoen Pyhtään haarassa sijaitsee Strukan sulut, jotka ovat Suomen ainoat merisulut, joissa on käsikäyttöiset sulkulaitteet. Aikoinaan munkkien lohenkalastuspaikkana toimineet sulut olivat Stockforsin vastuulla tehtaan laajennettua. Puuhiomo laajensi myös Kymijokea käyttöönsä ja sulkuja käyttivätkin pääosin tehtaan puuhioketta kuljettavat proomut. Nykyään sulut ovat kaikkien aluksien käytettävissä ja niistä huolehtii Pyhtään kunta, jolle tehtävä siirtyi vuonna 1978.£\n\nKeväällä 2003 alempi sulku uusittiin kokonaan, ja ylemmästä portista uusittiin osa, ponttilaudat ja metalliosat. Uusintoja tehtiin taas vuonna 2017 molempiin portteihin.£\n\nMereltä joelle tullessa sulku tyhjennetään alaportin veivattavien sulkuluukkujen avulla ja vasta sitten ajetaan veneellä sulkuun. Sulun täyttö tapahtuu avaamalla yläportin sulkuluukut. Veneilijän täytyy odottaa veden nousua joen pinnan tasalle ennen kuin matkan jatkaminen onnistuu. toimintajärjestys on päinvastainen joelta merelle tultaessa. Sulun pituus on 25 metriä ja leveys 8 metriä. Putouskorkeus on kaksi metriä ja väylän syvyys ainakin 1,2 metriä."
-          ],
-          "ImageDescs": [
-               "Strukan Sulut. Kuvaaja: Sara Laitinen 2020.",
-               "Strukan Sulut. Kuvaaja: Sara Laitinen 2020.",
-               "Strukan Sulut. Kuvaaja: Sara Laitinen 2020.",
-               "Strukan Sulut. Kuvaaja: Sara Laitinen 2020.",
-               "Strukan Sulut. Kuvaaja: Sara Laitinen 2020.",
-               "Strukan Sulut. Kuvaaja: Sara Laitinen 2020."
-          ]
-     },
-
-       "History": {
-          "Title": "Stockforsin historia",
-          "InfoCards": [
-               "Puuhiomo, perustettu vuonna 1901. Stockforsin tiloissa toimi saha vuosina 1906 – 1966 ja sen omistuksessa oli myös metsiä ja vesivoimalaitoksia. Stockforsin tehdas oli Pyhtään tärkeimpiä työllistäjiä ja parhaimmillaan työllisti lähes tuhat ihmistä. Sahatavara ja hioke kaupattiin suurimmaksi osaksi ulkomaille, pääosin Etelä-Amerikkaan, Yhdysvaltoihin ja Eurooppaan.£\n\nHenkilöhistoriaa:£\n\nNorjalaissyntyiset insinööri Olaf Bülow ja konsuli Ole Nedrum ostivat Stockforsin kartanon joulukuussa 1897. Monen muun historiallisen kartanon tavoin myös Stockfors oli pitkään sukutila, jolla oli lukuisia omistajia. Kartano oli saanut alkunsa vuonna 1570, jolloin kruunu lahjoitti maa-alueen Hans Larsson Björnramille. Björnramin suvun aikana kartano pysyi vaatimattomana sivutilana, joka alkoi kukoistaa vasta Schatelowitzin suvun omistuksessa – Gustav Erik Schatelowitz laajensi aluetta rakentamalla sinne säätyläismallisen päärakennuksen ja tämän pojan Johan Gustav Schatelowitzin maine maanviljelijänä nosti Stockforsin tilan malliksi muille.  Stockforsin omistaja vaihtui jälleen vuonna 1870, jolloin tila pakkohuutokaupattiin. Uusi omistaja Gabriel Terechoff laajensi Stockforsia entisestään ostamalla naapurustosta lisää tiloja siihen. Terechoffin kuoltua tämän perilliset myivät tilan Bülowille ja Nerdrumille.£\n\nBülow ja Nerdrum kiinnostuivat Stockforsista sen sijainnin vuoksi; Kymijoen itäinen haara alkoi olla 1890-luvulla täyteen rakennettu, eikä sen kaksi lähintä läntistä haaraa kyennyt tuottamaan tarpeeksi vesivoimaa. Viidestä haarasta ”Pyhtään haara” näytti lupaavimmalta – se pystyi tarjoamaan myös paljon raaka-aineita alueen metsistä ja sen vettä hyödynsi koskien lisäksi vain Klåsaron mylly. Se tarjosi myös hyvän väylän kuljetuksille meren rannalla sijaitsevalle lastauspaikalle.£\n\nBülow ja Nerdrum laajensivat toimintaansa seuraavina kahtena vuotena ostamalla maapalan länsirannalta ja tiloja suuren putouksen, Edisforsenin, itärannalta tehdastonteiksi. Vuoden 1901 maaliskuussa saatiin lupa rakentaa Edisforsenin rannalle puuhiomo ja voima-asema Klåsaroon.  Bülow ja Nerdrum aloittivat osakkeenmerkinnän kesällä 1902 ja 16. tammikuuta 1903 Ab Stockfrosin yhtiöjärjestys vahvistettiin. Ab Stockfors otti hallintaansa Stockforsin kartanon puuhiomon sekä sen vesi- ja rantaoikeudet.£\n\nBülowin ja Nerdrumin vaikutus suomalaiseen saha- ja puunjalostusteollisuuteen oli merkittävä, varsinkin Kymenlaakson alueella. Alun perin kaksikko saapui Suomeen Kotkan Hallan sahan johtajiksi. Sahan rakentaminen alkoi vuonna 1875 ja Nerdrum isännöitsijänä ja teknisenä johtajana johti koneiden asennusta. Bülow taasen aloitti työskentelyn Hallassa neljä vuotta myöhemmin ja päätyi Nerdrumin rinnalle yhtiön isännöitsijäksi ja tämän lisäksi hänestä tuli yhtiön kaupallinen johtaja. Vuonna 1886 Nerdrum ja Bülow perustivat Kotkan tiilitehdas Oy:n ja vuonna 1907 Hovinsaaren Selluloosatehtaan. Hovinsaaren Selluloosatehtaan taloudelliset vaikeudet kuitenkin saivat Nerdrumin vetäytymään Stockforsista kaksi vuotta myöhemmin. Bülow päätyi myös myymään suurimman osan Stockforsin osakkeistaan Halla-yhtiön myynnin jälkeen ja muutettuaan pois Suomesta.£\n\nMyöhemmin Stockforsin isännöitsijäksi tuli vuonna 1909 Leonard (Lennart) Baumgartner, ja ostettuaan suurimman osan Bülowin osakkeista seitsemän vuotta myöhemmin, hänestä tuli hallituksen puheenjohtaja ja toimitusjohtaja. Vuonna 1936 Baumgartner hankki omistukseensa Ab Svartå Bruk Oy:n, toisen puuhiokkeen valmistajan, osake-enemmistön. Ab Stockfors ja Ab Svartå Bruk Oy ovat toimineet vuodesta 1974 yhtenä osakeyhtiönä, Oy Stockfors Ab:nä.£\n\nRakentaminen, menestyminen, tuotto:£\n\nMaaliskuussa 1901 aloitettiin puuhiomon ja voima-aseman rakentaminen. Rakennustyöt työllistivät parhaillaan 700 – 1 000 henkilöä. Rakennuksia ja koneiston asennuksia johti vuosina 1901-1902 ruotsalainen insinööri Daniel Ullgren. Ullgren kirjoitti myöhemmin omat muistelmansa ajastaan Stockforsissa. Hän laati vain viikossa suunnitelman, josta kehittyi Stockforsin puuhiomo. Ullgren kuvaili urakkaa rajusti vaihtelevaksi; ”--- Ensin pelkkiä miellyttäviä päiviä, kaikki vaikutti suurine tilauksineen selvältä. Sitten Koivukoski-hanke ja katkera pettymys ja huolestuneisuus seurauksista, ja sitten taas kaikki yhdellä iskulla hyvin, ja paljon suurempi tilaus kuin mistä alun perin oli ollut kyse ...”.£\n\nEsimerkiksi padon rakennuksessa oli ongelmia talvella 1901-1902. Pato rakennettiin graniittilohkareista ja sementistä, ja tulta pidettiin yllä jatkuvasti, ettei yksikään lohkare jäätyisi. Pato kuitenkin vuosi ja keväällä 1903 tilanne paheni. Hiomo säilyi, mutta padon murtuminen aiheutti kalliit kulut sekä tuotannon hetkellisen pysähtymisen.£\n\nMyöhemmin rakennuksia ja asennuksia johtamaan ryhtyi norjalainen Nysted.£\n\nTehtaan valmistuessa se oli yksi maan suurimmista puuhiomoista. Luokittelu perustui konekannan perusosien, eli hiomakoneiden mukaan, joita Stockforsissa oli peräti kahdeksan. Yhteensä tehtaassa toimivia koneita oli viitisenkymmentä. Kaksi kuorimakonetta, kuusi turpiinia, kahdeksan hiomakonetta, kaksitoista lajittelijaa, seitsemän raffinööriä (käytettiin karkeamman massan uudelleenjauhatukseen lajittimen jälkeen) ja kaksitoista ylösottokonetta.£\n\nVuonna 1902 Stockfors oli Suomen kolmanneksi suurin puuhiomo. Neljä vuotta myöhemmin tehtaan yhteyteen perustettiin saha. Sahan valmistuminen mahdollisti sellaisten metsien ostot, joista saatiin muitakin puita kuin hiokepuita ja sahan jätettä pystyttiin käyttämään päälaitoksen polttoainehuollon apuna. Sahalla oli vaikeuksia alussa, mutta vuodesta 1911 se alkoi tuottaa voittoa. Laman aikana sahan käyttöä vähennettiin rajusti, mutta sen toiminta vakautui vuosina 1936-38. Vuosi 1937 oli myös sahan, että hiomon ennätysvuosi niin tuotantovolyymin kuin taloudellisen tuloksen kannalta.£\n\nVoimalaitos Klåsarö rakennettiin vuonna 1907 ja se oli puuhiomon tapaan Suomen suurimpia voimalaitoksia. Parhaillaan sen teho oli 1 600 kW:ia ja se tuotti sähköä tehtaalle, Pyhtään talouksille ja vuosina 1919 – 1924 myös Helsingin kaupungille. Voimalaitosta tarvittiin, kun huomattiin, ettei vesivoima ollutkaan niin helposti käytettävissä kuin aluksi luultiin eikä puuhiomoa voitu käyttää sen täyden kapasiteetin hyödyllä. Stockfors muutti pikkuhiljaa suurimman osan puuhiomon koneistosta sähkökäyttöiseksi, mutta vesivoima pysyi yhä tärkeänä osana toimivuutta.£\n\nVuosina 1902 – 1912 rakennettiin tehtaan vierelle työntekijöiden asuinrakennuksia, ”kasarmeja”. Rakennuksia oli yhteensä seitsemän, ja niissä asui parhaillaan satoja työntekijöitä.£\n\nVuosina 1926 – 1932 tehdastiloja laajennettiin ja Stockfors teki suuria investointeja. Aikaa kutsutaan Stockforsin modernisointikaudeksi, jolloin se otti kiinni aiemman teknisen jälkeenjääneisyytensä. Tehtaan tasainen kasvu jatkui sotien jälkeen 60-luvulla.£\n\nSahatavaralla oli jatkuvaa pyyntöä Tanskassa, Hollannissa, Belgiassa, Englannissa ja Irlannissa aina 1960-luvulle asti. Tuotantokustannusten noustua saha kuitenkin lakkautettiin vuonna 1966.£\n\nPohjois- ja Etelä-Amerikka jäivät pois Stockforsin viennistä 60-luvuun kuluessa, ja vientimaiksi vaihtuivat sen sijaan useampi Aasian maa, kuten Kiina ja Pakistan, mutta niiden tilaukset eivät pystyneet korvaamaan Amerikan markkinoiden loppumista. 1960- ja 1970-luvuilla Stockforsin myynti keskittyi lähimpiin ostajamaihin Euroopassa, kuten Englantiin, Portugaliin, Espanjaan, Italiaan ja Länsi-Saksaan.£\n\nVuosina 1973 ja 1974 tehdas saavutti historiansa suurimmat tuotantoluvut.£\n\nTehdas laajentui vielä tulevina vuosina; vuonna 1972 rakennettiin uusi kuorimo ja vuonna 1983 valmistui uusi voimalaitos A.Ahlström Oy:n kanssa.£\n\nVuonna 1977 tehdas joutui lomauttamaan yli sata työntekijää tuotannon romahdettua.£\n\nOy Stockfors Ab:n hiomo myytiin Enso Gutzeit Oy:lle (myöhemmin Stora Enso) vuonna 1984 ja sen toiminta lopetettiin vuonna 1988.£\n\nTuotanto:£\n\nTehtaan tuotanto aikanaan koostui pääosin märkä- ja kuivamassasta, josta suurin osa oli märkämassaa mm. markkinoiden vaatimusten, tuotantoprosessin loppuvaiheen kapasiteetin ja kannattavuusmarginaalin johdosta. 1930-luvulla siirryttiin kuitenkin tuottamaan pääosin kuivahioketta, kun tehtaalla tehtyjen investointien jälkeen saatiin siihen hyvät tekniset edellytykset ja saatiin reklamaatioita märkähiokkeesta ja sen vaarasta homehtua pitkinä varastointikausina.£\n\nVuosina 1913-14 Stockfors suunnitteli kehittävänsä jalostustoimintaansa kartonginvalmistuksen suuntaan, mutta sota keskeytti suunnitelmat.£\n\nStockforsin myynti on aina pitkälti perustunut vientiin. Suora yhteys tehtaalta laivaussatamaan poisti tarpeen rautatiekuljetuksille. Stockforsin vuoden 1913 luettelosta löytyy tietoja yhtiön myynnistä, joka siihen aikaan keskittyi vahvasti Ranskaan, Espanjaan, Portugaliin, Italiaan ja Englantiin. Vuosituotanto oli 16 003 tonnia, josta laivaus 15 464 tonnia. Sodan jälkeen Stockfors suuntautui Keski- ja Länsi-Eurooppaan, joka lisäsi markkinoinnin vaatimuksia.£\n\nPuuhiomon ja sahan lisäksi Stockforsilla oli myös tulosyksiköitä, jotka keskittyivät maataloustuotantoon sekä muutama mylly. Vuonna 1915 nettotuloista 62% tuli hiomosta, sahasta 4%, maataloustuotannosta 25% ja myllystä 0,3%.£\n\nKoneisto:£\n\nToimintansa aikana Stockfors oli monessa asiassa edelläkävijä ja hankki uusimpia laitteita ympäri maailmaa, kuten vuonna 1927 hankitut Voith-merkkiset saksalaiset hiomakoneet, sekä 1929 saksalainen ”Miaggi”. Näitä aikaisemmin tehtaassa oli käytössä kahdeksan norjalaista hiomakonetta. Yhteensä koneita oli seitsemäntoista. Vuonna 1913 Stockfors hankki Suomen ensimmäiset kuorimarummut ja 1930-luvulla tehdas sai sille erikseen suunnitellut Kamyr-kokoojat Karhun konepajalta. Vuonna 1950 tehtaalle hankittiin Euroopan suurin Kamyr-kone, joka johti 60 naistyöntekijän irtisanomisiin. Muita Suomen ensimmäisiä olivat flashdrying- hiutalekuivausmenetelmä 1964 sekä biosuodin jätevesille vuonna 1983. Samana vuonna biosuotimen kanssa rakennettiin kuorenpolttolaitos Konus-Kessel/Bacho.£\n\nTehtaan kuivaamoa 1930-luvulla. Vanhassa tekniikassa yhden arkkierän kuivaus kesti 2-3 tuntia.£\n\nTäytön välillä työläisnaiset ehtivät ilta- tai yövuorosta vaikkapa kylälle tansseihin.£\n\nYhteisö ja elämä:£\n\nStockforsin perustaminen muutti Pyhtään elämää ja sen sosiaalista rakennetta. Pyhtään suurimmaksi osaksi ruotsinkielisen maatalousväestön luo muutti satakunta uutta työntekijää tehtaan aikana. Maalaiskylän elämä ja sen asukasmäärä muuttui nopeasti ihmisten muuttaessa sinne töiden perässä ja pois niiden loputtua. Kasvanut asukasluku toi mukanaan myös ongelmia, kuten juopottelua ja väkivaltaa. Esimerkiksi insinööri Ullgreniä oli neuvottu olemaan aseistettu liikkuessaan alueella, ja hän kuvaili viinanmyyntiä pahaksi ongelmaksi rakentajien keskuudessa.£\n\nTyöväenyhdistys Stockforsissa oli poliittisesti välillä hyvinkin radikaalisesti suuntautunut. Stockfors oli keskuspaikkana Punaisten vallalle Pyhtäällä helmikuun viidennestä toukokuun viidenteen vuonna 1918. Kymenlaakson tehdaspaikkakunnilla oli tuohon aikana tapahtunut sarja väkivaltaisuuksia, kuten Kymin tehtaalla tapahtunut 27 virkamiehen surmaaminen. Myös Stockforsissa tilanne äityi siihen, että Lennart Baumgartner ja Georg Larsson päätettiin tappaa, mutta punaisten partio luopui suunnitelmastaan.£\n\nTyöläisten sukupuolijakauma Stockforsissa vaihteli osastojen mukaan; esimerkiksi kokoomo ja kuivaamo olivat vahvasti naisvaltaisia. Palkkatasa-arvoa ei ollut, naiset saivat vuonna 1904 n. 40% miesten palkasta ja vuonna 1930 n. 60%, sillä heidän työtään ei arvostettu yhtä paljon kuin miesten.£\n\nHiomossa ja lähiosastoissa työtä oli vuorokauden ympäri, 12 tunnin vuoroissa, kunnes siirryttiin kahdeksan tunnin työpäivään 1. toukokuuta 1917. Kahdentoista tunnin vuoroja helpotti se, ettei työtahti ollut läheskään yhtä kiihkeä kuin nykyään: kuivaamon naiset saattoivat lähteä arkit ripustettuaan pariksi tunniksi kotiin tai kylälle tanssimaan ja hiomakoneen hoitaja rannalle lepäämään täytettyään koneet puulla.£\n\nTyöläisten vapaa-aikaan kuului mm. ”likviiti-markkinat”, jotka tapahtuivat joka toinen perjantai palkanmaksun jälkeen kasarmiasuntojen länsipuolella sijainneella markkinakentällä. Tehtaan vuoksi Pyhtäälle oli myös perustettu sosialistinen työväenyhdistys, joka järjesti usein iltamia. Iltaimissia tanssittiin ja esitettiin viihdeohjelmanumeroita.£\n\nPalkaksi Stockforsin ruukin työntekijät saivat ensimmäisten vuosien aikana käteispalkkansa lisäksi perunamaan ja ilmaiset polttopuut.£\n\nMuilta paikkakunnilta muuttaneista työntekijöistä useimmat pääsivät myös vähitellen muuttamaan yhtiön vuokra-asuntoihin. Asunnot olivat alkuperältään joko niitä, joita yhtiö oli saanut ostaessaan maa-alueita ja tiloja tai yhtiön itse rakennuttamia kasarmiryhmiä. Maa-alueiden ja tilojen mukana tulleet asunnot olivat ns. paritupia tai pienempiä yksittäistupia, joihin kuului kamari ja keittiö tai hellahuone. Kasarmit rakennettiin tehtaan koillispuolelle, ja poikkesivat yleisestä tehdaspaikkakuntien kasarmityypeistä olemalla yksikerroksisia. Yhteen asuntoon saattoi majoittua jopa 7-8 henkilöä aina 1940-luvulle asti. Normaalikokoisen asunnon kuukausivuokra vastasi kolmen päivän palkkaa.£\n\nAsutukset olivat sosiaalisesti jakautuneet työläisten aseman mukaan. Työnjohtajien, vuoromestareiden ja muiden asuinkasarmia kutsuttiin ”Pomolaksi” ja jokainen asunto sisälsi huoneen ja keittiön. Insinöörien asuinalue oli aidattu, ja isännöitsijällä oli oma huvila tehtaan yläpuolisella kukkulalla.£\n\nNykytila:£\n\nYhdeksän vuotta tehtaan lopettamisen jälkeen, vuonna 1997, tehtaan alue siirtyi yksityisomistajalle. Pyroll Oy:n omistaja Reino Uusitalo osti Stockforsin alueen ja aloitti sen kunnostamisen tehtaan konesalista. Nykyisin tehtaan tiloissa toimii pakkausmuseo (vuodesta 1998) ja Patruunantalo (vuodesta 2003). Paikka toimii myös kulttuurin ja taiteen toimipisteenä; kaarihallissa on järjestetty häitä ja tanssitapahtumia ja puuhiomon tiloissa on kesäisin vuodesta 2004 lähtien toiminut nuorten taiteilijoiden töitä esittelevä Stockfors Art Fair. Alueella on myös lintuhoitola ja karting-rata. Alue sai Kymenlaakson kulttuuriympäristöpalkinnon vuonna 2016.£\n\nStockforsin alueella toimii yhä useita yrityksiä, ja sen kasvu jatkuu tasaisesti.£\n\nOy Stockfors Ab:n tehtävä tänä päivänä on metsäomaisuuden hallinnointi ja Baumgartnerin suku on yhä Stockforsin osaomistaja. Yhtiö alkoi ostaa metsiä aktiivisesti 1920-luvulla. Yhtiön puuteollisuustoiminnan siirryttyä Enso Gutzeit Ab:lle, jäi tytäryhtiö Oy Tomas Ab hoitamaan metsätiloja. Syyskuussa 2017 yhtiön nimi muutettiin takaisin Oy Stockfors Ab:ksi historiaa kunnioittaakseen. Yhtiön visiona on talousmetsien hoito ympäristöä kunnioittaen ja parantaa sekä metsien moninaisuutta että riistan olosuhteita. Yhtiö on mm. perustanut oman FSC- sertifiointiryhmän vision toteuttamiseksi. "
-          ],
-             "ImageDescs": [
-               "Ediskoski. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
-               "Generaattorin saadin. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
-               "Hakevarasto. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
-               "Hakevarasto. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
-               "Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1913.",
-               "Ilmoitustaulu. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
-               "Kamyr kone. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
-               "Kamyr kone. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
-               "Kattilahuoneessa. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
-               "Kattilahuoneessa. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
-               "Konehalli. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
-               "Kosken pato. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto.",
-               "Joki. Kuorimo näkyy sivulla. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
-               "Kuorimo. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
-               "Kuorimoalue ja puhdistamo. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
-               "Kuorimoalue. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
-               "Kuorimoalue. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
-               "Kuorimoalue. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
-               "Kuorimoalue. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
-               "Kuorimoalue. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
-               "Kuorimossa. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
-               "Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto.",
-               "Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto.",
-               "Laboratorio. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
-               "Laboratorio. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988."
-              
-            ]
+     "Buildings": {
+          "Patruunantalo": {
+               "Title": "Patruunantalo",
+               "InfoCards": [
+                    "Patruunantalo oli alun perin rakennettu vuonna 1903 tehtaanjohtajan eli isännöitsijän asunnoksi. Huvilana talo oli hyvin kartanomainen. Patruunantalon rakenne muuttui tehtaan tarpeiden mukaan, ja siihen saatettiin tarvittaessa rakentaa esimerkiksi lisää konttoreita. Stockforsin pääkonttori toimi tehtaan yhteydessä vuoteen 1918 saakka, jolloin se päätettiin siirtää Loviisaan.£\n\nSota-aikana Patruunantalo toimi arestipaikkana isännöitsijälle. Punaisten päättäessä toteuttaa suunnitelmansa Lennart Baumgartnerin ja Georg Larssonin taposta, hakivat he juuri Patruunantalosta isännöitsijän kohtaamaan tuomionsa.£\n\nTehtaiden lopetettua vuonna 1984 alue pääsi ränsistymään niin pahasti, että Patruunantalon päärakennuksen sisällä kasvoi koivuja. Alueen siirryttyä yksityiselle omistajalle alettiin myös Patruunantaloa kunnostamaan. Remontissa pyrittiin entisöimään kartano ja sen tyyli mahdollisimman todentuntuisesti.£\n\nPatruunantalo toimi jonkin aikaa kartanohotellina, joka vaikutti sen sisustuselementteihin.£\n\nMyöhemmin Patruunantalossa on toiminut hotelli- ja tilausravintola vuodesta 2003 lähtien. Patruunantalossa on muunneltavia koulutus-, kokous- ja juhlatiloja 5 – 100 henkilölle. Majoitustiloina Patruunantalossa toimii yhteensä 22 huonetta, jotka ovat jakautuneet kolmeen eri rakennukseen; Patruunantaloon, Hunajataloon (entinen talous- ja säilytystila viljalle ja ruualle) ja Paloasemaan. Patruunantalosta löytyy 8 majoitushuonetta kokoustilojen lisäksi, Viereisestä Hunajatalossa 10 majoitushuonetta ja Paloaseman yläkerrasta osa."
+               ],
+               "ImageDescs": [
+                    "Patruunantalo. Kuvaaja: Sara Laitinen 2020.",
+                    "Patruunantalo. Kuvaaja: Sara Laitinen 2020.",
+                    "Patruunantalo. Kuvaaja: Sara Laitinen 2020.",
+                    "Patruunantalo. Kuvaaja: Sara Laitinen 2020.",
+                    "Patruunantalo. Kuvaaja: Sara Laitinen 2020.",
+                    "Patruunantalo. Kuvaaja: Sara Laitinen 2020.",
+                    "Patruunantalo. Kuvaaja: Sara Laitinen 2020.",
+                    "Patruunantalo. Kuvaaja: Sara Laitinen 2020.",
+                    "Patruunantalo. Kuvaaja: Sara Laitinen 2020.",
+                    "Patruunantalo. Kuvaaja: Sara Laitinen 2020.",
+                    "Patruunantalo. Kuvaaja: Sara Laitinen 2020.",
+                    "Patruunantalo. Kuvaaja: Sara Laitinen 2020.",
+                    "Patruunantalo. Kuvaaja: Sara Laitinen 2020.",
+                    "Patruunantalo. Kuvaaja: Sara Laitinen 2020.",
+                    "Patruunantalo. Kuvaaja: Sara Laitinen 2020.",
+                    "Patruunantalo. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988."
+               ]
           },
-          
-        "Ohjeet": {
-            "Title": "Ohjeet",
-            "InfoCards": "Infokortit. Infokortit sisältävät yleistietoa kohteesta ja sen historiasta.",
-            "Album": "Albumi. Kuvia kohteesta.",
-            "Panoramas": "Panoraama. 360 asteen panoraamanäkymä kohteesta.",
-            "Game": "Peli. Tietyistä kohteista löytyy erilaisia minipelejä, kuten muisti- tai palapelejä.",
-            "Web": "Verkkosivut. Tästä voit päästä kohteen yrityksen verkkosivuille."
-        },
-        "Back": "Poistu"
-    },
-    "MainMenu": {
-        "OpeningHeader": "TERVETULOA STOCKFORS KARTALLA - NETTISOVELLUKSEEN",
-        "OpeningText": "Stockforsin hiomoalue on Pyhtäällä sijaitseva kulttuurihistoriallisesti rikas alue ja merkittävä osa sen historiaa. Puuhiomo oli 1960-luvulle asti Pyhtään suurin työllistäjä, joka vaikutti kirkonkylän kasvuun ja elämään huomattavasti.£\n\nEntisöintitöiden jälkeen 2000-luvulla alue on täynnä pienyrityksiä, kulttuuria ja taidetta. Vuosittainen Stockfors Art Fair -taidenäyttely pidetään Stockforsin halleissa. Kaarihallia voi vuokrata tapahtumakäyttöön ja alueella toimii myös hotelli Patruunantalossa, pakkausmuseo sekä lintuhoitola.£\n\nTämän sivuston tarkoituksena on tuoda alue jokaiselle tutuksi erilaisten tekstien, kuvien ja pelien avulla! ",
-        "HelpHeader": "OHJEET",
-        "HelpText": "Sovellus toimii keinona tutustua Pyhtään Stockforsin historialliseen tehdasalueeseen sekä alueella toimiviin yrityksiin. Tavoitteena on oppia alueen historiasta, miljööstä ja kulttuurista.£\n\nPelaajahahmo liikkuu WASD-näppäimillä Stockforsin aluetta kuvaavalla kartalla. Hiirellä klikkaamalla taloja tai yrityksien logoja pääset tutustumaan niihin paremmin avautuvan infoikkunan avulla.£\n\nInfoikkunassa pystyt lukemaan kohteen historiasta, katsomaan kuvia sekä kokeilemaan 360 asteen panoraamaa tilasta. Tietyistä kohteista löytyy myös erilaisia pelejä, kuten pala- ja muistipelejä Stockforsiin liittyen.",
-        "NewGame": "Aloita peli",
-        "ContinueGame": "Jatka peliä",
-        "Back": "Takaisin"
-    },
-    "OptionsMenu": {
-        "Title": "Asetukset",
-        "Close": "Sulje",
-        "Credits": "Tekijät",
-        "Sound": "Äänet",
-        "Music": "Musiikki",
-        "Fullscreen": "Koko ruutu",
-        "CreditsText": "Erna Gronow - Projektipäällikkö\nSara Laitinen - Grafiikka, Valokuvaus\nAnna-Maria Närä - Grafiikka, Tekstit\nJere Loukoila - Ohjelmointi\nAnton Kujansuu - Ohjelmointi\nPyhtään Perinnepiiri - Yhteistyökumppani\n\nInfokorttien Lähteet:\nPuuhioketta ja metallituotteita. Stockfors 80 vuotta. – Olle Siren \nhttp://stockfors.fi/\nhttp://www.matkallakotimaassa.fi/pakkausmuseo.html\nhttps://kylat.blog/2017/07/05/pakkausmuseo-stockfors/\nhttps://yle.fi/uutiset/3-9166250\nhttps://yle.fi/uutiset/3-10578449\nhttps://kylat.blog/2017/05/25/pyhtaan-lintuhoitola-kirkonkyla/\nhttps://www.pyhtaanseurakunta.fi/kirkot-ja-tilat/pyhtaan-kirkko\nhttps://yle.fi/uutiset/3-9600315\nhttps://kotteria.com/vuokramokit/strukan-sulut/\nhttp://www.kartingclub.fi/"
-    },
-    "Muistipeli": {
-        "Easy": "Helppo",
-        "Normal": "Normaali",
-        "Hard": "Vaikea",
-        "Exit": "Poistu",
-        "Win": "Voitit pelin. Kääntöjen määrä: ",
-        "HighScore": "Ennätys: ",
-        "Restart": "Aloita uudelleen.",
-        "Back": "Aloita uudelleen",
-        "Title": "MUISTIPELI",
-        "Description": "Klassinen muistipeli jossa käännetään kortteja ja yritetään löytää kaikki saman kortin parit mahdollisimman pienellä määrällä yrityksiä. Korttien kuvina on käytetty Pakkausmuseosta löytyviä vanhoja tuotteita. Valitse vain alhaalta haluamasi vaikeustaso ja peli alkaa. ",
-        "Congratz": "Onnittelut!"
-    },
-    "Palapeli": {
-        "Easy": "Helppo",
-        "Normal": "Normaali",
-        "Hard": "Vaikea",
-        "Exit": "Poistu",
-        "BackToMenu": "Päävalikkoon",
-        "Win": "Voitit pelin!",
-        "Restart": "Aloita uudelleen.",
-        "TotalMoves": "Siirtoja yhteensä: ",
-        "Title": "LIUKUPALAPELI",
-        "Description": "Liukupalapeli, jossa siirrellään paloja kunnes ne muodostavat yhtenäisen kuvan. Klikkaa palaa niin se siirtyy vieressä olevaan tyhjään kohtaan. Valitse alhaalta vaikeustaso niin peli alkaa."
-    },
-    "Stockfors": {
-        "Intro1": "Hei tervetuloa Stockforsiin.",
-        "Intro2": "Voit liikuttaa minua nuolinäppäimillä tai hiiren klikkauksilla.",
-        "Intro3": "Lähestymällä nuolien osoittamia sisäänkäyntejä voit astua sisään eri kohteisiin.",
-        "Intro4": "Pidä hauskaa!",
-        "Struka": "STRUKAN SULUT",
-        "Kirkko": "PYHTÄÄN KIRKKO"
-    }
+          "Pakkausmuseo": {
+               "Title": "PakkausMuseo",
+               "InfoCards": [
+                    "Ennen kunnostamistaan pakkausmuseon päärakennus oli toiminut kunnan harrastetiloina ja tehtaan aikoina talomiehen asuntona. Mittaavan remontin jälkeen sen avajaisia vietettiin elokuussa 1998. Pakkausmuseossa on esillä erilaisia menneiden vuosikymmenien kotimaisia pakkauksia ja paperituotteita 1900-luvulta. Merkittävä määrä tuotteista on hankittu yksityiseltä keräilijältä Veli Koskelta. Myös Rafael Haarlan painotuotteita, kuten menneiden vuosien joulukääremallistoja, löytyy museosta. Pakkausmuseo on ajan kuluessa kasvanut omistajien oman keräilyn ja lahjoitusten myötä.£\n\nPakkausmuseon kokonaisuuteen kuuluu myös ulkomaalaisia pakkaustuotteita esittelevä talli. Tallista löytyy myös monenlaista muuta nähtävää, kuten vanhoja puhelimia, leluja, kirjelehtiöiden kansikuvia ja metsästyskiesejä. Talli toimi puuhiomon aikana alueen työhevosten lepopaikkana, ja se uusittiin kokonaan remontin yhteydessä. "
+               ],
+               "ImageDescs": [
+                    "Pakkausmuseo. Kuvaaja: Sara Laitinen 2020.",
+                    "Pakkausmuseo. Kuvaaja: Sara Laitinen 2020.",
+                    "Pakkausmuseo. Kuvaaja: Sara Laitinen 2020.",
+                    "Pakkausmuseo. Kuvaaja: Sara Laitinen 2020."
+               ]
+          },
+          "Kaarihalli": {
+               "Title": "Kaarihalli",
+               "InfoCards": [
+                    "Stockforsin historiallinen Kaarihalli on nykyisin vapaa vuokrattavaksi, ja siellä on nähty useita häitä ja tanssitapahtumia."
+               ],
+               "ImageDescs": [
+                    "Kaarihalli. Kuvaaja: Sara Laitinen 2020.",
+                    "Kaarihalli. Kuvaaja: Sara Laitinen 2020.",
+                    "Kaarihalli. Kuvaaja: Sara Laitinen 2020."
+               ]
+          },
+          "Paloasema": {
+               "Title": "Paloasema",
+               "InfoCards": [
+                    "Pyhtään paloasema ja palokunta perustettiin aikoinaan juuri Stockforsin tehdasta varten. Myöhemmin palokunta on keskitetty tarpeen mukaan. Nykyisin paloasemalla pidetään kesäisin vaihtelevia näyttelyitä ja sen yläkerrasta löytyy majoitustiloja."
+               ],
+               "ImageDescs": [
+                    "Paloasema. Kuvaaja: Sara Laitinen 2020.",
+                    "Paloasema. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
+                    "Paloasema. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
+                    "Paloasema. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988."
+               ]
+          },
+          "Piippuhalli": {
+               "Title": "Piippuhalli",
+               "InfoCards": [
+                    "Pakkausmuseo card 1 FI",
+                    "Pakkausmuseo card 2 FI"
+               ],
+               "ImageDescs": [
+                    "Piippuhalli. Kuvaaja: Sara Laitinen 2020.",
+                    "Piippuhalli. Kuvaaja: Sara Laitinen 2020.",
+                    "Piippuhalli. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
+                    "Piippuhalli. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto.",
+                    "Piippuhalli. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
+                    "Piippuhalli. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988."
+               ]
+          },
+          "Hunajatalo": {
+               "Title": "Hunajatalo",
+               "InfoCards": [
+                    "Hunajatalo toimi aikoinaan talous- ja säilytystilana viljalle ja ruualle. Nykyisin se toimii Patruunantalon mukana majoituspaikkana, josta löytyy 10 vuokrattavaa majoitustilaa."
+               ],
+               "ImageDescs": [
+                    "Hunajatalo. Kuvaaja: Sara Laitinen 2020.",
+                    "Hunajatalo. Kuvaaja: Sara Laitinen 2020.",
+                    "Hunajatalo. Kuvaaja: Sara Laitinen 2020."
+               ]
+          },
+          "Hiomo": {
+               "Title": "Hiomo",
+               "InfoCards": [
+                    "Hiomo card 1 FI",
+                    "Hiomo card 2 FI"
+               ],
+               "ImageDescs": [
+                    "Hiomo. Kuvaaja: Sara Laitinen 2020.",
+                    "Hiomo. Kuvaaja: Sara Laitinen 2020.",
+                    "Hiomo. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
+                    "Hiomon moottori. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
+                    "Hiomon sisältä. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
+                    "Hiomon sisältä. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
+                    "Hiomon sisältä. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
+                    "Hiomon sisältä. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
+                    "Hiomon sisältä. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988."
+               ]
+          },
+          "Lintuhoitola": {
+               "Title": "Lintuhoitola",
+               "InfoCards": [
+                    "Pyhtään lintuhoitola hoivaa ja suojelee loukkaantuneita, sairaita tai muuten avun tarpeessa olevia luonnonvaraisia eläimiä, tavoitteenaan palauttaa ne takaisin luontoon. Lintuhoitola suojelee lintujen lisäksi pieniä nisäkkäitä, kuten siilejä ja oravia.£\n\nPyhtään lintuhoitola on perustettu kesäkuussa 1998 vesilintujen hoitamiseen. Tarkoituksena oli myös varautua mahdollisiin merellä tapahtuviin öljykatastrofeihin ja niiden vahingoittamiin lintuihin. Arto ja Hannele Hokkanen ovat perheensä kanssa hoitaneet lintuhoitolaa alusta asti.£\n\nLintuhoitolan tavoitteena on päästää hoidetut eläimet takaisin luontoon, mutta joissakin tapauksissa lintuja on jäänyt lintuhoitolaan loppuiäkseen. Ulkotarhat ovat pääsääntöisesti varattu juuri lintuhoitolan kestoasukeille. Ulkotarha on vierailijoille avoin paikka tutustua hoitolan lintuihin aitojen takaa."
+               ],
+               "ImageDescs": [
+                    "Lintuhoitola. Kuvaaja: Sara Laitinen 2020.",
+                    "Lintuhoitola. Kuvaaja: Sara Laitinen 2020.",
+                    "Lintuhoitola. Kuvaaja: Sara Laitinen 2020.",
+                    "Lintuhoitola. Kuvaaja: Sara Laitinen 2020."
+               ]
+          },
+          "Tallirakennus": {
+               "Title": "Tallirakennus",
+               "InfoCards": [
+                    "Pakkausmuseon kokonaisuuteen kuuluu myös ulkomaalaisia pakkaustuotteita esittelevä talli. Tallista löytyy myös monenlaista muuta nähtävää, kuten vanhoja puhelimia, leluja, kirjelehtiöiden kansikuvia ja metsästyskiesejä. Talli toimi puuhiomon aikana alueen työhevosten lepopaikkana, ja se uusittiin kokonaan remontin yhteydessä."
+               ],
+               "ImageDescs": [
+                    "Tallirakennus. Kuvaaja: Sara Laitinen 2020.",
+                    "Tallirakennus. Kuvaaja: Sara Laitinen 2020.",
+                    "Tallirakennus. Kuvaaja: Sara Laitinen 2020.",
+                    "Tallirakennus. Kuvaaja: Sara Laitinen 2020.",
+                    "Tallirakennus. Kuvaaja: Sara Laitinen 2020.",
+                    "Tallirakennus. Kuvaaja: Sara Laitinen 2020."
+               ]
+          },
+          "Hallirakennus": {
+               "Title": "Hallirakennus",
+               "InfoCards": [
+                    "Vanha tehdashalli toimii nykyäään taiteen ja kulttuurin toimipisteenä. Stockforsissa vuosittain järjestettävä Art Fair -taidenäyttely on esitellyt taiteilijoiden töitä tehtaan tiloissa jo vuodesta 2004 lähtien."
+               ]
+          },
+          "Colombier": {
+               "Title": "Colombier Finland Oy",
+               "InfoCards": [
+                    "Colombier Finland Oy on vuonna 1973 perustettu osakeyhtiö. Yhtiön pääasiallinen toiminta on paperin valmistus ja jalostus. Colombierin paperijalostusta tehdään Suomen lisäksi myös Hollannissa, Englannissa ja Espanjassa, jonka lisäksi yhtiöllä on toimipisteitä Saksassa, Venäjällä ja Puolassa.  Colombierilla on maailman suurimpia brändejä toimeksiantajina.£\n\nVaikka yhtiö on hyvin kansainvälinen, sen toiminta Pyhtäällä jatkuu, ja Pyhtään kunta on ollut yhtiölle aktiivinen kumppani kasvuinvestoinneissa.£\n\nVuonna 2018 yhtiö osallistui NextGen Cup kilpailuun, jonka tarkoituksena oli löytää ratkaisu muovin käytön vähentämiselle.  Colombier Finland pääsi 12 voittajan joukkoon suunnittelemillaam kupeilla, ja kilpailu toi yhtiölle mainetta.£\n\nYhtiö sai vuonna 2019 Pyhtään yrityspalkinnon kansainvälisyyden, kasvuhakuisuuden ja ilmastonmuutoksen vastaisen toimintansa perusteella. Colombier Finland Oy kehittää jatkuvasti tuotteitaan ympäristöystävällisimmiksi. Yhtiö on luonut mm. Colombier Barrier Coating – päällysmateriaalin vähentääkseen muovin käyttöä tuotannossa ja pakkauksissa."
+               ],
+               "ImageDescs": [
+                    "Colombier Finland Oy. Kuvaaja: Sara Laitinen 2020.",
+                    "Colombier Finland Oy. Kuvaaja: Sara Laitinen 2020.",
+                    "Colombier Finland Oy. Kuvaaja: Sara Laitinen 2020.",
+                    "Colombier Finland Oy. Kuvaaja: Sara Laitinen 2020."
+               ]
+          },
+          "Pyroll": {
+               "Title": "Pyroll Oy",
+               "InfoCards": [
+                    "Pyroll Oy on osakeyhtiö, jonka pääasiallinen toimiala on paperin valmistus ja jalostus. Pyroll Converting, joka on yhtiön paperin jatkojalostamiseen erikoistunut yritys, on Euroopan johtavia alassaan. Sen toimipisteitä on suomalaisten paikkakuntien lisäksi Puolassa, Hollannissa ja Saksassa. Vientimaita ovat mm. Ruotsi, Latvia ja Liettua. Niiden lisäksi esimerkiksi yhtiön säkkejä viedään Venäjälle ja Tallinnaan.£\n\nPyroll Paperitukku valmistaa niin graafisia kartonkeja, pahveja, pakkauskartonkeja kuin taide- ja offsetpainopapereita.£\n\nPyroll Oy Pakkaukset on Suomen johtavia pakkausten valmistajia, jonka merkittävimpiin tuoteryhmiin kuuluu kotelot, kääreet, pussit, kassit ja säkit. Yhtiö sekä suunnittelee että valmistaa pakkauksia asiakaspalveluna.£\n\nPyroll Oy on Reino Uusitalon perustama osakeyhtiö. Yhtiön historia alkaa vuodesta 1973 Pyhtäälle perustetusta Pyhtään Paperi Oy:sta, joka arkitti kauppojen kääreitä. Hioke toimi yhtiön raaka-aineena. Vuosien 1975-76 öljykriisi avasi yhtiölle uusia mahdollisuuksia ja se löysi oman paikkansa markkinoilla. Metsäteollisuus on kasvattanut yhtiön toimintaa. Yhtiön nimi vaihdettiin Pyroll Oy:ksi vuonna 1982. Tukkuliiketoiminta alkoi vuonna 1988 ja Stockforsin teollisuusalue ostettiin vuonna 1997. Kotkan Stora Enso Oyj on ollut merkittävä toimija ja kumppani Pyroll Oy:lle.£\n\nYhtiölle on tärkeää seurata kehitystä, varsinkin kierrätysmahdollisuuksia ja ekologisuutta."
+               ],
+               "ImageDescs": []
+          },
+          "Katettu_silta": {
+               "Title": "Katettu Silta",
+               "InfoCards": [
+                    "Katettu Silta."
+               ],
+               "ImageDescs": [
+                    "Katettu Silta. Kuvaaja: Sara Laitinen 2020.",
+                    "Katettu Silta. Kuvaaja: Sara Laitinen 2020.",
+                    "Katettu Silta. Kuvaaja: Sara Laitinen 2020.",
+                    "Katettu Silta. Kuvaaja: Sara Laitinen 2020.",
+                    "Katettu Silta. Kuvaaja: Sara Laitinen 2020."
+               ]
+          },
+          "StrukanSulut": {
+               "Title": "Strukan Sulut",
+               "InfoCards": [
+                    "Kymijoen Pyhtään haarassa sijaitsee Strukan sulut, jotka ovat Suomen ainoat merisulut, joissa on käsikäyttöiset sulkulaitteet. Aikoinaan munkkien lohenkalastuspaikkana toimineet sulut olivat Stockforsin vastuulla tehtaan laajennettua. Puuhiomo laajensi myös Kymijokea käyttöönsä ja sulkuja käyttivätkin pääosin tehtaan puuhioketta kuljettavat proomut. Nykyään sulut ovat kaikkien aluksien käytettävissä ja niistä huolehtii Pyhtään kunta, jolle tehtävä siirtyi vuonna 1978.£\n\nKeväällä 2003 alempi sulku uusittiin kokonaan, ja ylemmästä portista uusittiin osa, ponttilaudat ja metalliosat. Uusintoja tehtiin taas vuonna 2017 molempiin portteihin.£\n\nMereltä joelle tullessa sulku tyhjennetään alaportin veivattavien sulkuluukkujen avulla ja vasta sitten ajetaan veneellä sulkuun. Sulun täyttö tapahtuu avaamalla yläportin sulkuluukut. Veneilijän täytyy odottaa veden nousua joen pinnan tasalle ennen kuin matkan jatkaminen onnistuu. toimintajärjestys on päinvastainen joelta merelle tultaessa. Sulun pituus on 25 metriä ja leveys 8 metriä. Putouskorkeus on kaksi metriä ja väylän syvyys ainakin 1,2 metriä."
+               ],
+               "ImageDescs": [
+                    "Strukan Sulut. Kuvaaja: Sara Laitinen 2020.",
+                    "Strukan Sulut. Kuvaaja: Sara Laitinen 2020.",
+                    "Strukan Sulut. Kuvaaja: Sara Laitinen 2020.",
+                    "Strukan Sulut. Kuvaaja: Sara Laitinen 2020.",
+                    "Strukan Sulut. Kuvaaja: Sara Laitinen 2020.",
+                    "Strukan Sulut. Kuvaaja: Sara Laitinen 2020."
+               ]
+          },
+          "Kirkko": {
+               "Title": "Pyhtään Kirkko",
+               "InfoCards": [
+                    "Pyhtään Pyhän Henrikin keskiaikainen kivikirkko palvelee kesäisin tiekirkkona. Se sijaitsee Kymijoen Pyhtään suuhaaran ja vanhan Turku-Viipuri – maantien risteyskohdassa.£\n\nKivikirkko on rakennettu noin vuonna 1460, ja sen alkuperäinen olemus on säilynyt melkein koskemattomana. Keskiaikaisen perinteen mukaan kirkon länsipääty on koristeellisempi kuin itäpääty. Kirkon ikkunoissa näkyy pohjoismaista myöhäisgotiikkaa hyvin säilyneissä tiilisauvastoissa ja pielimuurauksissa.£\n\n1600-luvulla asehuone muutettiin hautakappeliksi. 1907 kirkkoa kunnostettiin, ja sen pohjoisseinälle rakennettiin tukipilarit sekä ulko-ovi sakaristoon. 1820-luvulla kirkko sai kellotapulin ja 1998 uudet urut. Keskiajalla tehdyt seinämaalaukset peitettiin seuraavien vuosisatojen aikana. Kirkkoa on entisöity sekä vuonna 1907 että vuonna 1951. Sisäseinät puhdistettiin Museoviraston valvonnan alla vuosina 1997-1998." 
+                ],
+               "ImageDescs": [
+                    
+               ]
+          },
+          "History": {
+               "Title": "Stockforsin historia",
+               "InfoCards": [
+                    "Puuhiomo, perustettu vuonna 1901. Stockforsin tiloissa toimi saha vuosina 1906 – 1966 ja sen omistuksessa oli myös metsiä ja vesivoimalaitoksia. Stockforsin tehdas oli Pyhtään tärkeimpiä työllistäjiä ja parhaimmillaan työllisti lähes tuhat ihmistä. Sahatavara ja hioke kaupattiin suurimmaksi osaksi ulkomaille, pääosin Etelä-Amerikkaan, Yhdysvaltoihin ja Eurooppaan.£\n\nHenkilöhistoriaa:£\n\nNorjalaissyntyiset insinööri Olaf Bülow ja konsuli Ole Nedrum ostivat Stockforsin kartanon joulukuussa 1897. Monen muun historiallisen kartanon tavoin myös Stockfors oli pitkään sukutila, jolla oli lukuisia omistajia. Kartano oli saanut alkunsa vuonna 1570, jolloin kruunu lahjoitti maa-alueen Hans Larsson Björnramille. Björnramin suvun aikana kartano pysyi vaatimattomana sivutilana, joka alkoi kukoistaa vasta Schatelowitzin suvun omistuksessa – Gustav Erik Schatelowitz laajensi aluetta rakentamalla sinne säätyläismallisen päärakennuksen ja tämän pojan Johan Gustav Schatelowitzin maine maanviljelijänä nosti Stockforsin tilan malliksi muille.  Stockforsin omistaja vaihtui jälleen vuonna 1870, jolloin tila pakkohuutokaupattiin. Uusi omistaja Gabriel Terechoff laajensi Stockforsia entisestään ostamalla naapurustosta lisää tiloja siihen. Terechoffin kuoltua tämän perilliset myivät tilan Bülowille ja Nerdrumille.£\n\nBülow ja Nerdrum kiinnostuivat Stockforsista sen sijainnin vuoksi; Kymijoen itäinen haara alkoi olla 1890-luvulla täyteen rakennettu, eikä sen kaksi lähintä läntistä haaraa kyennyt tuottamaan tarpeeksi vesivoimaa. Viidestä haarasta ”Pyhtään haara” näytti lupaavimmalta – se pystyi tarjoamaan myös paljon raaka-aineita alueen metsistä ja sen vettä hyödynsi koskien lisäksi vain Klåsaron mylly. Se tarjosi myös hyvän väylän kuljetuksille meren rannalla sijaitsevalle lastauspaikalle.£\n\nBülow ja Nerdrum laajensivat toimintaansa seuraavina kahtena vuotena ostamalla maapalan länsirannalta ja tiloja suuren putouksen, Edisforsenin, itärannalta tehdastonteiksi. Vuoden 1901 maaliskuussa saatiin lupa rakentaa Edisforsenin rannalle puuhiomo ja voima-asema Klåsaroon.  Bülow ja Nerdrum aloittivat osakkeenmerkinnän kesällä 1902 ja 16. tammikuuta 1903 Ab Stockfrosin yhtiöjärjestys vahvistettiin. Ab Stockfors otti hallintaansa Stockforsin kartanon puuhiomon sekä sen vesi- ja rantaoikeudet.£\n\nBülowin ja Nerdrumin vaikutus suomalaiseen saha- ja puunjalostusteollisuuteen oli merkittävä, varsinkin Kymenlaakson alueella. Alun perin kaksikko saapui Suomeen Kotkan Hallan sahan johtajiksi. Sahan rakentaminen alkoi vuonna 1875 ja Nerdrum isännöitsijänä ja teknisenä johtajana johti koneiden asennusta. Bülow taasen aloitti työskentelyn Hallassa neljä vuotta myöhemmin ja päätyi Nerdrumin rinnalle yhtiön isännöitsijäksi ja tämän lisäksi hänestä tuli yhtiön kaupallinen johtaja. Vuonna 1886 Nerdrum ja Bülow perustivat Kotkan tiilitehdas Oy:n ja vuonna 1907 Hovinsaaren Selluloosatehtaan. Hovinsaaren Selluloosatehtaan taloudelliset vaikeudet kuitenkin saivat Nerdrumin vetäytymään Stockforsista kaksi vuotta myöhemmin. Bülow päätyi myös myymään suurimman osan Stockforsin osakkeistaan Halla-yhtiön myynnin jälkeen ja muutettuaan pois Suomesta.£\n\nMyöhemmin Stockforsin isännöitsijäksi tuli vuonna 1909 Leonard (Lennart) Baumgartner, ja ostettuaan suurimman osan Bülowin osakkeista seitsemän vuotta myöhemmin, hänestä tuli hallituksen puheenjohtaja ja toimitusjohtaja. Vuonna 1936 Baumgartner hankki omistukseensa Ab Svartå Bruk Oy:n, toisen puuhiokkeen valmistajan, osake-enemmistön. Ab Stockfors ja Ab Svartå Bruk Oy ovat toimineet vuodesta 1974 yhtenä osakeyhtiönä, Oy Stockfors Ab:nä.£\n\nRakentaminen, menestyminen, tuotto:£\n\nMaaliskuussa 1901 aloitettiin puuhiomon ja voima-aseman rakentaminen. Rakennustyöt työllistivät parhaillaan 700 – 1 000 henkilöä. Rakennuksia ja koneiston asennuksia johti vuosina 1901-1902 ruotsalainen insinööri Daniel Ullgren. Ullgren kirjoitti myöhemmin omat muistelmansa ajastaan Stockforsissa. Hän laati vain viikossa suunnitelman, josta kehittyi Stockforsin puuhiomo. Ullgren kuvaili urakkaa rajusti vaihtelevaksi; ”--- Ensin pelkkiä miellyttäviä päiviä, kaikki vaikutti suurine tilauksineen selvältä. Sitten Koivukoski-hanke ja katkera pettymys ja huolestuneisuus seurauksista, ja sitten taas kaikki yhdellä iskulla hyvin, ja paljon suurempi tilaus kuin mistä alun perin oli ollut kyse ...”.£\n\nEsimerkiksi padon rakennuksessa oli ongelmia talvella 1901-1902. Pato rakennettiin graniittilohkareista ja sementistä, ja tulta pidettiin yllä jatkuvasti, ettei yksikään lohkare jäätyisi. Pato kuitenkin vuosi ja keväällä 1903 tilanne paheni. Hiomo säilyi, mutta padon murtuminen aiheutti kalliit kulut sekä tuotannon hetkellisen pysähtymisen.£\n\nMyöhemmin rakennuksia ja asennuksia johtamaan ryhtyi norjalainen Nysted.£\n\nTehtaan valmistuessa se oli yksi maan suurimmista puuhiomoista. Luokittelu perustui konekannan perusosien, eli hiomakoneiden mukaan, joita Stockforsissa oli peräti kahdeksan. Yhteensä tehtaassa toimivia koneita oli viitisenkymmentä. Kaksi kuorimakonetta, kuusi turpiinia, kahdeksan hiomakonetta, kaksitoista lajittelijaa, seitsemän raffinööriä (käytettiin karkeamman massan uudelleenjauhatukseen lajittimen jälkeen) ja kaksitoista ylösottokonetta.£\n\nVuonna 1902 Stockfors oli Suomen kolmanneksi suurin puuhiomo. Neljä vuotta myöhemmin tehtaan yhteyteen perustettiin saha. Sahan valmistuminen mahdollisti sellaisten metsien ostot, joista saatiin muitakin puita kuin hiokepuita ja sahan jätettä pystyttiin käyttämään päälaitoksen polttoainehuollon apuna. Sahalla oli vaikeuksia alussa, mutta vuodesta 1911 se alkoi tuottaa voittoa. Laman aikana sahan käyttöä vähennettiin rajusti, mutta sen toiminta vakautui vuosina 1936-38. Vuosi 1937 oli myös sahan, että hiomon ennätysvuosi niin tuotantovolyymin kuin taloudellisen tuloksen kannalta.£\n\nVoimalaitos Klåsarö rakennettiin vuonna 1907 ja se oli puuhiomon tapaan Suomen suurimpia voimalaitoksia. Parhaillaan sen teho oli 1 600 kW:ia ja se tuotti sähköä tehtaalle, Pyhtään talouksille ja vuosina 1919 – 1924 myös Helsingin kaupungille. Voimalaitosta tarvittiin, kun huomattiin, ettei vesivoima ollutkaan niin helposti käytettävissä kuin aluksi luultiin eikä puuhiomoa voitu käyttää sen täyden kapasiteetin hyödyllä. Stockfors muutti pikkuhiljaa suurimman osan puuhiomon koneistosta sähkökäyttöiseksi, mutta vesivoima pysyi yhä tärkeänä osana toimivuutta.£\n\nVuosina 1902 – 1912 rakennettiin tehtaan vierelle työntekijöiden asuinrakennuksia, ”kasarmeja”. Rakennuksia oli yhteensä seitsemän, ja niissä asui parhaillaan satoja työntekijöitä.£\n\nVuosina 1926 – 1932 tehdastiloja laajennettiin ja Stockfors teki suuria investointeja. Aikaa kutsutaan Stockforsin modernisointikaudeksi, jolloin se otti kiinni aiemman teknisen jälkeenjääneisyytensä. Tehtaan tasainen kasvu jatkui sotien jälkeen 60-luvulla.£\n\nSahatavaralla oli jatkuvaa pyyntöä Tanskassa, Hollannissa, Belgiassa, Englannissa ja Irlannissa aina 1960-luvulle asti. Tuotantokustannusten noustua saha kuitenkin lakkautettiin vuonna 1966.£\n\nPohjois- ja Etelä-Amerikka jäivät pois Stockforsin viennistä 60-luvuun kuluessa, ja vientimaiksi vaihtuivat sen sijaan useampi Aasian maa, kuten Kiina ja Pakistan, mutta niiden tilaukset eivät pystyneet korvaamaan Amerikan markkinoiden loppumista. 1960- ja 1970-luvuilla Stockforsin myynti keskittyi lähimpiin ostajamaihin Euroopassa, kuten Englantiin, Portugaliin, Espanjaan, Italiaan ja Länsi-Saksaan.£\n\nVuosina 1973 ja 1974 tehdas saavutti historiansa suurimmat tuotantoluvut.£\n\nTehdas laajentui vielä tulevina vuosina; vuonna 1972 rakennettiin uusi kuorimo ja vuonna 1983 valmistui uusi voimalaitos A.Ahlström Oy:n kanssa.£\n\nVuonna 1977 tehdas joutui lomauttamaan yli sata työntekijää tuotannon romahdettua.£\n\nOy Stockfors Ab:n hiomo myytiin Enso Gutzeit Oy:lle (myöhemmin Stora Enso) vuonna 1984 ja sen toiminta lopetettiin vuonna 1988.£\n\nTuotanto:£\n\nTehtaan tuotanto aikanaan koostui pääosin märkä- ja kuivamassasta, josta suurin osa oli märkämassaa mm. markkinoiden vaatimusten, tuotantoprosessin loppuvaiheen kapasiteetin ja kannattavuusmarginaalin johdosta. 1930-luvulla siirryttiin kuitenkin tuottamaan pääosin kuivahioketta, kun tehtaalla tehtyjen investointien jälkeen saatiin siihen hyvät tekniset edellytykset ja saatiin reklamaatioita märkähiokkeesta ja sen vaarasta homehtua pitkinä varastointikausina.£\n\nVuosina 1913-14 Stockfors suunnitteli kehittävänsä jalostustoimintaansa kartonginvalmistuksen suuntaan, mutta sota keskeytti suunnitelmat.£\n\nStockforsin myynti on aina pitkälti perustunut vientiin. Suora yhteys tehtaalta laivaussatamaan poisti tarpeen rautatiekuljetuksille. Stockforsin vuoden 1913 luettelosta löytyy tietoja yhtiön myynnistä, joka siihen aikaan keskittyi vahvasti Ranskaan, Espanjaan, Portugaliin, Italiaan ja Englantiin. Vuosituotanto oli 16 003 tonnia, josta laivaus 15 464 tonnia. Sodan jälkeen Stockfors suuntautui Keski- ja Länsi-Eurooppaan, joka lisäsi markkinoinnin vaatimuksia.£\n\nPuuhiomon ja sahan lisäksi Stockforsilla oli myös tulosyksiköitä, jotka keskittyivät maataloustuotantoon sekä muutama mylly. Vuonna 1915 nettotuloista 62% tuli hiomosta, sahasta 4%, maataloustuotannosta 25% ja myllystä 0,3%.£\n\nKoneisto:£\n\nToimintansa aikana Stockfors oli monessa asiassa edelläkävijä ja hankki uusimpia laitteita ympäri maailmaa, kuten vuonna 1927 hankitut Voith-merkkiset saksalaiset hiomakoneet, sekä 1929 saksalainen ”Miaggi”. Näitä aikaisemmin tehtaassa oli käytössä kahdeksan norjalaista hiomakonetta. Yhteensä koneita oli seitsemäntoista. Vuonna 1913 Stockfors hankki Suomen ensimmäiset kuorimarummut ja 1930-luvulla tehdas sai sille erikseen suunnitellut Kamyr-kokoojat Karhun konepajalta. Vuonna 1950 tehtaalle hankittiin Euroopan suurin Kamyr-kone, joka johti 60 naistyöntekijän irtisanomisiin. Muita Suomen ensimmäisiä olivat flashdrying- hiutalekuivausmenetelmä 1964 sekä biosuodin jätevesille vuonna 1983. Samana vuonna biosuotimen kanssa rakennettiin kuorenpolttolaitos Konus-Kessel/Bacho.£\n\nTehtaan kuivaamoa 1930-luvulla. Vanhassa tekniikassa yhden arkkierän kuivaus kesti 2-3 tuntia.£\n\nTäytön välillä työläisnaiset ehtivät ilta- tai yövuorosta vaikkapa kylälle tansseihin.£\n\nYhteisö ja elämä:£\n\nStockforsin perustaminen muutti Pyhtään elämää ja sen sosiaalista rakennetta. Pyhtään suurimmaksi osaksi ruotsinkielisen maatalousväestön luo muutti satakunta uutta työntekijää tehtaan aikana. Maalaiskylän elämä ja sen asukasmäärä muuttui nopeasti ihmisten muuttaessa sinne töiden perässä ja pois niiden loputtua. Kasvanut asukasluku toi mukanaan myös ongelmia, kuten juopottelua ja väkivaltaa. Esimerkiksi insinööri Ullgreniä oli neuvottu olemaan aseistettu liikkuessaan alueella, ja hän kuvaili viinanmyyntiä pahaksi ongelmaksi rakentajien keskuudessa.£\n\nTyöväenyhdistys Stockforsissa oli poliittisesti välillä hyvinkin radikaalisesti suuntautunut. Stockfors oli keskuspaikkana Punaisten vallalle Pyhtäällä helmikuun viidennestä toukokuun viidenteen vuonna 1918. Kymenlaakson tehdaspaikkakunnilla oli tuohon aikana tapahtunut sarja väkivaltaisuuksia, kuten Kymin tehtaalla tapahtunut 27 virkamiehen surmaaminen. Myös Stockforsissa tilanne äityi siihen, että Lennart Baumgartner ja Georg Larsson päätettiin tappaa, mutta punaisten partio luopui suunnitelmastaan.£\n\nTyöläisten sukupuolijakauma Stockforsissa vaihteli osastojen mukaan; esimerkiksi kokoomo ja kuivaamo olivat vahvasti naisvaltaisia. Palkkatasa-arvoa ei ollut, naiset saivat vuonna 1904 n. 40% miesten palkasta ja vuonna 1930 n. 60%, sillä heidän työtään ei arvostettu yhtä paljon kuin miesten.£\n\nHiomossa ja lähiosastoissa työtä oli vuorokauden ympäri, 12 tunnin vuoroissa, kunnes siirryttiin kahdeksan tunnin työpäivään 1. toukokuuta 1917. Kahdentoista tunnin vuoroja helpotti se, ettei työtahti ollut läheskään yhtä kiihkeä kuin nykyään: kuivaamon naiset saattoivat lähteä arkit ripustettuaan pariksi tunniksi kotiin tai kylälle tanssimaan ja hiomakoneen hoitaja rannalle lepäämään täytettyään koneet puulla.£\n\nTyöläisten vapaa-aikaan kuului mm. ”likviiti-markkinat”, jotka tapahtuivat joka toinen perjantai palkanmaksun jälkeen kasarmiasuntojen länsipuolella sijainneella markkinakentällä. Tehtaan vuoksi Pyhtäälle oli myös perustettu sosialistinen työväenyhdistys, joka järjesti usein iltamia. Iltaimissia tanssittiin ja esitettiin viihdeohjelmanumeroita.£\n\nPalkaksi Stockforsin ruukin työntekijät saivat ensimmäisten vuosien aikana käteispalkkansa lisäksi perunamaan ja ilmaiset polttopuut.£\n\nMuilta paikkakunnilta muuttaneista työntekijöistä useimmat pääsivät myös vähitellen muuttamaan yhtiön vuokra-asuntoihin. Asunnot olivat alkuperältään joko niitä, joita yhtiö oli saanut ostaessaan maa-alueita ja tiloja tai yhtiön itse rakennuttamia kasarmiryhmiä. Maa-alueiden ja tilojen mukana tulleet asunnot olivat ns. paritupia tai pienempiä yksittäistupia, joihin kuului kamari ja keittiö tai hellahuone. Kasarmit rakennettiin tehtaan koillispuolelle, ja poikkesivat yleisestä tehdaspaikkakuntien kasarmityypeistä olemalla yksikerroksisia. Yhteen asuntoon saattoi majoittua jopa 7-8 henkilöä aina 1940-luvulle asti. Normaalikokoisen asunnon kuukausivuokra vastasi kolmen päivän palkkaa.£\n\nAsutukset olivat sosiaalisesti jakautuneet työläisten aseman mukaan. Työnjohtajien, vuoromestareiden ja muiden asuinkasarmia kutsuttiin ”Pomolaksi” ja jokainen asunto sisälsi huoneen ja keittiön. Insinöörien asuinalue oli aidattu, ja isännöitsijällä oli oma huvila tehtaan yläpuolisella kukkulalla.£\n\nNykytila:£\n\nYhdeksän vuotta tehtaan lopettamisen jälkeen, vuonna 1997, tehtaan alue siirtyi yksityisomistajalle. Pyroll Oy:n omistaja Reino Uusitalo osti Stockforsin alueen ja aloitti sen kunnostamisen tehtaan konesalista. Nykyisin tehtaan tiloissa toimii pakkausmuseo (vuodesta 1998) ja Patruunantalo (vuodesta 2003). Paikka toimii myös kulttuurin ja taiteen toimipisteenä; kaarihallissa on järjestetty häitä ja tanssitapahtumia ja puuhiomon tiloissa on kesäisin vuodesta 2004 lähtien toiminut nuorten taiteilijoiden töitä esittelevä Stockfors Art Fair. Alueella on myös lintuhoitola ja karting-rata. Alue sai Kymenlaakson kulttuuriympäristöpalkinnon vuonna 2016.£\n\nStockforsin alueella toimii yhä useita yrityksiä, ja sen kasvu jatkuu tasaisesti.£\n\nOy Stockfors Ab:n tehtävä tänä päivänä on metsäomaisuuden hallinnointi ja Baumgartnerin suku on yhä Stockforsin osaomistaja. Yhtiö alkoi ostaa metsiä aktiivisesti 1920-luvulla. Yhtiön puuteollisuustoiminnan siirryttyä Enso Gutzeit Ab:lle, jäi tytäryhtiö Oy Tomas Ab hoitamaan metsätiloja. Syyskuussa 2017 yhtiön nimi muutettiin takaisin Oy Stockfors Ab:ksi historiaa kunnioittaakseen. Yhtiön visiona on talousmetsien hoito ympäristöä kunnioittaen ja parantaa sekä metsien moninaisuutta että riistan olosuhteita. Yhtiö on mm. perustanut oman FSC- sertifiointiryhmän vision toteuttamiseksi. "
+               ],
+               "ImageDescs": [
+                    "Ediskoski. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
+                    "Generaattorin saadin. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
+                    "Hakevarasto. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
+                    "Hakevarasto. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
+                    "Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1913.",
+                    "Ilmoitustaulu. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
+                    "Kamyr kone. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
+                    "Kamyr kone. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
+                    "Kattilahuoneessa. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
+                    "Kattilahuoneessa. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
+                    "Konehalli. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
+                    "Kosken pato. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto.",
+                    "Joki. Kuorimo näkyy sivulla. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
+                    "Kuorimo. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
+                    "Kuorimoalue ja puhdistamo. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
+                    "Kuorimoalue. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
+                    "Kuorimoalue. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
+                    "Kuorimoalue. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
+                    "Kuorimoalue. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
+                    "Kuorimoalue. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
+                    "Kuorimossa. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
+                    "Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto.",
+                    "Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto.",
+                    "Laboratorio. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
+                    "Laboratorio. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988."
+               ]
+          },
+          "Ohjeet": {
+               "Title": "Ohjeet",
+               "InfoCards": "Infokortit. Infokortit sisältävät yleistietoa kohteesta ja sen historiasta.",
+               "Album": "Albumi. Kuvia kohteesta.",
+               "Panoramas": "Panoraama. 360 asteen panoraamanäkymä kohteesta.",
+               "Game": "Peli. Tietyistä kohteista löytyy erilaisia minipelejä, kuten muisti- tai palapelejä.",
+               "Web": "Verkkosivut. Tästä voit päästä kohteen yrityksen verkkosivuille."
+          },
+          "Back": "Poistu"
+     },
+     "MainMenu": {
+          "OpeningHeader": "TERVETULOA STOCKFORS KARTALLA - NETTISOVELLUKSEEN",
+          "OpeningText": "Stockforsin hiomoalue on Pyhtäällä sijaitseva kulttuurihistoriallisesti rikas alue ja merkittävä osa sen historiaa. Puuhiomo oli 1960-luvulle asti Pyhtään suurin työllistäjä, joka vaikutti kirkonkylän kasvuun ja elämään huomattavasti.\n\nEntisöintitöiden jälkeen 2000-luvulla alue on täynnä pienyrityksiä, kulttuuria ja taidetta. Vuosittainen Stockfors Art Fair -taidenäyttely pidetään Stockforsin halleissa. Kaarihallia voi vuokrata tapahtumakäyttöön ja alueella toimii myös hotelli Patruunantalossa, pakkausmuseo sekä lintuhoitola.\n\nTämän sivuston tarkoituksena on tuoda alue jokaiselle tutuksi erilaisten tekstien, kuvien ja pelien avulla! ",
+          "HelpHeader": "OHJEET",
+          "HelpText": "Sovellus toimii keinona tutustua Pyhtään Stockforsin historialliseen tehdasalueeseen sekä alueella toimiviin yrityksiin. Tavoitteena on oppia alueen historiasta, miljööstä ja kulttuurista.\n\nPelaajahahmo liikkuu WASD-näppäimillä Stockforsin aluetta kuvaavalla kartalla. Hiirellä klikkaamalla taloja tai yrityksien logoja pääset tutustumaan niihin paremmin avautuvan infoikkunan avulla.\n\nInfoikkunassa pystyt lukemaan kohteen historiasta, katsomaan kuvia sekä kokeilemaan 360 asteen panoraamaa tilasta. Tietyistä kohteista löytyy myös erilaisia pelejä, kuten pala- ja muistipelejä Stockforsiin liittyen.",
+          "NewGame": "Aloita peli",
+          "ContinueGame": "Jatka peliä",
+          "Back": "Takaisin"
+     },
+     "OptionsMenu": {
+          "Title": "Asetukset",
+          "Close": "Sulje",
+          "Credits": "Tekijät",
+          "Sound": "Äänet",
+          "Music": "Musiikki",
+          "Fullscreen": "Koko ruutu",
+          "CreditsText": "Erna Gronow - Projektipäällikkö\nSara Laitinen - Grafiikka, Valokuvaus\nAnna-Maria Närä - Grafiikka, Tekstit\nJere Loukoila - Ohjelmointi\nAnton Kujansuu - Ohjelmointi\nPyhtään Perinnepiiri - Yhteistyökumppani\n\nInfokorttien Lähteet:\nPuuhioketta ja metallituotteita. Stockfors 80 vuotta. – Olle Siren \nhttp://stockfors.fi/\nhttp://www.matkallakotimaassa.fi/pakkausmuseo.html\nhttps://kylat.blog/2017/07/05/pakkausmuseo-stockfors/\nhttps://yle.fi/uutiset/3-9166250\nhttps://yle.fi/uutiset/3-10578449\nhttps://kylat.blog/2017/05/25/pyhtaan-lintuhoitola-kirkonkyla/\nhttps://www.pyhtaanseurakunta.fi/kirkot-ja-tilat/pyhtaan-kirkko\nhttps://yle.fi/uutiset/3-9600315\nhttps://kotteria.com/vuokramokit/strukan-sulut/\nhttp://www.kartingclub.fi/"
+     },
+     "Muistipeli": {
+          "Easy": "Helppo",
+          "Normal": "Normaali",
+          "Hard": "Vaikea",
+          "Exit": "Poistu",
+          "Win": "Voitit pelin. Kääntöjen määrä: ",
+          "HighScore": "Ennätys: ",
+          "Restart": "Aloita uudelleen.",
+          "Back": "Aloita uudelleen",
+          "Title": "MUISTIPELI",
+          "Description": "Klassinen muistipeli jossa käännetään kortteja ja yritetään löytää kaikki saman kortin parit mahdollisimman pienellä määrällä yrityksiä. Korttien kuvina on käytetty Pakkausmuseosta löytyviä vanhoja tuotteita. Valitse vain alhaalta haluamasi vaikeustaso ja peli alkaa. ",
+          "Congratz": "Onnittelut!"
+     },
+     "Palapeli": {
+          "Easy": "Helppo",
+          "Normal": "Normaali",
+          "Hard": "Vaikea",
+          "Exit": "Poistu",
+          "BackToMenu": "Päävalikkoon",
+          "Win": "Voitit pelin!",
+          "Restart": "Aloita uudelleen.",
+          "TotalMoves": "Siirtoja yhteensä: ",
+          "Title": "LIUKUPALAPELI",
+          "Description": "Liukupalapeli, jossa siirrellään paloja kunnes ne muodostavat yhtenäisen kuvan. Klikkaa palaa niin se siirtyy vieressä olevaan tyhjään kohtaan. Valitse alhaalta vaikeustaso niin peli alkaa."
+     },
+     "Stockfors": {
+          "Intro1": "Hei tervetuloa Stockforsiin.",
+          "Intro2": "Voit liikuttaa minua nuolinäppäimillä tai hiiren klikkauksilla.",
+          "Intro3": "Lähestymällä nuolien osoittamia sisäänkäyntejä voit astua sisään eri kohteisiin.",
+          "Intro4": "Pidä hauskaa!",
+          "Struka": "STRUKAN SULUT",
+          "Kirkko": "PYHTÄÄN KIRKKO"
+     }
 }
