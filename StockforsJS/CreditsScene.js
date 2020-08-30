@@ -40,11 +40,11 @@ class CreditsScene extends Phaser.Scene {
             x: -480,
             y: 0,
             text: this.data['CreditsText'],
-            origin: { x: 0, y: 1 },
+            origin: { x: 0, y: 0.5 },
             style: {
-                font: '40px Carme',
+                font: '34px Carme',
                 fill: 'black',
-                wordWrap: { width: 980 }
+                wordWrap: { width: 1080 }
             }
         });
 
