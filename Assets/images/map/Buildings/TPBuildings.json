@@ -4,53 +4,11 @@
 			"image": "TPBuildings-0.png",
 			"format": "RGBA8888",
 			"size": {
-				"w": 1945,
-				"h": 1649
+				"w": 2009,
+				"h": 1697
 			},
 			"scale": 1,
 			"frames": [
-				{
-					"filename": "Hallirakennus",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 676,
-						"h": 472
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 7,
-						"w": 671,
-						"h": 461
-					},
-					"frame": {
-						"x": 1,
-						"y": 1,
-						"w": 671,
-						"h": 461
-					}
-				},
-				{
-					"filename": "History",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 332,
-						"h": 662
-					},
-					"spriteSourceSize": {
-						"x": 18,
-						"y": 15,
-						"w": 303,
-						"h": 633
-					},
-					"frame": {
-						"x": 674,
-						"y": 1,
-						"w": 303,
-						"h": 633
-					}
-				},
 				{
 					"filename": "Piippuhalli",
 					"rotated": false,
@@ -67,9 +25,30 @@
 					},
 					"frame": {
 						"x": 1,
-						"y": 464,
+						"y": 1,
 						"w": 650,
 						"h": 539
+					}
+				},
+				{
+					"filename": "Hallirakennus",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 676,
+						"h": 472
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 7,
+						"w": 671,
+						"h": 461
+					},
+					"frame": {
+						"x": 653,
+						"y": 1,
+						"w": 671,
+						"h": 461
 					}
 				},
 				{
@@ -87,10 +66,31 @@
 						"h": 457
 					},
 					"frame": {
-						"x": 653,
-						"y": 636,
+						"x": 1,
+						"y": 542,
 						"w": 607,
 						"h": 457
+					}
+				},
+				{
+					"filename": "Hunajatalo",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 721,
+						"h": 379
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 23,
+						"w": 681,
+						"h": 338
+					},
+					"frame": {
+						"x": 1326,
+						"y": 1,
+						"w": 681,
+						"h": 338
 					}
 				},
 				{
@@ -108,73 +108,10 @@
 						"h": 364
 					},
 					"frame": {
-						"x": 979,
-						"y": 1,
+						"x": 1,
+						"y": 1001,
 						"w": 703,
 						"h": 364
-					}
-				},
-				{
-					"filename": "Karting_rata",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 727,
-						"h": 123
-					},
-					"spriteSourceSize": {
-						"x": 3,
-						"y": 8,
-						"w": 724,
-						"h": 110
-					},
-					"frame": {
-						"x": 979,
-						"y": 367,
-						"w": 724,
-						"h": 110
-					}
-				},
-				{
-					"filename": "Pensas2",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 225,
-						"h": 175
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 225,
-						"h": 175
-					},
-					"frame": {
-						"x": 1684,
-						"y": 1,
-						"w": 225,
-						"h": 175
-					}
-				},
-				{
-					"filename": "Valkoinen_aita",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 184,
-						"h": 92
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 184,
-						"h": 92
-					},
-					"frame": {
-						"x": 1684,
-						"y": 178,
-						"w": 184,
-						"h": 92
 					}
 				},
 				{
@@ -193,72 +130,9 @@
 					},
 					"frame": {
 						"x": 1,
-						"y": 1005,
+						"y": 1367,
 						"w": 625,
 						"h": 329
-					}
-				},
-				{
-					"filename": "Katettu_silta",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 715,
-						"h": 221
-					},
-					"spriteSourceSize": {
-						"x": 2,
-						"y": 7,
-						"w": 713,
-						"h": 208
-					},
-					"frame": {
-						"x": 628,
-						"y": 1095,
-						"w": 713,
-						"h": 208
-					}
-				},
-				{
-					"filename": "Hunajatalo",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 721,
-						"h": 379
-					},
-					"spriteSourceSize": {
-						"x": 15,
-						"y": 23,
-						"w": 681,
-						"h": 338
-					},
-					"frame": {
-						"x": 1262,
-						"y": 479,
-						"w": 681,
-						"h": 338
-					}
-				},
-				{
-					"filename": "Portti",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 156,
-						"h": 143
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 156,
-						"h": 143
-					},
-					"frame": {
-						"x": 1705,
-						"y": 272,
-						"w": 156,
-						"h": 143
 					}
 				},
 				{
@@ -276,73 +150,10 @@
 						"h": 162
 					},
 					"frame": {
-						"x": 1262,
-						"y": 819,
+						"x": 1326,
+						"y": 341,
 						"w": 682,
 						"h": 162
-					}
-				},
-				{
-					"filename": "Portti2",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 137,
-						"h": 127
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 137,
-						"h": 127
-					},
-					"frame": {
-						"x": 979,
-						"y": 479,
-						"w": 137,
-						"h": 127
-					}
-				},
-				{
-					"filename": "Pensas",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 125,
-						"h": 97
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 125,
-						"h": 97
-					},
-					"frame": {
-						"x": 1118,
-						"y": 479,
-						"w": 125,
-						"h": 97
-					}
-				},
-				{
-					"filename": "Pensas_ja_aita",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 569,
-						"h": 177
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 569,
-						"h": 177
-					},
-					"frame": {
-						"x": 1343,
-						"y": 983,
-						"w": 569,
-						"h": 177
 					}
 				},
 				{
@@ -360,31 +171,10 @@
 						"h": 288
 					},
 					"frame": {
-						"x": 628,
-						"y": 1305,
+						"x": 653,
+						"y": 464,
 						"w": 644,
 						"h": 288
-					}
-				},
-				{
-					"filename": "Patruunantalo",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 660,
-						"h": 351
-					},
-					"spriteSourceSize": {
-						"x": 25,
-						"y": 39,
-						"w": 612,
-						"h": 312
-					},
-					"frame": {
-						"x": 1,
-						"y": 1336,
-						"w": 612,
-						"h": 312
 					}
 				},
 				{
@@ -402,10 +192,262 @@
 						"h": 283
 					},
 					"frame": {
-						"x": 1274,
-						"y": 1305,
+						"x": 1299,
+						"y": 505,
 						"w": 639,
 						"h": 283
+					}
+				},
+				{
+					"filename": "Pensas_ja_aita",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 569,
+						"h": 177
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 569,
+						"h": 177
+					},
+					"frame": {
+						"x": 610,
+						"y": 754,
+						"w": 569,
+						"h": 177
+					}
+				},
+				{
+					"filename": "Colombier",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 847,
+						"h": 202
+					},
+					"spriteSourceSize": {
+						"x": 25,
+						"y": 10,
+						"w": 804,
+						"h": 181
+					},
+					"frame": {
+						"x": 1181,
+						"y": 790,
+						"w": 804,
+						"h": 181
+					}
+				},
+				{
+					"filename": "History",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 332,
+						"h": 662
+					},
+					"spriteSourceSize": {
+						"x": 18,
+						"y": 15,
+						"w": 303,
+						"h": 633
+					},
+					"frame": {
+						"x": 706,
+						"y": 933,
+						"w": 303,
+						"h": 633
+					}
+				},
+				{
+					"filename": "Patruunantalo",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 660,
+						"h": 351
+					},
+					"spriteSourceSize": {
+						"x": 25,
+						"y": 39,
+						"w": 612,
+						"h": 312
+					},
+					"frame": {
+						"x": 1011,
+						"y": 973,
+						"w": 612,
+						"h": 312
+					}
+				},
+				{
+					"filename": "Katettu_silta",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 715,
+						"h": 221
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 7,
+						"w": 713,
+						"h": 208
+					},
+					"frame": {
+						"x": 1011,
+						"y": 1287,
+						"w": 713,
+						"h": 208
+					}
+				},
+				{
+					"filename": "Karting_rata",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 727,
+						"h": 123
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 8,
+						"w": 724,
+						"h": 110
+					},
+					"frame": {
+						"x": 1011,
+						"y": 1497,
+						"w": 724,
+						"h": 110
+					}
+				},
+				{
+					"filename": "Pyroll",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 480,
+						"h": 243
+					},
+					"spriteSourceSize": {
+						"x": 56,
+						"y": 56,
+						"w": 368,
+						"h": 131
+					},
+					"frame": {
+						"x": 1625,
+						"y": 973,
+						"w": 368,
+						"h": 131
+					}
+				},
+				{
+					"filename": "Pensas2",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 225,
+						"h": 175
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 225,
+						"h": 175
+					},
+					"frame": {
+						"x": 1625,
+						"y": 1106,
+						"w": 225,
+						"h": 175
+					}
+				},
+				{
+					"filename": "Portti",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 156,
+						"h": 143
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 156,
+						"h": 143
+					},
+					"frame": {
+						"x": 1852,
+						"y": 1106,
+						"w": 156,
+						"h": 143
+					}
+				},
+				{
+					"filename": "Portti2",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 137,
+						"h": 127
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 137,
+						"h": 127
+					},
+					"frame": {
+						"x": 1726,
+						"y": 1283,
+						"w": 137,
+						"h": 127
+					}
+				},
+				{
+					"filename": "Valkoinen_aita",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 184,
+						"h": 92
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 184,
+						"h": 92
+					},
+					"frame": {
+						"x": 628,
+						"y": 1568,
+						"w": 184,
+						"h": 92
+					}
+				},
+				{
+					"filename": "Pensas",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 125,
+						"h": 97
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 125,
+						"h": 97
+					},
+					"frame": {
+						"x": 814,
+						"y": 1568,
+						"w": 125,
+						"h": 97
 					}
 				}
 			]
@@ -414,6 +456,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:e953a15fd3c051f6b5506f3cc143881e:521484fbdc9f6c10b56498b5a62bac69:2b9fb787d8ea55b23262400e1cf4ac04$"
+		"smartupdate": "$TexturePacker:SmartUpdate:65c21f6fa4cf164f22a4bd7dbdd360c4:c3eddfa8b75d59e4caafc688e432c70b:2b9fb787d8ea55b23262400e1cf4ac04$"
 	}
 }

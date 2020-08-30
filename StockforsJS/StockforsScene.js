@@ -162,7 +162,7 @@ class StockforsScene extends MapScene {
         let Kaari = this.buildings.Kaarihalli;
         Kaari.entrance = this.matter.add.circle(Kaari.x + 180, Kaari.y - 60, entranceRadius, { collisionFilter: collisionCat2 });
 
-        this.buildings.Hallirakennus = this.matter.add.sprite(2440, 420, 'buildingSheet', 'Hallirakennus', { shape: this.bodies.Hallirakennus }).setScale(0.5);
+        this.buildings.Hallirakennus = this.matter.add.sprite(2440, 420, 'buildingSheet', 'Hallirakennus', { shape: this.bodies.Hallirakennus }).setScale(0.45);
         let Halli = this.buildings.Hallirakennus;
         Halli.entrance = this.matter.add.circle(Halli.x + 100, Halli.y, entranceRadius, { collisionFilter: collisionCat2 });
 
@@ -183,8 +183,8 @@ class StockforsScene extends MapScene {
         Hiomo.entrance = this.matter.add.circle(Hiomo.x + 150, Hiomo.y, entranceRadius, { collisionFilter: collisionCat2 });
 
         this.buildings.KartingRata = this.matter.add.sprite(4370, 600, 'buildingSheet', 'Karting_rata', { shape: this.bodies.Karting_rata }).setScale(0.7);
-        //let Kart = this.buildings.KartingRata;
-        //Kart.entrance = this.matter.add.circle(Kart.x + 150, Kart.y, entranceRadius, { collisionFilter: collisionCat2 });
+        let Kart = this.buildings.KartingRata;
+        Kart.entrance = this.matter.add.circle(Kart.x - 150, Kart.y, entranceRadius, { collisionFilter: collisionCat2 });
 
         this.buildings.KatettuSilta = this.matter.add.sprite(1120, 380, 'buildingSheet', 'Katettu_silta', { shape: this.bodies.Katettu_silta }).setScale(0.6);
         let Silta = this.buildings.KatettuSilta;
@@ -193,6 +193,14 @@ class StockforsScene extends MapScene {
         this.buildings.historiaKyltti = this.matter.add.sprite(1620, 850, 'buildingSheet', 'History', { shape: this.bodies.History }).setScale(0.15);
         let History = this.buildings.historiaKyltti;
         History.entrance = this.matter.add.circle(History.x, History.y, entranceRadius, { collisionFilter: collisionCat2 });
+
+        this.buildings.Pyroll = this.matter.add.sprite(2070, 360, 'buildingSheet', 'Pyroll', { shape: this.bodies.Pyroll }).setScale(0.5);
+        let Pyroll = this.buildings.Pyroll;
+        Pyroll.entrance = this.matter.add.circle(Pyroll.x, Pyroll.y, entranceRadius, { collisionFilter: collisionCat2 });
+
+        this.buildings.Colombier = this.matter.add.sprite(2220, 250, 'buildingSheet', 'Colombier', { shape: this.bodies.Colombier }).setScale(0.3);
+        let Colombier = this.buildings.Colombier;
+        Colombier.entrance = this.matter.add.circle(Colombier.x, Colombier.y, entranceRadius, { collisionFilter: collisionCat2 });
 
         this.puska1 = this.matter.add.sprite(2320, 640, 'buildingSheet', 'Pensas', { shape: this.bodies.Pensas }).setScale(0.5).setStatic(true);
         this.puska2 = this.matter.add.sprite(2220, 570, 'buildingSheet', 'Pensas2', { shape: this.bodies.Pensas2 }).setScale(0.5).setStatic(true);

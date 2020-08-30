@@ -519,7 +519,7 @@ class BuildingScene extends Phaser.Scene {
     CreateAlbum() {
 
         //Background that shows up when viewing the images in an album
-        this.albumBackground = this.add.image(this.cameras.main.centerX, this.cameras.main.centerY - 25, 'MenuAtlas', 'UI Pohjat/Pelipohja').setVisible(false).setScale(0.8, 0.56);
+        this.albumBackground = this.add.image(this.cameras.main.centerX, this.cameras.main.centerY - 25, 'MenuAtlas', 'UI Pohjat/Pelipohja').setVisible(false).setScale(0.85, 0.56);
         this.imageBackground = this.add.image(this.cameras.main.centerX, this.cameras.main.centerY - 45, 'MenuAtlas', 'UI Pohjat/Infokorttipohja').setVisible(false);
         //this.textBackground = this.add.image(this.cameras.main.centerX, this.cameras.main.centerY - 7, 'MenuAtlas', 'UI Pohjat/Pelipohja').setVisible(false);
 
