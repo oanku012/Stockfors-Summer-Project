@@ -162,17 +162,17 @@ class StockforsScene extends MapScene {
         let Kaari = this.buildings.Kaarihalli;
         Kaari.entrance = this.matter.add.circle(Kaari.x + 180, Kaari.y - 60, entranceRadius, { collisionFilter: collisionCat2 });
 
-        this.buildings.Hallirakennus = this.matter.add.sprite(2440, 420, 'buildingSheet', 'Hallirakennus', { shape: this.bodies.Hallirakennus }).setScale(0.45);
+        this.buildings.Hallirakennus = this.matter.add.sprite(2420, 440, 'buildingSheet', 'Hallirakennus', { shape: this.bodies.Hallirakennus }).setScale(0.4);
         let Halli = this.buildings.Hallirakennus;
         Halli.entrance = this.matter.add.circle(Halli.x + 100, Halli.y, entranceRadius, { collisionFilter: collisionCat2 });
 
-        this.buildings.Piippuhalli = this.matter.add.sprite(2780, 455, 'buildingSheet', 'Piippuhalli', { shape: this.bodies.Piippuhalli }).setScale(0.6);
+        this.buildings.Piippuhalli = this.matter.add.sprite(2750, 470, 'buildingSheet', 'Piippuhalli', { shape: this.bodies.Piippuhalli }).setScale(0.53);
         let Piippu = this.buildings.Piippuhalli;
         Piippu.entrance = this.matter.add.circle(Piippu.x - 60, Piippu.y + 20, entranceRadius, { collisionFilter: collisionCat2 });
 
-        this.buildings.Paloasema = this.matter.add.sprite(2524, 720, 'buildingSheet', 'Paloasema', { shape: this.bodies.Paloasema }).setScale(0.7);
+        this.buildings.Paloasema = this.matter.add.sprite(2500, 730, 'buildingSheet', 'Paloasema', { shape: this.bodies.Paloasema }).setScale(0.5);
         let Palo = this.buildings.Paloasema;
-        Palo.entrance = this.matter.add.circle(Palo.x + 190, Palo.y, entranceRadius, { collisionFilter: collisionCat2 });
+        Palo.entrance = this.matter.add.circle(Palo.x + 150, Palo.y, entranceRadius, { collisionFilter: collisionCat2 });
 
         this.buildings.Lintuhoitola = this.matter.add.sprite(3083, 837, 'buildingSheet', 'Lintuhoitola', { shape: this.bodies.Lintuhoitola }).setScale(1);
         let Lintu = this.buildings.Lintuhoitola;
