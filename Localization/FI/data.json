@@ -264,6 +264,29 @@
           "Description": "Klassinen muistipeli jossa käännetään kortteja ja yritetään löytää kaikki saman kortin parit mahdollisimman pienellä määrällä yrityksiä. Korttien kuvina on käytetty Pakkausmuseosta löytyviä vanhoja tuotteita. Valitse vain alhaalta haluamasi vaikeustaso ja peli alkaa. ",
           "Congratz": "Onnittelut!"
      },
+     "Karting_rata": {
+          "Title": "Pyhtään Karting Club Oy",
+          "InfoCards": [
+               "Pyhtään Karting rata sijaitsee Stockforsin vanhalla tehdasalueella Kymijoen varrella.£\n\nRadalla pääsee ajamaan noin 400 metriä pitkän matkan loivassa rinteessä. Yhdistys tarjoaa ajohaalarit, kypärät, hanskat ja muut varusteet ajoseurueelle. Kesällä autoja on käytössä yhteensä kymmenen, joiden huippunopeus on 8 km/h ja talvella kuusi kaksipaikkaista OffRoad-autoa. Radalla toimiva ajanottojärjestelmä mahdollistaa suuremmatkin kisat.£\n\nYhtiö tarjoaa myös vaihtoehtoisesti jokilauttailua tai erämaaretkeilyä kodalleen."
+          ],
+          "ImageDescs": [
+
+          ]
+     },
+     "StrukanSulut": {
+          "Title": "Strukan Sulut",
+          "InfoCards": [
+               "Kymijoen Pyhtään haarassa sijaitsee Strukan sulut, jotka ovat Suomen ainoat merisulut, joissa on käsikäyttöiset sulkulaitteet. Aikoinaan munkkien lohenkalastuspaikkana toimineet sulut olivat Stockforsin vastuulla tehtaan laajennettua. Puuhiomo laajensi myös Kymijokea käyttöönsä ja sulkuja käyttivätkin pääosin tehtaan puuhioketta kuljettavat proomut. Nykyään sulut ovat kaikkien aluksien käytettävissä ja niistä huolehtii Pyhtään kunta, jolle tehtävä siirtyi vuonna 1978.£\n\nKeväällä 2003 alempi sulku uusittiin kokonaan, ja ylemmästä portista uusittiin osa, ponttilaudat ja metalliosat. Uusintoja tehtiin taas vuonna 2017 molempiin portteihin.£\n\nMereltä joelle tullessa sulku tyhjennetään alaportin veivattavien sulkuluukkujen avulla ja vasta sitten ajetaan veneellä sulkuun. Sulun täyttö tapahtuu avaamalla yläportin sulkuluukut. Veneilijän täytyy odottaa veden nousua joen pinnan tasalle ennen kuin matkan jatkaminen onnistuu. toimintajärjestys on päinvastainen joelta merelle tultaessa. Sulun pituus on 25 metriä ja leveys 8 metriä. Putouskorkeus on kaksi metriä ja väylän syvyys ainakin 1,2 metriä."
+          ],
+          "ImageDescs": [
+               "Strukan Sulut. Kuvaaja: Sara Laitinen 2020.",
+               "Strukan Sulut. Kuvaaja: Sara Laitinen 2020.",
+               "Strukan Sulut. Kuvaaja: Sara Laitinen 2020.",
+               "Strukan Sulut. Kuvaaja: Sara Laitinen 2020.",
+               "Strukan Sulut. Kuvaaja: Sara Laitinen 2020.",
+               "Strukan Sulut. Kuvaaja: Sara Laitinen 2020."
+          ]
+     },
      "Palapeli": {
           "Easy": "Helppo",
           "Normal": "Normaali",
