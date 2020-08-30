@@ -6,6 +6,8 @@ class ColombierScene extends BuildingScene
 
         this.name = 'Colombier';
 
+        this.url = 'https://colombier.com/';
+
     }
 
     create()

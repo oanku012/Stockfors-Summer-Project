@@ -173,7 +173,15 @@
                "Katettu Silta. Kuvaaja: Sara Laitinen 2020."
           ]
      },
+     "Karting_rata": {
+          "Title": "Pyhtään Karting Club Oy",
+          "InfoCards": [
+               "Pyhtään Karting rata sijaitsee Stockforsin vanhalla tehdasalueella Kymijoen varrella.£\n\nRadalla pääsee ajamaan noin 400 metriä pitkän matkan loivassa rinteessä. Yhdistys tarjoaa ajohaalarit, kypärät, hanskat ja muut varusteet ajoseurueelle. Kesällä autoja on käytössä yhteensä kymmenen, joiden huippunopeus on 8 km/h ja talvella kuusi kaksipaikkaista OffRoad-autoa. Radalla toimiva ajanottojärjestelmä mahdollistaa suuremmatkin kisat.£\n\nYhtiö tarjoaa myös vaihtoehtoisesti jokilauttailua tai erämaaretkeilyä kodalleen."
+          ],
+          "ImageDescs": [
 
+          ]
+     },
      "StrukanSulut": {
           "Title": "Strukan Sulut",
           "InfoCards": [
