@@ -4,8 +4,8 @@
 			"image": "TPBuildings-0.png",
 			"format": "RGBA8888",
 			"size": {
-				"w": 2009,
-				"h": 1697
+				"w": 1966,
+				"h": 1736
 			},
 			"scale": 1,
 			"frames": [
@@ -52,6 +52,27 @@
 					}
 				},
 				{
+					"filename": "Tallirakennus",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 681,
+						"h": 335
+					},
+					"spriteSourceSize": {
+						"x": 30,
+						"y": 31,
+						"w": 639,
+						"h": 283
+					},
+					"frame": {
+						"x": 1326,
+						"y": 1,
+						"w": 639,
+						"h": 283
+					}
+				},
+				{
 					"filename": "Paloasema",
 					"rotated": false,
 					"trimmed": true,
@@ -70,27 +91,6 @@
 						"y": 542,
 						"w": 607,
 						"h": 457
-					}
-				},
-				{
-					"filename": "Hunajatalo",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 721,
-						"h": 379
-					},
-					"spriteSourceSize": {
-						"x": 15,
-						"y": 23,
-						"w": 681,
-						"h": 338
-					},
-					"frame": {
-						"x": 1326,
-						"y": 1,
-						"w": 681,
-						"h": 338
 					}
 				},
 				{
@@ -115,6 +115,27 @@
 					}
 				},
 				{
+					"filename": "Hunajatalo",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 721,
+						"h": 379
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 23,
+						"w": 681,
+						"h": 338
+					},
+					"frame": {
+						"x": 1,
+						"y": 1367,
+						"w": 681,
+						"h": 338
+					}
+				},
+				{
 					"filename": "Kaarihalli",
 					"rotated": false,
 					"trimmed": true,
@@ -129,31 +150,10 @@
 						"h": 329
 					},
 					"frame": {
-						"x": 1,
-						"y": 1367,
+						"x": 1326,
+						"y": 286,
 						"w": 625,
 						"h": 329
-					}
-				},
-				{
-					"filename": "Lintuhoitola",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 700,
-						"h": 175
-					},
-					"spriteSourceSize": {
-						"x": 10,
-						"y": 7,
-						"w": 682,
-						"h": 162
-					},
-					"frame": {
-						"x": 1326,
-						"y": 341,
-						"w": 682,
-						"h": 162
 					}
 				},
 				{
@@ -178,87 +178,24 @@
 					}
 				},
 				{
-					"filename": "Tallirakennus",
+					"filename": "Katettu_silta",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 681,
-						"h": 335
+						"w": 715,
+						"h": 221
 					},
 					"spriteSourceSize": {
-						"x": 30,
-						"y": 31,
-						"w": 639,
-						"h": 283
-					},
-					"frame": {
-						"x": 1299,
-						"y": 505,
-						"w": 639,
-						"h": 283
-					}
-				},
-				{
-					"filename": "Pensas_ja_aita",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 569,
-						"h": 177
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 569,
-						"h": 177
+						"x": 2,
+						"y": 7,
+						"w": 713,
+						"h": 208
 					},
 					"frame": {
 						"x": 610,
 						"y": 754,
-						"w": 569,
-						"h": 177
-					}
-				},
-				{
-					"filename": "Colombier",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 847,
-						"h": 202
-					},
-					"spriteSourceSize": {
-						"x": 25,
-						"y": 10,
-						"w": 804,
-						"h": 181
-					},
-					"frame": {
-						"x": 1181,
-						"y": 790,
-						"w": 804,
-						"h": 181
-					}
-				},
-				{
-					"filename": "History",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 332,
-						"h": 662
-					},
-					"spriteSourceSize": {
-						"x": 18,
-						"y": 15,
-						"w": 303,
-						"h": 633
-					},
-					"frame": {
-						"x": 706,
-						"y": 933,
-						"w": 303,
-						"h": 633
+						"w": 713,
+						"h": 208
 					}
 				},
 				{
@@ -276,31 +213,52 @@
 						"h": 312
 					},
 					"frame": {
-						"x": 1011,
-						"y": 973,
+						"x": 706,
+						"y": 964,
 						"w": 612,
 						"h": 312
 					}
 				},
 				{
-					"filename": "Katettu_silta",
+					"filename": "Lintuhoitola",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 715,
-						"h": 221
+						"w": 700,
+						"h": 175
 					},
 					"spriteSourceSize": {
-						"x": 2,
+						"x": 10,
 						"y": 7,
-						"w": 713,
-						"h": 208
+						"w": 682,
+						"h": 162
 					},
 					"frame": {
-						"x": 1011,
-						"y": 1287,
-						"w": 713,
-						"h": 208
+						"x": 706,
+						"y": 1278,
+						"w": 682,
+						"h": 162
+					}
+				},
+				{
+					"filename": "Colombier",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 847,
+						"h": 202
+					},
+					"spriteSourceSize": {
+						"x": 25,
+						"y": 10,
+						"w": 804,
+						"h": 181
+					},
+					"frame": {
+						"x": 684,
+						"y": 1442,
+						"w": 804,
+						"h": 181
 					}
 				},
 				{
@@ -318,10 +276,31 @@
 						"h": 110
 					},
 					"frame": {
-						"x": 1011,
-						"y": 1497,
+						"x": 684,
+						"y": 1625,
 						"w": 724,
 						"h": 110
+					}
+				},
+				{
+					"filename": "Pensas_ja_aita",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 569,
+						"h": 177
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 569,
+						"h": 177
+					},
+					"frame": {
+						"x": 1325,
+						"y": 617,
+						"w": 569,
+						"h": 177
 					}
 				},
 				{
@@ -339,10 +318,52 @@
 						"h": 131
 					},
 					"frame": {
-						"x": 1625,
-						"y": 973,
+						"x": 1325,
+						"y": 796,
 						"w": 368,
 						"h": 131
+					}
+				},
+				{
+					"filename": "Sign",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 303,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 4,
+						"w": 299,
+						"h": 276
+					},
+					"frame": {
+						"x": 1325,
+						"y": 929,
+						"w": 299,
+						"h": 276
+					}
+				},
+				{
+					"filename": "History",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 332,
+						"h": 662
+					},
+					"spriteSourceSize": {
+						"x": 18,
+						"y": 15,
+						"w": 303,
+						"h": 633
+					},
+					"frame": {
+						"x": 1626,
+						"y": 929,
+						"w": 303,
+						"h": 633
 					}
 				},
 				{
@@ -360,52 +381,10 @@
 						"h": 175
 					},
 					"frame": {
-						"x": 1625,
-						"y": 1106,
+						"x": 1390,
+						"y": 1207,
 						"w": 225,
 						"h": 175
-					}
-				},
-				{
-					"filename": "Portti",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 156,
-						"h": 143
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 156,
-						"h": 143
-					},
-					"frame": {
-						"x": 1852,
-						"y": 1106,
-						"w": 156,
-						"h": 143
-					}
-				},
-				{
-					"filename": "Portti2",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 137,
-						"h": 127
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 137,
-						"h": 127
-					},
-					"frame": {
-						"x": 1726,
-						"y": 1283,
-						"w": 137,
-						"h": 127
 					}
 				},
 				{
@@ -423,8 +402,8 @@
 						"h": 92
 					},
 					"frame": {
-						"x": 628,
-						"y": 1568,
+						"x": 1695,
+						"y": 796,
 						"w": 184,
 						"h": 92
 					}
@@ -444,10 +423,52 @@
 						"h": 97
 					},
 					"frame": {
-						"x": 814,
-						"y": 1568,
+						"x": 1410,
+						"y": 1625,
 						"w": 125,
 						"h": 97
+					}
+				},
+				{
+					"filename": "Portti",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 156,
+						"h": 143
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 156,
+						"h": 143
+					},
+					"frame": {
+						"x": 1537,
+						"y": 1564,
+						"w": 156,
+						"h": 143
+					}
+				},
+				{
+					"filename": "Portti2",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 137,
+						"h": 127
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 137,
+						"h": 127
+					},
+					"frame": {
+						"x": 1695,
+						"y": 1564,
+						"w": 137,
+						"h": 127
 					}
 				}
 			]
@@ -456,6 +477,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:65c21f6fa4cf164f22a4bd7dbdd360c4:c3eddfa8b75d59e4caafc688e432c70b:2b9fb787d8ea55b23262400e1cf4ac04$"
+		"smartupdate": "$TexturePacker:SmartUpdate:ff9a34fcc7cb7406d3b7ba38af8e6b12:dcfbb39232b7c0a27468de218fe17d3d:2b9fb787d8ea55b23262400e1cf4ac04$"
 	}
 }

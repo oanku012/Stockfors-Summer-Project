@@ -51,7 +51,7 @@ class MapScene extends Phaser.Scene {
             this.readyToEnter = startPoint.readyToEnter;
         }
         else {
-            this.readyToEnter = gameState.readyToEnter;
+            this.readyToEnter = true;
         }
     }
 

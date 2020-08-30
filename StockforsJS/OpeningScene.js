@@ -269,7 +269,7 @@ class OpeningScene extends Phaser.Scene {
 
                 if (savedGame != null) {
 
-                    this.scene.start(gameState.currentMap, { x: gameState.playerX, y: gameState.playerY });
+                    this.scene.start(gameState.currentMap, { x: gameState.playerX, y: gameState.playerY, readyToEnter: gameState.readyToEnter });
                     console.log('Loaded game from save file.');
 
                 }

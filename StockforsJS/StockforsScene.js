@@ -34,7 +34,7 @@ class StockforsScene extends MapScene {
 
         this.map = this.matter.add.image(0, 0, 'map', null, { shape: this.bodies.Kartta }).setDepth(0).setStatic(true);
 
-        this.map.setPosition(this.map.width/2 + 375, this.map.height/2 + 70);
+        this.map.setPosition(this.map.width / 2 + 375, this.map.height / 2 + 70);
 
         //this.map.body.position.x = -1000;
         //this.map.body.position.y = ;
@@ -138,7 +138,7 @@ class StockforsScene extends MapScene {
     BuildingsInitialize() {
 
 
-     
+
 
         let entranceRadius = 25;
 
@@ -202,22 +202,58 @@ class StockforsScene extends MapScene {
         let Colombier = this.buildings.Colombier;
         Colombier.entrance = this.matter.add.circle(Colombier.x, Colombier.y, entranceRadius, { collisionFilter: collisionCat2 });
 
+        this.buildings.StrukanSulut = this.matter.add.sprite(130, 660, 'buildingSheet', 'Sign', { shape: this.bodies.Sign }).setScale(0.4);
+        let Struka = this.buildings.StrukanSulut;
+        Struka.entrance = this.matter.add.circle(Struka.x, Struka.y, 40, { collisionFilter: collisionCat2 });
+        Struka.text = this.make.text({
+            x: Struka.x + 20,
+            y: Struka.y - 95,
+            text: this.data.Struka,
+            depth: Struka.y+1,
+            origin: { x: 0.5, y: 0.5 },
+            style: {
+                font: '13px Carme',
+                fill: 'black',
+                wordWrap: { width: 100 },
+                align: 'center'
+            }
+        });
+
+        this.buildings.Kirkko = this.matter.add.sprite(130, 960, 'buildingSheet', 'Sign', { shape: this.bodies.Sign }).setScale(0.4);
+        let Kirkko = this.buildings.Kirkko;
+        Kirkko.entrance = this.matter.add.circle(Kirkko.x, Kirkko.y, 40, { collisionFilter: collisionCat2 });
+        Kirkko.text = this.make.text({
+            x: Kirkko.x + 20,
+            y: Kirkko.y - 95,
+            text: this.data.Kirkko,
+            depth: Kirkko.y+1,
+            origin: { x: 0.5, y: 0.5 },
+            style: {
+                font: '13px Carme',
+                fill: 'black',
+                wordWrap: { width: 100 },
+                align: 'center'
+            }
+        });
+
         this.puska1 = this.matter.add.sprite(2320, 640, 'buildingSheet', 'Pensas', { shape: this.bodies.Pensas }).setScale(0.5).setStatic(true);
         this.puska2 = this.matter.add.sprite(2220, 570, 'buildingSheet', 'Pensas2', { shape: this.bodies.Pensas2 }).setScale(0.5).setStatic(true);
         this.puskaAita = this.matter.add.sprite(1985, 760, 'buildingSheet', 'Pensas_ja_aita', { shape: this.bodies.Pensas_ja_aita }).setScale(0.6).setStatic(true);
         this.aita = this.matter.add.sprite(2290, 675, 'buildingSheet', 'Valkoinen_aita', { shape: this.bodies.Valkoinen_aita }).setScale(0.7).setStatic(true);
         this.buildings.portti1 = this.matter.add.sprite(1900, 870, 'buildingSheet', 'Portti', { shape: this.bodies.Portti }).setScale(0.6).setStatic(true);
         this.buildings.portti2 = this.matter.add.sprite(1840, 825, 'buildingSheet', 'Portti2', { shape: this.bodies.Portti2 }).setScale(0.6).setStatic(true);
-        
-        
 
-            //this.buildings.KirkkoTie = this.matter.add.image(1400, 500, 'Nuoli').setScale(0.1);
 
-            Object.values(this.buildings).forEach(building => {
 
-                building.setDepth(building.y).setStatic(true);
+        //this.buildings.KirkkoTie = this.matter.add.image(1400, 500, 'Nuoli').setScale(0.1);
 
-                if (building.entrance) {
+        Object.values(this.buildings).forEach(building => {
+
+            building.setDepth(building.y).setStatic(true);
+
+            if (building.entrance) {
+
+                if (!building.text) {
                     building.entrance.sceneKey = building.frame.name + 'Scene';
 
                     this.buildingEntrances.push(building.entrance);
@@ -234,12 +270,30 @@ class StockforsScene extends MapScene {
                     });
 
                 }
+                else if(building.text.text === this.data.Struka)
+                {
+                    building.entrance.sceneKey = 'StrukanSulutScene';
 
-                //building.entrance.arrow.setAlpha(0.5);
+                    this.buildingEntrances.push(building.entrance);
+                    
 
-                //this.arrows.push(building.entrance.arrow);
+                }
+                else if(building.text.text === this.data.Kirkko)
+                {
+                    building.entrance.sceneKey = 'StrukanSulutScene';
 
-            }, this);
+                    this.buildingEntrances.push(building.entrance);
+                    
+
+                }
+
+            }
+
+            //building.entrance.arrow.setAlpha(0.5);
+
+            //this.arrows.push(building.entrance.arrow);
+
+        }, this);
 
         //this.levelContainer.setScale(1.5);
 
