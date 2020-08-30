@@ -519,7 +519,9 @@ class BuildingScene extends Phaser.Scene {
     CreateAlbum() {
 
         //Background that shows up when viewing the images in an album
-        this.imageBackground = this.add.image(this.cameras.main.centerX, this.cameras.main.centerY - 7, 'MenuAtlas', 'UI Pohjat/Pelipohja').setVisible(false).setScale(1);
+        this.albumBackground = this.add.image(this.cameras.main.centerX, this.cameras.main.centerY - 25, 'MenuAtlas', 'UI Pohjat/Pelipohja').setVisible(false).setScale(0.8, 0.56);
+        this.imageBackground = this.add.image(this.cameras.main.centerX, this.cameras.main.centerY - 45, 'MenuAtlas', 'UI Pohjat/Infokorttipohja').setVisible(false);
+        //this.textBackground = this.add.image(this.cameras.main.centerX, this.cameras.main.centerY - 7, 'MenuAtlas', 'UI Pohjat/Pelipohja').setVisible(false);
 
         this.albumContainer = this.add.container(0, -500).setScale(1.2);
 
@@ -620,23 +622,30 @@ class BuildingScene extends Phaser.Scene {
             this.currentImage.destroy();
         }
 
-        let newImage = this.add.image(this.cameras.main.centerX - 2, this.cameras.main.centerY - 20, image).setScale(0.8);
+        let newImage = this.add.image(this.cameras.main.centerX - 2, this.cameras.main.centerY - 45, image).setScale(0.8);
         
         let bottomCenter = newImage.getBottomCenter();
-        
+
+        this.imageBackground.setVisible(true).setDisplaySize(newImage.width * newImage.scale + 60, newImage.height * newImage.scale + 60);
+        this.albumBackground.setVisible(true);
+        //this.imageBackground.setVisible(true);
+
         newImage.text = this.make.text({
             x: newImage.x,
-            y: bottomCenter.y + 2,
+            y: bottomCenter.y + 60,
             text: this.data[this.name].ImageDescs[index],
-            origin: { x: 0.5, y: 0 },
+            origin: { x: 0.5, y: 0.5 },
             style: {
                 font: '33px Carme',
                 fill: 'black',
-                wordWrap: { width: 972 }
+                wordWrap: { width: this.albumBackground.width*this.albumBackground.scaleX},
+                align: 'center'
             }
         });
 
-        this.imageBackground.setVisible(true).setDisplaySize(newImage.width * newImage.scale + 50, newImage.height * newImage.scale + 75);
+        //this.textBackground.setVisible(true).setPosition(newImage.text.x, newImage.text.y).setDisplaySize(newImage.text.width * newImage.text.scale + 50, newImage.text.height * newImage.text.scale);
+
+        
 
         //Commented this out so I can easily make the menu invisible separately when opening an image
         // add to menu for easy resize
@@ -664,6 +673,7 @@ class BuildingScene extends Phaser.Scene {
                 this.albumArrowBackward.setVisible(false);
                 this.menu.setVisible(true);
                 this.imageBackground.setVisible(false);
+                this.albumBackground.setVisible(false);
 
             }
         }, this);

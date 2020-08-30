@@ -95,7 +95,7 @@ class OptionsMenuScene extends Phaser.Scene {
         this.musicOn = true;
         this.soundOn = true;
 
-        let firstRow = -210;
+        let firstRow = -190;
         let posX = -380;
 
         let rowGap = 137;
@@ -105,16 +105,16 @@ class OptionsMenuScene extends Phaser.Scene {
         //The text align doesn't work on one line text
         this.musicButton = this.add.sprite(posX, firstRow, 'MenuAtlas', 'UI Buttons/CheckmarkON').setOrigin(0.5, 0.5);
         this.musicText = this.add.text(-200, firstRow, this.data['Music'], { fontSize: fontsize, fontFamily: 'Carme', color: "black", align: 'center', origin: { x: 0.5, y: 0.5 } });
-        this.musicText.setPosition(-this.musicText.width * 0.5, firstRow - 20);
+        this.musicText.setPosition(-this.musicText.width * 0.5, firstRow - 25);
 
         this.soundButton = this.add.image(posX, firstRow + rowGap, 'MenuAtlas', 'UI Buttons/CheckmarkON').setOrigin(0.5, 0.5);
         this.soundText = this.add.text(-200, firstRow + rowGap, this.data['Sound'], { fontSize: fontsize, fontFamily: 'Carme', color: "black", align: 'center', origin: { x: 0.5, y: 0.5 } });
-        this.soundText.setPosition(-this.soundText.width * 0.5, firstRow + rowGap - 20);
+        this.soundText.setPosition(-this.soundText.width * 0.5, firstRow + rowGap - 25);
 
 
         this.fullScreenButton = this.add.image(posX, firstRow + rowGap * 2, 'MenuAtlas', 'UI Buttons/CheckmarkOFF').setOrigin(0.5, 0.5);
         this.fullScreenText = this.add.text(-200, firstRow + rowGap * 2, this.data['Fullscreen'], { fontSize: fontsize, fontFamily: 'Carme', color: "black", align: 'center', origin: { x: 0.5, y: 0.5 } });
-        this.fullScreenText.setPosition(-this.fullScreenText.width * 0.5, (firstRow + rowGap * 2) - 20);
+        this.fullScreenText.setPosition(-this.fullScreenText.width * 0.5, (firstRow + rowGap * 2) - 25);
 
 
         this.isFullscreen = this.scale.isFullscreen;
@@ -222,8 +222,8 @@ class OptionsMenuScene extends Phaser.Scene {
     CreateFlags() {
         let flagScale = 0.41;
 
-        this.fi = this.add.sprite(-110, 265, 'MenuAtlas', 'UI Buttons/FI').setScale(flagScale);
-        this.eng = this.add.sprite(160, 265, 'MenuAtlas', 'UI Buttons/ENG').setScale(flagScale);
+        this.fi = this.add.sprite(-130, 275, 'MenuAtlas', 'UI Buttons/FI').setScale(flagScale);
+        this.eng = this.add.sprite(140, 275, 'MenuAtlas', 'UI Buttons/ENG').setScale(flagScale);
         //this.swe = this.add.sprite(220, 300, 'MenuAtlas', 'UI Buttons/SWE').setScale(flagScale);
 
         this.menuElements.add([this.fi, this.eng]);

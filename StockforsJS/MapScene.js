@@ -67,7 +67,7 @@ class MapScene extends Phaser.Scene {
 
         this.sceneToOpen = null;
 
-        this.matter.set60Hz();
+        //this.matter.set60Hz();
 
         this.playerOverLapping = false;
         this.currentOverlapBody = null;

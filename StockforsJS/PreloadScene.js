@@ -15,7 +15,7 @@ class PreloadScene extends Phaser.Scene {
         this.cameras.main.backgroundColor.setTo(255, 255, 255);
         this.loadAssets(this.cache.json.get('assets'));
         let logo = this.add.image(this.centerX(), this.centerY(), 'logo');
-        logo.setScale(.2, .2);
+        logo.setScale(0.8);
         this.createProgressbar(this.centerX(), this.centerY() + 200);
     }
 
