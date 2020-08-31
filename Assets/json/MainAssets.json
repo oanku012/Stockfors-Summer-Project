@@ -1,6 +1,6 @@
 {
     "image": {
-        "map": "Assets/images/map/kartta.png",
+        "map": "Assets/images/map/Kartta.png",
         "mapTausta": "Assets/images/map/Kartta_Tausta.jpg"
     },
     "atlas": {
