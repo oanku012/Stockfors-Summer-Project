@@ -104,7 +104,7 @@ class MuistiPeliScene extends Phaser.Scene {
         //Added is used to check how many copies of this card are on the board, used is for checking if the card was chosen to be included in the game
         for(let i = 1; i<29; i++)
         {
-            this.cardImages.push({ src: 'Assets/images/Muistipeli/Kortti'+ i, added: 0, used: false })
+            this.cardImages.push({ src: 'Assets/images/Muistipeli/Kortti'+ i +'.png', added: 0, used: false })
         }
 
         // kopsasin nää vaa nyt siitä palapelist
@@ -294,7 +294,7 @@ class MuistiPeliScene extends Phaser.Scene {
         card.frontIMG.style = 'width: ' + this.cardSize + 'px; height: ' + this.cardSize + 'px; backface-visibility: hidden; position: relative; left: ' + this.cardSize / 2 + 'px; top: ' + this.cardSize / 2 + 'px';
 
         card.backIMG = document.createElement('img');
-        card.backIMG.src = 'Assets/images/Muistipeli/Korttipohja';
+        card.backIMG.src = 'Assets/images/Muistipeli/Korttipohja.png';
         card.backIMG.style = 'width: ' + this.cardSize + 'px; height: ' + this.cardSize + 'px; backface-visibility: hidden; position: relative; left: ' + this.cardSize / 2 + 'px; top: ' + this.cardSize / 2 + 'px';
 
         card.front = this.add.dom(x, y, card.frontIMG);
