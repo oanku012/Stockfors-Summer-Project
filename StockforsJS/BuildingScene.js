@@ -58,8 +58,6 @@ class BuildingScene extends Phaser.Scene {
         // Get text data from a json file
         this.data = this.cache.json.get('data').Buildings;
 
-        console.log(this.data);
-
         if (this.data[this.name].Title != null && this.data[this.name].InfoCards != null) {
             this.title = this.data[this.name].Title;
 
