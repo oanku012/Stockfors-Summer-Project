@@ -28,3 +28,28 @@ class BootScene extends Phaser.Scene {
 
     
 }
+
+function FontsInit()
+{
+    //  Inject our CSS
+    var element = document.createElement('style');
+
+    document.head.appendChild(element);
+
+    var sheet = element.sheet;
+
+    var styles = '@font-face { font-family: "LexendTera"; src: url("Assets/Fonts/LexendTera-Regular.ttf") format("truetype"); }\n';
+
+    sheet.insertRule(styles, 0);
+
+    styles = '@font-face { font-family: "Carme"; src: url("Assets/Fonts/Carme-Regular.ttf") format("truetype"); }';
+
+    sheet.insertRule(styles, 0);
+
+    WebFont.load({
+        custom: {
+            families: [ 'LexendTera', 'Carme' ]
+        }
+    });
+
+}

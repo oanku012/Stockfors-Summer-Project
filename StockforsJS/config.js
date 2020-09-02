@@ -149,58 +149,7 @@ function compareObjectValues(obj1, obj2)
 
     return true;
 }
-/*
-function PlaySound(soundKey, context)
-{
-    context.sound.play(soundKey);
-}
-*/
 
-
-function FontsInit()
-{
-    //  Inject our CSS
-    var element = document.createElement('style');
-
-    document.head.appendChild(element);
-
-    var sheet = element.sheet;
-
-    var styles = '@font-face { font-family: "LexendTera"; src: url("Assets/fonts/LexendTera-Regular.ttf") format("truetype"); }\n';
-
-    sheet.insertRule(styles, 0);
-
-    styles = '@font-face { font-family: "Carme"; src: url("Assets/fonts/Carme-Regular.ttf") format("truetype"); }';
-
-    sheet.insertRule(styles, 0);
-
-    WebFont.load({
-        custom: {
-            families: [ 'LexendTera', 'Carme' ]
-        }
-    });
-
-}
-
-/*function SetCustomFont(text, font)
-{
-    //var add = context.add;
-    //var input = this.input;
-
-    /*WebFont.load({
-        custom: {
-            families: [ 'LexendTera', 'Carme' ]
-        },
-        active: function ()
-        {
-            //add.text(32, 32, 'The face of the\nmoon was in\nshadow.', { fontFamily: 'LexendTera', fontSize: 80, color: '#ff0000' }).setShadow(2, 2, "#333333", 2, false, true);
-
-            //add.text(150, 350, 'Waves flung themselves\nat the blue evening.', { fontFamily: 'Carme', fontSize: 64, color: '#5656ee' });
-
-            text.setStyle(Object.assign(text.style, {fontFamily: font}));
-        }
-    });
-}*/
 
 
 
