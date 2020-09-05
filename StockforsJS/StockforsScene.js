@@ -150,7 +150,7 @@ class StockforsScene extends MapScene {
         let Pakkaus = this.buildings.PakkausMuseo;
         Pakkaus.entrance = this.matter.add.circle(Pakkaus.x + 90, Pakkaus.y, entranceRadius, { collisionFilter: collisionCat2 });
 
-        this.buildings.Hunajatalo = this.matter.add.sprite(1730, 769, 'buildingSheet', 'Hunajatalo', { shape: this.bodies.Hunajatalo }).setScale(0.5);
+        this.buildings.Hunajatalo = this.matter.add.sprite(1700, 795, 'buildingSheet', 'Hunajatalo', { shape: this.bodies.Hunajatalo }).setScale(0.5);
         let Hunaja = this.buildings.Hunajatalo;
         Hunaja.entrance = this.matter.add.circle(Hunaja.x + 50, Hunaja.y + 30, entranceRadius, { collisionFilter: collisionCat2 });
 
@@ -162,11 +162,11 @@ class StockforsScene extends MapScene {
         let Kaari = this.buildings.Kaarihalli;
         Kaari.entrance = this.matter.add.circle(Kaari.x + 180, Kaari.y - 60, entranceRadius, { collisionFilter: collisionCat2 });
 
-        this.buildings.Hallirakennus = this.matter.add.sprite(2420, 440, 'buildingSheet', 'Hallirakennus', { shape: this.bodies.Hallirakennus }).setScale(0.4);
+        this.buildings.Hallirakennus = this.matter.add.sprite(2440, 440, 'buildingSheet', 'Hallirakennus', { shape: this.bodies.Hallirakennus }).setScale(0.4);
         let Halli = this.buildings.Hallirakennus;
-        Halli.entrance = this.matter.add.circle(Halli.x + 100, Halli.y, entranceRadius, { collisionFilter: collisionCat2 });
+        Halli.entrance = this.matter.add.circle(Halli.x + 70, Halli.y, entranceRadius, { collisionFilter: collisionCat2 });
 
-        this.buildings.Piippuhalli = this.matter.add.sprite(2750, 470, 'buildingSheet', 'Piippuhalli', { shape: this.bodies.Piippuhalli }).setScale(0.53);
+        this.buildings.Piippuhalli = this.matter.add.sprite(2760, 457, 'buildingSheet', 'Piippuhalli', { shape: this.bodies.Piippuhalli }).setScale(0.6);
         let Piippu = this.buildings.Piippuhalli;
         Piippu.entrance = this.matter.add.circle(Piippu.x - 60, Piippu.y + 20, entranceRadius, { collisionFilter: collisionCat2 });
 
@@ -182,9 +182,9 @@ class StockforsScene extends MapScene {
         let Hiomo = this.buildings.Hiomo;
         Hiomo.entrance = this.matter.add.circle(Hiomo.x + 150, Hiomo.y, entranceRadius, { collisionFilter: collisionCat2 });
 
-        this.buildings.KartingRata = this.matter.add.sprite(4370, 600, 'buildingSheet', 'Karting_rata', { shape: this.bodies.Karting_rata }).setScale(0.7);
+        this.buildings.KartingRata = this.matter.add.sprite(4650, 630, 'buildingSheet', 'Karting_rata', { shape: this.bodies.Karting_rata }).setScale(1);
         let Kart = this.buildings.KartingRata;
-        Kart.entrance = this.matter.add.circle(Kart.x - 150, Kart.y, entranceRadius, { collisionFilter: collisionCat2 });
+        Kart.entrance = this.matter.add.circle(Kart.x - 250, Kart.y-30, entranceRadius, { collisionFilter: collisionCat2 });
 
         this.buildings.KatettuSilta = this.matter.add.sprite(1120, 380, 'buildingSheet', 'Katettu_silta', { shape: this.bodies.Katettu_silta }).setScale(0.6);
         let Silta = this.buildings.KatettuSilta;
@@ -194,11 +194,11 @@ class StockforsScene extends MapScene {
         let History = this.buildings.historiaKyltti;
         History.entrance = this.matter.add.circle(History.x, History.y, entranceRadius, { collisionFilter: collisionCat2 });
 
-        this.buildings.Pyroll = this.matter.add.sprite(2070, 360, 'buildingSheet', 'Pyroll', { shape: this.bodies.Pyroll }).setScale(0.5);
+        this.buildings.Pyroll = this.matter.add.sprite(2200, 350, 'buildingSheet', 'Pyroll', { shape: this.bodies.Pyroll }).setScale(0.5);
         let Pyroll = this.buildings.Pyroll;
         Pyroll.entrance = this.matter.add.circle(Pyroll.x, Pyroll.y, entranceRadius, { collisionFilter: collisionCat2 });
 
-        this.buildings.Colombier = this.matter.add.sprite(2220, 250, 'buildingSheet', 'Colombier', { shape: this.bodies.Colombier }).setScale(0.3);
+        this.buildings.Colombier = this.matter.add.sprite(2370, 250, 'buildingSheet', 'Colombier', { shape: this.bodies.Colombier }).setScale(0.3);
         let Colombier = this.buildings.Colombier;
         Colombier.entrance = this.matter.add.circle(Colombier.x, Colombier.y, entranceRadius, { collisionFilter: collisionCat2 });
 
@@ -238,7 +238,7 @@ class StockforsScene extends MapScene {
 
         this.puska1 = this.matter.add.sprite(2320, 640, 'buildingSheet', 'Pensas', { shape: this.bodies.Pensas }).setScale(0.5).setStatic(true);
         this.puska2 = this.matter.add.sprite(2220, 570, 'buildingSheet', 'Pensas2', { shape: this.bodies.Pensas2 }).setScale(0.5).setStatic(true);
-        this.puskaAita = this.matter.add.sprite(1985, 760, 'buildingSheet', 'Pensas_ja_aita', { shape: this.bodies.Pensas_ja_aita }).setScale(0.6).setStatic(true);
+        this.puskaAita = this.matter.add.sprite(1985, 760, 'buildingSheet', 'Pensas_ja_aita', { shape: this.bodies.Pensas_ja_aita }).setScale(0.6).setStatic(true).setDepth(744);
         this.aita = this.matter.add.sprite(2290, 675, 'buildingSheet', 'Valkoinen_aita', { shape: this.bodies.Valkoinen_aita }).setScale(0.7).setStatic(true);
         this.buildings.portti1 = this.matter.add.sprite(1900, 870, 'buildingSheet', 'Portti', { shape: this.bodies.Portti }).setScale(0.6).setStatic(true);
         this.buildings.portti2 = this.matter.add.sprite(1840, 825, 'buildingSheet', 'Portti2', { shape: this.bodies.Portti2 }).setScale(0.6).setStatic(true);

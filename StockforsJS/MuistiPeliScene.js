@@ -37,14 +37,14 @@ class MuistiPeliScene extends Phaser.Scene {
 
     preload()
     {
-        this.load.image('background', 'Assets/images/Albums/Pakkausmuseo/Pakkausmuseo.jpg');
+        //this.load.image('background', 'Assets/images/Albums/Pakkausmuseo/Pakkausmuseo.jpg');
     }
 
     create() {
 
-        this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, 'background').setScale(0.5);
+        //this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, 'background').setScale(0.5);
 
-        
+        this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, 'PakkausImage3').setScale(1.3);
 
         this.cameras.main.backgroundColor.setTo(255, 255, 255);
 

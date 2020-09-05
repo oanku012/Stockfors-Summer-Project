@@ -120,6 +120,9 @@ class OpeningScene extends Phaser.Scene {
 
         this.cameras.main.backgroundColor.setTo(255, 255, 255);
 
+        //Backgroundimage
+        this.background = this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, 'tausta').setScale(1.34);
+
         this.data = this.cache.json.get('data').MainMenu;
 
         this.CreateLanguageMenu();
@@ -188,8 +191,6 @@ class OpeningScene extends Phaser.Scene {
 
         //this.add.text(700, 200, "Stockfors Kartalle", { font: "40px Arial", fill: "yellow" });
 
-
-
         this.aloitusPohja = this.add.sprite(-80, -83, 'MenuAtlas', 'UI Pohjat/Aloitusruutu');
 
         // Get title and description from a json file
@@ -229,7 +230,8 @@ class OpeningScene extends Phaser.Scene {
         //this.clearDataText = this.add.text(1400, 200, "Clear save data", { font: "40px Carme", fill: "black" });
 
         this.mainMenuContainer = this.CreateMenuContainer(
-            [this.aloitusPohja,
+            [
+            this.aloitusPohja,
             this.infoText,
             this.infoHeader,
             this.newGame,

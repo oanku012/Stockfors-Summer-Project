@@ -8,6 +8,8 @@ class ColombierScene extends BuildingScene
 
         this.url = 'https://colombier.com/';
 
+        this.backgroundImage = "ColombierImage1";
+
     }
 
     create()

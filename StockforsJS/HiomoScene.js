@@ -6,6 +6,8 @@ class HiomoScene extends BuildingScene
 
         this.name = 'Hiomo';
 
+        this.backgroundImage = "HiomoImage1";
+
     }
 
     create()

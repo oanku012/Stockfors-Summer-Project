@@ -4,7 +4,10 @@ class KirkkoScene extends BuildingScene
     {
         super('KirkkoScene');
 
-        this.name = 'Kirkko'
+        this.name = 'Kirkko';
+
+        this.backgroundImage = "KirkkoImage1";
+
     }
 
     preload()
