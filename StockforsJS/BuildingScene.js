@@ -751,8 +751,20 @@ class BuildingScene extends Phaser.Scene {
             element.on('pointerup', function () {
                 if (element.pressed) {
                     element.clearTint();
+
+                    let panoHTML = document.createElement('iframe');
+                    panoHTML.src = 'pannellum/pannellum.htm#panorama=/Assets/images/Panoramas/Patruunantalo1.jpg'
+
+                    let panoramaViewer = this.add.dom(this.cameras.main.centerX, this.cameras.main.centerY, panoHTML, 'border-style:none; width: 1920px; height: 1080px;');
                     //this.CreatePanoRamaViewer(this.panoramas[1]);
                     //window.open("https://cdn.pannellum.org/2.5/pannellum.htm#panorama=//localhost/Assets/Images/Panoramas/Patruunantalo1.jpg");
+
+                    //this.add.dom(this.cameras.main.centerX, this.cameras.main.centerY, 'div', 'id="panorama"');
+
+                    /*let viewer = pannellum.viewer('panorama', {
+                        "panorama": "Assets/images/Panoramas/Patruunantalo1.jpg",
+                        "autoLoad": true
+                    });*/
 
                 }
 
