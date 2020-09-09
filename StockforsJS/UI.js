@@ -14,7 +14,37 @@ class UI extends Phaser.Scene {
         //this.add.sprite(400, 400, 'MenuAtlas','UI Buttons/Asetukset');
 
     }
+
+    update() {
+        if (optionsButton.open && domsVisible) {
+            domElements.forEach(element => {
+                element.setVisible(false);
+
+                if (element.input) {
+                    element.disableInteractive();
+                }
+            });
+
+            domsVisible = false
+        }
+        else if (optionsButton.open === false && domsVisible === false) {
+            domElements.forEach(element => {
+                element.setVisible(true);
+                if (element.input) {
+                    element.setInteractive();
+                }
+            });
+
+            domsVisible = true;
+        }
+    }
 }
+
+//List of all dom elements which can be hidden when options are open
+var domElements = [];
+
+//Whether if dom elements have been hidden
+var domsVisible = true;
 
 function CreateButton(context, x, y, buttonspriteframe) {
     let button = context.add.sprite(x, y, 'MenuAtlas', buttonspriteframe);

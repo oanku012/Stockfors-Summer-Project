@@ -8,6 +8,10 @@ class PakkausmuseoScene extends BuildingScene
 
         this.backgroundImage = 'PakkausBG';
 
+        this.panoramas = [ 
+            "Pakkausmuseo1.jpg",
+            "Pakkausmuseo2.jpg"
+        ];
     }
 
     preload ()
@@ -22,6 +26,10 @@ class PakkausmuseoScene extends BuildingScene
         this.images = [];
 
         this.images.push("PakkausImage1", "PakkausImage2", "PakkausImage3", "PakkausImage4");
+
+        this.panoramaThumbs = [];
+
+        this.panoramaThumbs.push('PakkausPanoThumb1', 'PakkausPanoThumb2');
 
         super.create();
         

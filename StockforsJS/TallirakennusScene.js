@@ -8,6 +8,10 @@ class TallirakennusScene extends BuildingScene
 
         this.backgroundImage = 'TalliImage1';
 
+        this.panoramas = [ 
+            "Talli1.jpg"
+        ];
+
     }
 
     preload ()
@@ -22,6 +26,10 @@ class TallirakennusScene extends BuildingScene
         this.images = [];
 
         this.images.push("TalliImage1", "TalliImage2", "TalliImage3", "TalliImage4", "TalliImage5", "TalliImage6");
+
+        this.panoramaThumbs = [];
+
+        this.panoramaThumbs.push('TalliThumb');
 
         super.create();
         

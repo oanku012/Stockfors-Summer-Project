@@ -717,17 +717,17 @@ class BuildingScene extends Phaser.Scene {
         this.panoramaContainer = this.add.container(0, 0);
 
         let Panorama1 = this.add.image(0, -200, this.panoramaThumbs[0]);
+        Panorama1.img = this.panoramas[0];
         this.panoramaContainer.add(Panorama1);
         let Panorama2;
 
         if (this.panoramas.length > 1) {
             Panorama1.x -= 200;
             Panorama2 = this.add.image(200, -200, this.panoramaThumbs[1]);
+            Panorama2.img = this.panoramas[1];
             this.panoramaContainer.add(Panorama2);
             console.log('Panorama2 added');
         }
-
-
 
         this.panoramaContainer.iterate(function (element) {
             element.setInteractive();
@@ -750,22 +750,35 @@ class BuildingScene extends Phaser.Scene {
 
             element.on('pointerup', function () {
                 if (element.pressed) {
+
+                    this.ChangeVisibility(this.panoramaContainer.list);
+
                     element.clearTint();
 
                     let panoHTML = document.createElement('iframe');
-                    panoHTML.src = 'pannellum/pannellum.htm#panorama=/Assets/images/Panoramas/Patruunantalo1.jpg'
+                    //panoHTML.setAttribute("id", "panorama");
+                    panoHTML.id = 'panorama';
+                    //panoHTML.src = 'pannellum/pannellum.htm#config=/Stockfors-Summer-Project/Assets/json/pannellumConfig.json';
+                    panoHTML.src = 'pannellum/pannellum.htm#panorama=/Stockfors-Summer-Project/Assets/images/Panoramas/' + element.img + '&autoLoad=true&vaov=80&author="Sara Laitinen 2020"';
 
-                    let panoramaViewer = this.add.dom(this.cameras.main.centerX, this.cameras.main.centerY, panoHTML, 'border-style:none; width: 1920px; height: 1080px;');
-                    //this.CreatePanoRamaViewer(this.panoramas[1]);
-                    //window.open("https://cdn.pannellum.org/2.5/pannellum.htm#panorama=//localhost/Assets/Images/Panoramas/Patruunantalo1.jpg");
+                    this.panoramaViewer = this.add.dom(this.cameras.main.centerX, this.cameras.main.centerY - 50, panoHTML, 'border-style:none; width: 1500px; height: 900px;');
 
-                    //this.add.dom(this.cameras.main.centerX, this.cameras.main.centerY, 'div', 'id="panorama"');
+                    domElements.push(this.panoramaViewer);
 
-                    /*let viewer = pannellum.viewer('panorama', {
-                        "panorama": "Assets/images/Panoramas/Patruunantalo1.jpg",
-                        "autoLoad": true
-                    });*/
+                    this.panoramaExitButton = CreateTextButton(this, this.cameras.main.centerX, 1020, 'UI Buttons/Nappi', this.data.Back).setScale(0.7);
 
+                    this.panoramaExitButton.on('pointerup', function () {
+                        if (this.panoramaExitButton.pressed) {
+                            let index = domElements.indexOf(this.panoramaViewer);
+                            if (index > -1) {
+                                domElements.splice(index, 1);
+                            }
+                            this.panoramaViewer.destroy();
+                            this.ChangeVisibility(true);
+                            this.ContainerTransition(this.panoramaContainer);
+                            this.panoramaExitButton.destroy();
+                        }
+                    }, this);
                 }
 
             }, this)
@@ -777,6 +790,7 @@ class BuildingScene extends Phaser.Scene {
         this.panoramaContainer.button = this.panoramaButton;
     }
 
+    /*
     CreatePanoRamaViewer(image) {
 
         if (this.panoramaViewer) {
@@ -869,7 +883,7 @@ class BuildingScene extends Phaser.Scene {
 
 
 
-    }
+    }*/
 
     ContainerTransition(containerToOpen) {
         this.switchableContainers.forEach(function (element) {
