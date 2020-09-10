@@ -752,7 +752,7 @@ class BuildingScene extends Phaser.Scene {
 
                     let panoHTML = document.createElement('iframe');
                     panoHTML.id = 'panorama';
-                    panoHTML.src = 'pannellum/pannellum.htm#panorama=/httpdocs/Assets/images/Panoramas/' + element.img + '&autoLoad=true&vaov=80&author="Sara Laitinen 2020"';
+                    panoHTML.src = 'pannellum/pannellum.htm#panorama=/Assets/images/Panoramas/' + element.img + '&autoLoad=true&vaov=80&author="Sara Laitinen 2020"';
 
                     this.panoramaViewer = this.add.dom(this.cameras.main.centerX, this.cameras.main.centerY - 50, panoHTML, 'border-style:none; width: 1500px; height: 900px;');
 
