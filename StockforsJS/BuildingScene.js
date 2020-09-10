@@ -640,7 +640,6 @@ class BuildingScene extends Phaser.Scene {
 
         this.imageBackground.setVisible(true).setDisplaySize(newImage.displayWidth + 60, newImage.displayHeight + 60);
         this.albumBackground.setVisible(true);
-        //this.imageBackground.setVisible(true);
 
         newImage.text = this.make.text({
             x: newImage.x,
@@ -654,10 +653,6 @@ class BuildingScene extends Phaser.Scene {
                 align: 'center'
             }
         });
-
-        //this.textBackground.setVisible(true).setPosition(newImage.text.x, newImage.text.y).setDisplaySize(newImage.text.width * newImage.text.scale + 50, newImage.text.height * newImage.text.scale);
-
-
 
         //Commented this out so I can easily make the menu invisible separately when opening an image
         // add to menu for easy resize
@@ -756,9 +751,7 @@ class BuildingScene extends Phaser.Scene {
                     element.clearTint();
 
                     let panoHTML = document.createElement('iframe');
-                    //panoHTML.setAttribute("id", "panorama");
                     panoHTML.id = 'panorama';
-                    //panoHTML.src = 'pannellum/pannellum.htm#config=/Stockfors-Summer-Project/Assets/json/pannellumConfig.json';
                     panoHTML.src = 'pannellum/pannellum.htm#panorama=/Stockfors-Summer-Project/Assets/images/Panoramas/' + element.img + '&autoLoad=true&vaov=80&author="Sara Laitinen 2020"';
 
                     this.panoramaViewer = this.add.dom(this.cameras.main.centerX, this.cameras.main.centerY - 50, panoHTML, 'border-style:none; width: 1500px; height: 900px;');
