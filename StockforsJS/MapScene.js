@@ -24,6 +24,8 @@ class MapScene extends Phaser.Scene {
         this.buildingButton;
         this.buildingEntrances = [];
 
+        this.soundTriggers = [];
+
         this.sceneToOpen;
 
         this.startingPoint = {
@@ -80,15 +82,6 @@ class MapScene extends Phaser.Scene {
             collisionCat2 = this.matter.world.nextCategory();
         }
 
-        //this.matter.world.setBounds(0, 0, 5000, 2000, 64, true, true, true, true);
-
-        //Used this to change the collision category on the walls of the map, but wasn't actually necessary since I could just change collisioncat1 to the default category that the walls use
-        /*
-        Object.values(this.matter.world.walls).forEach(wall => {
-            wall.collisionFilter.category = collisionCat1;
-
-        });*/
-
         if (this.map != null) {
             this.map.setInteractive();
         }
@@ -109,8 +102,6 @@ class MapScene extends Phaser.Scene {
         }, null, this)
 
         /*
-        // UI stuff
-        this.createUI();
         // Reorganize the UI when the game gets resized
         this.scale.on('resize', this.resize, this);*/
 
@@ -119,8 +110,6 @@ class MapScene extends Phaser.Scene {
 
         //Changed this to not run on every frame, because when you're overlapping 2 buildings it would get called constantly
         this.overLapTimer = this.time.addEvent({ delay: 200, callback: this.CheckForOverlap, callbackScope: this, loop: true });
-
-        //gameState.currentMap = this;
 
         this.SavePosition();
 
@@ -142,14 +131,9 @@ class MapScene extends Phaser.Scene {
         if (this.enteringBuilding) {
             this.enteringBuilding = false;
 
-            console.log('THIS IS THE SCENE THAT WILL BE ENTERED ' + this.sceneToOpen);
+            //console.log('THIS IS THE SCENE THAT WILL BE ENTERED ' + this.sceneToOpen);
 
-            //this.time.addEvent({
-            //delay: 100, callback: function () {
-            //console.log('ENTERING SCENE ' + this.sceneToOpen);
             this.EnterBuilding(this.sceneToOpen);
-            //}, callbackScope: this
-            //});
         }
 
         //console.log(this.pointer.worldX + ' ' + this.pointer.worldY);
@@ -294,7 +278,7 @@ class MapScene extends Phaser.Scene {
         //Checks if player overlaps with one of the building entrances, apparently matter doesn't have an event for this so this runs repeatedly
         if (this.matter.overlap(this.player, this.buildingEntrances, function (bodyA, bodyB) {
 
-            if ((this.playerOverLapping === false || this.currentOverlapBody !== bodyB)) {
+            if ((this.playerOverLapping === false || this.currentOverlapBody !== bodyB) && bodyB.collisionFilter === collisionCat2) {
 
                 console.log('Overlapping with ' + bodyB.sceneKey.replace("Scene", ""));
 
@@ -333,20 +317,19 @@ class MapScene extends Phaser.Scene {
                 this.buildingButton.destroy();
             }
         }
+
+        //This is here, because it checks for overlap just like the piece of code above, but it does other stuff too
+        this.ManageSoundTriggers();
+
     }
 
     SetKeyMovement() {
-
-
         this.movingOnPath = false;
 
         //this.sceneToOpen = null;
     }
 
     MovementUpdate() {
-
-
-
 
         if (readyToMove == true) {
 
@@ -401,11 +384,6 @@ class MapScene extends Phaser.Scene {
 
 
                 if (distanceToDestination < 4) {
-
-                    //this.movementVector.x = 0;
-                    //this.movementVector.y = 0;
-
-                    //this.movingOnPath = false;
 
                     this.stopPlayerMovement();
                 }
@@ -584,14 +562,6 @@ class MapScene extends Phaser.Scene {
         this.destination.y = 0;
 
         this.movingOnPath = false;
-    }
-
-    createUI() {
-        //this.optionsMenuButton = createButton(this.cameras.main.centerX + this.cameras.main.width * .4, this.cameras.main.centerY - this.cameras.main.height * .4, 'OptionsMenuScene', true, 0, 0.56, this, 'MenuAtlas', 'UI Buttons/Asetukset');
-    }
-
-    destroyUI() {
-        this.optionsMenuButton.destroy();
     }
 
     /*resize() {
@@ -804,6 +774,50 @@ class MapScene extends Phaser.Scene {
         bubble.setDepth(9999);
 
         return bubble;
+    }
+
+    //Sound should be an array of sounds, can be an array with just one element
+    CreateSoundArea(x, y, radius, sound)
+    {
+        let soundCircle = this.matter.add.circle(x, y, radius, { collisionFilter: collisionCat2 });
+
+        soundCircle.soundsToPlay = sound;
+
+        soundCircle.readyToPlaySounds = false;
+
+        return soundCircle;
+    }
+
+    ManageSoundTriggers()
+    {
+        //Check for overlap with sound triggers
+        if(this.matter.overlap(this.player, this.soundTriggers, function(bodyA, bodyB) {
+            if(bodyB.soundsToPlay && bodyB.readyToPlaySounds === false)
+            {
+                
+
+                bodyB.readyToPlaySounds = true;
+
+            }
+
+        }, null, this) === false) 
+        {
+
+        };
+
+        let soundPlaying = false;
+
+        this.soundTriggers.forEach(sound => {
+            if(sound.readyToPlaySounds && soundPlaying === false)
+            {
+                //Picks a random sound from the list of sounds on the trigger
+                let currentSound = sound.soundsToPlay[Math.floor(Math.random() * bodyB.soundsToPlay.length)];
+
+                currentSound.play();
+
+                soundPlaying = true;
+            }
+        }, this);
     }
 
 }

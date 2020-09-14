@@ -43,6 +43,8 @@ class StockforsScene extends MapScene {
 
         super.create();
 
+        this.AddSoundSpaces();
+
         //this.CreateWaveAnim();
 
         if (gameState.newGame) {
@@ -310,14 +312,14 @@ class StockforsScene extends MapScene {
         });
     }
 
+    AddSoundSpaces()
+    {
+        this.soundTriggers = [];
+        this.soundTriggers.push(this.CreateSoundArea(1000, 1000, 50, 'Footstep1'));
+    }
+
     update() {
 
         super.update();
-
-        /*if (this.pointer.isDown == true && introPlaying) {
-            console.log('Intro ended.');
-            readyToMove = true;
-            introPlaying = false;
-        }*/
     }
 }
