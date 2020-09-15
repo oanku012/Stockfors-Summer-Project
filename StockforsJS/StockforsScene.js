@@ -315,7 +315,9 @@ class StockforsScene extends MapScene {
     AddSoundSpaces()
     {
         this.soundTriggers = [];
-        this.soundTriggers.push(this.CreateSoundArea(1000, 1000, 50, 'Footstep1'));
+        //this.soundTriggers.push(this.CreateSoundArea(1000, 1000, 50, ['Footstep1']));
+
+        this.CreateSoundPoint(1000, 1000, [this.clickSound, this.footSteps[0]]);
     }
 
     update() {

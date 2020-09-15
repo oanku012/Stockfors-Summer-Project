@@ -136,6 +136,8 @@ class MapScene extends Phaser.Scene {
             this.EnterBuilding(this.sceneToOpen);
         }
 
+        //this.CheckForDistanceToSounds();
+
         //console.log(this.pointer.worldX + ' ' + this.pointer.worldY);
 
     }
@@ -143,12 +145,14 @@ class MapScene extends Phaser.Scene {
     CreateSounds() {
         this.footSteps = [];
 
-        this.footSteps.push(this.sound.add('Footstep1'));
-        this.footSteps.push(this.sound.add('Footstep2'));
-        this.footSteps.push(this.sound.add('Footstep3'));
-        this.footSteps.push(this.sound.add('Footstep4'));
-        this.footSteps.push(this.sound.add('Footstep5'));
-        this.footSteps.push(this.sound.add('Footstep6'));
+        this.footSteps.push(this.sound.add('Footstep1', {volume: 1, pauseOnBlur: true}));
+        this.footSteps.push(this.sound.add('Footstep2', {volume: 1, pauseOnBlur: true}));
+        this.footSteps.push(this.sound.add('Footstep3', {volume: 1, pauseOnBlur: true}));
+        this.footSteps.push(this.sound.add('Footstep4', {volume: 1, pauseOnBlur: true}));
+        this.footSteps.push(this.sound.add('Footstep5', {volume: 1, pauseOnBlur: true}));
+        this.footSteps.push(this.sound.add('Footstep6', {volume: 1, pauseOnBlur: true}));
+
+        this.clickSound = this.sound.add('Click', {volume: 0, pauseOnBlur: true});
     }
 
     InputInitialize() {
@@ -319,7 +323,9 @@ class MapScene extends Phaser.Scene {
         }
 
         //This is here, because it checks for overlap just like the piece of code above, but it does other stuff too
-        this.ManageSoundTriggers();
+        //this.ManageSoundTriggers();
+
+        this.CheckForDistanceToSounds();
 
     }
 
@@ -419,7 +425,7 @@ class MapScene extends Phaser.Scene {
 
             //Final player movement is applied here, updated when current movement vector is different from current velocity
             if (this.movementVector != this.player.body.velocity) {
-                this.movementVector.setLength(this.speed * (this.sys.game.loop.delta/10));
+                this.movementVector.setLength(this.speed * (this.sys.game.loop.delta / 10));
                 this.player.setVelocity(this.movementVector.x, this.movementVector.y);
             }
 
@@ -776,48 +782,107 @@ class MapScene extends Phaser.Scene {
         return bubble;
     }
 
-    //Sound should be an array of sounds, can be an array with just one element
-    CreateSoundArea(x, y, radius, sound)
+    //Creates a point in the map that plays a sound when the player is close to it
+    //sound is an array of strings that are keys to existing sounds
+    CreateSoundPoint(x, y, sound)
     {
+        let soundPoint = new Phaser.Math.Vector2(x, y);
+
+        soundPoint.soundsToPlay = [];
+
+        sound.forEach(item => {
+
+            let newSound = item;
+            newSound.volume = 0;
+            newSound.on('complete', function(){
+                soundPoint.currentSound = soundPoint.soundsToPlay[Math.floor(Math.random() * soundPoint.soundsToPlay.length)];
+
+                soundPoint.currentSound.play();
+            }, this);
+            soundPoint.soundsToPlay.push(newSound);
+        }, this);
+
+        soundPoint.currentSound = soundPoint.soundsToPlay[Math.floor(Math.random() * soundPoint.soundsToPlay.length)];
+
+        soundPoint.currentSound.play();
+
+        console.log(soundPoint.currentSound);
+
+        this.soundTriggers.push(soundPoint);
+    }
+
+    //Checks for the player's distance to a sound point and adjusts its volume based on it
+    CheckForDistanceToSounds()
+    {
+        this.soundTriggers.forEach(trigger => {
+            let distance = this.CheckDistance(this.player, trigger);
+
+            //trigger.currentSound.config = { volume: 1/distance, pauseOnBlur: true};
+            //trigger.currentSound.play();
+
+            trigger.currentSound.volume =  (1/distance)* 20;
+
+            console.log(trigger.currentSound.volume);
+            if(trigger.currentSound.volume < 0.05)
+            {
+                trigger.currentSound.volume = 0;
+            }
+        }, this);
+    }
+
+    //Sound should be an array of sounds, can be an array with just one element
+    /*CreateSoundArea(x, y, radius, sound) {
         let soundCircle = this.matter.add.circle(x, y, radius, { collisionFilter: collisionCat2 });
 
         soundCircle.soundsToPlay = sound;
 
         soundCircle.readyToPlaySounds = false;
+        soundCircle.playingSound = false;
 
         return soundCircle;
     }
 
-    ManageSoundTriggers()
-    {
+    ManageSoundTriggers() {
+        
         //Check for overlap with sound triggers
-        if(this.matter.overlap(this.player, this.soundTriggers, function(bodyA, bodyB) {
-            if(bodyB.soundsToPlay && bodyB.readyToPlaySounds === false)
-            {
-                
+        if (this.matter.overlap(this.player, this.soundTriggers, function (bodyA, bodyB) {
+            if (bodyB.soundsToPlay && bodyB.playingSound === false) {
+
 
                 bodyB.readyToPlaySounds = true;
-
+                //bodyB.playingSound = true;
             }
 
-        }, null, this) === false) 
-        {
-
+        }, null, this) === false && soundPlaying) {
+            this.soundTriggers.forEach(sound => { 
+                sound.readyToPlaySounds = false;
+            });
         };
 
-        let soundPlaying = false;
+        //bool that should be true if any sound from a trigger is playing
+        this.soundPlaying = false;
 
         this.soundTriggers.forEach(sound => {
-            if(sound.readyToPlaySounds && soundPlaying === false)
-            {
+            if (sound.readyToPlaySounds && this.soundPlaying === false && sound.playingSound === false) {
                 //Picks a random sound from the list of sounds on the trigger
-                let currentSound = sound.soundsToPlay[Math.floor(Math.random() * bodyB.soundsToPlay.length)];
+                let currentSound = this.sound.get(sound.soundsToPlay[Math.floor(Math.random() * sound.soundsToPlay.length)]);
 
-                currentSound.play();
+                if (currentSound) {
+                    console.log(currentSound);
 
-                soundPlaying = true;
+                    currentSound.play();
+
+                    currentSound.on('COMPLETE', function () {
+                        sound.readyToPlaySounds = true;
+                        //soundPlaying = false;
+                    }, this);
+
+                    sound.playingSound = true;
+                    this.soundPlaying = true;
+
+                }
             }
         }, this);
-    }
+    }*/
 
 }
