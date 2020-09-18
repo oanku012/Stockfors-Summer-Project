@@ -9,7 +9,7 @@
   }
   
   body {
-    background: url("Assets/images/Albums/Patruunantalo/Patruunantalo\ \(2\).jpg") #002E66 no-repeat center center scroll;
+    background: url("Assets/images/AloitusTausta.jpg") #002E66 no-repeat center center scroll;
     background-size: cover;
     height: 100%;
     min-height: 35rem;
@@ -28,7 +28,7 @@
     font-weight: 700;
   }
   
-  .overlay {
+ /* .overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -37,7 +37,7 @@
     background-color: #cd9557;
     opacity: 0.7;
     z-index: 1;
-  }
+  }*/
   
   .masthead {
     position: relative;
@@ -47,19 +47,21 @@
   }
   
   .masthead .masthead-bg {
+    background-image: url("Assets/images/AloitusTaustMasthead.png");
+    background-size: cover;
     position: absolute;
     top: 0;
     bottom: 0;
     right: 0;
     left: 0;
-    width: 100%;
+    width: 130%;
     min-height: 35rem;
     height: 100%;
-    background-color: rgba(0, 46, 102, 0.8);
-    transform: skewY(4deg);
+    /*background-color: rgba(0, 46, 102, 0.8);*/
+    /*transform: skewY(4deg);*/
     transform-origin: bottom right;
   }
-  
+
   .masthead .masthead-content h1 {
     font-size: 2.5rem;
   }
@@ -90,10 +92,11 @@
     .masthead {
       height: 100%;
       min-height: 0;
-      width: 40.5rem;
+      width: 50.5rem;
       padding-bottom: 0;
     }
     .masthead .masthead-bg {
+      width: 100%;
       min-height: 0;
       transform: skewX(-8deg);
       transform-origin: top right;
@@ -101,6 +104,7 @@
     .masthead .masthead-content {
       padding-left: 3rem;
       padding-right: 10rem;
+      width: 87%;
     }
     .masthead .masthead-content h1 {
       font-size: 3.5rem;
