@@ -36,28 +36,7 @@ class OpeningScene extends Phaser.Scene {
 
         //Only loaded when languagechanged is false(which it is by default) so that it doesn't load unnecessarily when changing the language from the options menu
         if (languageChanged === false) {
-           /*// Make sure to remove all localization data before loading any
-           this.cache.json.remove('mainMenuData');
-           this.cache.json.remove('buildingData');
-           this.cache.json.remove('optionsData');
-           this.cache.json.remove('muistipeliData');
-
-           // Load JSON data
-           var path = ("Localization/" + config.language + "/MainMenu.json");
-           this.load.json('mainMenuData', path);
-
-           // Json data for all building info
-           var path = ("Localization/" + config.language + "/Buildings.json");
-           this.load.json('buildingData', path);
-
-           // Json data for all options info
-           var path = ("Localization/" + config.language + "/OptionsMenu.json");
-           this.load.json('optionsData', path);
-
-           // Json data for all muistipeli info
-           var path = ("Localization/" + config.language + "/Muistipeli.json");
-           this.load.json('muistipeliData', path);*/
-
+           
            this.cache.json.remove('data');
 
            var path = ("Localization/" + config.language + "/data.json");
@@ -69,38 +48,6 @@ class OpeningScene extends Phaser.Scene {
 
             
         }
-
-        /*this.load.audio('Footstep1', 'Assets/sounds/Footstep1.ogg');
-        this.load.audio('Footstep2', 'Assets/sounds/Footstep2.ogg');
-        this.load.audio('Footstep3', 'Assets/sounds/Footstep3.ogg');
-        this.load.audio('Footstep4', 'Assets/sounds/Footstep4.ogg');
-        this.load.audio('Footstep5', 'Assets/sounds/Footstep5.ogg');
-        this.load.audio('Footstep6', 'Assets/sounds/Footstep6.ogg');*/
-
-
-        // This stuff is now loaded in assets.json
-        /*
-        this.load.image('buttonBG', 'Assets/images/menu/button-bg.png');
-        this.load.image('buttonText', 'Assets/images/menu/button-text.png');
-        this.load.image('menuBG', 'Assets/images/menu/menu-bg.png');
-        this.load.image('exitButton', 'Assets/images/menu/exit-button.png');
-
-        this.load.spritesheet('playerWalk', 'Assets/images/character/PlayerWalking.png', { frameWidth: 378, frameHeight: 378 });
-        this.load.spritesheet('playerIdle', 'Assets/images/character/PlayerStanding.png', { frameWidth: 378, frameHeight: 378 });
-
-        this.load.image('map', 'Assets/images/map/kartta.png');
-
-        this.load.image('Nuoli', 'Assets/images/map/arrowSign');
-
-        //Used texturepacker and physicseditor to compile the buildings into a single spritesheet
-        this.load.atlas('buildingSheet', 'Assets/images/map/Buildings/TPBuildings.png', 'Assets/images/map/Buildings/TPBuildings.json');
-        this.load.json('buildingBodies', 'Assets/images/map/Buildings/PEBuildings.json');
-
-        //this.load.atlas('buttonSheet', 'Assets/images/menu/Buttons/MenuButtons.png', 'Assets/images/menu/Buttons/MenuButtons.json');
-        //this.load.atlas('BGSheet', 'Assets/images/menu/Backgrounds/MenuBackgrounds.png', 'Assets/images/menu/Backgrounds/MenuBackgrounds.json');
-        this.load.atlas('MenuAtlas', 'Assets/images/menu/MenuAssets.png', 'Assets/images/menu/MenuAssets.json');
-        this.load.image('Logo', 'Assets/images/menu/Logo.png');
-        */
     }
 
     //This is used when restarting the scene with a chosen language, when languagechosen is true the language menu is hidden
@@ -290,14 +237,6 @@ class OpeningScene extends Phaser.Scene {
 
             }
         }, this);
-
-        /*this.clearDataText.setInteractive();
-
-        this.clearDataText.on('pointerup', function () {
-            localStorage.clear();
-
-            console.log('Saved data cleared');
-        });*/
 
         if (!savedGame) {
             this.continue.setVisible(false);
