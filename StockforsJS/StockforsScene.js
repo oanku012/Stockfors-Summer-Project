@@ -21,9 +21,6 @@ class StockforsScene extends MapScene {
 
         this.bodies = this.cache.json.get('buildingBodies');
 
-        //this.matter.world.setBounds(0, 0, 5000, 2000, 64, true, true, true, true);
-
-
         //Check if initialized parameters are not numbers and if so give them default values
         if (isNaN(this.startingPoint.x) && isNaN(this.startingPoint.y)) {
             this.startingPoint.x = playerStartPosition.x;
@@ -35,9 +32,6 @@ class StockforsScene extends MapScene {
         this.map = this.matter.add.image(0, 0, 'map', null, { shape: this.bodies.Kartta }).setDepth(0).setStatic(true);
 
         this.map.setPosition(this.map.width / 2 + 375, this.map.height / 2 + 70);
-
-        //this.map.body.position.x = -1000;
-        //this.map.body.position.y = ;
 
         console.log(this.map);
 
@@ -56,12 +50,7 @@ class StockforsScene extends MapScene {
             //this.cameras.main.setZoom(3);
             saveGame({ newGame: false });
 
-            //let playerTopRight = this.player.getTopRight();
-
             let bubbleDuration = 3000;
-
-            //let posX = playerTopRight.x + 30;
-            //let posY = playerTopRight.y - 30;
 
             //This looks like a mess I know, basically it makes new speech bubbles for the player on a timer
             let firstSpeechEvent = this.time.addEvent({
@@ -138,9 +127,6 @@ class StockforsScene extends MapScene {
     }
 
     BuildingsInitialize() {
-
-
-
 
         let entranceRadius = 25;
 
@@ -245,10 +231,6 @@ class StockforsScene extends MapScene {
         this.buildings.portti1 = this.matter.add.sprite(1900, 870, 'buildingSheet', 'Portti', { shape: this.bodies.Portti }).setScale(0.6).setStatic(true);
         this.buildings.portti2 = this.matter.add.sprite(1840, 825, 'buildingSheet', 'Portti2', { shape: this.bodies.Portti2 }).setScale(0.6).setStatic(true);
 
-
-
-        //this.buildings.KirkkoTie = this.matter.add.image(1400, 500, 'Nuoli').setScale(0.1);
-
         Object.values(this.buildings).forEach(building => {
 
             building.setDepth(building.y).setStatic(true);
@@ -297,8 +279,6 @@ class StockforsScene extends MapScene {
 
         }, this);
 
-        //this.levelContainer.setScale(1.5);
-
         super.BuildingsInitialize();
 
     }
@@ -314,10 +294,9 @@ class StockforsScene extends MapScene {
 
     AddSoundSpaces()
     {
-        this.soundTriggers = [];
-        //this.soundTriggers.push(this.CreateSoundArea(1000, 1000, 50, ['Footstep1']));
+        this.soundPoints = [];
 
-        this.CreateSoundPoint(1000, 1000, [this.clickSound, this.footSteps[0]]);
+        this.CreateSoundPoint(2750, 850, this.birdSounds);
     }
 
     update() {

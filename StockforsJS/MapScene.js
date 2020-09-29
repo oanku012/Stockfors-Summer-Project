@@ -24,7 +24,7 @@ class MapScene extends Phaser.Scene {
         this.buildingButton;
         this.buildingEntrances = [];
 
-        this.soundTriggers = [];
+        this.soundPoints = [];
 
         this.sceneToOpen;
 
@@ -143,16 +143,23 @@ class MapScene extends Phaser.Scene {
     }
 
     CreateSounds() {
+
+        let vol = 0.8;
+
         this.footSteps = [];
 
-        this.footSteps.push(this.sound.add('Footstep1', {volume: 1, pauseOnBlur: true}));
-        this.footSteps.push(this.sound.add('Footstep2', {volume: 1, pauseOnBlur: true}));
-        this.footSteps.push(this.sound.add('Footstep3', {volume: 1, pauseOnBlur: true}));
-        this.footSteps.push(this.sound.add('Footstep4', {volume: 1, pauseOnBlur: true}));
-        this.footSteps.push(this.sound.add('Footstep5', {volume: 1, pauseOnBlur: true}));
-        this.footSteps.push(this.sound.add('Footstep6', {volume: 1, pauseOnBlur: true}));
+        this.footSteps.push(this.sound.add('Footstep1', { volume: vol, pauseOnBlur: true }));
+        this.footSteps.push(this.sound.add('Footstep2', { volume: vol, pauseOnBlur: true }));
+        this.footSteps.push(this.sound.add('Footstep3', { volume: vol, pauseOnBlur: true }));
+        this.footSteps.push(this.sound.add('Footstep4', { volume: vol, pauseOnBlur: true }));
+        this.footSteps.push(this.sound.add('Footstep5', { volume: vol, pauseOnBlur: true }));
+        this.footSteps.push(this.sound.add('Footstep6', { volume: vol, pauseOnBlur: true }));
 
-        this.clickSound = this.sound.add('Click', {volume: 0, pauseOnBlur: true});
+        this.clickSound = this.sound.add('Click', { volume: 0, pauseOnBlur: true });
+
+        this.birdSounds = [];
+        this.birdSounds.push(this.sound.add('Birds1', { volume: 0, pauseOnBlur: true }));
+        this.birdSounds.push(this.sound.add('Birds2', { volume: 0, pauseOnBlur: true }));
     }
 
     InputInitialize() {
@@ -783,9 +790,8 @@ class MapScene extends Phaser.Scene {
     }
 
     //Creates a point in the map that plays a sound when the player is close to it
-    //sound is an array of strings that are keys to existing sounds
-    CreateSoundPoint(x, y, sound)
-    {
+    //sound is an array of existing sounds added to the scene
+    CreateSoundPoint(x, y, sound) {
         let soundPoint = new Phaser.Math.Vector2(x, y);
 
         soundPoint.soundsToPlay = [];
@@ -794,8 +800,14 @@ class MapScene extends Phaser.Scene {
 
             let newSound = item;
             newSound.volume = 0;
-            newSound.on('complete', function(){
-                soundPoint.currentSound = soundPoint.soundsToPlay[Math.floor(Math.random() * soundPoint.soundsToPlay.length)];
+            //When the sound has stopped playing, pick a random sound from the list of sounds in this sound point and play it
+            newSound.on('complete', function () {
+
+                //Randomly pick a new sound, repeat if the sound is the same as the one that just finished playing
+                do {
+                    soundPoint.currentSound = soundPoint.soundsToPlay[Math.floor(Math.random() * soundPoint.soundsToPlay.length)];
+                }
+                while (soundPoint.currentSound === newSound);
 
                 soundPoint.currentSound.play();
             }, this);
@@ -808,23 +820,24 @@ class MapScene extends Phaser.Scene {
 
         console.log(soundPoint.currentSound);
 
-        this.soundTriggers.push(soundPoint);
+        //Rectangle collider that shows the position for the sound trigger or point or whatever you wanna call it, not visible when debug turned off
+        soundPoint.marker = this.matter.add.rectangle(soundPoint.x, soundPoint.y, 10, 10, { collisionFilter: collisionCat2 });
+
+        this.soundPoints.push(soundPoint);
     }
 
     //Checks for the player's distance to a sound point and adjusts its volume based on it
-    CheckForDistanceToSounds()
-    {
-        this.soundTriggers.forEach(trigger => {
+    CheckForDistanceToSounds() {
+        this.soundPoints.forEach(trigger => {
             let distance = this.CheckDistance(this.player, trigger);
 
             //trigger.currentSound.config = { volume: 1/distance, pauseOnBlur: true};
             //trigger.currentSound.play();
 
-            trigger.currentSound.volume =  (1/distance)* 20;
+            trigger.currentSound.volume = (1 / distance) * 20;
 
             console.log(trigger.currentSound.volume);
-            if(trigger.currentSound.volume < 0.05)
-            {
+            if (trigger.currentSound.volume < 0.05) {
                 trigger.currentSound.volume = 0;
             }
         }, this);
@@ -845,7 +858,7 @@ class MapScene extends Phaser.Scene {
     ManageSoundTriggers() {
         
         //Check for overlap with sound triggers
-        if (this.matter.overlap(this.player, this.soundTriggers, function (bodyA, bodyB) {
+        if (this.matter.overlap(this.player, this.soundPoints, function (bodyA, bodyB) {
             if (bodyB.soundsToPlay && bodyB.playingSound === false) {
 
 
@@ -854,7 +867,7 @@ class MapScene extends Phaser.Scene {
             }
 
         }, null, this) === false && soundPlaying) {
-            this.soundTriggers.forEach(sound => { 
+            this.soundPoints.forEach(sound => { 
                 sound.readyToPlaySounds = false;
             });
         };
@@ -862,7 +875,7 @@ class MapScene extends Phaser.Scene {
         //bool that should be true if any sound from a trigger is playing
         this.soundPlaying = false;
 
-        this.soundTriggers.forEach(sound => {
+        this.soundPoints.forEach(sound => {
             if (sound.readyToPlaySounds && this.soundPlaying === false && sound.playingSound === false) {
                 //Picks a random sound from the list of sounds on the trigger
                 let currentSound = this.sound.get(sound.soundsToPlay[Math.floor(Math.random() * sound.soundsToPlay.length)]);

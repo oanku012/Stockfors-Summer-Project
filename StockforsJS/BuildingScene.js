@@ -45,6 +45,9 @@ class BuildingScene extends Phaser.Scene {
 
         //let bounds = this.matter.world.setBounds(-90, 0, 2500, 1000, 64, true, true, false, false);
 
+        //Stops ongoing sounds that started in the map scene from playing
+        this.sound.stopAll();
+
         let background = this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, this.backgroundImage).setDepth(0);
 
         background.setDisplaySize(this.sys.canvas.width, (this.sys.canvas.width / background.width) * background.height);
