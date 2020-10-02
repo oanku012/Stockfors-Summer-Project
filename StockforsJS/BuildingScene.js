@@ -348,7 +348,7 @@ class BuildingScene extends Phaser.Scene {
 
         }, this);
 
-        let arrowButtonForward = CreateButton(this, 700, 0, 'UI Buttons/Nuoli').setScale(0.9);
+        /*let arrowButtonForward = CreateButton(this, 700, 0, 'UI Buttons/Nuoli').setScale(0.9);
         let arrowButtonBackward = CreateButton(this, -700, 0, 'UI Buttons/Nuoli').setFlipX(true).setScale(0.9);
 
         this.infoContainer.add([arrowButtonForward, arrowButtonBackward]);
@@ -374,7 +374,7 @@ class BuildingScene extends Phaser.Scene {
                 }, this)
 
             }
-        }, this);
+        }, this);*/
 
         this.switchableContainers.push(this.infoContainer);
 
@@ -382,8 +382,8 @@ class BuildingScene extends Phaser.Scene {
 
         this.infoContainer.button = this.infoButton;
 
-        this.infoContainer.arrowForw = arrowButtonForward;
-        this.infoContainer.arrowBack = arrowButtonBackward;
+        //this.infoContainer.arrowForw = arrowButtonForward;
+        //this.infoContainer.arrowBack = arrowButtonBackward;
 
         this.openedCard = 0;
 
@@ -394,10 +394,18 @@ class BuildingScene extends Phaser.Scene {
         
         let infoDiv = document.createElement('div');
 
-        infoDiv.style = 'padding: 15px; padding-top: 0; overflow-x: hidden; width: 770px; height: 650px; background-Image: url("Assets/images/menu/Infokorttipohja.png"); background-size: 100% 103%; background-repeat: no-repeat; background-position: -10px, -15px; font: 33px Carme'
+        infoDiv.style = 'padding: 30px; overflow-x: hidden; width: 1400px; height: 770px;  font: 33px Carme'
         infoDiv.innerHTML = text;
 
-        let infoDom = this.add.dom(this.centerX, this.centerY - 10, infoDiv)
+        //background-Image: url("Assets/images/menu/Infokorttipohja.png"); background-size: 100% 103%; background-repeat: no-repeat; background-position: -10px, -15px;
+
+        let infoDom = this.add.dom(0, 15, infoDiv)
+
+        let infoBackground = this.add.sprite(0, 13, 'MenuAtlas', 'UI Pohjat/Infokorttipohja').setScale(1.75, 1.36);
+
+        domElements.push(infoDom);
+
+        this.infoContainer.add([infoDom, infoBackground]);
     }
 
     /*
