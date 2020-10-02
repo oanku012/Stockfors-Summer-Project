@@ -43,12 +43,15 @@ class BuildingScene extends Phaser.Scene {
 
     create() {
 
+        this.centerX = this.cameras.main.centerX;
+        this.centerY = this.cameras.main.centerY;
+
         //let bounds = this.matter.world.setBounds(-90, 0, 2500, 1000, 64, true, true, false, false);
 
         //Stops ongoing sounds that started in the map scene from playing
         this.sound.stopAll();
 
-        let background = this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, this.backgroundImage).setDepth(0);
+        let background = this.add.image(this.centerX, this.centerY, this.backgroundImage).setDepth(0);
 
         background.setDisplaySize(this.sys.canvas.width, (this.sys.canvas.width / background.width) * background.height);
 
@@ -91,7 +94,7 @@ class BuildingScene extends Phaser.Scene {
     createMenuContainer() {
         // Menu
         this.menuBG = this.add.sprite(0, 0, 'MenuAtlas', 'UI Pohjat/InsideVaaka');
-        this.menu = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY - 20, [this.menuBG]).setScale(0.8);
+        this.menu = this.add.container(this.centerX, this.centerY - 20, [this.menuBG]).setScale(0.8);
 
         // title and description
         let title = this.add.text(0, -350, this.title);
@@ -110,7 +113,7 @@ class BuildingScene extends Phaser.Scene {
 
     CreateInstructions() {
         this.ohjeBG = this.add.sprite(0, 0, 'MenuAtlas', 'UI Pohjat/Ohjeet-infoikkuna');
-        this.ohje = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY, [this.ohjeBG]).setScale(0.56);
+        this.ohje = this.add.container(this.centerX, this.centerY, [this.ohjeBG]).setScale(0.56);
 
         // title
         let title = this.add.text(0, -450, this.data['Ohjeet'].Title);
@@ -330,8 +333,8 @@ class BuildingScene extends Phaser.Scene {
 
     resize() {
         if (this.scene.isActive(this.scene.key)) {
-            this.menu.setX(this.cameras.main.centerX);
-            this.menu.setY(this.cameras.main.centerY);
+            this.menu.setX(this.centerX);
+            this.menu.setY(this.centerY);
         }
 
     }
@@ -384,9 +387,20 @@ class BuildingScene extends Phaser.Scene {
 
         this.openedCard = 0;
 
-        this.ChangeCard(this.openedCard);
+        //this.ChangeCard(this.openedCard);
     }
 
+    CreateInfoCards(text){
+        
+        let infoDiv = document.createElement('div');
+
+        infoDiv.style = 'padding: 15px; padding-top: 0; overflow-x: hidden; width: 770px; height: 650px; background-Image: url("Assets/images/menu/Infokorttipohja.png"); background-size: 100% 103%; background-repeat: no-repeat; background-position: -10px, -15px; font: 33px Carme'
+        infoDiv.innerHTML = text;
+
+        let infoDom = this.add.dom(this.centerX, this.centerY - 10, infoDiv)
+    }
+
+    /*
     CreateInfoCards(text) {
 
 
@@ -519,16 +533,16 @@ class BuildingScene extends Phaser.Scene {
         }
 
         console.log('Changed to: ' + cardIndex);
-    }
+    }*/
 
     CreateAlbum() {
 
         this.imgContainerY = 50;
 
         //Background that shows up when viewing the images in an album
-        this.albumBackground = this.add.image(this.cameras.main.centerX + 5, this.cameras.main.centerY - 20, 'MenuAtlas', 'UI Pohjat/Pelipohja').setVisible(false).setScale(1.04, 0.57);
-        this.imageBackground = this.add.image(this.cameras.main.centerX, this.cameras.main.centerY - this.imgContainerY, 'MenuAtlas', 'UI Pohjat/Infokorttipohja').setVisible(false);
-        //this.textBackground = this.add.image(this.cameras.main.centerX, this.cameras.main.centerY - 7, 'MenuAtlas', 'UI Pohjat/Pelipohja').setVisible(false);
+        this.albumBackground = this.add.image(this.centerX + 5, this.centerY - 20, 'MenuAtlas', 'UI Pohjat/Pelipohja').setVisible(false).setScale(1.04, 0.57);
+        this.imageBackground = this.add.image(this.centerX, this.centerY - this.imgContainerY, 'MenuAtlas', 'UI Pohjat/Infokorttipohja').setVisible(false);
+        //this.textBackground = this.add.image(this.centerX, this.centerY - 7, 'MenuAtlas', 'UI Pohjat/Pelipohja').setVisible(false);
 
         this.albumContainer = this.add.container(0, -500).setScale(1.2);
 
@@ -593,8 +607,8 @@ class BuildingScene extends Phaser.Scene {
         let arrowX = 850;
         let arrowY = 460;
 
-        this.albumArrowForward = CreateButton(this, this.cameras.main.centerX + arrowX, this.cameras.main.centerY + arrowY, 'UI Buttons/Arrow').setScale(0.9).setVisible(false);
-        this.albumArrowBackward = CreateButton(this, this.cameras.main.centerX - arrowX, this.cameras.main.centerY + arrowY, 'UI Buttons/Arrow').setFlipX(true).setScale(0.9).setVisible(false);
+        this.albumArrowForward = CreateButton(this, this.centerX + arrowX, this.centerY + arrowY, 'UI Buttons/Arrow').setScale(0.9).setVisible(false);
+        this.albumArrowBackward = CreateButton(this, this.centerX - arrowX, this.centerY + arrowY, 'UI Buttons/Arrow').setFlipX(true).setScale(0.9).setVisible(false);
 
         this.albumArrowForward.on('pointerup', function () {
             if (this.albumArrowForward.pressed) {
@@ -632,7 +646,7 @@ class BuildingScene extends Phaser.Scene {
             this.currentImage.destroy();
         }
 
-        let newImage = this.add.image(this.cameras.main.centerX - 2, this.cameras.main.centerY - this.imgContainerY, image);
+        let newImage = this.add.image(this.centerX - 2, this.centerY - this.imgContainerY, image);
 
         let imageHeight = 900;
 
@@ -757,11 +771,11 @@ class BuildingScene extends Phaser.Scene {
                     panoHTML.id = 'panorama';
                     panoHTML.src = 'pannellum/pannellum.htm#panorama=/Assets/images/Panoramas/' + element.img + '&autoLoad=true&vaov=80&author="Sara Laitinen 2020"';
 
-                    this.panoramaViewer = this.add.dom(this.cameras.main.centerX, this.cameras.main.centerY - 50, panoHTML, 'border-style:none; width: 1500px; height: 900px;');
+                    this.panoramaViewer = this.add.dom(this.centerX, this.centerY - 50, panoHTML, 'border-style:none; width: 1500px; height: 900px;');
 
                     domElements.push(this.panoramaViewer);
 
-                    this.panoramaExitButton = CreateTextButton(this, this.cameras.main.centerX, 1020, 'UI Buttons/Nappi', this.data.Back).setScale(0.7);
+                    this.panoramaExitButton = CreateTextButton(this, this.centerX, 1020, 'UI Buttons/Nappi', this.data.Back).setScale(0.7);
 
                     this.panoramaExitButton.on('pointerup', function () {
                         if (this.panoramaExitButton.pressed) {
