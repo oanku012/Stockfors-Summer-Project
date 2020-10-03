@@ -34,6 +34,8 @@ class BuildingScene extends Phaser.Scene {
         this.images = [];
 
         this.switchableContainers = [];
+
+        this.currentContainer;
     }
 
     preload() {
@@ -177,6 +179,7 @@ class BuildingScene extends Phaser.Scene {
             if (backButton.pressed) {
                 this.ohje.setVisible(false);
                 this.menu.setVisible(true);
+                this.currentContainer.setVisible(true);
             }
         }, this);
 
@@ -192,6 +195,8 @@ class BuildingScene extends Phaser.Scene {
                 this.instructionButton.clearTint();
                 this.ohje.setVisible(true);
                 this.menu.setVisible(false);
+                //There was a bug with the html in the info where it would stay visible when opening the instructions despite the menu which contained its container being made invisible, that's why the current container is set invisible separately now
+                this.currentContainer.setVisible(false);
                 this.instructionButton.pressed = false;
             }
         }, this);
@@ -394,8 +399,12 @@ class BuildingScene extends Phaser.Scene {
         
         let infoDiv = document.createElement('div');
 
-        infoDiv.style = 'padding: 30px; overflow-x: hidden; width: 1400px; height: 770px;  font: 33px Carme'
-        infoDiv.innerHTML = text;
+        //This is the style for the entire info html
+        infoDiv.style = 'padding: 30px; overflow-x: hidden; width: 1400px; height: 770px;  font: 33px Carme;'
+        
+        //The stylesheet is for styling the inner elements, not sure if it could have been put straight into the style element above somehow
+        //Text variable is the HTML string that includes the infotext as well, stored in JSON
+        infoDiv.innerHTML = '<link rel="stylesheet" type="text/css" href="infoStyle.css"> ' + text;
 
         //background-Image: url("Assets/images/menu/Infokorttipohja.png"); background-size: 100% 103%; background-repeat: no-repeat; background-position: -10px, -15px;
 
@@ -408,141 +417,7 @@ class BuildingScene extends Phaser.Scene {
         this.infoContainer.add([infoDom, infoBackground]);
     }
 
-    /*
-    CreateInfoCards(text) {
-
-
-        let maxLines = 18;
-
-        let remainingLines = text;
-
-        this.infoContainer.zoomed = false;
-
-        //This is just a really clumsy and convoluted way of automatically splitting the infocard text across multiple cards
-        do {
-            let infoCard = this.add.sprite(0, 5, 'MenuAtlas', 'UI Pohjat/Infokorttipohja').setScale(1.3);
-
-            //Linebreaks disappear when the string is later turned into an array and back into a string so £ is used to indicate a spot for a linebreak
-            let lineToUse = remainingLines.replace(/£/g, '');
-
-            //This is the visible text on a card that has all the £ taken out
-            infoCard.description = this.make.text({
-                x: -480,
-                y: -375,
-                text: lineToUse,
-                origin: { x: 0, y: 0 },
-                style: {
-                    font: '33px Carme',
-                    fill: 'black',
-                    wordWrap: { width: 972 }
-                }
-            });
-
-            //This one isn't visible, but it has the £ symbols which we can use later
-            let dummyDescription = this.make.text({
-                text: remainingLines,
-                style: {
-                    font: '33px Carme',
-                    fill: 'black',
-                    wordWrap: { width: 972 }
-                },
-                visible: false
-            });
-
-            //Set the maximum number of lines so the text won't overflow from the card
-            infoCard.description.setMaxLines(maxLines);
-            dummyDescription.setMaxLines(maxLines);
-
-            //This is an array of lines that are added to a card, does not account for the max lines so lines beyond the ones shown on the card are here
-            let wrappedText = dummyDescription.getWrappedText();
-
-            //Here we separate the lines from the array that are on the new card from the remaining lines and turn it into a string, the linebreaks don't carry over to the new string
-            let usedLines = wrappedText.slice(0, maxLines).join("").toString();
-
-            //console.log(usedLines);
-
-            //This gets the remaining lines for the later cards by replacing the lines in the current card with an empty string
-            remainingLines = wrappedText.join("").toString().replace(usedLines, "");
-
-            //console.log(remainingLines);
-
-            //Because the linebreaks don't carry over they have to be added here, £ is also added so later cards still have it as an indicator for the linebreaks
-            remainingLines = remainingLines.replace(/£/g, '£\n\n');
-
-
-
-            this.infoCards.push(infoCard);
-
-            this.infoContainer.add([infoCard, infoCard.description]);
-
-
-        }//Loop as long as there are still lines to add
-        while (remainingLines !== "");
-
-
-        this.infoContainer.zoomButton = CreateButton(this, 530, -390, 'UI Buttons/Zoom_In');
-        //this.infoContainer.zoomButton = this.add.sprite(530, -390, 'MenuAtlas', 'UI Buttons/Zoom_In');
-
-        let zoom = this.infoContainer.zoomButton;
-
-
-        zoom.on('pointerup', function () {
-            if (zoom.pressed === true && this.infoContainer.zoomed === false) {
-
-                this.infoContainer.setScale(1.5);
-                this.infoContainer.zoomed = true;
-                this.infoContainer.arrowForw.setScale(0.675);
-                this.infoContainer.arrowBack.setScale(0.675);
-                this.ChangeVisibility([this.infoContainer]);
-                zoom.setTexture('MenuAtlas', 'UI Buttons/Zoom_Out');
-
-            }
-            else if (zoom.pressed && this.infoContainer.zoomed) {
-
-                this.ChangeVisibility(true);
-
-                this.infoContainer.setScale(1);
-                this.infoContainer.zoomed = false;
-                this.infoContainer.arrowForw.setScale(0.9);
-                this.infoContainer.arrowBack.setScale(0.9);
-                this.ContainerTransition(this.infoContainer);
-                zoom.setTexture('MenuAtlas', 'UI Buttons/Zoom_In');
-            }
-        }, this);
-
-        this.infoContainer.add(zoom);
-
-    }
-
-    ChangeCard(cardIndex) {
-        this.infoCards.forEach(card => {
-            card.setVisible(false);
-            card.description.setVisible(false);
-            //card.zoomButton.setVisible(false);
-        });
-
-        this.infoCards[cardIndex].setVisible(true);
-        this.infoCards[cardIndex].description.setVisible(true);
-
-        if (cardIndex < this.infoCards.length - 1) {
-            this.infoContainer.arrowForw.setVisible(true);
-        }
-        else {
-            this.infoContainer.arrowForw.setVisible(false);
-
-        }
-
-        if (cardIndex > 0) {
-            this.infoContainer.arrowBack.setVisible(true);
-        }
-        else {
-            this.infoContainer.arrowBack.setVisible(false);
-
-        }
-
-        console.log('Changed to: ' + cardIndex);
-    }*/
-
+    
     CreateAlbum() {
 
         this.imgContainerY = 50;
@@ -820,6 +695,8 @@ class BuildingScene extends Phaser.Scene {
 
             }
         })
+
+        this.currentContainer = containerToOpen;
     }
 
     update() {

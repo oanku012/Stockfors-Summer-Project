@@ -144,7 +144,7 @@ class MapScene extends Phaser.Scene {
 
     CreateSounds() {
 
-        let vol = 0.8;
+        let vol = 0.5;
 
         this.footSteps = [];
 
