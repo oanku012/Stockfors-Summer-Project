@@ -218,7 +218,7 @@ class MapScene extends Phaser.Scene {
         this.SavePosition();
 
         // load scene loader with scene to open as parameter
-        this.scene.start('SceneLoader', { sceneToLoad: buildingToEnter });
+        this.scene.start('SceneLoader', { sceneToLoad: buildingToEnter, dataToLoad: 'assets', path: 'Assets/json/' + buildingToEnter + 'Assets.json'});
 
         this.sceneToOpen = null;
     }

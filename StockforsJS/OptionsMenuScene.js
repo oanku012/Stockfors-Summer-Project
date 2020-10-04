@@ -13,34 +13,16 @@ class OptionsMenuScene extends Phaser.Scene {
     preload() {
 
         if (languageChanged) {
-            /*// Make sure to remove all localization data before loading any
-           this.cache.json.remove('mainMenuData');
-           this.cache.json.remove('buildingData');
-           this.cache.json.remove('optionsData');
-           this.cache.json.remove('muistipeliData');
+            
+           //this.cache.json.remove('data');
 
-           // Load JSON data
-           var path = ("Localization/" + config.language + "/MainMenu.json");
-           this.load.json('mainMenuData', path);
-
-           // Json data for all building info
-           var path = ("Localization/" + config.language + "/Buildings.json");
-           this.load.json('buildingData', path);
-
-           // Json data for all options info
-           var path = ("Localization/" + config.language + "/OptionsMenu.json");
-           this.load.json('optionsData', path);
-
-           // Json data for all muistipeli info
-           var path = ("Localization/" + config.language + "/Muistipeli.json");
-           this.load.json('muistipeliData', path);*/
+           //var path = ("Localization/" + config.language + "/data.json");
            
-           this.cache.json.remove('data');
+           
 
-           var path = ("Localization/" + config.language + "/data.json");
-           this.load.json('data', path);
+           //this.load.json('data', path);
 
-           console.log('Language loaded');
+           //console.log('Language loaded');
         }
     }
 
@@ -53,6 +35,7 @@ class OptionsMenuScene extends Phaser.Scene {
         game.scene.getScene('UI').scene.bringToTop();
 
         //this.time.delayedCall(100, function () {
+    
         this.data = this.cache.json.get('data').OptionsMenu;
 
         this.createContainer();
@@ -251,8 +234,12 @@ class OptionsMenuScene extends Phaser.Scene {
                 config.language = 'FI';
                 console.log('Language set to Finnish.');
 
+                let path = ("Localization/" + config.language + "/data.json");
+
+                this.scene.start('SceneLoader', { sceneToLoad: this.scene, dataToLoad: 'data', path: path});
+
                 //Options is restarted first so that it loads the correct language
-                this.scene.restart();
+                /*this.scene.restart();
 
                 let activeScenes = game.scene.getScenes(true);
 
@@ -279,7 +266,7 @@ class OptionsMenuScene extends Phaser.Scene {
                 //Not the most elegant solution, but this is done with a delay so that it's not set to false before opening scene restarts and stops the opening scene from loading the language separately
                 this.time.delayedCall(100, function () {
                     languageChanged = false;
-                }, null, this);
+                }, null, this);*/
 
 
 

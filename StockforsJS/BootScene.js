@@ -24,7 +24,7 @@ class BootScene extends Phaser.Scene {
         //Loads up all the fonts
         FontsInit();
         
-        this.scene.start('PreloadScene', { sceneToLoad: 'OpeningScene' });
+        this.scene.start('PreloadScene', { sceneToLoad: 'OpeningScene', dataToLoad: 'assets'});
     }
 
     
