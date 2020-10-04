@@ -836,7 +836,7 @@ class MapScene extends Phaser.Scene {
 
             trigger.currentSound.volume = (1 / distance) * 20;
 
-            console.log(trigger.currentSound.volume);
+            //console.log(trigger.currentSound.volume);
             if (trigger.currentSound.volume < 0.05) {
                 trigger.currentSound.volume = 0;
             }

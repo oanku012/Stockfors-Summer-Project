@@ -353,46 +353,12 @@ class BuildingScene extends Phaser.Scene {
 
         }, this);
 
-        /*let arrowButtonForward = CreateButton(this, 700, 0, 'UI Buttons/Nuoli').setScale(0.9);
-        let arrowButtonBackward = CreateButton(this, -700, 0, 'UI Buttons/Nuoli').setFlipX(true).setScale(0.9);
-
-        this.infoContainer.add([arrowButtonForward, arrowButtonBackward]);
-
-        this.infoContainer.iterate(function (element) {
-
-            if (element === arrowButtonForward || element === arrowButtonBackward) {
-
-                element.on('pointerup', function () {
-
-
-                    if (element.pressed == true) {
-
-                        if (element === arrowButtonForward && this.openedCard < this.infoCards.length - 1) {
-                            this.openedCard++;
-                            this.ChangeCard(this.openedCard);
-                        }
-                        else if (element === arrowButtonBackward && this.openedCard > 0) {
-                            this.openedCard--;
-                            this.ChangeCard(this.openedCard);
-                        }
-                    }
-                }, this)
-
-            }
-        }, this);*/
-
         this.switchableContainers.push(this.infoContainer);
 
         this.menu.add(this.infoContainer);
 
         this.infoContainer.button = this.infoButton;
 
-        //this.infoContainer.arrowForw = arrowButtonForward;
-        //this.infoContainer.arrowBack = arrowButtonBackward;
-
-        this.openedCard = 0;
-
-        //this.ChangeCard(this.openedCard);
     }
 
     CreateInfoCards(text){
@@ -400,11 +366,13 @@ class BuildingScene extends Phaser.Scene {
         let infoDiv = document.createElement('div');
 
         //This is the style for the entire info html
-        infoDiv.style = 'padding: 30px; overflow-x: hidden; width: 1400px; height: 770px;  font: 33px Carme;'
+        infoDiv.style = 'padding: 30px; overflow-x: hidden; width: 1400px; height: 770px; padding: 30px; font: 33px Carme;'
         
         //The stylesheet is for styling the inner elements, not sure if it could have been put straight into the style element above somehow
         //Text variable is the HTML string that includes the infotext as well, stored in JSON
         infoDiv.innerHTML = '<link rel="stylesheet" type="text/css" href="infoStyle.css"> ' + text;
+        //This was just testing an implementation for using iframe to include html from a separate file
+        //infoDiv.innerHTML = '<iframe src="' + text + ' " style="width: 100%; height: 100%; border: none;"></iframe>';
 
         //background-Image: url("Assets/images/menu/Infokorttipohja.png"); background-size: 100% 103%; background-repeat: no-repeat; background-position: -10px, -15px;
 
@@ -415,6 +383,12 @@ class BuildingScene extends Phaser.Scene {
         domElements.push(infoDom);
 
         this.infoContainer.add([infoDom, infoBackground]);
+
+        //This stops the info text from becoming visible on top of the options menu when changing language
+        if(optionsButton.open)
+        {
+            infoDom.visible = false;
+        }
     }
 
     
