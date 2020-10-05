@@ -34,6 +34,8 @@ class BuildingScene extends Phaser.Scene {
         this.images = [];
 
         this.switchableContainers = [];
+
+        this.currentContainer;
     }
 
     preload() {
@@ -43,12 +45,15 @@ class BuildingScene extends Phaser.Scene {
 
     create() {
 
+        this.centerX = this.cameras.main.centerX;
+        this.centerY = this.cameras.main.centerY;
+
         //let bounds = this.matter.world.setBounds(-90, 0, 2500, 1000, 64, true, true, false, false);
 
         //Stops ongoing sounds that started in the map scene from playing
         this.sound.stopAll();
 
-        let background = this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, this.backgroundImage).setDepth(0);
+        let background = this.add.image(this.centerX, this.centerY, this.backgroundImage).setDepth(0);
 
         background.setDisplaySize(this.sys.canvas.width, (this.sys.canvas.width / background.width) * background.height);
 
@@ -91,7 +96,7 @@ class BuildingScene extends Phaser.Scene {
     createMenuContainer() {
         // Menu
         this.menuBG = this.add.sprite(0, 0, 'MenuAtlas', 'UI Pohjat/InsideVaaka');
-        this.menu = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY - 20, [this.menuBG]).setScale(0.8);
+        this.menu = this.add.container(this.centerX, this.centerY - 20, [this.menuBG]).setScale(0.8);
 
         // title and description
         let title = this.add.text(0, -350, this.title);
@@ -110,7 +115,7 @@ class BuildingScene extends Phaser.Scene {
 
     CreateInstructions() {
         this.ohjeBG = this.add.sprite(0, 0, 'MenuAtlas', 'UI Pohjat/Ohjeet-infoikkuna');
-        this.ohje = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY, [this.ohjeBG]).setScale(0.56);
+        this.ohje = this.add.container(this.centerX, this.centerY, [this.ohjeBG]).setScale(0.56);
 
         // title
         let title = this.add.text(0, -450, this.data['Ohjeet'].Title);
@@ -174,6 +179,7 @@ class BuildingScene extends Phaser.Scene {
             if (backButton.pressed) {
                 this.ohje.setVisible(false);
                 this.menu.setVisible(true);
+                this.currentContainer.setVisible(true);
             }
         }, this);
 
@@ -189,6 +195,8 @@ class BuildingScene extends Phaser.Scene {
                 this.instructionButton.clearTint();
                 this.ohje.setVisible(true);
                 this.menu.setVisible(false);
+                //There was a bug with the html in the info where it would stay visible when opening the instructions despite the menu which contained its container being made invisible, that's why the current container is set invisible separately now
+                this.currentContainer.setVisible(false);
                 this.instructionButton.pressed = false;
             }
         }, this);
@@ -330,8 +338,8 @@ class BuildingScene extends Phaser.Scene {
 
     resize() {
         if (this.scene.isActive(this.scene.key)) {
-            this.menu.setX(this.cameras.main.centerX);
-            this.menu.setY(this.cameras.main.centerY);
+            this.menu.setX(this.centerX);
+            this.menu.setY(this.centerY);
         }
 
     }
@@ -345,190 +353,53 @@ class BuildingScene extends Phaser.Scene {
 
         }, this);
 
-        let arrowButtonForward = CreateButton(this, 700, 0, 'UI Buttons/Nuoli').setScale(0.9);
-        let arrowButtonBackward = CreateButton(this, -700, 0, 'UI Buttons/Nuoli').setFlipX(true).setScale(0.9);
-
-        this.infoContainer.add([arrowButtonForward, arrowButtonBackward]);
-
-        this.infoContainer.iterate(function (element) {
-
-            if (element === arrowButtonForward || element === arrowButtonBackward) {
-
-                element.on('pointerup', function () {
-
-
-                    if (element.pressed == true) {
-
-                        if (element === arrowButtonForward && this.openedCard < this.infoCards.length - 1) {
-                            this.openedCard++;
-                            this.ChangeCard(this.openedCard);
-                        }
-                        else if (element === arrowButtonBackward && this.openedCard > 0) {
-                            this.openedCard--;
-                            this.ChangeCard(this.openedCard);
-                        }
-                    }
-                }, this)
-
-            }
-        }, this);
-
         this.switchableContainers.push(this.infoContainer);
 
         this.menu.add(this.infoContainer);
 
         this.infoContainer.button = this.infoButton;
 
-        this.infoContainer.arrowForw = arrowButtonForward;
-        this.infoContainer.arrowBack = arrowButtonBackward;
-
-        this.openedCard = 0;
-
-        this.ChangeCard(this.openedCard);
     }
 
-    CreateInfoCards(text) {
+    CreateInfoCards(text){
+        
+        let infoDiv = document.createElement('div');
 
+        //This is the style for the entire info html
+        infoDiv.style = 'padding: 30px; overflow-x: hidden; width: 1400px; height: 770px; padding: 30px; font: 33px Carme;'
+        
+        //The stylesheet is for styling the inner elements, not sure if it could have been put straight into the style element above somehow
+        //Text variable is the HTML string that includes the infotext as well, stored in JSON
+        infoDiv.innerHTML = '<link rel="stylesheet" type="text/css" href="infoStyle.css"> ' + text;
+        //This was just testing an implementation for using iframe to include html from a separate file
+        //infoDiv.innerHTML = '<iframe src="' + text + ' " style="width: 100%; height: 100%; border: none;"></iframe>';
 
-        let maxLines = 18;
+        //background-Image: url("Assets/images/menu/Infokorttipohja.png"); background-size: 100% 103%; background-repeat: no-repeat; background-position: -10px, -15px;
 
-        let remainingLines = text;
+        let infoDom = this.add.dom(0, 15, infoDiv)
 
-        this.infoContainer.zoomed = false;
+        let infoBackground = this.add.sprite(0, 13, 'MenuAtlas', 'UI Pohjat/Infokorttipohja').setScale(1.75, 1.36);
 
-        //This is just a really clumsy and convoluted way of automatically splitting the infocard text across multiple cards
-        do {
-            let infoCard = this.add.sprite(0, 5, 'MenuAtlas', 'UI Pohjat/Infokorttipohja').setScale(1.3);
+        domElements.push(infoDom);
 
-            //Linebreaks disappear when the string is later turned into an array and back into a string so £ is used to indicate a spot for a linebreak
-            let lineToUse = remainingLines.replace(/£/g, '');
+        this.infoContainer.add([infoDom, infoBackground]);
 
-            //This is the visible text on a card that has all the £ taken out
-            infoCard.description = this.make.text({
-                x: -480,
-                y: -375,
-                text: lineToUse,
-                origin: { x: 0, y: 0 },
-                style: {
-                    font: '33px Carme',
-                    fill: 'black',
-                    wordWrap: { width: 972 }
-                }
-            });
-
-            //This one isn't visible, but it has the £ symbols which we can use later
-            let dummyDescription = this.make.text({
-                text: remainingLines,
-                style: {
-                    font: '33px Carme',
-                    fill: 'black',
-                    wordWrap: { width: 972 }
-                },
-                visible: false
-            });
-
-            //Set the maximum number of lines so the text won't overflow from the card
-            infoCard.description.setMaxLines(maxLines);
-            dummyDescription.setMaxLines(maxLines);
-
-            //This is an array of lines that are added to a card, does not account for the max lines so lines beyond the ones shown on the card are here
-            let wrappedText = dummyDescription.getWrappedText();
-
-            //Here we separate the lines from the array that are on the new card from the remaining lines and turn it into a string, the linebreaks don't carry over to the new string
-            let usedLines = wrappedText.slice(0, maxLines).join("").toString();
-
-            //console.log(usedLines);
-
-            //This gets the remaining lines for the later cards by replacing the lines in the current card with an empty string
-            remainingLines = wrappedText.join("").toString().replace(usedLines, "");
-
-            //console.log(remainingLines);
-
-            //Because the linebreaks don't carry over they have to be added here, £ is also added so later cards still have it as an indicator for the linebreaks
-            remainingLines = remainingLines.replace(/£/g, '£\n\n');
-
-
-
-            this.infoCards.push(infoCard);
-
-            this.infoContainer.add([infoCard, infoCard.description]);
-
-
-        }//Loop as long as there are still lines to add
-        while (remainingLines !== "");
-
-
-        this.infoContainer.zoomButton = CreateButton(this, 530, -390, 'UI Buttons/Zoom_In');
-        //this.infoContainer.zoomButton = this.add.sprite(530, -390, 'MenuAtlas', 'UI Buttons/Zoom_In');
-
-        let zoom = this.infoContainer.zoomButton;
-
-
-        zoom.on('pointerup', function () {
-            if (zoom.pressed === true && this.infoContainer.zoomed === false) {
-
-                this.infoContainer.setScale(1.5);
-                this.infoContainer.zoomed = true;
-                this.infoContainer.arrowForw.setScale(0.675);
-                this.infoContainer.arrowBack.setScale(0.675);
-                this.ChangeVisibility([this.infoContainer]);
-                zoom.setTexture('MenuAtlas', 'UI Buttons/Zoom_Out');
-
-            }
-            else if (zoom.pressed && this.infoContainer.zoomed) {
-
-                this.ChangeVisibility(true);
-
-                this.infoContainer.setScale(1);
-                this.infoContainer.zoomed = false;
-                this.infoContainer.arrowForw.setScale(0.9);
-                this.infoContainer.arrowBack.setScale(0.9);
-                this.ContainerTransition(this.infoContainer);
-                zoom.setTexture('MenuAtlas', 'UI Buttons/Zoom_In');
-            }
-        }, this);
-
-        this.infoContainer.add(zoom);
-
+        //This stops the info text from becoming visible on top of the options menu when changing language
+        if(optionsButton.open)
+        {
+            infoDom.visible = false;
+        }
     }
 
-    ChangeCard(cardIndex) {
-        this.infoCards.forEach(card => {
-            card.setVisible(false);
-            card.description.setVisible(false);
-            //card.zoomButton.setVisible(false);
-        });
-
-        this.infoCards[cardIndex].setVisible(true);
-        this.infoCards[cardIndex].description.setVisible(true);
-
-        if (cardIndex < this.infoCards.length - 1) {
-            this.infoContainer.arrowForw.setVisible(true);
-        }
-        else {
-            this.infoContainer.arrowForw.setVisible(false);
-
-        }
-
-        if (cardIndex > 0) {
-            this.infoContainer.arrowBack.setVisible(true);
-        }
-        else {
-            this.infoContainer.arrowBack.setVisible(false);
-
-        }
-
-        console.log('Changed to: ' + cardIndex);
-    }
-
+    
     CreateAlbum() {
 
         this.imgContainerY = 50;
 
         //Background that shows up when viewing the images in an album
-        this.albumBackground = this.add.image(this.cameras.main.centerX + 5, this.cameras.main.centerY - 20, 'MenuAtlas', 'UI Pohjat/Pelipohja').setVisible(false).setScale(1.04, 0.57);
-        this.imageBackground = this.add.image(this.cameras.main.centerX, this.cameras.main.centerY - this.imgContainerY, 'MenuAtlas', 'UI Pohjat/Infokorttipohja').setVisible(false);
-        //this.textBackground = this.add.image(this.cameras.main.centerX, this.cameras.main.centerY - 7, 'MenuAtlas', 'UI Pohjat/Pelipohja').setVisible(false);
+        this.albumBackground = this.add.image(this.centerX + 5, this.centerY - 20, 'MenuAtlas', 'UI Pohjat/Pelipohja').setVisible(false).setScale(1.04, 0.57);
+        this.imageBackground = this.add.image(this.centerX, this.centerY - this.imgContainerY, 'MenuAtlas', 'UI Pohjat/Infokorttipohja').setVisible(false);
+        //this.textBackground = this.add.image(this.centerX, this.centerY - 7, 'MenuAtlas', 'UI Pohjat/Pelipohja').setVisible(false);
 
         this.albumContainer = this.add.container(0, -500).setScale(1.2);
 
@@ -593,8 +464,8 @@ class BuildingScene extends Phaser.Scene {
         let arrowX = 850;
         let arrowY = 460;
 
-        this.albumArrowForward = CreateButton(this, this.cameras.main.centerX + arrowX, this.cameras.main.centerY + arrowY, 'UI Buttons/Arrow').setScale(0.9).setVisible(false);
-        this.albumArrowBackward = CreateButton(this, this.cameras.main.centerX - arrowX, this.cameras.main.centerY + arrowY, 'UI Buttons/Arrow').setFlipX(true).setScale(0.9).setVisible(false);
+        this.albumArrowForward = CreateButton(this, this.centerX + arrowX, this.centerY + arrowY, 'UI Buttons/Arrow').setScale(0.9).setVisible(false);
+        this.albumArrowBackward = CreateButton(this, this.centerX - arrowX, this.centerY + arrowY, 'UI Buttons/Arrow').setFlipX(true).setScale(0.9).setVisible(false);
 
         this.albumArrowForward.on('pointerup', function () {
             if (this.albumArrowForward.pressed) {
@@ -632,7 +503,7 @@ class BuildingScene extends Phaser.Scene {
             this.currentImage.destroy();
         }
 
-        let newImage = this.add.image(this.cameras.main.centerX - 2, this.cameras.main.centerY - this.imgContainerY, image);
+        let newImage = this.add.image(this.centerX - 2, this.centerY - this.imgContainerY, image);
 
         let imageHeight = 900;
 
@@ -757,11 +628,11 @@ class BuildingScene extends Phaser.Scene {
                     panoHTML.id = 'panorama';
                     panoHTML.src = 'pannellum/pannellum.htm#panorama=/Assets/images/Panoramas/' + element.img + '&autoLoad=true&vaov=80&author="Sara Laitinen 2020"';
 
-                    this.panoramaViewer = this.add.dom(this.cameras.main.centerX, this.cameras.main.centerY - 50, panoHTML, 'border-style:none; width: 1500px; height: 900px;');
+                    this.panoramaViewer = this.add.dom(this.centerX, this.centerY - 50, panoHTML, 'border-style:none; width: 1500px; height: 900px;');
 
                     domElements.push(this.panoramaViewer);
 
-                    this.panoramaExitButton = CreateTextButton(this, this.cameras.main.centerX, 1020, 'UI Buttons/Nappi', this.data.Back).setScale(0.7);
+                    this.panoramaExitButton = CreateTextButton(this, this.centerX, 1020, 'UI Buttons/Nappi', this.data.Back).setScale(0.7);
 
                     this.panoramaExitButton.on('pointerup', function () {
                         if (this.panoramaExitButton.pressed) {
@@ -798,6 +669,8 @@ class BuildingScene extends Phaser.Scene {
 
             }
         })
+
+        this.currentContainer = containerToOpen;
     }
 
     update() {

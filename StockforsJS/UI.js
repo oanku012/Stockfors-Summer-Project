@@ -7,15 +7,11 @@ class UI extends Phaser.Scene {
     create() {
         optionsButton = createSceneOpenButton(this.cameras.main.centerX + this.cameras.main.width * .475, this.cameras.main.centerY - this.cameras.main.height * .445, 'OptionsMenuScene', true, 0, 0.56, this, 'MenuAtlas', 'UI Buttons/Asetukset');
 
-        //historyButton = createSceneOpenButton(this.cameras.main.centerX - this.cameras.main.width * .470, this.cameras.main.centerY - this.cameras.main.height * .440, 'HistoryScene', true, 0, 1, this, 'MenuAtlas', 'UI Buttons/Logo').setScale(0.3);
-        /*historyButton.on('pointerover', function(){
-
-        })*/
-        //this.add.sprite(400, 400, 'MenuAtlas','UI Buttons/Asetukset');
-
     }
 
     update() {
+
+        //Hides html elements when options are open so they won't be displayed on top of the options
         if (optionsButton.open && domsVisible) {
             domElements.forEach(element => {
                 element.setVisible(false);

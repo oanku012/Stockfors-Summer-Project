@@ -48,6 +48,10 @@ class OpeningScene extends Phaser.Scene {
 
             
         }
+        else if(languageChanged === true)
+        {
+            languageChanged = false;
+        }
     }
 
     //This is used when restarting the scene with a chosen language, when languagechosen is true the language menu is hidden
