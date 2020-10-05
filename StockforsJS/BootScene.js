@@ -5,6 +5,7 @@ class BootScene extends Phaser.Scene {
         super('BootScene');
     }
 
+
     preload ()
     {
         this.cameras.main.backgroundColor.setTo(255, 255, 255);
@@ -16,19 +17,17 @@ class BootScene extends Phaser.Scene {
         this.load.image('logo', 'Assets/images/menu/Logo.png');
         this.load.image('tausta', 'Assets/images/menu/Tausta.jpg');
         this.load.script('webfont', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js');
-        
     }
 
     create ()
     {
         //Loads up all the fonts
         FontsInit();
-        
+
         this.scene.start('PreloadScene', { sceneToLoad: 'OpeningScene' });
     }
-
-    
 }
+
 
 function FontsInit()
 {

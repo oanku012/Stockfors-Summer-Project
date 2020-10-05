@@ -242,6 +242,9 @@
           "HelpText": "This app is meant to familiarize people with the historical industrial site of Stockfors in Pyhtää and the different companies acting in the area. The goal is to learn about the site's history and culture. £\n\nThe game lets you explore a map depicting the Stockfors-area by moving around with a player character. You can move the player character by clicking or tapping where you want to go or by using the WASD- or arrow-keys. You can visit different buildings and locations around the map by moving the player to an entrance highlighted by a glowing effect. £\n\nFrom there you can find more information about the history of the place you're visiting as well as pictures, 360 panoramas and in some places even different minigames. ",
           "NewGame": "New game",
           "ContinueGame": "Continue game",
+          "FullscreenText": "You appear to be playing on mobile.\nFor the optimal experience, we recommend playing in fullscreen mode.\n\nToggle fullscreen?",
+          "YesText": "Yes",
+          "NoText": "No",
           "Back": "Back"
      },
      "OptionsMenu": {
@@ -251,7 +254,7 @@
           "Sound": "Sound",
           "Music": "Music",
           "Fullscreen": "Fullscreen",
-          "CreditsText": "Erna Gronow - Project Lead\nSara Laitinen - Graphics, Photography\nAnna-Maria Närä - Graphics, Texts\nJere Loukoila - Programming\nAnton Kujansuu - Programming\nPyhtään Perinnepiiri - Partner\n\nInfo card sources:\nPuuhioketta ja metallituotteita. Stockfors 80 vuotta. – Olle Siren \nhttp://stockfors.fi/\nhttp://www.matkallakotimaassa.fi/pakkausmuseo.html\nhttps://kylat.blog/2017/07/05/pakkausmuseo-stockfors/\nhttps://yle.fi/uutiset/3-9166250\nhttps://yle.fi/uutiset/3-10578449\nhttps://kylat.blog/2017/05/25/pyhtaan-lintuhoitola-kirkonkyla/\nhttps://www.pyhtaanseurakunta.fi/kirkot-ja-tilat/pyhtaan-kirkko\nhttps://yle.fi/uutiset/3-9600315\nhttps://kotteria.com/vuokramokit/strukan-sulut/\nhttp://www.kartingclub.fi/"
+          "CreditsText": "Phaser 3 - https://phaser.io/\n\nSara Laitinen - Graphics, Photography\nAnna-Maria Närä - Graphics, Texts\nJere Loukoila - Programming\nAnton Kujansuu - Programming\nPyhtään Perinnepiiri - Partner\n\nInfo card sources:\nPuuhioketta ja metallituotteita. Stockfors 80 vuotta. – Olle Siren \nhttp://stockfors.fi/\nhttp://www.matkallakotimaassa.fi/pakkausmuseo.html\nhttps://kylat.blog/2017/07/05/pakkausmuseo-stockfors/\nhttps://yle.fi/uutiset/3-9166250\nhttps://yle.fi/uutiset/3-10578449\nhttps://kylat.blog/2017/05/25/pyhtaan-lintuhoitola-kirkonkyla/\nhttps://www.pyhtaanseurakunta.fi/kirkot-ja-tilat/pyhtaan-kirkko\nhttps://yle.fi/uutiset/3-9600315\nhttps://kotteria.com/vuokramokit/strukan-sulut/\nhttp://www.kartingclub.fi/"
      },
      "Muistipeli": {
           "Easy": "Easy",

@@ -72,6 +72,17 @@ class OpeningScene extends Phaser.Scene {
 
         this.data = this.cache.json.get('data').MainMenu;
 
+        // Request to use full screen if using a mobile device
+        // Add other devices maybe?
+        if (this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone)
+        {
+            if(!this.scale.isFullscreen)
+            {
+                this.RequestFullscreen();
+            }
+    
+        }
+        
         this.CreateLanguageMenu();
 
         this.CreateInstructions();
@@ -94,8 +105,48 @@ class OpeningScene extends Phaser.Scene {
         }
 
         this.ohjeContainer.setVisible(false);
+    }
+
+    
+    RequestFullscreen()
+    {
+        let menuBG = this.add.sprite(0, 0, 'MenuAtlas', 'UI Pohjat/InsideVaaka');
+        let menu = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY - 20, [menuBG]).setScale(0.8);
 
 
+        let style = {
+            font: '70px Arial',
+            fill: 'black',
+            wordWrap: { width: 1200 }
+        };
+
+        let text = this.make.text({
+            x: 0,
+            y: -100,
+            text: this.data['FullscreenText'],
+            origin: { x: 0.5, y: 0.5 },
+            style: style
+        });
+
+        let yesButton = CreateTextButton(this, -250, 400, 'UI Buttons/Nappi', this.data['YesText']);
+        let noButton = CreateTextButton(this, 250, 400, 'UI Buttons/Nappi', this.data['NoText']);
+
+        menu.add([menuBG, text, yesButton, noButton]);
+        menu.setDepth(1);
+
+        yesButton.on('pointerup', function () {
+            if (yesButton.pressed) {
+                // toggle fullscreen
+                this.scale.startFullscreen();
+                menu.destroy();
+            }
+        }, this);
+
+        noButton.on('pointerup', function () {
+            if (noButton.pressed) {
+                menu.destroy();
+            }
+        }, this);
     }
 
     CreateLanguageMenu() {
@@ -115,8 +166,6 @@ class OpeningScene extends Phaser.Scene {
                 config.language = 'FI';
                 console.log('Language set to Finnish.');
                 this.scene.restart(true);
-
-
             }
         }, this);
 
