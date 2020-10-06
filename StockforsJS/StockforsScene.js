@@ -296,7 +296,7 @@ class StockforsScene extends MapScene {
     {
         this.soundPoints = [];
 
-        this.CreateSoundPoint(2750, 850, this.birdSounds);
+        //this.CreateSoundPoint(2750, 850, this.birdSounds);
     }
 
     update() {
