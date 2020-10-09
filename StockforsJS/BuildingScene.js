@@ -60,6 +60,7 @@ class BuildingScene extends Phaser.Scene {
         this.infoTexts = [];
         this.infoCards = [];
         //this.images = [];
+        //List of all containers that can be switched between
         this.switchableContainers = [];
 
 
@@ -72,6 +73,12 @@ class BuildingScene extends Phaser.Scene {
             this.infoTexts = this.data[this.name].InfoCards;
 
             console.log('Title added: ' + this.title);
+
+        }
+
+        //If this building has web pages
+        if (this.data[this.name].Links) {
+            this.url = this.data[this.name].Links;
         }
 
         this.createMenuContainer();
@@ -81,9 +88,15 @@ class BuildingScene extends Phaser.Scene {
         this.CreateInstructionButton();
         this.CreateAlbum();
         this.CreateInfoContainer();
+
         if (this.panoramas && this.panoramaThumbs) {
             this.CreatePanoRamaContainer();
         }
+
+        if (this.url) {
+            this.CreateWebContainer();
+        }
+
         console.log(this.scene.key);
 
         this.ContainerTransition(this.infoContainer);
@@ -299,20 +312,24 @@ class BuildingScene extends Phaser.Scene {
         }
 
         if (this.url) {
-            //this.webButton = this.add.sprite(rightMostPosition - (buttonsAdded * buttonGap), 0, 'MenuAtlas', 'UI Buttons/Webpage');
-            this.webButton = CreateButton(this, rightMostPosition - (buttonsAdded * buttonGap), 0, 'UI Buttons/Webpage');
 
-            this.webButton.on('pointerup', function () {
-                if (this.webButton.pressed) {
+            if (this.url.length > 0) {
+                //this.webButton = this.add.sprite(rightMostPosition - (buttonsAdded * buttonGap), 0, 'MenuAtlas', 'UI Buttons/Webpage');
+                this.webButton = CreateButton(this, rightMostPosition - (buttonsAdded * buttonGap), 0, 'UI Buttons/Webpage');
 
-                    window.open(this.url);
-                }
+                this.webButton.on('pointerup', function () {
+                    if (this.webButton.pressed) {
 
-            }, this);
+                        //window.open(this.url);
+                        this.ContainerTransition(this.webContainer);
+                    }
 
-            this.menuButtons.add(this.webButton);
+                }, this);
 
-            buttonsAdded++;
+                this.menuButtons.add(this.webButton);
+
+                buttonsAdded++;
+            }
         }
 
         let menuButtonsWidth = 0;
@@ -361,13 +378,13 @@ class BuildingScene extends Phaser.Scene {
 
     }
 
-    CreateInfoCards(text){
-        
+    CreateInfoCards(text) {
+
         let infoDiv = document.createElement('div');
 
         //This is the style for the entire info html
         infoDiv.style = 'padding: 30px; overflow-x: hidden; width: 1400px; height: 770px; padding: 30px; font: 33px Carme;'
-        
+
         //The stylesheet is for styling the inner elements, not sure if it could have been put straight into the style element above somehow
         //Text variable is the HTML string that includes the infotext as well, stored in JSON
         infoDiv.innerHTML = '<link rel="stylesheet" type="text/css" href="infoStyle.css"> ' + text;
@@ -385,13 +402,12 @@ class BuildingScene extends Phaser.Scene {
         this.infoContainer.add([infoDom, infoBackground]);
 
         //This stops the info text from becoming visible on top of the options menu when changing language
-        if(optionsButton.open)
-        {
+        if (optionsButton.open) {
             infoDom.visible = false;
         }
     }
 
-    
+
     CreateAlbum() {
 
         this.imgContainerY = 50;
@@ -657,10 +673,74 @@ class BuildingScene extends Phaser.Scene {
         this.panoramaContainer.button = this.panoramaButton;
     }
 
+    CreateWebContainer() {
+        this.webContainer = this.add.container(0, 0);
+
+        let posX = -450;
+        let posY = -350;
+
+        this.url.forEach(url => {
+            
+            let title = this.make.text({
+                x: posX,
+                y: posY,
+                text: url.Title,
+                origin: { x: 0, y: 0.5 },
+                style: {
+                    font: '43px Carme',
+                    fill: 'black',
+                    align: 'center'
+                }
+            });
+
+            let link = this.make.text({
+                x: posX,
+                y: posY + 50,
+                text: url.url,
+                origin: { x: 0, y: 0.5 },
+                style: {
+                    font: '43px Carme',
+                    fill: 'blue',
+                    align: 'center'
+                    
+                }
+            });
+
+            link.setInteractive();
+
+            link.on('pointerdown', function(){
+                link.pressed = true;
+            });
+
+            link.on('pointerout', function(){
+                link.pressed = false;
+            });
+
+            link.on('pointerup', function(){
+                if(link.pressed){
+                    //Opens the link
+                    window.open(url.url);
+                }
+            });
+
+            posY += 120;
+
+            this.webContainer.add([title, link]);
+        });
+
+        this.switchableContainers.push(this.webContainer);
+
+        this.webContainer.button = this.webButton;
+
+        this.menu.add(this.webContainer);
+    }
+
     ContainerTransition(containerToOpen) {
         this.switchableContainers.forEach(function (element) {
+            
             if (element == containerToOpen) {
                 element.setVisible(true);
+                //Highlights the button that activates the container to indicate which menu is open
                 element.button.setTint(0xd5d1c7)
             }
             else {

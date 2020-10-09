@@ -6,7 +6,7 @@ class PyrollScene extends BuildingScene
 
         this.name = 'Pyroll';
 
-        this.url = 'https://pyroll.com/';
+        //this.url = ['https://pyroll.com/'];
 
     }
 

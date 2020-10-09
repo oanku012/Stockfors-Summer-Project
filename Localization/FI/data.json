@@ -167,7 +167,15 @@
                "InfoCards": [
                     "<p>Pyroll Oy on osakeyhti&ouml;, jonka p&auml;&auml;asiallinen toimiala on paperin valmistus ja jalostus. Pyroll Converting, joka on yhti&ouml;n paperin jatkojalostamiseen erikoistunut yritys, on Euroopan johtavia alassaan. Sen toimipisteit&auml; on suomalaisten paikkakuntien lis&auml;ksi Puolassa, Hollannissa ja Saksassa. Vientimaita ovat mm. Ruotsi, Latvia ja Liettua. Niiden lis&auml;ksi esimerkiksi yhti&ouml;n s&auml;kkej&auml; vied&auml;&auml;n Ven&auml;j&auml;lle ja Tallinnaan.<br /> <br /> Pyroll Paperitukku valmistaa niin graafisia kartonkeja, pahveja, pakkauskartonkeja kuin taide- ja offsetpainopapereita. <br /> <br /> Pyroll Oy Pakkaukset on Suomen johtavia pakkausten valmistajia, jonka merkitt&auml;vimpiin tuoteryhmiin kuuluu kotelot, k&auml;&auml;reet, pussit, kassit ja s&auml;kit. Yhti&ouml; sek&auml; suunnittelee ett&auml; valmistaa pakkauksia asiakaspalveluna. <br /> <br /> Pyroll Oy on Reino Uusitalon perustama osakeyhti&ouml;. Yhti&ouml;n historia alkaa vuodesta 1973 Pyht&auml;&auml;lle perustetusta Pyht&auml;&auml;n Paperi Oy:sta, joka arkitti kauppojen k&auml;&auml;reit&auml;. Hioke toimi yhti&ouml;n raaka-aineena. Vuosien 1975-76 &ouml;ljykriisi avasi yhti&ouml;lle uusia mahdollisuuksia ja se l&ouml;ysi oman paikkansa markkinoilla. Mets&auml;teollisuus on kasvattanut yhti&ouml;n toimintaa. Yhti&ouml;n nimi vaihdettiin Pyroll Oy:ksi vuonna 1982. Tukkuliiketoiminta alkoi vuonna 1988 ja Stockforsin teollisuusalue ostettiin vuonna 1997. Kotkan Stora Enso Oyj on ollut merkitt&auml;v&auml; toimija ja kumppani Pyroll Oy:lle.<br /> <br /> Yhti&ouml;lle on t&auml;rke&auml;&auml; seurata kehityst&auml;, varsinkin kierr&auml;tysmahdollisuuksia ja ekologisuutta.<br /> </p>"
                ],
-               "ImageDescs": []
+               "ImageDescs": [
+
+               ],
+               "Links": [
+                    {
+                         "Title": "Pyroll OY:n verkkosivusto:",
+                         "url": "https://pyroll.com/"
+                    }
+               ]
           },
           "Katettu_silta": {
                "Title": "Katettu Silta",

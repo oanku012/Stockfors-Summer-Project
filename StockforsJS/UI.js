@@ -5,7 +5,7 @@ class UI extends Phaser.Scene {
     }
 
     create() {
-        optionsButton = createSceneOpenButton(this.cameras.main.centerX + this.cameras.main.width * .475, this.cameras.main.centerY - this.cameras.main.height * .445, 'OptionsMenuScene', true, 0, 0.56, this, 'MenuAtlas', 'UI Buttons/Asetukset');
+        optionsButton = createSceneOpenButton(this.cameras.main.centerX + this.cameras.main.width * .470, this.cameras.main.centerY - this.cameras.main.height * .445, 'OptionsMenuScene', true, 0, 0.56, this, 'MenuAtlas', 'UI Buttons/Asetukset');
 
     }
 
