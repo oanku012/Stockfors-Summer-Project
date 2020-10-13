@@ -158,8 +158,8 @@ class MapScene extends Phaser.Scene {
         this.clickSound = this.sound.add('Click', { volume: 0, pauseOnBlur: true });
 
         this.birdSounds = [];
-        this.birdSounds.push(this.sound.add('Birds1', { volume: 0, pauseOnBlur: true }));
-        this.birdSounds.push(this.sound.add('Birds2', { volume: 0, pauseOnBlur: true }));
+        //this.birdSounds.push(this.sound.add('Birds1', { volume: 0, pauseOnBlur: true }));
+        //this.birdSounds.push(this.sound.add('Birds2', { volume: 0, pauseOnBlur: true }));
     }
 
     InputInitialize() {

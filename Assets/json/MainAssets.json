@@ -78,12 +78,6 @@
         },
         "Click": {
             "wav": "Assets/sounds/Wood_Click.wav"
-        },
-        "Birds1": {
-            "wav": "Assets/sounds/219599__filmmt__raven-call.wav"
-        },
-        "Birds2": {
-            "wav":"Assets/sounds/73618__jus__swan-at-lake-late-at-night.wav"
         }
     }
 }
