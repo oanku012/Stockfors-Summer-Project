@@ -5,8 +5,15 @@ class UI extends Phaser.Scene {
     }
 
     create() {
-        optionsButton = createSceneOpenButton(this.cameras.main.centerX + this.cameras.main.width * .470, this.cameras.main.centerY - this.cameras.main.height * .445, 'OptionsMenuScene', true, 0, 0.56, this, 'MenuAtlas', 'UI Buttons/Asetukset');
 
+        //If on mobile make options button bigger to make it easier to press
+        if (this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) {
+            optionsButton = createSceneOpenButton(this.cameras.main.centerX + this.cameras.main.width * .470 - 20, this.cameras.main.centerY - this.cameras.main.height * .445 + 20, 'OptionsMenuScene', true, 0, 1, this, 'MenuAtlas', 'UI Buttons/Asetukset');
+
+        }
+        else {
+            optionsButton = createSceneOpenButton(this.cameras.main.centerX + this.cameras.main.width * .470, this.cameras.main.centerY - this.cameras.main.height * .445, 'OptionsMenuScene', true, 0, 0.56, this, 'MenuAtlas', 'UI Buttons/Asetukset');
+        }
     }
 
     update() {
@@ -65,7 +72,7 @@ function CreateButton(context, x, y, buttonspriteframe) {
         if (button.pressed) {
             button.clearTint();
             if (config.soundOn) {
-                context.sound.play('Click');
+                context.sound.play('Click', { volume: 0.5 });
             }
         }
     }, context);
@@ -134,7 +141,7 @@ function CreateTextButton(context, x, y, buttonspriteframe, text) {
         if (container.pressed) {
             button.clearTint();
             if (config.soundOn) {
-                context.sound.play('Click');
+                context.sound.play('Click', { volume: 0.5 });
             }
         }
     }, context);
@@ -191,7 +198,7 @@ function createSceneOpenButton(posX, posY, scene, runOnTop, scrollFactor, scale,
         if (button.pressed) {
 
             if (config.soundOn) {
-                context.sound.play('Click');
+                context.sound.play('Click', { volume: 0.5 });
             }
             readyToMove = false;
 

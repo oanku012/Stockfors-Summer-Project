@@ -56,7 +56,12 @@ class OptionsMenuScene extends Phaser.Scene {
 
         // Menu
         this.menuBG = this.add.sprite(0, 0, 'MenuAtlas', 'UI Pohjat/Settings').setOrigin(0.479, 0.5);
-        this.menu = this.add.container(this.cameras.main.centerX - 37, this.cameras.main.centerY, [this.menuBG]).setScale(0.57).setDepth(9999);
+        this.menu = this.add.container(this.cameras.main.centerX - 37, this.cameras.main.centerY, [this.menuBG]).setScale(0.56).setDepth(9999);
+
+        if (this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) {
+            this.menu.setScale(0.9);
+        }
+
         //This is just to move all the elements that are separate from the backgrounds
         this.menuElements = this.add.container(40, 0);
 
@@ -132,8 +137,6 @@ class OptionsMenuScene extends Phaser.Scene {
 
 
         }.bind(this));
-
-        this.menu.setScale(0.56);
 
     }
 

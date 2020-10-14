@@ -9,7 +9,8 @@ class MapScene extends Phaser.Scene {
         this.pointer;
 
         this.movingOnPath = false;
-        this.speed = 2;
+        //Change to make player move faster, should be set to 2 or 3 in the release version
+        this.speed = 2.5;
         this.movementVector = new Phaser.Math.Vector2();
         this.destination = new Phaser.Math.Vector2();
         this.movementDirection = 'down';
@@ -836,66 +837,11 @@ class MapScene extends Phaser.Scene {
             //Adjusts the volume based on the current distance of the player to the trigger and based on the distance value on the trigger
             trigger.currentSound.volume = (1 - (distance/trigger.distance));
 
-            console.log(distance);
+            //console.log(distance);
             if (trigger.currentSound.volume < 0.01) {
                 trigger.currentSound.volume = 0;
             }
         }, this);
     }
-
-    //Sound should be an array of sounds, can be an array with just one element
-    /*CreateSoundArea(x, y, radius, sound) {
-        let soundCircle = this.matter.add.circle(x, y, radius, { collisionFilter: collisionCat2 });
-
-        soundCircle.soundsToPlay = sound;
-
-        soundCircle.readyToPlaySounds = false;
-        soundCircle.playingSound = false;
-
-        return soundCircle;
-    }
-
-    ManageSoundTriggers() {
-        
-        //Check for overlap with sound triggers
-        if (this.matter.overlap(this.player, this.soundPoints, function (bodyA, bodyB) {
-            if (bodyB.soundsToPlay && bodyB.playingSound === false) {
-
-
-                bodyB.readyToPlaySounds = true;
-                //bodyB.playingSound = true;
-            }
-
-        }, null, this) === false && soundPlaying) {
-            this.soundPoints.forEach(sound => { 
-                sound.readyToPlaySounds = false;
-            });
-        };
-
-        //bool that should be true if any sound from a trigger is playing
-        this.soundPlaying = false;
-
-        this.soundPoints.forEach(sound => {
-            if (sound.readyToPlaySounds && this.soundPlaying === false && sound.playingSound === false) {
-                //Picks a random sound from the list of sounds on the trigger
-                let currentSound = this.sound.get(sound.soundsToPlay[Math.floor(Math.random() * sound.soundsToPlay.length)]);
-
-                if (currentSound) {
-                    console.log(currentSound);
-
-                    currentSound.play();
-
-                    currentSound.on('COMPLETE', function () {
-                        sound.readyToPlaySounds = true;
-                        //soundPlaying = false;
-                    }, this);
-
-                    sound.playingSound = true;
-                    this.soundPlaying = true;
-
-                }
-            }
-        }, this);
-    }*/
 
 }

@@ -27,11 +27,18 @@ class StockforsScene extends MapScene {
             this.startingPoint.y = playerStartPosition.y;
         }
 
-        this.background = this.add.image(-600, -500, 'mapTausta').setScale(0.52).setDisplayOrigin(0);
+        //this.background = this.add.image(-600, -500, 'mapTausta').setScale(0.52).setDisplayOrigin(0);
+        this.background = this.add.image(-600, -400, 'mapTausta').setScale(1).setDisplayOrigin(0);
 
-        this.map = this.matter.add.image(0, 0, 'map', null, { shape: this.bodies.Kartta }).setDepth(0).setStatic(true);
-
-        this.map.setPosition(this.map.width / 2 + 375, this.map.height / 2 + 70);
+        //Smaller map texture when playing on mobile
+        if (this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) {
+            this.map = this.matter.add.image(0, 0, 'mapMobiili', null, { shape: this.bodies.KarttaMobiili }).setDepth(0).setStatic(true).setScale(1.15);
+            this.map.setPosition(this.map.width / 2 + 300, this.map.height / 2 + 10);
+        }
+        else {
+            this.map = this.matter.add.image(0, 0, 'map', null, { shape: this.bodies.Kartta }).setDepth(0).setStatic(true);
+            this.map.setPosition(this.map.width / 2 + 375, this.map.height / 2 + 70);
+        }
 
         console.log(this.map);
 
@@ -172,7 +179,7 @@ class StockforsScene extends MapScene {
 
         this.buildings.KartingRata = this.matter.add.sprite(4650, 630, 'buildingSheet', 'Karting_rata', { shape: this.bodies.Karting_rata }).setScale(1);
         let Kart = this.buildings.KartingRata;
-        Kart.entrance = this.matter.add.circle(Kart.x - 250, Kart.y-30, entranceRadius, { collisionFilter: collisionCat2 });
+        Kart.entrance = this.matter.add.circle(Kart.x - 250, Kart.y - 30, entranceRadius, { collisionFilter: collisionCat2 });
 
         this.buildings.KatettuSilta = this.matter.add.sprite(1120, 380, 'buildingSheet', 'Katettu_silta', { shape: this.bodies.Katettu_silta }).setScale(0.6);
         let Silta = this.buildings.KatettuSilta;
@@ -194,10 +201,10 @@ class StockforsScene extends MapScene {
         let Struka = this.buildings.StrukanSulut;
         Struka.entrance = this.matter.add.circle(Struka.x, Struka.y, 40, { collisionFilter: collisionCat2 });
         Struka.text = this.make.text({
-            x: Struka.x + 20,
-            y: Struka.y - 95,
+            x: Struka.x + 5,
+            y: Struka.y - 80,
             text: this.data.Struka,
-            depth: Struka.y+1,
+            depth: Struka.y + 1,
             origin: { x: 0.5, y: 0.5 },
             style: {
                 font: '13px Carme',
@@ -211,10 +218,10 @@ class StockforsScene extends MapScene {
         let Kirkko = this.buildings.Kirkko;
         Kirkko.entrance = this.matter.add.circle(Kirkko.x, Kirkko.y, 40, { collisionFilter: collisionCat2 });
         Kirkko.text = this.make.text({
-            x: Kirkko.x + 20,
-            y: Kirkko.y - 95,
+            x: Kirkko.x + 5,
+            y: Kirkko.y - 80,
             text: this.data.Kirkko,
-            depth: Kirkko.y+1,
+            depth: Kirkko.y + 1,
             origin: { x: 0.5, y: 0.5 },
             style: {
                 font: '13px Carme',
@@ -254,20 +261,18 @@ class StockforsScene extends MapScene {
                     });
 
                 }
-                else if(building.text.text === this.data.Struka)
-                {
+                else if (building.text.text === this.data.Struka) {
                     building.entrance.sceneKey = 'StrukanSulutScene';
 
                     this.buildingEntrances.push(building.entrance);
-                    
+
 
                 }
-                else if(building.text.text === this.data.Kirkko)
-                {
+                else if (building.text.text === this.data.Kirkko) {
                     building.entrance.sceneKey = 'KirkkoScene';
 
                     this.buildingEntrances.push(building.entrance);
-                    
+
 
                 }
 
@@ -292,8 +297,7 @@ class StockforsScene extends MapScene {
         });
     }
 
-    AddSoundSpaces()
-    {
+    AddSoundSpaces() {
         this.soundPoints = [];
 
         this.CreateSoundPoint(2750, 850, this.birdSounds, 200);
