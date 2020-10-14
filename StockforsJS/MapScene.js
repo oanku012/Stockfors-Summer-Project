@@ -158,8 +158,9 @@ class MapScene extends Phaser.Scene {
         this.clickSound = this.sound.add('Click', { volume: 0, pauseOnBlur: true });
 
         this.birdSounds = [];
-        //this.birdSounds.push(this.sound.add('Birds1', { volume: 0, pauseOnBlur: true }));
-        //this.birdSounds.push(this.sound.add('Birds2', { volume: 0, pauseOnBlur: true }));
+        this.birdSounds.push(this.sound.add('Birds1', { volume: 0, pauseOnBlur: true }));
+        this.birdSounds.push(this.sound.add('Birds2', { volume: 0, pauseOnBlur: true }));
+        this.birdSounds.push(this.sound.add('Birds3', { volume: 0, pauseOnBlur: true }));
     }
 
     InputInitialize() {
@@ -749,11 +750,6 @@ class MapScene extends Phaser.Scene {
 
         bubble.add(bubble.close);
 
-        //bubble.bg.setDisplaySize(bubble.text.width + 50, bubble.text.height + 120);
-        //
-
-        //bubble.text.setWordWrapWidth(bubble.bg.width * bubble.bg.scale);
-
         //Made a new text here, because adjusting the word wrap in post seemed really buggy for some reason
         bubble.text.destroy();
 
@@ -791,7 +787,7 @@ class MapScene extends Phaser.Scene {
 
     //Creates a point in the map that plays a sound when the player is close to it
     //sound is an array of existing sounds added to the scene
-    CreateSoundPoint(x, y, sound) {
+    CreateSoundPoint(x, y, sound, distance) {
         let soundPoint = new Phaser.Math.Vector2(x, y);
 
         soundPoint.soundsToPlay = [];
@@ -823,6 +819,9 @@ class MapScene extends Phaser.Scene {
         //Rectangle collider that shows the position for the sound trigger or point or whatever you wanna call it, not visible when debug turned off
         soundPoint.marker = this.matter.add.rectangle(soundPoint.x, soundPoint.y, 10, 10, { collisionFilter: collisionCat2 });
 
+        //Determines how close you have to be to the soundpoint to trigger the sounds
+        soundPoint.distance = distance;
+
         this.soundPoints.push(soundPoint);
     }
 
@@ -834,7 +833,7 @@ class MapScene extends Phaser.Scene {
             //trigger.currentSound.config = { volume: 1/distance, pauseOnBlur: true};
             //trigger.currentSound.play();
 
-            trigger.currentSound.volume = (1 / distance) * 20;
+            trigger.currentSound.volume = (1 / distance) * trigger.distance;
 
             //console.log(trigger.currentSound.volume);
             if (trigger.currentSound.volume < 0.05) {

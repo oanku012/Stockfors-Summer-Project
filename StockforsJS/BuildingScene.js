@@ -393,7 +393,7 @@ class BuildingScene extends Phaser.Scene {
 
         //background-Image: url("Assets/images/menu/Infokorttipohja.png"); background-size: 100% 103%; background-repeat: no-repeat; background-position: -10px, -15px;
 
-        let infoDom = this.add.dom(0, 15, infoDiv)
+        let infoDom = this.add.dom(0, 15, infoDiv);
 
         let infoBackground = this.add.sprite(0, 13, 'MenuAtlas', 'UI Pohjat/Infokorttipohja').setScale(1.75, 1.36);
 

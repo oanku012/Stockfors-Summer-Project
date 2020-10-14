@@ -78,6 +78,15 @@
         },
         "Click": {
             "wav": "Assets/sounds/Wood_Click.wav"
+        },
+        "Birds1": {
+            "ogg": "Assets/sounds/Birds1.ogg"
+        },
+        "Birds2": {
+            "ogg": "Assets/sounds/Birds2.ogg"
+        },
+        "Birds3": {
+            "ogg": "Assets/sounds/Birds3.ogg"
         }
     }
 }

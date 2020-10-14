@@ -19,6 +19,7 @@ class UI extends Phaser.Scene {
                 if (element.input) {
                     element.disableInteractive();
                 }
+
             });
 
             domsVisible = false
@@ -177,8 +178,9 @@ function createSceneOpenButton(posX, posY, scene, runOnTop, scrollFactor, scale,
 
     button.on('pointerdown', function () {
 
-        button.pressed = true;
-
+        if (button.enabled) {
+            button.pressed = true;
+        }
 
 
     });
@@ -219,6 +221,7 @@ function createSceneOpenButton(posX, posY, scene, runOnTop, scrollFactor, scale,
         }
     }, context);
 
+    button.enabled = true;
 
     return button;
 

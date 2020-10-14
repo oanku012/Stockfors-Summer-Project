@@ -1,4 +1,3 @@
-//Bool used to indicate when language is being changed
 class CreditsScene extends Phaser.Scene {
     constructor() {
         super('CreditsScene');
@@ -17,6 +16,9 @@ class CreditsScene extends Phaser.Scene {
         this.createExitButton();
         this.createContainer();
         this.createCredits();
+
+        //Disables the options button when credits are open, just to stop a scenario where two HTML elements could overlap when options were toggled while credits were open
+        optionsButton.enabled = false;
     }
 
     createContainer() {
@@ -36,7 +38,7 @@ class CreditsScene extends Phaser.Scene {
     }
 
     createCredits() {
-        this.credits = this.make.text({
+        /*this.credits = this.make.text({
             x: -480,
             y: 0,
             text: this.data['CreditsText'],
@@ -46,7 +48,14 @@ class CreditsScene extends Phaser.Scene {
                 fill: 'black',
                 wordWrap: { width: 1080 }
             }
-        });
+        });*/
+
+        let creditsDiv = document.createElement('div');
+        creditsDiv.style = 'padding: 30px; overflow-x: hidden; width: 1400px; height: 770px; padding: 30px; font: 33px Carme;'
+        creditsDiv.innerText = this.data['CreditsText'];
+
+        this.credits = this.add.dom(0, 0, creditsDiv);
+        domElements.push(this.credits);
 
         this.menu.add(this.credits);
 
@@ -77,6 +86,7 @@ class CreditsScene extends Phaser.Scene {
 
         this.exitButton.on('pointerup', function (event) {
             if (pressed) {
+                optionsButton.enabled = true;
                 this.scene.stop(this.scene.key);
             }
         }, this);
