@@ -833,10 +833,11 @@ class MapScene extends Phaser.Scene {
             //trigger.currentSound.config = { volume: 1/distance, pauseOnBlur: true};
             //trigger.currentSound.play();
 
-            trigger.currentSound.volume = (1 / distance) * trigger.distance;
+            //Adjusts the volume based on the current distance of the player to the trigger and based on the distance value on the trigger
+            trigger.currentSound.volume = (1 - (distance/trigger.distance));
 
-            //console.log(trigger.currentSound.volume);
-            if (trigger.currentSound.volume < 0.05) {
+            console.log(distance);
+            if (trigger.currentSound.volume < 0.01) {
                 trigger.currentSound.volume = 0;
             }
         }, this);
