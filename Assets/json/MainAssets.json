@@ -2,7 +2,8 @@
     "image": {
         "map": "Assets/images/map/Kartta.png",
         "mapMobiili": "Assets/images/map/KarttaMobiili.png",
-        "mapTausta": "Assets/images/map/Kartta_Tausta.jpg"
+        "mapTausta": "Assets/images/map/Kartta_Tausta.jpg",
+        "mapTaustaMobiili": "Assets/images/map/Kartta_TaustaMobiili.jpg"
     },
     "atlas": {
         "buildingBodies": [

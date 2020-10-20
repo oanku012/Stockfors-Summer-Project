@@ -23,19 +23,27 @@ class StockforsScene extends MapScene {
 
         //Check if initialized parameters are not numbers and if so give them default values
         if (isNaN(this.startingPoint.x) && isNaN(this.startingPoint.y)) {
-            this.startingPoint.x = playerStartPosition.x;
-            this.startingPoint.y = playerStartPosition.y;
+            //Move the starting point a little for the mobile version so player doesn't spawn outside the map
+            if (this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) {
+                this.startingPoint.x = playerStartPosition.x + 30;
+                this.startingPoint.y = playerStartPosition.y - 75;
+            }
+            else {
+                this.startingPoint.x = playerStartPosition.x;
+                this.startingPoint.y = playerStartPosition.y;
+            }
         }
 
-        //this.background = this.add.image(-600, -500, 'mapTausta').setScale(0.52).setDisplayOrigin(0);
-        this.background = this.add.image(-600, -400, 'mapTausta').setScale(1).setDisplayOrigin(0);
+        //this.background = this.add.image(-600, -400, 'mapTausta').setScale(1).setDisplayOrigin(0);
 
         //Smaller map texture when playing on mobile
         if (this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) {
-            this.map = this.matter.add.image(0, 0, 'mapMobiili', null, { shape: this.bodies.KarttaMobiili }).setDepth(0).setStatic(true).setScale(1.15);
-            this.map.setPosition(this.map.width / 2 + 300, this.map.height / 2 + 10);
+            this.background = this.add.image(-600, -400, 'mapTaustaMobiili').setScale(1.58).setDisplayOrigin(0);
+            this.map = this.matter.add.image(0, 0, 'mapMobiili', null, { shape: this.bodies.KarttaMobiili }).setDepth(0).setStatic(true).setScale(1.23);
+            this.map.setPosition(this.map.width / 2 + 420, this.map.height / 2 + 140);
         }
         else {
+            this.background = this.add.image(-600, -400, 'mapTausta').setScale(1).setDisplayOrigin(0);
             this.map = this.matter.add.image(0, 0, 'map', null, { shape: this.bodies.Kartta }).setDepth(0).setStatic(true);
             this.map.setPosition(this.map.width / 2 + 375, this.map.height / 2 + 70);
         }
@@ -43,6 +51,12 @@ class StockforsScene extends MapScene {
         console.log(this.map);
 
         super.create();
+
+        if (this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) {
+            //this.player.setPosition(this.player.x, this.player.y - 75);
+            this.cameras.main.setZoom(3);
+
+        }
 
         this.AddSoundSpaces();
 
