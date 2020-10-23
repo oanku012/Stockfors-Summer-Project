@@ -42,8 +42,8 @@ class HistoryScene extends BuildingScene{
         "HistoryImage22",
         "HistoryImage23",
         "HistoryImage24",
-        "HistoryImage25"
-        /*"HistoryImage26",
+        "HistoryImage25",
+        "HistoryImage26",
         "HistoryImage27",
         "HistoryImage28",
         "HistoryImage29",
@@ -75,7 +75,7 @@ class HistoryScene extends BuildingScene{
         "HistoryImage55",
         "HistoryImage56",
         "HistoryImage57",
-        "HistoryImage58"*/);
+        "HistoryImage58");
 
         super.create();
         

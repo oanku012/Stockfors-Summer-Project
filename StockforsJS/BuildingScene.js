@@ -59,7 +59,6 @@ class BuildingScene extends Phaser.Scene {
 
         this.infoTexts = [];
         this.infoCards = [];
-        //this.images = [];
         //List of all containers that can be switched between
         this.switchableContainers = [];
 
@@ -425,44 +424,53 @@ class BuildingScene extends Phaser.Scene {
             let imgWidth = 160;
             let imgHeight = 120;
 
-            let column = 0;
             let rowLimit = 5;
             let columnLimit = 5;
+
+            let column = 0;
             let row = 1;
+
             let startingX = (-(imgWidth + 10) / 2) * rowLimit;
             let previousX = startingX;
 
+            //List of "pages" that are a collection of images in one page
             let albumPages = [];
-
-            /*if(this.images.length>rowLimit*columnLimit)
-            {
-
-            }*/
+            //List of containers containing the images in a page
+            let pageContainers = [];
+            //List of the actual image objects displayed on the page
+            this.imageObjects = [];
 
             let self = this;
 
-            for(let i = 0; i<Math.ceil(this.images.length/(rowLimit*columnLimit)); i++)
-            {
+            //Creates pages based on the amount of images
+            for (let i = 0; i < Math.ceil(this.images.length / (rowLimit * columnLimit)); i++) {
 
-                //let container = self.add.container(0, 0);
-                let page = self.images.slice(i*(rowLimit*columnLimit), (i+1)*(rowLimit*columnLimit));
-                //let slicedArray = self.images.slice(i*(rowLimit*columnLimit), (i+1)*(rowLimit*columnLimit));
-                //container.add(slicedArray);
-                //albumPages.push(container);
+                let page = self.images.slice(i * (rowLimit * columnLimit), (i + 1) * (rowLimit * columnLimit));
                 albumPages.push(page);
-                
+
             }
 
-            //this.albumContainer.add(albumPages);
+            //Creates each page
+            albumPages.forEach(function (page, pageIndex, array) {
 
-            albumPages.forEach(function (page, index, array) {
+                //Reset the current image row when creating a new page
+                row = 1;
+                let pageContainer = this.add.container(0, 0).setVisible(false);
+                this.albumContainer.add(pageContainer);
+                pageContainers.push(pageContainer);
+
+                //Creates the images in a page
                 page.forEach(function (image, index, array) {
                     let img = this.add.image(previousX, 120 * row, image).setDisplaySize(imgWidth, imgHeight).setDisplayOrigin(0, 0);
-                    this.albumContainer.add(img);
+                    //this.albumContainer.add(img);
+                    pageContainer.add(img);
                     img.setPosition(previousX, ((img.displayHeight + 20) * row) - 50);
                     previousX += img.displayWidth + 10;
 
                     img.pressed = false;
+
+                    //The page that the image is on
+                    img.pageIndex = pageIndex;
 
                     column++;
 
@@ -495,79 +503,77 @@ class BuildingScene extends Phaser.Scene {
 
                     img.on('pointerup', function (event) {
                         if (img.pressed) {
-                            // Open image
-                            this.createImage(image, index);
+                            // Open image, takes the index of the image from the entire list of images
+                            this.createImage(image, this.images.indexOf(image), pageIndex);
                         }
                     }, this);
+
+                    this.imageObjects.push(img);
 
                     //img.setVisible(false);
                 }, this);
             }, this);
 
-            /*
-            let leftOverImages = [];
+            //Sets the first page to be visible when opening the scene
+            pageContainers[0].setVisible(true);
 
-            //Creates the list of images that can be clicked open
-            this.images.forEach(function (element, index, imageArray) {
+            this.currentAlbumPage = 0;
 
-                if (index < rowLimit * 5) {
+            //Create arrow buttons for switching pages if there is more than one page
+            if (albumPages.length > 1) {
+                let pageArrowRight = CreateButton(this, 550, 400, 'UI Buttons/Nuoli');
+                let pageArrowLeft = CreateButton(this, -550, 400, 'UI Buttons/Nuoli').setFlipX(true);
+                this.albumContainer.add([pageArrowRight, pageArrowLeft]);
+
+                this.albumContainer.pageArrowRight = pageArrowRight;
+                this.albumContainer.pageArrowLeft = pageArrowLeft;
+
+                pageArrowLeft.setVisible(false);
+
+                pageArrowRight.on('pointerup', function () {
+
+                    if (this.currentAlbumPage >= 0 && this.currentAlbumPage < albumPages.length - 1) {
+                        pageContainers[this.currentAlbumPage].setVisible(false);
+                        pageContainers[this.currentAlbumPage + 1].setVisible(true);
+
+                        this.currentAlbumPage++;
+
+                        if (pageArrowLeft.visible == false) {
+                            pageArrowLeft.setVisible(true);
+                        }
+
+                        if (this.currentAlbumPage == albumPages.length - 1) {
+                            pageArrowRight.setVisible(false);
+                        }
 
 
-                    let img = this.add.image(previousX, 120 * row, element).setDisplaySize(imgWidth, imgHeight).setDisplayOrigin(0, 0);
-                    //this.albumContainer.add(img);
-                    img.setPosition(previousX, ((img.displayHeight + 20) * row) - 50);
-                    previousX += img.displayWidth + 10;
-
-                    img.pressed = false;
-
-                    column++;
-
-                    if (column >= rowLimit) {
-                        row++;
-                        column = 0;
-                        previousX = startingX;
                     }
 
-                    img.setInteractive();
+                }, this);
 
-                    img.on('pointerover', function () {
+                pageArrowLeft.on('pointerup', function () {
 
-                        img.setTint(0xd5d1c7);
+                    if (this.currentAlbumPage > 0 && this.currentAlbumPage <= albumPages.length - 1) {
+                        pageContainers[this.currentAlbumPage].setVisible(false);
+                        pageContainers[this.currentAlbumPage - 1].setVisible(true);
 
-                    });
+                        this.currentAlbumPage--;
 
-                    img.on('pointerout', function () {
-
-                        img.clearTint();
-                        img.pressed = false;
-
-                    });
-
-                    img.on('pointerdown', function () {
-
-                        img.pressed = true;
-
-                    });
-
-                    img.on('pointerup', function (event) {
-                        if (img.pressed) {
-                            // Open image
-                            this.createImage(element, index);
+                        if (this.currentAlbumPage == 0) {
+                            pageArrowLeft.setVisible(false);
                         }
-                    }, this);
 
-                }
-                else
-                {
-                    leftOverImages.push(element);
-                }
+                        if (pageArrowRight.visible == false) {
+                            pageArrowRight.setVisible(true);
+                        }
+                    }
 
-            }, this);
+                }, this);
 
-            while(leftOverImages.length>0)
-            {
-                
-            }*/
+            }
+
+            this.albumContainer.pageContainers = pageContainers;
+
         }
 
         let arrowX = 850;
@@ -580,7 +586,7 @@ class BuildingScene extends Phaser.Scene {
             if (this.albumArrowForward.pressed) {
                 let newIndex = this.currentImageIndex + 1;
                 if (newIndex < this.images.length) {
-                    this.createImage(this.images[newIndex], newIndex);
+                    this.createImage(this.images[newIndex], newIndex, this.imageObjects[newIndex].pageIndex);
                 }
 
             }
@@ -590,7 +596,7 @@ class BuildingScene extends Phaser.Scene {
             if (this.albumArrowBackward.pressed) {
                 let newIndex = this.currentImageIndex - 1;
                 if (newIndex >= 0) {
-                    this.createImage(this.images[newIndex], newIndex);
+                    this.createImage(this.images[newIndex], newIndex, this.imageObjects[newIndex].pageIndex);
                 }
             }
         }, this);
@@ -605,7 +611,8 @@ class BuildingScene extends Phaser.Scene {
 
     }
 
-    createImage(image, index) {
+    //Creates the actual larger image to view, page is the pageindex that the image is on
+    createImage(image, index, page) {
 
         if (this.currentImage) {
             this.currentImage.text.destroy();
@@ -664,6 +671,40 @@ class BuildingScene extends Phaser.Scene {
                 this.menu.setVisible(true);
                 this.imageBackground.setVisible(false);
                 this.albumBackground.setVisible(false);
+
+                if (this.albumContainer.pageContainers.length > 1) {
+                    //All of this is just for opening the correct page of the album when closing the image
+                    this.albumContainer.pageContainers.forEach(function (element, pageIndex, array) {
+
+                        /*if (pageIndex != (Math.ceil((index+1)/(rowLimit * columnLimit))) - 1) {
+                            element.setVisible(false);
+                        }
+                        else*/
+                        if (pageIndex == page) {
+                            console.log('Opening album page ' + pageIndex);
+                            element.setVisible(true);
+
+                            if (pageIndex == array.length - 1) {
+                                this.albumContainer.pageArrowRight.setVisible(false);
+                                this.albumContainer.pageArrowLeft.setVisible(true);
+                            }
+                            else if (pageIndex == 0) {
+                                this.albumContainer.pageArrowRight.setVisible(true);
+                                this.albumContainer.pageArrowLeft.setVisible(false);
+                            }
+                            else {
+                                this.albumContainer.pageArrowRight.setVisible(true);
+                                this.albumContainer.pageArrowLeft.setVisible(true);
+                            }
+
+                            this.currentAlbumPage = pageIndex;
+                        }
+                        else {
+                            element.setVisible(false);
+                        }
+                    }, this);
+                }
+
 
             }
         }, this);
