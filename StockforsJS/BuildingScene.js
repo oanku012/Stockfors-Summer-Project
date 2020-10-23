@@ -422,59 +422,152 @@ class BuildingScene extends Phaser.Scene {
         // image thumbnails
         if (this.images.length > 0) {
 
-            var previousX = -300;
+            let imgWidth = 160;
+            let imgHeight = 120;
 
             let column = 0;
             let rowLimit = 5;
+            let columnLimit = 5;
             let row = 1;
+            let startingX = (-(imgWidth + 10) / 2) * rowLimit;
+            let previousX = startingX;
 
-            //Creates the list of images that can be clicked open
-            this.images.forEach(element => {
-                let img = this.add.image(previousX, 50 + 120 * row, element).setDisplaySize(140, 100);
-                this.albumContainer.add(img);
-                //img.setPosition(previousX, 50 + 100*row);
-                previousX += 150;
+            let albumPages = [];
 
-                img.pressed = false;
+            /*if(this.images.length>rowLimit*columnLimit)
+            {
 
-                let index = this.images.indexOf(element);
+            }*/
 
-                column++;
+            let self = this;
 
-                if (column >= rowLimit) {
-                    row++;
-                    column = 0;
-                    previousX = -300;
-                }
+            for(let i = 0; i<Math.ceil(this.images.length/(rowLimit*columnLimit)); i++)
+            {
 
-                img.setInteractive();
+                //let container = self.add.container(0, 0);
+                let page = self.images.slice(i*(rowLimit*columnLimit), (i+1)*(rowLimit*columnLimit));
+                //let slicedArray = self.images.slice(i*(rowLimit*columnLimit), (i+1)*(rowLimit*columnLimit));
+                //container.add(slicedArray);
+                //albumPages.push(container);
+                albumPages.push(page);
+                
+            }
 
-                img.on('pointerover', function () {
+            //this.albumContainer.add(albumPages);
 
-                    img.setTint(0xd5d1c7);
+            albumPages.forEach(function (page, index, array) {
+                page.forEach(function (image, index, array) {
+                    let img = this.add.image(previousX, 120 * row, image).setDisplaySize(imgWidth, imgHeight).setDisplayOrigin(0, 0);
+                    this.albumContainer.add(img);
+                    img.setPosition(previousX, ((img.displayHeight + 20) * row) - 50);
+                    previousX += img.displayWidth + 10;
 
-                });
-
-                img.on('pointerout', function () {
-
-                    img.clearTint();
                     img.pressed = false;
 
-                });
+                    column++;
 
-                img.on('pointerdown', function () {
-
-                    img.pressed = true;
-
-                });
-
-                img.on('pointerup', function (event) {
-                    if (img.pressed) {
-                        // Open image
-                        this.createImage(element, index);
+                    if (column >= rowLimit) {
+                        row++;
+                        column = 0;
+                        previousX = startingX;
                     }
+
+                    img.setInteractive();
+
+                    img.on('pointerover', function () {
+
+                        img.setTint(0xd5d1c7);
+
+                    });
+
+                    img.on('pointerout', function () {
+
+                        img.clearTint();
+                        img.pressed = false;
+
+                    });
+
+                    img.on('pointerdown', function () {
+
+                        img.pressed = true;
+
+                    });
+
+                    img.on('pointerup', function (event) {
+                        if (img.pressed) {
+                            // Open image
+                            this.createImage(image, index);
+                        }
+                    }, this);
+
+                    //img.setVisible(false);
                 }, this);
-            });
+            }, this);
+
+            /*
+            let leftOverImages = [];
+
+            //Creates the list of images that can be clicked open
+            this.images.forEach(function (element, index, imageArray) {
+
+                if (index < rowLimit * 5) {
+
+
+                    let img = this.add.image(previousX, 120 * row, element).setDisplaySize(imgWidth, imgHeight).setDisplayOrigin(0, 0);
+                    //this.albumContainer.add(img);
+                    img.setPosition(previousX, ((img.displayHeight + 20) * row) - 50);
+                    previousX += img.displayWidth + 10;
+
+                    img.pressed = false;
+
+                    column++;
+
+                    if (column >= rowLimit) {
+                        row++;
+                        column = 0;
+                        previousX = startingX;
+                    }
+
+                    img.setInteractive();
+
+                    img.on('pointerover', function () {
+
+                        img.setTint(0xd5d1c7);
+
+                    });
+
+                    img.on('pointerout', function () {
+
+                        img.clearTint();
+                        img.pressed = false;
+
+                    });
+
+                    img.on('pointerdown', function () {
+
+                        img.pressed = true;
+
+                    });
+
+                    img.on('pointerup', function (event) {
+                        if (img.pressed) {
+                            // Open image
+                            this.createImage(element, index);
+                        }
+                    }, this);
+
+                }
+                else
+                {
+                    leftOverImages.push(element);
+                }
+
+            }, this);
+
+            while(leftOverImages.length>0)
+            {
+                
+            }*/
         }
 
         let arrowX = 850;
@@ -519,7 +612,7 @@ class BuildingScene extends Phaser.Scene {
             this.currentImage.destroy();
         }
 
-        let newImage = this.add.image(this.centerX - 2, this.centerY - this.imgContainerY, image);
+        let newImage = this.add.image(this.centerX, this.centerY - this.imgContainerY, image);
 
         let imageHeight = 900;
 
@@ -582,7 +675,6 @@ class BuildingScene extends Phaser.Scene {
             this.albumArrowForward.setVisible(false);
 
         }
-        this.albumArrowBackward.setVisible(true);
 
         if (index > 0) {
             this.albumArrowBackward.setVisible(true);
@@ -680,7 +772,7 @@ class BuildingScene extends Phaser.Scene {
         let posY = -350;
 
         this.url.forEach(url => {
-            
+
             let title = this.make.text({
                 x: posX,
                 y: posY,
@@ -702,22 +794,22 @@ class BuildingScene extends Phaser.Scene {
                     font: '43px Carme',
                     fill: 'blue',
                     align: 'center'
-                    
+
                 }
             });
 
             link.setInteractive();
 
-            link.on('pointerdown', function(){
+            link.on('pointerdown', function () {
                 link.pressed = true;
             });
 
-            link.on('pointerout', function(){
+            link.on('pointerout', function () {
                 link.pressed = false;
             });
 
-            link.on('pointerup', function(){
-                if(link.pressed){
+            link.on('pointerup', function () {
+                if (link.pressed) {
                     //Opens the link
                     window.open(url.url);
                 }
@@ -737,7 +829,7 @@ class BuildingScene extends Phaser.Scene {
 
     ContainerTransition(containerToOpen) {
         this.switchableContainers.forEach(function (element) {
-            
+
             if (element == containerToOpen) {
                 element.setVisible(true);
                 //Highlights the button that activates the container to indicate which menu is open
