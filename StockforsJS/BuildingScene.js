@@ -579,6 +579,7 @@ class BuildingScene extends Phaser.Scene {
         let arrowX = 850;
         let arrowY = 460;
 
+        //Arrow buttons for switching between images when viewing them
         this.albumArrowForward = CreateButton(this, this.centerX + arrowX, this.centerY + arrowY, 'UI Buttons/Arrow').setScale(0.9).setVisible(false);
         this.albumArrowBackward = CreateButton(this, this.centerX - arrowX, this.centerY + arrowY, 'UI Buttons/Arrow').setFlipX(true).setScale(0.9).setVisible(false);
 
@@ -601,6 +602,9 @@ class BuildingScene extends Phaser.Scene {
             }
         }, this);
 
+        //Button for closing the viewed image and going back to the album
+        this.closeImageButton = CreateButton(this, this.centerX - 895, this.centerY - 495, 'UI Buttons/Zoom_Out').setVisible(false);
+
         this.menu.add(this.albumContainer);
 
         this.switchableContainers.push(this.albumContainer);
@@ -614,9 +618,14 @@ class BuildingScene extends Phaser.Scene {
     //Creates the actual larger image to view, page is the pageindex that the image is on
     createImage(image, index, page) {
 
+        //Destroy existing image if switching to a new one
         if (this.currentImage) {
             this.currentImage.text.destroy();
             this.currentImage.destroy();
+        }
+
+        if(this.closeImageButton.visible === false){
+            this.closeImageButton.setVisible(true);
         }
 
         let newImage = this.add.image(this.centerX, this.centerY - this.imgContainerY, image);
@@ -676,10 +685,6 @@ class BuildingScene extends Phaser.Scene {
                     //All of this is just for opening the correct page of the album when closing the image
                     this.albumContainer.pageContainers.forEach(function (element, pageIndex, array) {
 
-                        /*if (pageIndex != (Math.ceil((index+1)/(rowLimit * columnLimit))) - 1) {
-                            element.setVisible(false);
-                        }
-                        else*/
                         if (pageIndex == page) {
                             console.log('Opening album page ' + pageIndex);
                             element.setVisible(true);
@@ -705,6 +710,52 @@ class BuildingScene extends Phaser.Scene {
                     }, this);
                 }
 
+                this.closeImageButton.setVisible(false);
+
+            }
+        }, this);
+
+        //Because I'm lazy I just copypasted all of this, for the separate closing button
+        this.closeImageButton.on('pointerup', function(){
+            if (this.closeImageButton.pressed) {
+                newImage.text.destroy();
+                newImage.destroy();
+                this.albumArrowForward.setVisible(false);
+                this.albumArrowBackward.setVisible(false);
+                this.menu.setVisible(true);
+                this.imageBackground.setVisible(false);
+                this.albumBackground.setVisible(false);
+
+                if (this.albumContainer.pageContainers.length > 1) {
+                    //All of this is just for opening the correct page of the album when closing the image
+                    this.albumContainer.pageContainers.forEach(function (element, pageIndex, array) {
+
+                        if (pageIndex == page) {
+                            console.log('Opening album page ' + pageIndex);
+                            element.setVisible(true);
+
+                            if (pageIndex == array.length - 1) {
+                                this.albumContainer.pageArrowRight.setVisible(false);
+                                this.albumContainer.pageArrowLeft.setVisible(true);
+                            }
+                            else if (pageIndex == 0) {
+                                this.albumContainer.pageArrowRight.setVisible(true);
+                                this.albumContainer.pageArrowLeft.setVisible(false);
+                            }
+                            else {
+                                this.albumContainer.pageArrowRight.setVisible(true);
+                                this.albumContainer.pageArrowLeft.setVisible(true);
+                            }
+
+                            this.currentAlbumPage = pageIndex;
+                        }
+                        else {
+                            element.setVisible(false);
+                        }
+                    }, this);
+                }
+
+                this.closeImageButton.setVisible(false);
 
             }
         }, this);

@@ -6,7 +6,7 @@ class Karting_rataScene extends BuildingScene
 
         this.name = 'Karting_rata';
 
-        this.url = 'http://www.kartingclub.fi/';
+        //this.url = 'http://www.kartingclub.fi/';
 
     }
 

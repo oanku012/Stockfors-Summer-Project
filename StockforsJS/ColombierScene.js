@@ -6,7 +6,7 @@ class ColombierScene extends BuildingScene
 
         this.name = 'Colombier';
 
-        this.url = 'https://colombier.com/';
+        //this.url = 'https://colombier.com/';
 
         this.backgroundImage = "ColombierImage1";
 
