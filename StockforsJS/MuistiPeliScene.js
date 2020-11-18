@@ -42,6 +42,8 @@ class MuistiPeliScene extends Phaser.Scene {
 
     create() {
 
+        rescaleSceneEvent(this);
+
         //this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, 'background').setScale(0.5);
 
         this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, 'PakkausImage3').setScale(1.3);

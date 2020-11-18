@@ -296,39 +296,11 @@ class OptionsMenuScene extends Phaser.Scene {
                 config.language = 'EN';
                 console.log('Language set to English.');
 
+                //Get currently active scenes
                 let activeScenes = game.scene.getScenes(true);
 
+                //Loads the language
                 this.scene.start('LanguageLoader', {activeScenes: activeScenes});
-
-                /*//Options is restarted first so that it loads the correct language
-                this.scene.restart();
-
-                let activeScenes = game.scene.getScenes(true);
-
-                activeScenes.forEach(function (scene) {
-                    //Condition so that options isn't restarted twice and so that UI isn't restarted at all
-                    if (scene != this && scene.scene.key != 'UI') {
-                        scene.time.delayedCall(50, function () {
-
-                            //If scene includes the player then save the current position of the player before restarting
-                            if (scene.player) {
-                                saveGame({ currentMap: scene.scene.key, playerX: scene.player.x, playerY: scene.player.y });
-                                scene.scene.restart({ x: gameState.playerX, y: gameState.playerY });
-                            }
-                            else {
-                                scene.scene.restart();
-                            }
-
-                            console.log(scene.scene.key +  ' restarted to change language.');
-
-                        }, null, this);
-                    }
-                }, this);
-
-                //Not the most elegant solution, but this is done with a delay so that it's not set to false before opening scene restarts and stops the opening scene from loading the language separately
-                this.time.delayedCall(100, function () {
-                    languageChanged = false;
-                }, null, this);*/
             }
         }, this);
     }

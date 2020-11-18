@@ -64,6 +64,8 @@ class MapScene extends Phaser.Scene {
 
     create() {
 
+        rescaleSceneEvent(this);
+
         this.cameras.main.backgroundColor.setTo(255, 255, 255);
 
         console.log(this.scene.key);
@@ -110,7 +112,7 @@ class MapScene extends Phaser.Scene {
         this.saveGameTimerEvent = this.time.addEvent({ delay: 10000, callback: this.SavePosition, callbackScope: this, loop: true });
 
         //Changed this to not run on every frame, because when you're overlapping 2 buildings it would get called constantly
-        this.overLapTimer = this.time.addEvent({ delay: 200, callback: this.CheckForOverlap, callbackScope: this, loop: true });
+        this.overLapTimer = this.time.addEvent({ delay: 300, callback: this.CheckForOverlap, callbackScope: this, loop: true });
 
         this.SavePosition();
 
@@ -136,10 +138,6 @@ class MapScene extends Phaser.Scene {
 
             this.EnterBuilding(this.sceneToOpen);
         }
-
-        //this.CheckForDistanceToSounds();
-
-        //console.log(this.pointer.worldX + ' ' + this.pointer.worldY);
 
     }
 
@@ -230,21 +228,6 @@ class MapScene extends Phaser.Scene {
         this.matter.world.on('collisionstart', function (event, bodyA, bodyB) {
 
             this.stopPlayerMovement();
-
-            //Changed scene opening to trigger from overlap instead
-            /*//Checks if either of the colliding objects contain the openScene function
-            if (bodyB.gameObject != null) {
-                //bodyB.gameObject.setVelocity(0,0);
-                if (typeof bodyB.gameObject.openScene === 'function') {
-                    bodyB.gameObject.openScene();
-                }
-            }
-            else if (bodyA.gameObject != null) {
-                //bodyA.gameObject.setVelocity(0,0);
-                if (typeof bodyA.gameObject.openScene === 'function') {
-                    bodyA.gameObject.openScene();
-                }
-            }*/
 
         }, this);
 

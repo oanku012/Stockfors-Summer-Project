@@ -38,6 +38,8 @@ class PalapeliScene extends Phaser.Scene {
 
     create() {
         
+        rescaleSceneEvent(this);
+
         this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, 'PatruunaImage6').setScale(1.3);
 
         this.data = this.cache.json.get('data').Palapeli;

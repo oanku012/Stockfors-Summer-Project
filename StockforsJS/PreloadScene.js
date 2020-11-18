@@ -23,7 +23,7 @@ class PreloadScene extends Phaser.Scene {
 
     create()
     {
-        
+        rescaleSceneEvent(this);
     }
 
     createProgressbar (x, y)

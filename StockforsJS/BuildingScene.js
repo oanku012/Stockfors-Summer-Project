@@ -45,6 +45,8 @@ class BuildingScene extends Phaser.Scene {
 
     create() {
 
+        rescaleSceneEvent(this);
+
         this.centerX = this.cameras.main.centerX;
         this.centerY = this.cameras.main.centerY;
 
@@ -108,7 +110,7 @@ class BuildingScene extends Phaser.Scene {
     createMenuContainer() {
         // Menu
         this.menuBG = this.add.sprite(0, 0, 'MenuAtlas', 'UI Pohjat/InsideVaaka');
-        this.menu = this.add.container(this.centerX, this.centerY - 20, [this.menuBG]).setScale(0.8);
+        this.menu = this.add.container(this.centerX, this.centerY - 20, [this.menuBG]).setScale(0.7);
 
         // title and description
         let title = this.add.text(0, -350, this.title);

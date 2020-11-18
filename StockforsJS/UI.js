@@ -14,6 +14,53 @@ class UI extends Phaser.Scene {
         else {
             optionsButton = createSceneOpenButton(this.cameras.main.centerX + this.cameras.main.width * .470, this.cameras.main.centerY - this.cameras.main.height * .445, 'OptionsMenuScene', true, 0, 0.56, this, 'MenuAtlas', 'UI Buttons/Asetukset');
         }
+
+        rescaleSceneEvent(this);
+
+        /*if (this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) {
+
+            let centerX = this.cameras.main.centerX;
+            let centerY = this.cameras.main.centerY;
+
+            //Rescales the window based on screen orientation on mobile devices
+            this.scene.scene.scale.on('orientationchange', function (orientation) {
+
+                //console.log(window);
+
+                let sizeX = window.innerWidth * window.devicePixelRatio;
+                let sizeY = window.innerHeight * window.devicePixelRatio;
+
+                game.scene.getScenes(true).forEach(function (scene) {
+
+                    if (scene != this && scene.scene.key != 'UI') {
+                        scene.scene.scale.setGameSize(sizeX, sizeY);
+                        game.scale.resize(sizeX, sizeY);
+
+                        scene.cameras.main.centerOn(centerX, centerY);
+
+
+                        //console.log(this.scene.scene.scale);
+
+                    }
+                }, this);
+
+                if (orientation === Phaser.Scale.PORTRAIT) {
+
+
+
+                } else if (orientation === Phaser.Scale.LANDSCAPE) {
+
+
+                }
+
+
+
+
+
+
+            }, this);
+
+        }*/
     }
 
     update() {
@@ -84,8 +131,6 @@ function CreateTextButton(context, x, y, buttonspriteframe, text) {
 
     let button = context.add.sprite(0, 0, 'MenuAtlas', buttonspriteframe);
 
-    //let buttontext = context.add.text(-button.width * 0.15, -20, text, { fontSize: 40, color: 'black', wordWrap: {width: button.width}});
-
     let buttontext = context.make.text({
         x: -button.width * 0.15,
         y: -20,
@@ -110,7 +155,6 @@ function CreateTextButton(context, x, y, buttonspriteframe, text) {
     }
     else if (buttonspriteframe == 'UI Buttons/Puhekupla_Intro') {
         buttontext.setPosition(((button.width / 2) - (buttontext.width / 2)), (button.height / 2) - (buttontext.height / 2));
-        //buttontext.setPosition(0, 0);
 
     }
 

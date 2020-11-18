@@ -109,6 +109,8 @@ class OpeningScene extends Phaser.Scene {
         }
 
         this.ohjeContainer.setVisible(false);
+
+        rescaleSceneEvent(this);
     }
 
     
@@ -151,6 +153,9 @@ class OpeningScene extends Phaser.Scene {
                 menu.destroy();
             }
         }, this);
+
+        this.scene.scene.scale.setGameSize(window.innerWidth * window.devicePixelRatio, window.innerHeight * window.devicePixelRatio);
+        game.scale.resize(window.innerWidth * window.devicePixelRatio, window.innerHeight * window.devicePixelRatio);
     }
 
     CreateLanguageMenu() {
@@ -397,7 +402,7 @@ class OpeningScene extends Phaser.Scene {
             }
         }, this);
 
-        container.setScale(0.56);
+        container.setScale(0.45);
 
         return container;
     }
