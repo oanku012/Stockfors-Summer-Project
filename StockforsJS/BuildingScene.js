@@ -103,7 +103,7 @@ class BuildingScene extends Phaser.Scene {
         this.ContainerTransition(this.infoContainer);
 
         // Reorganize the UI when the game gets resized
-        //this.scale.on('resize', this.resize, this);
+        this.scale.on('resize', this.resize, this);
 
     }
 

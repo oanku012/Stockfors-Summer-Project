@@ -50,21 +50,23 @@ var config = {
 
 var scaleRatio = window.devicePixelRatio / 3;
 
-//Rescales the scene
-function rescaleSceneEvent(currentScene) {
+//Rescales the scene on orientation change or on changing to fullscreen, optionally you can add specific elements to reposition
+function rescaleSceneEvent(currentScene, elementsToPosition) {
 
 
-    if (currentScene.sys.game.device.os.iOS || currentScene.sys.game.device.os.iPhone || currentScene.sys.game.device.os.android || currentScene.sys.game.device.os.windowsPhone) {
+    let centerX = currentScene.cameras.main.centerX;
+    let centerY = currentScene.cameras.main.centerY;
 
-        let centerX = currentScene.cameras.main.centerX;
-        let centerY = currentScene.cameras.main.centerY;
+    /*if (currentScene.sys.game.device.os.iOS || currentScene.sys.game.device.os.iPhone || currentScene.sys.game.device.os.android || currentScene.sys.game.device.os.windowsPhone) {
+
+
 
         //Rescales the window based on screen orientation on mobile devices
         currentScene.scene.scene.scale.on('orientationchange', function (orientation) {
 
             if (currentScene.scene.isActive()) {
 
-                
+
 
                 console.log(window);
 
@@ -92,7 +94,29 @@ function rescaleSceneEvent(currentScene) {
 
         }, this);
 
-    }
+    }*/
+
+    //Rescales the game every time the window is resized, this includes orientation changes as well as toggling fullscreen
+    window.addEventListener('resize', () => {
+        if (currentScene.scene.isActive()) {
+
+                
+
+            //console.log(window);
+
+            let sizeX = window.innerWidth * window.devicePixelRatio;
+            let sizeY = window.innerHeight * window.devicePixelRatio;
+
+            currentScene.scale.setGameSize(sizeX, sizeY);
+            game.scale.resize(sizeX, sizeY);
+
+            currentScene.cameras.main.centerOn(centerX, centerY);
+
+            //console.log(currentScene.scene.scene.scale);
+            //console.log(game.scale);
+        }
+    });
+
 }
 
 //If pointer is over UI-elements

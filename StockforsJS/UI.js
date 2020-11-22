@@ -8,59 +8,20 @@ class UI extends Phaser.Scene {
 
         //If on mobile make options button bigger to make it easier to press
         if (this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) {
-            optionsButton = createSceneOpenButton(this.cameras.main.centerX + this.cameras.main.width * .470 - 20, this.cameras.main.centerY - this.cameras.main.height * .445 + 20, 'OptionsMenuScene', true, 0, 1, this, 'MenuAtlas', 'UI Buttons/Asetukset');
-
+            //optionsButton = createSceneOpenButton(this.cameras.main.centerX + this.cameras.main.width * .470 - 20, this.cameras.main.centerY - this.cameras.main.height * .445 + 20, 'OptionsMenuScene', true, 0, 1, this, 'MenuAtlas', 'UI Buttons/Asetukset');
+            optionsButton = createSceneOpenButton(window.innerWidth * window.devicePixelRatio * 0.9, window.innerHeight * window.devicePixelRatio * 0.05, 'OptionsMenuScene', true, 0, 1.2, this, 'MenuAtlas', 'UI Buttons/Asetukset');
         }
         else {
-            optionsButton = createSceneOpenButton(this.cameras.main.centerX + this.cameras.main.width * .470, this.cameras.main.centerY - this.cameras.main.height * .445, 'OptionsMenuScene', true, 0, 0.56, this, 'MenuAtlas', 'UI Buttons/Asetukset');
+
+            optionsButton = createSceneOpenButton(window.innerWidth * window.devicePixelRatio * 0.95, window.innerHeight * window.devicePixelRatio * 0.05, 'OptionsMenuScene', true, 0, 0.56, this, 'MenuAtlas', 'UI Buttons/Asetukset');
         }
 
         rescaleSceneEvent(this);
 
-        /*if (this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) {
-
-            let centerX = this.cameras.main.centerX;
-            let centerY = this.cameras.main.centerY;
-
-            //Rescales the window based on screen orientation on mobile devices
-            this.scene.scene.scale.on('orientationchange', function (orientation) {
-
-                //console.log(window);
-
-                let sizeX = window.innerWidth * window.devicePixelRatio;
-                let sizeY = window.innerHeight * window.devicePixelRatio;
-
-                game.scene.getScenes(true).forEach(function (scene) {
-
-                    if (scene != this && scene.scene.key != 'UI') {
-                        scene.scene.scale.setGameSize(sizeX, sizeY);
-                        game.scale.resize(sizeX, sizeY);
-
-                        scene.cameras.main.centerOn(centerX, centerY);
-
-
-                        //console.log(this.scene.scene.scale);
-
-                    }
-                }, this);
-
-                if (orientation === Phaser.Scale.PORTRAIT) {
-
-
-
-                } else if (orientation === Phaser.Scale.LANDSCAPE) {
-
-
-                }
-
-
-
-
-
-
-            }, this);
-
-        }*/
+        this.scale.on('resize', () => {
+            optionsButton.setX(window.innerWidth * window.devicePixelRatio * 0.9);
+            optionsButton.setY(window.innerHeight * window.devicePixelRatio * 0.07);
+        }, this);
     }
 
     update() {
