@@ -343,7 +343,7 @@ class OpeningScene extends Phaser.Scene {
     }
 
     CreateMenuContainer(elementsToAdd = []) {
-        let container = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY, elementsToAdd);
+        let container = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY + 20, elementsToAdd);
 
         container.iterate(function (element) {
 
@@ -399,7 +399,9 @@ class OpeningScene extends Phaser.Scene {
         //let widthHeightRatio = container.displayHeight/container.displayWidth;
         //container.setDisplaySize(containerWidth, containerWidth*widthHeightRatio);
 
-        if (this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) {
+        rescaleObjects(container, this, 0.0002, 0.00015);
+
+        /*if (this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) {
 
             if (this.scale.orientation === Phaser.Scale.PORTRAIT) {
                 container.setScale(0.0002 * window.devicePixelRatio * (window.innerWidth + window.innerHeight));
@@ -415,13 +417,16 @@ class OpeningScene extends Phaser.Scene {
         else {
             container.setScale(0.00016 * window.devicePixelRatio * (window.innerWidth + window.innerHeight));
 
-        }
+        }*/
 
         //container.setScale(0.45);
 
         this.scale.on('resize', () => {
 
-            if (this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) {
+            rescaleObjects(container, this, 0.0002, 0.00015);
+
+
+            /*if (this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) {
 
                 if (this.scale.orientation === Phaser.Scale.PORTRAIT) {
                     container.setScale(0.0002 * window.devicePixelRatio * (window.innerWidth + window.innerHeight));
@@ -437,7 +442,7 @@ class OpeningScene extends Phaser.Scene {
             else {
                 container.setScale(0.00017 * window.devicePixelRatio * (window.innerWidth + window.innerHeight));
 
-            }
+            }*/
 
         }, this);
 

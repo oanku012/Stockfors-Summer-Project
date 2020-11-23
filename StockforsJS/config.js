@@ -51,7 +51,7 @@ var config = {
 var scaleRatio = window.devicePixelRatio / 3;
 
 //Rescales the scene on orientation change or on changing to fullscreen, optionally you can add specific elements to reposition
-function rescaleSceneEvent(currentScene, elementsToPosition) {
+function rescaleSceneEvent(currentScene) {
 
 
     let centerX = currentScene.cameras.main.centerX;
@@ -100,7 +100,7 @@ function rescaleSceneEvent(currentScene, elementsToPosition) {
     window.addEventListener('resize', () => {
         if (currentScene.scene.isActive()) {
 
-                
+
 
             //console.log(window);
 
@@ -117,6 +117,27 @@ function rescaleSceneEvent(currentScene, elementsToPosition) {
         }
     });
 
+}
+
+function rescaleObjects(object, scene, scalePortrait, scaleLandscape) {
+    if (scene.sys.game.device.os.iOS || scene.sys.game.device.os.iPhone || scene.sys.game.device.os.android || scene.sys.game.device.os.windowsPhone) {
+
+        if (scene.scale.orientation === Phaser.Scale.PORTRAIT) {
+            object.setScale(scalePortrait * window.devicePixelRatio * (window.innerWidth + window.innerHeight));
+            
+        }
+        else if (scene.scale.orientation === Phaser.Scale.LANDSCAPE) {
+            object.setScale(scaleLandscape * window.devicePixelRatio * (window.innerWidth + window.innerHeight));
+            //object.setScale(0.5 * window.devicePixelRatio * (window.innerHeight / 1000));
+
+        }
+
+
+    }
+    else {
+        object.setScale(scaleLandscape * window.devicePixelRatio * (window.innerWidth + window.innerHeight));
+        //object.setScale(0.5 * window.devicePixelRatio * (window.innerHeight / 1000));
+    }
 }
 
 //If pointer is over UI-elements

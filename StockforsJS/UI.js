@@ -9,7 +9,7 @@ class UI extends Phaser.Scene {
         //If on mobile make options button bigger to make it easier to press
         if (this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) {
             //optionsButton = createSceneOpenButton(this.cameras.main.centerX + this.cameras.main.width * .470 - 20, this.cameras.main.centerY - this.cameras.main.height * .445 + 20, 'OptionsMenuScene', true, 0, 1, this, 'MenuAtlas', 'UI Buttons/Asetukset');
-            optionsButton = createSceneOpenButton(window.innerWidth * window.devicePixelRatio * 0.9, window.innerHeight * window.devicePixelRatio * 0.05, 'OptionsMenuScene', true, 0, 1.2, this, 'MenuAtlas', 'UI Buttons/Asetukset');
+            optionsButton = createSceneOpenButton(window.innerWidth * window.devicePixelRatio * 0.9, window.innerHeight * window.devicePixelRatio * 0.07, 'OptionsMenuScene', true, 0, 1, this, 'MenuAtlas', 'UI Buttons/Asetukset');
         }
         else {
 
@@ -19,8 +19,16 @@ class UI extends Phaser.Scene {
         rescaleSceneEvent(this);
 
         this.scale.on('resize', () => {
-            optionsButton.setX(window.innerWidth * window.devicePixelRatio * 0.9);
-            optionsButton.setY(window.innerHeight * window.devicePixelRatio * 0.07);
+            if (this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) {
+
+                optionsButton.setX(window.innerWidth * window.devicePixelRatio * 0.9);
+                optionsButton.setY(window.innerHeight * window.devicePixelRatio * 0.07);
+            }
+            else
+            {
+                optionsButton.setX(window.innerWidth * window.devicePixelRatio * 0.95);
+                optionsButton.setY(window.innerHeight * window.devicePixelRatio * 0.05);
+            }
         }, this);
     }
 

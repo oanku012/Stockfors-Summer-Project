@@ -112,6 +112,8 @@ class BuildingScene extends Phaser.Scene {
         this.menuBG = this.add.sprite(0, 0, 'MenuAtlas', 'UI Pohjat/InsideVaaka');
         this.menu = this.add.container(this.centerX, this.centerY - 20, [this.menuBG]).setScale(0.7);
 
+        rescaleObjects(this.menu, this, 0.00017, 0.00025);
+
         // title and description
         let title = this.add.text(0, -350, this.title);
         title.setFontSize(64);
@@ -357,9 +359,11 @@ class BuildingScene extends Phaser.Scene {
     resize() {
         if (this.scene.isActive(this.scene.key)) {
             this.menu.setX(this.centerX);
-            this.menu.setY(this.centerY);
-        }
+            this.menu.setY(this.centerY - 20);
 
+            rescaleObjects(this.menu, this, 0.00017, 0.00025);
+
+        }
     }
 
     CreateInfoContainer() {
@@ -414,7 +418,7 @@ class BuildingScene extends Phaser.Scene {
         this.imgContainerY = 50;
 
         //Background that shows up when viewing the images in an album
-        this.albumBackground = this.add.image(this.centerX + 5, this.centerY - 20, 'MenuAtlas', 'UI Pohjat/Pelipohja').setVisible(false).setScale(1.04, 0.57);
+        this.albumBackground = this.add.image(this.centerX + 5, this.centerY - 20, 'MenuAtlas', 'UI Pohjat/Pelipohja').setVisible(false);
         this.imageBackground = this.add.image(this.centerX, this.centerY - this.imgContainerY, 'MenuAtlas', 'UI Pohjat/Infokorttipohja').setVisible(false);
         //this.textBackground = this.add.image(this.centerX, this.centerY - 7, 'MenuAtlas', 'UI Pohjat/Pelipohja').setVisible(false);
 
@@ -620,19 +624,22 @@ class BuildingScene extends Phaser.Scene {
     //Creates the actual larger image to view, page is the pageindex that the image is on
     createImage(image, index, page) {
 
+        this.imageContainer = this.add.container(0, 0);
+
         //Destroy existing image if switching to a new one
         if (this.currentImage) {
             this.currentImage.text.destroy();
             this.currentImage.destroy();
         }
 
-        if(this.closeImageButton.visible === false){
+        if (this.closeImageButton.visible === false) {
             this.closeImageButton.setVisible(true);
         }
 
         let newImage = this.add.image(this.centerX, this.centerY - this.imgContainerY, image);
 
-        let imageHeight = 900;
+        //let imageHeight = 900;
+        let imageHeight = window.innerHeight*window.devicePixelRatio*0.8;
 
         newImage.setDisplaySize(newImage.width / (newImage.height / imageHeight), imageHeight)
         newImage.setSizeToFrame(newImage.frame);
@@ -718,7 +725,7 @@ class BuildingScene extends Phaser.Scene {
         }, this);
 
         //Because I'm lazy I just copypasted all of this, for the separate closing button
-        this.closeImageButton.on('pointerup', function(){
+        this.closeImageButton.on('pointerup', function () {
             if (this.closeImageButton.pressed) {
                 newImage.text.destroy();
                 newImage.destroy();
@@ -777,6 +784,8 @@ class BuildingScene extends Phaser.Scene {
             this.albumArrowBackward.setVisible(false);
 
         }
+
+        //this.imageContainer.add([newImage, this.albumArrowBackward, this. albumArrowForward, this.imageBackground, this.albumBackground, this.closeImageButton]);
 
         this.menu.setVisible(false);
 
