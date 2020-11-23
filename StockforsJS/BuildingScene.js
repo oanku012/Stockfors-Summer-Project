@@ -108,11 +108,20 @@ class BuildingScene extends Phaser.Scene {
     }
 
     createMenuContainer() {
+
+        this.menuPositionY = 0.03;
+
         // Menu
         this.menuBG = this.add.sprite(0, 0, 'MenuAtlas', 'UI Pohjat/InsideVaaka');
-        this.menu = this.add.container(this.centerX, this.centerY - 20, [this.menuBG]).setScale(0.7);
+        this.menu = this.add.container(this.centerX, this.centerY - 20, [this.menuBG]);
 
-        rescaleObjects(this.menu, this, 0.00017, 0.00025);
+        this.portraitScale = 0.00017;
+        this.landscapeScale = 0.00023;
+        rescaleObjects(this.menu, this, this.portraitScale, this.landscapeScale);
+
+        console.log(this.menu.scaleY);
+
+        this.menu.setPosition(this.centerX, this.centerY - window.innerHeight*window.devicePixelRatio* this.menu.scaleY * this.menuPositionY);
 
         // title and description
         let title = this.add.text(0, -350, this.title);
@@ -359,9 +368,9 @@ class BuildingScene extends Phaser.Scene {
     resize() {
         if (this.scene.isActive(this.scene.key)) {
             this.menu.setX(this.centerX);
-            this.menu.setY(this.centerY - 20);
+            this.menu.setY(this.centerY - window.innerHeight*window.devicePixelRatio*this.menu.scaleY * this.menuPositionY);
 
-            rescaleObjects(this.menu, this, 0.00017, 0.00025);
+            rescaleObjects(this.menu, this, this.portraitScale, this.landscapeScale);
 
         }
     }
@@ -418,7 +427,7 @@ class BuildingScene extends Phaser.Scene {
         this.imgContainerY = 50;
 
         //Background that shows up when viewing the images in an album
-        this.albumBackground = this.add.image(this.centerX + 5, this.centerY - 20, 'MenuAtlas', 'UI Pohjat/Pelipohja').setVisible(false);
+        this.albumBackground = this.add.image(this.centerX + 5, this.centerY - 20, 'MenuAtlas', 'UI Pohjat/Pelipohja').setVisible(false).setScale(2, 1);
         this.imageBackground = this.add.image(this.centerX, this.centerY - this.imgContainerY, 'MenuAtlas', 'UI Pohjat/Infokorttipohja').setVisible(false);
         //this.textBackground = this.add.image(this.centerX, this.centerY - 7, 'MenuAtlas', 'UI Pohjat/Pelipohja').setVisible(false);
 
@@ -582,8 +591,10 @@ class BuildingScene extends Phaser.Scene {
 
         }
 
-        let arrowX = 850;
-        let arrowY = 460;
+        //let arrowX = 850;
+        //let arrowY = 460;
+        let arrowX = window.innerWidth*window.devicePixelRatio*0.45;
+        let arrowY = window.innerHeight*window.devicePixelRatio*0.45;
 
         //Arrow buttons for switching between images when viewing them
         this.albumArrowForward = CreateButton(this, this.centerX + arrowX, this.centerY + arrowY, 'UI Buttons/Arrow').setScale(0.9).setVisible(false);
@@ -768,6 +779,10 @@ class BuildingScene extends Phaser.Scene {
 
             }
         }, this);
+
+        let topLeft = newImage.getTopLeft();
+
+        this.closeImageButton.setPosition(topLeft.x, topLeft.y);
 
         if (index < this.images.length - 1) {
             this.albumArrowForward.setVisible(true);
