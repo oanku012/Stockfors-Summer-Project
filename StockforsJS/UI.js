@@ -9,11 +9,11 @@ class UI extends Phaser.Scene {
         //If on mobile make options button bigger to make it easier to press
         if (this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) {
             //optionsButton = createSceneOpenButton(this.cameras.main.centerX + this.cameras.main.width * .470 - 20, this.cameras.main.centerY - this.cameras.main.height * .445 + 20, 'OptionsMenuScene', true, 0, 1, this, 'MenuAtlas', 'UI Buttons/Asetukset');
-            optionsButton = createSceneOpenButton(window.innerWidth * window.devicePixelRatio * 0.9, window.innerHeight * window.devicePixelRatio * 0.07, 'OptionsMenuScene', true, 0, 1, this, 'MenuAtlas', 'UI Buttons/Asetukset');
+            optionsButton = createSceneOpenButton(getWindowWidth() * 0.9, getWindowHeight() * 0.07, 'OptionsMenuScene', true, 0, 1, this, 'MenuAtlas', 'UI Buttons/Asetukset');
         }
         else {
 
-            optionsButton = createSceneOpenButton(window.innerWidth * window.devicePixelRatio * 0.95, window.innerHeight * window.devicePixelRatio * 0.05, 'OptionsMenuScene', true, 0, 0.56, this, 'MenuAtlas', 'UI Buttons/Asetukset');
+            optionsButton = createSceneOpenButton(getWindowWidth() * 0.95, getWindowHeight() * 0.05, 'OptionsMenuScene', true, 0, 0.56, this, 'MenuAtlas', 'UI Buttons/Asetukset');
         }
 
         rescaleSceneEvent(this);
@@ -21,13 +21,13 @@ class UI extends Phaser.Scene {
         this.scale.on('resize', () => {
             if (this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) {
 
-                optionsButton.setX(window.innerWidth * window.devicePixelRatio * 0.9);
-                optionsButton.setY(window.innerHeight * window.devicePixelRatio * 0.07);
+                optionsButton.setX(getWindowWidth() * 0.9);
+                optionsButton.setY(getWindowHeight() * 0.07);
             }
             else
             {
-                optionsButton.setX(window.innerWidth * window.devicePixelRatio * 0.95);
-                optionsButton.setY(window.innerHeight * window.devicePixelRatio * 0.05);
+                optionsButton.setX(getWindowWidth() * 0.95);
+                optionsButton.setY(getWindowHeight() * 0.05);
             }
         }, this);
     }

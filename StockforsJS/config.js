@@ -48,7 +48,15 @@ var config = {
 
 };
 
-var scaleRatio = window.devicePixelRatio / 3;
+function getWindowWidth()
+{
+    return window.innerWidth * window.devicePixelRatio;
+}
+
+function getWindowHeight()
+{
+    return window.innerHeight * window.devicePixelRatio;
+}
 
 //Rescales the scene on orientation change or on changing to fullscreen, optionally you can add specific elements to reposition
 function rescaleSceneEvent(currentScene) {
@@ -104,8 +112,8 @@ function rescaleSceneEvent(currentScene) {
 
             //console.log(window);
 
-            let sizeX = window.innerWidth * window.devicePixelRatio;
-            let sizeY = window.innerHeight * window.devicePixelRatio;
+            let sizeX = getWindowWidth();
+            let sizeY = getWindowHeight();
 
             currentScene.scale.setGameSize(sizeX, sizeY);
             game.scale.resize(sizeX, sizeY);

@@ -102,7 +102,7 @@ class BuildingScene extends Phaser.Scene {
 
         this.ContainerTransition(this.infoContainer);
 
-        // Reorganize the UI when the game gets resized
+        // Reorganize the UI when the game gets resized, apparently runs multiple times when changing orientation
         this.scale.on('resize', this.resize, this);
 
     }
@@ -119,7 +119,7 @@ class BuildingScene extends Phaser.Scene {
         this.landscapeScale = 0.00023;
         rescaleObjects(this.menu, this, this.portraitScale, this.landscapeScale);
 
-        this.menu.setPosition(this.centerX, this.centerY - window.innerHeight * window.devicePixelRatio * this.menu.scaleY * this.menuPositionY);
+        this.menu.setPosition(this.centerX, this.centerY - getWindowHeight() * this.menu.scaleY * this.menuPositionY);
 
         // title and description
         let title = this.add.text(0, -350, this.title);
@@ -366,22 +366,36 @@ class BuildingScene extends Phaser.Scene {
     resize() {
         if (this.scene.isActive(this.scene.key)) {
             this.menu.setX(this.centerX);
-            this.menu.setY(this.centerY - window.innerHeight * window.devicePixelRatio * this.menu.scaleY * this.menuPositionY);
+            this.menu.setY(this.centerY - getWindowHeight() * this.menu.scaleY * this.menuPositionY);
+
+            //The iframe element is recreated completely on resize, because repositioning it didn't seem to work for some reason 
+            if (this.panoramaViewer) {
+                this.panoramaViewer.setPosition(this.centerX, this.centerY - getWindowHeight() * 0.05);
+
+                let panoHTML = document.createElement('iframe');
+                panoHTML.id = 'panorama';
+                panoHTML.src = 'pannellum/pannellum.htm#panorama=/Assets/images/Panoramas/' + this.panoramaViewer.img + '&autoLoad=true&vaov=80&author="Sara Laitinen 2020"';
+                panoHTML.style = 'border-style:none; width: 80%; height: 80%;'
+
+                this.panoramaViewer.setElement(panoHTML);
+
+                this.panoramaExitButton.setPosition(this.centerX, this.centerY + getWindowHeight() * 0.4)
+            }
 
             rescaleObjects(this.menu, this, this.portraitScale, this.landscapeScale);
 
-            this.albumBackground.setDisplaySize(window.innerWidth * window.devicePixelRatio * 1.2, window.innerHeight * window.devicePixelRatio * 1.2);
+            this.albumBackground.setDisplaySize(getWindowWidth() * 1.2, getWindowHeight() * 1.2);
 
-            let arrowX = window.innerWidth * window.devicePixelRatio * 0.44;
-            let arrowY = window.innerHeight * window.devicePixelRatio * 0.45;
+            let arrowX = getWindowWidth() * 0.44;
+            let arrowY = getWindowHeight() * 0.45;
 
             this.albumArrowForward.setPosition(this.centerX + arrowX, this.centerY + arrowY);
             this.albumArrowBackward.setPosition(this.centerX - arrowX, this.centerY + arrowY);
 
             if (this.currentImage) {
 
-                let imageHeight = window.innerHeight * window.devicePixelRatio * 0.8;
-                let imageWidth = window.innerWidth * window.devicePixelRatio * 0.8;
+                let imageHeight = getWindowHeight() * 0.8;
+                let imageWidth = getWindowWidth() * 0.8;
 
                 if ((this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) && this.scale.orientation === Phaser.Scale.PORTRAIT) {
 
@@ -407,6 +421,8 @@ class BuildingScene extends Phaser.Scene {
 
                 this.currentImage.text.setY(bottomCenter.y + 60);
             }
+
+            console.log('Scene objects resized and positioned.');
         }
     }
 
@@ -462,7 +478,7 @@ class BuildingScene extends Phaser.Scene {
         this.imgContainerY = 50;
 
         //Background that shows up when viewing the images in an album
-        this.albumBackground = this.add.image(this.centerX + 5, this.centerY - 20, 'MenuAtlas', 'UI Pohjat/Pelipohja').setVisible(false).setDisplaySize(window.innerWidth * window.devicePixelRatio * 1.2, window.innerHeight * window.devicePixelRatio * 1.2);
+        this.albumBackground = this.add.image(this.centerX + 5, this.centerY - 20, 'MenuAtlas', 'UI Pohjat/Pelipohja').setVisible(false).setDisplaySize(getWindowWidth() * 1.2, getWindowHeight() * 1.2);
         this.imageBackground = this.add.image(this.centerX, this.centerY - this.imgContainerY, 'MenuAtlas', 'UI Pohjat/Infokorttipohja').setVisible(false);
         //this.textBackground = this.add.image(this.centerX, this.centerY - 7, 'MenuAtlas', 'UI Pohjat/Pelipohja').setVisible(false);
 
@@ -628,8 +644,8 @@ class BuildingScene extends Phaser.Scene {
 
         //let arrowX = 850;
         //let arrowY = 460;
-        let arrowX = window.innerWidth * window.devicePixelRatio * 0.45;
-        let arrowY = window.innerHeight * window.devicePixelRatio * 0.45;
+        let arrowX = getWindowWidth() * 0.45;
+        let arrowY = getWindowHeight() * 0.45;
 
         //Arrow buttons for switching between images when viewing them
         this.albumArrowForward = CreateButton(this, this.centerX + arrowX, this.centerY + arrowY, 'UI Buttons/Arrow').setScale(0.9).setVisible(false);
@@ -683,20 +699,20 @@ class BuildingScene extends Phaser.Scene {
         let newImage = this.add.image(this.centerX, this.centerY - this.imgContainerY, image);
 
         //let imageHeight = 900;
-        /*let imageHeight = window.innerHeight * window.devicePixelRatio * 0.8;
+        /*let imageHeight = getWindowHeight() * 0.8;
 
         if (this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) {
 
             if (this.scale.orientation === Phaser.Scale.PORTRAIT) {
-                imageHeight = window.innerHeight * window.devicePixelRatio * 0.3;
+                imageHeight = getWindowHeight() * 0.3;
             }
         }
 
         newImage.setDisplaySize(newImage.width / (newImage.height / imageHeight), imageHeight)
         newImage.setSizeToFrame(newImage.frame);*/
 
-        let imageHeight = window.innerHeight * window.devicePixelRatio * 0.8;
-        let imageWidth = window.innerWidth * window.devicePixelRatio * 0.85;
+        let imageHeight = getWindowHeight() * 0.8;
+        let imageWidth = getWindowWidth() * 0.85;
 
         if ((this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) && this.scale.orientation === Phaser.Scale.PORTRAIT) {
 
@@ -918,11 +934,14 @@ class BuildingScene extends Phaser.Scene {
                     panoHTML.id = 'panorama';
                     panoHTML.src = 'pannellum/pannellum.htm#panorama=/Assets/images/Panoramas/' + element.img + '&autoLoad=true&vaov=80&author="Sara Laitinen 2020"';
 
-                    this.panoramaViewer = this.add.dom(this.centerX, this.centerY - 50, panoHTML, 'border-style:none; width: 1500px; height: 900px;');
+
+                    this.panoramaViewer = this.add.dom(this.centerX, this.centerY - getWindowHeight() * 0.05, panoHTML, 'border-style:none; width: 80%; height: 80%;');
+
+                    this.panoramaViewer.img = element.img;
 
                     domElements.push(this.panoramaViewer);
 
-                    this.panoramaExitButton = CreateTextButton(this, this.centerX, 1020, 'UI Buttons/Nappi', this.data.Back).setScale(0.7);
+                    this.panoramaExitButton = CreateTextButton(this, this.centerX, this.centerY + getWindowHeight() * 0.4, 'UI Buttons/Nappi', this.data.Back).setScale(0.7);
 
                     this.panoramaExitButton.on('pointerup', function () {
                         if (this.panoramaExitButton.pressed) {

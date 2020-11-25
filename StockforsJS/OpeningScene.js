@@ -147,8 +147,8 @@ class OpeningScene extends Phaser.Scene {
             }
         }, this);
 
-        this.scene.scene.scale.setGameSize(window.innerWidth * window.devicePixelRatio, window.innerHeight * window.devicePixelRatio);
-        game.scale.resize(window.innerWidth * window.devicePixelRatio, window.innerHeight * window.devicePixelRatio);
+        this.scene.scene.scale.setGameSize(getWindowWidth(), getWindowHeight());
+        game.scale.resize(getWindowWidth(), getWindowHeight());
     }
 
     CreateLanguageMenu() {
