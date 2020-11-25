@@ -24,6 +24,10 @@ class PreloadScene extends Phaser.Scene {
     create()
     {
         rescaleSceneEvent(this);
+
+        /*this.scale.on('resize', () => {
+            rescaleSceneEvent(this);
+        }, this);*/
     }
 
     createProgressbar (x, y)

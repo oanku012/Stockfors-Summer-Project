@@ -63,6 +63,8 @@ class OptionsMenuScene extends Phaser.Scene {
         this.menuBG = this.add.sprite(0, 0, 'MenuAtlas', 'UI Pohjat/Settings').setOrigin(0.479, 0.5);
         this.menu = this.add.container(this.cameras.main.centerX - 37, this.cameras.main.centerY, [this.menuBG]).setScale(0.56).setDepth(9999);
 
+        this.menuBG.setInteractive();
+
         if (this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) {
             this.menu.setScale(0.7);
         }
