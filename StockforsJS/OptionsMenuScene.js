@@ -51,7 +51,7 @@ class OptionsMenuScene extends Phaser.Scene {
         //}, null, this);
 
         // Reorganize the UI when the game gets resized
-        //this.scale.on('resize', this.resize, this);
+        this.scale.on('resize', this.resize, this);
 
         rescaleSceneEvent(this);
 
@@ -63,11 +63,10 @@ class OptionsMenuScene extends Phaser.Scene {
         this.menuBG = this.add.sprite(0, 0, 'MenuAtlas', 'UI Pohjat/Settings').setOrigin(0.479, 0.5);
         this.menu = this.add.container(this.cameras.main.centerX - 37, this.cameras.main.centerY, [this.menuBG]).setScale(0.56).setDepth(9999);
 
-        this.menuBG.setInteractive();
+        rescaleObjects(this.menu, this, 0.00021, 0.00021);
 
-        if (this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) {
-            this.menu.setScale(0.7);
-        }
+        //This is just to block from touching things behind the menu 
+        this.menuBG.setInteractive();
 
         //This is just to move all the elements that are separate from the backgrounds
         this.menuElements = this.add.container(40, 0);
@@ -283,8 +282,10 @@ class OptionsMenuScene extends Phaser.Scene {
 
     resize() {
         if (this.scene.isActive(this.scene.key)) {
-            this.menu.setX(this.centerX);
+            this.menu.setX(this.centerX- 37);
             this.menu.setY(this.centerY);
+
+            rescaleObjects(this.menu, this, 0.00021, 0.00021);
         }
 
     }
