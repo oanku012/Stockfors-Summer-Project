@@ -22,6 +22,10 @@ class OptionsMenuScene extends Phaser.Scene {
 
            console.log('Language loaded');*/
         }
+
+        // slider plugin for audio volume
+        // this.load.plugin('rexsliderplugin', 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexsliderplugin.min.js', true);
+
     }
 
     create() {
@@ -92,6 +96,22 @@ class OptionsMenuScene extends Phaser.Scene {
         this.musicText = this.add.text(-200, firstRow, this.data['Music'], { fontSize: fontsize, fontFamily: 'Carme', color: "black", align: 'center', origin: { x: 0.5, y: 0.5 } });
         this.musicText.setPosition(-this.musicText.width * 0.5, firstRow - 25);
 
+        // Volume slider
+        /*
+        this.volume = this.add.rectangle(400, 300, 50, 50, 0xffffff);
+        this.volumeSlider = this.plugins.get('rexsliderplugin').add(this.volume, {
+            endPoints: [
+                 {x:0, y:0},
+                 {x:210, y:0}
+             ],
+             value: 0,
+             enable: true,
+        
+             valuechangeCallback: null,
+             valuechangeCallbackScope: null
+        });
+        */
+
         this.soundButton = this.add.image(posX, firstRow + rowGap, 'MenuAtlas', 'UI Buttons/CheckmarkON').setOrigin(0.5, 0.5);
         this.soundText = this.add.text(-200, firstRow + rowGap, this.data['Sound'], { fontSize: fontsize, fontFamily: 'Carme', color: "black", align: 'center', origin: { x: 0.5, y: 0.5 } });
         this.soundText.setPosition(-this.soundText.width * 0.5, firstRow + rowGap - 25);
@@ -110,7 +130,7 @@ class OptionsMenuScene extends Phaser.Scene {
 
         //this.optionColumn = new uiWidgets.Column(this.game, -100, -200);
 
-        this.menuElements.add([this.musicButton, this.musicText, this.soundButton, this.soundText, this.fullScreenButton, this.fullScreenText, this.exitButton, this.creditsButton]);
+        this.menuElements.add([this.musicButton, this.musicText, this.soundButton, this.soundText, this.fullScreenButton, this.fullScreenText, this.exitButton, this.creditsButton/*, this.volume*/]);
 
         this.menu.add(this.menuElements);
 
@@ -119,7 +139,17 @@ class OptionsMenuScene extends Phaser.Scene {
         this.updateFullScreen();
 
         this.musicButton.on('pointerdown', function () {
-            config.musicOn = !config.musicOn;
+            if (config.musicOn)
+            {
+                config.musicOn = false;
+                game.scene.getScene('MusicPlayer').changeVolume(0);
+            }
+            else
+            {
+                config.musicOn = true;
+                game.scene.getScene('MusicPlayer').changeVolume(game.scene.getScene('MusicPlayer').defaultVolume);
+            }
+            
             this.updateAudio();
         }.bind(this));
 

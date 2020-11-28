@@ -103,6 +103,15 @@ class BuildingScene extends Phaser.Scene {
         // Reorganize the UI when the game gets resized
         //this.scale.on('resize', this.resize, this);
 
+        // pick random song to play
+        var randomSong = Math.floor(Math.random() * 3);
+        if (randomSong == 0)
+            game.scene.getScene('MusicPlayer').playSong('hmollackordet');
+        else if (randomSong == 1)
+            game.scene.getScene('MusicPlayer').playSong('distinct2');
+        else
+            game.scene.getScene('MusicPlayer').playSong('being_in_the_rain')
+
     }
 
     createMenuContainer() {

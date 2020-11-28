@@ -64,6 +64,16 @@ class MapScene extends Phaser.Scene {
 
     create() {
 
+        // pick random song to play
+        var randomSong = Math.floor(Math.random() * 3);
+        if (randomSong == 0)
+            game.scene.getScene('MusicPlayer').playSong('life_goes_on');
+        else if (randomSong == 1)
+            game.scene.getScene('MusicPlayer').playSong('confusement_rag5');
+        else
+            game.scene.getScene('MusicPlayer').playSong('the_adventurers_rag')
+        
+
         this.cameras.main.backgroundColor.setTo(255, 255, 255);
 
         console.log(this.scene.key);
@@ -113,6 +123,8 @@ class MapScene extends Phaser.Scene {
         this.overLapTimer = this.time.addEvent({ delay: 200, callback: this.CheckForOverlap, callbackScope: this, loop: true });
 
         this.SavePosition();
+
+    
 
     }
 

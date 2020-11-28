@@ -125,6 +125,11 @@ class PreloadScene extends Phaser.Scene {
                     {
                         this.load[group](key, value['wav']);
                     }
+                    // mp3 for music, maybe convert them later
+                    else if (value.hasOwnProperty('mp3') && this.sys.game.device.audio.mp3)
+                    {
+                        this.load[group](key, value['mp3']);
+                    }
                 }
                 else if (group === 'html')
                 {

@@ -89,6 +89,27 @@
         },
         "Birds3": {
             "ogg": "Assets/sounds/Birds3.ogg"
+        },
+        "entrance": {
+            "mp3": "Assets/music/entrance_final.mp3"
+        },
+        "the_adventurers_rag": {
+            "mp3": "Assets/music/the_adventurers_rag.mp3"
+        },
+        "life_goes_on": {
+            "mp3": "Assets/music/life_goes_on.mp3"
+        },
+        "confusement_rag5": {
+            "mp3": "Assets/music/confusement_rag5.mp3"
+        },
+        "hmollackordet": {
+            "mp3": "Assets/music/hmollackordet.mp3"
+        },
+        "distinct2": {
+            "mp3": "Assets/music/distinct2.mp3"
+        },
+        "being_in_the_rain": {
+            "mp3": "Assets/music/being_in_the_rain.mp3"
         }
     }
 }

@@ -68,7 +68,6 @@ class OpeningScene extends Phaser.Scene {
     }
 
     create() {
-
         this.cameras.main.backgroundColor.setTo(255, 255, 255);
 
         //Backgroundimage
@@ -109,6 +108,12 @@ class OpeningScene extends Phaser.Scene {
         }
 
         this.ohjeContainer.setVisible(false);
+
+        // Launch music player if music is enabled
+        this.scene.run('MusicPlayer');
+        // play main song
+        game.scene.getScene('MusicPlayer').playSong('entrance');
+
     }
 
     
