@@ -205,10 +205,6 @@ class MuistiPeliScene extends Phaser.Scene {
             rescaleObjects(this.exit, this, 0.00025, 0.00030);
             rescaleObjects(this.menu, this, 0.0003, 0.0003);
 
-            /*this.cardElements.forEach((card) => {
-                rescaleObjects(card, this, 0.0002, 0.0002);
-            }, this);*/
-
         }
     }
 

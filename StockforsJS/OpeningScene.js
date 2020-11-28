@@ -112,6 +112,7 @@ class OpeningScene extends Phaser.Scene {
         let menuBG = this.add.sprite(0, 0, 'MenuAtlas', 'UI Pohjat/InsideVaaka');
         let menu = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY - 20, [menuBG]).setScale(0.8);
 
+        rescaleObjects(menu, this, 0.00017, 0.0002);
 
         let style = {
             font: '70px Arial',
@@ -147,8 +148,8 @@ class OpeningScene extends Phaser.Scene {
             }
         }, this);
 
-        this.scene.scene.scale.setGameSize(getWindowWidth(), getWindowHeight());
-        game.scale.resize(getWindowWidth(), getWindowHeight());
+        //this.scene.scene.scale.setGameSize(getWindowWidth(), getWindowHeight());
+        //game.scale.resize(getWindowWidth(), getWindowHeight());
     }
 
     CreateLanguageMenu() {

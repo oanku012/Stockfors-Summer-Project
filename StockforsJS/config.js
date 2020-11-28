@@ -106,6 +106,7 @@ function rescaleSceneEvent(currentScene) {
 
     //Rescales the game every time the window is resized, this includes orientation changes as well as toggling fullscreen
     window.addEventListener('resize', () => {
+        
         if (currentScene.scene.isActive()) {
 
 
@@ -120,8 +121,7 @@ function rescaleSceneEvent(currentScene) {
 
             currentScene.cameras.main.centerOn(centerX, centerY);
 
-            //console.log(currentScene.scene.scene.scale);
-            //console.log(game.scale);
+            console.log('Game resized');
         }
     });
 

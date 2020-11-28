@@ -52,11 +52,11 @@ class StockforsScene extends MapScene {
 
         super.create();
 
-        if (this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) {
+        /*if (this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) {
             //this.player.setPosition(this.player.x, this.player.y - 75);
             this.cameras.main.setZoom(3);
 
-        }
+        }*/
 
         this.AddSoundSpaces();
 

@@ -314,9 +314,6 @@ class MapScene extends Phaser.Scene {
             }
         }
 
-        //This is here, because it checks for overlap just like the piece of code above, but it does other stuff too
-        //this.ManageSoundTriggers();
-
         this.CheckForDistanceToSounds();
 
     }
@@ -520,12 +517,13 @@ class MapScene extends Phaser.Scene {
     InitializeCamera() {
         let camera = this.cameras.main;
 
-        let maxZoom = 3;
-        let minZoom = 1.5;
-
-        camera.setZoom(2);
+        let maxZoom = window.devicePixelRatio*2;
+        let minZoom = window.devicePixelRatio;
 
         camera.startFollow(this.player, true, 0.08, 0.08);
+
+        camera.setZoom(minZoom);
+
 
         this.input.on('wheel', function (pointer, gameObjects, deltaX, deltaY, deltaZ) {
 
@@ -696,8 +694,6 @@ class MapScene extends Phaser.Scene {
     CreateSpeechBubble(text, scale) {
 
         let playerTopRight = this.player.getTopRight();
-
-
 
         let bubble = CreateTextButton(this, 0, 0, 'UI Buttons/Puhekupla_Intro', text);
 
