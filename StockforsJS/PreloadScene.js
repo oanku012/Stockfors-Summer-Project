@@ -9,6 +9,9 @@ class PreloadScene extends Phaser.Scene {
     }
 
     preload() {
+
+        rescaleSceneEvent(this);
+
         console.log("Loading scene: " + this.sceneToLoad);
         this.cameras.main.backgroundColor.setTo(255, 255, 255);
         this.loadAssets(this.cache.json.get('assets'));
@@ -55,7 +58,7 @@ class PreloadScene extends Phaser.Scene {
     }
 
     create() {
-        rescaleSceneEvent(this);
+        
 
     }
 
