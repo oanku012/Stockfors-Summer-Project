@@ -74,7 +74,7 @@ class StockforsScene extends MapScene {
             let bubbleDuration = 3000;
 
             //let bubbleScale = 0.00004*devicePixelCount;
-            let bubbleScale = 0.2;
+            let bubbleScale = 0.25;
 
             //This looks like a mess I know, basically it makes new speech bubbles for the player on a timer
             let firstSpeechEvent = this.time.addEvent({
