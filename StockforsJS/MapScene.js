@@ -517,12 +517,12 @@ class MapScene extends Phaser.Scene {
     InitializeCamera() {
         let camera = this.cameras.main;
 
-        let maxZoom = window.devicePixelRatio*2;
-        let minZoom = window.devicePixelRatio;
+        let maxZoom = (window.devicePixelRatio*(window.innerHeight+window.innerWidth))*0.002;
+        let minZoom = (window.devicePixelRatio*(window.innerHeight+window.innerWidth))*0.0005;
 
         camera.startFollow(this.player, true, 0.08, 0.08);
 
-        camera.setZoom(minZoom);
+        camera.setZoom((window.devicePixelRatio*(window.innerHeight+window.innerWidth))*0.001);
 
 
         this.input.on('wheel', function (pointer, gameObjects, deltaX, deltaY, deltaZ) {
@@ -711,16 +711,16 @@ class MapScene extends Phaser.Scene {
             //bubble.x += 10;
         }
         else if (text.length > 75) {
-            newScale = 0.6;
+            newScale = 0.55;
             console.log('Big bubble');
             //bubble.x += 20;
 
         }
 
-        bubble.x = (playerTopRight.x + 100 * newScale) - 20;
-        bubble.y = (playerTopRight.y - 100 * newScale) + 20;
-
         bubble.removeInteractive().setScale(scale);
+
+        bubble.x = (playerTopRight.x + bubble.displayWidth * newScale/3) - 20;
+        bubble.y = (playerTopRight.y - bubble.displayHeight * newScale/2) + 20;
 
         bubble.bg.setScale(newScale).setFlipX(true);
 

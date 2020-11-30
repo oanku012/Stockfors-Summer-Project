@@ -58,6 +58,8 @@ function getWindowHeight()
     return window.innerHeight * window.devicePixelRatio;
 }
 
+var devicePixelCount = window.devicePixelRatio*(window.innerWidth + window.innerHeight);
+
 //Rescales the scene on orientation change or on changing to fullscreen, optionally you can add specific elements to reposition
 function rescaleSceneEvent(currentScene) {
 
@@ -131,11 +133,11 @@ function rescaleObjects(object, scene, scalePortrait, scaleLandscape) {
     if (scene.sys.game.device.os.iOS || scene.sys.game.device.os.iPhone || scene.sys.game.device.os.android || scene.sys.game.device.os.windowsPhone) {
 
         if (scene.scale.orientation === Phaser.Scale.PORTRAIT) {
-            object.setScale(scalePortrait * window.devicePixelRatio * (window.innerWidth + window.innerHeight));
+            object.setScale(scalePortrait * devicePixelCount);
             
         }
         else if (scene.scale.orientation === Phaser.Scale.LANDSCAPE) {
-            object.setScale(scaleLandscape * window.devicePixelRatio * (window.innerWidth + window.innerHeight));
+            object.setScale(scaleLandscape * devicePixelCount);
             //object.setScale(0.5 * window.devicePixelRatio * (window.innerHeight / 1000));
 
         }
@@ -143,7 +145,7 @@ function rescaleObjects(object, scene, scalePortrait, scaleLandscape) {
 
     }
     else {
-        object.setScale(scaleLandscape * window.devicePixelRatio * (window.innerWidth + window.innerHeight));
+        object.setScale(scaleLandscape * devicePixelCount);
         //object.setScale(0.5 * window.devicePixelRatio * (window.innerHeight / 1000));
     }
 }

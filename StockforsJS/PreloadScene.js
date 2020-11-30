@@ -18,6 +18,9 @@ class PreloadScene extends Phaser.Scene {
 
         //Backgroundimage
         this.background = this.add.image(this.centX, this.centY, 'tausta').setScale(1.34);
+
+        this.rescaleBackground();
+
         this.logo = this.add.image(this.centX, this.centY, 'logo');
         //logo.setScale(0.8);
 
@@ -34,6 +37,20 @@ class PreloadScene extends Phaser.Scene {
             rescaleObjects(this.logo, this, 0.0002, 0.0002);
             this.logo.setPosition(this.centX, this.centY);
 
+            this.rescaleBackground();
+
+        }
+    }
+
+    rescaleBackground()
+    {
+        if ((this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) && this.scale.orientation === Phaser.Scale.PORTRAIT) {
+
+            this.background.setDisplaySize((this.sys.canvas.height / this.background.height) * this.background.width, this.sys.canvas.height);
+        }
+        else {
+
+            this.background.setDisplaySize(this.sys.canvas.width, (this.sys.canvas.width / this.background.width) * this.background.height);
         }
     }
 

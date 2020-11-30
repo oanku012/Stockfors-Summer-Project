@@ -47,7 +47,9 @@ class MuistiPeliScene extends Phaser.Scene {
         this.centerX = this.cameras.main.centerX;
         this.centerY = this.cameras.main.centerY;
 
-        this.add.image(this.centerX, this.centerY, 'PakkausImage3').setScale(1.3);
+        this.background = this.add.image(this.centerX, this.centerY, 'PakkausImage3').setScale(1.3);
+
+        this.rescaleBackground();
 
         this.cameras.main.backgroundColor.setTo(255, 255, 255);
 
@@ -94,7 +96,7 @@ class MuistiPeliScene extends Phaser.Scene {
         this.cardCount = 16;
         this.columnCount = 4;
 
-        this.cardSize = 0.05*window.devicePixelRatio * (window.innerWidth + window.innerHeight);
+        this.cardSize = 0.05*devicePixelCount;
 
         this.cardArray = [];
         this.openedCards = [];
@@ -205,6 +207,18 @@ class MuistiPeliScene extends Phaser.Scene {
             rescaleObjects(this.exit, this, 0.00025, 0.00030);
             rescaleObjects(this.menu, this, 0.0003, 0.0003);
 
+        }
+    }
+
+    rescaleBackground()
+    {
+        if ((this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) && this.scale.orientation === Phaser.Scale.PORTRAIT) {
+
+            this.background.setDisplaySize((this.sys.canvas.height / this.background.height) * this.background.width, this.sys.canvas.height);
+        }
+        else {
+
+            this.background.setDisplaySize(this.sys.canvas.width, (this.sys.canvas.width / this.background.width) * this.background.height);
         }
     }
 

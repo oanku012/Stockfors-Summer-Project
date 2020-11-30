@@ -65,10 +65,23 @@ class OpeningScene extends Phaser.Scene {
 
     create() {
 
+        console.log('Device pixel count is ' + devicePixelCount);
+
         this.cameras.main.backgroundColor.setTo(255, 255, 255);
 
         //Backgroundimage
         this.background = this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, 'tausta').setScale(1.34);
+        //rescaleObjects(this.background, this, 0.00075, 0.0005);
+
+        if ((this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) && this.scale.orientation === Phaser.Scale.PORTRAIT) {
+
+            this.background.setDisplaySize((this.sys.canvas.height / this.background.height) * this.background.width, this.sys.canvas.height);
+        }
+        else {
+
+            this.background.setDisplaySize(this.sys.canvas.width, (this.sys.canvas.width / this.background.width) * this.background.height);
+        }
+
 
         this.data = this.cache.json.get('data').MainMenu;
 
@@ -105,6 +118,8 @@ class OpeningScene extends Phaser.Scene {
         this.ohjeContainer.setVisible(false);
 
         rescaleSceneEvent(this);
+
+        this.scale.on('resize', this.resize, this);
     }
 
 
@@ -396,60 +411,28 @@ class OpeningScene extends Phaser.Scene {
             }
         }, this);
 
-        //let containerWidth = (window.devicePixelRatio * window.innerWidth) * 0.9;
-        //let widthHeightRatio = container.displayHeight/container.displayWidth;
-        //container.setDisplaySize(containerWidth, containerWidth*widthHeightRatio);
-
         rescaleObjects(container, this, 0.0002, 0.00015);
-
-        /*if (this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) {
-
-            if (this.scale.orientation === Phaser.Scale.PORTRAIT) {
-                container.setScale(0.0002 * window.devicePixelRatio * (window.innerWidth + window.innerHeight));
-            }
-            else if(this.scale.orientation === Phaser.Scale.LANDSCAPE)
-            {
-                container.setScale(0.00015 * window.devicePixelRatio * (window.innerWidth + window.innerHeight));
-                
-            }
-
-
-        }
-        else {
-            container.setScale(0.00016 * window.devicePixelRatio * (window.innerWidth + window.innerHeight));
-
-        }*/
-
-        //container.setScale(0.45);
 
         this.scale.on('resize', () => {
 
             rescaleObjects(container, this, 0.0002, 0.00015);
-
-
-            /*if (this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) {
-
-                if (this.scale.orientation === Phaser.Scale.PORTRAIT) {
-                    container.setScale(0.0002 * window.devicePixelRatio * (window.innerWidth + window.innerHeight));
-                }
-                else if(this.scale.orientation === Phaser.Scale.LANDSCAPE)
-                {
-                    container.setScale(0.00015 * window.devicePixelRatio * (window.innerWidth + window.innerHeight));
-
-                }
-
-
-            }
-            else {
-                container.setScale(0.00017 * window.devicePixelRatio * (window.innerWidth + window.innerHeight));
-
-            }*/
 
         }, this);
 
         return container;
     }
 
+    resize() {
+        //rescaleObjects(this.background, this, 0.0008, 0.0006);
 
+        if ((this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) && this.scale.orientation === Phaser.Scale.PORTRAIT) {
+
+            this.background.setDisplaySize((this.sys.canvas.height / this.background.height) * this.background.width, this.sys.canvas.height);
+        }
+        else {
+
+            this.background.setDisplaySize(this.sys.canvas.width, (this.sys.canvas.width / this.background.width) * this.background.height);
+        }
+    }
 
 }

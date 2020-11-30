@@ -55,9 +55,17 @@ class BuildingScene extends Phaser.Scene {
         //Stops ongoing sounds that started in the map scene from playing
         this.sound.stopAll();
 
-        let background = this.add.image(this.centerX, this.centerY, this.backgroundImage).setDepth(0);
+        this.background = this.add.image(this.centerX, this.centerY, this.backgroundImage).setDepth(0);
 
-        background.setDisplaySize(this.sys.canvas.width, (this.sys.canvas.width / background.width) * background.height);
+        if ((this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) && this.scale.orientation === Phaser.Scale.PORTRAIT) {
+
+            this.background.setDisplaySize((this.sys.canvas.height / this.background.height) * this.background.width, this.sys.canvas.height);
+        }
+        else {
+
+            this.background.setDisplaySize(this.sys.canvas.width, (this.sys.canvas.width / this.background.width) * this.background.height);
+        }
+
 
         this.infoTexts = [];
         this.infoCards = [];
@@ -395,11 +403,14 @@ class BuildingScene extends Phaser.Scene {
 
                 arrowX = getWindowWidth() * 0.4;
                 arrowY = getWindowHeight() * 0.45;
+                this.background.setDisplaySize((this.sys.canvas.height / this.background.height) * this.background.width, this.sys.canvas.height);
 
             }
             else {
                 arrowX = getWindowWidth() * 0.45;
                 arrowY = getWindowHeight() * 0.45;
+                this.background.setDisplaySize(this.sys.canvas.width, (this.sys.canvas.width / this.background.width) * this.background.height);
+
             }
 
             this.albumArrowForward.setPosition(this.centerX + arrowX, this.centerY + arrowY);
@@ -780,7 +791,7 @@ class BuildingScene extends Phaser.Scene {
             text: this.data[this.name].ImageDescs[index],
             origin: { x: 0.5, y: 0 },
             style: {
-                font: window.devicePixelRatio * (window.innerWidth + window.innerHeight) * 0.015 + 'px Carme',
+                font: devicePixelCount * 0.015 + 'px Carme',
                 fill: 'black',
                 wordWrap: { width: textWidth },
                 align: 'center'

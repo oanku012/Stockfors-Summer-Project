@@ -43,7 +43,8 @@ class PalapeliScene extends Phaser.Scene {
         this.centerX = this.cameras.main.centerX;
         this.centerY = this.cameras.main.centerY;
 
-        this.add.image(this.centerX, this.centerY, 'PatruunaImage6').setScale(1.3);
+        this.background = this.add.image(this.centerX, this.centerY, 'PatruunaImage6').setScale(1.3);
+        this.rescaleBackground();
 
         this.data = this.cache.json.get('data').Palapeli;
 
@@ -91,6 +92,18 @@ class PalapeliScene extends Phaser.Scene {
                         break;
                 }
             }
+        }
+    }
+
+    rescaleBackground()
+    {
+        if ((this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) && this.scale.orientation === Phaser.Scale.PORTRAIT) {
+
+            this.background.setDisplaySize((this.sys.canvas.height / this.background.height) * this.background.width, this.sys.canvas.height);
+        }
+        else {
+
+            this.background.setDisplaySize(this.sys.canvas.width, (this.sys.canvas.width / this.background.width) * this.background.height);
         }
     }
 
