@@ -73,6 +73,7 @@ class MapScene extends Phaser.Scene {
         else
             game.scene.getScene('MusicPlayer').playSong('the_adventurers_rag')
         
+        rescaleSceneEvent(this);
 
         this.cameras.main.backgroundColor.setTo(255, 255, 255);
 
@@ -120,7 +121,7 @@ class MapScene extends Phaser.Scene {
         this.saveGameTimerEvent = this.time.addEvent({ delay: 10000, callback: this.SavePosition, callbackScope: this, loop: true });
 
         //Changed this to not run on every frame, because when you're overlapping 2 buildings it would get called constantly
-        this.overLapTimer = this.time.addEvent({ delay: 200, callback: this.CheckForOverlap, callbackScope: this, loop: true });
+        this.overLapTimer = this.time.addEvent({ delay: 300, callback: this.CheckForOverlap, callbackScope: this, loop: true });
 
         this.SavePosition();
 
@@ -148,10 +149,6 @@ class MapScene extends Phaser.Scene {
 
             this.EnterBuilding(this.sceneToOpen);
         }
-
-        //this.CheckForDistanceToSounds();
-
-        //console.log(this.pointer.worldX + ' ' + this.pointer.worldY);
 
     }
 
@@ -243,21 +240,6 @@ class MapScene extends Phaser.Scene {
 
             this.stopPlayerMovement();
 
-            //Changed scene opening to trigger from overlap instead
-            /*//Checks if either of the colliding objects contain the openScene function
-            if (bodyB.gameObject != null) {
-                //bodyB.gameObject.setVelocity(0,0);
-                if (typeof bodyB.gameObject.openScene === 'function') {
-                    bodyB.gameObject.openScene();
-                }
-            }
-            else if (bodyA.gameObject != null) {
-                //bodyA.gameObject.setVelocity(0,0);
-                if (typeof bodyA.gameObject.openScene === 'function') {
-                    bodyA.gameObject.openScene();
-                }
-            }*/
-
         }, this);
 
         let lastindex;
@@ -342,9 +324,6 @@ class MapScene extends Phaser.Scene {
                 this.buildingButton.destroy();
             }
         }
-
-        //This is here, because it checks for overlap just like the piece of code above, but it does other stuff too
-        //this.ManageSoundTriggers();
 
         this.CheckForDistanceToSounds();
 
@@ -549,12 +528,13 @@ class MapScene extends Phaser.Scene {
     InitializeCamera() {
         let camera = this.cameras.main;
 
-        let maxZoom = 3;
-        let minZoom = 1.5;
-
-        camera.setZoom(2);
+        let maxZoom = (window.devicePixelRatio*(window.innerHeight+window.innerWidth))*0.002;
+        let minZoom = (window.devicePixelRatio*(window.innerHeight+window.innerWidth))*0.0005;
 
         camera.startFollow(this.player, true, 0.08, 0.08);
+
+        camera.setZoom((window.devicePixelRatio*(window.innerHeight+window.innerWidth))*0.001);
+
 
         this.input.on('wheel', function (pointer, gameObjects, deltaX, deltaY, deltaZ) {
 
@@ -726,8 +706,6 @@ class MapScene extends Phaser.Scene {
 
         let playerTopRight = this.player.getTopRight();
 
-
-
         let bubble = CreateTextButton(this, 0, 0, 'UI Buttons/Puhekupla_Intro', text);
 
         let newScale;
@@ -744,16 +722,16 @@ class MapScene extends Phaser.Scene {
             //bubble.x += 10;
         }
         else if (text.length > 75) {
-            newScale = 0.6;
+            newScale = 0.55;
             console.log('Big bubble');
             //bubble.x += 20;
 
         }
 
-        bubble.x = (playerTopRight.x + 100 * newScale) - 20;
-        bubble.y = (playerTopRight.y - 100 * newScale) + 20;
-
         bubble.removeInteractive().setScale(scale);
+
+        bubble.x = (playerTopRight.x + bubble.displayWidth * newScale/3) - 20;
+        bubble.y = (playerTopRight.y - bubble.displayHeight * newScale/2) + 20;
 
         bubble.bg.setScale(newScale).setFlipX(true);
 

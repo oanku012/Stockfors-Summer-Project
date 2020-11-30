@@ -52,11 +52,11 @@ class StockforsScene extends MapScene {
 
         super.create();
 
-        if (this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) {
+        /*if (this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) {
             //this.player.setPosition(this.player.x, this.player.y - 75);
             this.cameras.main.setZoom(3);
 
-        }
+        }*/
 
         this.AddSoundSpaces();
 
@@ -73,10 +73,13 @@ class StockforsScene extends MapScene {
 
             let bubbleDuration = 3000;
 
+            //let bubbleScale = 0.00004*devicePixelCount;
+            let bubbleScale = 0.25;
+
             //This looks like a mess I know, basically it makes new speech bubbles for the player on a timer
             let firstSpeechEvent = this.time.addEvent({
                 delay: bubbleDuration, startAt: 2000, callback: function () {
-                    let firstBubble = this.CreateSpeechBubble(this.data.Intro1, 0.3);
+                    let firstBubble = this.CreateSpeechBubble(this.data.Intro1, bubbleScale);
 
                     firstBubble.close.on('pointerup', function () {
                         if (firstBubble.close.pressed) {
@@ -87,7 +90,7 @@ class StockforsScene extends MapScene {
 
                     let secondSpeechEvent = this.time.addEvent({
                         delay: bubbleDuration, callback: function () {
-                            let secondBubble = this.CreateSpeechBubble(this.data.Intro2, 0.3);
+                            let secondBubble = this.CreateSpeechBubble(this.data.Intro2, bubbleScale);
                             firstBubble.destroy();
 
                             secondBubble.close.on('pointerup', function () {
@@ -99,7 +102,7 @@ class StockforsScene extends MapScene {
 
                             let thirdSpeechEvent = this.time.addEvent({
                                 delay: bubbleDuration, callback: function () {
-                                    let thirdBubble = this.CreateSpeechBubble(this.data.Intro3, 0.3);
+                                    let thirdBubble = this.CreateSpeechBubble(this.data.Intro3, bubbleScale);
                                     secondBubble.destroy();
 
                                     thirdBubble.close.on('pointerup', function () {
@@ -111,7 +114,7 @@ class StockforsScene extends MapScene {
 
                                     let fourthSpeechEvent = this.time.addEvent({
                                         delay: bubbleDuration, callback: function () {
-                                            let fourthBubble = this.CreateSpeechBubble(this.data.Intro4, 0.3);
+                                            let fourthBubble = this.CreateSpeechBubble(this.data.Intro4, bubbleScale);
                                             thirdBubble.destroy();
 
                                             fourthBubble.close.on('pointerup', function () {

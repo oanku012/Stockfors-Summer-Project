@@ -8,12 +8,37 @@ class UI extends Phaser.Scene {
 
         //If on mobile make options button bigger to make it easier to press
         if (this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) {
-            optionsButton = createSceneOpenButton(this.cameras.main.centerX + this.cameras.main.width * .470 - 20, this.cameras.main.centerY - this.cameras.main.height * .445 + 20, 'OptionsMenuScene', true, 0, 1, this, 'MenuAtlas', 'UI Buttons/Asetukset');
-
+            //optionsButton = createSceneOpenButton(this.cameras.main.centerX + this.cameras.main.width * .470 - 20, this.cameras.main.centerY - this.cameras.main.height * .445 + 20, 'OptionsMenuScene', true, 0, 1, this, 'MenuAtlas', 'UI Buttons/Asetukset');
+            optionsButton = createSceneOpenButton(getWindowWidth() - 10, 10, 'OptionsMenuScene', true, 0, 1, this, 'MenuAtlas', 'UI Buttons/Asetukset');
         }
         else {
-            optionsButton = createSceneOpenButton(this.cameras.main.centerX + this.cameras.main.width * .470, this.cameras.main.centerY - this.cameras.main.height * .445, 'OptionsMenuScene', true, 0, 0.56, this, 'MenuAtlas', 'UI Buttons/Asetukset');
+
+            optionsButton = createSceneOpenButton(getWindowWidth() - 10, 10, 'OptionsMenuScene', true, 0, 0.56, this, 'MenuAtlas', 'UI Buttons/Asetukset');
         }
+
+        rescaleSceneEvent(this);
+
+        rescaleObjects(optionsButton, this, 0.00025, 0.00025);
+
+        optionsButton.setPosition(getWindowWidth() - optionsButton.displayWidth * optionsButton.scaleX, optionsButton.displayHeight * optionsButton.scaleY);
+
+        this.scale.on('resize', () => {
+            /*if (this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) {
+
+                optionsButton.setX(getWindowWidth() * 0.9);
+                optionsButton.setY(getWindowHeight() * 0.07);
+            }
+            else
+            {
+                optionsButton.setX(getWindowWidth() * 0.95);
+                optionsButton.setY(getWindowHeight() * 0.05);
+            }*/
+            
+            //rescaleObjects(optionsButton, this, 0.00025, 0.00025);
+
+            optionsButton.setPosition(getWindowWidth() - optionsButton.displayWidth * optionsButton.scaleX, optionsButton.displayHeight * optionsButton.scaleY);
+
+        }, this);
     }
 
     update() {
@@ -84,8 +109,6 @@ function CreateTextButton(context, x, y, buttonspriteframe, text) {
 
     let button = context.add.sprite(0, 0, 'MenuAtlas', buttonspriteframe);
 
-    //let buttontext = context.add.text(-button.width * 0.15, -20, text, { fontSize: 40, color: 'black', wordWrap: {width: button.width}});
-
     let buttontext = context.make.text({
         x: -button.width * 0.15,
         y: -20,
@@ -110,7 +133,6 @@ function CreateTextButton(context, x, y, buttonspriteframe, text) {
     }
     else if (buttonspriteframe == 'UI Buttons/Puhekupla_Intro') {
         buttontext.setPosition(((button.width / 2) - (buttontext.width / 2)), (button.height / 2) - (buttontext.height / 2));
-        //buttontext.setPosition(0, 0);
 
     }
 

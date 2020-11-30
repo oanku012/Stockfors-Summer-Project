@@ -42,9 +42,14 @@ class MuistiPeliScene extends Phaser.Scene {
 
     create() {
 
-        //this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, 'background').setScale(0.5);
+        rescaleSceneEvent(this);
 
-        this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, 'PakkausImage3').setScale(1.3);
+        this.centerX = this.cameras.main.centerX;
+        this.centerY = this.cameras.main.centerY;
+
+        this.background = this.add.image(this.centerX, this.centerY, 'PakkausImage3').setScale(1.3);
+
+        this.rescaleBackground();
 
         this.cameras.main.backgroundColor.setTo(255, 255, 255);
 
@@ -91,7 +96,7 @@ class MuistiPeliScene extends Phaser.Scene {
         this.cardCount = 16;
         this.columnCount = 4;
 
-        this.cardSize = 150;
+        this.cardSize = 0.05*devicePixelCount;
 
         this.cardArray = [];
         this.openedCards = [];
@@ -108,7 +113,7 @@ class MuistiPeliScene extends Phaser.Scene {
         }
 
         // kopsasin nää vaa nyt siitä palapelist
-        this.menu = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY - 3).setScale(0.9);
+        this.menu = this.add.container(this.centerX, this.centerY - 3).setScale(0.9);
         let menuBG = this.add.sprite(0, 0, 'MenuAtlas', 'UI Pohjat/Pelipohja').setScale(0.55, 0.3);
 
         this.menu.bg = menuBG;
@@ -116,7 +121,7 @@ class MuistiPeliScene extends Phaser.Scene {
         let easy = CreateTextButton(this, -330, 200, 'UI Buttons/Nappi', this.data.Easy).setScale(0.8);
         let normal = CreateTextButton(this, 0, 200, 'UI Buttons/Nappi', this.data.Normal).setScale(0.8);
         let hard = CreateTextButton(this, 330, 200, 'UI Buttons/Nappi', this.data.Hard).setScale(0.8);
-        let exit = CreateTextButton(this, 170, 70, 'UI Buttons/Takaisin', this.data.Exit).setScale(0.8);
+        this.exit = CreateTextButton(this, 170, 70, 'UI Buttons/Takaisin', this.data.Exit).setScale(0.8);
         
         this.menu.add([menuBG, title, description, easy, normal, hard]);
 
@@ -164,8 +169,8 @@ class MuistiPeliScene extends Phaser.Scene {
             }
         }, this);
 
-        exit.on('pointerup', function () {
-            if (exit.pressed) {
+        this.exit.on('pointerup', function () {
+            if (this.exit.pressed) {
                 this.scene.start('PakkausmuseoScene');
 
             }
@@ -173,13 +178,52 @@ class MuistiPeliScene extends Phaser.Scene {
 
         this.menuElements.push(easy, normal, hard);
 
+        this.scale.on('resize', this.resize, this);
 
+        if ((this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) && this.scale.orientation === Phaser.Scale.PORTRAIT) {
+            this.exit.setPosition(this.centerX - getWindowWidth() * 0.35, this.centerY + getWindowHeight() * 0.4);
+        }
+        else {
+            this.exit.setPosition(this.centerX - getWindowWidth() * 0.4, this.centerY + getWindowHeight() * 0.4);
+
+        }
+
+        rescaleObjects(this.exit, this, 0.00025, 0.00030);
+        rescaleObjects(this.menu, this, 0.0003, 0.0003);
+
+    }
+
+    resize()
+    {
+        if (this.scene.isActive(this.scene.key)) {
+            if ((this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) && this.scale.orientation === Phaser.Scale.PORTRAIT) {
+                this.exit.setPosition(this.centerX - getWindowWidth() * 0.35, this.centerY + getWindowHeight() * 0.4);
+            }
+            else {
+                this.exit.setPosition(this.centerX - getWindowWidth() * 0.4, this.centerY + getWindowHeight() * 0.4);
+
+            }
+
+            rescaleObjects(this.exit, this, 0.00025, 0.00030);
+            rescaleObjects(this.menu, this, 0.0003, 0.0003);
+
+        }
+    }
+
+    rescaleBackground()
+    {
+        if ((this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) && this.scale.orientation === Phaser.Scale.PORTRAIT) {
+
+            this.background.setDisplaySize((this.sys.canvas.height / this.background.height) * this.background.width, this.sys.canvas.height);
+        }
+        else {
+
+            this.background.setDisplaySize(this.sys.canvas.width, (this.sys.canvas.width / this.background.width) * this.background.height);
+        }
     }
 
     StartGame(difficulty) {
 
-        //X coordinate for placing the restart button in the corner
-        //(-this.menu.width/2)* this.menu.bg.scaleX
 
         let back = CreateTextButton(this, 0, (this.menu.bg.height/2) * this.menu.bg.scaleY, 'UI Buttons/Nappi', this.data.Back).setScale(0.7);
 
@@ -200,7 +244,7 @@ class MuistiPeliScene extends Phaser.Scene {
 
         let cardsToUse = [];
 
-        let startX = 628;
+        let startX = getWindowWidth()*0.27;
 
         //Change count of cards for the game based on difficulty and randomly choose what card arts to use 
         if (difficulty == 'easy') {
@@ -254,6 +298,11 @@ class MuistiPeliScene extends Phaser.Scene {
 
         let rowCount = this.cardCount/this.columnCount;
 
+        //Made this to make it easier to position the cards
+        this.cardContainer = this.add.container(0, 0);
+
+        //this.menu.add(this.cardContainer);
+
         //Add the cards to the board
         for (var i = 0; i < this.cardCount; i++) {
 
@@ -262,9 +311,11 @@ class MuistiPeliScene extends Phaser.Scene {
                 currentColumn = 1;
             }
 
-            let x = startX + (currentColumn - 1) * (this.cardSize + 20);
+            //let x = startX + (currentColumn - 1) * (this.cardSize + 20);
+            let x = ((this.centerX -((this.cardSize/2)+this.cardSize*0.05)*this.columnCount) + (currentColumn - 1) * (this.cardSize + this.cardSize*0.1));
             //Should position the cards roughly on the center of the screen regardless of the amount
-            let y = (this.cameras.main.centerY - ((this.cardSize/2) + 10) * rowCount )+ (currentRow - 1) * (this.cardSize + 20);
+            let y = (this.centerY - ((this.cardSize/2) + this.cardSize*0.05) * rowCount )+ (currentRow - 1) * (this.cardSize + this.cardSize*0.1);
+            //let y = (-((this.cardSize/2) + 10) * rowCount )+ (currentRow - 1) * (this.cardSize + 20);
 
             let image;
 
@@ -291,19 +342,26 @@ class MuistiPeliScene extends Phaser.Scene {
 
         card.frontIMG = document.createElement('img');
         card.frontIMG.src = img;
-        card.frontIMG.style = 'width: ' + this.cardSize + 'px; height: ' + this.cardSize + 'px; backface-visibility: hidden; position: relative; left: ' + this.cardSize / 2 + 'px; top: ' + this.cardSize / 2 + 'px';
+        //card.frontIMG.style = 'width: ' + this.cardSize + 'px; height: ' + this.cardSize + 'px; backface-visibility: hidden; position: relative; left: ' + this.cardSize / 2 + 'px; top: ' + this.cardSize / 2 + 'px';
+        card.frontIMG.style = 'width: ' + this.cardSize + 'px; height: ' + this.cardSize + 'px; backface-visibility: hidden; position: relative; left: ' + this.cardSize / 2 + 'px; top: ' + this.cardSize / 2 + 'px; transform-origin: 100% 100%';
 
         card.backIMG = document.createElement('img');
         card.backIMG.src = 'Assets/images/Muistipeli/Korttipohja.png';
-        card.backIMG.style = 'width: ' + this.cardSize + 'px; height: ' + this.cardSize + 'px; backface-visibility: hidden; position: relative; left: ' + this.cardSize / 2 + 'px; top: ' + this.cardSize / 2 + 'px';
+        card.backIMG.style = 'width: ' + this.cardSize + 'px; height: ' + this.cardSize + 'px; backface-visibility: hidden; position: relative; left: ' + this.cardSize / 2 + 'px; top: ' + this.cardSize / 2 + 'px; transform-origin: 100% 100%';
 
         card.front = this.add.dom(x, y, card.frontIMG);
-        card.front.setPerspective(config.width).setInteractive().setDepth(1);
+        card.front.setPerspective(getWindowWidth()).setInteractive().setDepth(1);
         card.front.rotate3d.set(0, 1, 0, 180);
 
         card.back = this.add.dom(x, y, card.backIMG);
-        card.back.setPerspective(config.width).setInteractive().setDepth(10);
+        card.back.setPerspective(getWindowWidth()).setInteractive().setDepth(10);
         card.back.rotate3d.set(0, 1, 0, 0);
+        
+        //For debugging
+        /*let graphics = this.add.graphics();
+
+        graphics.fillRectShape(card.back);*/
+
         card.back.on('pointerdown', function () {
 
             if (card.frontTween.isPlaying() == false && card.backTween.isPlaying() == false && this.openedCards.length < 2) {
@@ -351,17 +409,14 @@ class MuistiPeliScene extends Phaser.Scene {
 
                                 this.HideCards(false);
 
-                                //let win = CreateTextButton(this, this.cameras.main.centerX, this.cameras.main.centerY, 'UI Buttons/Nappi', this.data.Win + this.clicks + '\n' + this.data.highScore).disableInteractive();
-
                                 let title = this.make.text({
-                                    x: this.cameras.main.centerX,
-                                    y: this.cameras.main.centerY - 75,
+                                    x: this.centerX,
+                                    y: this.centerY - 75,
                                     text: this.data.Congratz,
                                     origin: { x: 0.5, y: 0.5 },
                                     style: {
                                         font: '64px LexendTera',
-                                        fill: 'black',
-                                        //backgroundColor: '#747474',
+                                        fill: 'black'
                                         
                                     }
                                 });
@@ -369,8 +424,8 @@ class MuistiPeliScene extends Phaser.Scene {
                                 title.setShadow(5, 5, 'grey', 5, false, true);
                         
                                 let description = this.make.text({
-                                    x: this.cameras.main.centerX,
-                                    y: this.cameras.main.centerY + 25,
+                                    x: this.centerX,
+                                    y: this.centerY + 25,
                                     text: this.data.Win,
                                     origin: { x: 0.5, y: 0.5 },
                                     style: {
@@ -378,7 +433,6 @@ class MuistiPeliScene extends Phaser.Scene {
                                         fill: 'black',
                                         wordWrap: { width: 980 },
                                         align: 'center'
-                                        //backgroundColor: '#747474',
                                         
                                     }
                                 });
@@ -386,27 +440,11 @@ class MuistiPeliScene extends Phaser.Scene {
                                 this.menu.bg.setScale(0.5, 0.16);
                                 this.menu.back.setPosition(0, (this.menu.bg.height/2) * this.menu.bg.scaleY);
 
-
-                                //let highScore = CreateTextButton(this, this.cameras.main.centerX, 350, 'UI Buttons/Nappi', this.data.HighScore).disableInteractive();
-                                //win.bg.setScale(1.3, 2.4);
-                                //let restart = CreateTextButton(this, this.cameras.main.centerX, this.cameras.main.centerY + 200, 'UI Buttons/OK', this.data.Restart);
-
-                                /*restart.on('pointerup', function () {
-
-                                    if (restart.pressed) {
-                                        this.scene.restart();
-                                    }
-
-                                }, this);*/
-
                                 if (this.difficulty == 'easy') {
                                     if (this.clicks < gameState.MPScoreEasy || gameState.MPScoreEasy == startingGameState.MPScoreEasy) {
                                         saveGame({ MPScoreEasy: this.clicks });
 
                                     }
-
-                                    //highScore.text.text = this.data.HighScore + gameState.MPScoreEasy;
-                                    //win.text.text = this.data.Win + this.clicks + '\n' + this.data.HighScore + gameState.MPScoreEasy;
                                     description.text = this.data.Win + this.clicks + '\n' + this.data.HighScore + gameState.MPScoreEasy;
 
                                 }
@@ -414,9 +452,6 @@ class MuistiPeliScene extends Phaser.Scene {
                                     if (this.clicks < gameState.MPScoreMedium || gameState.MPScoreMedium == startingGameState.MPScoreMedium) {
                                         saveGame({ MPScoreMedium: this.clicks });
                                     }
-
-                                    //highScore.text.text = this.data.HighScore + gameState.MPScoreMedium;
-                                    //win.text.text = this.data.Win + this.clicks + '\n' + this.data.HighScore + gameState.MPScoreMedium;
                                     description.text = this.data.Win + this.clicks + '\n' + this.data.HighScore + gameState.MPScoreMedium;
 
 
@@ -425,8 +460,6 @@ class MuistiPeliScene extends Phaser.Scene {
                                     if (this.clicks < gameState.MPScoreHard || gameState.MPScoreHard == startingGameState.MPScoreHard) {
                                         saveGame({ MPScoreHard: this.clicks });
                                     }
-                                    //win.text.text = this.data.Win + this.clicks + '\n' + this.data.HighScore + gameState.MPScoreHard;
-                                    //highScore.text.text = this.data.HighScore + gameState.MPScoreHard;
                                     description.text = this.data.Win + this.clicks + '\n' + this.data.HighScore + gameState.MPScoreHard;
 
                                 }
@@ -457,6 +490,8 @@ class MuistiPeliScene extends Phaser.Scene {
             ease: 'Sine.easeInOut',
             paused: true
         });
+
+        //this.cardContainer.add([card.front, card.back]);
 
         this.cardElements.push(card.front, card.back);
 

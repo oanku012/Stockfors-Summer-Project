@@ -13,14 +13,14 @@ class OptionsMenuScene extends Phaser.Scene {
     preload() {
 
         if (languageChanged) {
-            
+
             languageChanged = false;
-           /*this.cache.json.remove('data');
-
-           var path = ("Localization/" + config.language + "/data.json");
-           this.load.json('data', path);
-
-           console.log('Language loaded');*/
+            /*this.cache.json.remove('data');
+ 
+            var path = ("Localization/" + config.language + "/data.json");
+            this.load.json('data', path);
+ 
+            console.log('Language loaded');*/
         }
 
         // slider plugin for audio volume
@@ -29,6 +29,9 @@ class OptionsMenuScene extends Phaser.Scene {
     }
 
     create() {
+
+        this.centerX = this.cameras.main.centerX;
+        this.centerY = this.cameras.main.centerY;
 
         optionsButton.open = true;
         this.scene.bringToTop();
@@ -52,7 +55,9 @@ class OptionsMenuScene extends Phaser.Scene {
         //}, null, this);
 
         // Reorganize the UI when the game gets resized
-        //this.scale.on('resize', this.resize, this);
+        this.scale.on('resize', this.resize, this);
+
+        rescaleSceneEvent(this);
 
     }
 
@@ -62,9 +67,10 @@ class OptionsMenuScene extends Phaser.Scene {
         this.menuBG = this.add.sprite(0, 0, 'MenuAtlas', 'UI Pohjat/Settings').setOrigin(0.479, 0.5);
         this.menu = this.add.container(this.cameras.main.centerX - 37, this.cameras.main.centerY, [this.menuBG]).setScale(0.56).setDepth(9999);
 
-        if (this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) {
-            this.menu.setScale(0.9);
-        }
+        rescaleObjects(this.menu, this, 0.00021, 0.00021);
+
+        //This is just to block from touching things behind the menu 
+        this.menuBG.setInteractive();
 
         //This is just to move all the elements that are separate from the backgrounds
         this.menuElements = this.add.container(40, 0);
@@ -194,6 +200,8 @@ class OptionsMenuScene extends Phaser.Scene {
             // On stop full screen
             this.fullScreenButton.setTexture('MenuAtlas', 'UI Buttons/CheckmarkOFF')
         }
+
+
     }
 
 
@@ -201,7 +209,7 @@ class OptionsMenuScene extends Phaser.Scene {
         // Exit button
 
         let topRight = this.menuBG.getTopRight();
-        this.exitButton = CreateButton(this, topRight.x-60, topRight.y+80, 'UI Buttons/Zoom_Out').setScale(1.4);
+        this.exitButton = CreateButton(this, topRight.x - 60, topRight.y + 80, 'UI Buttons/Zoom_Out').setScale(1.4);
 
         this.exitButton.on('pointerup', function (event) {
             if (this.exitButton.pressed) {
@@ -266,40 +274,7 @@ class OptionsMenuScene extends Phaser.Scene {
 
                 let activeScenes = game.scene.getScenes(true);
 
-                this.scene.start('LanguageLoader', {activeScenes: activeScenes});
-
-                /*//Options is restarted first so that it loads the correct language
-                this.scene.restart();
-
-                let activeScenes = game.scene.getScenes(true);
-
-
-                activeScenes.forEach(function (scene) {
-                    //Condition so that options isn't restarted twice and that UI isn't restarted at all
-                    if (scene != this && scene.scene.key != 'UI') {
-                        scene.time.delayedCall(50, function () {
-
-                            //If scene includes the player then save the current position of the player before restarting
-                            if (scene.player) {
-                                saveGame({ currentMap: scene.scene.key, playerX: scene.player.x, playerY: scene.player.y });
-                                scene.scene.restart({ x: gameState.playerX, y: gameState.playerY });
-                            }
-                            else {
-                                scene.scene.restart();
-
-                            }
-                            console.log(scene.scene.key +  ' restarted to change language.');
-                        }, null, this);
-                    }
-                }, this);
-
-                //Not the most elegant solution, but this is done with a delay so that it's not set to false before opening scene restarts and stops the opening scene from loading the language separately
-                this.time.delayedCall(100, function () {
-                    languageChanged = false;
-                }, null, this);*/
-
-
-
+                this.scene.start('LanguageLoader', { activeScenes: activeScenes });
             }
         }, this);
 
@@ -326,40 +301,22 @@ class OptionsMenuScene extends Phaser.Scene {
                 config.language = 'EN';
                 console.log('Language set to English.');
 
+                //Get currently active scenes
                 let activeScenes = game.scene.getScenes(true);
 
-                this.scene.start('LanguageLoader', {activeScenes: activeScenes});
-
-                /*//Options is restarted first so that it loads the correct language
-                this.scene.restart();
-
-                let activeScenes = game.scene.getScenes(true);
-
-                activeScenes.forEach(function (scene) {
-                    //Condition so that options isn't restarted twice and so that UI isn't restarted at all
-                    if (scene != this && scene.scene.key != 'UI') {
-                        scene.time.delayedCall(50, function () {
-
-                            //If scene includes the player then save the current position of the player before restarting
-                            if (scene.player) {
-                                saveGame({ currentMap: scene.scene.key, playerX: scene.player.x, playerY: scene.player.y });
-                                scene.scene.restart({ x: gameState.playerX, y: gameState.playerY });
-                            }
-                            else {
-                                scene.scene.restart();
-                            }
-
-                            console.log(scene.scene.key +  ' restarted to change language.');
-
-                        }, null, this);
-                    }
-                }, this);
-
-                //Not the most elegant solution, but this is done with a delay so that it's not set to false before opening scene restarts and stops the opening scene from loading the language separately
-                this.time.delayedCall(100, function () {
-                    languageChanged = false;
-                }, null, this);*/
+                //Loads the language
+                this.scene.start('LanguageLoader', { activeScenes: activeScenes });
             }
         }, this);
+    }
+
+    resize() {
+        if (this.scene.isActive(this.scene.key)) {
+            this.menu.setX(this.centerX- 37);
+            this.menu.setY(this.centerY);
+
+            rescaleObjects(this.menu, this, 0.00021, 0.00021);
+        }
+
     }
 }

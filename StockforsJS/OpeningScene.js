@@ -15,18 +15,15 @@ class OpeningScene extends Phaser.Scene {
         // Check header if we have selected a language
         // If we do, skip language selection at the start
         let searchParams = new URLSearchParams(window.location.search)
-        if (searchParams.has('lang'))
-        {
+        if (searchParams.has('lang')) {
             let param = searchParams.get('lang')
-            if (param === "fi")
-            {
+            if (param === "fi") {
                 config.language = 'FI';
                 console.log('Language set to Finnish.');
                 this.languageChosen = true;
             }
 
-            else if (param === "en")
-            {
+            else if (param === "en") {
                 config.language = 'EN';
                 console.log('Language set to English.');
                 this.languageChosen = true;
@@ -36,20 +33,19 @@ class OpeningScene extends Phaser.Scene {
 
         //Only loaded when languagechanged is false(which it is by default) so that it doesn't load unnecessarily when changing the language from the options menu
         if (languageChanged === false) {
-           
-           this.cache.json.remove('data');
 
-           var path = ("Localization/" + config.language + "/data.json");
-           this.load.json('data', path);
+            this.cache.json.remove('data');
 
-           console.log('Language loaded');
+            var path = ("Localization/" + config.language + "/data.json");
+            this.load.json('data', path);
 
-           this.cameras.main.backgroundColor.setTo(255, 255, 255);
+            console.log('Language loaded');
 
-            
+            this.cameras.main.backgroundColor.setTo(255, 255, 255);
+
+
         }
-        else if(languageChanged === true)
-        {
+        else if (languageChanged === true) {
             languageChanged = false;
         }
     }
@@ -68,24 +64,36 @@ class OpeningScene extends Phaser.Scene {
     }
 
     create() {
+
+        console.log('Device pixel count is ' + devicePixelCount);
+
         this.cameras.main.backgroundColor.setTo(255, 255, 255);
 
         //Backgroundimage
         this.background = this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, 'tausta').setScale(1.34);
+        //rescaleObjects(this.background, this, 0.00075, 0.0005);
+
+        if ((this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) && this.scale.orientation === Phaser.Scale.PORTRAIT) {
+
+            this.background.setDisplaySize((this.sys.canvas.height / this.background.height) * this.background.width, this.sys.canvas.height);
+        }
+        else {
+
+            this.background.setDisplaySize(this.sys.canvas.width, (this.sys.canvas.width / this.background.width) * this.background.height);
+        }
+
 
         this.data = this.cache.json.get('data').MainMenu;
 
         // Request to use full screen if using a mobile device
         // Add other devices maybe?
-        if (this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone)
-        {
-            if(!this.scale.isFullscreen)
-            {
+        if (this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) {
+            if (!this.scale.isFullscreen) {
                 this.RequestFullscreen();
             }
-    
+
         }
-        
+
         this.CreateLanguageMenu();
 
         this.CreateInstructions();
@@ -114,14 +122,17 @@ class OpeningScene extends Phaser.Scene {
         // play main song
         game.scene.getScene('MusicPlayer').playSong('entrance');
 
+        rescaleSceneEvent(this);
+
+        this.scale.on('resize', this.resize, this);
     }
 
-    
-    RequestFullscreen()
-    {
+
+    RequestFullscreen() {
         let menuBG = this.add.sprite(0, 0, 'MenuAtlas', 'UI Pohjat/InsideVaaka');
         let menu = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY - 20, [menuBG]).setScale(0.8);
 
+        rescaleObjects(menu, this, 0.00017, 0.0002);
 
         let style = {
             font: '70px Arial',
@@ -156,6 +167,9 @@ class OpeningScene extends Phaser.Scene {
                 menu.destroy();
             }
         }, this);
+
+        //this.scene.scene.scale.setGameSize(getWindowWidth(), getWindowHeight());
+        //game.scale.resize(getWindowWidth(), getWindowHeight());
     }
 
     CreateLanguageMenu() {
@@ -227,7 +241,7 @@ class OpeningScene extends Phaser.Scene {
             }
         });
 
-        
+
         this.newGame = CreateTextButton(this, -200, 700, 'UI Buttons/Nappi', this.data['NewGame']);
         this.continue = CreateTextButton(this, 200, 700, 'UI Buttons/Nappi', this.data['ContinueGame']);
         //this.ohjeNappi = this.add.sprite(500, 700, 'MenuAtlas', 'UI Buttons/Ohje');
@@ -236,12 +250,12 @@ class OpeningScene extends Phaser.Scene {
 
         this.mainMenuContainer = this.CreateMenuContainer(
             [
-            this.aloitusPohja,
-            this.infoText,
-            this.infoHeader,
-            this.newGame,
-            this.continue,
-            this.ohjeNappi]);
+                this.aloitusPohja,
+                this.infoText,
+                this.infoHeader,
+                this.newGame,
+                this.continue,
+                this.ohjeNappi]);
 
         this.newGame.on('pointerup', function () {
             if (this.newGame.pressed == true) {
@@ -350,7 +364,7 @@ class OpeningScene extends Phaser.Scene {
     }
 
     CreateMenuContainer(elementsToAdd = []) {
-        let container = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY + 30, elementsToAdd);
+        let container = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY + 20, elementsToAdd);
 
         container.iterate(function (element) {
 
@@ -402,11 +416,28 @@ class OpeningScene extends Phaser.Scene {
             }
         }, this);
 
-        container.setScale(0.56);
+        rescaleObjects(container, this, 0.0002, 0.00015);
+
+        this.scale.on('resize', () => {
+
+            rescaleObjects(container, this, 0.0002, 0.00015);
+
+        }, this);
 
         return container;
     }
 
+    resize() {
+        //rescaleObjects(this.background, this, 0.0008, 0.0006);
 
+        if ((this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) && this.scale.orientation === Phaser.Scale.PORTRAIT) {
+
+            this.background.setDisplaySize((this.sys.canvas.height / this.background.height) * this.background.width, this.sys.canvas.height);
+        }
+        else {
+
+            this.background.setDisplaySize(this.sys.canvas.width, (this.sys.canvas.width / this.background.width) * this.background.height);
+        }
+    }
 
 }
