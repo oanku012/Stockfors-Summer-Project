@@ -72,7 +72,7 @@ class MapScene extends Phaser.Scene {
             game.scene.getScene('MusicPlayer').playSong('confusement_rag5');
         else
             game.scene.getScene('MusicPlayer').playSong('the_adventurers_rag')
-        
+
         rescaleSceneEvent(this);
 
         this.cameras.main.backgroundColor.setTo(255, 255, 255);
@@ -125,7 +125,7 @@ class MapScene extends Phaser.Scene {
 
         this.SavePosition();
 
-    
+
 
     }
 
@@ -528,12 +528,12 @@ class MapScene extends Phaser.Scene {
     InitializeCamera() {
         let camera = this.cameras.main;
 
-        let maxZoom = (window.devicePixelRatio*(window.innerHeight+window.innerWidth))*0.002;
-        let minZoom = (window.devicePixelRatio*(window.innerHeight+window.innerWidth))*0.0005;
+        let maxZoom = (window.devicePixelRatio * (window.innerHeight + window.innerWidth)) * 0.002;
+        let minZoom = (window.devicePixelRatio * (window.innerHeight + window.innerWidth)) * 0.0005;
 
         camera.startFollow(this.player, true, 0.08, 0.08);
 
-        camera.setZoom((window.devicePixelRatio*(window.innerHeight+window.innerWidth))*0.001);
+        camera.setZoom((window.devicePixelRatio * (window.innerHeight + window.innerWidth)) * 0.001);
 
 
         this.input.on('wheel', function (pointer, gameObjects, deltaX, deltaY, deltaZ) {
@@ -730,8 +730,8 @@ class MapScene extends Phaser.Scene {
 
         bubble.removeInteractive().setScale(scale);
 
-        bubble.x = (playerTopRight.x + bubble.displayWidth * newScale/3) - 20;
-        bubble.y = (playerTopRight.y - bubble.displayHeight * newScale/2) + 20;
+        bubble.x = (playerTopRight.x + bubble.displayWidth * newScale / 3) - 20;
+        bubble.y = (playerTopRight.y - bubble.displayHeight * newScale / 2) + 20;
 
         bubble.bg.setScale(newScale).setFlipX(true);
 
@@ -818,17 +818,27 @@ class MapScene extends Phaser.Scene {
 
     //Checks for the player's distance to a sound point and adjusts its volume based on it
     CheckForDistanceToSounds() {
+
         this.soundPoints.forEach(trigger => {
-            let distance = this.CheckDistance(this.player, trigger);
 
-            //trigger.currentSound.config = { volume: 1/distance, pauseOnBlur: true};
-            //trigger.currentSound.play();
+            if (config.soundOn) {
+                let distance = this.CheckDistance(this.player, trigger);
 
-            //Adjusts the volume based on the current distance of the player to the trigger and based on the distance value on the trigger
-            trigger.currentSound.volume = (1 - (distance/trigger.distance));
+                //trigger.currentSound.config = { volume: 1/distance, pauseOnBlur: true};
+                //trigger.currentSound.play();
 
-            //console.log(distance);
-            if (trigger.currentSound.volume < 0.01) {
+                //Adjusts the volume based on the current distance of the player to the trigger and based on the distance value on the trigger
+                trigger.currentSound.volume = (1 - (distance / trigger.distance));
+
+                //console.log(distance);
+
+                if (trigger.currentSound.volume < 0.01) {
+                    trigger.currentSound.volume = 0;
+                }
+
+            }
+            else if(trigger.currentSound.volume>0)
+            {
                 trigger.currentSound.volume = 0;
             }
         }, this);
