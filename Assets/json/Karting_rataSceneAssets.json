@@ -1,6 +1,8 @@
 {
     "image": {
-        
+        "KartingImage1": "Assets/images/Albums/Karting_rata/KartingImage (1).jpg",
+        "KartingImage2": "Assets/images/Albums/Karting_rata/KartingImage (2).jpg",
+        "KartingImage3": "Assets/images/Albums/Karting_rata/KartingImage (3).jpg"
         
     }
 }

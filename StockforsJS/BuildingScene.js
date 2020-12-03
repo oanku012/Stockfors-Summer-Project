@@ -434,13 +434,38 @@ class BuildingScene extends Phaser.Scene {
 
                 if ((this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) && this.scale.orientation === Phaser.Scale.PORTRAIT) {
 
-                    this.currentImage.setDisplaySize(imageWidth, this.currentImage.height / (this.currentImage.width / imageWidth))
+                    let width = imageWidth;
+                    let height = this.currentImage.height / (this.currentImage.width / imageWidth);
+
+                    //This should prevent the images from overflowing on certain screens
+                    if(height> this.sys.canvas.height -100){
+                        height = this.sys.canvas.height -100;
+                        width = this.currentImage.width / (this.currentImage.height / height);
+
+                    }
+
+
+                    //this.currentImage.setDisplaySize(imageWidth, this.currentImage.height / (this.currentImage.width / imageWidth))
+                    this.currentImage.setDisplaySize(width, height);
+
                     this.currentImage.setSizeToFrame(this.currentImage.frame);
 
                 }
                 else {
 
-                    this.currentImage.setDisplaySize(this.currentImage.width / (this.currentImage.height / imageHeight), imageHeight)
+                    
+                    let height = imageHeight;
+                    let width = this.currentImage.width / (this.currentImage.height / imageHeight);
+
+                    if(width> this.sys.canvas.width -100){
+                        width = this.sys.canvas.width -100;
+                        height = this.currentImage.height / (this.currentImage.width / width);
+
+                    }
+
+                    this.currentImage.setDisplaySize(width, height);
+
+                    //this.currentImage.setDisplaySize(this.currentImage.width / (this.currentImage.height / imageHeight), imageHeight)
                     this.currentImage.setSizeToFrame(this.currentImage.frame);
                 }
 
@@ -768,12 +793,48 @@ class BuildingScene extends Phaser.Scene {
         let imageHeight = getWindowHeight() * 0.8;
         let imageWidth = getWindowWidth() * 0.8;
 
-        if ((this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) && this.scale.orientation === Phaser.Scale.PORTRAIT) {
+        /*if ((this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) && this.scale.orientation === Phaser.Scale.PORTRAIT) {
             newImage.setDisplaySize(imageWidth, newImage.height / (newImage.width / imageWidth))
             newImage.setSizeToFrame(newImage.frame);
         }
         else {
             newImage.setDisplaySize(newImage.width / (newImage.height / imageHeight), imageHeight)
+            newImage.setSizeToFrame(newImage.frame);
+        }*/
+
+        if ((this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) && this.scale.orientation === Phaser.Scale.PORTRAIT) {
+
+            let width = imageWidth;
+            let height = newImage.height / (newImage.width / imageWidth);
+
+            if(height> this.sys.canvas.height -100){
+                height = this.sys.canvas.height -100;
+                width = newImage.width / (newImage.height / height);
+
+            }
+
+
+            //newImage.setDisplaySize(imageWidth, newImage.height / (newImage.width / imageWidth))
+            newImage.setDisplaySize(width, height);
+
+            newImage.setSizeToFrame(newImage.frame);
+
+        }
+        else {
+
+            
+            let height = imageHeight;
+            let width = newImage.width / (newImage.height / imageHeight);
+
+            if(width> this.sys.canvas.width -100){
+                width = this.sys.canvas.width -100;
+                height = newImage.height / (newImage.width / width);
+
+            }
+
+            newImage.setDisplaySize(width, height);
+
+            //newImage.setDisplaySize(newImage.width / (newImage.height / imageHeight), imageHeight)
             newImage.setSizeToFrame(newImage.frame);
         }
 

@@ -8,13 +8,16 @@ class Karting_rataScene extends BuildingScene
 
         //this.url = 'http://www.kartingclub.fi/';
 
+        this.backgroundImage = 'KartingImage3';
+
+
     }
 
     create()
     {
-        //this.images = [];
+        this.images = [];
 
-        //this.images.push("");
+        this.images.push("KartingImage1", "KartingImage2", "KartingImage3");
 
         super.create();
     }
