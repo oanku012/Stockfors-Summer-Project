@@ -27,17 +27,17 @@ class PreloadScene extends Phaser.Scene {
         this.logo = this.add.image(this.centX, this.centY, 'logo');
         //logo.setScale(0.8);
 
-        rescaleObjects(this.logo, this, 0.0002, 0.0003);
+        rescaleObjects(this.logo, this, 0.00023, 0.0003);
 
         this.scale.on('resize', this.resize, this);
 
-        this.createProgressbar(this.centX, this.centY + 200);
+        this.createProgressbar(this.centX, this.centY + 150);
     }
 
     resize() {
         if (this.scene.isActive(this.scene.key)) {
 
-            rescaleObjects(this.logo, this, 0.0002, 0.0002);
+            rescaleObjects(this.logo, this, 0.00023, 0.0003);
             this.logo.setPosition(this.centX, this.centY);
 
             this.rescaleBackground();

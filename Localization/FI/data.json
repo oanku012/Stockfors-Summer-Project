@@ -310,7 +310,7 @@
           "HelpText": "Sovellus toimii keinona tutustua Pyhtään Stockforsin historialliseen tehdasalueeseen sekä alueella toimiviin yrityksiin. Tavoitteena on oppia alueen historiasta, miljööstä ja kulttuurista.\n\nPelaajahahmo liikkuu nuoli/WASD-näppäimillä tai hiiren klikkauksilla Stockforsin aluetta kuvaavalla kartalla. Lähestymällä nuolien osoittamia sisäänkäyntejä pääset tutustumaan eri kohteisiin avautuvan infoikkunan avulla.\n\nInfoikkunassa pystyt lukemaan kohteen historiasta, katsomaan kuvia sekä kokeilemaan 360 asteen panoraamaa tilasta. Tietyistä kohteista löytyy myös erilaisia pelejä, kuten pala- ja muistipelejä Stockforsiin liittyen.",
           "NewGame": "Aloita",
           "ContinueGame": "Jatka",
-          "FullscreenText": "Näytät käyttävän mobiiliversiota.\nSuosittelemme pelin pelaamista koko ruudun tilassa parhaimman kokemuksen saadaksesi.\n\nKäynnistä koko ruudun tila?",
+          "FullscreenText": "Näytät käyttävän mobiiliversiota.\nSuosittelemme pelin pelaamista koko ruudun tilassa ja kääntämään puhelimen vaaka-asentoon parhaimman kokemuksen saadaksesi.\n\nKäynnistä koko ruudun tila?",
           "YesText": "Kyllä",
           "NoText": "Ei",
           "Back": "Takaisin"

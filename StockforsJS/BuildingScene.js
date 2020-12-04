@@ -438,8 +438,8 @@ class BuildingScene extends Phaser.Scene {
                     let height = this.currentImage.height / (this.currentImage.width / imageWidth);
 
                     //This should prevent the images from overflowing on certain screens
-                    if(height> this.sys.canvas.height -100){
-                        height = this.sys.canvas.height -100;
+                    if (height > this.sys.canvas.height - 100) {
+                        height = this.sys.canvas.height - 100;
                         width = this.currentImage.width / (this.currentImage.height / height);
 
                     }
@@ -453,12 +453,12 @@ class BuildingScene extends Phaser.Scene {
                 }
                 else {
 
-                    
+
                     let height = imageHeight;
                     let width = this.currentImage.width / (this.currentImage.height / imageHeight);
 
-                    if(width> this.sys.canvas.width -100){
-                        width = this.sys.canvas.width -100;
+                    if (width > this.sys.canvas.width - 100) {
+                        width = this.sys.canvas.width - 100;
                         height = this.currentImage.height / (this.currentImage.width / width);
 
                     }
@@ -525,8 +525,18 @@ class BuildingScene extends Phaser.Scene {
 
         let infoDiv = document.createElement('div');
 
+        let windowSize = window.innerHeight + window.innerWidth;
+
+        let fullScreenFontSize = 94314/(windowSize);
+
+        fullScreenFontSize -= windowSize*0.001;
+
+        //let fullScreenFontSize = 66;
+
+        console.log(fullScreenFontSize);
+
         //This is the style for the entire info html
-        infoDiv.style = 'padding: 30px; overflow-x: hidden; width: 1400px; height: 770px; padding: 30px; font: 33px Carme;'
+        infoDiv.style = 'padding: 30px; overflow-x: hidden; width: 1400px; height: 770px; padding: 30px; font: 44px Carme;'
 
         //The stylesheet is for styling the inner elements, not sure if it could have been put straight into the style element above somehow
         //Text variable is the HTML string that includes the infotext as well, stored in JSON
@@ -540,9 +550,99 @@ class BuildingScene extends Phaser.Scene {
 
         let infoBackground = this.add.sprite(0, 13, 'MenuAtlas', 'UI Pohjat/Infokorttipohja').setScale(1.75, 1.36);
 
+        let topLeft = infoBackground.getTopLeft();
+
+        infoBackground.setInteractive();
+
+        let infoFullScreenButton = CreateButton(this, topLeft.x - 20, topLeft.y + 75, 'UI Buttons/Zoom_In').setScale(1.7);
+
+
+        infoFullScreenButton.on('pointerup', () => {
+            if (infoFullScreenButton.pressed) {
+
+                if (infoFullScreenButton.full !== true) {
+
+                    //Portrait mode
+                    if ((this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) && this.scale.orientation === Phaser.Scale.PORTRAIT) {
+
+                        infoBackground.setScale(2.28, 5);
+
+                        topLeft = infoBackground.getTopLeft();
+
+                        infoFullScreenButton.setPosition(topLeft.x + 100, topLeft.y).setTexture('MenuAtlas', 'UI Buttons/Zoom_Out').setScale(1.7);
+
+                        infoDiv.style = 'padding: 30px; overflow-x: hidden; width: 1800px; height: 2995px; padding: 30px; font: ' + fullScreenFontSize + 'px Carme;'
+                        infoDom.setPosition(-210, -1095);
+
+                    }
+                    //Landscape mode
+                    else
+                    {
+                        infoBackground.setScale(2.3, 2.075);
+
+                        topLeft = infoBackground.getTopLeft();
+
+                        infoFullScreenButton.setPosition(topLeft.x - 30, topLeft.y + 80).setTexture('MenuAtlas', 'UI Buttons/Zoom_Out').setScale(1.7);
+
+                        infoDiv.style = 'padding: 30px; overflow-x: hidden; width: 1800px; height: 1195px; padding: 30px; font: ' + fullScreenFontSize + 'px Carme;'
+                        infoDom.setPosition(-220, -200);
+                    }
+
+                    infoFullScreenButton.full = true;
+
+                }
+                //Exit fullscreen
+                else {
+                    infoBackground.setScale(1.75, 1.36);
+
+                    topLeft = infoBackground.getTopLeft();
+
+                    infoFullScreenButton.setPosition(topLeft.x - 20, topLeft.y + 75).setTexture('MenuAtlas', 'UI Buttons/Zoom_In');
+                    infoDiv.style = 'padding: 30px; overflow-x: hidden; width: 1400px; height: 770px; padding: 30px; font: 44px Carme;'
+
+                    infoDom.setPosition(0, 15);
+
+                    infoFullScreenButton.full = false;
+                }
+            }
+        }, this);
+
+        //When game is resized while reading in fullscreen, didn't feel like putting these in the above resize function
+        this.scale.on('resize', () => 
+        {
+            if (infoFullScreenButton.full === true) {
+
+                //Portrait mode
+                if ((this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) && this.scale.orientation === Phaser.Scale.PORTRAIT) {
+
+                    infoBackground.setScale(2.28, 5);
+
+                    topLeft = infoBackground.getTopLeft();
+
+                    infoFullScreenButton.setPosition(topLeft.x + 100, topLeft.y).setTexture('MenuAtlas', 'UI Buttons/Zoom_Out').setScale(1.7);
+
+                    infoDiv.style = 'padding: 30px; overflow-x: hidden; width: 1800px; height: 2995px; padding: 30px; font: ' + fullScreenFontSize + 'px Carme;'
+                    infoDom.setPosition(-210, -1095);
+
+                }
+                //Landscape mode
+                else
+                {
+                    infoBackground.setScale(2.3, 2.075);
+
+                    topLeft = infoBackground.getTopLeft();
+
+                    infoFullScreenButton.setPosition(topLeft.x - 30, topLeft.y + 80).setTexture('MenuAtlas', 'UI Buttons/Zoom_Out').setScale(1.7);
+
+                    infoDiv.style = 'padding: 30px; overflow-x: hidden; width: 1800px; height: 1195px; padding: 30px; font: ' + fullScreenFontSize + 'px Carme;'
+                    infoDom.setPosition(-220, -200);
+                }
+            }
+        }, this);
+
         domElements.push(infoDom);
 
-        this.infoContainer.add([infoDom, infoBackground]);
+        this.infoContainer.add([infoFullScreenButton, infoDom, infoBackground]);
 
         //This stops the info text from becoming visible on top of the options menu when changing language
         if (optionsButton.open) {
@@ -807,8 +907,8 @@ class BuildingScene extends Phaser.Scene {
             let width = imageWidth;
             let height = newImage.height / (newImage.width / imageWidth);
 
-            if(height> this.sys.canvas.height -100){
-                height = this.sys.canvas.height -100;
+            if (height > this.sys.canvas.height - 100) {
+                height = this.sys.canvas.height - 100;
                 width = newImage.width / (newImage.height / height);
 
             }
@@ -822,12 +922,12 @@ class BuildingScene extends Phaser.Scene {
         }
         else {
 
-            
+
             let height = imageHeight;
             let width = newImage.width / (newImage.height / imageHeight);
 
-            if(width> this.sys.canvas.width -100){
-                width = this.sys.canvas.width -100;
+            if (width > this.sys.canvas.width - 100) {
+                width = this.sys.canvas.width - 100;
                 height = newImage.height / (newImage.width / width);
 
             }
