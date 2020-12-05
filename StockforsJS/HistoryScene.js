@@ -4,7 +4,7 @@ class HistoryScene extends BuildingScene{
 
         this.name = 'History';
 
-        //this.backgroundImage = 'PakkausBG';
+        this.backgroundImage = 'HistoryImage58';
     }
 
     create()

@@ -527,6 +527,17 @@ class BuildingScene extends Phaser.Scene {
 
         let windowSize = window.innerHeight + window.innerWidth;
 
+        let fontSize;
+
+        if (this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) {
+            fontSize = 66;
+
+        }
+        else
+        {
+            fontSize = 33;
+        }
+
         let fullScreenFontSize = 94314/(windowSize);
 
         fullScreenFontSize -= windowSize*0.001;
@@ -536,7 +547,7 @@ class BuildingScene extends Phaser.Scene {
         console.log(fullScreenFontSize);
 
         //This is the style for the entire info html
-        infoDiv.style = 'padding: 30px; overflow-x: hidden; width: 1400px; height: 770px; padding: 30px; font: 44px Carme;'
+        infoDiv.style = 'padding: 30px; overflow-x: hidden; width: 1400px; height: 770px; padding: 30px; font: '+ fontSize + 'px Carme;'
 
         //The stylesheet is for styling the inner elements, not sure if it could have been put straight into the style element above somehow
         //Text variable is the HTML string that includes the infotext as well, stored in JSON
@@ -571,7 +582,7 @@ class BuildingScene extends Phaser.Scene {
 
                         infoFullScreenButton.setPosition(topLeft.x + 100, topLeft.y).setTexture('MenuAtlas', 'UI Buttons/Zoom_Out').setScale(1.7);
 
-                        infoDiv.style = 'padding: 30px; overflow-x: hidden; width: 1800px; height: 2995px; padding: 30px; font: ' + fullScreenFontSize + 'px Carme;'
+                        infoDiv.style = 'padding: 30px; overflow-x: hidden; width: 1800px; height: 2995px; padding: 30px; font: ' + fontSize + 'px Carme;'
                         infoDom.setPosition(-210, -1095);
 
                     }
@@ -584,7 +595,7 @@ class BuildingScene extends Phaser.Scene {
 
                         infoFullScreenButton.setPosition(topLeft.x - 30, topLeft.y + 80).setTexture('MenuAtlas', 'UI Buttons/Zoom_Out').setScale(1.7);
 
-                        infoDiv.style = 'padding: 30px; overflow-x: hidden; width: 1800px; height: 1195px; padding: 30px; font: ' + fullScreenFontSize + 'px Carme;'
+                        infoDiv.style = 'padding: 30px; overflow-x: hidden; width: 1800px; height: 1195px; padding: 30px; font: ' + fontSize + 'px Carme;'
                         infoDom.setPosition(-220, -200);
                     }
 
@@ -598,7 +609,7 @@ class BuildingScene extends Phaser.Scene {
                     topLeft = infoBackground.getTopLeft();
 
                     infoFullScreenButton.setPosition(topLeft.x - 20, topLeft.y + 75).setTexture('MenuAtlas', 'UI Buttons/Zoom_In');
-                    infoDiv.style = 'padding: 30px; overflow-x: hidden; width: 1400px; height: 770px; padding: 30px; font: 44px Carme;'
+                    infoDiv.style = 'padding: 30px; overflow-x: hidden; width: 1400px; height: 770px; padding: 30px; font: '+ fontSize + 'px Carme;'
 
                     infoDom.setPosition(0, 15);
 
@@ -621,7 +632,7 @@ class BuildingScene extends Phaser.Scene {
 
                     infoFullScreenButton.setPosition(topLeft.x + 100, topLeft.y).setTexture('MenuAtlas', 'UI Buttons/Zoom_Out').setScale(1.7);
 
-                    infoDiv.style = 'padding: 30px; overflow-x: hidden; width: 1800px; height: 2995px; padding: 30px; font: ' + fullScreenFontSize + 'px Carme;'
+                    infoDiv.style = 'padding: 30px; overflow-x: hidden; width: 1800px; height: 2995px; padding: 30px; font: ' + fontSize + 'px Carme;'
                     infoDom.setPosition(-210, -1095);
 
                 }
@@ -634,7 +645,7 @@ class BuildingScene extends Phaser.Scene {
 
                     infoFullScreenButton.setPosition(topLeft.x - 30, topLeft.y + 80).setTexture('MenuAtlas', 'UI Buttons/Zoom_Out').setScale(1.7);
 
-                    infoDiv.style = 'padding: 30px; overflow-x: hidden; width: 1800px; height: 1195px; padding: 30px; font: ' + fullScreenFontSize + 'px Carme;'
+                    infoDiv.style = 'padding: 30px; overflow-x: hidden; width: 1800px; height: 1195px; padding: 30px; font: ' + fontSize + 'px Carme;'
                     infoDom.setPosition(-220, -200);
                 }
             }
@@ -665,11 +676,11 @@ class BuildingScene extends Phaser.Scene {
         // image thumbnails
         if (this.images.length > 0) {
 
-            let imgWidth = 160;
-            let imgHeight = 120;
+            let imgWidth = 180;
+            let imgHeight = 140;
 
-            let rowLimit = 5;
-            let columnLimit = 5;
+            let rowLimit = 4;
+            let columnLimit = 4;
 
             let column = 0;
             let row = 1;
@@ -1134,6 +1145,7 @@ class BuildingScene extends Phaser.Scene {
                                 domElements.splice(index, 1);
                             }
                             this.panoramaViewer.destroy();
+                            this.panoramaViewer = null;
                             this.ChangeVisibility(true);
                             this.ContainerTransition(this.panoramaContainer);
                             this.panoramaExitButton.destroy();
