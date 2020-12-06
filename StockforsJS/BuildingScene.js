@@ -223,7 +223,7 @@ class BuildingScene extends Phaser.Scene {
                 item.setPosition(startX - (index * 200), 0);
             }, this);
 
-            this.instructionButton.setPosition(750, 90).setScale(1.3);
+            this.instructionButton.setPosition(550, 90).setScale(1.3);
 
             this.menuButtons.setPosition(this.menuButtons.width / 2, (this.menuBG.height / 2) - 100).setScale(0.9);
 
@@ -339,7 +339,7 @@ class BuildingScene extends Phaser.Scene {
 
     CreateInstructionButton() {
         //this.instructionButton = CreateButton(this, (this.menuBG.width / 2 - 30), (this.menuBG.height / 2) - 20, 'UI Buttons/Ohje');
-        this.instructionButton = CreateButton(this, 750, 90, 'UI Buttons/Ohje').setScale(1.3);
+        this.instructionButton = CreateButton(this, 550, 90, 'UI Buttons/Ohje').setScale(1.3);
         //this.instructionButton = this.add.sprite((this.menuBG.width / 2 - 30), (this.menuBG.height / 2) - 20, 'MenuAtlas', 'UI Buttons/Ohje');
 
         this.instructionButton.on('pointerup', function (event) {
