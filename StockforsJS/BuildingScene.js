@@ -165,10 +165,17 @@ class BuildingScene extends Phaser.Scene {
             this.menu.setPosition(this.centerX - 45, this.centerY - getWindowHeight() * this.menu.scaleY * this.menuPositionY);
 
             let startY = -975;
-            this.menuButtons.list.forEach((item, index, list) => {
+            let buttonsArray = this.menuButtons.list;
+
+            for(let i = buttonsArray.length-1; i--; i>0)
+            {
+                buttonsArray[i].setPosition(0, startY + ((buttonsArray.length-(i+2)) * 200));
+
+            }
+            /*this.menuButtons.list.forEach((item, index, list) => {
                 item.setPosition(0, startY + (index * 200));
 
-            }, this);
+            }, this);*/
 
             this.instructionButton.setPosition(0, 300);
 
