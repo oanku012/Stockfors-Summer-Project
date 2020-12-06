@@ -106,6 +106,10 @@ class BuildingScene extends Phaser.Scene {
             this.CreateWebContainer();
         }
 
+        if ((this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) && this.scale.orientation === Phaser.Scale.PORTRAIT) {
+            this.rescaleMenuElements();
+        }
+
         console.log(this.scene.key);
 
         this.ContainerTransition(this.infoContainer);
@@ -139,13 +143,13 @@ class BuildingScene extends Phaser.Scene {
         this.menu.setPosition(this.centerX, this.centerY - getWindowHeight() * this.menu.scaleY * this.menuPositionY);
 
         // title and description
-        let title = this.add.text(0, -350, this.title);
-        title.setFontSize(64);
-        title.setPosition(0, -480);
-        title.setColor("black");
-        title.setFontFamily('LexendTera');
-        title.setOrigin(0.5, 0.5);
-        this.menu.add(title);
+        this.title = this.add.text(0, -350, this.title);
+        this.title.setFontSize(64);
+        this.title.setPosition(10, -480);
+        this.title.setColor("black");
+        this.title.setFontFamily('LexendTera');
+        this.title.setOrigin(0.5, 0.5);
+        this.menu.add(this.title);
 
 
 
@@ -153,11 +157,109 @@ class BuildingScene extends Phaser.Scene {
 
     }
 
+    //For rescaling and changing the positioning of the elements in the general building menu
+    rescaleMenuElements() {
+
+        if ((this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) && this.scale.orientation === Phaser.Scale.PORTRAIT) {
+            this.menuBG.setScale(1.05, 2).setPosition(65, 0);
+            this.menu.setPosition(this.centerX - 45, this.centerY - getWindowHeight() * this.menu.scaleY * this.menuPositionY);
+
+            let startY = -975;
+            this.menuButtons.list.forEach((item, index, list) => {
+                item.setPosition(0, startY + (index * 200));
+
+            }, this);
+
+            this.instructionButton.setPosition(0, 300);
+
+            this.menuButtons.setPosition(820, (this.menuBG.height / 2)).setScale(1.3);
+
+            this.title.setPosition(60, -900).setFontSize(74);
+
+            if (this.infoFullScreenButton.full !== true) {
+                this.infoContainer.setPosition(-20, 20);
+                this.infoBackground.setScale(1.75, 2.55);
+
+                let topLeft = this.infoBackground.getTopLeft();
+
+                this.infoFullScreenButton.setPosition(topLeft.x + 100, topLeft.y - 10).setTexture('MenuAtlas', 'UI Buttons/Zoom_In');
+                this.infoDiv.style = 'padding: 30px; overflow-x: hidden; width: 1400px; height: 1490px; padding: 30px; font: ' + this.fontSize + 'px Carme;'
+
+                this.infoDom.setPosition(0, -345);
+
+                //this.infoFullScreenButton.full = false;
+
+            }
+
+            this.exitButton.setPosition(-480, 1000).setScale(1.5);
+
+            this.albumContainer.setPosition(-20, -950).setScale(1.85);
+
+            if (this.albumContainer.pageArrowRight) {
+                this.albumContainer.pageArrowRight.setPosition(200, 850).setScale(1.2);
+                this.albumContainer.pageArrowLeft.setPosition(-200, 850).setScale(1.2);
+            }
+
+            if (this.panoramaContainer)
+                this.panoramaContainer.setY(-300).setScale(1.5);
+
+            if (this.webContainer)
+                this.webContainer.setPosition(50, -100).setScale(1.7);
+
+        }
+        else {
+            this.menuBG.setScale(1).setPosition(0, 0);
+            this.menu.setPosition(this.centerX, this.centerY - getWindowHeight() * this.menu.scaleY * this.menuPositionY);
+
+            let startX = -80;
+            this.menuButtons.list.forEach((item, index, list) => {
+                item.setPosition(startX - (index * 200), 0);
+            }, this);
+
+            this.instructionButton.setPosition(750, 90).setScale(1.3);
+
+            this.menuButtons.setPosition(this.menuButtons.width / 2, (this.menuBG.height / 2) - 100).setScale(0.9);
+
+            this.title.setFontSize(64).setPosition(10, -480);
+
+            if (this.infoFullScreenButton.full !== true) {
+
+                this.infoContainer.setPosition(0);
+                this.infoBackground.setScale(1.75, 1.36);
+
+                let topLeft = this.infoBackground.getTopLeft();
+
+                this.infoFullScreenButton.setPosition(topLeft.x + 100, topLeft.y - 10).setTexture('MenuAtlas', 'UI Buttons/Zoom_In');
+                this.infoDiv.style = 'padding: 30px; overflow-x: hidden; width: 1400px; height: 770px; padding: 30px; font: ' + this.fontSize + 'px Carme;'
+
+                this.infoDom.setPosition(0, 15);
+
+                //this.infoFullScreenButton.full = false;
+
+            }
+
+            this.exitButton.setPosition((-this.menuBG.width / 2) + 100, (this.menuBG.height / 2) - 20).setScale(1);
+
+            this.albumContainer.setPosition(0, -500).setScale(1.2);
+
+            if (this.albumContainer.pageArrowRight) {
+                this.albumContainer.pageArrowRight.setPosition(550, 400).setScale(1);
+                this.albumContainer.pageArrowLeft.setPosition(-550, 400).setScale(1);
+            }
+
+            if (this.panoramaContainer)
+                this.panoramaContainer.setY(0).setScale(1);
+
+            if (this.webContainer)
+                this.webContainer.setPosition(0).setScale(1);
+        }
+    }
+
     CreateInstructions() {
         this.ohjeBG = this.add.sprite(0, 0, 'MenuAtlas', 'UI Pohjat/Ohjeet-infoikkuna');
         this.ohje = this.add.container(this.centerX, this.centerY, [this.ohjeBG]).setScale(0.56);
 
-        rescaleObjects(this.ohje, this, 0.0002, 0.00017);
+        rescaleObjects(this.ohje, this, 0.00023, 0.00017);
 
         // title
         let title = this.add.text(0, -450, this.data['Ohjeet'].Title);
@@ -229,7 +331,8 @@ class BuildingScene extends Phaser.Scene {
     }
 
     CreateInstructionButton() {
-        this.instructionButton = CreateButton(this, (this.menuBG.width / 2 - 30), (this.menuBG.height / 2) - 20, 'UI Buttons/Ohje');
+        //this.instructionButton = CreateButton(this, (this.menuBG.width / 2 - 30), (this.menuBG.height / 2) - 20, 'UI Buttons/Ohje');
+        this.instructionButton = CreateButton(this, 750, 90, 'UI Buttons/Ohje').setScale(1.3);
         //this.instructionButton = this.add.sprite((this.menuBG.width / 2 - 30), (this.menuBG.height / 2) - 20, 'MenuAtlas', 'UI Buttons/Ohje');
 
         this.instructionButton.on('pointerup', function (event) {
@@ -243,7 +346,8 @@ class BuildingScene extends Phaser.Scene {
             }
         }, this);
 
-        this.menu.add(this.instructionButton);
+        //this.menu.add(this.instructionButton);
+        this.menuButtons.add(this.instructionButton);
     }
 
     // Separate function because it needs to be overwritten
@@ -497,8 +601,9 @@ class BuildingScene extends Phaser.Scene {
 
             }
 
-            rescaleObjects(this.ohje, this, 0.0002, 0.00017);
+            rescaleObjects(this.ohje, this, 0.00023, 0.00017);
 
+            this.rescaleMenuElements();
 
             console.log('Scene objects resized and positioned.');
         }
@@ -523,141 +628,157 @@ class BuildingScene extends Phaser.Scene {
 
     CreateInfoCards(text) {
 
-        let infoDiv = document.createElement('div');
+        this.infoDiv = document.createElement('div');
 
         let windowSize = window.innerHeight + window.innerWidth;
 
-        let fontSize;
+        this.fontSize;
 
         if (this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) {
-            fontSize = 66;
+            this.fontSize = 66;
 
         }
-        else
-        {
-            fontSize = 33;
+        else {
+            this.fontSize = 33;
         }
 
-        let fullScreenFontSize = 94314/(windowSize);
+        let fullScreenFontSize = 94314 / (windowSize);
 
-        fullScreenFontSize -= windowSize*0.001;
+        fullScreenFontSize -= windowSize * 0.001;
 
         //let fullScreenFontSize = 66;
 
         console.log(fullScreenFontSize);
 
         //This is the style for the entire info html
-        infoDiv.style = 'padding: 30px; overflow-x: hidden; width: 1400px; height: 770px; padding: 30px; font: '+ fontSize + 'px Carme;'
+        this.infoDiv.style = 'padding: 30px; overflow-x: hidden; width: 1400px; height: 770px; padding: 30px; font: ' + this.fontSize + 'px Carme;'
 
         //The stylesheet is for styling the inner elements, not sure if it could have been put straight into the style element above somehow
         //Text variable is the HTML string that includes the infotext as well, stored in JSON
-        infoDiv.innerHTML = '<link rel="stylesheet" type="text/css" href="infoStyle.css"> ' + text;
+        this.infoDiv.innerHTML = '<link rel="stylesheet" type="text/css" href="infoStyle.css"> ' + text;
         //This was just testing an implementation for using iframe to include html from a separate file
-        //infoDiv.innerHTML = '<iframe src="' + text + ' " style="width: 100%; height: 100%; border: none;"></iframe>';
+        //this.infoDiv.innerHTML = '<iframe src="' + text + ' " style="width: 100%; height: 100%; border: none;"></iframe>';
 
         //background-Image: url("Assets/images/menu/Infokorttipohja.png"); background-size: 100% 103%; background-repeat: no-repeat; background-position: -10px, -15px;
 
-        let infoDom = this.add.dom(0, 15, infoDiv);
+        this.infoDom = this.add.dom(0, 15, this.infoDiv);
 
-        let infoBackground = this.add.sprite(0, 13, 'MenuAtlas', 'UI Pohjat/Infokorttipohja').setScale(1.75, 1.36);
+        this.infoBackground = this.add.sprite(0, 13, 'MenuAtlas', 'UI Pohjat/Infokorttipohja').setScale(1.75, 1.36);
 
-        let topLeft = infoBackground.getTopLeft();
+        let topLeft = this.infoBackground.getTopLeft();
+        let buttonPos = {};
+        buttonPos.x = topLeft.x + 100;
+        buttonPos.y = topLeft.y - 10;
 
-        infoBackground.setInteractive();
 
-        let infoFullScreenButton = CreateButton(this, topLeft.x - 20, topLeft.y + 75, 'UI Buttons/Zoom_In').setScale(1.7);
+        //buttonPos.x = topLeft.x - 20
+        //buttonPos.y = topLeft.y + 75
+
+        this.infoBackground.setInteractive();
+
+        this.infoFullScreenButton = CreateButton(this, buttonPos.x, buttonPos.y, 'UI Buttons/Zoom_In').setScale(1.6);
 
 
-        infoFullScreenButton.on('pointerup', () => {
-            if (infoFullScreenButton.pressed) {
+        this.infoFullScreenButton.on('pointerup', () => {
+            if (this.infoFullScreenButton.pressed) {
 
-                if (infoFullScreenButton.full !== true) {
+                if (this.infoFullScreenButton.full !== true) {
 
                     //Portrait mode
                     if ((this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) && this.scale.orientation === Phaser.Scale.PORTRAIT) {
 
-                        infoBackground.setScale(2.28, 5);
+                        this.infoBackground.setScale(2.28, 5);
+                        this.infoContainer.setPosition(70, 20);
 
-                        topLeft = infoBackground.getTopLeft();
+                        topLeft = this.infoBackground.getTopLeft();
 
-                        infoFullScreenButton.setPosition(topLeft.x + 100, topLeft.y).setTexture('MenuAtlas', 'UI Buttons/Zoom_Out').setScale(1.7);
+                        this.infoFullScreenButton.setPosition(topLeft.x + 100, topLeft.y).setTexture('MenuAtlas', 'UI Buttons/Zoom_Out').setScale(1.7);
 
-                        infoDiv.style = 'padding: 30px; overflow-x: hidden; width: 1800px; height: 2995px; padding: 30px; font: ' + fontSize + 'px Carme;'
-                        infoDom.setPosition(-210, -1095);
+                        this.infoDiv.style = 'padding: 30px; overflow-x: hidden; width: 1800px; height: 2995px; padding: 30px; font: ' + this.fontSize + 'px Carme;'
+                        this.infoDom.setPosition(-210, -1095);
 
                     }
                     //Landscape mode
-                    else
-                    {
-                        infoBackground.setScale(2.3, 2.075);
+                    else {
+                        this.infoBackground.setScale(2.3, 2.075);
 
-                        topLeft = infoBackground.getTopLeft();
+                        topLeft = this.infoBackground.getTopLeft();
 
-                        infoFullScreenButton.setPosition(topLeft.x - 30, topLeft.y + 80).setTexture('MenuAtlas', 'UI Buttons/Zoom_Out').setScale(1.7);
+                        this.infoFullScreenButton.setPosition(topLeft.x - 30, topLeft.y + 80).setTexture('MenuAtlas', 'UI Buttons/Zoom_Out').setScale(1.7);
 
-                        infoDiv.style = 'padding: 30px; overflow-x: hidden; width: 1800px; height: 1195px; padding: 30px; font: ' + fontSize + 'px Carme;'
-                        infoDom.setPosition(-220, -200);
+                        this.infoDiv.style = 'padding: 30px; overflow-x: hidden; width: 1800px; height: 1195px; padding: 30px; font: ' + this.fontSize + 'px Carme;'
+                        this.infoDom.setPosition(-220, -200);
                     }
 
-                    infoFullScreenButton.full = true;
+                    this.infoFullScreenButton.full = true;
 
                 }
                 //Exit fullscreen
                 else {
-                    infoBackground.setScale(1.75, 1.36);
 
-                    topLeft = infoBackground.getTopLeft();
+                    this.infoFullScreenButton.full = false;
+                    this.rescaleMenuElements();
 
-                    infoFullScreenButton.setPosition(topLeft.x - 20, topLeft.y + 75).setTexture('MenuAtlas', 'UI Buttons/Zoom_In');
-                    infoDiv.style = 'padding: 30px; overflow-x: hidden; width: 1400px; height: 770px; padding: 30px; font: '+ fontSize + 'px Carme;'
+                    
+                    /*
 
-                    infoDom.setPosition(0, 15);
+                    this.infoBackground.setScale(1.75, 1.36);
 
-                    infoFullScreenButton.full = false;
+                    topLeft = this.infoBackground.getTopLeft();
+
+                    this.infoFullScreenButton.setPosition(buttonPos.x, buttonPos.y).setTexture('MenuAtlas', 'UI Buttons/Zoom_In');
+                    this.infoDiv.style = 'padding: 30px; overflow-x: hidden; width: 1400px; height: 770px; padding: 30px; font: ' + this.fontSize + 'px Carme;'
+
+                    this.infoDom.setPosition(0, 15);
+
+                    */
                 }
             }
         }, this);
 
         //When game is resized while reading in fullscreen, didn't feel like putting these in the above resize function
-        this.scale.on('resize', () => 
-        {
-            if (infoFullScreenButton.full === true) {
+        this.scale.on('resize', () => {
+            if (this.infoFullScreenButton.full === true) {
 
                 //Portrait mode
                 if ((this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) && this.scale.orientation === Phaser.Scale.PORTRAIT) {
 
-                    infoBackground.setScale(2.28, 5);
+                    this.infoBackground.setScale(2.28, 5);
+                    this.infoContainer.setPosition(70, 20);
 
-                    topLeft = infoBackground.getTopLeft();
+                    topLeft = this.infoBackground.getTopLeft();
 
-                    infoFullScreenButton.setPosition(topLeft.x + 100, topLeft.y).setTexture('MenuAtlas', 'UI Buttons/Zoom_Out').setScale(1.7);
+                    this.infoFullScreenButton.setPosition(topLeft.x + 100, topLeft.y).setTexture('MenuAtlas', 'UI Buttons/Zoom_Out').setScale(1.7);
 
-                    infoDiv.style = 'padding: 30px; overflow-x: hidden; width: 1800px; height: 2995px; padding: 30px; font: ' + fontSize + 'px Carme;'
-                    infoDom.setPosition(-210, -1095);
+                    this.infoDiv.style = 'padding: 30px; overflow-x: hidden; width: 1800px; height: 2995px; padding: 30px; font: ' + this.fontSize + 'px Carme;'
+                    this.infoDom.setPosition(-210, -1095);
 
                 }
                 //Landscape mode
-                else
-                {
-                    infoBackground.setScale(2.3, 2.075);
+                else {
+                    this.infoBackground.setScale(2.3, 2.075);
 
-                    topLeft = infoBackground.getTopLeft();
+                    topLeft = this.infoBackground.getTopLeft();
 
-                    infoFullScreenButton.setPosition(topLeft.x - 30, topLeft.y + 80).setTexture('MenuAtlas', 'UI Buttons/Zoom_Out').setScale(1.7);
+                    this.infoFullScreenButton.setPosition(topLeft.x - 30, topLeft.y + 80).setTexture('MenuAtlas', 'UI Buttons/Zoom_Out').setScale(1.7);
 
-                    infoDiv.style = 'padding: 30px; overflow-x: hidden; width: 1800px; height: 1195px; padding: 30px; font: ' + fontSize + 'px Carme;'
-                    infoDom.setPosition(-220, -200);
+                    this.infoDiv.style = 'padding: 30px; overflow-x: hidden; width: 1800px; height: 1195px; padding: 30px; font: ' + this.fontSize + 'px Carme;'
+                    this.infoDom.setPosition(-220, -200);
                 }
+            }
+            else {
+
+
             }
         }, this);
 
-        domElements.push(infoDom);
+        domElements.push(this.infoDom);
 
-        this.infoContainer.add([infoFullScreenButton, infoDom, infoBackground]);
+        this.infoContainer.add([this.infoFullScreenButton, this.infoDom, this.infoBackground]);
 
         //This stops the info text from becoming visible on top of the options menu when changing language
         if (optionsButton.open) {
-            infoDom.visible = false;
+            this.infoDom.visible = false;
         }
     }
 

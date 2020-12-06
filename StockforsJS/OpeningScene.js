@@ -364,7 +364,7 @@ class OpeningScene extends Phaser.Scene {
     }
 
     CreateMenuContainer(elementsToAdd = []) {
-        let container = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY + 20, elementsToAdd);
+        let container = this.add.container(this.cameras.main.centerX, this.cameras.main.centerY + 30, elementsToAdd);
 
         container.iterate(function (element) {
 
@@ -416,11 +416,11 @@ class OpeningScene extends Phaser.Scene {
             }
         }, this);
 
-        rescaleObjects(container, this, 0.0002, 0.00015);
+        rescaleObjects(container, this, 0.0002, 0.00017);
 
         this.scale.on('resize', () => {
 
-            rescaleObjects(container, this, 0.0002, 0.00015);
+            rescaleObjects(container, this, 0.0002, 0.00017);
 
         }, this);
 
