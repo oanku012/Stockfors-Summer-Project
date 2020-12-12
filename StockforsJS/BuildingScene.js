@@ -177,7 +177,7 @@ class BuildingScene extends Phaser.Scene {
 
             }, this);*/
 
-            this.instructionButton.setPosition(0, 300);
+            this.instructionButton.setPosition(820, 1000).setScale(1.5);
 
             this.menuButtons.setPosition(820, (this.menuBG.height / 2)).setScale(1.3);
 
@@ -189,7 +189,7 @@ class BuildingScene extends Phaser.Scene {
 
                 let topLeft = this.infoBackground.getTopLeft();
 
-                this.infoFullScreenButton.setPosition(topLeft.x + 100, topLeft.y - 10).setTexture('MenuAtlas', 'UI Buttons/Zoom_In');
+                this.infoFullScreenButton.setPosition(topLeft.x + 95, topLeft.y - 10).setTexture('MenuAtlas', 'UI Buttons/Zoom_In');
                 this.infoDiv.style = 'padding: 30px; overflow-x: hidden; width: 1400px; height: 1490px; padding: 30px; font: ' + this.fontSize + 'px Carme;'
 
                 this.infoDom.setPosition(0, -345);
@@ -223,7 +223,7 @@ class BuildingScene extends Phaser.Scene {
                 item.setPosition(startX - (index * 200), 0);
             }, this);
 
-            this.instructionButton.setPosition(550, 90).setScale(1.3);
+            this.instructionButton.setPosition(845, 595).setScale(1.1);
 
             this.menuButtons.setPosition(this.menuButtons.width / 2, (this.menuBG.height / 2) - 100).setScale(0.9);
 
@@ -236,7 +236,8 @@ class BuildingScene extends Phaser.Scene {
 
                 let topLeft = this.infoBackground.getTopLeft();
 
-                this.infoFullScreenButton.setPosition(topLeft.x + 100, topLeft.y - 10).setTexture('MenuAtlas', 'UI Buttons/Zoom_In');
+                //Button position is slightly different for some reason when closing the fullscreen info text window
+                this.infoFullScreenButton.setPosition(topLeft.x + 93, topLeft.y - 10).setTexture('MenuAtlas', 'UI Buttons/Zoom_In');
                 this.infoDiv.style = 'padding: 30px; overflow-x: hidden; width: 1400px; height: 770px; padding: 30px; font: ' + this.fontSize + 'px Carme;'
 
                 this.infoDom.setPosition(0, 15);
@@ -339,7 +340,7 @@ class BuildingScene extends Phaser.Scene {
 
     CreateInstructionButton() {
         //this.instructionButton = CreateButton(this, (this.menuBG.width / 2 - 30), (this.menuBG.height / 2) - 20, 'UI Buttons/Ohje');
-        this.instructionButton = CreateButton(this, 550, 90, 'UI Buttons/Ohje').setScale(1.3);
+        this.instructionButton = CreateButton(this, 845, 595, 'UI Buttons/Ohje').setScale(1.1);
         //this.instructionButton = this.add.sprite((this.menuBG.width / 2 - 30), (this.menuBG.height / 2) - 20, 'MenuAtlas', 'UI Buttons/Ohje');
 
         this.instructionButton.on('pointerup', function (event) {
@@ -353,8 +354,8 @@ class BuildingScene extends Phaser.Scene {
             }
         }, this);
 
-        //this.menu.add(this.instructionButton);
-        this.menuButtons.add(this.instructionButton);
+        this.menu.add(this.instructionButton);
+        //this.menuButtons.add(this.instructionButton);
     }
 
     // Separate function because it needs to be overwritten
@@ -674,12 +675,8 @@ class BuildingScene extends Phaser.Scene {
 
         let topLeft = this.infoBackground.getTopLeft();
         let buttonPos = {};
-        buttonPos.x = topLeft.x + 100;
+        buttonPos.x = topLeft.x + 93;
         buttonPos.y = topLeft.y - 10;
-
-
-        //buttonPos.x = topLeft.x - 20
-        //buttonPos.y = topLeft.y + 75
 
         this.infoBackground.setInteractive();
 

@@ -121,7 +121,7 @@ class MapScene extends Phaser.Scene {
         this.saveGameTimerEvent = this.time.addEvent({ delay: 10000, callback: this.SavePosition, callbackScope: this, loop: true });
 
         //Changed this to not run on every frame, because when you're overlapping 2 buildings it would get called constantly
-        this.overLapTimer = this.time.addEvent({ delay: 300, callback: this.CheckForOverlap, callbackScope: this, loop: true });
+        this.overLapTimer = this.time.addEvent({ delay: 200, callback: this.CheckForOverlap, callbackScope: this, loop: true });
 
         this.SavePosition();
 
@@ -282,6 +282,9 @@ class MapScene extends Phaser.Scene {
     }
 
     CheckForOverlap() {
+
+
+
         //Checks if player overlaps with one of the building entrances, apparently matter doesn't have an event for this so this runs repeatedly
         if (this.matter.overlap(this.player, this.buildingEntrances, function (bodyA, bodyB) {
 
@@ -778,7 +781,7 @@ class MapScene extends Phaser.Scene {
 
     //Creates a point in the map that plays a sound when the player is close to it
     //sound is an array of existing sounds added to the scene
-    CreateSoundPoint(x, y, sound, distance) {
+    CreateSoundPoint(x, y, sound, distance, volumeMultiplier) {
         let soundPoint = new Phaser.Math.Vector2(x, y);
 
         soundPoint.soundsToPlay = [];
@@ -813,6 +816,8 @@ class MapScene extends Phaser.Scene {
         //Determines how close you have to be to the soundpoint to trigger the sounds
         soundPoint.distance = distance;
 
+        soundPoint.volume = volumeMultiplier;
+
         this.soundPoints.push(soundPoint);
     }
 
@@ -827,8 +832,8 @@ class MapScene extends Phaser.Scene {
                 //trigger.currentSound.config = { volume: 1/distance, pauseOnBlur: true};
                 //trigger.currentSound.play();
 
-                //Adjusts the volume based on the current distance of the player to the trigger and based on the distance value on the trigger
-                trigger.currentSound.volume = (1 - (distance / trigger.distance));
+                //Adjusts the volume based on the current distance of the player to the trigger and based on the distance value on the trigger as well as the volume multiplier of the sound point
+                trigger.currentSound.volume = ((1 - (distance / trigger.distance)))*trigger.volume;
 
                 //console.log(distance);
 

@@ -71,7 +71,6 @@ class OpeningScene extends Phaser.Scene {
 
         //Backgroundimage
         this.background = this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, 'tausta').setScale(1.34);
-        //rescaleObjects(this.background, this, 0.00075, 0.0005);
 
         if ((this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) && this.scale.orientation === Phaser.Scale.PORTRAIT) {
 
@@ -205,10 +204,6 @@ class OpeningScene extends Phaser.Scene {
     }
 
     CreateMainMenu() {
-        //Doesn't seem to work
-        //this.scale.lockOrientation('landscape');
-
-        //this.add.text(700, 200, "Stockfors Kartalle", { font: "40px Arial", fill: "yellow" });
 
         this.aloitusPohja = this.add.sprite(-80, -83, 'MenuAtlas', 'UI Pohjat/Aloitusruutu');
 
@@ -244,7 +239,6 @@ class OpeningScene extends Phaser.Scene {
 
         this.newGame = CreateTextButton(this, -200, 700, 'UI Buttons/Nappi', this.data['NewGame']);
         this.continue = CreateTextButton(this, 200, 700, 'UI Buttons/Nappi', this.data['ContinueGame']);
-        //this.ohjeNappi = this.add.sprite(500, 700, 'MenuAtlas', 'UI Buttons/Ohje');
         this.ohjeNappi = CreateButton(this, 500, 700, 'UI Buttons/Ohje');
         //this.clearDataText = this.add.text(1400, 200, "Clear save data", { font: "40px Carme", fill: "black" });
 
