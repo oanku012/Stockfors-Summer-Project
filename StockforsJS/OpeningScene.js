@@ -236,9 +236,10 @@ class OpeningScene extends Phaser.Scene {
             }
         });
 
-
-        this.newGame = CreateTextButton(this, -200, 700, 'UI Buttons/Nappi', this.data['NewGame']);
-        this.continue = CreateTextButton(this, 200, 700, 'UI Buttons/Nappi', this.data['ContinueGame']);
+        //Old position for when there was the continue button next to it
+        //this.newGame = CreateTextButton(this, -200, 700, 'UI Buttons/Nappi', this.data['NewGame']);
+        this.newGame = CreateTextButton(this, 0, 700, 'UI Buttons/Nappi', this.data['NewGame']);
+        //this.continue = CreateTextButton(this, 200, 700, 'UI Buttons/Nappi', this.data['ContinueGame']);
         this.ohjeNappi = CreateButton(this, 500, 700, 'UI Buttons/Ohje');
         //this.clearDataText = this.add.text(1400, 200, "Clear save data", { font: "40px Carme", fill: "black" });
 
@@ -248,22 +249,10 @@ class OpeningScene extends Phaser.Scene {
                 this.infoText,
                 this.infoHeader,
                 this.newGame,
-                this.continue,
                 this.ohjeNappi]);
 
-        this.newGame.on('pointerup', function () {
-            if (this.newGame.pressed == true) {
-
-                gameState = startingGameState;
-
-                this.scene.start('StockforsScene');
-                console.log('Started new game.');
-            }
-        }, this);
 
         let savedGame = loadGame();
-
-        //let savedSettings = loadGame('settings');
 
         if (savedGame != null) {
 
@@ -277,8 +266,37 @@ class OpeningScene extends Phaser.Scene {
             }
         }
 
+        this.newGame.on('pointerup', function () {
+            if (this.newGame.pressed == true) {
 
-        this.continue.on('pointerup', function () {
+                if (savedGame != null) {
+                    gameState = {
+                        currentMap: 'StockforsScene',
+                        playerX: playerStartPosition.x,
+                        playerY: playerStartPosition.y,
+                        musicOn: gameState.musicOn,
+                        soundOn: gameState.soundOn,
+                        MPScoreEasy: gameState.MPScoreEasy,
+                        MPScoreMedium: gameState.MPScoreMedium,
+                        MPScoreHard: gameState.MPScoreHard,
+                        newGame: true,
+                        readyToEnter: true
+                    };
+                }
+                else {
+                    gameState = startingGameState;
+                }
+
+
+                this.scene.start('StockforsScene');
+                console.log('Started new game.');
+            }
+        }, this);
+
+
+
+
+        /*this.continue.on('pointerup', function () {
 
             if (this.continue.pressed == true) {
 
@@ -292,7 +310,7 @@ class OpeningScene extends Phaser.Scene {
                     console.log('No save file available, start a new game instead.');
                 }
             }
-        }, this);
+        }, this);*/
 
 
         this.ohjeNappi.on('pointerup', function () {
@@ -304,11 +322,11 @@ class OpeningScene extends Phaser.Scene {
             }
         }, this);
 
-        if (!savedGame) {
+        /*if (!savedGame) {
             this.continue.setVisible(false);
 
             this.newGame.setPosition(0, 700);
-        }
+        }*/
     }
 
     CreateInstructions() {

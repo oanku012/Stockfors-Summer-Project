@@ -165,7 +165,7 @@ var collisionCat1;
 var collisionCat2;
 
 //Default position for spawning the player at the beginning of the game
-var playerStartPosition = { x: 1500, y: 1000 };
+var playerStartPosition = { x: 1700, y: 960 };
 
 //Default game state values when starting a new game
 var startingGameState = {

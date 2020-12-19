@@ -236,12 +236,6 @@ class MapScene extends Phaser.Scene {
 
     MovementInitialize() {
 
-        this.matter.world.on('collisionstart', function (event, bodyA, bodyB) {
-
-            this.stopPlayerMovement();
-
-        }, this);
-
         let lastindex;
 
         //Plays footstep sounds
@@ -263,6 +257,14 @@ class MapScene extends Phaser.Scene {
 
             }, callbackScope: this, loop: true, paused: true, startAt: 200
         });
+
+        this.matter.world.on('collisionstart', function (event, bodyA, bodyB) {
+
+            this.stopPlayerMovement();
+
+        }, this);
+
+        
 
         this.player.body.velocity.x = 0;
         this.player.body.velocity.y = 0;
@@ -572,6 +574,10 @@ class MapScene extends Phaser.Scene {
         this.destination.y = 0;
 
         this.movingOnPath = false;
+
+        if(this.footStepTimer)
+            this.footStepTimer.paused = true;
+
     }
 
     /*resize() {
