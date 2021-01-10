@@ -6,6 +6,9 @@ class UI extends Phaser.Scene {
 
     create() {
 
+        let portraitScale = 0.00025;
+        let landscapeScale = 0.00025;
+
         //If on mobile make options button bigger to make it easier to press
         if (this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) {
             //optionsButton = createSceneOpenButton(this.cameras.main.centerX + this.cameras.main.width * .470 - 20, this.cameras.main.centerY - this.cameras.main.height * .445 + 20, 'OptionsMenuScene', true, 0, 1, this, 'MenuAtlas', 'UI Buttons/Asetukset');
@@ -14,11 +17,12 @@ class UI extends Phaser.Scene {
         else {
 
             optionsButton = createSceneOpenButton(getWindowWidth() - 10, 10, 'OptionsMenuScene', true, 0, 0.56, this, 'MenuAtlas', 'UI Buttons/Asetukset');
+            //Make the options button a bit smaller on desktop
+            landscapeScale = 0.0002;
         }
 
         rescaleSceneEvent(this);
-
-        rescaleObjects(optionsButton, this, 0.00025, 0.00025);
+        rescaleObjects(optionsButton, this, portraitScale, landscapeScale);
 
         optionsButton.setPosition(getWindowWidth() - optionsButton.displayWidth * optionsButton.scaleX, optionsButton.displayHeight * optionsButton.scaleY);
 
@@ -33,7 +37,7 @@ class UI extends Phaser.Scene {
                 optionsButton.setX(getWindowWidth() * 0.95);
                 optionsButton.setY(getWindowHeight() * 0.05);
             }*/
-            
+
             //rescaleObjects(optionsButton, this, 0.00025, 0.00025);
 
             optionsButton.setPosition(getWindowWidth() - optionsButton.displayWidth * optionsButton.scaleX, optionsButton.displayHeight * optionsButton.scaleY);

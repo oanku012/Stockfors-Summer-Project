@@ -50,8 +50,6 @@ class BuildingScene extends Phaser.Scene {
         this.centerX = this.cameras.main.centerX;
         this.centerY = this.cameras.main.centerY;
 
-        //let bounds = this.matter.world.setBounds(-90, 0, 2500, 1000, 64, true, true, false, false);
-
         //Stops ongoing sounds that started in the map scene from playing
         this.sound.stopAll();
 
@@ -237,7 +235,7 @@ class BuildingScene extends Phaser.Scene {
                 let topLeft = this.infoBackground.getTopLeft();
 
                 //Button position is slightly different for some reason when closing the fullscreen info text window
-                this.infoFullScreenButton.setPosition(topLeft.x + 93, topLeft.y - 10).setTexture('MenuAtlas', 'UI Buttons/Zoom_In');
+                this.infoFullScreenButton.setPosition(topLeft.x + 96, topLeft.y - 8).setTexture('MenuAtlas', 'UI Buttons/Zoom_In');
                 this.infoDiv.style = 'padding: 30px; overflow-x: hidden; width: 1400px; height: 770px; padding: 30px; font: ' + this.fontSize + 'px Carme;'
 
                 this.infoDom.setPosition(0, 15);
@@ -676,7 +674,7 @@ class BuildingScene extends Phaser.Scene {
         let topLeft = this.infoBackground.getTopLeft();
         let buttonPos = {};
         buttonPos.x = topLeft.x + 93;
-        buttonPos.y = topLeft.y - 10;
+        buttonPos.y = topLeft.y - 8;
 
         this.infoBackground.setInteractive();
 
@@ -686,6 +684,7 @@ class BuildingScene extends Phaser.Scene {
         this.infoFullScreenButton.on('pointerup', () => {
             if (this.infoFullScreenButton.pressed) {
 
+                //Expand info into "fullscreen"
                 if (this.infoFullScreenButton.full !== true) {
 
                     //Portrait mode
@@ -723,19 +722,7 @@ class BuildingScene extends Phaser.Scene {
                     this.infoFullScreenButton.full = false;
                     this.rescaleMenuElements();
 
-                    
-                    /*
-
-                    this.infoBackground.setScale(1.75, 1.36);
-
-                    topLeft = this.infoBackground.getTopLeft();
-
-                    this.infoFullScreenButton.setPosition(buttonPos.x, buttonPos.y).setTexture('MenuAtlas', 'UI Buttons/Zoom_In');
-                    this.infoDiv.style = 'padding: 30px; overflow-x: hidden; width: 1400px; height: 770px; padding: 30px; font: ' + this.fontSize + 'px Carme;'
-
-                    this.infoDom.setPosition(0, 15);
-
-                    */
+                
                 }
             }
         }, this);
