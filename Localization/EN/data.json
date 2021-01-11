@@ -22,6 +22,16 @@
                     "Patruunantalo. Photographer: Sara Laitinen 2020.",
                     "Patruunantalo. Photographer: Sara Laitinen 2020.",
                     "Patruunantalo. Photographer: Sara Laitinen 2020."
+               ],
+               "Links": [
+                    {
+                         "Title": "Kasvajat ry's web page:",
+                         "url": "https://kasvava.org/"
+                    },
+                    {
+                         "Title": "Patruunantalo showcase video:",
+                         "url": "https://www.youtube.com/watch?v=-gy1_HvoZ-Y"
+                    }
                ]
           },
           "Pakkausmuseo": {
@@ -55,6 +65,16 @@
                     "Fire station. Photographer: Sara Laitinen 1988.",
                     "Fire station. Photographer: Sara Laitinen 1988.",
                     "Fire station. Photographer: Sara Laitinen 1988."
+               ],
+               "Links": [
+                    {
+                         "Title": "Pyhtää volunteer fire department's web page:",
+                         "url": "https://www.pyhtaanvpk.fi/"
+                    },
+                    {
+                         "Title": "Pyhtää VFD's Facebook page:",
+                         "url": "https://fi-fi.facebook.com/PyhtaanVpk"
+                    }
                ]
           },
           "Piippuhalli": {
@@ -104,6 +124,16 @@
                     "Bird Sanctuary. Photographer: Sara Laitinen 2020.",
                     "Bird Sanctuary. Photographer: Sara Laitinen 2020.",
                     "Bird Sanctuary. Photographer: Sara Laitinen 2020."
+               ],
+               "Links": [
+                    {
+                         "Title": "Pyhtää Bird sanctuary's Facebook page:",
+                         "url": "https://fi-fi.facebook.com/lintuhoitola/"
+                    },
+                    {
+                         "Title": "Showcase video:",
+                         "url": "https://www.youtube.com/watch?v=qa7ViDiy7IY"
+                    }
                ]
           },
           "Tallirakennus": {
@@ -150,6 +180,12 @@
                     "Colombier Finland Oy. Photographer: Sara Laitinen 2020.",
                     "Colombier Finland Oy. Photographer: Sara Laitinen 2020.",
                     "Colombier Finland Oy. Photographer: Sara Laitinen 2020."
+               ],
+               "Links": [
+                    {
+                         "Title": "Colombier OY's web page:",
+                         "url": "https://colombier.com/"
+                    }
                ]
           },
           "Pyroll": {
@@ -200,6 +236,12 @@
                     "Struka's Locks. Photographer: Sara Laitinen 2020.",
                     "Struka's Locks. Photographer: Sara Laitinen 2020.",
                     "Struka's Locks. Photographer: Sara Laitinen 2020."
+               ],
+               "Links": [
+                    {
+                         "Title": "Struka's locks instructional video:",
+                         "url": "https://www.youtube.com/watch?v=j_ERLiPcJlM"
+                    }
                ]
           },
           "Kirkko": {
@@ -212,6 +254,12 @@
                     "Pyhtää Church. Photographer: Sara Laitinen 2020.",
                     "Pyhtää Church. Photographer: Sara Laitinen 2020."
                     
+               ],
+               "Links": [
+                    {
+                         "Title": "Pyhtää church Youtube channel:",
+                         "url": "https://www.youtube.com/channel/UCrb4d5IhznGFB4ju3-fnO5A/featured"
+                    }
                ]
           },
           "History": {
@@ -277,7 +325,13 @@
                     "VKP. Photographer: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
                     "VKP. Photographer: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
                     "VKP. Photographer: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988."
-               ]
+               ],
+               "Links":[
+                    {
+                         "Title": "Stockfors video showcase:",
+                         "url": "https://www.youtube.com/watch?v=MG8-9MDDje0"
+                    }
+               ] 
           },
           "Ohjeet": {
                "Title": "Instructions",

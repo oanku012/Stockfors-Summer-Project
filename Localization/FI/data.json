@@ -21,6 +21,16 @@
                     "Patruunantalo. Kuvaaja: Sara Laitinen 2020.",
                     "Patruunantalo. Kuvaaja: Sara Laitinen 2020.",
                     "Patruunantalo. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988."
+               ],
+               "Links": [
+                    {
+                         "Title": "Kasvajat ry:n verkkosivusto:",
+                         "url": "https://kasvava.org/"
+                    },
+                    {
+                         "Title": "Patruunantalon esittelyvideo:",
+                         "url": "https://www.youtube.com/watch?v=-gy1_HvoZ-Y"
+                    }
                ]
           },
           "Pakkausmuseo": {
@@ -45,6 +55,7 @@
                     "Kaarihalli. Kuvaaja: Sara Laitinen 2020.",
                     "Kaarihalli. Kuvaaja: Sara Laitinen 2020."
                ]
+
           },
           "Paloasema": {
                "Title": "Paloasema",
@@ -56,6 +67,16 @@
                     "Paloasema. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
                     "Paloasema. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
                     "Paloasema. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988."
+               ],
+               "Links": [
+                    {
+                         "Title": "Pyhtään VPK:n verkkosivut:",
+                         "url": "https://www.pyhtaanvpk.fi/"
+                    },
+                    {
+                         "Title": "Pyhtään VPK:n Facebook-sivut:",
+                         "url": "https://fi-fi.facebook.com/PyhtaanVpk"
+                    }
                ]
           },
           "Piippuhalli": {
@@ -110,6 +131,16 @@
                     "Lintuhoitola. Kuvaaja: Sara Laitinen 2020.",
                     "Lintuhoitola. Kuvaaja: Sara Laitinen 2020.",
                     "Lintuhoitola. Kuvaaja: Sara Laitinen 2020."
+               ],
+               "Links": [
+                    {
+                         "Title": "Lintuhoitolan Facebook-sivut:",
+                         "url": "https://fi-fi.facebook.com/lintuhoitola/"
+                    },
+                    {
+                         "Title": "Lintuhoitolan esittelyvideo:",
+                         "url": "https://www.youtube.com/watch?v=qa7ViDiy7IY"
+                    }
                ]
           },
           "Tallirakennus": {
@@ -158,6 +189,12 @@
                     "Colombier Finland Oy. Kuvaaja: Sara Laitinen 2020.",
                     "Colombier Finland Oy. Kuvaaja: Sara Laitinen 2020.",
                     "Colombier Finland Oy. Kuvaaja: Sara Laitinen 2020."
+               ],
+               "Links": [
+                    {
+                         "Title": "Colombier OY:n verkkosivusto:",
+                         "url": "https://colombier.com/"
+                    }
                ]
           },
           "Pyroll": {
@@ -200,6 +237,12 @@
                     "Strukan Sulut. Kuvaaja: Sara Laitinen 2020.",
                     "Strukan Sulut. Kuvaaja: Sara Laitinen 2020.",
                     "Strukan Sulut. Kuvaaja: Sara Laitinen 2020."
+               ],
+               "Links": [
+                    {
+                         "Title": "Strukan sulun sulkuohjeet-video:",
+                         "url": "https://www.youtube.com/watch?v=j_ERLiPcJlM"
+                    }
                ]
           },
           "Kirkko": {
@@ -212,6 +255,12 @@
                     "Pyhtään Kirkko. Kuvaaja: Sara Laitinen 2020.",
                     "Pyhtään Kirkko. Kuvaaja: Sara Laitinen 2020.",
                     "Pyhtään Kirkko. Kuvaaja: Sara Laitinen 2020."
+               ],
+               "Links": [
+                    {
+                         "Title": "Pyhtään Seurakunnan Youtube-kanava:",
+                         "url": "https://www.youtube.com/channel/UCrb4d5IhznGFB4ju3-fnO5A/featured"
+                    }
                ]
           },
           "Karting_rata": {
@@ -289,7 +338,13 @@
                     "VKP. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
                     "VKP. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988.",
                     "VKP. Kuvaaja: Kansalaisopiston valokuvauspiiri/Pyhtään kotiseutuarkisto 1988."
-               ]
+               ],
+               "Links":[
+                    {
+                         "Title": "Stockforsin esittelyvideo:",
+                         "url": "https://www.youtube.com/watch?v=MG8-9MDDje0"
+                    }
+               ] 
           },
           "Ohjeet": {
                "Title": "Ohjeet",
