@@ -440,67 +440,70 @@ class MapScene extends Phaser.Scene {
                 //Plays the footstep audio.
                 this.footStepTimer.paused = false;
 
+                //The threshold percentage of the player's speed for when animations change to either an oblique direction or straight.
                 const obliqueThreshold = 3 / 10;
                 const straightThreshold = 8 / 10;
 
                 let velocX = this.player.body.velocity.x;
                 let velocY = this.player.body.velocity.y;
 
-                //console.log(this.player.body.velocity);
+                console.log(this.player.body.velocity);
 
-                if (velocX > (this.speed * (straightThreshold))) {
-                    //console.log('Moving right');
+                let realSpeed = this.speed * (this.sys.game.loop.delta / 10);
+
+                if (velocX > (realSpeed * (straightThreshold))) {
+                    console.log('Moving right');
                     this.player.setFlipX(false);
 
                     this.movementDirection = 'right';
 
                 }
 
-                if (velocY > (this.speed * (straightThreshold))) {
-                    //console.log('Moving down');
+                if (velocY > (realSpeed * (straightThreshold))) {
+                    console.log('Moving down');
 
                     this.player.setFlipX(false);
 
                     this.movementDirection = 'down';
                 }
 
-                if (velocX < (-this.speed * (straightThreshold))) {
-                    //console.log('Moving left');
+                if (velocX < (-realSpeed * (straightThreshold))) {
+                    console.log('Moving left');
                     this.player.setFlipX(true);
 
                     this.movementDirection = 'left';
                 }
 
-                if (this.player.body.velocity.y < (-this.speed * (straightThreshold))) {
-                    //console.log('Moving up');
+                if (this.player.body.velocity.y < (-realSpeed * (straightThreshold))) {
+                    console.log('Moving up');
                     this.player.setFlipX(false);
 
                     this.movementDirection = 'up';
                 }
 
-                if (velocY < (-this.speed) * (obliqueThreshold) && velocX > (this.speed * obliqueThreshold)) {
-                    //console.log('Moving upright');
+                if (velocY < (-realSpeed) * (obliqueThreshold) && velocX > (realSpeed * obliqueThreshold)) {
+                    console.log('Moving upright');
                     this.player.setFlipX(true);
                     this.movementDirection = 'upright';
                 }
 
-                if (velocY > (this.speed) * (obliqueThreshold) && velocX > (this.speed * obliqueThreshold)) {
-                    //console.log('Moving downright');
+                if (velocY > (realSpeed) * (obliqueThreshold) && velocX > (realSpeed * obliqueThreshold)) {
+                    console.log('Moving downright');
                     this.player.setFlipX(false);
 
                     this.movementDirection = 'downright';
 
                 }
 
-                if (velocY > (this.speed) * (obliqueThreshold) && velocX < (-this.speed * obliqueThreshold)) {
-                    //console.log('Moving downleft');
+                if (velocY > (realSpeed) * (obliqueThreshold) && velocX < (-realSpeed * obliqueThreshold)) {
+                    console.log('Moving downleft');
                     this.player.setFlipX(true);
 
                     this.movementDirection = 'downleft';
                 }
 
-                if (velocY < (-this.speed) * (obliqueThreshold) && velocX < (-this.speed * obliqueThreshold)) {
-                    //console.log('Moving upleft');
+                if (velocY < (-realSpeed) * (obliqueThreshold) && velocX < (-realSpeed * obliqueThreshold)) {
+                    console.log('Moving upleft');
                     this.player.setFlipX(false);
 
                     this.movementDirection = 'upleft';
