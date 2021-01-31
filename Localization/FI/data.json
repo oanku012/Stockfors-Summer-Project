@@ -24,12 +24,12 @@
                ],
                "Links": [
                     {
-                         "Title": "Kasvajat ry:n verkkosivusto:",
+                         "Title": "Kasvajat ry:n verkkosivusto.",
                          "url": "https://kasvava.org/"
                     },
                     {
-                         "Title": "Patruunantalon esittelyvideo:",
-                         "url": "https://www.youtube.com/watch?v=-gy1_HvoZ-Y"
+                         "Title": "Patruunantalon esittelyvideo.",
+                         "url": "https://youtu.be/-gy1_HvoZ-Y"
                     }
                ]
           },
@@ -70,11 +70,11 @@
                ],
                "Links": [
                     {
-                         "Title": "Pyhtään VPK:n verkkosivut:",
+                         "Title": "Pyhtään VPK:n verkkosivut.",
                          "url": "https://www.pyhtaanvpk.fi/"
                     },
                     {
-                         "Title": "Pyhtään VPK:n Facebook-sivut:",
+                         "Title": "Pyhtään VPK:n Facebook-sivut.",
                          "url": "https://fi-fi.facebook.com/PyhtaanVpk"
                     }
                ]
@@ -134,11 +134,11 @@
                ],
                "Links": [
                     {
-                         "Title": "Lintuhoitolan Facebook-sivut:",
+                         "Title": "Lintuhoitolan Facebook-sivut.",
                          "url": "https://fi-fi.facebook.com/lintuhoitola/"
                     },
                     {
-                         "Title": "Lintuhoitolan esittelyvideo:",
+                         "Title": "Lintuhoitolan esittelyvideo.",
                          "url": "https://www.youtube.com/watch?v=qa7ViDiy7IY"
                     }
                ]
@@ -192,7 +192,7 @@
                ],
                "Links": [
                     {
-                         "Title": "Colombier OY:n verkkosivusto:",
+                         "Title": "Colombier OY:n verkkosivusto.",
                          "url": "https://colombier.com/"
                     }
                ]
@@ -207,7 +207,7 @@
                ],
                "Links": [
                     {
-                         "Title": "Pyroll OY:n verkkosivusto:",
+                         "Title": "Pyroll OY:n verkkosivusto.",
                          "url": "https://pyroll.com/"
                     }
                ]
@@ -240,7 +240,7 @@
                ],
                "Links": [
                     {
-                         "Title": "Strukan sulun sulkuohjeet-video:",
+                         "Title": "Strukan sulun sulkuohjeet-video.",
                          "url": "https://www.youtube.com/watch?v=j_ERLiPcJlM"
                     }
                ]
@@ -258,7 +258,7 @@
                ],
                "Links": [
                     {
-                         "Title": "Pyhtään Seurakunnan Youtube-kanava:",
+                         "Title": "Pyhtään Seurakunnan Youtube-kanava.",
                          "url": "https://www.youtube.com/channel/UCrb4d5IhznGFB4ju3-fnO5A/featured"
                     }
                ]
@@ -341,7 +341,7 @@
                ],
                "Links":[
                     {
-                         "Title": "Stockforsin esittelyvideo:",
+                         "Title": "Stockforsin esittelyvideo.",
                          "url": "https://www.youtube.com/watch?v=MG8-9MDDje0"
                     }
                ] 
@@ -354,7 +354,8 @@
                "Game": "Peli. Tietyistä kohteista löytyy erilaisia minipelejä, kuten muisti- tai palapelejä.",
                "Web": "Verkkosivut. Linkkejä eri verkkosivuille liittyen kohteeseen."
           },
-          "Back": "Poistu"
+          "Back": "Poistu",
+          "WebOtsikko": "Aiheesta muualla:"
      },
      "MainMenu": {
           "OpeningHeader": "TERVETULOA STOCKFORS KARTALLA-NETTISOVELLUKSEEN",

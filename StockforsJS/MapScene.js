@@ -447,12 +447,12 @@ class MapScene extends Phaser.Scene {
                 let velocX = this.player.body.velocity.x;
                 let velocY = this.player.body.velocity.y;
 
-                console.log(this.player.body.velocity);
+                //console.log(this.player.body.velocity);
 
                 let realSpeed = this.speed * (this.sys.game.loop.delta / 10);
 
                 if (velocX > (realSpeed * (straightThreshold))) {
-                    console.log('Moving right');
+                    //console.log('Moving right');
                     this.player.setFlipX(false);
 
                     this.movementDirection = 'right';
@@ -460,7 +460,7 @@ class MapScene extends Phaser.Scene {
                 }
 
                 if (velocY > (realSpeed * (straightThreshold))) {
-                    console.log('Moving down');
+                    //console.log('Moving down');
 
                     this.player.setFlipX(false);
 
@@ -468,27 +468,27 @@ class MapScene extends Phaser.Scene {
                 }
 
                 if (velocX < (-realSpeed * (straightThreshold))) {
-                    console.log('Moving left');
+                    //console.log('Moving left');
                     this.player.setFlipX(true);
 
                     this.movementDirection = 'left';
                 }
 
                 if (this.player.body.velocity.y < (-realSpeed * (straightThreshold))) {
-                    console.log('Moving up');
+                    //console.log('Moving up');
                     this.player.setFlipX(false);
 
                     this.movementDirection = 'up';
                 }
 
                 if (velocY < (-realSpeed) * (obliqueThreshold) && velocX > (realSpeed * obliqueThreshold)) {
-                    console.log('Moving upright');
+                    //console.log('Moving upright');
                     this.player.setFlipX(true);
                     this.movementDirection = 'upright';
                 }
 
                 if (velocY > (realSpeed) * (obliqueThreshold) && velocX > (realSpeed * obliqueThreshold)) {
-                    console.log('Moving downright');
+                    //console.log('Moving downright');
                     this.player.setFlipX(false);
 
                     this.movementDirection = 'downright';
@@ -496,14 +496,14 @@ class MapScene extends Phaser.Scene {
                 }
 
                 if (velocY > (realSpeed) * (obliqueThreshold) && velocX < (-realSpeed * obliqueThreshold)) {
-                    console.log('Moving downleft');
+                    //console.log('Moving downleft');
                     this.player.setFlipX(true);
 
                     this.movementDirection = 'downleft';
                 }
 
                 if (velocY < (-realSpeed) * (obliqueThreshold) && velocX < (-realSpeed * obliqueThreshold)) {
-                    console.log('Moving upleft');
+                    //console.log('Moving upleft');
                     this.player.setFlipX(false);
 
                     this.movementDirection = 'upleft';

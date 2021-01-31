@@ -26,6 +26,7 @@ class BuildingScene extends Phaser.Scene {
         this.panoramaButton;
         this.infoButton;
         this.albumButton;
+        this.webButton;
 
         this.menuButtons;
 
@@ -104,6 +105,7 @@ class BuildingScene extends Phaser.Scene {
             this.CreateWebContainer();
         }
 
+        //Change menu to portrait mode if on portrait mode
         if ((this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) && this.scale.orientation === Phaser.Scale.PORTRAIT) {
             this.rescaleMenuElements();
         }
@@ -155,9 +157,10 @@ class BuildingScene extends Phaser.Scene {
 
     }
 
-    //For rescaling and changing the positioning of the elements in the general building menu
+    //For rescaling and changing the positioning of the elements in the general building menu, different positioning for portrait mode on mobile
     rescaleMenuElements() {
 
+        //On mobile device portrait mode
         if ((this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) && this.scale.orientation === Phaser.Scale.PORTRAIT) {
             this.menuBG.setScale(1.05, 2).setPosition(65, 0);
             this.menu.setPosition(this.centerX - 45, this.centerY - getWindowHeight() * this.menu.scaleY * this.menuPositionY);
@@ -165,15 +168,14 @@ class BuildingScene extends Phaser.Scene {
             let startY = -975;
             let buttonsArray = this.menuButtons.list;
 
-            for(let i = buttonsArray.length-1; i--; i>0)
+            //Iterates through the array backwards and sets the buttons in the correct positions
+            for(let i = buttonsArray.length; i--; i>=0)
             {
-                buttonsArray[i].setPosition(0, startY + ((buttonsArray.length-(i+2)) * 200));
-
+                buttonsArray[i].setPosition(0, startY + ((buttonsArray.length-(i+1)) * 200));
+                console.log(buttonsArray[i].frame);
             }
-            /*this.menuButtons.list.forEach((item, index, list) => {
-                item.setPosition(0, startY + (index * 200));
 
-            }, this);*/
+
 
             this.instructionButton.setPosition(820, 1000).setScale(1.5);
 
@@ -191,8 +193,6 @@ class BuildingScene extends Phaser.Scene {
                 this.infoDiv.style = 'padding: 30px; overflow-x: hidden; width: 1400px; height: 1490px; padding: 30px; font: ' + this.fontSize + 'px Carme;'
 
                 this.infoDom.setPosition(0, -345);
-
-                //this.infoFullScreenButton.full = false;
 
             }
 
@@ -239,8 +239,6 @@ class BuildingScene extends Phaser.Scene {
                 this.infoDiv.style = 'padding: 30px; overflow-x: hidden; width: 1400px; height: 770px; padding: 30px; font: ' + this.fontSize + 'px Carme;'
 
                 this.infoDom.setPosition(0, 15);
-
-                //this.infoFullScreenButton.full = false;
 
             }
 
@@ -403,7 +401,6 @@ class BuildingScene extends Phaser.Scene {
         }
 
         if (this.panoramas) {
-            //this.panoramaButton = this.add.sprite(rightMostPosition - (buttonsAdded * buttonGap), 0, 'MenuAtlas', 'UI Buttons/Panorama');
             this.panoramaButton = CreateButton(this, rightMostPosition - (buttonsAdded * buttonGap), 0, 'UI Buttons/Panorama');
 
             this.panoramaButton.on('pointerup', function () {
@@ -435,7 +432,6 @@ class BuildingScene extends Phaser.Scene {
         //Scene breaks if no album????
         if (this.images) {
             this.albumButton = CreateButton(this, rightMostPosition - (buttonsAdded * buttonGap), 0, 'UI Buttons/Gallery');
-            //this.albumButton = this.add.sprite(rightMostPosition - (buttonsAdded * buttonGap), 0, 'MenuAtlas', 'UI Buttons/Gallery');
 
             this.albumButton.on('pointerup', function () {
                 if (this.albumButton.pressed) {
@@ -453,13 +449,10 @@ class BuildingScene extends Phaser.Scene {
         if (this.url) {
 
             if (this.url.length > 0) {
-                //this.webButton = this.add.sprite(rightMostPosition - (buttonsAdded * buttonGap), 0, 'MenuAtlas', 'UI Buttons/Webpage');
                 this.webButton = CreateButton(this, rightMostPosition - (buttonsAdded * buttonGap), 0, 'UI Buttons/Webpage');
 
                 this.webButton.on('pointerup', function () {
                     if (this.webButton.pressed) {
-
-                        //window.open(this.url);
                         this.ContainerTransition(this.webContainer);
                     }
 
@@ -652,21 +645,12 @@ class BuildingScene extends Phaser.Scene {
 
         fullScreenFontSize -= windowSize * 0.001;
 
-        //let fullScreenFontSize = 66;
-
-        console.log(fullScreenFontSize);
-
         //This is the style for the entire info html
         this.infoDiv.style = 'padding: 30px; overflow-x: hidden; width: 1400px; height: 770px; padding: 30px; font: ' + this.fontSize + 'px Carme;'
 
         //The stylesheet is for styling the inner elements, not sure if it could have been put straight into the style element above somehow
         //Text variable is the HTML string that includes the infotext as well, stored in JSON
         this.infoDiv.innerHTML = '<link rel="stylesheet" type="text/css" href="infoStyle.css"> ' + text;
-        //This was just testing an implementation for using iframe to include html from a separate file
-        //this.infoDiv.innerHTML = '<iframe src="' + text + ' " style="width: 100%; height: 100%; border: none;"></iframe>';
-
-        //background-Image: url("Assets/images/menu/Infokorttipohja.png"); background-size: 100% 103%; background-repeat: no-repeat; background-position: -10px, -15px;
-
         this.infoDom = this.add.dom(0, 15, this.infoDiv);
 
         this.infoBackground = this.add.sprite(0, 13, 'MenuAtlas', 'UI Pohjat/Infokorttipohja').setScale(1.75, 1.36);
@@ -1280,9 +1264,28 @@ class BuildingScene extends Phaser.Scene {
         let posX = -450;
         let posY = -350;
 
+        let title = this.make.text({
+            x: posX,
+            y: posY,
+            text: this.data.WebOtsikko,
+            origin: { x: 0, y: 0.5 },
+            style: {
+                font: '50px Carme',
+                fill: 'black',
+                align: 'center',
+                wordWrap: { width: 900 }
+                
+            }
+        }); 
+
+        this.webContainer.add([title]);
+
+        posY += 80;
+
+
         this.url.forEach(url => {
 
-            let title = this.make.text({
+            /*let title = this.make.text({
                 x: posX,
                 y: posY,
                 text: url.Title,
@@ -1290,19 +1293,22 @@ class BuildingScene extends Phaser.Scene {
                 style: {
                     font: '43px Carme',
                     fill: 'black',
-                    align: 'center'
+                    align: 'center',
+                    wordWrap: { width: 900 }
+                    
                 }
-            });
+            });*/
 
             let link = this.make.text({
                 x: posX,
-                y: posY + 50,
-                text: url.url,
+                y: posY,
+                text: url.Title,
                 origin: { x: 0, y: 0.5 },
                 style: {
                     font: '43px Carme',
                     fill: 'blue',
-                    align: 'center'
+                    align: 'center',
+                    wordWrap: { width: 900 }
 
                 }
             });
@@ -1324,9 +1330,9 @@ class BuildingScene extends Phaser.Scene {
                 }
             });
 
-            posY += 120;
+            posY += 80;
 
-            this.webContainer.add([title, link]);
+            this.webContainer.add([link]);
         });
 
         this.switchableContainers.push(this.webContainer);

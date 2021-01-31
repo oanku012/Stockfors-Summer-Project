@@ -34,8 +34,6 @@ class StockforsScene extends MapScene {
             }
         }
 
-        //this.background = this.add.image(-600, -400, 'mapTausta').setScale(1).setDisplayOrigin(0);
-
         //Smaller map texture when playing on mobile
         if (this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) {
             this.background = this.add.image(-600, -400, 'mapTaustaMobiili').setScale(1.58).setDisplayOrigin(0);
@@ -52,28 +50,16 @@ class StockforsScene extends MapScene {
 
         super.create();
 
-        /*if (this.sys.game.device.os.iOS || this.sys.game.device.os.iPhone || this.sys.game.device.os.android || this.sys.game.device.os.windowsPhone) {
-            //this.player.setPosition(this.player.x, this.player.y - 75);
-            this.cameras.main.setZoom(3);
-
-        }*/
-
         this.AddSoundSpaces();
-
-        //this.CreateWaveAnim();
 
         if (gameState.newGame) {
             console.log('Intro is playing.');
             introPlaying = true;
             readyToMove = false;
-            //this.player.anims.play('wave');
             this.player.anims.play('talk');
-            //this.cameras.main.setZoom(3);
             saveGame({ newGame: false });
 
             let bubbleDuration = 3000;
-
-            //let bubbleScale = 0.00004*devicePixelCount;
             let bubbleScale = 0.25;
 
             //This looks like a mess I know, basically it makes new speech bubbles for the player on a timer

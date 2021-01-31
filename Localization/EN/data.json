@@ -25,11 +25,11 @@
                ],
                "Links": [
                     {
-                         "Title": "Kasvajat ry's web page:",
+                         "Title": "Kasvajat ry's web page.",
                          "url": "https://kasvava.org/"
                     },
                     {
-                         "Title": "Patruunantalo showcase video:",
+                         "Title": "Patruunantalo showcase video.",
                          "url": "https://www.youtube.com/watch?v=-gy1_HvoZ-Y"
                     }
                ]
@@ -68,11 +68,11 @@
                ],
                "Links": [
                     {
-                         "Title": "Pyhtää volunteer fire department's web page:",
+                         "Title": "Pyhtää volunteer fire department's web page.",
                          "url": "https://www.pyhtaanvpk.fi/"
                     },
                     {
-                         "Title": "Pyhtää VFD's Facebook page:",
+                         "Title": "Pyhtää VFD's Facebook page.",
                          "url": "https://fi-fi.facebook.com/PyhtaanVpk"
                     }
                ]
@@ -126,11 +126,11 @@
                ],
                "Links": [
                     {
-                         "Title": "Pyhtää Bird sanctuary's Facebook page:",
+                         "Title": "Pyhtää Bird sanctuary's Facebook page.",
                          "url": "https://fi-fi.facebook.com/lintuhoitola/"
                     },
                     {
-                         "Title": "Showcase video:",
+                         "Title": "Showcase video.",
                          "url": "https://www.youtube.com/watch?v=qa7ViDiy7IY"
                     }
                ]
@@ -182,7 +182,7 @@
                ],
                "Links": [
                     {
-                         "Title": "Colombier OY's web page:",
+                         "Title": "Colombier OY's web page.",
                          "url": "https://colombier.com/"
                     }
                ]
@@ -196,7 +196,7 @@
                ],
                "Links": [
                     {
-                         "Title": "Pyroll OY's web page:",
+                         "Title": "Pyroll OY's web page.",
                          "url": "https://pyroll.com/"
                     }
                ]
@@ -238,7 +238,7 @@
                ],
                "Links": [
                     {
-                         "Title": "Struka's locks instructional video:",
+                         "Title": "Struka's locks instructional video.",
                          "url": "https://www.youtube.com/watch?v=j_ERLiPcJlM"
                     }
                ]
@@ -256,7 +256,7 @@
                ],
                "Links": [
                     {
-                         "Title": "Pyhtää church Youtube channel:",
+                         "Title": "Pyhtää church Youtube channel.",
                          "url": "https://www.youtube.com/channel/UCrb4d5IhznGFB4ju3-fnO5A/featured"
                     }
                ]
@@ -327,8 +327,8 @@
                ],
                "Links":[
                     {
-                         "Title": "Stockfors video showcase:",
-                         "url": "https://www.youtube.com/watch?v=MG8-9MDDje0"
+                         "Title": "Stockfors video showcase.",
+                         "url": "https://youtu.be/-gy1_HvoZ-Y"
                     }
                ] 
           },
@@ -338,9 +338,10 @@
                "Album": "Album. Pictures taken at the location.",
                "Panoramas": "Panorama. 360-degree panoramas taken at the location.",
                "Game": "Minigame. Some locations include a minigame such as a memory- or sliding-puzzle.",
-               "Web": "Website. Some locations include links to websites associated with the location."
+               "Web": "Websites. Some locations include links to websites associated with the location."
           },
-          "Back": "Exit"
+          "Back": "Exit",
+          "WebOtsikko": "Links for more info:"
      },
      "MainMenu": {
           "OpeningHeader": "WELCOME TO THE STOCKFORS ON THE MAP-WEB APPLICATION",
